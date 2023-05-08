@@ -1,0 +1,78 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>Hippos</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
+    <TargetFramework>net461</TargetFramework>
+    <Prefer32Bit>True</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>Preview</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Hippos.exe.licenses" />
+    <None Remove="CorePOS.RebuildIndexScript.txt" />
+    <None Remove="CorePOS.ring-bell.wav" />
+    <None Remove="CorePOS.Reports.BlankChit6.rdlc" />
+    <None Remove="CorePOS.Reports.DeliveryCommissions.rdlc" />
+    <None Remove="CorePOS.Reports.BlankLabel.rdlc" />
+    <None Remove="CorePOS.Reports.Blank.rdlc" />
+    <None Remove="CorePOS.Reports.DayEndClosing.rdlc" />
+    <None Remove="CorePOS.Reports.DeliveryDrivers.rdlc" />
+    <None Remove="CorePOS.Reports.AppointmentList.rdlc" />
+    <None Remove="CorePOS.Reports.RefundReceipt.rdlc" />
+    <None Remove="CorePOS.Reports.Receipt.rdlc" />
+    <None Remove="CorePOS.Reports.SalesReport.rdlc" />
+    <None Remove="CorePOS.Reports.LargeLabelChit.rdlc" />
+    <EmbeddedResource Include="Hippos.exe.licenses" />
+    <EmbeddedResource Include="CorePOS.RebuildIndexScript.txt" />
+    <EmbeddedResource Include="CorePOS.ring-bell.wav" />
+    <EmbeddedResource Include="CorePOS.Reports.BlankChit6.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.DeliveryCommissions.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.BlankLabel.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.Blank.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.DayEndClosing.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.DeliveryDrivers.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.AppointmentList.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.RefundReceipt.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.Receipt.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.SalesReport.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.LargeLabelChit.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CorePOS.Business">
+      <HintPath>..\..\Hippos-de4dot\CorePOS.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="CorePOS.Data">
+      <HintPath>..\..\Hippos-de4dot\CorePOS.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI" />
+    <Reference Include="System.Core" />
+    <Reference Include="Vlc.DotNet.Forms" />
+    <Reference Include="Telerik.WinControls" />
+    <Reference Include="Telerik.WinControls.Themes.Windows8" />
+    <Reference Include="CloverConnector" />
+    <Reference Include="Vlc.DotNet.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="Traysoft.AddTapi" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="Microsoft.ReportViewer.WinForms" />
+    <Reference Include="CloverWindowsTransport" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="Newtonsoft.Json" />
+    <Reference Include="CloverWindowsSDK" />
+    <Reference Include="UnitsNet" />
+    <Reference Include="Vlc.DotNet.Core.Interops" />
+    <Reference Include="System.Management" />
+    <Reference Include="DeviceId" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+</Project>
