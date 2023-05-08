@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using CorePOS.Properties;
 using Microsoft.Win32;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -47,10 +46,10 @@ public class frmRemoteSession : frmMasterForm
 	private void btnShowKeyboard_SessionID_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Session_ID, 0, 32, ((Control)(object)txtSessionID).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Session_ID, 0, 32, txtSessionID.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSessionID).Text = MemoryLoadedObjects.Numpad.valueEntered;
+			txtSessionID.Text = MemoryLoadedObjects.Numpad.valueEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -87,12 +86,12 @@ public class frmRemoteSession : frmMasterForm
 
 	private void btnConnect_Click(object sender, EventArgs e)
 	{
-		if (string.IsNullOrEmpty(((Control)(object)txtSessionID).Text))
+		if (string.IsNullOrEmpty(txtSessionID.Text))
 		{
 			new frmMessageBox(Resources.Please_input_a_session_ID).ShowDialog(this);
 			return;
 		}
-		Process.Start("https://assist.zoho.com/assist-join?key=" + ((Control)(object)txtSessionID).Text + "&mode=manual&role=A");
+		Process.Start("https://assist.zoho.com/assist-join?key=" + txtSessionID.Text + "&mode=manual&role=A");
 		Close();
 	}
 
@@ -111,10 +110,6 @@ public class frmRemoteSession : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0026: Expected O, but got Unknown
-		//IL_0171: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0192: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmRemoteSession));
 		btnConnect = new Button();
 		txtSessionID = new RadTextBoxControl();
@@ -134,11 +129,11 @@ public class frmRemoteSession : frmMasterForm
 		btnConnect.UseVisualStyleBackColor = false;
 		btnConnect.Click += btnConnect_Click;
 		componentResourceManager.ApplyResources(txtSessionID, "txtSessionID");
-		((Control)(object)txtSessionID).Name = "txtSessionID";
-		((RadElement)((RadControl)txtSessionID).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSessionID).Click += txtSessionID_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSessionID).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSessionID).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSessionID.Name = "txtSessionID";
+		txtSessionID.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSessionID.Click += txtSessionID_Click;
+		((RadTextBoxControlElement)txtSessionID.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSessionID.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label1.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label1, "label1");
 		label1.ForeColor = Color.White;
@@ -168,7 +163,7 @@ public class frmRemoteSession : frmMasterForm
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;
 		base.Controls.Add(btnConnect);
-		base.Controls.Add((Control)(object)txtSessionID);
+		base.Controls.Add(txtSessionID);
 		base.Controls.Add(label1);
 		base.Controls.Add(btnShowKeyboard_SessionID);
 		base.Controls.Add(label10);

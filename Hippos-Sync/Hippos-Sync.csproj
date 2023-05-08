@@ -18,7 +18,7 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="CorePOS.Business">
-      <HintPath>..\..\Hippos-de4dot\CorePOS.Business.dll</HintPath>
+      <HintPath>..\Hippos-bin\CorePOS.Business.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
   </ItemGroup>

@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -53,19 +52,6 @@ public class frmManageUOMs : frmMasterForm
 
 	private void method_3()
 	{
-		//IL_00bd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00c7: Expected O, but got Unknown
-		//IL_00c8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00d2: Expected O, but got Unknown
-		//IL_0686: Unknown result type (might be due to invalid IL or missing references)
-		//IL_069d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06be: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06eb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0718: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0745: Unknown result type (might be due to invalid IL or missing references)
-		//IL_076c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07d3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07f4: Unknown result type (might be due to invalid IL or missing references)
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmManageUOMs));
 		label10 = new Label();
@@ -163,28 +149,28 @@ public class frmManageUOMs : frmMasterForm
 		btnAddConversion.Name = "btnAddConversion";
 		btnAddConversion.UseVisualStyleBackColor = false;
 		componentResourceManager.ApplyResources(chkFractional, "chkFractional");
-		((Control)(object)chkFractional).Name = "chkFractional";
-		chkFractional.set_OffText("NO");
-		chkFractional.set_OnText("YES");
-		chkFractional.set_ToggleStateMode((ToggleStateMode)1);
-		chkFractional.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkFractional).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkFractional).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkFractional).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkFractional).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkFractional).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkFractional).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkFractional).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkFractional.Name = "chkFractional";
+		chkFractional.OffText = "NO";
+		chkFractional.OnText = "YES";
+		chkFractional.ToggleStateMode = ToggleStateMode.Click;
+		chkFractional.Value = false;
+		((RadToggleSwitchElement)chkFractional.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkFractional.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkFractional.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkFractional.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkFractional.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkFractional.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkFractional.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(txtName, "txtName");
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;
 		BackColor = Color.FromArgb(35, 39, 56);
-		base.Controls.Add((Control)(object)txtName);
-		base.Controls.Add((Control)(object)chkFractional);
+		base.Controls.Add(txtName);
+		base.Controls.Add(chkFractional);
 		base.Controls.Add(lblAlert);
 		base.Controls.Add(btnAddConversion);
 		base.Controls.Add(label1);

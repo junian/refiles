@@ -9,7 +9,6 @@ using CorePOS.Business.Methods;
 using CorePOS.Business.Objects.ThirdPartyAPIs.Other;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -131,30 +130,30 @@ public class frmAdminCompanySetup : frmMasterForm
 
 	private void btnSave_Click(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtCompanyName).Text == string.Empty)
+		if (txtCompanyName.Text == string.Empty)
 		{
 			new frmMessageBox(Resources.Name_is_mandatory).ShowDialog(this);
 		}
-		else if (!(((Control)(object)txtAddress).Text == string.Empty) && !(((Control)(object)txtCity).Text == string.Empty) && !(((Control)(object)txtStateProv).Text == string.Empty) && !(((Control)(object)txtCountry).Text == string.Empty) && !(((Control)(object)txtZip).Text == string.Empty))
+		else if (!(txtAddress.Text == string.Empty) && !(txtCity.Text == string.Empty) && !(txtStateProv.Text == string.Empty) && !(txtCountry.Text == string.Empty) && !(txtZip.Text == string.Empty))
 		{
-			if (((Control)(object)txtPhone).Text == string.Empty)
+			if (txtPhone.Text == string.Empty)
 			{
 				new frmMessageBox(Resources.Phone_number_is_mandatory).ShowDialog(this);
 				return;
 			}
-			if (!(((Control)(object)txtTaxNo).Text == string.Empty))
+			if (!(txtTaxNo.Text == string.Empty))
 			{
 				try
 				{
 					GClass6 gClass = new GClass6();
 					CompanySetup companySetup = gClass.CompanySetups.FirstOrDefault();
-					if (companySetup.Address1 != ((Control)(object)txtAddress).Text || companySetup.City != ((Control)(object)txtCity).Text || companySetup.StateProv != ((Control)(object)txtStateProv).Text || companySetup.Country != ((Control)(object)txtCountry).Text || companySetup.ZIP != ((Control)(object)txtZip).Text)
+					if (companySetup.Address1 != txtAddress.Text || companySetup.City != txtCity.Text || companySetup.StateProv != txtStateProv.Text || companySetup.Country != txtCountry.Text || companySetup.ZIP != txtZip.Text)
 					{
-						companySetup.Address1 = ((Control)(object)txtAddress).Text;
-						companySetup.City = ((Control)(object)txtCity).Text;
-						companySetup.StateProv = ((Control)(object)txtStateProv).Text;
-						companySetup.Country = ((Control)(object)txtCountry).Text;
-						companySetup.ZIP = ((Control)(object)txtZip).Text;
+						companySetup.Address1 = txtAddress.Text;
+						companySetup.City = txtCity.Text;
+						companySetup.StateProv = txtStateProv.Text;
+						companySetup.Country = txtCountry.Text;
+						companySetup.ZIP = txtZip.Text;
 						GoogleObjects.LatLongModel latLongModel = GoogleMethods.ConvertAddressToLatLong(companySetup.Address1 + "+" + companySetup.City + "+" + companySetup.StateProv + "+" + companySetup.Country);
 						companySetup.Long = latLongModel.Longitude;
 						companySetup.Lat = latLongModel.Latitude;
@@ -166,12 +165,12 @@ public class frmAdminCompanySetup : frmMasterForm
 							MiscHelper.SetSystemTimeZone(locationTimeZone.timeZoneName);
 						}
 					}
-					companySetup.Name = ((Control)(object)txtCompanyName).Text;
-					companySetup.Phone = ((Control)(object)txtPhone).Text;
-					companySetup.Fax = ((Control)(object)txtFax).Text;
-					companySetup.String_0 = ((Control)(object)txtTaxNo).Text;
-					companySetup.BusinessName = ((Control)(object)txtBusinessName).Text;
-					companySetup.Capacity = Convert.ToInt32(((Control)(object)txtCapacity).Text);
+					companySetup.Name = txtCompanyName.Text;
+					companySetup.Phone = txtPhone.Text;
+					companySetup.Fax = txtFax.Text;
+					companySetup.String_0 = txtTaxNo.Text;
+					companySetup.BusinessName = txtBusinessName.Text;
+					companySetup.Capacity = Convert.ToInt32(txtCapacity.Text);
 					companySetup.LatestOpeningTime = dateFromOperation.Value.TimeOfDay.ToString();
 					companySetup.LatestClosingTime = dateToOperation.Value.TimeOfDay.ToString();
 					companySetup.isSynced = false;
@@ -179,7 +178,7 @@ public class frmAdminCompanySetup : frmMasterForm
 					Setting setting = gClass.Settings.Where((Setting s) => s.Key == "print_tax_no").FirstOrDefault();
 					if (setting != null)
 					{
-						if (!chkPrintTaxNo.get_Value())
+						if (!chkPrintTaxNo.Value)
 						{
 							setting.Value = "OFF";
 						}
@@ -215,18 +214,18 @@ public class frmAdminCompanySetup : frmMasterForm
 	{
 		GClass6 gClass = new GClass6();
 		CompanySetup companySetup = gClass.CompanySetups.FirstOrDefault();
-		((Control)(object)txtCompanyName).Text = companySetup.Name;
-		((Control)(object)txtAddress).Text = companySetup.Address1;
-		((Control)(object)txtCity).Text = companySetup.City;
-		((Control)(object)txtStateProv).Text = companySetup.StateProv;
-		((Control)(object)txtCountry).Text = companySetup.Country;
-		((Control)(object)txtZip).Text = companySetup.ZIP;
-		((Control)(object)txtPhone).Text = companySetup.Phone;
-		((Control)(object)txtFax).Text = companySetup.Fax;
-		((Control)(object)txtTaxNo).Text = companySetup.String_0;
-		((Control)(object)txtBusinessName).Text = companySetup.BusinessName;
-		((Control)(object)txtCapacity).Text = companySetup.Capacity.ToString();
-		chkPrintTaxNo.set_Value((SettingsHelper.GetSettingValueByKey("print_tax_no") == "ON") ? true : false);
+		txtCompanyName.Text = companySetup.Name;
+		txtAddress.Text = companySetup.Address1;
+		txtCity.Text = companySetup.City;
+		txtStateProv.Text = companySetup.StateProv;
+		txtCountry.Text = companySetup.Country;
+		txtZip.Text = companySetup.ZIP;
+		txtPhone.Text = companySetup.Phone;
+		txtFax.Text = companySetup.Fax;
+		txtTaxNo.Text = companySetup.String_0;
+		txtBusinessName.Text = companySetup.BusinessName;
+		txtCapacity.Text = companySetup.Capacity.ToString();
+		chkPrintTaxNo.Value = ((SettingsHelper.GetSettingValueByKey("print_tax_no") == "ON") ? true : false);
 		List<BusinessHour> source = gClass.BusinessHours.ToList();
 		lstDayOfWeek.SelectedIndex = 0;
 		lstItems.Items.Clear();
@@ -262,10 +261,10 @@ public class frmAdminCompanySetup : frmMasterForm
 	private void method_5(string string_1, RadTextBoxControl radTextBoxControl_0)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(string_1, 1, 128, ((Control)(object)radTextBoxControl_0).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(string_1, 1, 128, radTextBoxControl_0.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)radTextBoxControl_0).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			radTextBoxControl_0.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -273,10 +272,10 @@ public class frmAdminCompanySetup : frmMasterForm
 	private void method_6(string string_1, RadTextBoxControl radTextBoxControl_0, int int_0 = 2, int int_1 = 4)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(string_1, int_0, int_1, ((Control)(object)radTextBoxControl_0).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(string_1, int_0, int_1, radTextBoxControl_0.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)radTextBoxControl_0).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			radTextBoxControl_0.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -548,59 +547,6 @@ public class frmAdminCompanySetup : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0069: Expected O, but got Unknown
-		//IL_008b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0095: Expected O, but got Unknown
-		//IL_0096: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00a0: Expected O, but got Unknown
-		//IL_00a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ab: Expected O, but got Unknown
-		//IL_00ac: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00b6: Expected O, but got Unknown
-		//IL_00b7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00c1: Expected O, but got Unknown
-		//IL_00c2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00cc: Expected O, but got Unknown
-		//IL_00cd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00d7: Expected O, but got Unknown
-		//IL_00d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00e2: Expected O, but got Unknown
-		//IL_00e3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ed: Expected O, but got Unknown
-		//IL_00ee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f8: Expected O, but got Unknown
-		//IL_0222: Unknown result type (might be due to invalid IL or missing references)
-		//IL_022c: Expected O, but got Unknown
-		//IL_09d5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09f6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c4e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c6f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d01: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d22: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0db4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0dd5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e67: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e88: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f1a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f3b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0fcd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0fee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1080: Unknown result type (might be due to invalid IL or missing references)
-		//IL_10a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1133: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1154: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11e6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1207: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1299: Unknown result type (might be due to invalid IL or missing references)
-		//IL_12ba: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1fa6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1fbe: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1fd5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1ff6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2023: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2050: Unknown result type (might be due to invalid IL or missing references)
-		//IL_207d: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAdminCompanySetup));
 		panel1 = new Panel();
 		btnRemoveItem = new Button();
@@ -665,25 +611,25 @@ public class frmAdminCompanySetup : frmMasterForm
 		((ISupportInitialize)txtCompanyName).BeginInit();
 		((ISupportInitialize)chkPrintTaxNo).BeginInit();
 		SuspendLayout();
-		panel1.Controls.Add((Control)(object)chkPrintTaxNo);
+		panel1.Controls.Add(chkPrintTaxNo);
 		panel1.Controls.Add(label15);
 		panel1.Controls.Add(btnRemoveItem);
 		panel1.Controls.Add(btnAdd);
 		panel1.Controls.Add(lstItems);
-		panel1.Controls.Add((Control)(object)txtCapacity);
+		panel1.Controls.Add(txtCapacity);
 		panel1.Controls.Add(label14);
 		panel1.Controls.Add(btnShowKeyboard_Capacity);
 		panel1.Controls.Add(lstDayOfWeek);
-		panel1.Controls.Add((Control)(object)txtTaxNo);
-		panel1.Controls.Add((Control)(object)txtFax);
-		panel1.Controls.Add((Control)(object)txtPhone);
-		panel1.Controls.Add((Control)(object)txtZip);
-		panel1.Controls.Add((Control)(object)txtCountry);
-		panel1.Controls.Add((Control)(object)txtStateProv);
-		panel1.Controls.Add((Control)(object)txtBusinessName);
-		panel1.Controls.Add((Control)(object)txtCity);
-		panel1.Controls.Add((Control)(object)txtAddress);
-		panel1.Controls.Add((Control)(object)txtCompanyName);
+		panel1.Controls.Add(txtTaxNo);
+		panel1.Controls.Add(txtFax);
+		panel1.Controls.Add(txtPhone);
+		panel1.Controls.Add(txtZip);
+		panel1.Controls.Add(txtCountry);
+		panel1.Controls.Add(txtStateProv);
+		panel1.Controls.Add(txtBusinessName);
+		panel1.Controls.Add(txtCity);
+		panel1.Controls.Add(txtAddress);
+		panel1.Controls.Add(txtCompanyName);
 		panel1.Controls.Add(label13);
 		panel1.Controls.Add(dateToOperation);
 		panel1.Controls.Add(dateFromOperation);
@@ -749,13 +695,13 @@ public class frmAdminCompanySetup : frmMasterForm
 		componentResourceManager.ApplyResources(columnHeader_1, "StartHour");
 		componentResourceManager.ApplyResources(columnHeader_2, "EndHour");
 		componentResourceManager.ApplyResources(txtCapacity, "txtCapacity");
-		((Control)(object)txtCapacity).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCapacity).Name = "txtCapacity";
-		((RadElement)((RadControl)txtCapacity).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCapacity).Click += txtCompanyName_Click;
-		((Control)(object)txtCapacity).KeyPress += txtCapacity_KeyPress;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCapacity).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCapacity).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCapacity.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCapacity.Name = "txtCapacity";
+		txtCapacity.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCapacity.Click += txtCompanyName_Click;
+		txtCapacity.KeyPress += txtCapacity_KeyPress;
+		((RadTextBoxControlElement)txtCapacity.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtCapacity.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label14.BackColor = Color.FromArgb(132, 146, 146);
 		label14.FlatStyle = FlatStyle.Flat;
 		componentResourceManager.ApplyResources(label14, "label14");
@@ -786,75 +732,75 @@ public class frmAdminCompanySetup : frmMasterForm
 		lstDayOfWeek.Name = "lstDayOfWeek";
 		lstDayOfWeek.SelectedIndexChanged += lstDayOfWeek_SelectedIndexChanged;
 		componentResourceManager.ApplyResources(txtTaxNo, "txtTaxNo");
-		((Control)(object)txtTaxNo).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtTaxNo).Name = "txtTaxNo";
-		((RadElement)((RadControl)txtTaxNo).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtTaxNo).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtTaxNo).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtTaxNo).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtTaxNo.ForeColor = Color.FromArgb(40, 40, 40);
+		txtTaxNo.Name = "txtTaxNo";
+		txtTaxNo.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtTaxNo.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtTaxNo.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtTaxNo.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtFax, "txtFax");
-		((Control)(object)txtFax).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtFax).Name = "txtFax";
-		((RadElement)((RadControl)txtFax).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtFax).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtFax).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtFax).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtFax.ForeColor = Color.FromArgb(40, 40, 40);
+		txtFax.Name = "txtFax";
+		txtFax.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtFax.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtFax.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtFax.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtPhone, "txtPhone");
-		((Control)(object)txtPhone).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPhone).Name = "txtPhone";
-		((RadElement)((RadControl)txtPhone).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtPhone).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPhone).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPhone).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtPhone.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPhone.Name = "txtPhone";
+		txtPhone.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtPhone.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtPhone.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtPhone.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtZip, "txtZip");
-		((Control)(object)txtZip).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtZip).Name = "txtZip";
-		((RadElement)((RadControl)txtZip).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtZip).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtZip).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtZip).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtZip.ForeColor = Color.FromArgb(40, 40, 40);
+		txtZip.Name = "txtZip";
+		txtZip.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtZip.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtZip.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtZip.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtCountry, "txtCountry");
-		((Control)(object)txtCountry).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCountry).Name = "txtCountry";
-		((RadElement)((RadControl)txtCountry).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCountry).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCountry).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCountry).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCountry.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCountry.Name = "txtCountry";
+		txtCountry.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCountry.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtCountry.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtCountry.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtStateProv, "txtStateProv");
-		((Control)(object)txtStateProv).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtStateProv).Name = "txtStateProv";
-		((RadElement)((RadControl)txtStateProv).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtStateProv).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtStateProv).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtStateProv).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtStateProv.ForeColor = Color.FromArgb(40, 40, 40);
+		txtStateProv.Name = "txtStateProv";
+		txtStateProv.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtStateProv.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtStateProv.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtStateProv.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtBusinessName, "txtBusinessName");
-		((Control)(object)txtBusinessName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtBusinessName).Name = "txtBusinessName";
-		((RadElement)((RadControl)txtBusinessName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtBusinessName).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtBusinessName).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtBusinessName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtBusinessName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtBusinessName.Name = "txtBusinessName";
+		txtBusinessName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtBusinessName.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtBusinessName.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtBusinessName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtCity, "txtCity");
-		((Control)(object)txtCity).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCity).Name = "txtCity";
-		((RadElement)((RadControl)txtCity).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCity).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCity).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCity).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCity.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCity.Name = "txtCity";
+		txtCity.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCity.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtCity.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtCity.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtAddress, "txtAddress");
-		((Control)(object)txtAddress).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtAddress).Name = "txtAddress";
-		((RadElement)((RadControl)txtAddress).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtAddress).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtAddress).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtAddress).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtAddress.ForeColor = Color.FromArgb(40, 40, 40);
+		txtAddress.Name = "txtAddress";
+		txtAddress.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtAddress.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtAddress.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtAddress.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtCompanyName, "txtCompanyName");
-		((Control)(object)txtCompanyName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCompanyName).Name = "txtCompanyName";
-		((RadElement)((RadControl)txtCompanyName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCompanyName).Click += txtCompanyName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCompanyName).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCompanyName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCompanyName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCompanyName.Name = "txtCompanyName";
+		txtCompanyName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCompanyName.Click += txtCompanyName_Click;
+		((RadTextBoxControlElement)txtCompanyName.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtCompanyName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(label13, "label13");
 		label13.Name = "label13";
 		componentResourceManager.ApplyResources(dateToOperation, "dateToOperation");
@@ -1032,18 +978,18 @@ public class frmAdminCompanySetup : frmMasterForm
 		label15.ForeColor = Color.White;
 		label15.Name = "label15";
 		componentResourceManager.ApplyResources(chkPrintTaxNo, "chkPrintTaxNo");
-		((Control)(object)chkPrintTaxNo).Name = "chkPrintTaxNo";
-		((Control)(object)chkPrintTaxNo).Tag = "restaurant_capacity";
-		chkPrintTaxNo.set_ThumbTickness(27);
-		chkPrintTaxNo.set_ToggleStateMode((ToggleStateMode)1);
-		chkPrintTaxNo.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkPrintTaxNo).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)chkPrintTaxNo).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkPrintTaxNo).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPrintTaxNo).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPrintTaxNo).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPrintTaxNo).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkPrintTaxNo).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkPrintTaxNo.Name = "chkPrintTaxNo";
+		chkPrintTaxNo.Tag = "restaurant_capacity";
+		chkPrintTaxNo.ThumbTickness = 27;
+		chkPrintTaxNo.ToggleStateMode = ToggleStateMode.Click;
+		chkPrintTaxNo.Value = false;
+		((RadToggleSwitchElement)chkPrintTaxNo.GetChildAt(0)).ThumbTickness = 27;
+		((RadToggleSwitchElement)chkPrintTaxNo.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkPrintTaxNo.GetChildAt(0)).BorderWidth = 1.333333f;
+		((ToggleSwitchPartElement)chkPrintTaxNo.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkPrintTaxNo.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPrintTaxNo.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPrintTaxNo.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;
 		BackColor = SystemColors.Control;

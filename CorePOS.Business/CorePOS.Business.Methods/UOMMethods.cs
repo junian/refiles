@@ -62,7 +62,6 @@ public class UOMMethods
 
 	public static decimal ConvertByUOMID(int itemID, decimal Qty, int int_0, int toUOMID)
 	{
-		//IL_02a5: Unknown result type (might be due to invalid IL or missing references)
 		_003C_003Ec__DisplayClass4_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass4_0();
 		CS_0024_003C_003E8__locals0.itemID = itemID;
 		CS_0024_003C_003E8__locals0.int_0 = int_0;
@@ -79,7 +78,7 @@ public class UOMMethods
 		}
 		string name = gClass.UOMs.Where((UOM x) => x.UOMID == CS_0024_003C_003E8__locals0.int_0).FirstOrDefault().Name;
 		string name2 = gClass.UOMs.Where((UOM x) => x.UOMID == CS_0024_003C_003E8__locals0.toUOMID).FirstOrDefault().Name;
-		return (decimal)UnitConverter.ConvertByName(QuantityValue.op_Implicit((byte)1), "Mass", name, name2) * Qty;
+		return (decimal)UnitConverter.ConvertByName((byte)1, "Mass", name, name2) * Qty;
 	}
 
 	public UOMMethods()

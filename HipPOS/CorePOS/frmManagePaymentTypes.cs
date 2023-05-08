@@ -7,7 +7,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -89,21 +88,21 @@ public class frmManagePaymentTypes : frmMasterForm
 	private void ddlPaymentTypes_SelectedIndexChanged(object sender, EventArgs e)
 	{
 		btnDelete.Visible = true;
-		((Control)(object)txtName).Enabled = true;
+		txtName.Enabled = true;
 		if (ddlPaymentTypes.SelectedValue.ToString() != "0")
 		{
 			new GClass6();
 			PaymentType paymentType = new GClass6().PaymentTypes.Where((PaymentType a) => a.Id == Convert.ToInt16(ddlPaymentTypes.SelectedValue)).FirstOrDefault();
-			((Control)(object)txtName).Text = paymentType.Name;
-			chkEnableCashDrawer.set_Value(paymentType.OpenCashDrawer);
-			chkSendToPaymentTerminal.set_Value(paymentType.UsePaymentTerminal);
-			chkPrintReceipt.set_Value(paymentType.PrintReceipt);
+			txtName.Text = paymentType.Name;
+			chkEnableCashDrawer.Value = paymentType.OpenCashDrawer;
+			chkSendToPaymentTerminal.Value = paymentType.UsePaymentTerminal;
+			chkPrintReceipt.Value = paymentType.PrintReceipt;
 		}
 		else
 		{
-			((Control)(object)txtName).Text = "";
-			chkEnableCashDrawer.set_Value(false);
-			chkSendToPaymentTerminal.set_Value(false);
+			txtName.Text = "";
+			chkEnableCashDrawer.Value = false;
+			chkSendToPaymentTerminal.Value = false;
 		}
 	}
 
@@ -133,7 +132,7 @@ public class frmManagePaymentTypes : frmMasterForm
 
 	private void btnUpdate_Click(object sender, EventArgs e)
 	{
-		if (string.IsNullOrEmpty(((Control)(object)txtName).Text))
+		if (string.IsNullOrEmpty(txtName.Text))
 		{
 			new NotificationLabel(this, "Please add a payment type name.", NotificationTypes.Warning).Show();
 			return;
@@ -147,18 +146,18 @@ public class frmManagePaymentTypes : frmMasterForm
 				new NotificationLabel(this, "You cannot have more than 14 payment types.  Please remove unused payment types before proceeding.", NotificationTypes.Notification).Show();
 				return;
 			}
-			PaymentType paymentType = list.Where((PaymentType paymentType_0) => paymentType_0.Name.ToUpper() == ((Control)(object)txtName).Text.Trim().ToUpper() && paymentType_0.Id.ToString() != ddlPaymentTypes.SelectedValue.ToString()).FirstOrDefault();
+			PaymentType paymentType = list.Where((PaymentType paymentType_0) => paymentType_0.Name.ToUpper() == txtName.Text.Trim().ToUpper() && paymentType_0.Id.ToString() != ddlPaymentTypes.SelectedValue.ToString()).FirstOrDefault();
 			if (paymentType != null)
 			{
 				new NotificationLabel(this, "Payment Type with the same name already exists", NotificationTypes.Notification).Show();
 				return;
 			}
 			paymentType = new PaymentType();
-			paymentType.Name = ((Control)(object)txtName).Text.Trim().ToUpper();
-			paymentType.OpenCashDrawer = chkEnableCashDrawer.get_Value();
-			paymentType.UsePaymentTerminal = chkSendToPaymentTerminal.get_Value();
+			paymentType.Name = txtName.Text.Trim().ToUpper();
+			paymentType.OpenCashDrawer = chkEnableCashDrawer.Value;
+			paymentType.UsePaymentTerminal = chkSendToPaymentTerminal.Value;
 			paymentType.SortOrder = gClass.PaymentTypes.OrderByDescending((PaymentType x) => x.SortOrder).FirstOrDefault().SortOrder + 1;
-			paymentType.PrintReceipt = chkPrintReceipt.get_Value();
+			paymentType.PrintReceipt = chkPrintReceipt.Value;
 			gClass.PaymentTypes.InsertOnSubmit(paymentType);
 			Helper.SubmitChangesWithCatch(gClass);
 			new NotificationLabel(this, "Payment Type successfully added.", NotificationTypes.Success).Show();
@@ -168,7 +167,7 @@ public class frmManagePaymentTypes : frmMasterForm
 		{
 			_003C_003Ec__DisplayClass7_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass7_0();
 			CS_0024_003C_003E8__locals0.selectedPaymentTypeId = Convert.ToInt16(ddlPaymentTypes.SelectedValue);
-			PaymentType paymentType2 = gClass.PaymentTypes.Where((PaymentType a) => a.Name.ToUpper() == ((Control)(object)txtName).Text.Trim().ToUpper() && a.Id.ToString() != ddlPaymentTypes.SelectedValue.ToString()).FirstOrDefault();
+			PaymentType paymentType2 = gClass.PaymentTypes.Where((PaymentType a) => a.Name.ToUpper() == txtName.Text.Trim().ToUpper() && a.Id.ToString() != ddlPaymentTypes.SelectedValue.ToString()).FirstOrDefault();
 			if (paymentType2 != null)
 			{
 				new NotificationLabel(this, "Payment Type with the same name already exists", NotificationTypes.Notification).Show();
@@ -180,10 +179,10 @@ public class frmManagePaymentTypes : frmMasterForm
 				new NotificationLabel(this, "An error had occurred trying to save.  Please restart and try again.", NotificationTypes.Warning).Show();
 				return;
 			}
-			paymentType2.Name = ((Control)(object)txtName).Text.Trim().ToUpper();
-			paymentType2.OpenCashDrawer = chkEnableCashDrawer.get_Value();
-			paymentType2.UsePaymentTerminal = chkSendToPaymentTerminal.get_Value();
-			paymentType2.PrintReceipt = chkPrintReceipt.get_Value();
+			paymentType2.Name = txtName.Text.Trim().ToUpper();
+			paymentType2.OpenCashDrawer = chkEnableCashDrawer.Value;
+			paymentType2.UsePaymentTerminal = chkSendToPaymentTerminal.Value;
+			paymentType2.PrintReceipt = chkPrintReceipt.Value;
 			Helper.SubmitChangesWithCatch(gClass);
 			new NotificationLabel(this, "Payment Type successfully saved.", NotificationTypes.Success).Show();
 		}
@@ -228,10 +227,10 @@ public class frmManagePaymentTypes : frmMasterForm
 	private void btnShowKeyboard_Name_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Station Name", 1, 20, ((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Station Name", 1, 20, txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -252,40 +251,6 @@ public class frmManagePaymentTypes : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_008b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0095: Expected O, but got Unknown
-		//IL_00a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ab: Expected O, but got Unknown
-		//IL_00d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00e2: Expected O, but got Unknown
-		//IL_055d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_057e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ced: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d05: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d1c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d3d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d6a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d97: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0dc4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0de5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f53: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f6b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f82: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0fa3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0fd0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ffd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_102a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_104b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14d6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14ee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1505: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1526: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1553: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1580: Unknown result type (might be due to invalid IL or missing references)
-		//IL_15ad: Unknown result type (might be due to invalid IL or missing references)
-		//IL_15ce: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmManagePaymentTypes));
 		pictureBox1 = new PictureBox();
 		lblHeaderTitle = new Label();
@@ -361,17 +326,17 @@ public class frmManagePaymentTypes : frmMasterForm
 		label1.TabIndex = 239;
 		label1.Text = "Payment Types";
 		label1.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)txtName).Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-		((Control)(object)txtName).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtName).Location = new Point(189, 78);
-		txtName.set_MaxLength(20);
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtName).Size = new Size(418, 35);
-		((Control)(object)txtName).TabIndex = 243;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+		txtName.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtName.Location = new Point(189, 78);
+		txtName.MaxLength = 20;
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtName.Size = new Size(418, 35);
+		txtName.TabIndex = 243;
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label2.BackColor = Color.FromArgb(132, 146, 146);
 		label2.Font = new Font("Microsoft Sans Serif", 12f);
 		label2.ForeColor = SystemColors.ButtonFace;
@@ -464,23 +429,23 @@ public class frmManagePaymentTypes : frmMasterForm
 		label4.TabIndex = 250;
 		label4.Text = "Open Cash Drawer?";
 		label4.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)chkEnableCashDrawer).Location = new Point(189, 114);
-		((Control)(object)chkEnableCashDrawer).Name = "chkEnableCashDrawer";
-		chkEnableCashDrawer.set_OffText("NO");
-		chkEnableCashDrawer.set_OnText("YES");
-		((Control)(object)chkEnableCashDrawer).Size = new Size(66, 33);
-		((Control)(object)chkEnableCashDrawer).TabIndex = 251;
-		((Control)(object)chkEnableCashDrawer).Tag = "";
-		chkEnableCashDrawer.set_ToggleStateMode((ToggleStateMode)1);
-		chkEnableCashDrawer.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkEnableCashDrawer).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkEnableCashDrawer).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkEnableCashDrawer).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEnableCashDrawer).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEnableCashDrawer).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEnableCashDrawer).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkEnableCashDrawer).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkEnableCashDrawer).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkEnableCashDrawer.Location = new Point(189, 114);
+		chkEnableCashDrawer.Name = "chkEnableCashDrawer";
+		chkEnableCashDrawer.OffText = "NO";
+		chkEnableCashDrawer.OnText = "YES";
+		chkEnableCashDrawer.Size = new Size(66, 33);
+		chkEnableCashDrawer.TabIndex = 251;
+		chkEnableCashDrawer.Tag = "";
+		chkEnableCashDrawer.ToggleStateMode = ToggleStateMode.Click;
+		chkEnableCashDrawer.Value = false;
+		((RadToggleSwitchElement)chkEnableCashDrawer.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkEnableCashDrawer.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkEnableCashDrawer.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkEnableCashDrawer.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkEnableCashDrawer.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkEnableCashDrawer.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkEnableCashDrawer.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkEnableCashDrawer.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label7.BackColor = Color.LemonChiffon;
 		label7.Cursor = Cursors.Default;
 		label7.Font = new Font("Microsoft Sans Serif", 9f);
@@ -491,23 +456,23 @@ public class frmManagePaymentTypes : frmMasterForm
 		label7.Size = new Size(181, 80);
 		label7.TabIndex = 257;
 		label7.Text = "Use this module to add, edit, delete payment types that will show in Cash Out screen.";
-		((Control)(object)chkSendToPaymentTerminal).Location = new Point(490, 114);
-		((Control)(object)chkSendToPaymentTerminal).Name = "chkSendToPaymentTerminal";
-		chkSendToPaymentTerminal.set_OffText("NO");
-		chkSendToPaymentTerminal.set_OnText("YES");
-		((Control)(object)chkSendToPaymentTerminal).Size = new Size(66, 33);
-		((Control)(object)chkSendToPaymentTerminal).TabIndex = 259;
-		((Control)(object)chkSendToPaymentTerminal).Tag = "";
-		chkSendToPaymentTerminal.set_ToggleStateMode((ToggleStateMode)1);
-		chkSendToPaymentTerminal.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkSendToPaymentTerminal).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkSendToPaymentTerminal).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkSendToPaymentTerminal).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSendToPaymentTerminal).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSendToPaymentTerminal).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSendToPaymentTerminal).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkSendToPaymentTerminal).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkSendToPaymentTerminal).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkSendToPaymentTerminal.Location = new Point(490, 114);
+		chkSendToPaymentTerminal.Name = "chkSendToPaymentTerminal";
+		chkSendToPaymentTerminal.OffText = "NO";
+		chkSendToPaymentTerminal.OnText = "YES";
+		chkSendToPaymentTerminal.Size = new Size(66, 33);
+		chkSendToPaymentTerminal.TabIndex = 259;
+		chkSendToPaymentTerminal.Tag = "";
+		chkSendToPaymentTerminal.ToggleStateMode = ToggleStateMode.Click;
+		chkSendToPaymentTerminal.Value = false;
+		((RadToggleSwitchElement)chkSendToPaymentTerminal.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkSendToPaymentTerminal.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkSendToPaymentTerminal.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkSendToPaymentTerminal.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkSendToPaymentTerminal.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSendToPaymentTerminal.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSendToPaymentTerminal.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkSendToPaymentTerminal.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label8.BackColor = Color.FromArgb(132, 146, 146);
 		label8.Font = new Font("Microsoft Sans Serif", 12f);
 		label8.ForeColor = SystemColors.ButtonFace;
@@ -560,23 +525,23 @@ public class frmManagePaymentTypes : frmMasterForm
 		label3.TabIndex = 261;
 		label3.Text = "Auto Print Receipt";
 		label3.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)chkPrintReceipt).Location = new Point(189, 148);
-		((Control)(object)chkPrintReceipt).Name = "chkPrintReceipt";
-		chkPrintReceipt.set_OffText("NO");
-		chkPrintReceipt.set_OnText("YES");
-		((Control)(object)chkPrintReceipt).Size = new Size(66, 33);
-		((Control)(object)chkPrintReceipt).TabIndex = 262;
-		((Control)(object)chkPrintReceipt).Tag = "";
-		chkPrintReceipt.set_ToggleStateMode((ToggleStateMode)1);
-		chkPrintReceipt.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkPrintReceipt).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkPrintReceipt).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkPrintReceipt).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPrintReceipt).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPrintReceipt).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPrintReceipt).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkPrintReceipt).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkPrintReceipt).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkPrintReceipt.Location = new Point(189, 148);
+		chkPrintReceipt.Name = "chkPrintReceipt";
+		chkPrintReceipt.OffText = "NO";
+		chkPrintReceipt.OnText = "YES";
+		chkPrintReceipt.Size = new Size(66, 33);
+		chkPrintReceipt.TabIndex = 262;
+		chkPrintReceipt.Tag = "";
+		chkPrintReceipt.ToggleStateMode = ToggleStateMode.Click;
+		chkPrintReceipt.Value = false;
+		((RadToggleSwitchElement)chkPrintReceipt.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkPrintReceipt.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkPrintReceipt.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkPrintReceipt.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkPrintReceipt.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPrintReceipt.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPrintReceipt.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkPrintReceipt.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label5.BackColor = Color.Gray;
 		label5.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold, GraphicsUnit.Point, 0);
 		label5.ForeColor = Color.White;
@@ -592,19 +557,19 @@ public class frmManagePaymentTypes : frmMasterForm
 		base.AutoScaleMode = AutoScaleMode.Font;
 		base.ClientSize = new Size(666, 275);
 		base.Controls.Add(label5);
-		base.Controls.Add((Control)(object)chkPrintReceipt);
+		base.Controls.Add(chkPrintReceipt);
 		base.Controls.Add(label3);
 		base.Controls.Add(btnSort);
-		base.Controls.Add((Control)(object)chkSendToPaymentTerminal);
+		base.Controls.Add(chkSendToPaymentTerminal);
 		base.Controls.Add(label8);
 		base.Controls.Add(label7);
 		base.Controls.Add(lblPrinterName);
-		base.Controls.Add((Control)(object)chkEnableCashDrawer);
+		base.Controls.Add(chkEnableCashDrawer);
 		base.Controls.Add(label4);
 		base.Controls.Add(btnDelete);
 		base.Controls.Add(btnAddNew);
 		base.Controls.Add(btnUpdate);
-		base.Controls.Add((Control)(object)txtName);
+		base.Controls.Add(txtName);
 		base.Controls.Add(label2);
 		base.Controls.Add(btnShowKeyboard_Name);
 		base.Controls.Add(ddlPaymentTypes);
@@ -626,7 +591,7 @@ public class frmManagePaymentTypes : frmMasterForm
 	[CompilerGenerated]
 	private bool method_5(PaymentType paymentType_0)
 	{
-		if (paymentType_0.Name.ToUpper() == ((Control)(object)txtName).Text.Trim().ToUpper())
+		if (paymentType_0.Name.ToUpper() == txtName.Text.Trim().ToUpper())
 		{
 			return paymentType_0.Id.ToString() != ddlPaymentTypes.SelectedValue.ToString();
 		}

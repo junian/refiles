@@ -5,7 +5,6 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using com.clover.remotepay.sdk;
-using com.clover.sdk.v3.payments;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Objects;
 using CorePOS.Business.Objects.PaymentObjects;
@@ -41,36 +40,26 @@ public static class FirstData
 
 	public static void SendToClover(ICloverConnector cloverConnector, string ip, int port, CloverTransactionObject.Request request, string paymentMethod)
 	{
-		//IL_0021: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0026: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0042: Expected O, but got Unknown
-		//IL_0088: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008e: Expected O, but got Unknown
-		//IL_02da: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02e1: Expected O, but got Unknown
-		//IL_0390: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0397: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass1_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass1_0();
 		CS_0024_003C_003E8__locals0.request = request;
 		CS_0024_003C_003E8__locals0.ip = ip;
 		GClass6 gClass = new GClass6();
-		CloverTransactionObject.Request request2 = CS_0024_003C_003E8__locals0.request;
-		JsonSerializerSettings val = new JsonSerializerSettings();
-		val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-		val.set_MaxDepth((int?)2000);
-		string req_res_data = JsonConvert.SerializeObject((object)request2, (Formatting)1, val);
+		string req_res_data = JsonConvert.SerializeObject(CS_0024_003C_003E8__locals0.request, Formatting.Indented, new JsonSerializerSettings
+		{
+			ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+			MaxDepth = 2000
+		});
 		PaymentHelper.RecordPaymentTransactionLog(PaymentProviderNames.FirstData, PaymentTerminalModels.Clover.Flex, CS_0024_003C_003E8__locals0.ip, port, req_res_data, "request", CS_0024_003C_003E8__locals0.request.OrderNumber, paymentMethod);
 		if (CS_0024_003C_003E8__locals0.request.RequestType.ToLower().Contains("sale"))
 		{
-			SaleRequest val2 = new SaleRequest();
-			((BaseTransactionRequest)val2).set_ExternalId(ExternalIDUtil.GenerateRandomString(13));
-			((BaseTransactionRequest)val2).set_Amount((long)CS_0024_003C_003E8__locals0.request.Amount);
-			((TransactionRequest)val2).set_AutoAcceptSignature((bool?)true);
-			((BaseTransactionRequest)val2).set_AutoAcceptPaymentConfirmations((bool?)false);
-			((BaseTransactionRequest)val2).set_DisableDuplicateChecking((bool?)true);
-			((BaseTransactionRequest)val2).set_CardEntryMethods((int?)36623);
-			cloverConnector.Sale(val2);
+			SaleRequest saleRequest = new SaleRequest();
+			saleRequest.ExternalId = ExternalIDUtil.GenerateRandomString(13);
+			saleRequest.Amount = CS_0024_003C_003E8__locals0.request.Amount;
+			saleRequest.AutoAcceptSignature = true;
+			saleRequest.AutoAcceptPaymentConfirmations = false;
+			saleRequest.DisableDuplicateChecking = true;
+			saleRequest.CardEntryMethods = 36623;
+			cloverConnector.Sale(saleRequest);
 			return;
 		}
 		if (CS_0024_003C_003E8__locals0.request.RequestType.ToLower().Contains("refund"))
@@ -85,22 +74,22 @@ public static class FirstData
 				{
 					try
 					{
-						SaleResponse val3 = JsonConvert.DeserializeObject<SaleResponse>(item.Data);
-						if (((PaymentResponse)val3).get_Payment() != null)
+						SaleResponse saleResponse = JsonConvert.DeserializeObject<SaleResponse>(item.Data);
+						if (saleResponse.Payment != null)
 						{
-							RefundPaymentRequest val4 = new RefundPaymentRequest();
-							val4.set_Amount((long)CS_0024_003C_003E8__locals0.request.Amount);
-							val4.set_PaymentId(((PaymentResponse)val3).get_Payment().get_id());
-							val4.set_OrderId(((PaymentResponse)val3).get_Payment().get_order().get_id());
-							if (CS_0024_003C_003E8__locals0.request.Amount == ((PaymentResponse)val3).get_Payment().get_amount())
+							RefundPaymentRequest refundPaymentRequest = new RefundPaymentRequest();
+							refundPaymentRequest.Amount = CS_0024_003C_003E8__locals0.request.Amount;
+							refundPaymentRequest.PaymentId = saleResponse.Payment.id;
+							refundPaymentRequest.OrderId = saleResponse.Payment.order.id;
+							if (CS_0024_003C_003E8__locals0.request.Amount == saleResponse.Payment.amount)
 							{
-								val4.set_FullRefund(true);
+								refundPaymentRequest.FullRefund = true;
 							}
 							else
 							{
-								val4.set_FullRefund(false);
+								refundPaymentRequest.FullRefund = false;
 							}
-							cloverConnector.RefundPayment(val4);
+							cloverConnector.RefundPayment(refundPaymentRequest);
 							break;
 						}
 					}
@@ -113,10 +102,10 @@ public static class FirstData
 		}
 		if (CS_0024_003C_003E8__locals0.request.RequestType.ToLower().Contains("settlement"))
 		{
-			CloseoutRequest val5 = new CloseoutRequest();
-			val5.set_AllowOpenTabs(false);
-			val5.set_BatchId(CS_0024_003C_003E8__locals0.request.BatchID);
-			cloverConnector.Closeout(val5);
+			CloseoutRequest closeoutRequest = new CloseoutRequest();
+			closeoutRequest.AllowOpenTabs = false;
+			closeoutRequest.BatchId = CS_0024_003C_003E8__locals0.request.BatchID;
+			cloverConnector.Closeout(closeoutRequest);
 		}
 	}
 
@@ -311,21 +300,10 @@ public static class FirstData
 
 	public static string FormatCloverReceipt(string transactiontype, string rawData, string HipposOrderNumber)
 	{
-		//IL_03c7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03cc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_041a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_041f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0445: Unknown result type (might be due to invalid IL or missing references)
-		//IL_044a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0466: Unknown result type (might be due to invalid IL or missing references)
-		//IL_046b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0842: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0847: Unknown result type (might be due to invalid IL or missing references)
 		string empty = string.Empty;
-		CardType cardType;
 		if (transactiontype == "sale")
 		{
-			SaleResponse val = JsonConvert.DeserializeObject<SaleResponse>(rawData);
+			SaleResponse saleResponse = JsonConvert.DeserializeObject<SaleResponse>(rawData);
 			string text = "<br/>";
 			empty = empty + "<span style='text-align:center;'>" + CompanyHelper.CompanyData.BusinessName + "</span>" + text;
 			empty = empty + "<span style='text-align:center;'>" + CompanyHelper.CompanyData.Address1 + "</span>" + text;
@@ -334,75 +312,46 @@ public static class FirstData
 			empty = empty + "<span style='text-align:center;'>" + CompanyHelper.CompanyData.String_0 + "</span>" + text;
 			empty = empty + text + "HIPPOS ORDER #: " + HipposOrderNumber + text;
 			empty = empty + "TRANSACTION DATE/TIME: " + DateTime.Now.ToString("MM/dd/yyyy hh:mm tt") + text;
-			empty = empty + "ORDER #: " + ((PaymentResponse)val).get_Payment().get_externalPaymentId() + text;
-			empty = empty + "TRANSACTION: " + ((PaymentResponse)val).get_Payment().get_cardTransaction().get_transactionNo() + text;
-			empty = empty + "<b>TOTAL: <span style='float:right;'>" + $"{(decimal)((float)((PaymentResponse)val).get_Payment().get_amount() / 100f):C}" + "</span></b>" + text;
+			empty = empty + "ORDER #: " + saleResponse.Payment.externalPaymentId + text;
+			empty = empty + "TRANSACTION: " + saleResponse.Payment.cardTransaction.transactionNo + text;
+			empty = empty + "<b>TOTAL: <span style='float:right;'>" + $"{(decimal)((float)saleResponse.Payment.amount / 100f):C}" + "</span></b>" + text;
 			string text2 = empty;
-			long? tipAmount = ((PaymentResponse)val).get_Payment().get_tipAmount();
+			long? tipAmount = saleResponse.Payment.tipAmount;
 			long num = 0L;
-			empty = text2 + ((tipAmount > 0L) ? ("<b>TIPS: <span style='float:right;'>" + $"{(decimal)((float?)((PaymentResponse)val).get_Payment().get_tipAmount() / 100f).Value:C}" + "</span></b>" + text) : string.Empty);
-			empty = ((!((BaseResponse)val).get_Success()) ? (empty + text + "<span style='text-align:center; font-size: 16pt; font-weight:bold;'>DECLINED</span>" + text + text) : (empty + text + "<span style='text-align:center; font-size: 16pt; font-weight:bold;'>APPROVED</span>" + text + text));
-			empty = empty + ((PaymentResponse)val).get_Payment().get_tender().get_label()
-				.ToUpper() + " " + transactiontype.ToUpper() + " <span style='float:right;'>" + $"{(decimal)((float?)(((PaymentResponse)val).get_Payment().get_amount() + ((PaymentResponse)val).get_Payment().get_tipAmount()) / 100f).Value:C}" + "</span>" + text;
-			string[] obj = new string[6] { empty, null, null, null, null, null };
-			cardType = ((PaymentResponse)val).get_Payment().get_cardTransaction().get_cardType();
-			obj[1] = ((object)(CardType)(ref cardType)).ToString();
-			obj[2] = " <span style='float:right;'>************";
-			obj[3] = ((PaymentResponse)val).get_Payment().get_cardTransaction().get_last4();
-			obj[4] = "</span>";
-			obj[5] = text;
-			empty = string.Concat(obj);
-			string text3 = empty;
-			CardEntryType entryType = ((PaymentResponse)val).get_Payment().get_cardTransaction().get_entryType();
-			object obj2;
-			if (!((object)(CardEntryType)(ref entryType)).ToString().Contains("_"))
-			{
-				entryType = ((PaymentResponse)val).get_Payment().get_cardTransaction().get_entryType();
-				obj2 = ((object)(CardEntryType)(ref entryType)).ToString();
-			}
-			else
-			{
-				entryType = ((PaymentResponse)val).get_Payment().get_cardTransaction().get_entryType();
-				obj2 = ((object)(CardEntryType)(ref entryType)).ToString().Split('_')[1];
-			}
-			empty = text3 + "METHOD: " + (string)obj2 + text;
-			empty = empty + "REF #: " + ((PaymentResponse)val).get_Payment().get_cardTransaction().get_referenceId() + text;
-			empty = empty + "AUTH #: " + ((PaymentResponse)val).get_Payment().get_cardTransaction().get_authCode() + text + text;
-			empty = empty + "ORDER ID: " + ((PaymentResponse)val).get_Payment().get_order().get_id() + text;
+			empty = text2 + ((tipAmount > 0L) ? ("<b>TIPS: <span style='float:right;'>" + $"{(decimal)((float?)saleResponse.Payment.tipAmount / 100f).Value:C}" + "</span></b>" + text) : string.Empty);
+			empty = ((!saleResponse.Success) ? (empty + text + "<span style='text-align:center; font-size: 16pt; font-weight:bold;'>DECLINED</span>" + text + text) : (empty + text + "<span style='text-align:center; font-size: 16pt; font-weight:bold;'>APPROVED</span>" + text + text));
+			empty = empty + saleResponse.Payment.tender.label.ToUpper() + " " + transactiontype.ToUpper() + " <span style='float:right;'>" + $"{(decimal)((float?)(saleResponse.Payment.amount + saleResponse.Payment.tipAmount) / 100f).Value:C}" + "</span>" + text;
+			empty = empty + saleResponse.Payment.cardTransaction.cardType.ToString() + " <span style='float:right;'>************" + saleResponse.Payment.cardTransaction.last4 + "</span>" + text;
+			empty = empty + "METHOD: " + (saleResponse.Payment.cardTransaction.entryType.ToString().Contains("_") ? saleResponse.Payment.cardTransaction.entryType.ToString().Split('_')[1] : saleResponse.Payment.cardTransaction.entryType.ToString()) + text;
+			empty = empty + "REF #: " + saleResponse.Payment.cardTransaction.referenceId + text;
+			empty = empty + "AUTH #: " + saleResponse.Payment.cardTransaction.authCode + text + text;
+			empty = empty + "ORDER ID: " + saleResponse.Payment.order.id + text;
 			return empty + "###RECEIPT_RECIPIENT###" + text;
 		}
 		_003C_003Ec__DisplayClass7_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass7_0();
 		CS_0024_003C_003E8__locals0.refund = JsonConvert.DeserializeObject<RefundPaymentResponse>(rawData);
 		foreach (PaymentTerminalTransactionLog item in from x in new GClass6().PaymentTerminalTransactionLogs
-			where x.OrderNumber == ((BaseResponse)CS_0024_003C_003E8__locals0.refund).get_Message() && x.Type == "response" && x.DeviceModel == PaymentTerminalModels.Clover.Flex && x.Data != null
+			where x.OrderNumber == CS_0024_003C_003E8__locals0.refund.Message && x.Type == "response" && x.DeviceModel == PaymentTerminalModels.Clover.Flex && x.Data != null
 			select x into y
 			orderby y.DateCreated descending
 			select y)
 		{
 			if (item != null)
 			{
-				SaleResponse val2 = JsonConvert.DeserializeObject<SaleResponse>(item.Data);
-				if (((PaymentResponse)val2).get_Payment() != null)
+				SaleResponse saleResponse2 = JsonConvert.DeserializeObject<SaleResponse>(item.Data);
+				if (saleResponse2.Payment != null)
 				{
-					string text4 = "<br/>";
-					empty = empty + "ORDER #: " + ((PaymentResponse)val2).get_Payment().get_externalPaymentId() + text4;
-					empty = empty + "TRANSACTION: " + ((PaymentResponse)val2).get_Payment().get_cardTransaction().get_transactionNo() + text4;
-					empty = empty + "<b>TOTAL: <span style='float:right;'>" + $"{(decimal)((float?)CS_0024_003C_003E8__locals0.refund.get_Refund().get_amount() / 100f).Value:C}" + "</span></b>" + text4;
-					empty = empty + ((PaymentResponse)val2).get_Payment().get_tender().get_label()
-						.ToUpper() + " " + transactiontype.ToUpper() + " <span style='float:right;'>" + $"{(decimal)((float?)CS_0024_003C_003E8__locals0.refund.get_Refund().get_amount() / 100f).Value:C}" + "</span>" + text4;
-					string[] obj3 = new string[6] { empty, null, null, null, null, null };
-					cardType = ((PaymentResponse)val2).get_Payment().get_cardTransaction().get_cardType();
-					obj3[1] = ((object)(CardType)(ref cardType)).ToString();
-					obj3[2] = " <span style='float:right;'>**** **** **** ";
-					obj3[3] = ((PaymentResponse)val2).get_Payment().get_cardTransaction().get_last4();
-					obj3[4] = "</span>";
-					obj3[5] = text4;
-					empty = string.Concat(obj3);
-					empty = empty + "REF #: " + ((PaymentResponse)val2).get_Payment().get_cardTransaction().get_referenceId() + text4;
-					empty = empty + "AUTH #: " + ((PaymentResponse)val2).get_Payment().get_cardTransaction().get_authCode() + text4 + text4;
-					empty = empty + "REFUND ID: " + CS_0024_003C_003E8__locals0.refund.get_Refund().get_id() + text4;
-					empty = ((!((BaseResponse)CS_0024_003C_003E8__locals0.refund).get_Success()) ? (empty + text4 + "<span style='text-align:center; font-size: 16pt; font-weight:bold;'>DECLINED</span>" + text4 + text4) : (empty + text4 + "<span style='text-align:center; font-size: 16pt; font-weight:bold;'>APPROVED</span>" + text4 + text4));
-					return empty + "###RECEIPT_RECIPIENT###" + text4;
+					string text3 = "<br/>";
+					empty = empty + "ORDER #: " + saleResponse2.Payment.externalPaymentId + text3;
+					empty = empty + "TRANSACTION: " + saleResponse2.Payment.cardTransaction.transactionNo + text3;
+					empty = empty + "<b>TOTAL: <span style='float:right;'>" + $"{(decimal)((float?)CS_0024_003C_003E8__locals0.refund.Refund.amount / 100f).Value:C}" + "</span></b>" + text3;
+					empty = empty + saleResponse2.Payment.tender.label.ToUpper() + " " + transactiontype.ToUpper() + " <span style='float:right;'>" + $"{(decimal)((float?)CS_0024_003C_003E8__locals0.refund.Refund.amount / 100f).Value:C}" + "</span>" + text3;
+					empty = empty + saleResponse2.Payment.cardTransaction.cardType.ToString() + " <span style='float:right;'>**** **** **** " + saleResponse2.Payment.cardTransaction.last4 + "</span>" + text3;
+					empty = empty + "REF #: " + saleResponse2.Payment.cardTransaction.referenceId + text3;
+					empty = empty + "AUTH #: " + saleResponse2.Payment.cardTransaction.authCode + text3 + text3;
+					empty = empty + "REFUND ID: " + CS_0024_003C_003E8__locals0.refund.Refund.id + text3;
+					empty = ((!CS_0024_003C_003E8__locals0.refund.Success) ? (empty + text3 + "<span style='text-align:center; font-size: 16pt; font-weight:bold;'>DECLINED</span>" + text3 + text3) : (empty + text3 + "<span style='text-align:center; font-size: 16pt; font-weight:bold;'>APPROVED</span>" + text3 + text3));
+					return empty + "###RECEIPT_RECIPIENT###" + text3;
 				}
 			}
 		}

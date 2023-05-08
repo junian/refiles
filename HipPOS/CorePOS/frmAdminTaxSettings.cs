@@ -6,7 +6,6 @@ using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -93,18 +92,18 @@ public class frmAdminTaxSettings : frmMasterForm
 
 	private void btnSave_Click(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtTaxCode).Text.Trim() == string.Empty)
+		if (txtTaxCode.Text.Trim() == string.Empty)
 		{
 			new frmMessageBox(Resources.Name_is_required).ShowDialog(this);
 			return;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtTaxPercent).Text.Trim()))
+		if (string.IsNullOrEmpty(txtTaxPercent.Text.Trim()))
 		{
 			new frmMessageBox(Resources.Tax_Percentage_is_required).ShowDialog(this);
 			return;
 		}
 		char value = Convert.ToChar(Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-		if (((Control)(object)txtTaxPercent).Text != "0" && !((Control)(object)txtTaxPercent).Text.Contains(value))
+		if (txtTaxPercent.Text != "0" && !txtTaxPercent.Text.Contains(value))
 		{
 			new frmMessageBox(Resources.Tax_Percentage_must_be_a_decim).ShowDialog(this);
 			return;
@@ -112,7 +111,7 @@ public class frmAdminTaxSettings : frmMasterForm
 		decimal num = default(decimal);
 		try
 		{
-			num = Convert.ToDecimal(((Control)(object)txtTaxPercent).Text.Trim());
+			num = Convert.ToDecimal(txtTaxPercent.Text.Trim());
 			if (num < 0m || num > 1m)
 			{
 				new frmMessageBox(Resources.Tax_Percentage_must_be_a_decim).ShowDialog(this);
@@ -128,9 +127,9 @@ public class frmAdminTaxSettings : frmMasterForm
 		if (int_0 == 0)
 		{
 			Tax tax = new Tax();
-			tax.TaxCode = ((Control)(object)txtTaxCode).Text.Trim();
-			tax.Percentage = Convert.ToDecimal(((Control)(object)txtTaxPercent).Text.Trim());
-			tax.Inactive = !chkActive.get_Value();
+			tax.TaxCode = txtTaxCode.Text.Trim();
+			tax.Percentage = Convert.ToDecimal(txtTaxPercent.Text.Trim());
+			tax.Inactive = !chkActive.Value;
 			tax.Synced = false;
 			gClass.Taxes.InsertOnSubmit(tax);
 			Helper.SubmitChangesWithCatch(gClass);
@@ -140,9 +139,9 @@ public class frmAdminTaxSettings : frmMasterForm
 			Tax tax = gClass.Taxes.Where((Tax s) => s.TaxID == int_0).FirstOrDefault();
 			if (tax != null)
 			{
-				tax.Inactive = !chkActive.get_Value();
-				tax.TaxCode = ((Control)(object)txtTaxCode).Text.Trim();
-				tax.Percentage = Convert.ToDecimal(((Control)(object)txtTaxPercent).Text.Trim());
+				tax.Inactive = !chkActive.Value;
+				tax.TaxCode = txtTaxCode.Text.Trim();
+				tax.Percentage = Convert.ToDecimal(txtTaxPercent.Text.Trim());
 				tax.Synced = false;
 				Helper.SubmitChangesWithCatch(gClass);
 			}
@@ -184,8 +183,8 @@ public class frmAdminTaxSettings : frmMasterForm
 
 	private void method_4()
 	{
-		((Control)(object)txtTaxCode).Text = string.Empty;
-		((Control)(object)txtTaxPercent).Text = string.Empty;
+		txtTaxCode.Text = string.Empty;
+		txtTaxPercent.Text = string.Empty;
 	}
 
 	private void lstSettings_SelectedIndexChanged(object sender, EventArgs e)
@@ -200,24 +199,24 @@ public class frmAdminTaxSettings : frmMasterForm
 		{
 			int_0 = Convert.ToInt32(lstSettings.SelectedItems[0].SubItems[1].Text);
 			Tax tax = gClass.Taxes.Where((Tax s) => s.TaxID == int_0).FirstOrDefault();
-			((Control)(object)txtTaxCode).Text = tax.TaxCode;
-			((Control)(object)txtTaxPercent).Text = tax.Percentage.ToString();
-			chkActive.set_Value(!tax.Inactive);
+			txtTaxCode.Text = tax.TaxCode;
+			txtTaxPercent.Text = tax.Percentage.ToString();
+			chkActive.Value = !tax.Inactive;
 		}
 		else
 		{
-			((Control)(object)txtTaxCode).Text = string.Empty;
-			((Control)(object)txtTaxPercent).Text = string.Empty;
-			chkActive.set_Value(true);
+			txtTaxCode.Text = string.Empty;
+			txtTaxPercent.Text = string.Empty;
+			chkActive.Value = true;
 		}
 	}
 
 	private void method_6(object sender, EventArgs e)
 	{
 		int_0 = 0;
-		((Control)(object)txtTaxCode).Text = string.Empty;
-		((Control)(object)txtTaxPercent).Text = string.Empty;
-		chkActive.set_Value(true);
+		txtTaxCode.Text = string.Empty;
+		txtTaxPercent.Text = string.Empty;
+		chkActive.Value = true;
 		if (lstSettings.SelectedItems.Count > 0)
 		{
 			lstSettings.SelectedItems[0].Selected = false;
@@ -230,7 +229,7 @@ public class frmAdminTaxSettings : frmMasterForm
 		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Tax_Code);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtTaxCode).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtTaxCode.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 	}
 
@@ -240,7 +239,7 @@ public class frmAdminTaxSettings : frmMasterForm
 		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Tax_Percentage);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtTaxPercent).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtTaxPercent.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
@@ -252,13 +251,13 @@ public class frmAdminTaxSettings : frmMasterForm
 	{
 		int_1 = 0;
 		pnlRules.Controls.Clear();
-		((Control)(object)txtRuleName).Text = string.Empty;
-		chkRuleActive.set_Value(true);
+		txtRuleName.Text = string.Empty;
+		chkRuleActive.Value = true;
 	}
 
 	private void button4_Click(object sender, EventArgs e)
 	{
-		if (string.IsNullOrEmpty(((Control)(object)txtRuleName).Text.Trim()))
+		if (string.IsNullOrEmpty(txtRuleName.Text.Trim()))
 		{
 			new NotificationLabel(this, "Rule name cannot be blank.", NotificationTypes.Notification).Show();
 			return;
@@ -280,8 +279,8 @@ public class frmAdminTaxSettings : frmMasterForm
 				gClass.TaxRules.InsertOnSubmit(taxRule);
 			}
 		}
-		taxRule.RuleName = ((Control)(object)txtRuleName).Text.Trim();
-		taxRule.Active = chkRuleActive.get_Value();
+		taxRule.RuleName = txtRuleName.Text.Trim();
+		taxRule.Active = chkRuleActive.Value;
 		taxRule.Synced = false;
 		Helper.SubmitChangesWithCatch(gClass);
 		int_1 = taxRule.TaxRuleId;
@@ -344,8 +343,8 @@ public class frmAdminTaxSettings : frmMasterForm
 			TaxRule taxRule = gClass.TaxRules.Where((TaxRule s) => s.TaxRuleId == int_1).FirstOrDefault();
 			if (taxRule != null)
 			{
-				((Control)(object)txtRuleName).Text = taxRule.RuleName;
-				chkRuleActive.set_Value(taxRule.Active);
+				txtRuleName.Text = taxRule.RuleName;
+				chkRuleActive.Value = taxRule.Active;
 				{
 					foreach (TaxRuleOperation taxRuleOperation in taxRule.TaxRuleOperations)
 					{
@@ -411,8 +410,8 @@ public class frmAdminTaxSettings : frmMasterForm
 
 	private void method_11()
 	{
-		((Control)(object)txtRuleName).Text = string.Empty;
-		chkActive.set_Value(true);
+		txtRuleName.Text = string.Empty;
+		chkActive.Value = true;
 		ControlHelpers.ClearControlsInPanel(pnlRules);
 		pnlRules.Controls.Clear();
 	}
@@ -423,17 +422,17 @@ public class frmAdminTaxSettings : frmMasterForm
 		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Tax_Code, 0, 10);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtTaxCode).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtTaxCode.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 	}
 
 	private void btnShowKeyboard_TaxPercent_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Tax_Percentage, 5, 10, ((Control)(object)txtTaxPercent).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Tax_Percentage, 5, 10, txtTaxPercent.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtTaxPercent).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtTaxPercent.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
@@ -443,7 +442,7 @@ public class frmAdminTaxSettings : frmMasterForm
 		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Rule_Name);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtRuleName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtRuleName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 	}
 
@@ -467,35 +466,6 @@ public class frmAdminTaxSettings : frmMasterForm
 
 	private void TheaTkiFof()
 	{
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0032: Expected O, but got Unknown
-		//IL_0033: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003d: Expected O, but got Unknown
-		//IL_0049: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0053: Expected O, but got Unknown
-		//IL_00d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00e2: Expected O, but got Unknown
-		//IL_00e3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ed: Expected O, but got Unknown
-		//IL_0402: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0423: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04b5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04d6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0585: Unknown result type (might be due to invalid IL or missing references)
-		//IL_059d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05be: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05eb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0618: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0645: Unknown result type (might be due to invalid IL or missing references)
-		//IL_066c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0dee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e0f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e61: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e79: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e9a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ec7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ef4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f21: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAdminTaxSettings));
 		tabControl1 = new TabControl();
 		tabTaxCodes = new TabPage();
@@ -544,10 +514,10 @@ public class frmAdminTaxSettings : frmMasterForm
 		tabControl1.Name = "tabControl1";
 		tabControl1.SelectedIndex = 0;
 		tabControl1.SizeMode = TabSizeMode.Fixed;
-		tabTaxCodes.Controls.Add((Control)(object)txtTaxPercent);
-		tabTaxCodes.Controls.Add((Control)(object)txtTaxCode);
+		tabTaxCodes.Controls.Add(txtTaxPercent);
+		tabTaxCodes.Controls.Add(txtTaxCode);
 		tabTaxCodes.Controls.Add(label8);
-		tabTaxCodes.Controls.Add((Control)(object)chkActive);
+		tabTaxCodes.Controls.Add(chkActive);
 		tabTaxCodes.Controls.Add(btnShowKeyboard_TaxPercent);
 		tabTaxCodes.Controls.Add(btnShowKeyboard_TaxCode);
 		tabTaxCodes.Controls.Add(btnNew);
@@ -561,35 +531,35 @@ public class frmAdminTaxSettings : frmMasterForm
 		componentResourceManager.ApplyResources(tabTaxCodes, "tabTaxCodes");
 		tabTaxCodes.Name = "tabTaxCodes";
 		componentResourceManager.ApplyResources(txtTaxPercent, "txtTaxPercent");
-		((Control)(object)txtTaxPercent).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtTaxPercent).Name = "txtTaxPercent";
-		((RadElement)((RadControl)txtTaxPercent).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtTaxPercent).Click += txtRuleName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtTaxPercent).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtTaxPercent).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtTaxPercent.ForeColor = Color.FromArgb(40, 40, 40);
+		txtTaxPercent.Name = "txtTaxPercent";
+		txtTaxPercent.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtTaxPercent.Click += txtRuleName_Click;
+		((RadTextBoxControlElement)txtTaxPercent.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtTaxPercent.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtTaxCode, "txtTaxCode");
-		((Control)(object)txtTaxCode).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtTaxCode).Name = "txtTaxCode";
-		((RadElement)((RadControl)txtTaxCode).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtTaxCode).Click += txtRuleName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtTaxCode).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtTaxCode).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtTaxCode.ForeColor = Color.FromArgb(40, 40, 40);
+		txtTaxCode.Name = "txtTaxCode";
+		txtTaxCode.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtTaxCode.Click += txtRuleName_Click;
+		((RadTextBoxControlElement)txtTaxCode.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtTaxCode.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label8.BackColor = Color.LemonChiffon;
 		componentResourceManager.ApplyResources(label8, "label8");
 		label8.Name = "label8";
 		label8.UseWaitCursor = true;
 		componentResourceManager.ApplyResources(chkActive, "chkActive");
-		((Control)(object)chkActive).Name = "chkActive";
-		chkActive.set_OffText("NO");
-		chkActive.set_OnText("YES");
-		chkActive.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbOffset(52);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_BorderWidth(1f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkActive.Name = "chkActive";
+		chkActive.OffText = "NO";
+		chkActive.OnText = "YES";
+		chkActive.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbOffset = 52;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).BorderWidth = 1f;
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		btnShowKeyboard_TaxPercent.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_TaxPercent.DialogResult = DialogResult.OK;
 		btnShowKeyboard_TaxPercent.FlatAppearance.BorderColor = Color.Black;
@@ -673,8 +643,8 @@ public class frmAdminTaxSettings : frmMasterForm
 		label1.ForeColor = Color.White;
 		label1.Name = "label1";
 		tabTaxRules.Controls.Add(pnlRules);
-		tabTaxRules.Controls.Add((Control)(object)txtRuleName);
-		tabTaxRules.Controls.Add((Control)(object)chkRuleActive);
+		tabTaxRules.Controls.Add(txtRuleName);
+		tabTaxRules.Controls.Add(chkRuleActive);
 		tabTaxRules.Controls.Add(btnAddRuleOperation);
 		tabTaxRules.Controls.Add(btnShowKeyboard_RuleName);
 		tabTaxRules.Controls.Add(btnNewRule);
@@ -691,21 +661,21 @@ public class frmAdminTaxSettings : frmMasterForm
 		pnlRules.BorderStyle = BorderStyle.FixedSingle;
 		pnlRules.Name = "pnlRules";
 		componentResourceManager.ApplyResources(txtRuleName, "txtRuleName");
-		((Control)(object)txtRuleName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtRuleName).Name = "txtRuleName";
-		((RadElement)((RadControl)txtRuleName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtRuleName).Click += txtRuleName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtRuleName).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtRuleName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtRuleName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtRuleName.Name = "txtRuleName";
+		txtRuleName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtRuleName.Click += txtRuleName_Click;
+		((RadTextBoxControlElement)txtRuleName.GetChildAt(0)).BorderWidth = 1f;
+		((TextBoxViewElement)txtRuleName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(chkRuleActive, "chkRuleActive");
-		((Control)(object)chkRuleActive).Name = "chkRuleActive";
-		chkRuleActive.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)chkRuleActive).GetChildAt(0)).set_ThumbOffset(52);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkRuleActive).GetChildAt(0)).set_BorderWidth(1f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkRuleActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkRuleActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkRuleActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkRuleActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkRuleActive.Name = "chkRuleActive";
+		chkRuleActive.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)chkRuleActive.GetChildAt(0)).ThumbOffset = 52;
+		((RadToggleSwitchElement)chkRuleActive.GetChildAt(0)).BorderWidth = 1f;
+		((ToggleSwitchPartElement)chkRuleActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkRuleActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkRuleActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkRuleActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		btnAddRuleOperation.FlatAppearance.BorderSize = 0;
 		componentResourceManager.ApplyResources(btnAddRuleOperation, "btnAddRuleOperation");
 		btnAddRuleOperation.Name = "btnAddRuleOperation";

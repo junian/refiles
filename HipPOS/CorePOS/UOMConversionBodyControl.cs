@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using UnitsNet;
 
@@ -135,7 +134,7 @@ public class UOMConversionBodyControl : UserControl
 		method_0();
 		ddlOperator.SelectedIndex = ((!(string_1 == "*")) ? 1 : 0);
 		ddlUOMs.SelectedValue = (int)short_0;
-		((Control)(object)txtFactor).Text = MathHelper.RemoveTrailingZeros(decimal_0.ToString("0.000000"));
+		txtFactor.Text = MathHelper.RemoveTrailingZeros(decimal_0.ToString("0.000000"));
 	}
 
 	private void method_0()
@@ -151,23 +150,23 @@ public class UOMConversionBodyControl : UserControl
 		{
 			decimal_1 = BaseSampleValue.Value;
 		}
-		if (!decimal.TryParse(((Control)(object)txtFactor).Text, out var result))
+		if (!decimal.TryParse(txtFactor.Text, out var result))
 		{
 			return "no_value";
 		}
 		if (ddlOperator.SelectedIndex == 0)
 		{
 			decimal num = decimal_1 * result;
-			((Control)(object)txtSample).Text = MathHelper.RemoveTrailingZeros(num.ToString("0.000000"));
-			return ((Control)(object)txtSample).Text + " " + ddlUOMs.Text;
+			txtSample.Text = MathHelper.RemoveTrailingZeros(num.ToString("0.000000"));
+			return txtSample.Text + " " + ddlUOMs.Text;
 		}
-		if (Convert.ToDecimal(((Control)(object)txtFactor).Text) == 0m)
+		if (Convert.ToDecimal(txtFactor.Text) == 0m)
 		{
 			return "divzero";
 		}
 		decimal num2 = decimal_1 / result;
-		((Control)(object)txtSample).Text = MathHelper.RemoveTrailingZeros(num2.ToString("0.000000"));
-		return ((Control)(object)txtSample).Text + " " + ddlUOMs.Text;
+		txtSample.Text = MathHelper.RemoveTrailingZeros(num2.ToString("0.000000"));
+		return txtSample.Text + " " + ddlUOMs.Text;
 	}
 
 	public bool Save(short BaseUnitId)
@@ -180,7 +179,7 @@ public class UOMConversionBodyControl : UserControl
 			new NotificationLabel(frmUOMConversions_0, Resources.Please_select_a_UOM_to_convert, NotificationTypes.Notification).Show();
 			return false;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtFactor).Text))
+		if (string.IsNullOrEmpty(txtFactor.Text))
 		{
 			new NotificationLabel(frmUOMConversions_0, Resources.Please_enter_a_value_for_facto, NotificationTypes.Notification).Show();
 			return false;
@@ -198,7 +197,7 @@ public class UOMConversionBodyControl : UserControl
 		}
 		gClass2.BaseUnitId = short_1;
 		gClass2.Operator = ((ddlOperator.SelectedIndex == 0) ? "*" : "/");
-		gClass2.Factor = Convert.ToDecimal(((Control)(object)txtFactor).Text);
+		gClass2.Factor = Convert.ToDecimal(txtFactor.Text);
 		gClass2.ToUnitId = Convert.ToInt16(ddlUOMs.SelectedValue);
 		gClass2.ItemID = nullable_0;
 		Helper.SubmitChangesWithCatch(gClass);
@@ -229,8 +228,6 @@ public class UOMConversionBodyControl : UserControl
 
 	private void ddlUOMs_SelectedIndexChanged(object sender, EventArgs e)
 	{
-		//IL_01e9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_025f: Unknown result type (might be due to invalid IL or missing references)
 		if (ddlUOMs.SelectedValue != null)
 		{
 			string text = (from x in gclass6_0.UOMs
@@ -244,28 +241,28 @@ public class UOMConversionBodyControl : UserControl
 			double num = 0.0;
 			try
 			{
-				num = UnitConverter.ConvertByName(QuantityValue.op_Implicit((byte)1), "Mass", text, text2);
+				num = UnitConverter.ConvertByName((byte)1, "Mass", text, text2);
 			}
 			catch
 			{
 			}
 			if (num > 1.0)
 			{
-				((Control)(object)txtFactor).Text = MathHelper.RemoveTrailingZeros(num.ToString("0.000000"));
+				txtFactor.Text = MathHelper.RemoveTrailingZeros(num.ToString("0.000000"));
 				ddlOperator.SelectedIndex = 0;
-				((Control)(object)txtFactor).Enabled = false;
+				txtFactor.Enabled = false;
 			}
 			else if (num <= 1.0 && num > 0.0)
 			{
-				num = UnitConverter.ConvertByName(QuantityValue.op_Implicit((byte)1), "Mass", text2, text);
-				((Control)(object)txtFactor).Text = MathHelper.RemoveTrailingZeros(num.ToString("0.000000"));
+				num = UnitConverter.ConvertByName((byte)1, "Mass", text2, text);
+				txtFactor.Text = MathHelper.RemoveTrailingZeros(num.ToString("0.000000"));
 				ddlOperator.SelectedIndex = 1;
-				((Control)(object)txtFactor).Enabled = false;
+				txtFactor.Enabled = false;
 			}
 			else
 			{
-				((Control)(object)txtFactor).Enabled = true;
-				string text4 = (((Control)(object)txtSample).Text = (((Control)(object)txtFactor).Text = string.Empty));
+				txtFactor.Enabled = true;
+				string text4 = (txtSample.Text = (txtFactor.Text = string.Empty));
 			}
 			frmUOMConversions_0.triggerCalculations();
 		}
@@ -279,10 +276,10 @@ public class UOMConversionBodyControl : UserControl
 	private void txtFactor_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Factor, 4, 8, ((Control)(object)txtFactor).Text, Resources.Conversion_Factor_is_past_the_);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Factor, 4, 8, txtFactor.Text, Resources.Conversion_Factor_is_past_the_);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtFactor).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtFactor.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 			ChangeSampleQuantity(null);
 		}
 	}
@@ -298,17 +295,9 @@ public class UOMConversionBodyControl : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_0012: Unknown result type (might be due to invalid IL or missing references)
-		//IL_001c: Expected O, but got Unknown
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_0120: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0141: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01d5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01f6: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.UOMConversionBodyControl));
-		this.txtFactor = new RadTextBoxControl();
-		this.txtSample = new RadTextBoxControl();
+		this.txtFactor = new Telerik.WinControls.UI.RadTextBoxControl();
+		this.txtSample = new Telerik.WinControls.UI.RadTextBoxControl();
 		this.btnRemove = new System.Windows.Forms.PictureBox();
 		this.ddlUOMs = new Class19();
 		this.ddlOperator = new Class19();
@@ -316,23 +305,23 @@ public class UOMConversionBodyControl : UserControl
 		((System.ComponentModel.ISupportInitialize)this.txtSample).BeginInit();
 		((System.ComponentModel.ISupportInitialize)this.btnRemove).BeginInit();
 		base.SuspendLayout();
-		((System.Windows.Forms.Control)(object)this.txtFactor).BackColor = System.Drawing.Color.White;
+		this.txtFactor.BackColor = System.Drawing.Color.White;
 		resources.ApplyResources(this.txtFactor, "txtFactor");
-		((System.Windows.Forms.Control)(object)this.txtFactor).ForeColor = System.Drawing.SystemColors.ControlText;
-		((System.Windows.Forms.Control)(object)this.txtFactor).Name = "txtFactor";
-		((RadElement)((RadControl)this.txtFactor).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((System.Windows.Forms.Control)(object)this.txtFactor).TextChanged += new System.EventHandler(txtFactor_TextChanged);
-		((System.Windows.Forms.Control)(object)this.txtFactor).Click += new System.EventHandler(txtFactor_Click);
-		((System.Windows.Forms.Control)(object)this.txtFactor).KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtFactor_KeyPress);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtFactor).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtFactor).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
-		((System.Windows.Forms.Control)(object)this.txtSample).BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
+		this.txtFactor.ForeColor = System.Drawing.SystemColors.ControlText;
+		this.txtFactor.Name = "txtFactor";
+		this.txtFactor.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtFactor.TextChanged += new System.EventHandler(txtFactor_TextChanged);
+		this.txtFactor.Click += new System.EventHandler(txtFactor_Click);
+		this.txtFactor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtFactor_KeyPress);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtFactor.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtFactor.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
+		this.txtSample.BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
 		resources.ApplyResources(this.txtSample, "txtSample");
-		((System.Windows.Forms.Control)(object)this.txtSample).ForeColor = System.Drawing.SystemColors.ControlText;
-		((System.Windows.Forms.Control)(object)this.txtSample).Name = "txtSample";
-		((RadElement)((RadControl)this.txtSample).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtSample).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtSample).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtSample.ForeColor = System.Drawing.SystemColors.ControlText;
+		this.txtSample.Name = "txtSample";
+		this.txtSample.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtSample.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtSample.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		this.btnRemove.BackColor = System.Drawing.Color.Transparent;
 		resources.ApplyResources(this.btnRemove, "btnRemove");
 		this.btnRemove.Name = "btnRemove";
@@ -365,8 +354,8 @@ public class UOMConversionBodyControl : UserControl
 		base.Controls.Add(this.ddlUOMs);
 		base.Controls.Add(this.btnRemove);
 		base.Controls.Add(this.ddlOperator);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtSample);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtFactor);
+		base.Controls.Add(this.txtSample);
+		base.Controls.Add(this.txtFactor);
 		resources.ApplyResources(this, "$this");
 		base.Name = "UOMConversionBodyControl";
 		base.Load += new System.EventHandler(UOMConversionBodyControl_Load);

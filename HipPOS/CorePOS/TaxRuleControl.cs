@@ -6,7 +6,6 @@ using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -98,7 +97,7 @@ public class TaxRuleControl : UserControl
 		{
 			try
 			{
-				if (((Control)(object)txtCondition).Text.Trim() == string.Empty)
+				if (txtCondition.Text.Trim() == string.Empty)
 				{
 					new frmMessageBox(Resources.Please_input_a_value_for_the_c, Resources.Missing_Value).ShowDialog(this);
 					return false;
@@ -122,7 +121,7 @@ public class TaxRuleControl : UserControl
 				taxRuleOperation.TaxRuleRequirementID = new Guid(ddlRequirements.SelectedValue.ToString());
 				taxRuleOperation.TaxRuleId = ruleID;
 				taxRuleOperation.Operator = cboOperators.SelectedValue.ToString();
-				taxRuleOperation.Condition = Convert.ToDecimal(((Control)(object)txtCondition).Text.Trim());
+				taxRuleOperation.Condition = Convert.ToDecimal(txtCondition.Text.Trim());
 				taxRuleOperation.TaxID = Convert.ToInt32(cboTaxCodes.SelectedValue);
 				taxRuleOperation.Synced = false;
 				Helper.SubmitChangesWithCatch(gclass6_0);
@@ -145,7 +144,7 @@ public class TaxRuleControl : UserControl
 		taxRuleOperation = gclass6_0.TaxRuleOperations.Where((TaxRuleOperation t) => t.TaxRuleOperatorId == int_0).FirstOrDefault();
 		ddlRequirements.SelectedValue = taxRuleOperation.TaxRuleRequirementID.ToString();
 		cboOperators.SelectedValue = taxRuleOperation.Operator;
-		((Control)(object)txtCondition).Text = taxRuleOperation.Condition.ToString();
+		txtCondition.Text = taxRuleOperation.Condition.ToString();
 		cboTaxCodes.SelectedValue = taxRuleOperation.TaxID.ToString();
 	}
 
@@ -174,7 +173,7 @@ public class TaxRuleControl : UserControl
 		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Condition, 4);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtCondition).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtCondition.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
@@ -194,17 +193,13 @@ public class TaxRuleControl : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_0048: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0052: Expected O, but got Unknown
-		//IL_02ae: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02cf: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager componentResourceManager = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.TaxRuleControl));
 		this.cboOperators = new System.Windows.Forms.ComboBox();
 		this.label1 = new System.Windows.Forms.Label();
 		this.cboTaxCodes = new System.Windows.Forms.ComboBox();
 		this.btnRemove = new System.Windows.Forms.Button();
 		this.btnShowKeyboard_Condition = new System.Windows.Forms.Button();
-		this.txtCondition = new RadTextBoxControl();
+		this.txtCondition = new Telerik.WinControls.UI.RadTextBoxControl();
 		this.ddlRequirements = new System.Windows.Forms.ComboBox();
 		((System.ComponentModel.ISupportInitialize)this.txtCondition).BeginInit();
 		base.SuspendLayout();
@@ -234,14 +229,14 @@ public class TaxRuleControl : UserControl
 		this.btnShowKeyboard_Condition.Name = "btnShowKeyboard_Condition";
 		this.btnShowKeyboard_Condition.UseVisualStyleBackColor = false;
 		this.btnShowKeyboard_Condition.Click += new System.EventHandler(btnShowKeyboard_Condition_Click);
-		((System.Windows.Forms.Control)(object)this.txtCondition).BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
+		this.txtCondition.BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
 		componentResourceManager.ApplyResources(this.txtCondition, "txtCondition");
-		((System.Windows.Forms.Control)(object)this.txtCondition).ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
-		((System.Windows.Forms.Control)(object)this.txtCondition).Name = "txtCondition";
-		((RadElement)((RadControl)this.txtCondition).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((System.Windows.Forms.Control)(object)this.txtCondition).Click += new System.EventHandler(txtCondition_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtCondition).GetChildAt(0)).set_BorderWidth(1f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtCondition).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtCondition.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
+		this.txtCondition.Name = "txtCondition";
+		this.txtCondition.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtCondition.Click += new System.EventHandler(txtCondition_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtCondition.GetChildAt(0)).BorderWidth = 1f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtCondition.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		this.ddlRequirements.BackColor = System.Drawing.Color.White;
 		this.ddlRequirements.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 		this.ddlRequirements.DropDownWidth = 150;
@@ -251,7 +246,7 @@ public class TaxRuleControl : UserControl
 		this.BackColor = System.Drawing.Color.Transparent;
 		base.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 		base.Controls.Add(this.ddlRequirements);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtCondition);
+		base.Controls.Add(this.txtCondition);
 		base.Controls.Add(this.btnShowKeyboard_Condition);
 		base.Controls.Add(this.btnRemove);
 		base.Controls.Add(this.cboTaxCodes);

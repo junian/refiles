@@ -7,7 +7,6 @@ using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Vlc.DotNet.Forms;
 
@@ -68,8 +67,8 @@ public class frmVideoUploader : frmMasterForm
 
 	private void method_3(object sender, VlcLibDirectoryNeededEventArgs e)
 	{
-		e.set_VlcLibDirectory(new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + "\\lib\\vlclib\\"));
-		_ = e.get_VlcLibDirectory().Exists;
+		e.VlcLibDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + "\\lib\\vlclib\\");
+		_ = e.VlcLibDirectory.Exists;
 	}
 
 	private void frmVideoUploader_Load(object sender, EventArgs e)
@@ -123,7 +122,7 @@ public class frmVideoUploader : frmMasterForm
 		{
 			return;
 		}
-		if (myVlcControl.get_IsPlaying())
+		if (myVlcControl.IsPlaying)
 		{
 			myVlcControl.Stop();
 		}
@@ -131,10 +130,10 @@ public class frmVideoUploader : frmMasterForm
 		{
 			if (lstViewImage.SelectedItems.Count > 0 && lstViewImage.SelectedItems[0].BackColor != Color.Gray)
 			{
-				((Control)(object)txtInterval).Text = "0";
+				txtInterval.Text = "0";
 				lblHideInterval.Visible = true;
 				imageContainer.Visible = false;
-				((Control)(object)myVlcControl).Visible = true;
+				myVlcControl.Visible = true;
 				string text = lstViewImage.SelectedItems[0].Text;
 				string fileName = string_0 + text;
 				myVlcControl.SetMedia(new FileInfo(fileName), string_1);
@@ -143,7 +142,7 @@ public class frmVideoUploader : frmMasterForm
 			return;
 		}
 		imageContainer.Visible = true;
-		((Control)(object)myVlcControl).Visible = false;
+		myVlcControl.Visible = false;
 		byte[] buffer = Convert.FromBase64String(imageScreen.ImageAsText);
 		try
 		{
@@ -154,7 +153,7 @@ public class frmVideoUploader : frmMasterForm
 			}
 			imageContainer.Image = image;
 			imageContainer.SizeMode = PictureBoxSizeMode.Zoom;
-			((Control)(object)txtInterval).Text = imageScreen.Interval.ToString();
+			txtInterval.Text = imageScreen.Interval.ToString();
 			lblHideInterval.Visible = false;
 		}
 		catch (Exception)
@@ -166,11 +165,11 @@ public class frmVideoUploader : frmMasterForm
 
 	private void btnClose_Click(object sender, EventArgs e)
 	{
-		if (myVlcControl.get_IsPlaying())
+		if (myVlcControl.IsPlaying)
 		{
 			myVlcControl.Stop();
 		}
-		((Component)(object)myVlcControl).Dispose();
+		myVlcControl.Dispose();
 		Close();
 	}
 
@@ -237,7 +236,7 @@ public class frmVideoUploader : frmMasterForm
 		try
 		{
 			_003C_003Ec__DisplayClass10_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass10_0();
-			if (myVlcControl != null && myVlcControl.get_IsPlaying())
+			if (myVlcControl != null && myVlcControl.IsPlaying)
 			{
 				myVlcControl.Stop();
 			}
@@ -269,7 +268,7 @@ public class frmVideoUploader : frmMasterForm
 			int num = 0;
 			try
 			{
-				num = Convert.ToInt32(((Control)(object)txtInterval).Text);
+				num = Convert.ToInt32(txtInterval.Text);
 			}
 			catch
 			{
@@ -289,10 +288,10 @@ public class frmVideoUploader : frmMasterForm
 	private void btnShowKeyboard_txtInterval_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Image Interval", 0, 3, ((Control)(object)txtInterval).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Image Interval", 0, 3, txtInterval.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtInterval).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtInterval.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -363,12 +362,6 @@ public class frmVideoUploader : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0012: Unknown result type (might be due to invalid IL or missing references)
-		//IL_001c: Expected O, but got Unknown
-		//IL_0080: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008a: Expected O, but got Unknown
-		//IL_0a6a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a8b: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmVideoUploader));
 		myVlcControl = new VlcControl();
 		label2 = new Label();
@@ -392,16 +385,16 @@ public class frmVideoUploader : frmMasterForm
 		((ISupportInitialize)imageContainer).BeginInit();
 		((ISupportInitialize)txtInterval).BeginInit();
 		SuspendLayout();
-		((Control)(object)myVlcControl).BackColor = Color.FromArgb(35, 39, 56);
-		((Control)(object)myVlcControl).Dock = DockStyle.Fill;
-		((Control)(object)myVlcControl).Location = new Point(0, 0);
-		((Control)(object)myVlcControl).Name = "myVlcControl";
-		((Control)(object)myVlcControl).Size = new Size(698, 688);
-		myVlcControl.set_Spu(-1);
-		((Control)(object)myVlcControl).TabIndex = 1;
-		myVlcControl.set_VlcLibDirectory((DirectoryInfo)null);
-		myVlcControl.set_VlcMediaplayerOptions((string[])null);
-		myVlcControl.add_VlcLibDirectoryNeeded((EventHandler<VlcLibDirectoryNeededEventArgs>)method_3);
+		myVlcControl.BackColor = Color.FromArgb(35, 39, 56);
+		myVlcControl.Dock = DockStyle.Fill;
+		myVlcControl.Location = new Point(0, 0);
+		myVlcControl.Name = "myVlcControl";
+		myVlcControl.Size = new Size(698, 688);
+		myVlcControl.Spu = -1;
+		myVlcControl.TabIndex = 1;
+		myVlcControl.VlcLibDirectory = null;
+		myVlcControl.VlcMediaplayerOptions = null;
+		myVlcControl.VlcLibDirectoryNeeded += method_3;
 		label2.BackColor = Color.FromArgb(150, 166, 166);
 		label2.Font = new Font("Microsoft Sans Serif", 18f);
 		label2.ForeColor = Color.White;
@@ -502,7 +495,7 @@ public class frmVideoUploader : frmMasterForm
 		lstViewImage.UseCompatibleStateImageBehavior = false;
 		lstViewImage.View = View.List;
 		lstViewImage.SelectedIndexChanged += lstViewImage_SelectedIndexChanged;
-		pnlVideo.Controls.Add((Control)(object)myVlcControl);
+		pnlVideo.Controls.Add(myVlcControl);
 		pnlVideo.Location = new Point(324, 75);
 		pnlVideo.Name = "pnlVideo";
 		pnlVideo.Size = new Size(698, 688);
@@ -516,20 +509,20 @@ public class frmVideoUploader : frmMasterForm
 		imageContainer.SizeMode = PictureBoxSizeMode.Zoom;
 		imageContainer.TabIndex = 105;
 		imageContainer.TabStop = false;
-		((Control)(object)txtInterval).Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-		((Control)(object)txtInterval).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtInterval).Location = new Point(109, 647);
-		((Control)(object)txtInterval).Name = "txtInterval";
-		((RadElement)((RadControl)txtInterval).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtInterval).Size = new Size(105, 35);
-		((Control)(object)txtInterval).TabIndex = 273;
-		((Control)(object)txtInterval).Tag = "product";
-		((Control)(object)txtInterval).Text = "0";
-		txtInterval.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtInterval).TextChanged += txtInterval_TextChanged;
-		((Control)(object)txtInterval).Click += btnShowKeyboard_txtInterval_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtInterval).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtInterval).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtInterval.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+		txtInterval.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtInterval.Location = new Point(109, 647);
+		txtInterval.Name = "txtInterval";
+		txtInterval.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtInterval.Size = new Size(105, 35);
+		txtInterval.TabIndex = 273;
+		txtInterval.Tag = "product";
+		txtInterval.Text = "0";
+		txtInterval.TextAlign = HorizontalAlignment.Center;
+		txtInterval.TextChanged += txtInterval_TextChanged;
+		txtInterval.Click += btnShowKeyboard_txtInterval_Click;
+		((RadTextBoxControlElement)txtInterval.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtInterval.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		btnShowKeyboard_txtInterval.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 		btnShowKeyboard_txtInterval.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_txtInterval.DialogResult = DialogResult.OK;
@@ -624,7 +617,7 @@ public class frmVideoUploader : frmMasterForm
 		base.Controls.Add(btnUp);
 		base.Controls.Add(lblHideInterval);
 		base.Controls.Add(label9);
-		base.Controls.Add((Control)(object)txtInterval);
+		base.Controls.Add(txtInterval);
 		base.Controls.Add(btnShowKeyboard_txtInterval);
 		base.Controls.Add(label1);
 		base.Controls.Add(imageContainer);

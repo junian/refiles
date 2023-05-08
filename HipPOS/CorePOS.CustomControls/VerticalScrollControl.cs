@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Telerik.WinControls.Data;
-using Telerik.WinControls.UI;
 
 namespace CorePOS.CustomControls;
 
@@ -167,10 +165,6 @@ public class VerticalScrollControl : UserControl
 
 	private void VerticalScrollControl_Load(object sender, EventArgs e)
 	{
-		//IL_01c4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01ce: Expected O, but got Unknown
-		//IL_01f7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0201: Expected O, but got Unknown
 		int num = 4;
 		if (ButtonStyle == ScrollButtonStyle.TwoButtons)
 		{
@@ -190,7 +184,7 @@ public class VerticalScrollControl : UserControl
 		}
 		if (ConnectedRadListView != null)
 		{
-			base.Height = ((Control)(object)ConnectedRadListView).Height;
+			base.Height = ConnectedRadListView.Height;
 		}
 		if (inputedHeight > 0)
 		{
@@ -214,9 +208,9 @@ public class VerticalScrollControl : UserControl
 		if (ConnectedRadListView != null)
 		{
 			EnableDisableButtonsByScrollListView();
-			((RadListView)ConnectedRadListView).add_CurrentItemChanged(new ListViewItemEventHandler(method_2));
-			((ScrollableControl)(object)ConnectedRadListView).Scroll += method_3;
-			((RadListView)ConnectedRadListView).get_Items().add_CollectionChanged(new NotifyCollectionChangedEventHandler(method_4));
+			ConnectedRadListView.CurrentItemChanged += method_2;
+			ConnectedRadListView.Scroll += method_3;
+			ConnectedRadListView.Items.CollectionChanged += method_4;
 		}
 		btnDown.Click += ButtonDownEventOverride;
 		btnPageDown.Click += ButtonLastEventOverride;
@@ -311,9 +305,9 @@ public class VerticalScrollControl : UserControl
 	{
 		if (ConnectedRadListView != null)
 		{
-			int value = ((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_VScrollBar().get_Value();
-			int maximum = ((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_VScrollBar().get_Maximum();
-			int largeChange = ((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_VScrollBar().get_LargeChange();
+			int value = ConnectedRadListView.ListViewElement.ViewElement.VScrollBar.Value;
+			int maximum = ConnectedRadListView.ListViewElement.ViewElement.VScrollBar.Maximum;
+			int largeChange = ConnectedRadListView.ListViewElement.ViewElement.VScrollBar.LargeChange;
 			if (value == 0 && maximum + 1 == largeChange)
 			{
 				btnPageUp.Enabled = false;
@@ -353,9 +347,9 @@ public class VerticalScrollControl : UserControl
 			ConnectedPanel.VerticalScroll.Value = ConnectedPanel.VerticalScroll.Minimum;
 			EnableDisableButtonsByScrollPanel();
 		}
-		if (ConnectedRadListView != null && ((RadListView)ConnectedRadListView).get_Items().get_Count() > 0)
+		if (ConnectedRadListView != null && ConnectedRadListView.Items.Count > 0)
 		{
-			((VirtualizedScrollPanel<ListViewDataItem, BaseListViewVisualItem>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_Scroller().ScrollToItem(((RadListView)ConnectedRadListView).get_Items().get_Item(0));
+			ConnectedRadListView.ListViewElement.ViewElement.Scroller.ScrollToItem(ConnectedRadListView.Items[0]);
 			EnableDisableButtonsByScrollListView();
 		}
 	}
@@ -368,9 +362,9 @@ public class VerticalScrollControl : UserControl
 			ConnectedPanel.VerticalScroll.Value = ConnectedPanel.VerticalScroll.Maximum;
 			EnableDisableButtonsByScrollPanel();
 		}
-		if (ConnectedRadListView != null && ((RadListView)ConnectedRadListView).get_Items().get_Count() > 0)
+		if (ConnectedRadListView != null && ConnectedRadListView.Items.Count > 0)
 		{
-			((VirtualizedScrollPanel<ListViewDataItem, BaseListViewVisualItem>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_Scroller().ScrollToItem(((IEnumerable<ListViewDataItem>)((RadListView)ConnectedRadListView).get_Items()).Last());
+			ConnectedRadListView.ListViewElement.ViewElement.Scroller.ScrollToItem(ConnectedRadListView.Items.Last());
 			EnableDisableButtonsByScrollListView();
 		}
 	}
@@ -387,14 +381,13 @@ public class VerticalScrollControl : UserControl
 			}
 			if (ConnectedRadListView != null)
 			{
-				if (((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_VScrollBar().get_Value() < int_2)
+				if (ConnectedRadListView.ListViewElement.ViewElement.VScrollBar.Value < int_2)
 				{
-					((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_VScrollBar().set_Value(0);
+					ConnectedRadListView.ListViewElement.ViewElement.VScrollBar.Value = 0;
 				}
 				else
 				{
-					RadScrollBarElement vScrollBar = ((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_VScrollBar();
-					vScrollBar.set_Value(vScrollBar.get_Value() - int_2);
+					ConnectedRadListView.ListViewElement.ViewElement.VScrollBar.Value -= int_2;
 				}
 				EnableDisableButtonsByScrollListView();
 			}
@@ -422,14 +415,13 @@ public class VerticalScrollControl : UserControl
 			}
 			if (ConnectedRadListView != null)
 			{
-				if (((RadListView)ConnectedRadListView).get_Items().get_Count() > 0 && ((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_VScrollBar().get_Value() + int_2 < ((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_VScrollBar().get_Maximum())
+				if (ConnectedRadListView.Items.Count > 0 && ConnectedRadListView.ListViewElement.ViewElement.VScrollBar.Value + int_2 < ConnectedRadListView.ListViewElement.ViewElement.VScrollBar.Maximum)
 				{
-					RadScrollBarElement vScrollBar = ((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_VScrollBar();
-					vScrollBar.set_Value(vScrollBar.get_Value() + int_2);
+					ConnectedRadListView.ListViewElement.ViewElement.VScrollBar.Value += int_2;
 				}
 				else
 				{
-					((VirtualizedScrollPanel<ListViewDataItem, BaseListViewVisualItem>)(object)((RadListView)ConnectedRadListView).get_ListViewElement().get_ViewElement()).get_Scroller().ScrollToItem(((IEnumerable<ListViewDataItem>)((RadListView)ConnectedRadListView).get_Items()).Last());
+					ConnectedRadListView.ListViewElement.ViewElement.Scroller.ScrollToItem(ConnectedRadListView.Items.Last());
 				}
 				EnableDisableButtonsByScrollListView();
 			}

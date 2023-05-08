@@ -10,7 +10,6 @@ using CorePOS.Business.Objects;
 using CorePOS.Business.Objects.PaymentObjects;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -82,7 +81,7 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		Terminal terminal = ((this.terminal == null) ? gclass6_0.Terminals.Where((Terminal x) => x.SystemName.Equals(Environment.MachineName)).FirstOrDefault() : this.terminal);
 		if (terminal != null)
 		{
-			((Control)(object)txtStation).Text = terminal.SystemName;
+			txtStation.Text = terminal.SystemName;
 			if (!string.IsNullOrEmpty(terminal.PaymentProviderName))
 			{
 				ddlProcessor.Text = terminal.PaymentProviderName;
@@ -99,10 +98,10 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 			{
 				ddlTerminalModel.SelectedIndex = 0;
 			}
-			((Control)(object)txtMerchantID).Text = terminal.PaymentMerchantID;
-			((Control)(object)txtServer).Text = terminal.PaymentTerminalAddress;
-			((Control)(object)txtPort).Text = terminal.PaymentTerminalPort.ToString();
-			((Control)(object)txtSerialNumber).Text = terminal.PaymentTerminalSerial;
+			txtMerchantID.Text = terminal.PaymentMerchantID;
+			txtServer.Text = terminal.PaymentTerminalAddress;
+			txtPort.Text = terminal.PaymentTerminalPort.ToString();
+			txtSerialNumber.Text = terminal.PaymentTerminalSerial;
 		}
 	}
 
@@ -120,10 +119,10 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 			maxlength = 50;
 		}
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Payment_Terminal_IP_Addr, 0, maxlength, ((Control)(object)txtServer).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Payment_Terminal_IP_Addr, 0, maxlength, txtServer.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtServer).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtServer.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -131,10 +130,10 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 	private void btnShowKeyboard_Port_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_SMTP_Port_Number, 0, 5, ((Control)(object)txtPort).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_SMTP_Port_Number, 0, 5, txtPort.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPort).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtPort.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -157,10 +156,10 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 				}
 				terminal.PaymentProviderName = ddlProcessor.Text;
 				terminal.PaymentTerminalModel = ddlTerminalModel.Text;
-				terminal.PaymentTerminalAddress = ((Control)(object)txtServer).Text.Trim();
-				terminal.PaymentTerminalPort = (short)((!string.IsNullOrEmpty(((Control)(object)txtPort).Text)) ? Convert.ToInt16(((Control)(object)txtPort).Text) : 0);
-				terminal.PaymentMerchantID = ((Control)(object)txtMerchantID).Text;
-				terminal.PaymentTerminalSerial = ((Control)(object)txtSerialNumber).Text.Trim();
+				terminal.PaymentTerminalAddress = txtServer.Text.Trim();
+				terminal.PaymentTerminalPort = (short)((!string.IsNullOrEmpty(txtPort.Text)) ? Convert.ToInt16(txtPort.Text) : 0);
+				terminal.PaymentMerchantID = txtMerchantID.Text;
+				terminal.PaymentTerminalSerial = txtSerialNumber.Text.Trim();
 				Helper.SubmitChangesWithCatch(gclass6_0);
 				new NotificationLabel(this, Resources.Payment_Terminal_Settings_Save, NotificationTypes.Success).Show();
 			}
@@ -168,10 +167,10 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 			{
 				this.terminal.PaymentProviderName = ddlProcessor.Text;
 				this.terminal.PaymentTerminalModel = ddlTerminalModel.Text;
-				this.terminal.PaymentTerminalAddress = ((Control)(object)txtServer).Text.Trim();
-				this.terminal.PaymentTerminalPort = (short)((!string.IsNullOrEmpty(((Control)(object)txtPort).Text)) ? Convert.ToInt16(((Control)(object)txtPort).Text) : 0);
-				this.terminal.PaymentMerchantID = ((Control)(object)txtMerchantID).Text;
-				this.terminal.PaymentTerminalSerial = ((Control)(object)txtSerialNumber).Text.Trim();
+				this.terminal.PaymentTerminalAddress = txtServer.Text.Trim();
+				this.terminal.PaymentTerminalPort = (short)((!string.IsNullOrEmpty(txtPort.Text)) ? Convert.ToInt16(txtPort.Text) : 0);
+				this.terminal.PaymentMerchantID = txtMerchantID.Text;
+				this.terminal.PaymentTerminalSerial = txtSerialNumber.Text.Trim();
 				base.DialogResult = DialogResult.OK;
 			}
 			MemoryLoadedObjects.RefreshTerminals();
@@ -189,13 +188,13 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 			return;
 		}
 		new GClass6();
-		if (string.IsNullOrEmpty(ddlProcessor.Text) || string.IsNullOrEmpty(ddlTerminalModel.Text) || string.IsNullOrEmpty(((Control)(object)txtServer).Text) || string.IsNullOrEmpty(((Control)(object)txtMerchantID).Text) || string.IsNullOrEmpty(((Control)(object)txtPort).Text))
+		if (string.IsNullOrEmpty(ddlProcessor.Text) || string.IsNullOrEmpty(ddlTerminalModel.Text) || string.IsNullOrEmpty(txtServer.Text) || string.IsNullOrEmpty(txtMerchantID.Text) || string.IsNullOrEmpty(txtPort.Text))
 		{
 			return;
 		}
 		short result = 0;
-		short.TryParse(((Control)(object)txtPort).Text, out result);
-		string text = ((Control)(object)txtServer).Text;
+		short.TryParse(txtPort.Text, out result);
+		string text = txtServer.Text;
 		bool flag = false;
 		if (ddlProcessor.Text == PaymentProviderNames.FirstData)
 		{
@@ -206,7 +205,7 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 				{
 					text2 = "1";
 				}
-				string text3 = "transactiontype^ping^merchantid^" + ((Control)(object)txtMerchantID).Text.Trim() + "^transactiondate^" + DateTime.Now.ToString("MMddyy") + "^transactiontime^" + DateTime.Now.ToString("HHmmss") + "^terminallog^" + text2 + "^";
+				string text3 = "transactiontype^ping^merchantid^" + txtMerchantID.Text.Trim() + "^transactiondate^" + DateTime.Now.ToString("MMddyy") + "^transactiontime^" + DateTime.Now.ToString("HHmmss") + "^terminallog^" + text2 + "^";
 				string text4 = text3.Length.ToString();
 				while (text4.Length < 5)
 				{
@@ -238,9 +237,9 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 			{
 				CloverTransactionObject.Request request = new CloverTransactionObject.Request();
 				request.RequestType = "ping";
-				MemoryLoadedObjects.Clover.IP = ((Control)(object)txtServer).Text.Trim();
-				MemoryLoadedObjects.Clover.port = ((Control)(object)txtPort).Text.Trim();
-				MemoryLoadedObjects.Clover.deviceSerialNumber = ((Control)(object)txtSerialNumber).Text.Trim();
+				MemoryLoadedObjects.Clover.IP = txtServer.Text.Trim();
+				MemoryLoadedObjects.Clover.port = txtPort.Text.Trim();
+				MemoryLoadedObjects.Clover.deviceSerialNumber = txtSerialNumber.Text.Trim();
 				frmWaitingPaymentTerminal obj2 = new frmWaitingPaymentTerminal(ddlProcessor.Text, ddlTerminalModel.Text, text, result, request, "");
 				obj2.ShowDialog();
 				PaymentTransactionObject paymentTransactionObject2 = obj2.transaction_objects.FirstOrDefault();
@@ -255,7 +254,7 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		{
 			Terminal terminal = new Terminal();
 			terminal.PaymentProviderName = ddlProcessor.Text;
-			terminal.PaymentMerchantID = ((Control)(object)txtMerchantID).Text;
+			terminal.PaymentMerchantID = txtMerchantID.Text;
 			terminal.PaymentTerminalAddress = text;
 			terminal.PaymentTerminalModel = ddlTerminalModel.Text;
 			terminal.PaymentTerminalPort = result;
@@ -294,17 +293,17 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 			new frmMessageBox("Please add a Model No.").ShowDialog();
 			return false;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtMerchantID).Text))
+		if (string.IsNullOrEmpty(txtMerchantID.Text))
 		{
 			new frmMessageBox("Please add a Merchant Id.").ShowDialog();
 			return false;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtServer).Text))
+		if (string.IsNullOrEmpty(txtServer.Text))
 		{
 			new frmMessageBox("Please add a Terminal IP/Server.").ShowDialog();
 			return false;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtPort).Text))
+		if (string.IsNullOrEmpty(txtPort.Text))
 		{
 			new frmMessageBox("Please add a Port.").ShowDialog();
 			return false;
@@ -315,10 +314,10 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 	private void btnShowKeyboard_MerchantID_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Merchant_ID, 0, 128, ((Control)(object)txtMerchantID).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Merchant_ID, 0, 128, txtMerchantID.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtMerchantID).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtMerchantID.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -329,12 +328,12 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		if (ddlProcessor.Text == "None")
 		{
 			ddlTerminalModel.Text = string.Empty;
-			RadTextBoxControl obj = txtMerchantID;
-			RadTextBoxControl obj2 = txtPort;
-			RadTextBoxControl obj3 = txtServer;
-			string text = (((Control)(object)txtSerialNumber).Text = string.Empty);
-			string text3 = (((Control)(object)obj3).Text = text);
-			string text6 = (((Control)(object)obj).Text = (((Control)(object)obj2).Text = text3));
+			RadTextBoxControl radTextBoxControl = txtMerchantID;
+			RadTextBoxControl radTextBoxControl2 = txtPort;
+			RadTextBoxControl radTextBoxControl3 = txtServer;
+			string text = (txtSerialNumber.Text = string.Empty);
+			string text3 = (radTextBoxControl3.Text = text);
+			string text6 = (radTextBoxControl.Text = (radTextBoxControl2.Text = text3));
 		}
 		else if (ddlProcessor.Text == "First Data")
 		{
@@ -373,10 +372,10 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 	private void btnShowKeyboard_SerialNumber_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Payment Terminal Serial Number", 0, 20, ((Control)(object)txtSerialNumber).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Payment Terminal Serial Number", 0, 20, txtSerialNumber.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSerialNumber).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtSerialNumber.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -392,26 +391,6 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0032: Expected O, but got Unknown
-		//IL_0080: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008a: Expected O, but got Unknown
-		//IL_00ac: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00b6: Expected O, but got Unknown
-		//IL_00cd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00d7: Expected O, but got Unknown
-		//IL_00ee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f8: Expected O, but got Unknown
-		//IL_028b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02ac: Unknown result type (might be due to invalid IL or missing references)
-		//IL_060e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_062f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07ec: Unknown result type (might be due to invalid IL or missing references)
-		//IL_080d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a48: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a69: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0bd6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0bf7: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmSettingsPaymentProcessor));
 		btnTest = new Button();
 		label4 = new Label();
@@ -455,11 +434,11 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		label4.ForeColor = Color.White;
 		label4.Name = "label4";
 		componentResourceManager.ApplyResources(txtPort, "txtPort");
-		((Control)(object)txtPort).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPort).Name = "txtPort";
-		((RadElement)((RadControl)txtPort).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPort).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPort).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtPort.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPort.Name = "txtPort";
+		txtPort.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtPort.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPort.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Port.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Port.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Port.FlatAppearance.BorderColor = Color.Black;
@@ -501,11 +480,11 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		label9.ForeColor = Color.White;
 		label9.Name = "label9";
 		componentResourceManager.ApplyResources(txtServer, "txtServer");
-		((Control)(object)txtServer).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtServer).Name = "txtServer";
-		((RadElement)((RadControl)txtServer).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtServer).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtServer).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtServer.ForeColor = Color.FromArgb(40, 40, 40);
+		txtServer.Name = "txtServer";
+		txtServer.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtServer.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtServer.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Server.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Server.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Server.FlatAppearance.BorderColor = Color.Black;
@@ -524,11 +503,11 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		label6.ForeColor = Color.White;
 		label6.Name = "label6";
 		componentResourceManager.ApplyResources(txtStation, "txtStation");
-		((Control)(object)txtStation).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtStation).Name = "txtStation";
-		((RadElement)((RadControl)txtStation).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtStation).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtStation).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtStation.ForeColor = Color.FromArgb(40, 40, 40);
+		txtStation.Name = "txtStation";
+		txtStation.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtStation.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtStation.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		ddlProcessor.BackColor = Color.White;
 		ddlProcessor.DrawMode = DrawMode.OwnerDrawVariable;
 		ddlProcessor.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -559,11 +538,11 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		ddlTerminalModel.Tag = "groups_number_of_columns";
 		ddlTerminalModel.SelectedIndexChanged += ddlTerminalModel_SelectedIndexChanged;
 		componentResourceManager.ApplyResources(txtMerchantID, "txtMerchantID");
-		((Control)(object)txtMerchantID).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtMerchantID).Name = "txtMerchantID";
-		((RadElement)((RadControl)txtMerchantID).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtMerchantID).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtMerchantID).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtMerchantID.ForeColor = Color.FromArgb(40, 40, 40);
+		txtMerchantID.Name = "txtMerchantID";
+		txtMerchantID.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtMerchantID.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtMerchantID.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_MerchantID.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_MerchantID.DialogResult = DialogResult.OK;
 		btnShowKeyboard_MerchantID.FlatAppearance.BorderColor = Color.Black;
@@ -578,11 +557,11 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		label7.ForeColor = Color.White;
 		label7.Name = "label7";
 		componentResourceManager.ApplyResources(txtSerialNumber, "txtSerialNumber");
-		((Control)(object)txtSerialNumber).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtSerialNumber).Name = "txtSerialNumber";
-		((RadElement)((RadControl)txtSerialNumber).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSerialNumber).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSerialNumber).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSerialNumber.ForeColor = Color.FromArgb(40, 40, 40);
+		txtSerialNumber.Name = "txtSerialNumber";
+		txtSerialNumber.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtSerialNumber.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSerialNumber.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_SerialNumber.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_SerialNumber.DialogResult = DialogResult.OK;
 		btnShowKeyboard_SerialNumber.FlatAppearance.BorderColor = Color.Black;
@@ -599,22 +578,22 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		base.AutoScaleMode = AutoScaleMode.None;
 		BackColor = Color.FromArgb(35, 39, 56);
 		componentResourceManager.ApplyResources(this, "$this");
-		base.Controls.Add((Control)(object)txtSerialNumber);
+		base.Controls.Add(txtSerialNumber);
 		base.Controls.Add(btnShowKeyboard_SerialNumber);
 		base.Controls.Add(label10);
-		base.Controls.Add((Control)(object)txtMerchantID);
+		base.Controls.Add(txtMerchantID);
 		base.Controls.Add(btnShowKeyboard_MerchantID);
 		base.Controls.Add(label7);
 		base.Controls.Add(ddlTerminalModel);
 		base.Controls.Add(ddlProcessor);
-		base.Controls.Add((Control)(object)txtStation);
+		base.Controls.Add(txtStation);
 		base.Controls.Add(label6);
-		base.Controls.Add((Control)(object)txtServer);
+		base.Controls.Add(txtServer);
 		base.Controls.Add(btnShowKeyboard_Server);
 		base.Controls.Add(label5);
 		base.Controls.Add(btnTest);
 		base.Controls.Add(label4);
-		base.Controls.Add((Control)(object)txtPort);
+		base.Controls.Add(txtPort);
 		base.Controls.Add(btnShowKeyboard_Port);
 		base.Controls.Add(label3);
 		base.Controls.Add(label2);
@@ -632,22 +611,22 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 		base.Controls.SetChildIndex(label2, 0);
 		base.Controls.SetChildIndex(label3, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_Port, 0);
-		base.Controls.SetChildIndex((Control)(object)txtPort, 0);
+		base.Controls.SetChildIndex(txtPort, 0);
 		base.Controls.SetChildIndex(label4, 0);
 		base.Controls.SetChildIndex(btnTest, 0);
 		base.Controls.SetChildIndex(label5, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_Server, 0);
-		base.Controls.SetChildIndex((Control)(object)txtServer, 0);
+		base.Controls.SetChildIndex(txtServer, 0);
 		base.Controls.SetChildIndex(label6, 0);
-		base.Controls.SetChildIndex((Control)(object)txtStation, 0);
+		base.Controls.SetChildIndex(txtStation, 0);
 		base.Controls.SetChildIndex(ddlProcessor, 0);
 		base.Controls.SetChildIndex(ddlTerminalModel, 0);
 		base.Controls.SetChildIndex(label7, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_MerchantID, 0);
-		base.Controls.SetChildIndex((Control)(object)txtMerchantID, 0);
+		base.Controls.SetChildIndex(txtMerchantID, 0);
 		base.Controls.SetChildIndex(label10, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_SerialNumber, 0);
-		base.Controls.SetChildIndex((Control)(object)txtSerialNumber, 0);
+		base.Controls.SetChildIndex(txtSerialNumber, 0);
 		base.Controls.SetChildIndex(PersistentNotification, 0);
 		((ISupportInitialize)txtPort).EndInit();
 		((ISupportInitialize)txtServer).EndInit();

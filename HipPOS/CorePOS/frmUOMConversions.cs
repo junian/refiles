@@ -6,7 +6,6 @@ using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -86,7 +85,7 @@ public class frmUOMConversions : frmMasterForm
 
 	public void triggerCalculations()
 	{
-		if (!decimal.TryParse(((Control)(object)txtSampleQty).Text, out var result))
+		if (!decimal.TryParse(txtSampleQty.Text, out var result))
 		{
 			return;
 		}
@@ -128,7 +127,7 @@ public class frmUOMConversions : frmMasterForm
 	protected void UOMConvControl_txtFactorChanged(object sender, EventArgs e)
 	{
 		UOMConversionBodyControl uomconversionBodyControl_ = (UOMConversionBodyControl)sender;
-		if (decimal.TryParse(((Control)(object)txtSampleQty).Text, out var result))
+		if (decimal.TryParse(txtSampleQty.Text, out var result))
 		{
 			method_3(uomconversionBodyControl_, result);
 		}
@@ -224,10 +223,10 @@ public class frmUOMConversions : frmMasterForm
 	private void btnShowKeyboard_SampleQty_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Sample_Quantity, 4, 8, ((Control)(object)txtSampleQty).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Sample_Quantity, 4, 8, txtSampleQty.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSampleQty).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtSampleQty.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -243,10 +242,6 @@ public class frmUOMConversions : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0069: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0073: Expected O, but got Unknown
-		//IL_0439: Unknown result type (might be due to invalid IL or missing references)
-		//IL_045a: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmUOMConversions));
 		lblTitleBar = new Label();
 		label8 = new Label();
@@ -304,13 +299,13 @@ public class frmUOMConversions : frmMasterForm
 		label2.ForeColor = Color.White;
 		label2.Name = "label2";
 		componentResourceManager.ApplyResources(txtSampleQty, "txtSampleQty");
-		((Control)(object)txtSampleQty).Name = "txtSampleQty";
-		((RadElement)((RadControl)txtSampleQty).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSampleQty).TextChanged += txtSampleQty_TextChanged;
-		((Control)(object)txtSampleQty).Click += btnShowKeyboard_SampleQty_Click;
-		((Control)(object)txtSampleQty).KeyPress += txtSampleQty_KeyPress;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSampleQty).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSampleQty).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSampleQty.Name = "txtSampleQty";
+		txtSampleQty.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSampleQty.TextChanged += txtSampleQty_TextChanged;
+		txtSampleQty.Click += btnShowKeyboard_SampleQty_Click;
+		txtSampleQty.KeyPress += txtSampleQty_KeyPress;
+		((RadTextBoxControlElement)txtSampleQty.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSampleQty.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnAddToUnit.BackColor = Color.FromArgb(147, 101, 184);
 		btnAddToUnit.FlatAppearance.BorderColor = Color.White;
 		btnAddToUnit.FlatAppearance.BorderSize = 0;
@@ -347,7 +342,7 @@ public class frmUOMConversions : frmMasterForm
 		base.Controls.Add(lblStockUOMName);
 		base.Controls.Add(btnShowKeyboard_SampleQty);
 		base.Controls.Add(btnNewBaseUnit);
-		base.Controls.Add((Control)(object)txtSampleQty);
+		base.Controls.Add(txtSampleQty);
 		base.Controls.Add(label2);
 		base.Controls.Add(lblSampleConversion);
 		base.Controls.Add(KwOrbYumDs);

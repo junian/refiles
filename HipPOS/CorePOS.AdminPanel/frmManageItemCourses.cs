@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel;
@@ -34,8 +33,6 @@ public class frmManageItemCourses : frmMasterForm
 
 	private void frmManageItemCourses_Load(object sender, EventArgs e)
 	{
-		//IL_00e5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00eb: Expected O, but got Unknown
 		GClass6 gClass = new GClass6();
 		pnlItemCourses.Controls.Clear();
 		foreach (ItemCourse item in gClass.ItemCourses.ToList())
@@ -52,28 +49,28 @@ public class frmManageItemCourses : frmMasterForm
 			label.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
 			label.Padding = new Padding(3, 3, 3, 3);
 			pnlItemCourses.Controls.Add(label);
-			RadTextBoxControl val = new RadTextBoxControl();
-			((Control)(object)val).Name = "txt" + item.Name;
-			((Control)(object)val).Size = new Size(189, 35);
-			((Control)(object)val).Margin = new Padding(1, 1, 0, 0);
-			((Control)(object)val).Text = item.OnHoldMinutes.ToString();
-			((Control)(object)val).Click += method_3;
-			((Control)(object)val).ForeColor = Color.Black;
-			((Control)(object)val).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
-			((RadControl)val).set_Padding(new Padding(3, 3, 3, 3));
-			((Control)(object)val).Tag = item.Name;
-			pnlItemCourses.Controls.Add((Control)(object)val);
+			RadTextBoxControl radTextBoxControl = new RadTextBoxControl();
+			radTextBoxControl.Name = "txt" + item.Name;
+			radTextBoxControl.Size = new Size(189, 35);
+			radTextBoxControl.Margin = new Padding(1, 1, 0, 0);
+			radTextBoxControl.Text = item.OnHoldMinutes.ToString();
+			radTextBoxControl.Click += method_3;
+			radTextBoxControl.ForeColor = Color.Black;
+			radTextBoxControl.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
+			radTextBoxControl.Padding = new Padding(3, 3, 3, 3);
+			radTextBoxControl.Tag = item.Name;
+			pnlItemCourses.Controls.Add(radTextBoxControl);
 		}
 	}
 
 	private void method_3(object sender, EventArgs e)
 	{
-		RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
+		RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Delay On Hold for " + ((Control)(object)val).Tag.ToString(), 0, 3, ((Control)(object)val).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Delay On Hold for " + radTextBoxControl.Tag.ToString(), 0, 3, radTextBoxControl.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)val).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			radTextBoxControl.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -88,11 +85,11 @@ public class frmManageItemCourses : frmMasterForm
 				if (control is RadTextBoxControl)
 				{
 					_003C_003Ec__DisplayClass3_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass3_0();
-					CS_0024_003C_003E8__locals0.txtObj = (RadTextBoxControl)(object)((control is RadTextBoxControl) ? control : null);
-					ItemCourse itemCourse = gClass.ItemCourses.Where((ItemCourse a) => a.Name == ((Control)(object)CS_0024_003C_003E8__locals0.txtObj).Tag.ToString()).FirstOrDefault();
+					CS_0024_003C_003E8__locals0.txtObj = control as RadTextBoxControl;
+					ItemCourse itemCourse = gClass.ItemCourses.Where((ItemCourse a) => a.Name == CS_0024_003C_003E8__locals0.txtObj.Tag.ToString()).FirstOrDefault();
 					if (itemCourse != null)
 					{
-						itemCourse.OnHoldMinutes = Convert.ToInt32(((Control)(object)CS_0024_003C_003E8__locals0.txtObj).Text);
+						itemCourse.OnHoldMinutes = Convert.ToInt32(CS_0024_003C_003E8__locals0.txtObj.Text);
 						gClass.SubmitChanges();
 					}
 				}

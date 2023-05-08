@@ -7,7 +7,6 @@ using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using Telerik.WinControls;
-using Telerik.WinControls.UI;
 using Telerik.WinControls.UI.Data;
 
 namespace CorePOS.CommonForms;
@@ -52,39 +51,39 @@ public class frmFont : frmMasterForm
 		dictionary.Add("Regular", 0);
 		dictionary.Add("Bold", 1);
 		dictionary.Add("Italic", 2);
-		((RadDropDownList)ddlStyle).set_DisplayMember("Key");
-		((RadDropDownList)ddlStyle).set_ValueMember("Value");
-		((RadDropDownList)ddlStyle).set_DataSource((object)new BindingSource(dictionary, null));
+		ddlStyle.DisplayMember = "Key";
+		ddlStyle.ValueMember = "Value";
+		ddlStyle.DataSource = new BindingSource(dictionary, null);
 		Dictionary<object, string> dictionary2 = HelperMethods.FontColors(Thread.CurrentThread.CurrentCulture.Name);
-		((RadDropDownList)ddlColors).set_DisplayMember("Key");
-		((RadDropDownList)ddlColors).set_ValueMember("Value");
-		((RadDropDownList)ddlColors).set_DataSource((object)new BindingSource(dictionary2, null));
+		ddlColors.DisplayMember = "Key";
+		ddlColors.ValueMember = "Value";
+		ddlColors.DataSource = new BindingSource(dictionary2, null);
 		Dictionary<string, string> dictionary3 = new Dictionary<string, string>();
 		for (int i = 8; i <= 16; i++)
 		{
 			dictionary3.Add(i.ToString(), i.ToString());
 		}
-		((RadDropDownList)ddlSize).set_DisplayMember("Key");
-		((RadDropDownList)ddlSize).set_ValueMember("Value");
-		((RadDropDownList)ddlSize).set_DataSource((object)new BindingSource(dictionary3, null));
+		ddlSize.DisplayMember = "Key";
+		ddlSize.ValueMember = "Value";
+		ddlSize.DataSource = new BindingSource(dictionary3, null);
 		if (string_0 == "items")
 		{
 			_003C_003Ec__DisplayClass2_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass2_0();
 			CS_0024_003C_003E8__locals0.fontSetting = SettingsHelper.GetSettingFontStyleValues("font_size_item_groups_oe");
-			((RadDropDownList)ddlStyle).set_SelectedValue((object)dictionary.FirstOrDefault((KeyValuePair<string, int> x) => x.Value == Convert.ToInt32(CS_0024_003C_003E8__locals0.fontSetting.Style)).Value);
-			((RadDropDownList)ddlColors).set_SelectedValue((object)dictionary2.FirstOrDefault((KeyValuePair<object, string> x) => x.Value == CS_0024_003C_003E8__locals0.fontSetting.Color).Value);
-			((RadDropDownList)ddlSize).set_SelectedValue((object)dictionary3.FirstOrDefault((KeyValuePair<string, string> x) => x.Value == CS_0024_003C_003E8__locals0.fontSetting.Size.ToString()).Value);
+			ddlStyle.SelectedValue = dictionary.FirstOrDefault((KeyValuePair<string, int> x) => x.Value == Convert.ToInt32(CS_0024_003C_003E8__locals0.fontSetting.Style)).Value;
+			ddlColors.SelectedValue = dictionary2.FirstOrDefault((KeyValuePair<object, string> x) => x.Value == CS_0024_003C_003E8__locals0.fontSetting.Color).Value;
+			ddlSize.SelectedValue = dictionary3.FirstOrDefault((KeyValuePair<string, string> x) => x.Value == CS_0024_003C_003E8__locals0.fontSetting.Size.ToString()).Value;
 		}
 	}
 
 	private void method_3()
 	{
-		if (((RadDropDownList)ddlStyle).get_SelectedValue() != null && ((RadDropDownList)ddlSize).get_SelectedValue() != null && ((RadDropDownList)ddlColors).get_SelectedValue() != null)
+		if (ddlStyle.SelectedValue != null && ddlSize.SelectedValue != null && ddlColors.SelectedValue != null)
 		{
-			FontStyle style = (FontStyle)Convert.ToInt32(((RadDropDownList)ddlStyle).get_SelectedValue());
-			double num = Convert.ToDouble(((RadDropDownList)ddlSize).get_SelectedValue());
+			FontStyle style = (FontStyle)Convert.ToInt32(ddlStyle.SelectedValue);
+			double num = Convert.ToDouble(ddlSize.SelectedValue);
 			btnSample.Font = new Font(btnSample.Font.FontFamily, (float)num, style);
-			Color color = HelperMethods.GetColor(((RadDropDownList)ddlColors).get_SelectedValue().ToString());
+			Color color = HelperMethods.GetColor(ddlColors.SelectedValue.ToString());
 			btnSample.ForeColor = color;
 		}
 	}
@@ -113,7 +112,7 @@ public class frmFont : frmMasterForm
 	{
 		if (string_0 == "items")
 		{
-			SettingsHelper.SetSettingsFontStyleValues("font_size_item_groups_oe", ((RadDropDownList)ddlStyle).get_SelectedValue().ToString(), Convert.ToInt32(((RadDropDownList)ddlSize).get_SelectedValue()), ((RadDropDownList)ddlColors).get_SelectedValue().ToString());
+			SettingsHelper.SetSettingsFontStyleValues("font_size_item_groups_oe", ddlStyle.SelectedValue.ToString(), Convert.ToInt32(ddlSize.SelectedValue), ddlColors.SelectedValue.ToString());
 			new NotificationLabel(this, "Saved", NotificationTypes.Success).Show();
 		}
 		base.DialogResult = DialogResult.None;
@@ -130,12 +129,6 @@ public class frmFont : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0158: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0162: Expected O, but got Unknown
-		//IL_0218: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0222: Expected O, but got Unknown
-		//IL_02d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02e2: Expected O, but got Unknown
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmFont));
 		lblTitle = new Label();
 		ddlColors = new Class20();
@@ -156,34 +149,34 @@ public class frmFont : frmMasterForm
 		lblTitle.ForeColor = Color.White;
 		lblTitle.Name = "lblTitle";
 		componentResourceManager.ApplyResources(ddlColors, "ddlColors");
-		((Control)(object)ddlColors).BackColor = Color.White;
-		((RadDropDownList)ddlColors).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlColors).set_EnableKineticScrolling(true);
-		((Control)(object)ddlColors).Name = "ddlColors";
-		((RadControl)ddlColors).set_ThemeName("Windows8");
-		((RadDropDownList)ddlColors).add_SelectedIndexChanged(new PositionChangedEventHandler(ddlColors_SelectedIndexChanged));
+		ddlColors.BackColor = Color.White;
+		ddlColors.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlColors.EnableKineticScrolling = true;
+		ddlColors.Name = "ddlColors";
+		ddlColors.ThemeName = "Windows8";
+		ddlColors.SelectedIndexChanged += ddlColors_SelectedIndexChanged;
 		label6.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label6, "label6");
 		label6.ForeColor = Color.White;
 		label6.Name = "label6";
 		componentResourceManager.ApplyResources(ddlStyle, "ddlStyle");
-		((Control)(object)ddlStyle).BackColor = Color.White;
-		((RadDropDownList)ddlStyle).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlStyle).set_EnableKineticScrolling(true);
-		((Control)(object)ddlStyle).Name = "ddlStyle";
-		((RadControl)ddlStyle).set_ThemeName("Windows8");
-		((RadDropDownList)ddlStyle).add_SelectedIndexChanged(new PositionChangedEventHandler(ddlStyle_SelectedIndexChanged));
+		ddlStyle.BackColor = Color.White;
+		ddlStyle.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlStyle.EnableKineticScrolling = true;
+		ddlStyle.Name = "ddlStyle";
+		ddlStyle.ThemeName = "Windows8";
+		ddlStyle.SelectedIndexChanged += ddlStyle_SelectedIndexChanged;
 		label1.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label1, "label1");
 		label1.ForeColor = Color.White;
 		label1.Name = "label1";
 		componentResourceManager.ApplyResources(ddlSize, "ddlSize");
-		((Control)(object)ddlSize).BackColor = Color.White;
-		((RadDropDownList)ddlSize).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlSize).set_EnableKineticScrolling(true);
-		((Control)(object)ddlSize).Name = "ddlSize";
-		((RadControl)ddlSize).set_ThemeName("Windows8");
-		((RadDropDownList)ddlSize).add_SelectedIndexChanged(new PositionChangedEventHandler(ddlSize_SelectedIndexChanged));
+		ddlSize.BackColor = Color.White;
+		ddlSize.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlSize.EnableKineticScrolling = true;
+		ddlSize.Name = "ddlSize";
+		ddlSize.ThemeName = "Windows8";
+		ddlSize.SelectedIndexChanged += ddlSize_SelectedIndexChanged;
 		label2.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label2, "label2");
 		label2.ForeColor = Color.White;
@@ -221,11 +214,11 @@ public class frmFont : frmMasterForm
 		base.Controls.Add(button1);
 		base.Controls.Add(btnOK);
 		base.Controls.Add(btnSample);
-		base.Controls.Add((Control)(object)ddlSize);
+		base.Controls.Add(ddlSize);
 		base.Controls.Add(label2);
-		base.Controls.Add((Control)(object)ddlStyle);
+		base.Controls.Add(ddlStyle);
 		base.Controls.Add(label1);
-		base.Controls.Add((Control)(object)ddlColors);
+		base.Controls.Add(ddlColors);
 		base.Controls.Add(label6);
 		base.Controls.Add(lblTitle);
 		base.Name = "frmFont";

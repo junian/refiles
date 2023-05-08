@@ -70,7 +70,7 @@ public static class SettingsHelper
 				};
 				list.Add(onlineOrderSettingObject);
 			}
-			string value = JsonConvert.SerializeObject((object)list);
+			string value = JsonConvert.SerializeObject(list);
 			HipposSettings.Where((SettingsObject a) => a.Key == "online_order_sync").First().Value = value;
 			GClass6 gClass = new GClass6();
 			gClass.Settings.Where((Setting a) => a.Key == "online_order_sync").FirstOrDefault().Value = value;
@@ -89,7 +89,7 @@ public static class SettingsHelper
 		{
 			GClass6 gClass = new GClass6();
 			Setting setting = gClass.Settings.Where((Setting a) => a.Key == "delivery_fee_settings_json").FirstOrDefault();
-			setting.Value = JsonConvert.SerializeObject((object)obj);
+			setting.Value = JsonConvert.SerializeObject(obj);
 			setting.Synced = false;
 			Helper.SubmitChangesWithCatch(gClass);
 			HipposSettings.Where((SettingsObject a) => a.Key == "delivery_fee_settings_json").First().Value = setting.Value;
@@ -257,7 +257,7 @@ public static class SettingsHelper
 	{
 		_003C_003Ec__DisplayClass15_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass15_0();
 		CS_0024_003C_003E8__locals0.settingKeyJSON = settingKeyJSON;
-		string value = JsonConvert.SerializeObject((object)new FontStyleObject
+		string value = JsonConvert.SerializeObject(new FontStyleObject
 		{
 			Style = style,
 			Size = size,
@@ -328,7 +328,7 @@ public static class SettingsHelper
 			};
 			list.Add(cardProcessorObject);
 		}
-		string value = JsonConvert.SerializeObject((object)list);
+		string value = JsonConvert.SerializeObject(list);
 		HipposSettings.Where((SettingsObject a) => a.Key == CS_0024_003C_003E8__locals0.settingKeyJSON).First().Value = value;
 		GClass6 gClass = new GClass6();
 		gClass.Settings.Where((Setting a) => a.Key == CS_0024_003C_003E8__locals0.settingKeyJSON).FirstOrDefault().Value = value;
@@ -557,7 +557,7 @@ public static class SettingsHelper
 			};
 			list.Add(cardTransactionFeeObject);
 		}
-		string value = JsonConvert.SerializeObject((object)list);
+		string value = JsonConvert.SerializeObject(list);
 		HipposSettings.Where((SettingsObject a) => a.Key == "card_transaction_fee_json").First().Value = value;
 		GClass6 gClass = new GClass6();
 		gClass.Settings.Where((Setting a) => a.Key == "card_transaction_fee_json").FirstOrDefault().Value = value;

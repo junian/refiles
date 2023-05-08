@@ -8,7 +8,6 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.CustomControls;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -309,12 +308,12 @@ public class frmSelectDateOnSale : frmMasterForm
 	{
 		if (decimal_2 >= 0m)
 		{
-			((Control)(object)txtSalePrice).Text = decimal_2.ToString("0.00##");
-			((Control)(object)txtPercentageOff).Text = Math.Round(decimal_3, 0).ToString("0.00");
+			txtSalePrice.Text = decimal_2.ToString("0.00##");
+			txtPercentageOff.Text = Math.Round(decimal_3, 0).ToString("0.00");
 		}
 		if (!nullable_6.HasValue)
 		{
-			chkDateRange.set_Value(false);
+			chkDateRange.Value = false;
 			startDate.Enabled = false;
 			endDate.Enabled = false;
 			startDate.Value = DateTime.Now.Date;
@@ -322,7 +321,7 @@ public class frmSelectDateOnSale : frmMasterForm
 		}
 		else
 		{
-			chkDateRange.set_Value(true);
+			chkDateRange.Value = true;
 			startDate.Enabled = true;
 			endDate.Enabled = true;
 			startDate.Value = nullable_6.Value;
@@ -336,12 +335,12 @@ public class frmSelectDateOnSale : frmMasterForm
 		{
 			nullable_5 = Convert.ToDateTime(endDate.Value.ToLongDateString() + " 11:59:59 PM");
 		}
-		bool_0 = chkDateRange.get_Value();
+		bool_0 = chkDateRange.Value;
 		if (string.IsNullOrEmpty(string_1))
 		{
 			return;
 		}
-		chkDaySale.set_Value(true);
+		chkDaySale.Value = true;
 		string[] array = string_1.Split('|');
 		foreach (string obj in array)
 		{
@@ -352,8 +351,8 @@ public class frmSelectDateOnSale : frmMasterForm
 			string s2 = array2[2];
 			CS_0024_003C_003E8__locals0.dayShortString = text.Substring(0, 3);
 			(from a in panel1.Controls.OfType<RadToggleSwitch>()
-				where ((Control)(object)a).Name.ToUpper().Contains(CS_0024_003C_003E8__locals0.dayShortString)
-				select a).FirstOrDefault().set_Value(true);
+				where a.Name.ToUpper().Contains(CS_0024_003C_003E8__locals0.dayShortString)
+				select a).FirstOrDefault().Value = true;
 			DateTimePicker dateTimePicker = (from a in base.Controls.OfType<DateTimePicker>()
 				where a.Name.ToUpper().Contains(CS_0024_003C_003E8__locals0.dayShortString) && a.Name.Contains("from")
 				select a).FirstOrDefault();
@@ -389,10 +388,10 @@ public class frmSelectDateOnSale : frmMasterForm
 		returnStartDate = Convert.ToDateTime(startDate.Value.ToLongDateString() + " 12:00:00 AM");
 		returnEndDate = Convert.ToDateTime(endDate.Value.ToLongDateString() + " 11:59:59 PM");
 		returnDaysSaleList = method_4(bool_1: false);
-		returnSalePrice = (string.IsNullOrEmpty(((Control)(object)txtSalePrice).Text) ? 0m : Convert.ToDecimal(((Control)(object)txtSalePrice).Text));
+		returnSalePrice = (string.IsNullOrEmpty(txtSalePrice.Text) ? 0m : Convert.ToDecimal(txtSalePrice.Text));
 		DateTime? dateTime = nullable_4;
 		DateTime? dateTime2 = returnStartDate;
-		if (((dateTime.HasValue != dateTime2.HasValue || (dateTime.HasValue && dateTime.GetValueOrDefault() != dateTime2.GetValueOrDefault()) || nullable_5 != returnEndDate) && chkDateRange.get_Value()) || string_1 != returnDaysSaleList)
+		if (((dateTime.HasValue != dateTime2.HasValue || (dateTime.HasValue && dateTime.GetValueOrDefault() != dateTime2.GetValueOrDefault()) || nullable_5 != returnEndDate) && chkDateRange.Value) || string_1 != returnDaysSaleList)
 		{
 			flag = true;
 		}
@@ -424,12 +423,12 @@ public class frmSelectDateOnSale : frmMasterForm
 
 	private bool method_3()
 	{
-		if (!chkDaySale.get_Value() && ((Control)(object)txtPercentageOff).Text != "" && !MiscHelper.isNumberInRange(Convert.ToDecimal(((Control)(object)txtPercentageOff).Text), 0m, 100m))
+		if (!chkDaySale.Value && txtPercentageOff.Text != "" && !MiscHelper.isNumberInRange(Convert.ToDecimal(txtPercentageOff.Text), 0m, 100m))
 		{
 			new frmMessageBox("Percentage Off Only accepts value 0-100").ShowDialog(this);
 			return false;
 		}
-		if (chkDateRange.get_Value())
+		if (chkDateRange.Value)
 		{
 			returnStartDate = Convert.ToDateTime(startDate.Value.ToLongDateString() + " 12:00:00 AM");
 			returnEndDate = Convert.ToDateTime(endDate.Value.ToLongDateString() + " 11:59:59 PM");
@@ -441,13 +440,13 @@ public class frmSelectDateOnSale : frmMasterForm
 		}
 		DateTime? dateTime = returnStartDate;
 		DateTime? dateTime2 = returnEndDate;
-		if ((dateTime.HasValue & dateTime2.HasValue) && dateTime.GetValueOrDefault() >= dateTime2.GetValueOrDefault() && chkDateRange.get_Value())
+		if ((dateTime.HasValue & dateTime2.HasValue) && dateTime.GetValueOrDefault() >= dateTime2.GetValueOrDefault() && chkDateRange.Value)
 		{
 			new frmMessageBox(Resources.Start_date_time_should_be_less).ShowDialog(this);
 			return false;
 		}
-		returnSalePrice = (string.IsNullOrEmpty(((Control)(object)txtSalePrice).Text) ? 0m : Convert.ToDecimal(((Control)(object)txtSalePrice).Text));
-		returnPercentageOff = (string.IsNullOrEmpty(((Control)(object)txtPercentageOff).Text) ? 0m : Convert.ToDecimal(((Control)(object)txtPercentageOff).Text));
+		returnSalePrice = (string.IsNullOrEmpty(txtSalePrice.Text) ? 0m : Convert.ToDecimal(txtSalePrice.Text));
+		returnPercentageOff = (string.IsNullOrEmpty(txtPercentageOff.Text) ? 0m : Convert.ToDecimal(txtPercentageOff.Text));
 		string text = method_4(bool_1: true);
 		if (text == "false")
 		{
@@ -459,19 +458,16 @@ public class frmSelectDateOnSale : frmMasterForm
 
 	private string method_4(bool bool_1)
 	{
-		//IL_0038: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003e: Expected O, but got Unknown
 		List<string> list = new List<string>();
-		if (chkDaySale.get_Value())
+		if (chkDaySale.Value)
 		{
 			foreach (Control control in panel1.Controls)
 			{
-				RadToggleSwitch val = (RadToggleSwitch)control;
-				if (val.get_Value())
+				if (((RadToggleSwitch)control).Value)
 				{
 					_003C_003Ec__DisplayClass44_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass44_0();
-					string text = ((Control)(object)val).Text.ToUpper();
-					CS_0024_003C_003E8__locals0.shortenedDayString = ((Control)(object)val).Name.Replace("chk", string.Empty);
+					string text = control.Text.ToUpper();
+					CS_0024_003C_003E8__locals0.shortenedDayString = control.Name.Replace("chk", string.Empty);
 					DateTimePicker dateTimePicker = (from a in base.Controls.OfType<DateTimePicker>()
 						where a.Name.Contains(CS_0024_003C_003E8__locals0.shortenedDayString) && a.Name.Contains("from")
 						select a).FirstOrDefault();
@@ -505,8 +501,8 @@ public class frmSelectDateOnSale : frmMasterForm
 		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Off, 2, 4);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPercentageOff).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
-			((Control)(object)txtSalePrice).Text = ((((Control)(object)txtPercentageOff).Text == "") ? "0" : (decimal_4 - Convert.ToDecimal(((Control)(object)txtPercentageOff).Text) * Convert.ToDecimal(0.01) * decimal_4).ToString("0.00"));
+			txtPercentageOff.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtSalePrice.Text = ((txtPercentageOff.Text == "") ? "0" : (decimal_4 - Convert.ToDecimal(txtPercentageOff.Text) * Convert.ToDecimal(0.01) * decimal_4).ToString("0.00"));
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -536,7 +532,7 @@ public class frmSelectDateOnSale : frmMasterForm
 
 	private void chkDateRange_ValueChanged(object sender, EventArgs e)
 	{
-		if (chkDateRange.get_Value())
+		if (chkDateRange.Value)
 		{
 			startDate.Enabled = true;
 			endDate.Enabled = true;
@@ -551,25 +547,25 @@ public class frmSelectDateOnSale : frmMasterForm
 	private void btnShowKeyboard_txtSalePrice_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Sale Price", 4, 12, ((Control)(object)txtSalePrice).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Sale Price", 4, 12, txtSalePrice.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSalePrice).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
-			decimal num = ((((Control)(object)txtSalePrice).Text == "" || decimal_4 <= 0m) ? 0m : ((decimal_4 - Convert.ToDecimal(((Control)(object)txtSalePrice).Text)) / decimal_4 * 100m));
-			((Control)(object)txtPercentageOff).Text = num.ToString("0.00");
+			txtSalePrice.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			decimal num = ((txtSalePrice.Text == "" || decimal_4 <= 0m) ? 0m : ((decimal_4 - Convert.ToDecimal(txtSalePrice.Text)) / decimal_4 * 100m));
+			txtPercentageOff.Text = num.ToString("0.00");
 		}
 		base.DialogResult = DialogResult.None;
 	}
 
 	private void txtPercentageOff_KeyUp(object sender, KeyEventArgs e)
 	{
-		((Control)(object)txtSalePrice).Text = ((((Control)(object)txtPercentageOff).Text == "") ? "0" : (decimal_4 - Convert.ToDecimal(((Control)(object)txtPercentageOff).Text) * Convert.ToDecimal(0.01) * decimal_4).ToString("0.00"));
+		txtSalePrice.Text = ((txtPercentageOff.Text == "") ? "0" : (decimal_4 - Convert.ToDecimal(txtPercentageOff.Text) * Convert.ToDecimal(0.01) * decimal_4).ToString("0.00"));
 	}
 
 	private void txtSalePrice_KeyUp(object sender, KeyEventArgs e)
 	{
-		decimal num = ((((Control)(object)txtSalePrice).Text == "" || decimal_4 <= 0m) ? 0m : ((decimal_4 - Convert.ToDecimal(((Control)(object)txtSalePrice).Text)) / decimal_4 * 100m));
-		((Control)(object)txtPercentageOff).Text = num.ToString("0.00");
+		decimal num = ((txtSalePrice.Text == "" || decimal_4 <= 0m) ? 0m : ((decimal_4 - Convert.ToDecimal(txtSalePrice.Text)) / decimal_4 * 100m));
+		txtPercentageOff.Text = num.ToString("0.00");
 	}
 
 	private void txtPercentageOff_Click(object sender, EventArgs e)
@@ -662,104 +658,6 @@ public class frmSelectDateOnSale : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0033: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003d: Expected O, but got Unknown
-		//IL_0049: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0053: Expected O, but got Unknown
-		//IL_0054: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005e: Expected O, but got Unknown
-		//IL_0259: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0263: Expected O, but got Unknown
-		//IL_026f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0279: Expected O, but got Unknown
-		//IL_027a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0284: Expected O, but got Unknown
-		//IL_0285: Unknown result type (might be due to invalid IL or missing references)
-		//IL_028f: Expected O, but got Unknown
-		//IL_0290: Unknown result type (might be due to invalid IL or missing references)
-		//IL_029a: Expected O, but got Unknown
-		//IL_029b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02a5: Expected O, but got Unknown
-		//IL_02a6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02b0: Expected O, but got Unknown
-		//IL_02b1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02bb: Expected O, but got Unknown
-		//IL_0547: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0568: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0694: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06b5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_072a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0742: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0759: Unknown result type (might be due to invalid IL or missing references)
-		//IL_077a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07a7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07d4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0801: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0828: Unknown result type (might be due to invalid IL or missing references)
-		//IL_18c9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_18e1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_18f8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1919: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1946: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1973: Unknown result type (might be due to invalid IL or missing references)
-		//IL_19a0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_19c7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b12: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b2a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b41: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b62: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b8f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1bbc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1be9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1c10: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1ca0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1cb8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1ccf: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1cf0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1d1d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1d4a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1d77: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1d9e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1e2e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1e46: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1e5d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1e7e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1eab: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1ed8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1f05: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1f2c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1fbc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1fd4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1feb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_200c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2039: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2066: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2093: Unknown result type (might be due to invalid IL or missing references)
-		//IL_20ba: Unknown result type (might be due to invalid IL or missing references)
-		//IL_214a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2162: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2179: Unknown result type (might be due to invalid IL or missing references)
-		//IL_219a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_21c7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_21f4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2221: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2248: Unknown result type (might be due to invalid IL or missing references)
-		//IL_22d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_22f0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2307: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2328: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2355: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2382: Unknown result type (might be due to invalid IL or missing references)
-		//IL_23af: Unknown result type (might be due to invalid IL or missing references)
-		//IL_23d6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2466: Unknown result type (might be due to invalid IL or missing references)
-		//IL_247e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2495: Unknown result type (might be due to invalid IL or missing references)
-		//IL_24b6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_24e3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2510: Unknown result type (might be due to invalid IL or missing references)
-		//IL_253d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2564: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmSelectDateOnSale));
 		lblOriginalPrice = new Label();
 		label23 = new Label();
@@ -855,44 +753,44 @@ public class frmSelectDateOnSale : frmMasterForm
 		btnSave.UseVisualStyleBackColor = false;
 		btnSave.Click += btnSave_Click;
 		componentResourceManager.ApplyResources(txtSalePrice, "txtSalePrice");
-		((Control)(object)txtSalePrice).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtSalePrice).Name = "txtSalePrice";
-		((RadElement)((RadControl)txtSalePrice).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSalePrice).Tag = "product";
-		txtSalePrice.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtSalePrice).Click += txtPercentageOff_Click;
-		((Control)(object)txtSalePrice).KeyPress += txtPercentageOff_KeyPress;
-		((Control)(object)txtSalePrice).KeyUp += txtSalePrice_KeyUp;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSalePrice).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSalePrice).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtSalePrice.ForeColor = Color.FromArgb(40, 40, 40);
+		txtSalePrice.Name = "txtSalePrice";
+		txtSalePrice.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSalePrice.Tag = "product";
+		txtSalePrice.TextAlign = HorizontalAlignment.Center;
+		txtSalePrice.Click += txtPercentageOff_Click;
+		txtSalePrice.KeyPress += txtPercentageOff_KeyPress;
+		txtSalePrice.KeyUp += txtSalePrice_KeyUp;
+		((RadTextBoxControlElement)txtSalePrice.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSalePrice.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		label4.BackColor = Color.FromArgb(150, 166, 166);
 		componentResourceManager.ApplyResources(label4, "label4");
 		label4.ForeColor = Color.White;
 		label4.Name = "label4";
 		componentResourceManager.ApplyResources(txtPercentageOff, "txtPercentageOff");
-		((Control)(object)txtPercentageOff).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPercentageOff).Name = "txtPercentageOff";
-		((RadElement)((RadControl)txtPercentageOff).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtPercentageOff).Tag = "product";
-		txtPercentageOff.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtPercentageOff).Click += txtPercentageOff_Click;
-		((Control)(object)txtPercentageOff).KeyPress += txtPercentageOff_KeyPress;
-		((Control)(object)txtPercentageOff).KeyUp += txtPercentageOff_KeyUp;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPercentageOff).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPercentageOff).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtPercentageOff.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPercentageOff.Name = "txtPercentageOff";
+		txtPercentageOff.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtPercentageOff.Tag = "product";
+		txtPercentageOff.TextAlign = HorizontalAlignment.Center;
+		txtPercentageOff.Click += txtPercentageOff_Click;
+		txtPercentageOff.KeyPress += txtPercentageOff_KeyPress;
+		txtPercentageOff.KeyUp += txtPercentageOff_KeyUp;
+		((RadTextBoxControlElement)txtPercentageOff.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPercentageOff.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		componentResourceManager.ApplyResources(chkDateRange, "chkDateRange");
-		((Control)(object)chkDateRange).Name = "chkDateRange";
-		chkDateRange.set_ToggleStateMode((ToggleStateMode)1);
-		chkDateRange.set_Value(false);
-		chkDateRange.add_ValueChanged((EventHandler)chkDateRange_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkDateRange).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkDateRange).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkDateRange).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkDateRange.Name = "chkDateRange";
+		chkDateRange.ToggleStateMode = ToggleStateMode.Click;
+		chkDateRange.Value = false;
+		chkDateRange.ValueChanged += chkDateRange_ValueChanged;
+		((RadToggleSwitchElement)chkDateRange.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkDateRange.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkDateRange.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		btnShowKeyboard_txtSalePrice.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_txtSalePrice.DialogResult = DialogResult.OK;
 		btnShowKeyboard_txtSalePrice.FlatAppearance.BorderColor = Color.Black;
@@ -1129,131 +1027,131 @@ public class frmSelectDateOnSale : frmMasterForm
 		label19.ForeColor = Color.White;
 		label19.Name = "label19";
 		componentResourceManager.ApplyResources(chkDaySale, "chkDaySale");
-		((Control)(object)chkDaySale).Name = "chkDaySale";
-		chkDaySale.set_ToggleStateMode((ToggleStateMode)1);
-		chkDaySale.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkDaySale).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkDaySale).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkDaySale).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text1"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		panel1.Controls.Add((Control)(object)chkSun);
-		panel1.Controls.Add((Control)(object)chkWed);
-		panel1.Controls.Add((Control)(object)chkTue);
-		panel1.Controls.Add((Control)(object)chkMon);
-		panel1.Controls.Add((Control)(object)chkThu);
-		panel1.Controls.Add((Control)(object)chkFri);
-		panel1.Controls.Add((Control)(object)chkSat);
+		chkDaySale.Name = "chkDaySale";
+		chkDaySale.ToggleStateMode = ToggleStateMode.Click;
+		chkDaySale.Value = false;
+		((RadToggleSwitchElement)chkDaySale.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkDaySale.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkDaySale.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text1");
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		panel1.Controls.Add(chkSun);
+		panel1.Controls.Add(chkWed);
+		panel1.Controls.Add(chkTue);
+		panel1.Controls.Add(chkMon);
+		panel1.Controls.Add(chkThu);
+		panel1.Controls.Add(chkFri);
+		panel1.Controls.Add(chkSat);
 		componentResourceManager.ApplyResources(panel1, "panel1");
 		panel1.Name = "panel1";
 		componentResourceManager.ApplyResources(chkSun, "chkSun");
-		((Control)(object)chkSun).Name = "chkSun";
-		chkSun.set_OffText("SUNDAY OFF");
-		chkSun.set_OnText("SUNDAY ON");
-		((Control)(object)chkSun).Tag = "SundaySale";
-		chkSun.set_ToggleStateMode((ToggleStateMode)1);
-		chkSun.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkSun).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkSun).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkSun).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text2"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkSun.Name = "chkSun";
+		chkSun.OffText = "SUNDAY OFF";
+		chkSun.OnText = "SUNDAY ON";
+		chkSun.Tag = "SundaySale";
+		chkSun.ToggleStateMode = ToggleStateMode.Click;
+		chkSun.Value = false;
+		((RadToggleSwitchElement)chkSun.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkSun.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkSun.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text2");
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(chkWed, "chkWed");
-		((Control)(object)chkWed).Name = "chkWed";
-		chkWed.set_OffText("WEDNESDAY OFF");
-		chkWed.set_OnText("WEDNESDAY ON");
-		((Control)(object)chkWed).Tag = "WednesdaySale";
-		chkWed.set_ToggleStateMode((ToggleStateMode)1);
-		chkWed.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkWed).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkWed).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkWed).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text3"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkWed.Name = "chkWed";
+		chkWed.OffText = "WEDNESDAY OFF";
+		chkWed.OnText = "WEDNESDAY ON";
+		chkWed.Tag = "WednesdaySale";
+		chkWed.ToggleStateMode = ToggleStateMode.Click;
+		chkWed.Value = false;
+		((RadToggleSwitchElement)chkWed.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkWed.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkWed.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text3");
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(chkTue, "chkTue");
-		((Control)(object)chkTue).Name = "chkTue";
-		chkTue.set_OffText("TUESDAY OFF");
-		chkTue.set_OnText("TUESDAY ON");
-		((Control)(object)chkTue).Tag = "TuesdaySale";
-		chkTue.set_ToggleStateMode((ToggleStateMode)1);
-		chkTue.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkTue).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkTue).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkTue).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text4"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkTue.Name = "chkTue";
+		chkTue.OffText = "TUESDAY OFF";
+		chkTue.OnText = "TUESDAY ON";
+		chkTue.Tag = "TuesdaySale";
+		chkTue.ToggleStateMode = ToggleStateMode.Click;
+		chkTue.Value = false;
+		((RadToggleSwitchElement)chkTue.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkTue.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkTue.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text4");
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(chkMon, "chkMon");
-		((Control)(object)chkMon).Name = "chkMon";
-		chkMon.set_OffText("MONDAY OFF");
-		chkMon.set_OnText("MONDAY ON");
-		((Control)(object)chkMon).Tag = "MondaySale";
-		chkMon.set_ToggleStateMode((ToggleStateMode)1);
-		chkMon.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkMon).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkMon).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkMon).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text5"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkMon.Name = "chkMon";
+		chkMon.OffText = "MONDAY OFF";
+		chkMon.OnText = "MONDAY ON";
+		chkMon.Tag = "MondaySale";
+		chkMon.ToggleStateMode = ToggleStateMode.Click;
+		chkMon.Value = false;
+		((RadToggleSwitchElement)chkMon.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkMon.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkMon.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text5");
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(chkThu, "chkThu");
-		((Control)(object)chkThu).Name = "chkThu";
-		chkThu.set_OffText("THURSDAY OFF");
-		chkThu.set_OnText("THURSDAY ON");
-		((Control)(object)chkThu).Tag = "ThursdaySale";
-		chkThu.set_ToggleStateMode((ToggleStateMode)1);
-		chkThu.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkThu).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkThu).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkThu).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text6"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkThu.Name = "chkThu";
+		chkThu.OffText = "THURSDAY OFF";
+		chkThu.OnText = "THURSDAY ON";
+		chkThu.Tag = "ThursdaySale";
+		chkThu.ToggleStateMode = ToggleStateMode.Click;
+		chkThu.Value = false;
+		((RadToggleSwitchElement)chkThu.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkThu.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkThu.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text6");
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(chkFri, "chkFri");
-		((Control)(object)chkFri).Name = "chkFri";
-		chkFri.set_OffText("FRIDAY OFF");
-		chkFri.set_OnText("FRIDAY ON");
-		((Control)(object)chkFri).Tag = "FridaySale";
-		chkFri.set_ToggleStateMode((ToggleStateMode)1);
-		chkFri.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkFri).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkFri).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkFri).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text7"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkFri.Name = "chkFri";
+		chkFri.OffText = "FRIDAY OFF";
+		chkFri.OnText = "FRIDAY ON";
+		chkFri.Tag = "FridaySale";
+		chkFri.ToggleStateMode = ToggleStateMode.Click;
+		chkFri.Value = false;
+		((RadToggleSwitchElement)chkFri.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkFri.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkFri.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text7");
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(chkSat, "chkSat");
-		((Control)(object)chkSat).Name = "chkSat";
-		chkSat.set_OffText("SATURDAY OFF");
-		chkSat.set_OnText("SATURDAY ON");
-		((Control)(object)chkSat).Tag = "SaturdaySale";
-		chkSat.set_ToggleStateMode((ToggleStateMode)1);
-		chkSat.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkSat).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkSat).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkSat).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text8"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkSat.Name = "chkSat";
+		chkSat.OffText = "SATURDAY OFF";
+		chkSat.OnText = "SATURDAY ON";
+		chkSat.Tag = "SaturdaySale";
+		chkSat.ToggleStateMode = ToggleStateMode.Click;
+		chkSat.Value = false;
+		((RadToggleSwitchElement)chkSat.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkSat.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkSat.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text8");
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label8.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label8, "label8");
 		label8.ForeColor = Color.White;
@@ -1307,16 +1205,16 @@ public class frmSelectDateOnSale : frmMasterForm
 		base.Controls.Add(label11);
 		base.Controls.Add(label10);
 		base.Controls.Add(label19);
-		base.Controls.Add((Control)(object)chkDaySale);
+		base.Controls.Add(chkDaySale);
 		base.Controls.Add(panel1);
 		base.Controls.Add(label8);
 		base.Controls.Add(lblOriginalPrice);
 		base.Controls.Add(label23);
 		base.Controls.Add(btnSave);
-		base.Controls.Add((Control)(object)txtSalePrice);
+		base.Controls.Add(txtSalePrice);
 		base.Controls.Add(label4);
-		base.Controls.Add((Control)(object)txtPercentageOff);
-		base.Controls.Add((Control)(object)chkDateRange);
+		base.Controls.Add(txtPercentageOff);
+		base.Controls.Add(chkDateRange);
 		base.Controls.Add(btnShowKeyboard_txtSalePrice);
 		base.Controls.Add(label17);
 		base.Controls.Add(btnShowKeyboard_PercentageOff);

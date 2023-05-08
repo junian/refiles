@@ -1,5 +1,4 @@
 using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
@@ -48,51 +47,49 @@ public class frmPromotionList : frmMasterForm
 
 	private void KmuFiaswMpU()
 	{
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListPromotions).get_Columns())[0].set_Width((float)(lblCol1.Width + 1));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListPromotions).get_Columns())[1].set_Width((float)(lblCol2.Width + 1));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListPromotions).get_Columns())[2].set_Width((float)(lblCol3.Width - 20));
+		radListPromotions.Columns[0].Width = lblCol1.Width + 1;
+		radListPromotions.Columns[1].Width = lblCol2.Width + 1;
+		radListPromotions.Columns[2].Width = lblCol3.Width - 20;
 	}
 
 	private void method_3()
 	{
-		//IL_0145: Unknown result type (might be due to invalid IL or missing references)
-		//IL_014c: Expected O, but got Unknown
-		((RadListView)radListPromotions).get_Items().Clear();
-		foreach (Promotion item in (from a in new GClass6().Promotions
+		radListPromotions.Items.Clear();
+		foreach (Promotion item2 in (from a in new GClass6().Promotions
 			where a.IsDeleted == false && a.GetDiscountUOM != "@"
 			orderby a.DateCreated descending
 			select a).ToList())
 		{
-			string[] array = new string[4]
+			string[] values = new string[4]
 			{
-				item.PromoName,
-				item.PromoCode,
-				item.Active ? "ACTIVE" : "INACTIVE",
-				item.PromoId.ToString()
+				item2.PromoName,
+				item2.PromoCode,
+				item2.Active ? "ACTIVE" : "INACTIVE",
+				item2.PromoId.ToString()
 			};
-			ListViewDataItem val = new ListViewDataItem("", array);
-			((RadListView)radListPromotions).get_Items().Add(val);
+			ListViewDataItem item = new ListViewDataItem("", values);
+			radListPromotions.Items.Add(item);
 		}
-		if (((RadListView)radListPromotions).get_Items().get_Count() > 0)
+		if (radListPromotions.Items.Count > 0)
 		{
-			((RadListView)radListPromotions).set_SelectedIndex(int_0);
+			radListPromotions.SelectedIndex = int_0;
 		}
 	}
 
 	private void btnChangeStatus_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListPromotions).get_SelectedItems()).Count > 0)
+		if (radListPromotions.SelectedItems.Count > 0)
 		{
 			_003C_003Ec__DisplayClass5_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass5_0();
 			GClass6 gClass = new GClass6();
-			CS_0024_003C_003E8__locals0.promoId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListPromotions).get_SelectedItems())[0].get_SubItems().get_Item(3).ToString());
+			CS_0024_003C_003E8__locals0.promoId = Convert.ToInt32(radListPromotions.SelectedItems[0].SubItems[3].ToString());
 			Promotion promotion = gClass.Promotions.Where((Promotion a) => a.PromoId == CS_0024_003C_003E8__locals0.promoId).FirstOrDefault();
 			if (promotion != null)
 			{
 				promotion.Active = !promotion.Active;
 				promotion.Synced = false;
 				gClass.SubmitChanges();
-				int_0 = ((RadListView)radListPromotions).get_SelectedIndex();
+				int_0 = radListPromotions.SelectedIndex;
 				method_3();
 				MemoryLoadedObjects.RefreshPromotions();
 			}
@@ -101,11 +98,11 @@ public class frmPromotionList : frmMasterForm
 
 	private void btnDelete_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListPromotions).get_SelectedItems()).Count > 0)
+		if (radListPromotions.SelectedItems.Count > 0)
 		{
 			_003C_003Ec__DisplayClass6_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass6_0();
 			GClass6 gClass = new GClass6();
-			CS_0024_003C_003E8__locals0.promoId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListPromotions).get_SelectedItems())[0].get_SubItems().get_Item(3).ToString());
+			CS_0024_003C_003E8__locals0.promoId = Convert.ToInt32(radListPromotions.SelectedItems[0].SubItems[3].ToString());
 			Promotion promotion = gClass.Promotions.Where((Promotion a) => a.PromoId == CS_0024_003C_003E8__locals0.promoId).FirstOrDefault();
 			if (promotion != null)
 			{
@@ -120,10 +117,10 @@ public class frmPromotionList : frmMasterForm
 
 	private void btnEdit_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListPromotions).get_SelectedItems()).Count > 0)
+		if (radListPromotions.SelectedItems.Count > 0)
 		{
 			new GClass6();
-			new frmAddEditPromotions(Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListPromotions).get_SelectedItems())[0].get_SubItems().get_Item(3).ToString())).ShowDialog();
+			new frmAddEditPromotions(Convert.ToInt32(radListPromotions.SelectedItems[0].SubItems[3].ToString())).ShowDialog();
 			method_3();
 		}
 	}
@@ -149,18 +146,10 @@ public class frmPromotionList : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_000a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0010: Expected O, but got Unknown
-		//IL_001a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0020: Expected O, but got Unknown
-		//IL_002a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0030: Expected O, but got Unknown
-		//IL_0035: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003b: Expected O, but got Unknown
-		ListViewDetailColumn val = new ListViewDetailColumn("Column 0", "Column 0");
-		ListViewDetailColumn val2 = new ListViewDetailColumn("Column 1", "Column 1");
-		ListViewDetailColumn val3 = new ListViewDetailColumn("Column 2", "Column 2");
-		ListViewDataItem val4 = new ListViewDataItem("ListViewItem 1");
+		ListViewDetailColumn listViewDetailColumn = new ListViewDetailColumn("Column 0", "Column 0");
+		ListViewDetailColumn listViewDetailColumn2 = new ListViewDetailColumn("Column 1", "Column 1");
+		ListViewDetailColumn listViewDetailColumn3 = new ListViewDetailColumn("Column 2", "Column 2");
+		ListViewDataItem listViewDataItem = new ListViewDataItem("ListViewItem 1");
 		label10 = new Label();
 		lblCol2 = new Label();
 		lblCol3 = new Label();
@@ -219,27 +208,27 @@ public class frmPromotionList : frmMasterForm
 		lblCol1.TabIndex = 228;
 		lblCol1.Text = "Promotion Name";
 		lblCol1.TextAlign = ContentAlignment.MiddleCenter;
-		((RadListView)radListPromotions).set_AllowArbitraryItemHeight(true);
-		((RadListView)radListPromotions).set_AllowEdit(false);
-		((RadListView)radListPromotions).set_AllowRemove(false);
-		val.set_HeaderText("Column 0");
-		val2.set_HeaderText("Column 1");
-		val3.set_HeaderText("Column 2");
-		((RadListView)radListPromotions).get_Columns().AddRange((ListViewDetailColumn[])(object)new ListViewDetailColumn[3] { val, val2, val3 });
-		((RadListView)radListPromotions).set_EnableKineticScrolling(true);
-		((Control)(object)radListPromotions).Font = new Font("Microsoft Sans Serif", 13.5f, FontStyle.Bold);
-		val4.set_Text("ListViewItem 1");
-		((RadListView)radListPromotions).get_Items().AddRange((ListViewDataItem[])(object)new ListViewDataItem[1] { val4 });
-		((RadListView)radListPromotions).set_ItemSpacing(-1);
-		((Control)(object)radListPromotions).Location = new Point(1, 70);
-		((Control)(object)radListPromotions).Name = "radListPromotions";
-		((RadListView)radListPromotions).set_ShowColumnHeaders(false);
-		((RadListView)radListPromotions).set_ShowGridLines(true);
-		((Control)(object)radListPromotions).Size = new Size(723, 433);
-		((Control)(object)radListPromotions).TabIndex = 227;
-		((Control)(object)radListPromotions).Text = "radListView1";
-		((RadListView)radListPromotions).set_ViewType((ListViewType)2);
-		((RadListView)radListPromotions).add_SelectedItemChanged((EventHandler)radListPromotions_SelectedItemChanged);
+		radListPromotions.AllowArbitraryItemHeight = true;
+		radListPromotions.AllowEdit = false;
+		radListPromotions.AllowRemove = false;
+		listViewDetailColumn.HeaderText = "Column 0";
+		listViewDetailColumn2.HeaderText = "Column 1";
+		listViewDetailColumn3.HeaderText = "Column 2";
+		radListPromotions.Columns.AddRange(listViewDetailColumn, listViewDetailColumn2, listViewDetailColumn3);
+		radListPromotions.EnableKineticScrolling = true;
+		radListPromotions.Font = new Font("Microsoft Sans Serif", 13.5f, FontStyle.Bold);
+		listViewDataItem.Text = "ListViewItem 1";
+		radListPromotions.Items.AddRange(listViewDataItem);
+		radListPromotions.ItemSpacing = -1;
+		radListPromotions.Location = new Point(1, 70);
+		radListPromotions.Name = "radListPromotions";
+		radListPromotions.ShowColumnHeaders = false;
+		radListPromotions.ShowGridLines = true;
+		radListPromotions.Size = new Size(723, 433);
+		radListPromotions.TabIndex = 227;
+		radListPromotions.Text = "radListView1";
+		radListPromotions.ViewType = ListViewType.DetailsView;
+		radListPromotions.SelectedItemChanged += radListPromotions_SelectedItemChanged;
 		btnChangeStatus.BackColor = Color.FromArgb(214, 142, 81);
 		btnChangeStatus.FlatAppearance.BorderColor = Color.Black;
 		btnChangeStatus.FlatAppearance.BorderSize = 0;
@@ -310,7 +299,7 @@ public class frmPromotionList : frmMasterForm
 		base.Controls.Add(lblCol2);
 		base.Controls.Add(lblCol3);
 		base.Controls.Add(lblCol1);
-		base.Controls.Add((Control)(object)radListPromotions);
+		base.Controls.Add(radListPromotions);
 		base.Controls.Add(label10);
 		base.Name = "frmPromotionList";
 		base.Opacity = 1.0;

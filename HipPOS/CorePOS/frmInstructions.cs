@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
@@ -73,15 +72,15 @@ public class frmInstructions : frmMasterForm
 		int_1 = 0;
 		if (sender is frmOrderEntry)
 		{
-			radListView_0 = (RadListView)(object)((frmOrderEntry)sender).radListItems;
+			radListView_0 = ((frmOrderEntry)sender).radListItems;
 		}
 		else
 		{
-			radListView_0 = (RadListView)(object)((frmPatron)sender).radListItems;
+			radListView_0 = ((frmPatron)sender).radListItems;
 		}
 		int num = 0;
 		int num2 = 0;
-		int itemId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(4).ToString());
+		int itemId = Convert.ToInt32(radListView_0.SelectedItems[0].SubItems[4].ToString());
 		List<SpecialInstruction> source = instructionsMethods_0.SpecialInstructionsListItemAtStation(itemId);
 		font_0 = new Font("Arial", 9f, FontStyle.Regular);
 		foreach (SpecialInstruction item in source.OrderBy((SpecialInstruction a) => a.SortOrder))
@@ -94,11 +93,10 @@ public class frmInstructions : frmMasterForm
 			}
 			num++;
 		}
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Count() >= 8)
+		if (radListView_0.SelectedItems[0].SubItems.Count >= 8)
 		{
-			txtCurrentInstructions.Text = ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(7).ToString();
-			string_0 = ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(7).ToString()
-				.Split(Convert.ToChar(","));
+			txtCurrentInstructions.Text = radListView_0.SelectedItems[0].SubItems[7].ToString();
+			string_0 = radListView_0.SelectedItems[0].SubItems[7].ToString().Split(Convert.ToChar(","));
 		}
 		short num3 = 0;
 		while (num3 <= string_0.Length - 1 && !string.IsNullOrEmpty(string_0[num3]))
@@ -117,7 +115,7 @@ public class frmInstructions : frmMasterForm
 		InstructionsPanel.VerticalScroll.Visible = false;
 		InstructionsPanel.AutoScroll = true;
 		method_4();
-		method_10(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0]);
+		method_10(radListView_0.SelectedItems[0]);
 	}
 
 	private void method_3(string string_1, int int_2, int int_3, short short_1, string string_2)
@@ -154,11 +152,11 @@ public class frmInstructions : frmMasterForm
 	private void method_4()
 	{
 		_003C_003Ec__DisplayClass11_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass11_0();
-		int num = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(14).ToString());
-		CS_0024_003C_003E8__locals0.itemComboId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(5).ToString());
-		Convert.ToDecimal(string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_Item(3).ToString()) ? "0.00" : ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_Item(3).ToString());
-		ListViewDataItem val = ((IEnumerable<ListViewDataItem>)radListView_0.get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals0.itemComboId.ToString()).FirstOrDefault();
-		if ((num == 0 && !string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(6).ToString())) || (CS_0024_003C_003E8__locals0.itemComboId > 0 && val != ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0]))
+		int num = Convert.ToInt32(radListView_0.SelectedItems[0].SubItems[14].ToString());
+		CS_0024_003C_003E8__locals0.itemComboId = Convert.ToInt32(radListView_0.SelectedItems[0].SubItems[5].ToString());
+		Convert.ToDecimal(string.IsNullOrEmpty(radListView_0.SelectedItems[0][3].ToString()) ? "0.00" : radListView_0.SelectedItems[0][3].ToString());
+		ListViewDataItem listViewDataItem = radListView_0.Items.Where((ListViewDataItem a) => a.SubItems[5].ToString() == CS_0024_003C_003E8__locals0.itemComboId.ToString()).FirstOrDefault();
+		if ((num == 0 && !string.IsNullOrEmpty(radListView_0.SelectedItems[0].SubItems[6].ToString())) || (CS_0024_003C_003E8__locals0.itemComboId > 0 && listViewDataItem != radListView_0.SelectedItems[0]))
 		{
 			btnItemOnHold.Visible = false;
 		}
@@ -193,15 +191,15 @@ public class frmInstructions : frmMasterForm
 	private void method_6(string string_1)
 	{
 		int_1++;
-		((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().set_Item(7, (object)((!string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(7).ToString())) ? (((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(7).ToString() + ", " + string_1) : string_1));
-		txtCurrentInstructions.Text = ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(7).ToString();
+		radListView_0.SelectedItems[0].SubItems[7] = ((!string.IsNullOrEmpty(radListView_0.SelectedItems[0].SubItems[7].ToString())) ? (radListView_0.SelectedItems[0].SubItems[7].ToString() + ", " + string_1) : string_1);
+		txtCurrentInstructions.Text = radListView_0.SelectedItems[0].SubItems[7].ToString();
 		method_8();
 	}
 
 	private void method_7(string string_1)
 	{
 		int_1--;
-		string obj = ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(7).ToString();
+		string obj = radListView_0.SelectedItems[0].SubItems[7].ToString();
 		List<string> list = new List<string>();
 		string[] array = obj.Split(',');
 		foreach (string text in array)
@@ -211,8 +209,8 @@ public class frmInstructions : frmMasterForm
 				list.Add(text);
 			}
 		}
-		((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().set_Item(7, (object)string.Join(",", list));
-		txtCurrentInstructions.Text = ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(7).ToString();
+		radListView_0.SelectedItems[0].SubItems[7] = string.Join(",", list);
+		txtCurrentInstructions.Text = radListView_0.SelectedItems[0].SubItems[7].ToString();
 		method_8();
 	}
 
@@ -220,10 +218,10 @@ public class frmInstructions : frmMasterForm
 	{
 		if (SettingsHelper.GetSettingValueByKey("show_instruction_oe") == "ON")
 		{
-			string text = ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_Item(1).ToString();
+			string text = radListView_0.SelectedItems[0][1].ToString();
 			string text2 = (text.Contains(" => INSTR: ") ? text.Substring(text.IndexOf(" => INSTR: ")) : "");
-			string text3 = ((!string.IsNullOrEmpty(text2)) ? ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_Item(1).ToString().Replace(text2, "") : text);
-			((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].set_Item(1, (object)((!string.IsNullOrEmpty(txtCurrentInstructions.Text)) ? (text3 + " => INSTR: " + txtCurrentInstructions.Text) : text3));
+			string text3 = ((!string.IsNullOrEmpty(text2)) ? radListView_0.SelectedItems[0][1].ToString().Replace(text2, "") : text);
+			radListView_0.SelectedItems[0][1] = ((!string.IsNullOrEmpty(txtCurrentInstructions.Text)) ? (text3 + " => INSTR: " + txtCurrentInstructions.Text) : text3);
 			MemoryLoadedObjects.OrderEntry.CloneListviewToSecondScreen();
 		}
 	}
@@ -245,8 +243,7 @@ public class frmInstructions : frmMasterForm
 
 	private void btnClear_Click(object sender, EventArgs e)
 	{
-		string_0 = ((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(7).ToString()
-			.Split(Convert.ToChar(","));
+		string_0 = radListView_0.SelectedItems[0].SubItems[7].ToString().Split(Convert.ToChar(","));
 		short num = 0;
 		while (num <= string_0.Length - 1)
 		{
@@ -267,7 +264,7 @@ public class frmInstructions : frmMasterForm
 			new frmMessageBox(Resources.There_are_no_instruction_s_to_).ShowDialog(this);
 			return;
 		}
-		((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().set_Item(7, (object)"");
+		radListView_0.SelectedItems[0].SubItems[7] = "";
 		txtCurrentInstructions.Text = "";
 		int_1 = 0;
 		method_8();
@@ -285,8 +282,8 @@ public class frmInstructions : frmMasterForm
 
 	private void btnItemOnHold_Click(object sender, EventArgs e)
 	{
-		int num = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(14).ToString());
-		if (num == 0 && !string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(6).ToString()))
+		int num = Convert.ToInt32(radListView_0.SelectedItems[0].SubItems[14].ToString());
+		if (num == 0 && !string.IsNullOrEmpty(radListView_0.SelectedItems[0].SubItems[6].ToString()))
 		{
 			new NotificationLabel(this, "Item cannot be on hold. Item is already sent to kitchen.", NotificationTypes.Warning).Show();
 			return;
@@ -298,33 +295,33 @@ public class frmInstructions : frmMasterForm
 			return;
 		}
 		_003C_003Ec__DisplayClass19_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass19_0();
-		CS_0024_003C_003E8__locals0.itemComboId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().get_Item(5).ToString());
+		CS_0024_003C_003E8__locals0.itemComboId = Convert.ToInt32(radListView_0.SelectedItems[0].SubItems[5].ToString());
 		if (CS_0024_003C_003E8__locals0.itemComboId > 0)
 		{
-			foreach (ListViewDataItem item in ((IEnumerable<ListViewDataItem>)radListView_0.get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals0.itemComboId.ToString()))
+			foreach (ListViewDataItem item in radListView_0.Items.Where((ListViewDataItem a) => a.SubItems[5].ToString() == CS_0024_003C_003E8__locals0.itemComboId.ToString()))
 			{
-				item.get_SubItems().set_Item(14, (object)MemoryLoadedObjects.Numpad.numberEntered.ToString());
+				item.SubItems[14] = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 				method_10(item);
 			}
 			return;
 		}
-		((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0].get_SubItems().set_Item(14, (object)MemoryLoadedObjects.Numpad.numberEntered.ToString());
-		method_10(((ReadOnlyCollection<ListViewDataItem>)(object)radListView_0.get_SelectedItems())[0]);
+		radListView_0.SelectedItems[0].SubItems[14] = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+		method_10(radListView_0.SelectedItems[0]);
 	}
 
 	private void method_10(ListViewDataItem listViewDataItem_0)
 	{
-		if (Convert.ToInt32(listViewDataItem_0.get_SubItems().get_Item(14).ToString()) != 0)
+		if (Convert.ToInt32(listViewDataItem_0.SubItems[14].ToString()) != 0)
 		{
 			btnItemOnHold.BackColor = Color.FromArgb(80, 203, 116);
-			listViewDataItem_0.set_BackColor(Color.FromArgb(50, 119, 155));
-			listViewDataItem_0.set_ForeColor(Color.LightGray);
+			listViewDataItem_0.BackColor = Color.FromArgb(50, 119, 155);
+			listViewDataItem_0.ForeColor = Color.LightGray;
 		}
 		else
 		{
 			btnItemOnHold.BackColor = Color.FromArgb(42, 102, 134);
-			listViewDataItem_0.set_BackColor(Color.White);
-			listViewDataItem_0.set_ForeColor(Color.Black);
+			listViewDataItem_0.BackColor = Color.White;
+			listViewDataItem_0.ForeColor = Color.Black;
 		}
 	}
 

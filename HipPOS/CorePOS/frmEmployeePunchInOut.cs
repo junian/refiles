@@ -100,10 +100,10 @@ public class frmEmployeePunchInOut : frmMasterForm
 			{
 				dictionary.Add(item.EmployeeID.ToString(), item.FirstName + " " + item.LastName);
 			}
-			((RadDropDownList)ddlEmployee).set_DisplayMember("Value");
-			((RadDropDownList)ddlEmployee).set_ValueMember("Key");
-			((RadDropDownList)ddlEmployee).set_DataSource((object)new BindingSource(dictionary, null));
-			((RadDropDownList)ddlEmployee).set_SelectedValue((object)employee.EmployeeID.ToString());
+			ddlEmployee.DisplayMember = "Value";
+			ddlEmployee.ValueMember = "Key";
+			ddlEmployee.DataSource = new BindingSource(dictionary, null);
+			ddlEmployee.SelectedValue = employee.EmployeeID.ToString();
 			label1.Text = "Employee";
 			lblEmployeeName.Visible = false;
 		}
@@ -118,8 +118,6 @@ public class frmEmployeePunchInOut : frmMasterForm
 
 	private void method_3()
 	{
-		//IL_062c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0633: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass6_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass6_0();
 		CS_0024_003C_003E8__locals0._003C_003E4__this = this;
 		CS_0024_003C_003E8__locals0.monthSelected = ((ddlMonth.SelectedIndex == 0) ? DateTime.Now.Date.Month : DateTime.Now.Date.AddMonths(-1).Month);
@@ -137,7 +135,7 @@ public class frmEmployeePunchInOut : frmMasterForm
 				orderby Convert.ToDateTime(a.Timestamp)
 				select a).Take(20).ToList().LastOrDefault();
 		}
-		((RadListView)radListPunch).get_Items().Clear();
+		radListPunch.Items.Clear();
 		string_1 = "hippos-clockin";
 		if (jQmugvadnv != null)
 		{
@@ -197,10 +195,10 @@ public class frmEmployeePunchInOut : frmMasterForm
 			{
 				text = "END BREAK";
 			}
-			string[] array = new string[2] { item.Timestamp, text };
-			ListViewDataItem val = new ListViewDataItem("", array);
-			val.set_BackColor(Color.White);
-			((RadListView)radListPunch).get_Items().Add(val);
+			string[] values = new string[2] { item.Timestamp, text };
+			ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
+			listViewDataItem.BackColor = Color.White;
+			radListPunch.Items.Add(listViewDataItem);
 		}
 	}
 
@@ -369,10 +367,10 @@ public class frmEmployeePunchInOut : frmMasterForm
 
 	private void ddlEmployee_SelectedIndexChanged(object sender, PositionChangedEventArgs e)
 	{
-		if ((int_0 == RoleIDs.manager || int_0 == RoleIDs.admin) && ((RadDropDownList)ddlEmployee).get_Items().get_Count() > 0)
+		if ((int_0 == RoleIDs.manager || int_0 == RoleIDs.admin) && ddlEmployee.Items.Count > 0)
 		{
 			GClass6 gClass = new GClass6();
-			employee_0 = gClass.Employees.Where((Employee a) => a.EmployeeID.ToString() == ((RadDropDownList)ddlEmployee).get_SelectedValue().ToString()).FirstOrDefault();
+			employee_0 = gClass.Employees.Where((Employee a) => a.EmployeeID.ToString() == ddlEmployee.SelectedValue.ToString()).FirstOrDefault();
 			method_3();
 		}
 	}
@@ -484,18 +482,10 @@ public class frmEmployeePunchInOut : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0015: Unknown result type (might be due to invalid IL or missing references)
-		//IL_001b: Expected O, but got Unknown
-		//IL_0025: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002b: Expected O, but got Unknown
-		//IL_0030: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0036: Expected O, but got Unknown
-		//IL_090e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0918: Expected O, but got Unknown
 		tbEudxUjfv = new Container();
-		ListViewDetailColumn val = new ListViewDetailColumn("Column 0", "Column 0");
-		ListViewDetailColumn val2 = new ListViewDetailColumn("Column 1", "Column 1");
-		ListViewDataItem val3 = new ListViewDataItem("ListViewItem 1");
+		ListViewDetailColumn listViewDetailColumn = new ListViewDetailColumn("Column 0", "Column 0");
+		ListViewDetailColumn listViewDetailColumn2 = new ListViewDetailColumn("Column 1", "Column 1");
+		ListViewDataItem listViewDataItem = new ListViewDataItem("ListViewItem 1");
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmEmployeePunchInOut));
 		lblWIndowTitle = new Label();
 		radListPunch = new CustomListViewTelerik();
@@ -524,28 +514,28 @@ public class frmEmployeePunchInOut : frmMasterForm
 		lblWIndowTitle.TabIndex = 160;
 		lblWIndowTitle.Text = "Employee Punch In/Out";
 		lblWIndowTitle.TextAlign = ContentAlignment.MiddleCenter;
-		((RadListView)radListPunch).set_AllowArbitraryItemHeight(true);
-		((RadListView)radListPunch).set_AllowEdit(false);
-		((RadListView)radListPunch).set_AllowRemove(false);
-		((Control)(object)radListPunch).Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-		val.set_HeaderText("Column 0");
-		val2.set_HeaderText("Column 1");
-		val2.set_Width(150f);
-		((RadListView)radListPunch).get_Columns().AddRange((ListViewDetailColumn[])(object)new ListViewDetailColumn[2] { val, val2 });
-		((RadListView)radListPunch).set_EnableKineticScrolling(true);
-		((Control)(object)radListPunch).Font = new Font("Microsoft Sans Serif", 8f, FontStyle.Bold);
-		val3.set_Text("ListViewItem 1");
-		((RadListView)radListPunch).get_Items().AddRange((ListViewDataItem[])(object)new ListViewDataItem[1] { val3 });
-		((RadListView)radListPunch).set_ItemSize(new Size(200, 12));
-		((RadListView)radListPunch).set_ItemSpacing(-1);
-		((Control)(object)radListPunch).Location = new Point(5, 72);
-		((Control)(object)radListPunch).Name = "radListPunch";
-		((RadListView)radListPunch).set_ShowColumnHeaders(false);
-		((RadListView)radListPunch).set_ShowGridLines(true);
-		((Control)(object)radListPunch).Size = new Size(485, 373);
-		((Control)(object)radListPunch).TabIndex = 161;
-		((Control)(object)radListPunch).Text = "radListView1";
-		((RadListView)radListPunch).set_ViewType((ListViewType)2);
+		radListPunch.AllowArbitraryItemHeight = true;
+		radListPunch.AllowEdit = false;
+		radListPunch.AllowRemove = false;
+		radListPunch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+		listViewDetailColumn.HeaderText = "Column 0";
+		listViewDetailColumn2.HeaderText = "Column 1";
+		listViewDetailColumn2.Width = 150f;
+		radListPunch.Columns.AddRange(listViewDetailColumn, listViewDetailColumn2);
+		radListPunch.EnableKineticScrolling = true;
+		radListPunch.Font = new Font("Microsoft Sans Serif", 8f, FontStyle.Bold);
+		listViewDataItem.Text = "ListViewItem 1";
+		radListPunch.Items.AddRange(listViewDataItem);
+		radListPunch.ItemSize = new Size(200, 12);
+		radListPunch.ItemSpacing = -1;
+		radListPunch.Location = new Point(5, 72);
+		radListPunch.Name = "radListPunch";
+		radListPunch.ShowColumnHeaders = false;
+		radListPunch.ShowGridLines = true;
+		radListPunch.Size = new Size(485, 373);
+		radListPunch.TabIndex = 161;
+		radListPunch.Text = "radListView1";
+		radListPunch.ViewType = ListViewType.DetailsView;
 		btnTimeIn.BackColor = Color.FromArgb(53, 152, 220);
 		btnTimeIn.FlatAppearance.BorderColor = Color.White;
 		btnTimeIn.FlatAppearance.BorderSize = 0;
@@ -616,20 +606,20 @@ public class frmEmployeePunchInOut : frmMasterForm
 		label1.TabIndex = 241;
 		label1.Text = "Employee";
 		label1.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)ddlEmployee).AutoSize = false;
-		((Control)(object)ddlEmployee).BackColor = Color.White;
-		((RadDropDownList)ddlEmployee).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlEmployee).set_EnableKineticScrolling(true);
-		((Control)(object)ddlEmployee).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)ddlEmployee).Location = new Point(280, 42);
-		((Control)(object)ddlEmployee).Margin = new Padding(4, 5, 4, 5);
-		((Control)(object)ddlEmployee).MinimumSize = new Size(200, 0);
-		((Control)(object)ddlEmployee).Name = "ddlEmployee";
-		((RadElement)((RadControl)ddlEmployee).get_RootElement()).set_MinSize(new Size(200, 0));
-		((Control)(object)ddlEmployee).Size = new Size(239, 30);
-		((Control)(object)ddlEmployee).TabIndex = 242;
-		((RadControl)ddlEmployee).set_ThemeName("Windows8");
-		((RadDropDownList)ddlEmployee).add_SelectedIndexChanged(new PositionChangedEventHandler(ddlEmployee_SelectedIndexChanged));
+		ddlEmployee.AutoSize = false;
+		ddlEmployee.BackColor = Color.White;
+		ddlEmployee.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlEmployee.EnableKineticScrolling = true;
+		ddlEmployee.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		ddlEmployee.Location = new Point(280, 42);
+		ddlEmployee.Margin = new Padding(4, 5, 4, 5);
+		ddlEmployee.MinimumSize = new Size(200, 0);
+		ddlEmployee.Name = "ddlEmployee";
+		ddlEmployee.RootElement.MinSize = new Size(200, 0);
+		ddlEmployee.Size = new Size(239, 30);
+		ddlEmployee.TabIndex = 242;
+		ddlEmployee.ThemeName = "Windows8";
+		ddlEmployee.SelectedIndexChanged += ddlEmployee_SelectedIndexChanged;
 		lblEmployeeName.BackColor = SystemColors.AppWorkspace;
 		lblEmployeeName.Font = new Font("Microsoft Sans Serif", 14.25f, FontStyle.Bold);
 		lblEmployeeName.ForeColor = Color.Black;
@@ -696,13 +686,13 @@ public class frmEmployeePunchInOut : frmMasterForm
 		base.Controls.Add(btnClose);
 		base.Controls.Add(ddlMonth);
 		base.Controls.Add(lblEmployeeName);
-		base.Controls.Add((Control)(object)ddlEmployee);
+		base.Controls.Add(ddlEmployee);
 		base.Controls.Add(label1);
 		base.Controls.Add(verticalScrollControl1);
 		base.Controls.Add(pictureBox1);
 		base.Controls.Add(btnTimeIn);
 		base.Controls.Add(btnTimeOut);
-		base.Controls.Add((Control)(object)radListPunch);
+		base.Controls.Add(radListPunch);
 		base.Controls.Add(lblWIndowTitle);
 		base.Name = "frmEmployeePunchInOut";
 		base.Opacity = 1.0;

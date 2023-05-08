@@ -77,7 +77,7 @@ public class SQLLogMethods
 			Directory.CreateDirectory(path);
 		}
 		string path2 = text + "log_" + DateTime.Now.ToString("yyyyMMdd_hhmmssFFF") + ".txt";
-		string contents = JsonConvert.SerializeObject((object)context.GetChangeSet());
+		string contents = JsonConvert.SerializeObject(context.GetChangeSet());
 		if (File.Exists(path2))
 		{
 			File.WriteAllText(path2, contents);

@@ -10,7 +10,6 @@ using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -210,16 +209,16 @@ public class frmMaterialsInItem : frmMasterForm
 			base.DialogResult = DialogResult.None;
 			return;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtQuantity).Text))
+		if (string.IsNullOrEmpty(txtQuantity.Text))
 		{
 			new frmMessageBox(Resources.Please_enter_a_quantity, Resources.Quantity_Required).ShowDialog(this);
 			base.DialogResult = DialogResult.None;
 			return;
 		}
 		string text = lstMaterials.SelectedItem.ToString();
-		string text2 = ((Control)(object)txtQuantity).Text;
+		string text2 = txtQuantity.Text;
 		string text3 = lstUOM.SelectedItem.ToString();
-		string text4 = ((Control)(object)txtComments).Text;
+		string text4 = txtComments.Text;
 		ListViewItem value = new ListViewItem(new string[4] { text, text2, text3, text4 });
 		lstMaterialsAddedToItem.Items.Add(value);
 		base.DialogResult = DialogResult.None;
@@ -366,7 +365,7 @@ public class frmMaterialsInItem : frmMasterForm
 			Item item = gclass6_0.Items.Where((Item m) => m.ItemName == lstMaterials.SelectedItem.ToString() && m.ItemClassification == ItemClassifications.Material).FirstOrDefault();
 			method_3();
 			lstUOM.SelectedItem = item.UOM.Name.ToString();
-			((Control)(object)txtQuantity).Text = string.Empty;
+			txtQuantity.Text = string.Empty;
 		}
 	}
 
@@ -380,10 +379,10 @@ public class frmMaterialsInItem : frmMasterForm
 	private void btnShowKeyboard_Quantity_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Quantity, 4, 8, ((Control)(object)txtQuantity).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Quantity, 4, 8, txtQuantity.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtQuantity).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtQuantity.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -396,10 +395,10 @@ public class frmMaterialsInItem : frmMasterForm
 	private void btnShowKeyboard_Comments_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Comments, 1, 256, ((Control)(object)txtComments).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Comments, 1, 256, txtComments.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtComments).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtComments.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -428,14 +427,6 @@ public class frmMaterialsInItem : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0032: Expected O, but got Unknown
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_0318: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0339: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0438: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0459: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmMaterialsInItem));
 		btnShowKeyboard_Comments = new Button();
 		btnShowKeyboard_Quantity = new Button();
@@ -487,25 +478,25 @@ public class frmMaterialsInItem : frmMasterForm
 		btnShowKeyboard_Quantity.UseVisualStyleBackColor = false;
 		btnShowKeyboard_Quantity.Click += btnShowKeyboard_Quantity_Click;
 		componentResourceManager.ApplyResources(txtComments, "txtComments");
-		((Control)(object)txtComments).Name = "txtComments";
-		((RadElement)((RadControl)txtComments).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtComments).Tag = "product";
-		((Control)(object)txtComments).Click += txtQuantity_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtComments).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtComments).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtComments.Name = "txtComments";
+		txtComments.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtComments.Tag = "product";
+		txtComments.Click += txtQuantity_Click;
+		((RadTextBoxControlElement)txtComments.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtComments.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		label2.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label2, "label2");
 		label2.ForeColor = Color.White;
 		label2.Name = "label2";
 		componentResourceManager.ApplyResources(txtQuantity, "txtQuantity");
-		((Control)(object)txtQuantity).Name = "txtQuantity";
-		((RadElement)((RadControl)txtQuantity).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtQuantity).Tag = "product";
-		txtQuantity.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtQuantity).Click += txtQuantity_Click;
-		((Control)(object)txtQuantity).KeyPress += txtQuantity_KeyPress;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtQuantity).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtQuantity).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtQuantity.Name = "txtQuantity";
+		txtQuantity.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtQuantity.Tag = "product";
+		txtQuantity.TextAlign = HorizontalAlignment.Center;
+		txtQuantity.Click += txtQuantity_Click;
+		txtQuantity.KeyPress += txtQuantity_KeyPress;
+		((RadTextBoxControlElement)txtQuantity.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtQuantity.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		btnAdd.BackColor = Color.FromArgb(47, 204, 113);
 		btnAdd.DialogResult = DialogResult.OK;
 		btnAdd.FlatAppearance.BorderColor = Color.White;
@@ -649,9 +640,9 @@ public class frmMaterialsInItem : frmMasterForm
 		base.Controls.Add(btnConfigureUOM);
 		base.Controls.Add(btnShowKeyboard_Comments);
 		base.Controls.Add(btnShowKeyboard_Quantity);
-		base.Controls.Add((Control)(object)txtComments);
+		base.Controls.Add(txtComments);
 		base.Controls.Add(label2);
-		base.Controls.Add((Control)(object)txtQuantity);
+		base.Controls.Add(txtQuantity);
 		base.Controls.Add(btnAdd);
 		base.Controls.Add(lstUOM);
 		base.Controls.Add(ChsfchqjoG);

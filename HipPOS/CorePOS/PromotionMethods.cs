@@ -101,7 +101,7 @@ public class PromotionMethods
 		_003C_003Ec__DisplayClass4_.itemToAdd = itemToAdd;
 		_003C_003Ec__DisplayClass4_.orderType = orderType;
 		_003C_003Ec__DisplayClass4_.OrderDateCreated = OrderDateCreated;
-		IEnumerable<ListViewDataItem> enumerable = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(18).ToString() != "-1" && !a.get_Font().Strikeout && a.get_SubItems().get_Item(21).ToString() == "False");
+		IEnumerable<ListViewDataItem> enumerable = radListItems.Items.Where((ListViewDataItem a) => a.SubItems[18].ToString() != "-1" && !a.Font.Strikeout && a.SubItems[21].ToString() == "False");
 		PromotionCheck promotionCheck = new PromotionCheck
 		{
 			IsPromotion = false,
@@ -123,25 +123,25 @@ public class PromotionMethods
 					{
 						_003C_003Ec__DisplayClass4_2 CS_0024_003C_003E8__locals3 = new _003C_003Ec__DisplayClass4_2();
 						CS_0024_003C_003E8__locals3.a = enumerator.Current;
-						if (!(CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(16).ToString() == "MainItem"))
+						if (!(CS_0024_003C_003E8__locals3.a.SubItems[16].ToString() == "MainItem"))
 						{
 							continue;
 						}
-						Item item = MemoryLoadedData.all_active_items.Where((Item b) => b.ItemID.ToString() == CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
-						if (item == null && CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(4).ToString() != "-999")
+						Item item = MemoryLoadedData.all_active_items.Where((Item b) => b.ItemID.ToString() == CS_0024_003C_003E8__locals3.a.SubItems[4].ToString()).FirstOrDefault();
+						if (item == null && CS_0024_003C_003E8__locals3.a.SubItems[4].ToString() != "-999")
 						{
-							item = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+							item = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals3.a.SubItems[4].ToString()).FirstOrDefault();
 						}
-						if (item != null && Convert.ToInt32(CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(18).ToString()) != -1)
+						if (item != null && Convert.ToInt32(CS_0024_003C_003E8__locals3.a.SubItems[18].ToString()) != -1)
 						{
 							CS_0024_003C_003E8__locals2.itemsWithQty.Add(new ItemPriceOEIndex
 							{
-								Qty = MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals3.a.get_Item(0).ToString()),
-								ItemId = Convert.ToInt32(CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(4).ToString()),
-								ItemPrice = ((CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(8).ToString() == "-1") ? item.ItemPrice : Convert.ToDecimal(CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(8).ToString())),
-								Index = ((RadListView)radListItems).get_Items().IndexOf(CS_0024_003C_003E8__locals3.a),
-								PromoId = Convert.ToInt32(CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(18).ToString()),
-								DateCreated = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(19).ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals3.a.get_SubItems().get_Item(19).ToString()) : DateTime.Now)
+								Qty = MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals3.a[0].ToString()),
+								ItemId = Convert.ToInt32(CS_0024_003C_003E8__locals3.a.SubItems[4].ToString()),
+								ItemPrice = ((CS_0024_003C_003E8__locals3.a.SubItems[8].ToString() == "-1") ? item.ItemPrice : Convert.ToDecimal(CS_0024_003C_003E8__locals3.a.SubItems[8].ToString())),
+								Index = radListItems.Items.IndexOf(CS_0024_003C_003E8__locals3.a),
+								PromoId = Convert.ToInt32(CS_0024_003C_003E8__locals3.a.SubItems[18].ToString()),
+								DateCreated = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals3.a.SubItems[19].ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals3.a.SubItems[19].ToString()) : DateTime.Now)
 							});
 						}
 					}
@@ -162,17 +162,17 @@ public class PromotionMethods
 					decimal? buyQty;
 					foreach (ListViewDataItem item2 in enumerable)
 					{
-						DateTime orderDateCreated = ((!string.IsNullOrEmpty(item2.get_SubItems().get_Item(19).ToString())) ? Convert.ToDateTime(item2.get_SubItems().get_Item(19).ToString()) : DateTime.Now);
-						if (!(item2.get_SubItems().get_Item(16).ToString() == "MainItem") || !IsPromotionTime(CS_0024_003C_003E8__locals2.prom, orderDateCreated))
+						DateTime orderDateCreated = ((!string.IsNullOrEmpty(item2.SubItems[19].ToString())) ? Convert.ToDateTime(item2.SubItems[19].ToString()) : DateTime.Now);
+						if (!(item2.SubItems[16].ToString() == "MainItem") || !IsPromotionTime(CS_0024_003C_003E8__locals2.prom, orderDateCreated))
 						{
 							continue;
 						}
-						decimal num6 = ((item2.get_Item(0).ToString() == "") ? 1m : MathHelper.FractionToDecimal(item2.get_Item(0).ToString()));
-						bool flag2 = CS_0024_003C_003E8__locals2.prom.String_0 == "-1" || CS_0024_003C_003E8__locals2.prom.String_0.Split(',').Contains(item2.get_SubItems().get_Item(4).ToString());
-						bool flag3 = CS_0024_003C_003E8__locals2.prom.String_1 == "-1" || CS_0024_003C_003E8__locals2.prom.String_1.Split(',').Contains(item2.get_SubItems().get_Item(4).ToString());
-						if (item2.get_SubItems().get_Item(18).ToString() == "0")
+						decimal num6 = ((item2[0].ToString() == "") ? 1m : MathHelper.FractionToDecimal(item2[0].ToString()));
+						bool flag2 = CS_0024_003C_003E8__locals2.prom.String_0 == "-1" || CS_0024_003C_003E8__locals2.prom.String_0.Split(',').Contains(item2.SubItems[4].ToString());
+						bool flag3 = CS_0024_003C_003E8__locals2.prom.String_1 == "-1" || CS_0024_003C_003E8__locals2.prom.String_1.Split(',').Contains(item2.SubItems[4].ToString());
+						if (item2.SubItems[18].ToString() == "0")
 						{
-							item2.get_SubItems().set_Item(18, (object)CS_0024_003C_003E8__locals2.prom.PromoId.ToString());
+							item2.SubItems[18] = CS_0024_003C_003E8__locals2.prom.PromoId.ToString();
 						}
 						for (int i = 0; (decimal)i < num6; i++)
 						{
@@ -247,8 +247,7 @@ public class PromotionMethods
 									Promotion promotion = MemoryLoadedObjects.all_active_promotions.Where((Promotion a) => (a.String_0.Split(',').Contains(CS_0024_003C_003E8__locals1.lowestPricedExistingItem.ItemId.ToString()) || a.String_0 == "-1") && a.OrderTypes.Contains(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.orderType) && IsPromotionTime(a, CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.OrderDateCreated)).FirstOrDefault();
 									if (promotion != null)
 									{
-										((RadListView)radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals1.lowestPricedExistingItem.Index).get_SubItems()
-											.set_Item(18, (object)promotion.PromoId);
+										radListItems.Items[CS_0024_003C_003E8__locals1.lowestPricedExistingItem.Index].SubItems[18] = promotion.PromoId;
 									}
 								}
 							}
@@ -261,8 +260,7 @@ public class PromotionMethods
 								ItemPriceOEIndex itemPriceOEIndex = CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.itemsWithQty.Where((ItemPriceOEIndex a) => CS_0024_003C_003E8__locals0.promBuy.String_1.Split(',').Contains(a.ItemId.ToString()) || CS_0024_003C_003E8__locals0.promBuy.String_1 == "-1").FirstOrDefault();
 								if (itemPriceOEIndex != null)
 								{
-									((RadListView)radListItems).get_Items().get_Item(itemPriceOEIndex.Index).get_SubItems()
-										.set_Item(18, (object)CS_0024_003C_003E8__locals0.promBuy.PromoId);
+									radListItems.Items[itemPriceOEIndex.Index].SubItems[18] = CS_0024_003C_003E8__locals0.promBuy.PromoId;
 								}
 							}
 						}
@@ -285,7 +283,7 @@ public class PromotionMethods
 		_003C_003Ec__DisplayClass5_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass5_0();
 		CS_0024_003C_003E8__locals0.OrderDateCreated = OrderDateCreated;
 		CS_0024_003C_003E8__locals0.orderType = orderType;
-		IEnumerable<ListViewDataItem> enumerable = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(18).ToString() != "-1" && !a.get_Font().Strikeout && a.get_SubItems().get_Item(21).ToString() == "False");
+		IEnumerable<ListViewDataItem> enumerable = radListItems.Items.Where((ListViewDataItem a) => a.SubItems[18].ToString() != "-1" && !a.Font.Strikeout && a.SubItems[21].ToString() == "False");
 		CS_0024_003C_003E8__locals0.itemsWithQty = new List<ItemPriceOEIndex>();
 		using (IEnumerator<ListViewDataItem> enumerator = enumerable.GetEnumerator())
 		{
@@ -293,29 +291,29 @@ public class PromotionMethods
 			{
 				_003C_003Ec__DisplayClass5_1 CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass5_1();
 				CS_0024_003C_003E8__locals2.a = enumerator.Current;
-				if (!(CS_0024_003C_003E8__locals2.a.get_SubItems().get_Item(16).ToString() == "MainItem"))
+				if (!(CS_0024_003C_003E8__locals2.a.SubItems[16].ToString() == "MainItem"))
 				{
 					continue;
 				}
-				Item item = MemoryLoadedData.all_active_items.Where((Item b) => b.ItemID.ToString() == CS_0024_003C_003E8__locals2.a.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
-				if (item == null && CS_0024_003C_003E8__locals2.a.get_SubItems().get_Item(4).ToString() != "-999")
+				Item item = MemoryLoadedData.all_active_items.Where((Item b) => b.ItemID.ToString() == CS_0024_003C_003E8__locals2.a.SubItems[4].ToString()).FirstOrDefault();
+				if (item == null && CS_0024_003C_003E8__locals2.a.SubItems[4].ToString() != "-999")
 				{
-					item = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals2.a.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+					item = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals2.a.SubItems[4].ToString()).FirstOrDefault();
 				}
 				if (item != null)
 				{
-					decimal currentPrice = Convert.ToDecimal(CS_0024_003C_003E8__locals2.a.get_Item(2).ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals2.a.get_SubItems().get_Item(15).ToString(), DiscountTypes.Promo);
+					decimal currentPrice = Convert.ToDecimal(CS_0024_003C_003E8__locals2.a[2].ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals2.a.SubItems[15].ToString(), DiscountTypes.Promo);
 					decimal itemPrice = GetCurrentPrice(item, currentPrice);
-					if (CS_0024_003C_003E8__locals2.a.get_SubItems().get_Item(8).ToString() != "-1")
+					if (CS_0024_003C_003E8__locals2.a.SubItems[8].ToString() != "-1")
 					{
-						itemPrice = Convert.ToDecimal(CS_0024_003C_003E8__locals2.a.get_SubItems().get_Item(8).ToString());
+						itemPrice = Convert.ToDecimal(CS_0024_003C_003E8__locals2.a.SubItems[8].ToString());
 					}
 					CS_0024_003C_003E8__locals0.itemsWithQty.Add(new ItemPriceOEIndex
 					{
-						Qty = MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals2.a.get_Item(0).ToString()),
-						ItemId = Convert.ToInt32(CS_0024_003C_003E8__locals2.a.get_SubItems().get_Item(4).ToString()),
+						Qty = MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals2.a[0].ToString()),
+						ItemId = Convert.ToInt32(CS_0024_003C_003E8__locals2.a.SubItems[4].ToString()),
 						ItemPrice = itemPrice,
-						Index = ((RadListView)radListItems).get_Items().IndexOf(CS_0024_003C_003E8__locals2.a)
+						Index = radListItems.Items.IndexOf(CS_0024_003C_003E8__locals2.a)
 					});
 				}
 			}
@@ -340,34 +338,34 @@ public class PromotionMethods
 					{
 						_003C_003Ec__DisplayClass5_2 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass5_2();
 						CS_0024_003C_003E8__locals1.lvdi = enumerator.Current;
-						DateTime orderDateCreated = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(19).ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(19).ToString()) : DateTime.Now);
-						if (!(CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(16).ToString() == "MainItem") || !IsPromotionTime(item4, orderDateCreated))
+						DateTime orderDateCreated = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals1.lvdi.SubItems[19].ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals1.lvdi.SubItems[19].ToString()) : DateTime.Now);
+						if (!(CS_0024_003C_003E8__locals1.lvdi.SubItems[16].ToString() == "MainItem") || !IsPromotionTime(item4, orderDateCreated))
 						{
 							continue;
 						}
-						decimal qty = ((CS_0024_003C_003E8__locals1.lvdi.get_Item(0).ToString() == "") ? 1m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals1.lvdi.get_Item(0).ToString()));
-						bool flag = item4.String_0.Split(',').Contains(CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(4).ToString());
-						bool flag2 = item4.String_1.Split(',').Contains(CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(4).ToString());
-						Item item2 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
-						if (item2 == null && CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(4).ToString() != "-999")
+						decimal qty = ((CS_0024_003C_003E8__locals1.lvdi[0].ToString() == "") ? 1m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals1.lvdi[0].ToString()));
+						bool flag = item4.String_0.Split(',').Contains(CS_0024_003C_003E8__locals1.lvdi.SubItems[4].ToString());
+						bool flag2 = item4.String_1.Split(',').Contains(CS_0024_003C_003E8__locals1.lvdi.SubItems[4].ToString());
+						Item item2 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals1.lvdi.SubItems[4].ToString()).FirstOrDefault();
+						if (item2 == null && CS_0024_003C_003E8__locals1.lvdi.SubItems[4].ToString() != "-999")
 						{
-							item2 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+							item2 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals1.lvdi.SubItems[4].ToString()).FirstOrDefault();
 						}
 						if (item2 == null || !(flag || flag2))
 						{
 							continue;
 						}
-						if (CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(18).ToString() == "0")
+						if (CS_0024_003C_003E8__locals1.lvdi.SubItems[18].ToString() == "0")
 						{
-							CS_0024_003C_003E8__locals1.lvdi.get_SubItems().set_Item(18, (object)item4.PromoId.ToString());
+							CS_0024_003C_003E8__locals1.lvdi.SubItems[18] = item4.PromoId.ToString();
 						}
-						if (!(CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(18).ToString() == "-1"))
+						if (!(CS_0024_003C_003E8__locals1.lvdi.SubItems[18].ToString() == "-1"))
 						{
-							decimal currentPrice2 = Convert.ToDecimal(CS_0024_003C_003E8__locals1.lvdi.get_Item(2).ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(15).ToString(), DiscountTypes.Promo);
+							decimal currentPrice2 = Convert.ToDecimal(CS_0024_003C_003E8__locals1.lvdi[2].ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals1.lvdi.SubItems[15].ToString(), DiscountTypes.Promo);
 							decimal itemPrice2 = GetCurrentPrice(item2, currentPrice2);
-							if (CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(8).ToString() != "-1")
+							if (CS_0024_003C_003E8__locals1.lvdi.SubItems[8].ToString() != "-1")
 							{
-								itemPrice2 = Convert.ToDecimal(CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(8).ToString());
+								itemPrice2 = Convert.ToDecimal(CS_0024_003C_003E8__locals1.lvdi.SubItems[8].ToString());
 							}
 							PromotionCheck promotionCheck = CalculatePromotionOff(item4, itemPrice2);
 							list.Add(new ItemPriceOEIndex
@@ -379,9 +377,9 @@ public class PromotionMethods
 								DiscountedPrice = promotionCheck.NewItemPrice,
 								isInBuyQty = flag,
 								isInGetQty = flag2,
-								Index = ((RadListView)radListItems).get_Items().IndexOf(CS_0024_003C_003E8__locals1.lvdi),
+								Index = radListItems.Items.IndexOf(CS_0024_003C_003E8__locals1.lvdi),
 								DiscountAmount = promotionCheck.DiscountAmount,
-								PromoId = Convert.ToInt32(CS_0024_003C_003E8__locals1.lvdi.get_SubItems().get_Item(18).ToString()),
+								PromoId = Convert.ToInt32(CS_0024_003C_003E8__locals1.lvdi.SubItems[18].ToString()),
 								sortOrder = ((!flag && flag2) ? 1 : 0)
 							});
 						}
@@ -442,19 +440,12 @@ public class PromotionMethods
 				_003C_003Ec__DisplayClass5_3 CS_0024_003C_003E8__locals3 = new _003C_003Ec__DisplayClass5_3();
 				foreach (ItemPriceOEIndex item6 in list)
 				{
-					((RadListView)radListItems).get_Items().get_Item(item6.Index).get_SubItems()
-						.set_Item(18, (object)"0");
-					decimal num12 = ((((RadListView)radListItems).get_Items().get_Item(item6.Index).get_Item(0)
-						.ToString() == "") ? 0m : MathHelper.FractionToDecimal(((RadListView)radListItems).get_Items().get_Item(item6.Index).get_Item(0)
-						.ToString()));
-					((RadListView)radListItems).get_Items().get_Item(item6.Index).set_Item(2, (object)item6.ItemPrice.ToString("0.00"));
-					((RadListView)radListItems).get_Items().get_Item(item6.Index).set_Item(3, (object)(num12 * item6.ItemPrice).ToString("0.00"));
-					((RadListView)radListItems).get_Items().get_Item(item6.Index).get_SubItems()
-						.set_Item(13, (object)"");
-					((RadListView)radListItems).get_Items().get_Item(item6.Index).get_SubItems()
-						.set_Item(15, (object)UpdateDiscountFromDiscountDescription(((RadListView)radListItems).get_Items().get_Item(item6.Index).get_SubItems()
-							.get_Item(15)
-							.ToString(), DiscountTypes.Promo, 0m));
+					radListItems.Items[item6.Index].SubItems[18] = "0";
+					decimal num12 = ((radListItems.Items[item6.Index][0].ToString() == "") ? 0m : MathHelper.FractionToDecimal(radListItems.Items[item6.Index][0].ToString()));
+					radListItems.Items[item6.Index][2] = item6.ItemPrice.ToString("0.00");
+					radListItems.Items[item6.Index][3] = (num12 * item6.ItemPrice).ToString("0.00");
+					radListItems.Items[item6.Index].SubItems[13] = "";
+					radListItems.Items[item6.Index].SubItems[15] = UpdateDiscountFromDiscountDescription(radListItems.Items[item6.Index].SubItems[15].ToString(), DiscountTypes.Promo, 0m);
 				}
 				CS_0024_003C_003E8__locals3.highestpriceIndex = 0;
 				CS_0024_003C_003E8__locals3.buyQtyIndexes = new List<int>();
@@ -465,8 +456,7 @@ public class PromotionMethods
 				{
 					if (num7 > 0m)
 					{
-						((RadListView)radListItems).get_Items().get_Item(item7.Index).get_SubItems()
-							.set_Item(18, (object)item4.PromoId);
+						radListItems.Items[item7.Index].SubItems[18] = item4.PromoId;
 						CS_0024_003C_003E8__locals3.highestpriceIndex = item7.Index;
 						CS_0024_003C_003E8__locals3.buyQtyIndexes.Add(item7.Index);
 						num7 -= item7.Qty;
@@ -479,12 +469,11 @@ public class PromotionMethods
 				{
 					if (num6 > 0m)
 					{
-						((RadListView)radListItems).get_Items().get_Item(item8.Index).get_SubItems()
-							.set_Item(18, (object)item4.PromoId);
+						radListItems.Items[item8.Index].SubItems[18] = item4.PromoId;
 						num6 -= item8.Qty;
 					}
 				}
-				enumerable = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => !a.get_Font().Strikeout);
+				enumerable = radListItems.Items.Where((ListViewDataItem a) => !a.Font.Strikeout);
 			}
 			else
 			{
@@ -497,27 +486,27 @@ public class PromotionMethods
 				{
 					_003C_003Ec__DisplayClass5_4 CS_0024_003C_003E8__locals4 = new _003C_003Ec__DisplayClass5_4();
 					CS_0024_003C_003E8__locals4.lvdi = enumerator.Current;
-					DateTime orderDateCreated2 = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals4.lvdi.get_SubItems().get_Item(19).ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals4.lvdi.get_SubItems().get_Item(19).ToString()) : DateTime.Now);
-					if (!(CS_0024_003C_003E8__locals4.lvdi.get_SubItems().get_Item(16).ToString() == "MainItem") || !IsPromotionTime(item4, orderDateCreated2))
+					DateTime orderDateCreated2 = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals4.lvdi.SubItems[19].ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals4.lvdi.SubItems[19].ToString()) : DateTime.Now);
+					if (!(CS_0024_003C_003E8__locals4.lvdi.SubItems[16].ToString() == "MainItem") || !IsPromotionTime(item4, orderDateCreated2))
 					{
 						continue;
 					}
-					if (!(CS_0024_003C_003E8__locals4.lvdi.get_Item(0).ToString() == ""))
+					if (!(CS_0024_003C_003E8__locals4.lvdi[0].ToString() == ""))
 					{
-						MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals4.lvdi.get_Item(0).ToString());
+						MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals4.lvdi[0].ToString());
 					}
-					if (!item4.String_0.Split(',').Contains(CS_0024_003C_003E8__locals4.lvdi.get_SubItems().get_Item(4).ToString()))
+					if (!item4.String_0.Split(',').Contains(CS_0024_003C_003E8__locals4.lvdi.SubItems[4].ToString()))
 					{
 						continue;
 					}
-					Item item3 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals4.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
-					if (item3 == null && CS_0024_003C_003E8__locals4.lvdi.get_SubItems().get_Item(4).ToString() != "-999")
+					Item item3 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals4.lvdi.SubItems[4].ToString()).FirstOrDefault();
+					if (item3 == null && CS_0024_003C_003E8__locals4.lvdi.SubItems[4].ToString() != "-999")
 					{
-						item3 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals4.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+						item3 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals4.lvdi.SubItems[4].ToString()).FirstOrDefault();
 					}
-					if (item3 != null && CS_0024_003C_003E8__locals4.lvdi.get_SubItems().get_Item(18).ToString() == "0")
+					if (item3 != null && CS_0024_003C_003E8__locals4.lvdi.SubItems[18].ToString() == "0")
 					{
-						CS_0024_003C_003E8__locals4.lvdi.get_SubItems().set_Item(18, (object)item4.PromoId.ToString());
+						CS_0024_003C_003E8__locals4.lvdi.SubItems[18] = item4.PromoId.ToString();
 					}
 				}
 			}
@@ -526,20 +515,14 @@ public class PromotionMethods
 
 	public static void RecalculatePromotion(CustomListViewTelerik radListItems, string orderType, DateTime OrderDateCreated, ref short OeComboId)
 	{
-		//IL_14ff: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1506: Expected O, but got Unknown
-		//IL_191f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1926: Expected O, but got Unknown
-		//IL_2aea: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2af1: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass6_0 _003C_003Ec__DisplayClass6_ = new _003C_003Ec__DisplayClass6_0();
 		_003C_003Ec__DisplayClass6_.orderType = orderType;
 		_003C_003Ec__DisplayClass6_.OrderDateCreated = OrderDateCreated;
 		_003C_003Ec__DisplayClass6_.radListItems = radListItems;
 		UpdatePromotion(_003C_003Ec__DisplayClass6_.radListItems, _003C_003Ec__DisplayClass6_.orderType, _003C_003Ec__DisplayClass6_.OrderDateCreated);
-		List<int> list = (from a in (IEnumerable<ListViewDataItem>)((RadListView)_003C_003Ec__DisplayClass6_.radListItems).get_Items()
-			where a.get_SubItems().get_Item(18).ToString() != "" && a.get_SubItems().get_Item(18).ToString() != "0" && a.get_SubItems().get_Item(18).ToString() != "-1" && !a.get_Font().Strikeout && a.get_SubItems().get_Item(21).ToString() == "False"
-			select Convert.ToInt32(a.get_SubItems().get_Item(18).ToString())).Distinct().ToList();
+		List<int> list = (from a in _003C_003Ec__DisplayClass6_.radListItems.Items
+			where a.SubItems[18].ToString() != "" && a.SubItems[18].ToString() != "0" && a.SubItems[18].ToString() != "-1" && !a.Font.Strikeout && a.SubItems[21].ToString() == "False"
+			select Convert.ToInt32(a.SubItems[18].ToString())).Distinct().ToList();
 		if (list.Count <= 0)
 		{
 			return;
@@ -558,7 +541,7 @@ public class PromotionMethods
 			{
 				continue;
 			}
-			IEnumerable<ListViewDataItem> enumerable = ((IEnumerable<ListViewDataItem>)((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(18).ToString() == CS_0024_003C_003E8__locals1.prom.PromoId.ToString() && !a.get_Font().Strikeout && a.get_SubItems().get_Item(16).ToString() == "MainItem" && a.get_SubItems().get_Item(21).ToString() == "False");
+			IEnumerable<ListViewDataItem> enumerable = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.Where((ListViewDataItem a) => a.SubItems[18].ToString() == CS_0024_003C_003E8__locals1.prom.PromoId.ToString() && !a.Font.Strikeout && a.SubItems[16].ToString() == "MainItem" && a.SubItems[21].ToString() == "False");
 			if (!CS_0024_003C_003E8__locals1.prom.OrderTypes.Contains(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.orderType))
 			{
 				using IEnumerator<ListViewDataItem> enumerator2 = enumerable.GetEnumerator();
@@ -566,29 +549,29 @@ public class PromotionMethods
 				{
 					_003C_003Ec__DisplayClass6_2 CS_0024_003C_003E8__locals6 = new _003C_003Ec__DisplayClass6_2();
 					CS_0024_003C_003E8__locals6.lvdi = enumerator2.Current;
-					DateTime orderDateCreated = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals6.lvdi.get_SubItems().get_Item(19).ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals6.lvdi.get_SubItems().get_Item(19).ToString()) : DateTime.Now);
+					DateTime orderDateCreated = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals6.lvdi.SubItems[19].ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals6.lvdi.SubItems[19].ToString()) : DateTime.Now);
 					if (IsPromotionTime(CS_0024_003C_003E8__locals1.prom, orderDateCreated))
 					{
 						continue;
 					}
-					Item item = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals6.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
-					if (item == null && CS_0024_003C_003E8__locals6.lvdi.get_SubItems().get_Item(4).ToString() != "-999")
+					Item item = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals6.lvdi.SubItems[4].ToString()).FirstOrDefault();
+					if (item == null && CS_0024_003C_003E8__locals6.lvdi.SubItems[4].ToString() != "-999")
 					{
-						item = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals6.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+						item = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals6.lvdi.SubItems[4].ToString()).FirstOrDefault();
 					}
 					if (item != null)
 					{
-						decimal currentPrice = Convert.ToDecimal(CS_0024_003C_003E8__locals6.lvdi.get_Item(2).ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals6.lvdi.get_SubItems().get_Item(15).ToString(), DiscountTypes.Promo);
+						decimal currentPrice = Convert.ToDecimal(CS_0024_003C_003E8__locals6.lvdi[2].ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals6.lvdi.SubItems[15].ToString(), DiscountTypes.Promo);
 						decimal num = GetCurrentPrice(item, currentPrice);
-						if (CS_0024_003C_003E8__locals6.lvdi.get_SubItems().get_Item(8).ToString() != "-1")
+						if (CS_0024_003C_003E8__locals6.lvdi.SubItems[8].ToString() != "-1")
 						{
-							num = Convert.ToDecimal(CS_0024_003C_003E8__locals6.lvdi.get_SubItems().get_Item(8).ToString());
+							num = Convert.ToDecimal(CS_0024_003C_003E8__locals6.lvdi.SubItems[8].ToString());
 						}
-						decimal num2 = ((CS_0024_003C_003E8__locals6.lvdi.get_Item(0).ToString() == "") ? 0m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals6.lvdi.get_Item(0).ToString()));
-						CS_0024_003C_003E8__locals6.lvdi.set_Item(2, (object)num.ToString("0.00", Thread.CurrentThread.CurrentCulture));
-						CS_0024_003C_003E8__locals6.lvdi.set_Item(3, (object)(num2 * num).ToString("0.00", Thread.CurrentThread.CurrentCulture));
-						CS_0024_003C_003E8__locals6.lvdi.get_SubItems().set_Item(13, (object)"");
-						CS_0024_003C_003E8__locals6.lvdi.get_SubItems().set_Item(18, (object)"0");
+						decimal num2 = ((CS_0024_003C_003E8__locals6.lvdi[0].ToString() == "") ? 0m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals6.lvdi[0].ToString()));
+						CS_0024_003C_003E8__locals6.lvdi[2] = num.ToString("0.00", Thread.CurrentThread.CurrentCulture);
+						CS_0024_003C_003E8__locals6.lvdi[3] = (num2 * num).ToString("0.00", Thread.CurrentThread.CurrentCulture);
+						CS_0024_003C_003E8__locals6.lvdi.SubItems[13] = "";
+						CS_0024_003C_003E8__locals6.lvdi.SubItems[18] = "0";
 					}
 				}
 			}
@@ -602,13 +585,13 @@ public class PromotionMethods
 				List<ItemPriceOEIndex> list2 = new List<ItemPriceOEIndex>();
 				foreach (ListViewDataItem item7 in enumerable)
 				{
-					decimal qty = ((item7.get_Item(0).ToString() == "") ? 1m : MathHelper.FractionToDecimal(item7.get_Item(0).ToString()));
-					bool flag = CS_0024_003C_003E8__locals1.prom.String_0 == "-1" || CS_0024_003C_003E8__locals1.prom.String_0.Split(',').Contains(item7.get_SubItems().get_Item(4).ToString());
-					bool flag2 = CS_0024_003C_003E8__locals1.prom.String_1 == "-1" || CS_0024_003C_003E8__locals1.prom.String_1.Split(',').Contains(item7.get_SubItems().get_Item(4).ToString());
+					decimal qty = ((item7[0].ToString() == "") ? 1m : MathHelper.FractionToDecimal(item7[0].ToString()));
+					bool flag = CS_0024_003C_003E8__locals1.prom.String_0 == "-1" || CS_0024_003C_003E8__locals1.prom.String_0.Split(',').Contains(item7.SubItems[4].ToString());
+					bool flag2 = CS_0024_003C_003E8__locals1.prom.String_1 == "-1" || CS_0024_003C_003E8__locals1.prom.String_1.Split(',').Contains(item7.SubItems[4].ToString());
 					list2.Add(new ItemPriceOEIndex
 					{
 						Qty = qty,
-						ItemId = Convert.ToInt32(item7.get_SubItems().get_Item(4).ToString()),
+						ItemId = Convert.ToInt32(item7.SubItems[4].ToString()),
 						isInBuyQty = flag,
 						isInGetQty = flag2,
 						sortOrder = ((!flag && flag2) ? 1 : 0)
@@ -670,30 +653,30 @@ public class PromotionMethods
 				if ((num13 >= buyQty.GetValueOrDefault()) & buyQty.HasValue)
 				{
 					List<ItemPriceOEIndex> list3 = new List<ItemPriceOEIndex>();
-					using (IEnumerator<ListViewDataItem> enumerator2 = enumerable.OrderByDescending((ListViewDataItem a) => ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().IndexOf(a)).GetEnumerator())
+					using (IEnumerator<ListViewDataItem> enumerator2 = enumerable.OrderByDescending((ListViewDataItem a) => CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.IndexOf(a)).GetEnumerator())
 					{
 						while (enumerator2.MoveNext())
 						{
 							_003C_003Ec__DisplayClass6_3 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass6_3();
 							CS_0024_003C_003E8__locals0.lvdi = enumerator2.Current;
-							Item item2 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals0.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
-							if (item2 == null && CS_0024_003C_003E8__locals0.lvdi.get_SubItems().get_Item(4).ToString() != "-999")
+							Item item2 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals0.lvdi.SubItems[4].ToString()).FirstOrDefault();
+							if (item2 == null && CS_0024_003C_003E8__locals0.lvdi.SubItems[4].ToString() != "-999")
 							{
-								item2 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals0.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+								item2 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals0.lvdi.SubItems[4].ToString()).FirstOrDefault();
 							}
 							if (item2 != null)
 							{
-								decimal currentPrice2 = Convert.ToDecimal(CS_0024_003C_003E8__locals0.lvdi.get_Item(2).ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals0.lvdi.get_SubItems().get_Item(15).ToString(), DiscountTypes.Promo);
+								decimal currentPrice2 = Convert.ToDecimal(CS_0024_003C_003E8__locals0.lvdi[2].ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals0.lvdi.SubItems[15].ToString(), DiscountTypes.Promo);
 								decimal num14 = GetCurrentPrice(item2, currentPrice2);
-								if (CS_0024_003C_003E8__locals0.lvdi.get_SubItems().get_Item(8).ToString() != "-1")
+								if (CS_0024_003C_003E8__locals0.lvdi.SubItems[8].ToString() != "-1")
 								{
-									num14 = Convert.ToDecimal(CS_0024_003C_003E8__locals0.lvdi.get_SubItems().get_Item(8).ToString());
+									num14 = Convert.ToDecimal(CS_0024_003C_003E8__locals0.lvdi.SubItems[8].ToString());
 								}
-								decimal num15 = ((CS_0024_003C_003E8__locals0.lvdi.get_Item(0).ToString() == "") ? 0m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals0.lvdi.get_Item(0).ToString()));
-								CS_0024_003C_003E8__locals0.lvdi.set_Item(2, (object)num14.ToString("0.00", Thread.CurrentThread.CurrentCulture));
-								CS_0024_003C_003E8__locals0.lvdi.set_Item(3, (object)(num15 * num14).ToString("0.00", Thread.CurrentThread.CurrentCulture));
-								CS_0024_003C_003E8__locals0.lvdi.get_SubItems().set_Item(13, (object)"");
-								CS_0024_003C_003E8__locals0.lvdi.get_SubItems().set_Item(15, (object)UpdateDiscountFromDiscountDescription(CS_0024_003C_003E8__locals0.lvdi.get_SubItems().get_Item(15).ToString(), DiscountTypes.Promo, 0m));
+								decimal num15 = ((CS_0024_003C_003E8__locals0.lvdi[0].ToString() == "") ? 0m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals0.lvdi[0].ToString()));
+								CS_0024_003C_003E8__locals0.lvdi[2] = num14.ToString("0.00", Thread.CurrentThread.CurrentCulture);
+								CS_0024_003C_003E8__locals0.lvdi[3] = (num15 * num14).ToString("0.00", Thread.CurrentThread.CurrentCulture);
+								CS_0024_003C_003E8__locals0.lvdi.SubItems[13] = "";
+								CS_0024_003C_003E8__locals0.lvdi.SubItems[15] = UpdateDiscountFromDiscountDescription(CS_0024_003C_003E8__locals0.lvdi.SubItems[15].ToString(), DiscountTypes.Promo, 0m);
 								if (CS_0024_003C_003E8__locals1.prom.String_1 != null && (CS_0024_003C_003E8__locals1.prom.String_1.Split(',').Contains(item2.ItemID.ToString()) || CS_0024_003C_003E8__locals1.prom.String_1 == "-1"))
 								{
 									PromotionCheck promotionCheck = CalculatePromotionOff(CS_0024_003C_003E8__locals1.prom, num14);
@@ -703,7 +686,7 @@ public class PromotionMethods
 										ItemId = item2.ItemID,
 										ItemPrice = num14,
 										DiscountedPrice = promotionCheck.NewItemPrice,
-										Index = ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().IndexOf(CS_0024_003C_003E8__locals0.lvdi),
+										Index = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.IndexOf(CS_0024_003C_003E8__locals0.lvdi),
 										DiscountAmount = promotionCheck.DiscountAmount,
 										Qty = num15
 									});
@@ -742,103 +725,70 @@ public class PromotionMethods
 								{
 									num8 = 1;
 								}
-								decimal num16 = ((((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_Item(0)
-									.ToString() == "") ? 0m : MathHelper.FractionToDecimal(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_Item(0)
-									.ToString()));
-								int num17 = CS_0024_003C_003E8__locals2.indexToChange.Index;
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).set_Item(0, (object)1.ToString("0.##"));
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).set_Item(2, (object)CS_0024_003C_003E8__locals2.indexToChange.ItemPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture));
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).set_Item(3, (object)(CS_0024_003C_003E8__locals2.indexToChange.ItemPrice * 1m).ToString("0.00", Thread.CurrentThread.CurrentCulture));
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-									.set_Item(13, (object)"");
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-									.set_Item(15, (object)UpdateDiscountFromDiscountDescription(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-										.get_Item(15)
-										.ToString(), DiscountTypes.Promo, 0m));
-								CS_0024_003C_003E8__locals3.prevComboId = Convert.ToInt32(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-									.get_Item(5)
-									.ToString());
-								decimal num18 = Math.Abs(num8 - (int)CS_0024_003C_003E8__locals2.indexToChange.Qty);
-								for (int j = 0; (decimal)j < num18; j++)
+								decimal num16 = ((CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][0].ToString() == "") ? 0m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][0].ToString()));
+								int index = CS_0024_003C_003E8__locals2.indexToChange.Index;
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][0] = 1.ToString("0.##");
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][2] = CS_0024_003C_003E8__locals2.indexToChange.ItemPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture);
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][3] = (CS_0024_003C_003E8__locals2.indexToChange.ItemPrice * 1m).ToString("0.00", Thread.CurrentThread.CurrentCulture);
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[13] = "";
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[15] = UpdateDiscountFromDiscountDescription(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[15].ToString(), DiscountTypes.Promo, 0m);
+								CS_0024_003C_003E8__locals3.prevComboId = Convert.ToInt32(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[5].ToString());
+								decimal num17 = Math.Abs(num8 - (int)CS_0024_003C_003E8__locals2.indexToChange.Qty);
+								for (int j = 0; (decimal)j < num17; j++)
 								{
-									int num19 = 0;
+									int num18 = 0;
 									if (CS_0024_003C_003E8__locals3.prevComboId > 0)
 									{
 										OeComboId++;
-										num19 = OeComboId;
+										num18 = OeComboId;
 									}
 									PromotionCheck promotion = GetPromotion(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems, item3, CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.orderType, CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.OrderDateCreated);
-									string[] array = new string[22]
+									string[] values = new string[22]
 									{
 										1.ToString("0.##"),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_Item(1)
-											.ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][1].ToString(),
 										CS_0024_003C_003E8__locals2.indexToChange.ItemPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture),
 										(CS_0024_003C_003E8__locals2.indexToChange.ItemPrice * 1m).ToString("0.00", Thread.CurrentThread.CurrentCulture),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(4)
-											.ToString(),
-										num19.ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[4].ToString(),
+										num18.ToString(),
 										string.Empty,
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(7)
-											.ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[7].ToString(),
 										CS_0024_003C_003E8__locals2.indexToChange.ItemPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(9)
-											.ToString(),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(10)
-											.ToString(),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(11)
-											.ToString(),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(12)
-											.ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[9].ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[10].ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[11].ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[12].ToString(),
 										"",
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(14)
-											.ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[14].ToString(),
 										"",
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(16)
-											.ToString(),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(17)
-											.ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[16].ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[17].ToString(),
 										promotion.PromotionId.ToString(),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(19)
-											.ToString(),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(20)
-											.ToString(),
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-											.get_Item(21)
-											.ToString()
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[19].ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[20].ToString(),
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[21].ToString()
 									};
-									ListViewDataItem val = new ListViewDataItem("", array);
-									val.set_Group(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_Group());
-									val.set_Font(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_Font());
-									((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().Add(val);
-									num17 = ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().IndexOf(val);
+									ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
+									listViewDataItem.Group = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].Group;
+									listViewDataItem.Font = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].Font;
+									CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.Add(listViewDataItem);
+									index = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.IndexOf(listViewDataItem);
 									if (CS_0024_003C_003E8__locals3.prevComboId <= 0)
 									{
 										continue;
 									}
 									List<ComboQty> list4 = new List<ComboQty>();
-									foreach (ListViewDataItem item9 in ((IEnumerable<ListViewDataItem>)((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals3.prevComboId.ToString()))
+									foreach (ListViewDataItem item9 in CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.Where((ListViewDataItem a) => a.SubItems[5].ToString() == CS_0024_003C_003E8__locals3.prevComboId.ToString()))
 									{
-										if (item9 != ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index))
+										if (item9 != CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index])
 										{
-											decimal qty2 = ((item9.get_Item(0).ToString() == "") ? 0m : MathHelper.FractionToDecimal(item9.get_Item(0).ToString())) / num16;
+											decimal qty2 = ((item9[0].ToString() == "") ? 0m : MathHelper.FractionToDecimal(item9[0].ToString())) / num16;
 											list4.Add(new ComboQty
 											{
-												ComboIndex = ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().IndexOf(item9),
+												ComboIndex = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.IndexOf(item9),
 												Qty = qty2,
-												Font = item9.get_Font(),
-												ForeColor = item9.get_ForeColor()
+												Font = item9.Font,
+												ForeColor = item9.ForeColor
 											});
 										}
 									}
@@ -848,72 +798,68 @@ public class PromotionMethods
 									}
 									foreach (ComboQty item10 in list4)
 									{
-										ListViewDataItem val2 = ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item10.ComboIndex);
-										string[] array2 = new string[23]
+										ListViewDataItem listViewDataItem2 = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item10.ComboIndex];
+										string[] values2 = new string[23]
 										{
 											item10.Qty.ToString("0.##"),
-											val2.get_Item(1).ToString(),
-											val2.get_Item(2).ToString(),
-											(val2.get_Item(2).ToString() == "") ? "" : (Convert.ToDecimal(val2.get_Item(2).ToString()) * item10.Qty).ToString("0.00", Thread.CurrentThread.CurrentCulture),
-											val2.get_SubItems().get_Item(4).ToString(),
-											num19.ToString(),
+											listViewDataItem2[1].ToString(),
+											listViewDataItem2[2].ToString(),
+											(listViewDataItem2[2].ToString() == "") ? "" : (Convert.ToDecimal(listViewDataItem2[2].ToString()) * item10.Qty).ToString("0.00", Thread.CurrentThread.CurrentCulture),
+											listViewDataItem2.SubItems[4].ToString(),
+											num18.ToString(),
 											string.Empty,
-											val2.get_SubItems().get_Item(7).ToString(),
-											val2.get_SubItems().get_Item(8).ToString(),
-											val2.get_SubItems().get_Item(9).ToString(),
-											val2.get_SubItems().get_Item(10).ToString(),
-											val2.get_SubItems().get_Item(11).ToString(),
-											val2.get_SubItems().get_Item(12).ToString(),
+											listViewDataItem2.SubItems[7].ToString(),
+											listViewDataItem2.SubItems[8].ToString(),
+											listViewDataItem2.SubItems[9].ToString(),
+											listViewDataItem2.SubItems[10].ToString(),
+											listViewDataItem2.SubItems[11].ToString(),
+											listViewDataItem2.SubItems[12].ToString(),
 											"",
-											val2.get_SubItems().get_Item(14).ToString(),
+											listViewDataItem2.SubItems[14].ToString(),
 											"",
-											val2.get_SubItems().get_Item(16).ToString(),
-											val2.get_SubItems().get_Item(17).ToString(),
-											val2.get_SubItems().get_Item(18).ToString(),
-											val2.get_SubItems().get_Item(19).ToString(),
-											val2.get_SubItems().get_Item(20).ToString(),
-											val2.get_SubItems().get_Item(21).ToString(),
-											val2.get_SubItems().get_Item(22).ToString()
+											listViewDataItem2.SubItems[16].ToString(),
+											listViewDataItem2.SubItems[17].ToString(),
+											listViewDataItem2.SubItems[18].ToString(),
+											listViewDataItem2.SubItems[19].ToString(),
+											listViewDataItem2.SubItems[20].ToString(),
+											listViewDataItem2.SubItems[21].ToString(),
+											listViewDataItem2.SubItems[22].ToString()
 										};
-										ListViewDataItem val3 = new ListViewDataItem("", array2);
-										val3.set_Group(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_Group());
-										val3.set_Font(item10.Font);
-										val3.set_ForeColor(item10.ForeColor);
-										((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().Add(val3);
+										ListViewDataItem listViewDataItem3 = new ListViewDataItem("", values2);
+										listViewDataItem3.Group = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].Group;
+										listViewDataItem3.Font = item10.Font;
+										listViewDataItem3.ForeColor = item10.ForeColor;
+										CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.Add(listViewDataItem3);
 									}
 								}
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(num17).set_Item(0, (object)num8.ToString("0.##"));
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(num17).set_Item(2, (object)CS_0024_003C_003E8__locals2.indexToChange.DiscountedPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture));
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(num17).set_Item(3, (object)(CS_0024_003C_003E8__locals2.indexToChange.DiscountedPrice * (decimal)num8).ToString("0.00", Thread.CurrentThread.CurrentCulture));
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(num17).get_SubItems()
-									.set_Item(13, (object)CS_0024_003C_003E8__locals1.prom.PromoCode);
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(num17).get_SubItems()
-									.set_Item(15, (object)UpdateDiscountFromDiscountDescription(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(num17).get_SubItems()
-										.get_Item(15)
-										.ToString(), DiscountTypes.Promo, CS_0024_003C_003E8__locals2.indexToChange.DiscountAmount));
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[index][0] = num8.ToString("0.##");
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[index][2] = CS_0024_003C_003E8__locals2.indexToChange.DiscountedPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture);
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[index][3] = (CS_0024_003C_003E8__locals2.indexToChange.DiscountedPrice * (decimal)num8).ToString("0.00", Thread.CurrentThread.CurrentCulture);
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[index].SubItems[13] = CS_0024_003C_003E8__locals1.prom.PromoCode;
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[index].SubItems[15] = UpdateDiscountFromDiscountDescription(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[index].SubItems[15].ToString(), DiscountTypes.Promo, CS_0024_003C_003E8__locals2.indexToChange.DiscountAmount);
 								if (OeComboId > 0)
 								{
 									_003C_003Ec__DisplayClass6_6 CS_0024_003C_003E8__locals4 = new _003C_003Ec__DisplayClass6_6();
 									CS_0024_003C_003E8__locals4.lastComboId = OeComboId;
-									foreach (ListViewDataItem item11 in ((IEnumerable<ListViewDataItem>)((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals4.lastComboId.ToString()))
+									foreach (ListViewDataItem item11 in CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.Where((ListViewDataItem a) => a.SubItems[5].ToString() == CS_0024_003C_003E8__locals4.lastComboId.ToString()))
 									{
-										if (item11 != ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(num17))
+										if (item11 != CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[index])
 										{
-											decimal num20 = ((item11.get_Item(0).ToString() == "") ? 0m : MathHelper.FractionToDecimal(item11.get_Item(0).ToString())) * (decimal)num8;
-											item11.set_Item(0, (object)num20.ToString("0.##"));
-											item11.set_Item(3, (object)((item11.get_Item(2).ToString() == "") ? "" : (Convert.ToDecimal(item11.get_Item(2).ToString()) * num20).ToString("0.00", Thread.CurrentThread.CurrentCulture)));
+											decimal num19 = ((item11[0].ToString() == "") ? 0m : MathHelper.FractionToDecimal(item11[0].ToString())) * (decimal)num8;
+											item11[0] = num19.ToString("0.##");
+											item11[3] = ((item11[2].ToString() == "") ? "" : (Convert.ToDecimal(item11[2].ToString()) * num19).ToString("0.00", Thread.CurrentThread.CurrentCulture));
 										}
 									}
 								}
 								if (CS_0024_003C_003E8__locals3.prevComboId > 0)
 								{
-									foreach (ListViewDataItem item12 in ((IEnumerable<ListViewDataItem>)((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals3.prevComboId.ToString()))
+									foreach (ListViewDataItem item12 in CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.Where((ListViewDataItem a) => a.SubItems[5].ToString() == CS_0024_003C_003E8__locals3.prevComboId.ToString()))
 									{
-										if (item12 != ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index))
+										if (item12 != CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index])
 										{
-											decimal num21 = ((item12.get_Item(0).ToString() == "") ? 0m : MathHelper.FractionToDecimal(item12.get_Item(0).ToString())) / num16;
-											item12.set_Item(0, (object)num21.ToString("0.##"));
-											item12.set_Item(3, (object)((item12.get_Item(2).ToString() == "") ? "" : (Convert.ToDecimal(item12.get_Item(2).ToString()) * num21).ToString("0.00", Thread.CurrentThread.CurrentCulture)));
+											decimal num20 = ((item12[0].ToString() == "") ? 0m : MathHelper.FractionToDecimal(item12[0].ToString())) / num16;
+											item12[0] = num20.ToString("0.##");
+											item12[3] = ((item12[2].ToString() == "") ? "" : (Convert.ToDecimal(item12[2].ToString()) * num20).ToString("0.00", Thread.CurrentThread.CurrentCulture));
 										}
 									}
 								}
@@ -922,17 +868,11 @@ public class PromotionMethods
 							}
 							else
 							{
-								decimal num22 = ((((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_Item(0)
-									.ToString() == "") ? 0m : MathHelper.FractionToDecimal(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_Item(0)
-									.ToString()));
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).set_Item(2, (object)CS_0024_003C_003E8__locals2.indexToChange.DiscountedPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture));
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).set_Item(3, (object)(CS_0024_003C_003E8__locals2.indexToChange.DiscountedPrice * num22).ToString("0.00", Thread.CurrentThread.CurrentCulture));
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-									.set_Item(13, (object)CS_0024_003C_003E8__locals1.prom.PromoCode);
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-									.set_Item(15, (object)UpdateDiscountFromDiscountDescription(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(CS_0024_003C_003E8__locals2.indexToChange.Index).get_SubItems()
-										.get_Item(15)
-										.ToString(), DiscountTypes.Promo, CS_0024_003C_003E8__locals2.indexToChange.DiscountAmount));
+								decimal num21 = ((CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][0].ToString() == "") ? 0m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][0].ToString()));
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][2] = CS_0024_003C_003E8__locals2.indexToChange.DiscountedPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture);
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index][3] = (CS_0024_003C_003E8__locals2.indexToChange.DiscountedPrice * num21).ToString("0.00", Thread.CurrentThread.CurrentCulture);
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[13] = CS_0024_003C_003E8__locals1.prom.PromoCode;
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[15] = UpdateDiscountFromDiscountDescription(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[CS_0024_003C_003E8__locals2.indexToChange.Index].SubItems[15].ToString(), DiscountTypes.Promo, CS_0024_003C_003E8__locals2.indexToChange.DiscountAmount);
 								num8 -= (int)CS_0024_003C_003E8__locals2.indexToChange.Qty;
 								MemoryLoadedObjects.OrderEntry.isSaved = false;
 							}
@@ -949,24 +889,24 @@ public class PromotionMethods
 				{
 					_003C_003Ec__DisplayClass6_7 CS_0024_003C_003E8__locals5 = new _003C_003Ec__DisplayClass6_7();
 					CS_0024_003C_003E8__locals5.lvdi = enumerator2.Current;
-					Item item4 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals5.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+					Item item4 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals5.lvdi.SubItems[4].ToString()).FirstOrDefault();
 					if (item4 == null)
 					{
-						item4 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals5.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+						item4 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals5.lvdi.SubItems[4].ToString()).FirstOrDefault();
 					}
 					if (item4 != null)
 					{
-						decimal currentPrice3 = Convert.ToDecimal(CS_0024_003C_003E8__locals5.lvdi.get_Item(2).ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals5.lvdi.get_SubItems().get_Item(15).ToString(), DiscountTypes.Promo);
-						decimal num23 = GetCurrentPrice(item4, currentPrice3);
-						if (CS_0024_003C_003E8__locals5.lvdi.get_SubItems().get_Item(8).ToString() != "-1")
+						decimal currentPrice3 = Convert.ToDecimal(CS_0024_003C_003E8__locals5.lvdi[2].ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals5.lvdi.SubItems[15].ToString(), DiscountTypes.Promo);
+						decimal num22 = GetCurrentPrice(item4, currentPrice3);
+						if (CS_0024_003C_003E8__locals5.lvdi.SubItems[8].ToString() != "-1")
 						{
-							num23 = Convert.ToDecimal(CS_0024_003C_003E8__locals5.lvdi.get_SubItems().get_Item(8).ToString());
+							num22 = Convert.ToDecimal(CS_0024_003C_003E8__locals5.lvdi.SubItems[8].ToString());
 						}
-						decimal num24 = ((CS_0024_003C_003E8__locals5.lvdi.get_Item(0).ToString() == "") ? 0m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals5.lvdi.get_Item(0).ToString()));
-						CS_0024_003C_003E8__locals5.lvdi.set_Item(2, (object)num23.ToString("0.00", Thread.CurrentThread.CurrentCulture));
-						CS_0024_003C_003E8__locals5.lvdi.set_Item(3, (object)(num24 * num23).ToString("0.00", Thread.CurrentThread.CurrentCulture));
-						CS_0024_003C_003E8__locals5.lvdi.get_SubItems().set_Item(13, (object)"");
-						CS_0024_003C_003E8__locals5.lvdi.get_SubItems().set_Item(15, (object)UpdateDiscountFromDiscountDescription(CS_0024_003C_003E8__locals5.lvdi.get_SubItems().get_Item(15).ToString(), DiscountTypes.Promo, 0m));
+						decimal num23 = ((CS_0024_003C_003E8__locals5.lvdi[0].ToString() == "") ? 0m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals5.lvdi[0].ToString()));
+						CS_0024_003C_003E8__locals5.lvdi[2] = num22.ToString("0.00", Thread.CurrentThread.CurrentCulture);
+						CS_0024_003C_003E8__locals5.lvdi[3] = (num23 * num22).ToString("0.00", Thread.CurrentThread.CurrentCulture);
+						CS_0024_003C_003E8__locals5.lvdi.SubItems[13] = "";
+						CS_0024_003C_003E8__locals5.lvdi.SubItems[15] = UpdateDiscountFromDiscountDescription(CS_0024_003C_003E8__locals5.lvdi.SubItems[15].ToString(), DiscountTypes.Promo, 0m);
 						MemoryLoadedObjects.OrderEntry.isSaved = false;
 					}
 				}
@@ -977,8 +917,8 @@ public class PromotionMethods
 				{
 					continue;
 				}
-				decimal num25 = default(decimal);
-				int num26 = 0;
+				decimal num24 = default(decimal);
+				int num25 = 0;
 				List<ItemPriceOEIndex> list5 = new List<ItemPriceOEIndex>();
 				using (IEnumerator<ListViewDataItem> enumerator2 = enumerable.GetEnumerator())
 				{
@@ -986,32 +926,32 @@ public class PromotionMethods
 					{
 						_003C_003Ec__DisplayClass6_8 CS_0024_003C_003E8__locals7 = new _003C_003Ec__DisplayClass6_8();
 						CS_0024_003C_003E8__locals7.lvdi = enumerator2.Current;
-						DateTime orderDateCreated2 = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals7.lvdi.get_SubItems().get_Item(19).ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals7.lvdi.get_SubItems().get_Item(19).ToString()) : DateTime.Now);
+						DateTime orderDateCreated2 = ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals7.lvdi.SubItems[19].ToString())) ? Convert.ToDateTime(CS_0024_003C_003E8__locals7.lvdi.SubItems[19].ToString()) : DateTime.Now);
 						if (!IsPromotionTime(CS_0024_003C_003E8__locals1.prom, orderDateCreated2))
 						{
 							continue;
 						}
-						Item item5 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals7.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
-						if (item5 == null && CS_0024_003C_003E8__locals7.lvdi.get_SubItems().get_Item(4).ToString() != "-999")
+						Item item5 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals7.lvdi.SubItems[4].ToString()).FirstOrDefault();
+						if (item5 == null && CS_0024_003C_003E8__locals7.lvdi.SubItems[4].ToString() != "-999")
 						{
-							item5 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals7.lvdi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+							item5 = new GClass6().Items.Where((Item x) => x.ItemID.ToString() == CS_0024_003C_003E8__locals7.lvdi.SubItems[4].ToString()).FirstOrDefault();
 						}
-						decimal num27 = ((CS_0024_003C_003E8__locals7.lvdi.get_Item(0).ToString() == "") ? 1m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals7.lvdi.get_Item(0).ToString()));
-						if (CS_0024_003C_003E8__locals1.prom.String_0.Split(',').Contains(CS_0024_003C_003E8__locals7.lvdi.get_SubItems().get_Item(4).ToString()) || CS_0024_003C_003E8__locals1.prom.String_0 == "-1")
+						decimal num26 = ((CS_0024_003C_003E8__locals7.lvdi[0].ToString() == "") ? 1m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals7.lvdi[0].ToString()));
+						if (CS_0024_003C_003E8__locals1.prom.String_0.Split(',').Contains(CS_0024_003C_003E8__locals7.lvdi.SubItems[4].ToString()) || CS_0024_003C_003E8__locals1.prom.String_0 == "-1")
 						{
-							num25 += num27;
-							if (num25 >= CS_0024_003C_003E8__locals1.prom.BuyQty.Value)
+							num24 += num26;
+							if (num24 >= CS_0024_003C_003E8__locals1.prom.BuyQty.Value)
 							{
-								decimal num28 = num25 % CS_0024_003C_003E8__locals1.prom.BuyQty.Value;
-								num26 += (int)(num25 - num28);
-								num25 = num28;
+								decimal num27 = num24 % CS_0024_003C_003E8__locals1.prom.BuyQty.Value;
+								num25 += (int)(num24 - num27);
+								num24 = num27;
 							}
 						}
-						decimal currentPrice4 = Convert.ToDecimal(CS_0024_003C_003E8__locals7.lvdi.get_Item(2).ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals7.lvdi.get_SubItems().get_Item(15).ToString(), DiscountTypes.Promo);
+						decimal currentPrice4 = Convert.ToDecimal(CS_0024_003C_003E8__locals7.lvdi[2].ToString()) + OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals7.lvdi.SubItems[15].ToString(), DiscountTypes.Promo);
 						decimal itemPrice = GetCurrentPrice(item5, currentPrice4);
-						if (CS_0024_003C_003E8__locals7.lvdi.get_SubItems().get_Item(8).ToString() != "-1")
+						if (CS_0024_003C_003E8__locals7.lvdi.SubItems[8].ToString() != "-1")
 						{
-							itemPrice = Convert.ToDecimal(CS_0024_003C_003E8__locals7.lvdi.get_SubItems().get_Item(8).ToString());
+							itemPrice = Convert.ToDecimal(CS_0024_003C_003E8__locals7.lvdi.SubItems[8].ToString());
 						}
 						PromotionCheck promotionCheck2 = CalculatePromotionOff(CS_0024_003C_003E8__locals1.prom, itemPrice);
 						list5.Add(new ItemPriceOEIndex
@@ -1021,8 +961,8 @@ public class PromotionMethods
 							ItemPrice = itemPrice,
 							DiscountedPrice = promotionCheck2.NewItemPrice,
 							DiscountAmount = promotionCheck2.DiscountAmount,
-							Index = ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().IndexOf(CS_0024_003C_003E8__locals7.lvdi),
-							Qty = num27
+							Index = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.IndexOf(CS_0024_003C_003E8__locals7.lvdi),
+							Qty = num26
 						});
 					}
 				}
@@ -1033,91 +973,61 @@ public class PromotionMethods
 					{
 						continue;
 					}
-					decimal num29 = default(decimal);
+					decimal num28 = default(decimal);
 					decimal qty3 = item13.Qty;
-					if (num26 > 0 && qty3 >= 1m)
+					if (num25 > 0 && qty3 >= 1m)
 					{
-						num29 = item13.DiscountedPrice;
-						if ((decimal)num26 - qty3 < 0m && qty3 > 1m)
+						num28 = item13.DiscountedPrice;
+						if ((decimal)num25 - qty3 < 0m && qty3 > 1m)
 						{
-							((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).set_Item(0, (object)num26.ToString("0.##", Thread.CurrentThread.CurrentCulture));
-							int num30 = Convert.ToInt32(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-								.get_Item(5)
-								.ToString());
-							decimal num31 = Math.Abs(num26 - (int)qty3);
-							int num32 = 0;
-							if (num30 > 0)
+							CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index][0] = num25.ToString("0.##", Thread.CurrentThread.CurrentCulture);
+							int num29 = Convert.ToInt32(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[5].ToString());
+							decimal num30 = Math.Abs(num25 - (int)qty3);
+							int num31 = 0;
+							if (num29 > 0)
 							{
 								OeComboId++;
-								num32 = OeComboId;
+								num31 = OeComboId;
 							}
-							string[] array3 = new string[19]
+							string[] values3 = new string[19]
 							{
-								num31.ToString("0.##"),
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_Item(1)
-									.ToString(),
+								num30.ToString("0.##"),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index][1].ToString(),
 								item13.ItemPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture),
-								(item13.ItemPrice * num31).ToString("0.00", Thread.CurrentThread.CurrentCulture),
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(4)
-									.ToString(),
-								num32.ToString(),
+								(item13.ItemPrice * num30).ToString("0.00", Thread.CurrentThread.CurrentCulture),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[4].ToString(),
+								num31.ToString(),
 								string.Empty,
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(7)
-									.ToString(),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[7].ToString(),
 								item13.ItemPrice.ToString("0.00", Thread.CurrentThread.CurrentCulture),
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(9)
-									.ToString(),
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(10)
-									.ToString(),
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(11)
-									.ToString(),
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(12)
-									.ToString(),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[9].ToString(),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[10].ToString(),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[11].ToString(),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[12].ToString(),
 								"",
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(14)
-									.ToString(),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[14].ToString(),
 								"",
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(16)
-									.ToString(),
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(17)
-									.ToString(),
-								((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-									.get_Item(18)
-									.ToString()
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[16].ToString(),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[17].ToString(),
+								CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[18].ToString()
 							};
-							ListViewDataItem val4 = new ListViewDataItem("", array3);
-							val4.set_Group(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_Group());
-							val4.set_Font(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_Font());
-							((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().Add(val4);
+							ListViewDataItem listViewDataItem4 = new ListViewDataItem("", values3);
+							listViewDataItem4.Group = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].Group;
+							listViewDataItem4.Font = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].Font;
+							CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items.Add(listViewDataItem4);
 							flag4 = true;
 						}
-						num26 -= (int)qty3;
-						((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-							.set_Item(15, (object)UpdateDiscountFromDiscountDescription(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-								.get_Item(15)
-								.ToString(), DiscountTypes.Promo, item13.DiscountAmount));
+						num25 -= (int)qty3;
+						CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[15] = UpdateDiscountFromDiscountDescription(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[15].ToString(), DiscountTypes.Promo, item13.DiscountAmount);
 					}
 					else
 					{
-						num29 = item13.ItemPrice;
-						((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-							.set_Item(15, (object)UpdateDiscountFromDiscountDescription(((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-								.get_Item(15)
-								.ToString(), DiscountTypes.Promo, 0m));
+						num28 = item13.ItemPrice;
+						CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[15] = UpdateDiscountFromDiscountDescription(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[15].ToString(), DiscountTypes.Promo, 0m);
 					}
-					((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).set_Item(2, (object)num29.ToString("0.00", Thread.CurrentThread.CurrentCulture));
-					((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).set_Item(3, (object)(qty3 * num29).ToString("0.00", Thread.CurrentThread.CurrentCulture));
-					((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems).get_Items().get_Item(item13.Index).get_SubItems()
-						.set_Item(13, (object)CS_0024_003C_003E8__locals1.prom.PromoCode);
+					CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index][2] = num28.ToString("0.00", Thread.CurrentThread.CurrentCulture);
+					CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index][3] = (qty3 * num28).ToString("0.00", Thread.CurrentThread.CurrentCulture);
+					CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1.radListItems.Items[item13.Index].SubItems[13] = CS_0024_003C_003E8__locals1.prom.PromoCode;
 					MemoryLoadedObjects.OrderEntry.isSaved = false;
 				}
 				if (flag4)

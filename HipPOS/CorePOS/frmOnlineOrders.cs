@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
@@ -11,7 +10,6 @@ using CorePOS.Business.Methods;
 using CorePOS.CustomControls;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -86,8 +84,6 @@ public class frmOnlineOrders : frmMasterForm
 
 	public frmOnlineOrders(string _orderNumber = null)
 	{
-		//IL_0046: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0050: Expected O, but got Unknown
 		Class26.Ggkj0JxzN9YmC();
 		string_1 = string.Empty;
 		string_2 = string.Empty;
@@ -95,7 +91,7 @@ public class frmOnlineOrders : frmMasterForm
 		int_0 = -1;
 		base._002Ector();
 		InitializeComponent_1();
-		((RadListView)lvItems).add_CellFormatting(new ListViewCellFormattingEventHandler(lvItems_CellFormatting));
+		lvItems.CellFormatting += lvItems_CellFormatting;
 		string_0 = _orderNumber;
 	}
 
@@ -108,12 +104,10 @@ public class frmOnlineOrders : frmMasterForm
 
 	private void method_3()
 	{
-		//IL_062a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0631: Expected O, but got Unknown
-		((RadListView)lvItems).get_Items().Clear();
-		((RadListView)lvOrders).get_Items().Clear();
+		lvItems.Items.Clear();
+		lvOrders.Items.Clear();
 		pnlConfirmation.Visible = false;
-		((Control)(object)lblOrderInfo).Text = string.Empty;
+		lblOrderInfo.Text = string.Empty;
 		GClass6 gClass = new GClass6();
 		switch (byte_0)
 		{
@@ -143,7 +137,7 @@ public class frmOnlineOrders : frmMasterForm
 		int num = 0;
 		int num2 = 0;
 		List<string> list = list_2.Select((Order x) => x.OrderNumber).Distinct().ToList();
-		ListViewDataItem[] array = (ListViewDataItem[])(object)new ListViewDataItem[list.Count];
+		ListViewDataItem[] array = new ListViewDataItem[list.Count];
 		using (List<string>.Enumerator enumerator = list.GetEnumerator())
 		{
 			while (enumerator.MoveNext())
@@ -156,7 +150,7 @@ public class frmOnlineOrders : frmMasterForm
 					select x).FirstOrDefault();
 				if (order != null)
 				{
-					string[] array2 = new string[5]
+					string[] values = new string[5]
 					{
 						(CS_0024_003C_003E8__locals0.orderNumber.Length > 15) ? CS_0024_003C_003E8__locals0.orderNumber.Substring(CS_0024_003C_003E8__locals0.orderNumber.Length - 4, 4).ToUpper() : CS_0024_003C_003E8__locals0.orderNumber,
 						(!string.IsNullOrEmpty(order.SubSource)) ? order.SubSource : (string.IsNullOrEmpty(order.Source) ? "Unknown" : order.Source),
@@ -164,9 +158,9 @@ public class frmOnlineOrders : frmMasterForm
 						CS_0024_003C_003E8__locals0.orderNumber,
 						(!string.IsNullOrEmpty(order.ThirdPartyOrderId)) ? order.ThirdPartyOrderId : ""
 					};
-					ListViewDataItem val = new ListViewDataItem("", array2);
-					val.set_Font(((Control)(object)lvOrders).Font);
-					array[num] = val;
+					ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
+					listViewDataItem.Font = lvOrders.Font;
+					array[num] = listViewDataItem;
 					if (byte_0 == 0 && !string.IsNullOrEmpty(string_0) && CS_0024_003C_003E8__locals0.orderNumber == string_0)
 					{
 						num2 = num;
@@ -175,23 +169,17 @@ public class frmOnlineOrders : frmMasterForm
 				num++;
 			}
 		}
-		((RadListView)lvOrders).get_Items().AddRange(array);
+		lvOrders.Items.AddRange(array);
 		if (byte_0 == 0)
 		{
 			int_0 = num2;
-			((RadListView)lvOrders).set_SelectedIndex(int_0);
+			lvOrders.SelectedIndex = int_0;
 		}
-		if (((RadListView)lvOrders).get_SelectedIndex() > -1)
+		if (lvOrders.SelectedIndex > -1)
 		{
-			string_3 = ((RadListView)lvOrders).get_Items().get_Item(int_0).get_SubItems()
-				.get_Item(4)
-				.ToString();
-			string_2 = ((RadListView)lvOrders).get_Items().get_Item(int_0).get_SubItems()
-				.get_Item(3)
-				.ToString();
-			string_1 = ((RadListView)lvOrders).get_Items().get_Item(int_0).get_SubItems()
-				.get_Item(2)
-				.ToString();
+			string_3 = lvOrders.Items[int_0].SubItems[4].ToString();
+			string_2 = lvOrders.Items[int_0].SubItems[3].ToString();
+			string_1 = lvOrders.Items[int_0].SubItems[2].ToString();
 		}
 		verticalScrollControl1.EnableDisableButtonsByScrollListView();
 	}
@@ -222,37 +210,35 @@ public class frmOnlineOrders : frmMasterForm
 
 	private void lvOrders_SelectedItemChanged(object sender, EventArgs e)
 	{
-		//IL_0672: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0679: Expected O, but got Unknown
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)lvOrders).get_SelectedItems()).Count > 0)
+		if (lvOrders.SelectedItems.Count > 0)
 		{
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)lvOrders).get_SelectedItems())[0] == null)
+			if (lvOrders.SelectedItems[0] == null)
 			{
 				return;
 			}
-			int_0 = ((RadListView)lvOrders).get_SelectedIndex();
+			int_0 = lvOrders.SelectedIndex;
 			pnlConfirmation.Visible = byte_0 == 0;
-			((RadListView)lvItems).get_Items().Clear();
-			string_3 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)lvOrders).get_SelectedItems())[0].get_SubItems().get_Item(4).ToString();
-			string_2 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)lvOrders).get_SelectedItems())[0].get_SubItems().get_Item(3).ToString();
-			string_1 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)lvOrders).get_SelectedItems())[0].get_SubItems().get_Item(2).ToString();
+			lvItems.Items.Clear();
+			string_3 = lvOrders.SelectedItems[0].SubItems[4].ToString();
+			string_2 = lvOrders.SelectedItems[0].SubItems[3].ToString();
+			string_1 = lvOrders.SelectedItems[0].SubItems[2].ToString();
 			List<Order> list = (from order_0 in list_2
 				where order_0.OrderNumber == string_2
 				select order_0 into x
 				orderby x.DateCreated
 				select x).ToList();
 			Order order = list.FirstOrDefault();
-			((Control)(object)lblOrderInfo).Text = "<html><color=yellow><b>" + order.OrderType.ToUpper() + "</b><br>";
-			RadLabel obj = lblOrderInfo;
-			((Control)(object)obj).Text = ((Control)(object)obj).Text + "<color=white><b>ORDER DATE:</b> " + order.DateCreated.Value.ToString("MM/dd/yyyy hh:mm tt") + "<br>";
-			RadLabel val = lblOrderInfo;
-			((Control)(object)val).Text = ((Control)(object)val).Text + "<b>CUSTOMER INFO:</b> <br>NAME: " + order.CustomerInfoName + "<br>PHONE: " + order.CustomerInfoPhone + "<br>EMAIL: " + order.CustomerInfoEmail + "<br>" + order.CustomerInfo + "<br>";
+			lblOrderInfo.Text = "<html><color=yellow><b>" + order.OrderType.ToUpper() + "</b><br>";
+			RadLabel radLabel = lblOrderInfo;
+			radLabel.Text = radLabel.Text + "<color=white><b>ORDER DATE:</b> " + order.DateCreated.Value.ToString("MM/dd/yyyy hh:mm tt") + "<br>";
+			RadLabel radLabel2 = lblOrderInfo;
+			radLabel2.Text = radLabel2.Text + "<b>CUSTOMER INFO:</b> <br>NAME: " + order.CustomerInfoName + "<br>PHONE: " + order.CustomerInfoPhone + "<br>EMAIL: " + order.CustomerInfoEmail + "<br>" + order.CustomerInfo + "<br>";
 			nullable_0 = order.FulfillmentAt;
 			if (nullable_0.HasValue && nullable_0.Value > DateTime.Now.AddMinutes(30.0))
 			{
 				string text = ((nullable_0.Value.Date == DateTime.Now.Date) ? ("TODAY @ " + nullable_0.Value.ToShortTimeString()) : nullable_0.Value.ToString("ddd, MMM dd @ hh:mm tt"));
-				RadLabel obj2 = lblOrderInfo;
-				((Control)(object)obj2).Text = ((Control)(object)obj2).Text + "<color=red><b>FULFILLMENT AT:</b><br>" + text + "<color=white><br><br>";
+				RadLabel radLabel3 = lblOrderInfo;
+				radLabel3.Text = radLabel3.Text + "<color=red><b>FULFILLMENT AT:</b><br>" + text + "<color=white><br><br>";
 				btnConfirmFulfillmentTime.Visible = true;
 				btnConfirmFulfillmentTime.Text = "CONFIRM FOR " + text;
 				button_0.Text = "ADD " + button_0.Text.Replace("ADD ", string.Empty);
@@ -290,37 +276,37 @@ public class frmOnlineOrders : frmMasterForm
 				}
 				text2 = "<color=red><b>" + text3 + " " + text4 + "</b>";
 			}
-			RadLabel obj3 = lblOrderInfo;
-			((Control)(object)obj3).Text = ((Control)(object)obj3).Text + "<b>ORDER INSTRUCTIONS:</b><br>" + text2;
-			((Control)(object)lblOrderInfo).Text += "<br><br><br><br><br><br><br><br><br><br><br><br></html>";
-			lblOrderInfo.set_TextAlignment(ContentAlignment.TopLeft);
-			((RadElement)((RadControl)lblOrderInfo).get_RootElement()).set_Alignment(ContentAlignment.TopLeft);
+			RadLabel radLabel4 = lblOrderInfo;
+			radLabel4.Text = radLabel4.Text + "<b>ORDER INSTRUCTIONS:</b><br>" + text2;
+			lblOrderInfo.Text += "<br><br><br><br><br><br><br><br><br><br><br><br></html>";
+			lblOrderInfo.TextAlignment = ContentAlignment.TopLeft;
+			lblOrderInfo.RootElement.Alignment = ContentAlignment.TopLeft;
 			{
 				foreach (Order item in list)
 				{
-					string[] array = new string[3]
+					string[] values = new string[3]
 					{
 						MathHelper.DecimalToFraction(item.Qty),
 						item.ItemName + (string.IsNullOrEmpty(item.Instructions) ? string.Empty : (item.Instructions.Contains("|") ? (" => INSTR: " + item.Instructions.Split('|')[1].ToString()) : string.Empty)),
 						(item.Qty * item.ItemSellPrice).ToString("0.00")
 					};
-					ListViewDataItem val2 = new ListViewDataItem("", array);
-					val2.set_Font(((Control)(object)lvItems).Font);
-					((RadListView)lvItems).get_Items().Add(val2);
+					ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
+					listViewDataItem.Font = lvItems.Font;
+					lvItems.Items.Add(listViewDataItem);
 				}
 				return;
 			}
 		}
-		((RadListView)lvItems).get_Items().Clear();
-		((Control)(object)lblOrderInfo).Text = string.Empty;
+		lvItems.Items.Clear();
+		lblOrderInfo.Text = string.Empty;
 		pnlConfirmation.Visible = false;
 	}
 
 	private void lvItems_CellFormatting(object sender, ListViewCellFormattingEventArgs e)
 	{
-		if ((e.get_CellElement().get_Data().get_HeaderText() == "Price" || e.get_CellElement().get_Data().get_HeaderText() == "Ext. Price") && e.get_CellElement() is DetailListViewDataCellElement)
+		if ((e.CellElement.Data.HeaderText == "Price" || e.CellElement.Data.HeaderText == "Ext. Price") && e.CellElement is DetailListViewDataCellElement)
 		{
-			((LightVisualElement)e.get_CellElement()).set_TextAlignment(ContentAlignment.MiddleRight);
+			e.CellElement.TextAlignment = ContentAlignment.MiddleRight;
 		}
 	}
 
@@ -378,13 +364,13 @@ public class frmOnlineOrders : frmMasterForm
 			{
 				new NotificationLabel(this, "Order has been accepted with an order ready time in " + int_1 + " minutes.", NotificationTypes.Success).Show();
 			}
-			((RadListView)lvOrders).get_Items().RemoveAt(int_0);
-			if (int_0 > ((RadListView)lvOrders).get_Items().get_Count() - 1)
+			lvOrders.Items.RemoveAt(int_0);
+			if (int_0 > lvOrders.Items.Count - 1)
 			{
-				int_0 = ((RadListView)lvOrders).get_Items().get_Count() - 1;
+				int_0 = lvOrders.Items.Count - 1;
 			}
-			((RadListView)lvOrders).set_SelectedIndex(int_0);
-			if (((RadListView)lvOrders).get_Items().get_Count() == 0)
+			lvOrders.SelectedIndex = int_0;
+			if (lvOrders.Items.Count == 0)
 			{
 				CompanyHelper.UpdateCompanyHasUnconfirmedOnlineOrder(status: false);
 			}
@@ -483,25 +469,13 @@ public class frmOnlineOrders : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0026: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002c: Expected O, but got Unknown
-		//IL_0036: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_0046: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004c: Expected O, but got Unknown
-		//IL_0056: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005d: Expected O, but got Unknown
-		//IL_0067: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006e: Expected O, but got Unknown
-		//IL_00f9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0103: Expected O, but got Unknown
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmOnlineOrders));
-		ListViewDetailColumn val = new ListViewDetailColumn("Column 0", "OrderNumber");
-		ListViewDetailColumn val2 = new ListViewDetailColumn("Column 1", "OrderDate");
-		ListViewDetailColumn val3 = new ListViewDetailColumn("Column 0", "Qty");
-		ListViewDetailColumn val4 = new ListViewDetailColumn("Column 1", "Item Name");
-		ListViewDetailColumn val5 = new ListViewDetailColumn("Column 3", "Ext. Price");
+		ListViewDetailColumn listViewDetailColumn = new ListViewDetailColumn("Column 0", "OrderNumber");
+		ListViewDetailColumn listViewDetailColumn2 = new ListViewDetailColumn("Column 1", "OrderDate");
+		ListViewDetailColumn listViewDetailColumn3 = new ListViewDetailColumn("Column 0", "Qty");
+		ListViewDetailColumn listViewDetailColumn4 = new ListViewDetailColumn("Column 1", "Item Name");
+		ListViewDetailColumn listViewDetailColumn5 = new ListViewDetailColumn("Column 3", "Ext. Price");
 		lblTitle = new Label();
 		btnCancel = new Button();
 		lblNewOrders = new Class24();
@@ -564,49 +538,49 @@ public class frmOnlineOrders : frmMasterForm
 		verticalScrollControl1.inputedWidth = 0;
 		componentResourceManager.ApplyResources(verticalScrollControl1, "verticalScrollControl1");
 		verticalScrollControl1.Name = "verticalScrollControl1";
-		((RadListView)lvOrders).set_AllowArbitraryItemHeight(true);
-		((RadListView)lvOrders).set_AllowEdit(false);
-		((RadListView)lvOrders).set_AllowRemove(false);
+		lvOrders.AllowArbitraryItemHeight = true;
+		lvOrders.AllowEdit = false;
+		lvOrders.AllowRemove = false;
 		componentResourceManager.ApplyResources(lvOrders, "lvOrders");
-		val.set_HeaderText("OrderNumber");
-		val.set_Width(170f);
-		val2.set_HeaderText("OrderDate");
-		val2.set_Width(115f);
-		((RadListView)lvOrders).get_Columns().AddRange((ListViewDetailColumn[])(object)new ListViewDetailColumn[2] { val, val2 });
-		((RadListView)lvOrders).set_EnableCustomGrouping(true);
-		((RadListView)lvOrders).set_EnableKineticScrolling(true);
-		((RadListView)lvOrders).set_GroupIndent(0);
-		((RadListView)lvOrders).set_GroupItemSize(new Size(300, 60));
-		((RadListView)lvOrders).set_ItemSize(new Size(200, 40));
-		((RadListView)lvOrders).set_ItemSpacing(-1);
-		((Control)(object)lvOrders).Name = "lvOrders";
-		((RadListView)lvOrders).set_ShowColumnHeaders(false);
-		((RadListView)lvOrders).set_ShowGridLines(true);
-		((RadListView)lvOrders).set_ShowGroups(true);
-		((RadListView)lvOrders).set_ViewType((ListViewType)2);
-		((RadListView)lvOrders).add_SelectedItemChanged((EventHandler)lvOrders_SelectedItemChanged);
-		((RadListView)lvItems).set_AllowArbitraryItemHeight(true);
-		((RadListView)lvItems).set_AllowEdit(false);
-		((RadListView)lvItems).set_AllowRemove(false);
+		listViewDetailColumn.HeaderText = "OrderNumber";
+		listViewDetailColumn.Width = 170f;
+		listViewDetailColumn2.HeaderText = "OrderDate";
+		listViewDetailColumn2.Width = 115f;
+		lvOrders.Columns.AddRange(listViewDetailColumn, listViewDetailColumn2);
+		lvOrders.EnableCustomGrouping = true;
+		lvOrders.EnableKineticScrolling = true;
+		lvOrders.GroupIndent = 0;
+		lvOrders.GroupItemSize = new Size(300, 60);
+		lvOrders.ItemSize = new Size(200, 40);
+		lvOrders.ItemSpacing = -1;
+		lvOrders.Name = "lvOrders";
+		lvOrders.ShowColumnHeaders = false;
+		lvOrders.ShowGridLines = true;
+		lvOrders.ShowGroups = true;
+		lvOrders.ViewType = ListViewType.DetailsView;
+		lvOrders.SelectedItemChanged += lvOrders_SelectedItemChanged;
+		lvItems.AllowArbitraryItemHeight = true;
+		lvItems.AllowEdit = false;
+		lvItems.AllowRemove = false;
 		componentResourceManager.ApplyResources(lvItems, "lvItems");
-		val3.set_HeaderText("Qty");
-		val3.set_Width(40f);
-		val4.set_HeaderText("Item Name");
-		val4.set_Width(242f);
-		val5.set_HeaderText("Ext. Price");
-		val5.set_Width(90f);
-		((RadListView)lvItems).get_Columns().AddRange((ListViewDetailColumn[])(object)new ListViewDetailColumn[3] { val3, val4, val5 });
-		((RadListView)lvItems).set_EnableCustomGrouping(true);
-		((RadListView)lvItems).set_EnableKineticScrolling(true);
-		((RadListView)lvItems).set_GroupIndent(0);
-		((RadListView)lvItems).set_GroupItemSize(new Size(300, 60));
-		((RadListView)lvItems).set_ItemSize(new Size(200, 40));
-		((RadListView)lvItems).set_ItemSpacing(-1);
-		((Control)(object)lvItems).Name = "lvItems";
-		((RadListView)lvItems).set_ShowColumnHeaders(false);
-		((RadListView)lvItems).set_ShowGridLines(true);
-		((RadListView)lvItems).set_ShowGroups(true);
-		((RadListView)lvItems).set_ViewType((ListViewType)2);
+		listViewDetailColumn3.HeaderText = "Qty";
+		listViewDetailColumn3.Width = 40f;
+		listViewDetailColumn4.HeaderText = "Item Name";
+		listViewDetailColumn4.Width = 242f;
+		listViewDetailColumn5.HeaderText = "Ext. Price";
+		listViewDetailColumn5.Width = 90f;
+		lvItems.Columns.AddRange(listViewDetailColumn3, listViewDetailColumn4, listViewDetailColumn5);
+		lvItems.EnableCustomGrouping = true;
+		lvItems.EnableKineticScrolling = true;
+		lvItems.GroupIndent = 0;
+		lvItems.GroupItemSize = new Size(300, 60);
+		lvItems.ItemSize = new Size(200, 40);
+		lvItems.ItemSpacing = -1;
+		lvItems.Name = "lvItems";
+		lvItems.ShowColumnHeaders = false;
+		lvItems.ShowGridLines = true;
+		lvItems.ShowGroups = true;
+		lvItems.ViewType = ListViewType.DetailsView;
 		label2.BackColor = Color.Gray;
 		componentResourceManager.ApplyResources(label2, "label2");
 		label2.ForeColor = Color.White;
@@ -633,9 +607,9 @@ public class frmOnlineOrders : frmMasterForm
 		timer_0.Interval = 1000;
 		timer_0.Tick += timer_0_Tick;
 		componentResourceManager.ApplyResources(lblOrderInfo, "lblOrderInfo");
-		((Control)(object)lblOrderInfo).BackColor = Color.FromArgb(64, 64, 64);
-		((Control)(object)lblOrderInfo).ForeColor = Color.White;
-		((Control)(object)lblOrderInfo).Name = "lblOrderInfo";
+		lblOrderInfo.BackColor = Color.FromArgb(64, 64, 64);
+		lblOrderInfo.ForeColor = Color.White;
+		lblOrderInfo.Name = "lblOrderInfo";
 		pnlConfirmation.Controls.Add(label3);
 		pnlConfirmation.Controls.Add(btnConfirmFulfillmentTime);
 		pnlConfirmation.Controls.Add(button_0);
@@ -727,34 +701,34 @@ public class frmOnlineOrders : frmMasterForm
 		BackColor = Color.FromArgb(35, 39, 56);
 		base.Controls.Add(lblRejectedOrder);
 		base.Controls.Add(pnlConfirmation);
-		base.Controls.Add((Control)(object)lblOrderInfo);
+		base.Controls.Add(lblOrderInfo);
 		base.Controls.Add(verticalScrollControl2);
 		base.Controls.Add(label2);
 		base.Controls.Add(label1);
 		base.Controls.Add(label8);
-		base.Controls.Add((Control)(object)lvItems);
+		base.Controls.Add(lvItems);
 		base.Controls.Add(verticalScrollControl1);
 		base.Controls.Add(lblConfirmedOrders);
 		base.Controls.Add(lblNewOrders);
 		base.Controls.Add(btnCancel);
 		base.Controls.Add(lblTitle);
-		base.Controls.Add((Control)(object)lvOrders);
+		base.Controls.Add(lvOrders);
 		base.Name = "frmOnlineOrders";
 		base.Opacity = 1.0;
 		base.Load += frmOnlineOrders_Load;
-		base.Controls.SetChildIndex((Control)(object)lvOrders, 0);
+		base.Controls.SetChildIndex(lvOrders, 0);
 		base.Controls.SetChildIndex(lblTitle, 0);
 		base.Controls.SetChildIndex(btnCancel, 0);
 		base.Controls.SetChildIndex(lblNewOrders, 0);
 		base.Controls.SetChildIndex(lblConfirmedOrders, 0);
 		base.Controls.SetChildIndex(verticalScrollControl1, 0);
-		base.Controls.SetChildIndex((Control)(object)lvItems, 0);
+		base.Controls.SetChildIndex(lvItems, 0);
 		base.Controls.SetChildIndex(label8, 0);
 		base.Controls.SetChildIndex(label1, 0);
 		base.Controls.SetChildIndex(label2, 0);
 		base.Controls.SetChildIndex(PersistentNotification, 0);
 		base.Controls.SetChildIndex(verticalScrollControl2, 0);
-		base.Controls.SetChildIndex((Control)(object)lblOrderInfo, 0);
+		base.Controls.SetChildIndex(lblOrderInfo, 0);
 		base.Controls.SetChildIndex(pnlConfirmation, 0);
 		base.Controls.SetChildIndex(lblRejectedOrder, 0);
 		((ISupportInitialize)lvOrders).EndInit();

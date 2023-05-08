@@ -9,7 +9,6 @@ using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
 using CorePOS.CommonForms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -136,49 +135,49 @@ public class frmManageStations : frmMasterForm
 	private void ddlStations_SelectedIndexChanged(object sender, EventArgs e)
 	{
 		int num = Convert.ToInt32(ddlStations.SelectedValue.ToString());
-		((Control)(object)txtName).Enabled = true;
+		txtName.Enabled = true;
 		btnDelete.Visible = true;
 		if (num <= 4)
 		{
-			((Control)(object)txtName).Enabled = false;
+			txtName.Enabled = false;
 			btnDelete.Visible = false;
 			if (num == 0)
 			{
-				((Control)(object)txtName).Enabled = true;
+				txtName.Enabled = true;
 			}
 		}
 		if (ddlStations.SelectedValue.ToString() != "0")
 		{
 			Station station = new GClass6().Stations.Where((Station a) => a.StationID == Convert.ToInt16(ddlStations.SelectedValue)).FirstOrDefault();
-			((Control)(object)txtName).Text = station.StationName;
+			txtName.Text = station.StationName;
 			ddlPrintCopies.Text = station.PrintCopies.ToString();
 			ddlPrintItemQtyGreater.Text = station.PrintItemQtyGreater.ToString();
-			chkEnablePrint.set_Value(station.EnablePrint);
+			chkEnablePrint.Value = station.EnablePrint;
 			lblPrinterName.Text = station.PrinterName;
-			chkAutoPrint.set_Value(station.AutoPrint);
-			chkSendStation.set_Value(station.SendToStation);
+			chkAutoPrint.Value = station.AutoPrint;
+			chkSendStation.Value = station.SendToStation;
 			pjuWniyana.SelectedValue = station.ChitFormat.ToString();
 			ddlPaperSize.Text = station.PaperSize.Trim();
 			lblChitFont.Text = station.ChitFontSize.ToString();
 			lblDisplayFont.Text = station.DisplayFontSize.ToString();
 			string_0 = station.OrderTypes;
-			chkPrintForEach.set_Value(station.PrintEachQty);
+			chkPrintForEach.Value = station.PrintEachQty;
 		}
 		else
 		{
-			((Control)(object)txtName).Text = "";
+			txtName.Text = "";
 			ddlPrintCopies.Text = "1";
 			ddlPrintItemQtyGreater.Text = "1";
-			chkEnablePrint.set_Value(false);
+			chkEnablePrint.Value = false;
 			lblPrinterName.Text = "";
-			chkAutoPrint.set_Value(false);
-			chkSendStation.set_Value(false);
+			chkAutoPrint.Value = false;
+			chkSendStation.Value = false;
 			pjuWniyana.SelectedValue = "1";
 			ddlPaperSize.Text = "80mm";
 			lblChitFont.Text = "8";
 			lblDisplayFont.Text = "8";
 			string_0 = string_1;
-			chkPrintForEach.set_Value(false);
+			chkPrintForEach.Value = false;
 		}
 	}
 
@@ -237,7 +236,7 @@ public class frmManageStations : frmMasterForm
 	{
 		try
 		{
-			if (string.IsNullOrEmpty(((Control)(object)txtName).Text))
+			if (string.IsNullOrEmpty(txtName.Text))
 			{
 				new NotificationLabel(this, "Please add a station name.", NotificationTypes.Warning).Show();
 				return;
@@ -245,27 +244,27 @@ public class frmManageStations : frmMasterForm
 			GClass6 gClass = new GClass6();
 			if (ddlStations.SelectedIndex == 0)
 			{
-				if (gClass.Stations.Where((Station a) => a.StationName.ToUpper() == ((Control)(object)txtName).Text.ToUpper()).FirstOrDefault() != null)
+				if (gClass.Stations.Where((Station a) => a.StationName.ToUpper() == txtName.Text.ToUpper()).FirstOrDefault() != null)
 				{
 					new NotificationLabel(this, "Station Name already exist.", NotificationTypes.Warning).Show();
 					return;
 				}
 				Station entity = new Station
 				{
-					StationName = ((Control)(object)txtName).Text,
-					EnablePrint = chkEnablePrint.get_Value(),
+					StationName = txtName.Text,
+					EnablePrint = chkEnablePrint.Value,
 					PrintCopies = Convert.ToInt32(ddlPrintCopies.Text),
 					PrintItemQtyGreater = Convert.ToInt16(ddlPrintItemQtyGreater.Text),
 					PrinterName = lblPrinterName.Text,
-					AutoPrint = chkAutoPrint.get_Value(),
+					AutoPrint = chkAutoPrint.Value,
 					Synced = false,
-					SendToStation = chkSendStation.get_Value(),
+					SendToStation = chkSendStation.Value,
 					PaperSize = ddlPaperSize.Text.Trim(),
 					ChitFormat = Convert.ToInt16(pjuWniyana.SelectedValue),
 					ChitFontSize = Convert.ToInt32(lblChitFont.Text),
 					DisplayFontSize = Convert.ToInt32(lblDisplayFont.Text),
 					OrderTypes = string_0,
-					PrintEachQty = chkPrintForEach.get_Value()
+					PrintEachQty = chkPrintForEach.Value
 				};
 				gClass.Stations.InsertOnSubmit(entity);
 				Helper.SubmitChangesWithCatch(gClass);
@@ -275,20 +274,20 @@ public class frmManageStations : frmMasterForm
 				Station station = gClass.Stations.Where((Station a) => a.StationID == Convert.ToInt16(ddlStations.SelectedValue)).FirstOrDefault();
 				if (station != null)
 				{
-					station.StationName = ((Control)(object)txtName).Text;
+					station.StationName = txtName.Text;
 					station.PrinterName = lblPrinterName.Text;
 					station.PrintCopies = Convert.ToInt32(ddlPrintCopies.Text);
 					station.PrintItemQtyGreater = Convert.ToInt16(ddlPrintItemQtyGreater.Text);
-					station.EnablePrint = chkEnablePrint.get_Value();
-					station.AutoPrint = chkAutoPrint.get_Value();
-					station.SendToStation = chkSendStation.get_Value();
+					station.EnablePrint = chkEnablePrint.Value;
+					station.AutoPrint = chkAutoPrint.Value;
+					station.SendToStation = chkSendStation.Value;
 					station.ChitFormat = Convert.ToInt16(pjuWniyana.SelectedValue);
 					station.PaperSize = ddlPaperSize.Text.Trim();
 					station.ChitFontSize = Convert.ToInt32(lblChitFont.Text);
 					station.DisplayFontSize = Convert.ToInt32(lblDisplayFont.Text);
 					station.Synced = false;
 					station.OrderTypes = string_0;
-					station.PrintEachQty = chkPrintForEach.get_Value();
+					station.PrintEachQty = chkPrintForEach.Value;
 					Helper.SubmitChangesWithCatch(gClass);
 				}
 			}
@@ -344,10 +343,10 @@ public class frmManageStations : frmMasterForm
 	private void btnShowKeyboard_Name_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Station Name", 1, 128, ((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Station Name", 1, 128, txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -394,50 +393,6 @@ public class frmManageStations : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_00a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ab: Expected O, but got Unknown
-		//IL_00c2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00cc: Expected O, but got Unknown
-		//IL_00e3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ed: Expected O, but got Unknown
-		//IL_015c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0166: Expected O, but got Unknown
-		//IL_060b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_062c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0fde: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ff6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_100d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_102e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_105b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1088: Unknown result type (might be due to invalid IL or missing references)
-		//IL_10b5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_10d6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1373: Unknown result type (might be due to invalid IL or missing references)
-		//IL_138b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13a2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13c3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13f0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_141d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_144a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_146b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_16c3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_16db: Unknown result type (might be due to invalid IL or missing references)
-		//IL_16f2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1713: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1740: Unknown result type (might be due to invalid IL or missing references)
-		//IL_176d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_179a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_17bb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2261: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2279: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2290: Unknown result type (might be due to invalid IL or missing references)
-		//IL_22b1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_22de: Unknown result type (might be due to invalid IL or missing references)
-		//IL_230b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2338: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2359: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmManageStations));
 		pictureBox1 = new PictureBox();
 		lblHeaderTitle = new Label();
@@ -530,16 +485,16 @@ public class frmManageStations : frmMasterForm
 		label1.TabIndex = 239;
 		label1.Text = "Station List";
 		label1.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)txtName).Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-		((Control)(object)txtName).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtName).Location = new Point(138, 78);
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtName).Size = new Size(466, 35);
-		((Control)(object)txtName).TabIndex = 243;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+		txtName.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtName.Location = new Point(138, 78);
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtName.Size = new Size(466, 35);
+		txtName.TabIndex = 243;
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label2.BackColor = Color.FromArgb(132, 146, 146);
 		label2.Font = new Font("Microsoft Sans Serif", 12f);
 		label2.ForeColor = SystemColors.ButtonFace;
@@ -661,23 +616,23 @@ public class frmManageStations : frmMasterForm
 		label4.TabIndex = 250;
 		label4.Text = "Enable Print";
 		label4.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)chkEnablePrint).Location = new Point(301, 182);
-		((Control)(object)chkEnablePrint).Name = "chkEnablePrint";
-		chkEnablePrint.set_OffText("NO");
-		chkEnablePrint.set_OnText("YES");
-		((Control)(object)chkEnablePrint).Size = new Size(66, 33);
-		((Control)(object)chkEnablePrint).TabIndex = 251;
-		((Control)(object)chkEnablePrint).Tag = "";
-		chkEnablePrint.set_ToggleStateMode((ToggleStateMode)1);
-		chkEnablePrint.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkEnablePrint).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkEnablePrint).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkEnablePrint).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEnablePrint).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEnablePrint).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEnablePrint).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkEnablePrint).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkEnablePrint).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkEnablePrint.Location = new Point(301, 182);
+		chkEnablePrint.Name = "chkEnablePrint";
+		chkEnablePrint.OffText = "NO";
+		chkEnablePrint.OnText = "YES";
+		chkEnablePrint.Size = new Size(66, 33);
+		chkEnablePrint.TabIndex = 251;
+		chkEnablePrint.Tag = "";
+		chkEnablePrint.ToggleStateMode = ToggleStateMode.Click;
+		chkEnablePrint.Value = false;
+		((RadToggleSwitchElement)chkEnablePrint.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkEnablePrint.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkEnablePrint.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkEnablePrint.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkEnablePrint.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkEnablePrint.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkEnablePrint.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkEnablePrint.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		btnSelectPrinter.BackColor = Color.FromArgb(77, 174, 225);
 		btnSelectPrinter.DialogResult = DialogResult.OK;
 		btnSelectPrinter.FlatAppearance.BorderColor = Color.Black;
@@ -704,23 +659,23 @@ public class frmManageStations : frmMasterForm
 		lblPrinterName.Size = new Size(169, 33);
 		lblPrinterName.TabIndex = 253;
 		lblPrinterName.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)chkAutoPrint).Location = new Point(138, 147);
-		((Control)(object)chkAutoPrint).Name = "chkAutoPrint";
-		chkAutoPrint.set_OffText("NO");
-		chkAutoPrint.set_OnText("YES");
-		((Control)(object)chkAutoPrint).Size = new Size(58, 34);
-		((Control)(object)chkAutoPrint).TabIndex = 255;
-		((Control)(object)chkAutoPrint).Tag = "";
-		chkAutoPrint.set_ToggleStateMode((ToggleStateMode)1);
-		chkAutoPrint.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkAutoPrint).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkAutoPrint).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkAutoPrint).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkAutoPrint).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkAutoPrint).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkAutoPrint).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkAutoPrint).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkAutoPrint).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkAutoPrint.Location = new Point(138, 147);
+		chkAutoPrint.Name = "chkAutoPrint";
+		chkAutoPrint.OffText = "NO";
+		chkAutoPrint.OnText = "YES";
+		chkAutoPrint.Size = new Size(58, 34);
+		chkAutoPrint.TabIndex = 255;
+		chkAutoPrint.Tag = "";
+		chkAutoPrint.ToggleStateMode = ToggleStateMode.Click;
+		chkAutoPrint.Value = false;
+		((RadToggleSwitchElement)chkAutoPrint.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkAutoPrint.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkAutoPrint.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkAutoPrint.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkAutoPrint.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkAutoPrint.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkAutoPrint.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkAutoPrint.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label5.BackColor = Color.FromArgb(132, 146, 146);
 		label5.Font = new Font("Microsoft Sans Serif", 12f);
 		label5.ForeColor = SystemColors.ButtonFace;
@@ -743,23 +698,23 @@ public class frmManageStations : frmMasterForm
 		label7.Size = new Size(289, 80);
 		label7.TabIndex = 257;
 		label7.Text = "Enable Print: Enable print to station feature.\r\nAuto Print: Enable to print a receipt when order/item is made on station. (Not applicable to Dine In orders)";
-		((Control)(object)chkSendStation).Location = new Point(485, 216);
-		((Control)(object)chkSendStation).Name = "chkSendStation";
-		chkSendStation.set_OffText("NO");
-		chkSendStation.set_OnText("YES");
-		((Control)(object)chkSendStation).Size = new Size(66, 33);
-		((Control)(object)chkSendStation).TabIndex = 259;
-		((Control)(object)chkSendStation).Tag = "";
-		chkSendStation.set_ToggleStateMode((ToggleStateMode)1);
-		chkSendStation.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkSendStation).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkSendStation).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkSendStation).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSendStation).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSendStation).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSendStation).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkSendStation).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkSendStation).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkSendStation.Location = new Point(485, 216);
+		chkSendStation.Name = "chkSendStation";
+		chkSendStation.OffText = "NO";
+		chkSendStation.OnText = "YES";
+		chkSendStation.Size = new Size(66, 33);
+		chkSendStation.TabIndex = 259;
+		chkSendStation.Tag = "";
+		chkSendStation.ToggleStateMode = ToggleStateMode.Click;
+		chkSendStation.Value = false;
+		((RadToggleSwitchElement)chkSendStation.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkSendStation.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkSendStation.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkSendStation.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkSendStation.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSendStation.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSendStation.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkSendStation.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label8.BackColor = Color.FromArgb(132, 146, 146);
 		label8.Font = new Font("Microsoft Sans Serif", 12f);
 		label8.ForeColor = SystemColors.ButtonFace;
@@ -892,23 +847,23 @@ public class frmManageStations : frmMasterForm
 		btnSetOrderType.Text = "SET ORDER TYPES";
 		btnSetOrderType.UseVisualStyleBackColor = false;
 		btnSetOrderType.Click += btnSetOrderType_Click;
-		((Control)(object)chkPrintForEach).Location = new Point(596, 114);
-		((Control)(object)chkPrintForEach).Name = "chkPrintForEach";
-		chkPrintForEach.set_OffText("NO");
-		chkPrintForEach.set_OnText("YES");
-		((Control)(object)chkPrintForEach).Size = new Size(58, 32);
-		((Control)(object)chkPrintForEach).TabIndex = 273;
-		((Control)(object)chkPrintForEach).Tag = "";
-		chkPrintForEach.set_ToggleStateMode((ToggleStateMode)1);
-		chkPrintForEach.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkPrintForEach).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkPrintForEach).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkPrintForEach).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPrintForEach).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPrintForEach).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPrintForEach).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkPrintForEach).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkPrintForEach).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkPrintForEach.Location = new Point(596, 114);
+		chkPrintForEach.Name = "chkPrintForEach";
+		chkPrintForEach.OffText = "NO";
+		chkPrintForEach.OnText = "YES";
+		chkPrintForEach.Size = new Size(58, 32);
+		chkPrintForEach.TabIndex = 273;
+		chkPrintForEach.Tag = "";
+		chkPrintForEach.ToggleStateMode = ToggleStateMode.Click;
+		chkPrintForEach.Value = false;
+		((RadToggleSwitchElement)chkPrintForEach.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkPrintForEach.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkPrintForEach.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkPrintForEach.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkPrintForEach.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPrintForEach.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPrintForEach.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkPrintForEach.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label13.BackColor = Color.FromArgb(132, 146, 146);
 		label13.Font = new Font("Microsoft Sans Serif", 12f);
 		label13.ForeColor = SystemColors.ButtonFace;
@@ -977,7 +932,7 @@ public class frmManageStations : frmMasterForm
 		base.Controls.Add(ddlPrintItemQtyGreater);
 		base.Controls.Add(label14);
 		base.Controls.Add(lblHideEachQty);
-		base.Controls.Add((Control)(object)chkPrintForEach);
+		base.Controls.Add(chkPrintForEach);
 		base.Controls.Add(label13);
 		base.Controls.Add(btnSetOrderType);
 		base.Controls.Add(lblChitFont);
@@ -988,21 +943,21 @@ public class frmManageStations : frmMasterForm
 		base.Controls.Add(ddlPaperSize);
 		base.Controls.Add(pjuWniyana);
 		base.Controls.Add(label9);
-		base.Controls.Add((Control)(object)chkSendStation);
+		base.Controls.Add(chkSendStation);
 		base.Controls.Add(label8);
 		base.Controls.Add(label7);
-		base.Controls.Add((Control)(object)chkAutoPrint);
+		base.Controls.Add(chkAutoPrint);
 		base.Controls.Add(label5);
 		base.Controls.Add(lblPrinterName);
 		base.Controls.Add(btnSelectPrinter);
-		base.Controls.Add((Control)(object)chkEnablePrint);
+		base.Controls.Add(chkEnablePrint);
 		base.Controls.Add(label4);
 		base.Controls.Add(ddlPrintCopies);
 		base.Controls.Add(label3);
 		base.Controls.Add(btnDelete);
 		base.Controls.Add(btnAddNew);
 		base.Controls.Add(btnUpdate);
-		base.Controls.Add((Control)(object)txtName);
+		base.Controls.Add(txtName);
 		base.Controls.Add(label2);
 		base.Controls.Add(btnShowKeyboard_Name);
 		base.Controls.Add(ddlStations);
@@ -1019,21 +974,21 @@ public class frmManageStations : frmMasterForm
 		base.Controls.SetChildIndex(ddlStations, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_Name, 0);
 		base.Controls.SetChildIndex(label2, 0);
-		base.Controls.SetChildIndex((Control)(object)txtName, 0);
+		base.Controls.SetChildIndex(txtName, 0);
 		base.Controls.SetChildIndex(btnUpdate, 0);
 		base.Controls.SetChildIndex(btnAddNew, 0);
 		base.Controls.SetChildIndex(btnDelete, 0);
 		base.Controls.SetChildIndex(label3, 0);
 		base.Controls.SetChildIndex(ddlPrintCopies, 0);
 		base.Controls.SetChildIndex(label4, 0);
-		base.Controls.SetChildIndex((Control)(object)chkEnablePrint, 0);
+		base.Controls.SetChildIndex(chkEnablePrint, 0);
 		base.Controls.SetChildIndex(btnSelectPrinter, 0);
 		base.Controls.SetChildIndex(lblPrinterName, 0);
 		base.Controls.SetChildIndex(label5, 0);
-		base.Controls.SetChildIndex((Control)(object)chkAutoPrint, 0);
+		base.Controls.SetChildIndex(chkAutoPrint, 0);
 		base.Controls.SetChildIndex(label7, 0);
 		base.Controls.SetChildIndex(label8, 0);
-		base.Controls.SetChildIndex((Control)(object)chkSendStation, 0);
+		base.Controls.SetChildIndex(chkSendStation, 0);
 		base.Controls.SetChildIndex(label9, 0);
 		base.Controls.SetChildIndex(pjuWniyana, 0);
 		base.Controls.SetChildIndex(ddlPaperSize, 0);
@@ -1044,7 +999,7 @@ public class frmManageStations : frmMasterForm
 		base.Controls.SetChildIndex(lblChitFont, 0);
 		base.Controls.SetChildIndex(btnSetOrderType, 0);
 		base.Controls.SetChildIndex(label13, 0);
-		base.Controls.SetChildIndex((Control)(object)chkPrintForEach, 0);
+		base.Controls.SetChildIndex(chkPrintForEach, 0);
 		base.Controls.SetChildIndex(lblHideEachQty, 0);
 		base.Controls.SetChildIndex(label14, 0);
 		base.Controls.SetChildIndex(ddlPrintItemQtyGreater, 0);

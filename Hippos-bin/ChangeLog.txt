@@ -1,0 +1,686 @@
+﻿----- VERSION 1.12.3 CHANGES -----
+
+IMPROVEMENTS/ENHANCEMENTS: 
+WEB ORDERING: Integration with Deliverect platform which will allow direct integration with most delivery companies like SKIP & UBER
+WEB ORDERING: Screen to confirm and reject online orders.
+WEB ORDERING: New web order notifications are visible throughout all screens.
+ORDER ENTRY: Enhance filters on Open Orders screen.
+ORDER ENTRY: KDS display and chit print enhancements.
+ORDER ENTRY: Option to remove selectively remove auto gratuity from order.
+ORDER ENTRY: Added Notify Customer buttons to send order SMS messages to customer.  Requires SMS subscription.
+ORDER ENTRY: Allow Full Service restaurants to place orders for individual table seats.
+END OF DAY REPORT: Added 'Shared Tips' to employee section.
+END OF DAY REPORT: Added Date range report option.
+ORDER HISTORY: Ability to reassign a paid order from one staff to another.  Admin function.
+PERFORMANCE/OPTIMIZATION
+
+BUG FIXES:
+General bug fixes
+General user interface bug fixes
+Spelling/Grammar bug fixes
+Doubling orders, double print issues.
+Performance and lag issues.
+
+
+----- VERSION 1.12.3 CHANGES -----
+
+IMPROVEMENTS/ENHANCEMENTS: 
+ORDER ENTRY: Show customer's change amount on customer facing screen.
+ORDER ENTRY: Created Max Free Options for option groups.
+ORDER ENTRY: Smart barcode recognition for barcodes that include prices.
+ORDER ENTRY: Disable if Soldout feature for ingredients.
+ORDER ENTRY: Added button to re-print chit.
+ORDER ENTRY: Open Orders screen now have quick button filters for various order types.
+ORDER ENTRY: Integration with your phone line to get caller ID for call in orders.
+ORDER ENTRY: Improved performance for item images.
+PAYMENT PROCESSING: Improved pairing process and performance with Clover devices.
+PAYMENT PROCESSING: Ability to cancel "Waiting For Terminal" screen.
+STATION DISPLAY: Show "PAID" status.
+DELIVERY MANAGEMENT:  Ability to process multiple orders at once.
+DELIVERY MANAGEMENT:  Add delivery times.
+DELIVERY MANAGEMENT:  Estimate round trip times.
+SYNC: Improved Sync performance, and self healing if sync gets stuck.
+SETTINGS: New Delivery Fees settings.
+SETTINGS: Additional Tip Share settings.
+SETTINGS: Fullfillment Notification Threshold.  Specify when you would like to see orders that are set to be filled later.
+PRINTING: Error checking for chit/receipt printers to notify staff if something didn't get printed.
+INVENTORY: Ability to check inventory at other locations.
+WAIT LIST/RESERVATION: assign the members in database.
+
+
+BUG FIXES:
+1. Fixed bugs with KDS/Stations screens not updating properly
+2. Restaurant layout not updated on initial launch.
+3. Sync service stopping.
+4. Google Delivery address recommendation is not working
+5. Table not cleared when Paid at the table using STPi & Clover
+6. KDS/Station screen's scroll bars not enabled for long chits.
+
+
+
+----- VERSION 1.12.2 CHANGES -----
+
+IMPROVEMENTS/ENHANCEMENTS:
+PERFORMANCE: Performance improvements throughout the app.
+NEW MODULES: Added new DELIVERY MANAGEMENT SYSTEM
+NEW MODULES: Added new PROMOTIONS system.  See admin panel.
+NEW MODULES: Staff Management screen.
+DAY END CLOSING: Delivery Commission report.
+DAY END CLOSING: Auto settlement.  Turn on setting in Tools & Settings to automatically settle the payment terminal.
+DAY END CLOSING: Added Payout/Safedrop and payout summary in EoD report.
+DAY END CLOSING: Prompt to clock out all employees.
+DAY END CLOSING: Added Refund Taxes, and net refunds to Refunds summary.
+ORDER ENTRY: Fire button
+ORDER ENTRY: Quick multiplier buttons.
+ORDER ENTRY: More accurate and granular search for Order Entry, Open Orders.
+PAYMENT PROCESSING: Added Clover Pay at the Table
+RECEIPT: Print order type in large bold font on receipt.
+RECEIPT: Print gift card/loyalty card balance on receipt.
+SYNC: Can management and sync second screen images from the cloud.
+SYNC: Move cloud sync processes to a windows process to improve performance and prevent system lag when internet goes down.
+SETTINGS: Setting to print the order number ticket instead of receipt.
+SETTINGS: Allow user to set Order Ticket # ranges per order types.
+SETTINGS: Setting payment types, added toggle to print or not print receipts for that payment type.
+
+
+BUG FIXES:
+1. Item Change Audit logs not tracking changes for all fields.
+2. First Data End of Day settlement report formatting issue.
+3. Changing the QTY for a saved order would delete the line and add a new line.
+4. Tap Mango redemption/loyalty screen GDI/Memory leak.
+5. Table with multible bills not auto clearing after all bills were paid.
+6. Delivery fee is included in the refund.
+7. Second screen image causing out of memory errors.
+8. Open orders list do not fill all the way to the bottom.
+9. Hide Food/Drink icons in Layout if there are no KDS.
+
+
+
+----- VERSION 1.12.1 CHANGES -----
+
+IMPROVEMENTS/ENHANCEMENTS:
+ADMIN PANEL: Added 'COPY All' feature to copy option from one item to all items within a group.
+ADMIN PANEL: Allow you to add option for multiple option groups.
+ADMIN PANEL: Ability to create, modify, and delete payment types.
+DAY END CLOSING: New EoD format/report.
+KITCHEN DISPLAY: Added paging for list view.
+ORDER ENTRY: Added $100 denomination.
+ORDER ENTRY: ListVIew for Open Orders screen.
+ORDER ENTRY: Added ability to reprint chit.  On Open Orders and Order History screen.
+ORDER ENTRY: New pickup/delivery full-fillment flow.
+ORDER ENTRY: Added placeholder setting for Options screen.
+ORDER ENTRY: added 'Start Over' button.
+SETTINGS: Added feature for admins to add VOID reasons.
+SETTINGS: Added setting to turn on/off printing of merchant copy.
+SETTINGS: Added setting to "Not show final cashout screen if there's no change". 
+SETTINGS: Added feature to customize grid size for Options window.
+PRINT: Remove excess space on receipts.
+TIME & ATTENDANCE: Added setting to auto print a slip on successful clock out.
+
+
+BUG FIXES:
+1. QuckService screen shows all order types even though the terminal is setup for certain order types.
+2. Reservation SMS will send multiple times.
+3. Void order button is greyed out after cancelling at cashout screen.
+4. Minor graphical user interface bug fixes.
+5. Blue scroll buttons are disabled for long order.
+6. Fixed many object reference issues/crashes.
+7. Fixed tax and total penny rounding issues.
+
+
+----- VERSION 1.12.0 CHANGES -----
+
+IMPROVEMENTS/ENHANCEMENTS:
+ADMIN PANEL: Auto re-sort items so that there no blank placeholder buttons when items are disabled/removed.
+ADMIN PANEL: Ability to set font size, type, and color for Items and Group buttons.
+ADMIN PANEL: Ability to sort cooking Instructions.
+ADMIN PANEL: Fully customizable Tip Sharing functionality.  Add your own category and specify the share percentage.
+ADMIN PANEL: Fully customizable, granular setup for each station.  Specify display / chit font sizes.
+ADMIN PANEL: Add additional button color selections for Group, Item, and Option buttons.
+DAY END CLOSING: Prevent employees from running end of day employee reports if there are still open tables under their name.
+DAY END CLOSING: Add ability to do EOD by previous EOD closing date/time stamp instead of Date and Time Range selection.
+GIFT/LOYALTY: Added Tap Mango Loyalty integration.
+INVENTORY: Auto reset inventory functionality.  If enabled, will trigger a inventory count reset after every day end closing.
+ONLINE ORDERING: Integration with MODUURN Online Ordering platform.
+ONLINE ORDERING: Improvements to order placed for later date/time.
+ORDER ENTRY: Improvement to the user experience on Options screen.  Auto deselect and auto navigate to next options group.
+ORDER ENTRY: Removing Options tab and group names from selected options.
+ORDER ENTRY: Change "Take-Out" to "Pick-Up"
+ORDER ENTRY: Added ability for users to set spacific tax rates for Delivery Fees.
+PAYMENT: Include takeout orders for Pay At The Table functionality.
+PAYMENT: Added Clover Flex semi-integration support.
+PRINTING: Added "NONE" as an option for chit print server.  Will trigger auto print directly from the source POS.
+PRINTING: Added individual item chit template.
+PRINTING: Set stations to print for certain order types only.
+SETTINGS: Added setting to admin to opt for system to auto sign out a user after they have cashed out an order.
+TIME & ATTENDANCE: Creating new employees will now create the employee on Hippos Time Cloud portal.
+
+
+BUG FIXES:
+1. Add/edit items, cannot enter price greater than $999.
+2. Fixed issue preventing dollar amount discount being applied to Custom items.
+3. Fixed bug with tip sharing calculating correctly, but displaying wrong percentage.
+4. Minor graphical user interface bug fixes.
+5. Fixed issue with Delivery fee calculations are done based on first result, not closest result, if city is not specified.
+6. Fixed issue with Pre-Selected options not being copied when copying options from one item to another.
+7. Fixed bug with security matrix still prompting for pin when all roles are unchecked.
+8. Fixed issue with Online orders still prompting to confirm order (visual only) when Prompt Setting is OFF.
+
+
+----- VERSION 1.11.9 CHANGES -----
+
+IMPROVEMENTS:
+1. COMPANY SETUP: Added toggle to hide/show tax # on receipts.
+2. ORDER ENTRY: Performance enhancements
+3. ORDER ENTRY: Item course selection.  Feature can be enabled in SETTINGS->Work Flow.
+4. RECEIPT: Order Ticket numbers, show daily incremental numbers on receipt & chits instead of order number.
+5. SETTINGS: Ability to increase font size for customer facing second screen.
+6. SETTINGS: New chit template for sticker labels
+7. SPLASH: Assign custom station screens to existing Kitchen/Bar buttons.
+
+
+BUG FIXES:
+1. Fixed issues with high memory consumption.
+2. Fixed bug with Price Override
+3. Items and Groups do not always get refreshed after an update.
+4. Refunding Credit/Debit opens the Til.
+5. Void a duplicated order will cause a crash.
+
+
+----- VERSION 1.11.8 CHANGES -----
+
+IMPROVEMENTS:
+1. ADMIN PANEL: You can now create you own stations other than KITCHEN/BAR.
+2. ADMIN PANEL: Redesign and organized Settings to be more intuitive.
+3. CHIT: Improved how items and option modifiers are organized and printed on chit.
+4. CLOUD: Sync Member info to Cloud.
+5. OPTIONS: Redisign Options button and screen to be more organized and fit more buttons.
+6. ORDER ENTRY: Improved Item List
+7. ORDER ENTRY: Work flow for Takeout/Delivery order has been changed.  
+8. ORDER ENTRY: Setting to force employee pin on cashout.
+9. ONLINE ORDER: Online orders require confirmation before chit is printed/sent to kitchen.  This is an optional setting that could be disabled in settings.
+10. ORDER ENTRY: On cashout, if tender collected is over amount due, Done/Pay is automatically triggered without additional user clicks.
+11. PAYMENT PROCESSORS: Added Elavon Merchant Services.
+12. PERFORMANCE: Improved performance for Layout, Quick Service, Order Entry, TakeOut screen.
+13. PERFORMANCE: Improved performance for Keyboard and number pad.
+14. REFUND: You can now refund online orders directly from Hippos.
+15. SECURITY MATRIX: Added functionality to disable security entirely for specific modules by unchecking all roles.
+16. STATION: Color code chit title bars according to order type. 
+17. TOOLS & SETTINGS: Setting to only print Chit/Send to Kitchen only after order is paid.  Only applicable to Dine In/To Go, and for Quick Service subscriptions only.
+
+
+BUG FIXES:
+1. UPDATER: Updater getting stuck.
+2. REFUND: Refund reason is asked for every item option.
+
+----- VERSION 1.11.7 CHANGES -----
+
+IMPROVEMENTS:
+1. ADMIN PANEL, ITEMS/GROUPS: Added Ability to create and add Suppliers to Items.
+2. ADMIN SETTINGS: Sort item to display in Order Entry by Price or Alphabetical order.
+3. ADMIN PANEL, ITEMS: Support Items prices with 3 decimal spaces.
+4. CLOUD: Cost of Goods Sold report.
+5. CLOUD: Profit/Lost Report.
+6. CLOUD: Food Wastage report.
+7. CLOUD: Ability to set periodic reports to be automatically e-mailed to desired email address.
+8. INTEGRATIONS: Added GIFT Card & LOYALTY Card features & functionality with ACKROO Gift Cards & Loyalty.
+9. INTEGRATIONS: Support for Pay At The Table wireless payment terminals with First Data.
+10.PRINTING: Item Options & modifiers can now print in red ink if your printer supports it.
+11.ORDER ENTRY: Set free delivery for orders over X amount.
+12.ORDER ENTRY: You can now assign an order to specific Member profiles.  Selection could be set to force employee to select on every cash out.
+13.ORDER ENTRY: Delivery Fee calculated by distance.  Set your base delivery fee, and fee per km.  Hippos will automatically calculate it for you.
+14.ORDER ENTRY: Order Total will show on every on screen receipt in the take-out orders screen.
+15.ORDER ENTRY: Show item and option prices in Order Entry.  Setting can be turned on/off.
+16.ORDER ENTRY: Order and Item discounts.
+17.ORDER ENTRY: Item custom fields are searchable in Order Entry.
+18.PERFORMANCE: temporally turn off sync when internet connection is lost, and re-establish sync when internet comes back on.
+19.PERFORMANCE: Performance improvements loading Order Entry screen.
+20.SECOND SCREEN: Larger font.
+21.SECURITY: "Keep Me Logged In" feature to reduce need for pin entry.
+22.REFUND: Refund web orders from POS will now process the refund for online credit cards.
+
+BUG FIXES:
+1. Resolved high memory consumption issue.
+2. Resolved bug with closing time after midnight in End of Day report.
+3. Resolved issue with long orders printed on separate chits.
+4. Minor user interface fixes.
+5. Minor spelling/grammar fixes.
+
+----- VERSION 1.11.6 CHANGES -----
+
+IMPROVEMENTS:
+1. ORDER ENTRY: Apply discount to individual items.
+2. ORDER ENTRY: Put an item on hold for X number of minutes.
+3. ORDER ENTRY: You can now upload and play video on the customer facing or Now Serving screen.
+4. ORDER ENTRY: Automatically make an order Delivery Order if address is entered.
+5. ORDER ENTRY: Staff can now remove cooking instructions for an item.
+6.  ORDER ENTRY: Cashout Table button to speed up cashing out for tables with multiple bills.
+7. TOOLS & SETTINGS: Set predefined automatic Delivery Charge for delivery orders.
+8. TOOLS & SETTINGS: Set pre-defined automatic Debit/Credit transaction fees.
+9. TOOLS & SETTINGS: Can set font size for Items/Group buttons in Order Entry.
+10. TOOLS & SETTINGS: Feature to change button color for Options and Instructions.
+11. TOOLS & SETTINGS: Ability to set Sort order for Item Options.
+12. LAYOUT: Improved Reserveration Reminder.
+13. NOW SERVING: Will now show rotating images/videos.
+14. ORDER HISTORY: Change Payment Method if wrong one was selected during cashout.
+
+
+BUG FIXES:
+1. Performance tuning.
+2. Item cooking instructions not sorted by alphabetical order in Order Entry screen .
+3. KITCHEN/BAR: Redundant instruction/substitution info causing confusion.
+4. RECEIPT: Removed large blank spaces on receipts.
+5. RECEIPT: Discount receipts overlap when printed.
+6. LAYOUT: Editing a newly created table before saving causes crash.
+7. ORDER ENTRY: Change guest count would popup after slitting/merging bill.
+8. ORDER ENTRY: Detect if customer facing screen is closed, and reopen if necessary.
+9. ORDER ENTRY: Redundant Next button when there is only 1 more item/group.
+10. Minor user interface fixes.
+11. Minor spelling/grammar fixes.
+
+
+----- VERSION 1.11.5 CHANGES -----
+
+IMPROVEMENTS:
+1. ORDER ENTRY: Added Min Free Option, and Minimum Option for Option Groups.
+2. TOOLS & SETTINGS: Centralized Chit print server.
+3. PATRON ORDERING: New patron ordering screen.
+4. PATRON ORDERING: Allow patrons to order takeout from tablet.
+5. ADD/EDIT ITEMS/GROUPS: Feature to hide certain items/groups from Patron ordering tablets.
+
+BUG FIXES:
+1. Performance tuning.
+2. Merchant receipts printing too large.
+3. Add/Edit Groups, Show In Order Entry toggle was defaulted to OFF.
+4. Cooking Instructions were removed when bill was split.
+5. Minor user interface fixes.
+6. Minor spelling/grammar fixes.
+
+
+----- VERSION 1.11.4 CHANGES -----
+
+IMPROVEMENTS:
+1. TOOLS & SETTINGS: Added ability to print multiple chits at once.
+2. TOOLS & SETTINGS: Added ability to copy item options from one item to another.
+3. ADD/EDIT GROUPS: Ability to hide certain groups on the Order Entry screen.
+4. ADD/EDIT ITEMS/GROUPS: Added brown and pink as item/group button color options.
+5. PRINT SETTINGS: support for 58mm thermal printers.
+6. ORDER ENTRY: Max Group Options, set the maximum # of options for an options group.
+7. ORDER ENTRY: Ability to add option price and main item price together automatically when option is selected.
+8. ORDER HISTORY: Now shows customer name info.
+9. KITCHEN/BAR: Added Order number to List view.
+10. ENTIRE APP: Replaced date pickers with touch friendly date picker tool.
+
+BUG FIXES:
+1. Performance tuning.
+2. Discount applied is lost once the bill is split.
+3. Second screen turns off intermittently 
+4. Minor user interface fixes.
+5. Minor spelling/grammar fixes.
+
+
+----- VERSION 1.11.3 CHANGES -----
+
+IMPROVEMENTS:
+1. ADMIN PANEL: Improved Item & Item Options excel import/export feature.
+2. ORDER ENTRY: Show sale & sale percentage on receipt for sale items.
+3. ORDER ENTRY: Added "No Station" for items that users do not want to send to either bar or kitchen.
+4. ORDER ENTRY: Improved scroll buttons for takeout orders screen in Full Service mode.
+5. ORDER ENTRY/ADMIN PANEL: Added ability to add empty spots in Groups.
+6. ORDER ENTRY: Added ability to undo removed from a cancelled item.
+
+BUG FIXES:
+1. Changing customer's phone number does not get saved
+2. Hippos not opening when there is no internet connection.
+3. App crashing when invalid e-mail is used in Waiting List feature.
+4. Employee pins not being able to start with a zero.
+5. On-screen keyboard not opening for barcode textbox.
+6. Send and Send & Close buttons not being enabled when customer info changed.
+7. Order Receipts not showing discounts for online orders.
+8. Minor user interface fixes.
+9. Minor spelling/grammar fixes.
+
+
+----- VERSION 1.11.2 CHANGES -----
+
+IMPROVEMENTS:
+1. INVENTORY: Enhanced Inventory Management with Batch and expiry date tracking.
+2. DAY END CLOSING: Terminal filter for Day End Closing report.
+3. KITCHEN CHIT: Modify Kitchen/Bar chit to show if order is paid.
+4. KITCHEN CHIT: Setting to adjust kitchen/bar chit font sizes.
+5. ORDER ENTRY: Second screen feature always on regardless of which screen user is looking at.
+6. ORDER ENTRY: Stacking of item options.
+7. RESERVATIONS: On-demand email/SMS Notifications
+
+
+BUG FIXES:
+1. Long web order numbers getting cut off in Quick Service view screen.
+2. System slows down if constantly opening and closing layout screen.
+3. System slows down if constantly accessing the inventory screen.
+4. Minor user interface fixes.
+5. Minor spelling/grammar fixes.
+
+
+----- VERSION 1.11.1 CHANGES -----
+
+IMPROVEMENTS:
+1. Kitchen/Bar Tile View, now shows customer, server, and elapsed time at the top.
+2. SMS order ready notifications for take-out and delivery orders.
+3. SLIT/MERGE: New 'Split Evenly' feature.  Split all items evenly between all bills.
+4. SLIT/MERGE: Ability print bills in Split/Merge screen.
+5. PRINTING: Removed printing popup, and increased receipt printing performance.
+6. DAY END CLOSING: Include online orders in totals.
+7. KITCHEN CHIT: Added customer name and order # to print out.
+
+BUG FIXES:
+1. Kitchen/Bar New order notifications don't always sound for web orders.
+2. Past archived/deleted items show in CSV export.
+3. Changing price does not reflect on receipt printout.
+4. Minor user interface fixes.
+5. Minor spelling/grammar fixes.
+
+
+----- VERSION 1.11.0 CHANGES -----
+
+IMPROVEMENTS:
+1. Kitchen/Bar chits now show server name, time elapsed, and flashing color based on time elasped.
+2. Day End Closing will now show time range on print out.
+3. Order Number is enlarged when "Now Serving" screen feature is enabled. 
+4. Increased chit count from 2 to 3 per row in kitchen/bar screens.
+
+BUG FIXES:
+1. Fixed some performance issues with kitchen and inventory screens.
+2. Fixed bug with guest count when moving split bills.
+3. Minor user interface fixes.
+4. Minor spelling/grammar fixes.
+
+
+----- VERSION 1.10.9 CHANGES -----
+
+IMPROVEMENTS:
+1. *** New Tile View for kitchen/bar screens.  And ability to print & re-print chits.
+2. Improvements to auto clear table and tip tracking settings.
+3. ORDER ENTRY: Put back "Change Qty" button.
+4. ORDER ENTRY: Allow staff to change "Customer Info" for Quick Service Dine In.
+5. Support for Star Micronics printers.
+6. Made all toggles easier to click.
+7. *** Resolve high memory usage issues and increased performance.
+
+
+BUG FIXES:
+1. Item button colors lost when syncing from cloud.
+2. Prevent users from saving blank SQL info.
+3. Vertical scroll button improvements.
+4. Refund screen does not show logged in employee name.
+5. Minor user interface fixes.
+6. Minor spelling/grammar fixes.
+
+
+----- START Version 1.10.8 CHANGES -----
+IMPROVEMENTS:
+1. ADD/EDIT OPTIONS: Advance item options configurations.
+2. ORDER ENTRY: Item options are now on separate lines on receipt and order entry screen.
+3. ORDER ENTRY: Word wrap for long item names and instructions.
+4. ORDER ENTRY: Added 'Send' button to send the order to bar/kitchen and still continue to add more items to order.
+5. LAYOUT: Wait List feature.
+6. Revamp kitchen/bar chit so that it is more organized and readable.
+7. TOOLS & SETTINGS: Settings to show/hide item options/instructions on receipt.
+8. ADD/EDIT INSTRUCTIONS: Ability to set the station the instruction belongs to, so kitchen items will show kitchen item instructions.
+9. TOOLS & SETTINGS: Settings to auto clear table when order is paid.
+10. TOOLS & SETTINGS: Settings to turn off tip feature.
+11. TOOLS & SETTINGS: Settings for auto gratuity.  Auto set gratuity for tables over x amount of guests.
+12. ORDER ENTRY: Add 'Auto Combo' feature.  Feature will prompt user to convert items into a combo if those items exist in a combo. 
+13. Show server name on chit.
+14. LAYOUT:  Added ability to zoom while editing a layout.
+
+BUG FIXES:
+1. ORDER ENTRY: Item options buttons are difficult to click.
+2. Minor user interface fixes.
+3. Minor spelling/grammar fixes.
+
+
+----- START Version 1.10.7 CHANGES -----
+IMPROVEMENTS:
+1. Self-serve Kiosk and Patron ordering mode now available!
+2. "Now Serving" screen for Quick Service mode (or Full Service take outs).
+3. TOOLS & SETTINGS: Support for First Data and Moneris (Ingenico iCT250 payment pinpad terminal)
+4. TOOLS & SETTINGS: Added more controls/screens to the Security Matrix.
+5. ADD/EDIT ITEMS/GROUPS: Improved touch scrolling capabilities.  Press and hold to select. 
+6. ORDER ENTRY: Increased Instruction/Options button sizes.
+7. END OF DAY: Employee selection for Day End Closing.
+8. LAYOUT: Auto lockout in Layout screen.
+9. TOOLS & SETTINGS: Setting to lock table to employee that opened the table.
+10. Added Shift and Caps Lock buttons and special characters buttons to keyboard.
+11. Optimized Takeout screen to reduce lag when there are many orders.
+12. TOOLS & SETTINGS: UPC (barcode) scanning.
+13. Time is printed on kitchen chit.
+
+BUG FIXES:
+1. Print All Bills confirmation before print.
+2. Reservation overlay.
+3. Station locked label now smaller so staff can see when food/drinks are made.
+4. Minor spelling/grammar fixes.
+
+
+----- START Version 1.10.6 CHANGES -----
+IMPROVEMENTS:
+1. TOOLS & SETTINGS: Receipt Settings, ability to upload logo for receipts.
+2. DAY END CLOSING: Show NET totals.
+3. Show order # in kitchen/bar screen for To Go orders.
+
+
+BUG FIXES:
+1. French grammer fixes.
+2. Fixed copy to training database feature.
+3. Fixed 1 cent rounding bug for multiple low dollar price items.
+
+
+----- START Version 1.10.5 CHANGES -----
+IMPROVEMENTS:
+1. TOOLS & SETTINGS: Security Matrix, ability to lock down different screens and allow access to employees with different roles.
+2. TOOLS & SETTINGS: Multiple Language Settings.
+3. TOOLS & SETTINGS Many more Settings (see Admin Panel, Tools & Settings) for restaurant flow customization.
+4. TOOLS & SETTINGS: Printer setting for Bar.
+5. TOOLS & SETTINGS for ORDER ENTRY: Ability to set # of buttons per row/column
+6. ADMIN PANEL for ORDER ENTRY: New Options sort order.
+7. ADMIN PANEL: New method of adding Items to Group in 'Manage Groups & Items', can now add item to multiple groups.
+8. GROUPS: Add sort order for groups.
+9. ORDER ENTRY: Added ability to 'Clear All Paid Orders'
+10. ORDER ENTRY: New CASH OUT screen for improved speed and quicker order processing.
+11. ORDER ENTRY: Add button image for Options.
+12. DAY END CLOSING: Ability to set time range.
+
+
+BUG FIXES:
+1. UI fixes.
+2. Spelling mistakes.
+3. Fixed order date created being changed to date paid.
+
+
+----- START Version 1.10.4 CHANGES -----
+IMPROVEMENTS:
+1. More robust Order splitting, merging, and item sharing features.
+2. Employee Time & Attendance module.
+3. Better Members search feature.
+4. Added To Go orders.
+5. Unit of Measure conversions for Ingredients
+6. Kitchen/Bar font size customizable in Admin Panel->Settings
+7. New Receipt design.
+8. Added Item course (ie. Appitizer, Entre, Desserts, etc.)
+9. Added Open Til buttons on Layout and QuickService screens.
+10. Added ability to turn off Restaurant Capacity 
+11. Added less intrusive notification alerts to replace pop up message boxes.
+12. PIN can be up to 10 digits.
+13. "Refund Receipt" is clearly indicated on refund receipts.
+14. Dual screen mode.
+15. New Guest Count selection window.
+16. In Order Entry screen, hold on Item button for 2 seconds to display item info and enlarge image.
+17. User can change Tax rule on cash out.
+
+BUG FIXES:
+1. Inactive Employee PINs will no longer work.
+2. QuickService screen will refresh on it's own to update.
+3. Training mode fix.
+4. Customer delivery address now shows on receipt.
+5. Print to kitchen bug fix.
+
+
+
+----- START Version 1.10.2 CHANGES -----
+IMPROVEMENTS:
+1. Added Remote Session support directly into Admin Panel.
+2. Sync Tax Rules to CloudSync portal.
+3. Change vertical scroll buttons to better support touch scrolling.
+4. Encrypt data connections for added security.
+5. Added Item Descriptions.
+6. Added grid to Layout Edit screen.
+7. Tips amount total is displayed in the End Of Day reports.
+8. Added ability to refresh Kitchen/Bar, or Layout on demand.
+9. Added flexible Business Hours of Operations.
+10. Added indicator to show when Takeout orders are made.
+11. Added ability to rotate objects in the layout.
+12. Show discounts on receipt previews.
+
+BUG FIXES:
+1. Remove All Day sales from previous day when the calender rolls over.
+2. Fixed issue with Customer Info in Order Entry page for take out orders.
+3. Fixed "Training Mode" icon missing from Layout screen when in training mode.
+
+
+
+----- START Version 1.10.1 CHANGES -----
+IMPROVEMENTS:
+1. Allow user to by-pass entering customer name when creating new take-out orders.
+2. Added new "Delivery" order type.
+3. Added ability to rotate tables and wall in restaurant layout.
+4. Added ability to switch restaurant mode from "Dine In" to "Quick Service".
+5. Added objects such as plants, chairs, and bench in restaurant layout.
+6. Added ability to cycle through useful tips.
+7. Added Order Discount on Order Entry screen.
+8. Item Options and Instructions are now synced to the cloud.
+9. Added option in Kitchen/Bar station screen to auto print.  Users can now choose if they want the chits to auto print.
+10. Added ability to duplicate Item to create new Items.
+11. Ability to turn on/off gratuity info on receipts.
+12. Merged Add/Edit Items to one screen.
+13. Merged Add/Edit Groups to one screen.
+14. Added ability to preset a station to a layout section.
+
+BUG FIXES:
+1. Added Options on receipt. 
+2. Slow sync processes.
+3. Misc. interface bug fixes for better user experience.
+
+
+----- START Version 1.10.0 CHANGES -----
+IMPROVEMENTS:
+1. Major branding and user interface changes.
+2. Added ability to change tables
+3. Added restaurant and table capacities.
+4. Added food and beverage made indicators in the layout.
+5. Added ability to put a reservation hold on a table.
+6. Added ability to move reservations to different dates.
+7. Display receipts on the payment screen.
+8. Rebuilt Settings screen to be more user friendly.
+9. Reservations are now synced to the cloud.
+10. You can now re-order previous take out orders by "Duplicating" previous orders.
+11. Added ability to record tips.
+12. Will now prompt for customer name.
+13. Added ability to indicate if the table is occupied before placing order.
+14. Added a Userful Tip feature.
+15. Added ability to edit Layout directly on the layout screen.
+16. Added standing gratuity % calculations for easy customer tipping.
+17. Added restaurant hours of operations.
+18. Order entry screen is now accessible in Kitchen and Bar screens.
+19. Added ability to preview End Of Day instead of printing.  Please check hours of operations.
+20. Added ability to undo Item/Order made.
+21. Order Entry Close will now prompt you to save if there has been changes.
+22. Item images (you can add items in cloudsync, and it will sync to the app).
+23. Tapping on text boxes will now automatically open the keyboard.
+
+BUG FIXES:
+1. Stock number does not show if the inventory is more than 6 numbers
+2. Stop user from entering a reservation for zero guests.
+3. Change colors of disabled buttons to clearly differentiate disabled and enabled buttons.
+4. Margin does not refresh in the Edit Items screen.
+
+
+----- START Version 1.09.7 CHANGES -----
+IMPROVEMENTS:
+1. Make 'Take Out Bills' button darker so that text is easier to read.
+2. Added Sales by Days of Week.
+3. Added ability to split bills evenly.
+
+BUG FIXES:
+1. Fixed issues with SQL connection info screen saving wrong info.
+2. When removing sale from group, the changes do not take affect right away.
+
+
+----- START Version 1.09.6 CHANGES -----
+IMPROVEMENTS:
+
+BUG FIXES:
+1. Fixed issue with split bill not showing in layout immediately after splitting bill.
+
+
+----- START Version 1.09.5 CHANGES -----
+IMPROVEMENTS:
+
+BUG FIXES:
+1. Fixed issue with takeout orders not cleared from TakeOut section.
+
+----- START Version 1.09.4 CHANGES -----
+IMPROVEMENTS:
+1. Hostest/Waitress can now record tips for daily tallies.
+2. Training Mode caption printed on receipts when in training mode.
+3. Added the ability to select/write refund reasons.
+4. 'Print to Kitchen' CHITS will now show the quantities.
+5. Added warning for zero stock items in Order Entry screen.
+6. Admins can now set Option pricing per specific Items, not just 1 price for the same Option across all items.
+
+BUG FIXES:
+1. Fixed issues with Default Printers
+2. Minor UI, spelling, grammer issues.
+3. Main combo item does not print on kitchen chit, now fixed.
+4. Removing and re-adding options was stacking price, resulting in incorrect prices.
+
+
+----- START Version 1.09.3 CHANGES -----
+IMPROVEMENTS:
+1. Change Tender amounts.
+2. Restart to take effect when certain settings are changed.
+3. Check and prompt if user has entered a tender amount more than 10 times the total.
+4. Disable tender methods when total is reached.
+5. Kitchen/Bar staff is now able to view recently made items.
+6. Sync item types to cloud
+
+BUG FIXES:
+1. Sub of non combo items.
+2. Unable to save open/closing time if closing time is after midnight.
+3. Unable to remove sale from Groups
+4. Minor UI, spelling, grammer issues.
+
+
+
+----- START Version 1.09.2 CHANGES -----
+
+BUG FIXES:
+1.  Print to Kitchen issues
+2.  Issue with Default Printer Settings.
+
+
+
+----- START Version 1.09.0 CHANGES -----
+IMPROVEMENTS:
+1. Added sync of 'Discount Reasons' for orders to CloudSync
+2. Added ability to set recurring sales.
+3. Added ability to select/specify fefund reasons.
+4. Added ability to remove Tender Types from Pay screen.
+5. Added display of inventory stock items on Order Entry screen.
+6. Added sync of Tax Rules and ItemTypes to Cloud.
+7. Added ability to search for items in Edit Items screen.
+8. Added ability to create/modify ingredients, and add those ingredients to the Items for sale.  Inventory is also tracked for these ingredients.
+
+BUG FIXES:
+1. Attemping to refund half order items caused system to crash.
+2. User was able to continuously refundt he same order.
+3. User was able to edit instructions without pressing custom.

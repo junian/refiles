@@ -13,7 +13,6 @@ using CorePOS.CustomControls;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -323,7 +322,7 @@ public class frmQuickService : frmMasterForm
 			int num2 = 0;
 			int num3 = 0;
 			eewbfssqe0.SendToBack();
-			list_2 = (from a in new OrderMethods().SearchOpenOrders(((Control)(object)txtSearchInfo).Text.Trim(), string_3, Convert.ToInt32(ddlDateRangeFilter.SelectedValue))
+			list_2 = (from a in new OrderMethods().SearchOpenOrders(txtSearchInfo.Text.Trim(), string_3, Convert.ToInt32(ddlDateRangeFilter.SelectedValue))
 				orderby a.FulFillmentAt.HasValue, a.FulFillmentAt.HasValue ? a.FulFillmentAt.Value : a.DateCreated
 				select a into x
 				group x by x.OrderNumber into y
@@ -1007,10 +1006,10 @@ public class frmQuickService : frmMasterForm
 	private void btnShowKeyboard_SearchInfo_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Search Orders", 0, 49, ((Control)(object)txtSearchInfo).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Search Orders", 0, 49, txtSearchInfo.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSearchInfo).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtSearchInfo.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			base.DialogResult = DialogResult.None;
 		}
 	}
@@ -1022,7 +1021,7 @@ public class frmQuickService : frmMasterForm
 
 	private void btnClearSearch_Click(object sender, EventArgs e)
 	{
-		((Control)(object)txtSearchInfo).Text = "";
+		txtSearchInfo.Text = "";
 		LoadFormProcedure();
 	}
 
@@ -1124,10 +1123,6 @@ public class frmQuickService : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0140: Unknown result type (might be due to invalid IL or missing references)
-		//IL_014a: Expected O, but got Unknown
-		//IL_118f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11b0: Unknown result type (might be due to invalid IL or missing references)
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmQuickService));
 		timer_0 = new System.Windows.Forms.Timer(icontainer_1);
@@ -1375,13 +1370,13 @@ public class frmQuickService : frmMasterForm
 		label3.ForeColor = Color.White;
 		label3.Name = "label3";
 		componentResourceManager.ApplyResources(txtSearchInfo, "txtSearchInfo");
-		((Control)(object)txtSearchInfo).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtSearchInfo).Name = "txtSearchInfo";
-		((RadElement)((RadControl)txtSearchInfo).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSearchInfo).TextChanged += txtSearchInfo_TextChanged;
-		((Control)(object)txtSearchInfo).Click += btnShowKeyboard_SearchInfo_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSearchInfo).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSearchInfo).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSearchInfo.ForeColor = Color.FromArgb(40, 40, 40);
+		txtSearchInfo.Name = "txtSearchInfo";
+		txtSearchInfo.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSearchInfo.TextChanged += txtSearchInfo_TextChanged;
+		txtSearchInfo.Click += btnShowKeyboard_SearchInfo_Click;
+		((RadTextBoxControlElement)txtSearchInfo.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSearchInfo.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(btnShowKeyboard_SearchInfo, "btnShowKeyboard_SearchInfo");
 		btnShowKeyboard_SearchInfo.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_SearchInfo.DialogResult = DialogResult.OK;
@@ -1433,7 +1428,7 @@ public class frmQuickService : frmMasterForm
 		base.Controls.Add(btnOTFilter_DineIn);
 		base.Controls.Add(btnClearSearch);
 		base.Controls.Add(label3);
-		base.Controls.Add((Control)(object)txtSearchInfo);
+		base.Controls.Add(txtSearchInfo);
 		base.Controls.Add(btnShowKeyboard_SearchInfo);
 		base.Controls.Add(btnChange);
 		base.Controls.Add(lblTitle);
@@ -1452,7 +1447,7 @@ public class frmQuickService : frmMasterForm
 		base.Controls.SetChildIndex(lblTitle, 0);
 		base.Controls.SetChildIndex(btnChange, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_SearchInfo, 0);
-		base.Controls.SetChildIndex((Control)(object)txtSearchInfo, 0);
+		base.Controls.SetChildIndex(txtSearchInfo, 0);
 		base.Controls.SetChildIndex(label3, 0);
 		base.Controls.SetChildIndex(btnClearSearch, 0);
 		base.Controls.SetChildIndex(btnOTFilter_DineIn, 0);

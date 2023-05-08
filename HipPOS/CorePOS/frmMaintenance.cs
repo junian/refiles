@@ -6,7 +6,6 @@ using CorePOS.Business;
 using CorePOS.Business.Enums;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -65,10 +64,10 @@ public class frmMaintenance : frmMasterForm
 	private void btnShowKeyboard_Question_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Question, 0, 512, ((Control)(object)txtQuestion).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Question, 0, 512, txtQuestion.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtQuestion).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtQuestion.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -88,13 +87,13 @@ public class frmMaintenance : frmMasterForm
 
 	private void btnNew_Click(object sender, EventArgs e)
 	{
-		((Control)(object)txtQuestion).Text = string.Empty;
+		txtQuestion.Text = string.Empty;
 		lyhNxejmDL.SelectedIndex = 0;
 	}
 
 	private void btnSave_Click(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtQuestion).Text == "")
+		if (txtQuestion.Text == "")
 		{
 			new frmMessageBox(Resources.The_question_should_not_be_emp).ShowDialog(this);
 			return;
@@ -102,7 +101,7 @@ public class frmMaintenance : frmMasterForm
 		bool flag = false;
 		foreach (ListViewItem item in lstItems.Items)
 		{
-			if (item.Text.ToUpper() == ((Control)(object)txtQuestion).Text.ToUpper())
+			if (item.Text.ToUpper() == txtQuestion.Text.ToUpper())
 			{
 				flag = true;
 				break;
@@ -110,11 +109,11 @@ public class frmMaintenance : frmMasterForm
 		}
 		if (flag)
 		{
-			dataManager_0.MaintenanceSave(((Control)(object)txtQuestion).Text, lyhNxejmDL.SelectedIndex, update: true);
+			dataManager_0.MaintenanceSave(txtQuestion.Text, lyhNxejmDL.SelectedIndex, update: true);
 		}
 		else
 		{
-			dataManager_0.MaintenanceSave(((Control)(object)txtQuestion).Text, lyhNxejmDL.SelectedIndex);
+			dataManager_0.MaintenanceSave(txtQuestion.Text, lyhNxejmDL.SelectedIndex);
 		}
 		method_3();
 	}
@@ -155,7 +154,7 @@ public class frmMaintenance : frmMasterForm
 	{
 		if (lstItems.SelectedItems.Count != 0)
 		{
-			((Control)(object)txtQuestion).Text = lstItems.SelectedItems[0].SubItems[0].Text;
+			txtQuestion.Text = lstItems.SelectedItems[0].SubItems[0].Text;
 			lyhNxejmDL.Text = lstItems.SelectedItems[0].SubItems[1].Text;
 		}
 	}
@@ -171,10 +170,6 @@ public class frmMaintenance : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0096: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00a0: Expected O, but got Unknown
-		//IL_0696: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06b7: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmMaintenance));
 		lstItems = new ListView();
 		columnHeader_0 = new ColumnHeader();
@@ -271,12 +266,12 @@ public class frmMaintenance : frmMasterForm
 		label11.Name = "label11";
 		label11.Tag = "5,5";
 		componentResourceManager.ApplyResources(txtQuestion, "txtQuestion");
-		((Control)(object)txtQuestion).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtQuestion).Name = "txtQuestion";
-		((RadElement)((RadControl)txtQuestion).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtQuestion).Click += txtQuestion_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtQuestion).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtQuestion).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtQuestion.ForeColor = Color.FromArgb(40, 40, 40);
+		txtQuestion.Name = "txtQuestion";
+		txtQuestion.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtQuestion.Click += txtQuestion_Click;
+		((RadTextBoxControlElement)txtQuestion.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtQuestion.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Question.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Question.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Question.FlatAppearance.BorderColor = Color.Black;
@@ -306,7 +301,7 @@ public class frmMaintenance : frmMasterForm
 		base.Controls.Add(lyhNxejmDL);
 		base.Controls.Add(label2);
 		base.Controls.Add(label11);
-		base.Controls.Add((Control)(object)txtQuestion);
+		base.Controls.Add(txtQuestion);
 		base.Controls.Add(btnShowKeyboard_Question);
 		base.Controls.Add(label1);
 		base.Controls.Add(label9);

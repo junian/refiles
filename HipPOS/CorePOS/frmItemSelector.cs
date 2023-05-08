@@ -8,7 +8,6 @@ using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Objects;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -140,7 +139,7 @@ public class frmItemSelector : frmMasterForm
 		bool_3 = _autoClose;
 		bool_4 = _sameReasonForAll;
 		func_0 = refreshFunction;
-		((Control)(object)txtCustom).Text = string.Empty;
+		txtCustom.Text = string.Empty;
 		if (bool_3)
 		{
 			pictureBox1.Visible = true;
@@ -222,12 +221,12 @@ public class frmItemSelector : frmMasterForm
 			btnCancel.Location = new Point(btnCancel.Location.X, btnCancel.Location.Y + num5);
 			btnSelect.Location = new Point(btnSelect.Location.X, btnSelect.Location.Y + num5);
 		}
-		((Control)(object)txtCustom).Visible = true;
+		txtCustom.Visible = true;
 		lblCustom.Visible = true;
 		btnShowKeyboard_Custom.Visible = true;
 		if (!bool_2 && !bool_5)
 		{
-			((Control)(object)txtCustom).Visible = false;
+			txtCustom.Visible = false;
 			lblCustom.Visible = false;
 			btnShowKeyboard_Custom.Visible = false;
 			btnSelect.Location = new Point(btnSelect.Location.X, btnSelect.Location.Y - 38);
@@ -266,7 +265,7 @@ public class frmItemSelector : frmMasterForm
 	{
 		if (lstItems.SelectedItems.Count > 0)
 		{
-			((Control)(object)txtCustom).Text = "";
+			txtCustom.Text = "";
 			if (bool_3)
 			{
 				SingleSelectedItem = lstItems.SelectedItems[0].Text;
@@ -293,15 +292,15 @@ public class frmItemSelector : frmMasterForm
 		}
 		if (dictionary_0 == null)
 		{
-			if (lstItems.SelectedItems.Count > 0 && string.IsNullOrEmpty(((Control)(object)txtCustom).Text))
+			if (lstItems.SelectedItems.Count > 0 && string.IsNullOrEmpty(txtCustom.Text))
 			{
 				SingleSelectedItem = lstItems.SelectedItems[0].SubItems[0].Text;
 				base.DialogResult = DialogResult.OK;
 				method_4();
 			}
-			else if (bool_2 && !string.IsNullOrEmpty(((Control)(object)txtCustom).Text))
+			else if (bool_2 && !string.IsNullOrEmpty(txtCustom.Text))
 			{
-				SingleSelectedItem = ((Control)(object)txtCustom).Text;
+				SingleSelectedItem = txtCustom.Text;
 				base.DialogResult = DialogResult.OK;
 				method_4();
 			}
@@ -334,10 +333,10 @@ public class frmItemSelector : frmMasterForm
 	private void WlPiMdQaCd(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_a_Custom, 1, 128, ((Control)(object)txtCustom).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_a_Custom, 1, 128, txtCustom.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtCustom).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtCustom.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -363,11 +362,11 @@ public class frmItemSelector : frmMasterForm
 		btnCancel.Location = new Point(262, 488);
 		btnRefreshData.Size = new Size(142, 98);
 		btnRefreshData.Location = new Point(4, 488);
-		RadTextBoxControl obj = txtCustom;
+		RadTextBoxControl radTextBoxControl = txtCustom;
 		Label label = lblCustom;
 		btnShowKeyboard_Custom.Visible = true;
 		label.Visible = true;
-		((Control)(object)obj).Visible = true;
+		radTextBoxControl.Visible = true;
 		string_3 = null;
 		func_0 = null;
 		dictionary_0 = null;
@@ -422,10 +421,6 @@ public class frmItemSelector : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_006a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0074: Expected O, but got Unknown
-		//IL_0416: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0437: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmItemSelector));
 		lstItems = new ListView();
 		columnHeader_0 = new ColumnHeader();
@@ -489,11 +484,11 @@ public class frmItemSelector : frmMasterForm
 		pictureBox1.TabStop = false;
 		pictureBox1.Click += pictureBox1_Click;
 		componentResourceManager.ApplyResources(txtCustom, "txtCustom");
-		((Control)(object)txtCustom).Name = "txtCustom";
-		((RadElement)((RadControl)txtCustom).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCustom).Click += txtCustom_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCustom).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCustom).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCustom.Name = "txtCustom";
+		txtCustom.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCustom.Click += txtCustom_Click;
+		((RadTextBoxControlElement)txtCustom.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtCustom.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Custom.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Custom.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Custom.FlatAppearance.BorderColor = Color.Black;
@@ -536,7 +531,7 @@ public class frmItemSelector : frmMasterForm
 		wgCmTpwdu9.BackColor = Color.FromArgb(35, 39, 56);
 		wgCmTpwdu9.Controls.Add(lblCustom);
 		wgCmTpwdu9.Controls.Add(btnShowKeyboard_Custom);
-		wgCmTpwdu9.Controls.Add((Control)(object)txtCustom);
+		wgCmTpwdu9.Controls.Add(txtCustom);
 		wgCmTpwdu9.Name = "pnlCustom";
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;

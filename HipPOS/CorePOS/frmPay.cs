@@ -1723,7 +1723,7 @@ public class frmPay : frmMasterForm
 								OrderNumber = string_0,
 								DateCreated = DateTime.Now,
 								Type = "reponse",
-								Data = JsonConvert.SerializeObject((object)ackrooGiftCardREDEEMResponse),
+								Data = JsonConvert.SerializeObject(ackrooGiftCardREDEEMResponse),
 								ProcessorName = "Ackroo".ToUpper() + " GIFT CARD"
 							};
 							gClass.GiftCardTransactionLogs.InsertOnSubmit(entity);
@@ -1788,7 +1788,7 @@ public class frmPay : frmMasterForm
 							OrderNumber = string_0,
 							DateCreated = DateTime.Now,
 							Type = "reponse",
-							Data = JsonConvert.SerializeObject((object)ackrooGiftCardREDEEMResponse),
+							Data = JsonConvert.SerializeObject(ackrooGiftCardREDEEMResponse),
 							ProcessorName = "Ackroo".ToUpper() + " LOYALTY CARD",
 							EncryptedCardNumber = StringCipher.Encrypt(CS_0024_003C_003E8__locals0.pm.CardNumber, "DigitalCraftHipPOS")
 						};
@@ -1869,7 +1869,7 @@ public class frmPay : frmMasterForm
 							OrderNumber = string_0,
 							DateCreated = DateTime.Now,
 							Type = "reponse",
-							Data = JsonConvert.SerializeObject((object)ackrooGiftCardFUNDResponse),
+							Data = JsonConvert.SerializeObject(ackrooGiftCardFUNDResponse),
 							ProcessorName = "Ackroo".ToUpper() + " LOYALTY CARD EARNED",
 							EncryptedCardNumber = StringCipher.Encrypt(frmGiftCardPrompt2.CardNumber, "DigitalCraftHipPOS")
 						};
@@ -2003,7 +2003,7 @@ public class frmPay : frmMasterForm
 							OrderNumber = string_0,
 							DateCreated = DateTime.Now,
 							Type = "reponse",
-							Data = JsonConvert.SerializeObject((object)ackrooGiftCardFUNDResponse),
+							Data = JsonConvert.SerializeObject(ackrooGiftCardFUNDResponse),
 							ProcessorName = "Ackroo".ToUpper() + " FUND GIFT CARD",
 							EncryptedCardNumber = StringCipher.Encrypt(CS_0024_003C_003E8__locals0.gcPrompt.CardNumber, "DigitalCraftHipPOS")
 						};

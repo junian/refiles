@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
@@ -93,8 +92,6 @@ public class frmDeliveryManagement : frmMasterForm
 
 	public frmDeliveryManagement()
 	{
-		//IL_021c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0226: Expected O, but got Unknown
 		Class26.Ggkj0JxzN9YmC();
 		int_0 = 20;
 		list_2 = new List<OrderResult>();
@@ -123,28 +120,28 @@ public class frmDeliveryManagement : frmMasterForm
 		{
 			lblEmployeeName.Text = string.Empty;
 		}
-		((RadListView)radListOrders).add_ItemMouseClick(new ListViewItemEventHandler(radListOrders_ItemMouseClick));
+		radListOrders.ItemMouseClick += radListOrders_ItemMouseClick;
 	}
 
 	private void method_3()
 	{
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListOrders).get_Columns())[5].set_Width((float)(col6.Width - 23));
-		customPager_0.Location = new Point(((Control)(object)radListOrders).Location.X, ((Control)(object)radListOrders).Bottom);
-		customPager_0.Size = new Size(((Control)(object)radListOrders).Width, customPager_0.Height);
+		radListOrders.Columns[5].Width = col6.Width - 23;
+		customPager_0.Location = new Point(radListOrders.Location.X, radListOrders.Bottom);
+		customPager_0.Size = new Size(radListOrders.Width, customPager_0.Height);
 	}
 
 	private void radListOrders_ItemMouseClick(object sender, ListViewItemEventArgs e)
 	{
-		if (list_4.Contains(e.get_Item()))
+		if (list_4.Contains(e.Item))
 		{
-			list_4.Remove(e.get_Item());
+			list_4.Remove(e.Item);
 		}
 		else
 		{
-			list_4.Add(e.get_Item());
+			list_4.Add(e.Item);
 		}
-		((RadListView)radListOrders).get_SelectedItems().Clear();
-		((RadListView)radListOrders).Select(list_4.ToArray());
+		radListOrders.SelectedItems.Clear();
+		radListOrders.Select(list_4.ToArray());
 	}
 
 	private void method_4(object sender, EventArgs e)
@@ -225,9 +222,9 @@ public class frmDeliveryManagement : frmMasterForm
 				select y.First()).ToList();
 			List<OrderResult> list = source.ToList();
 			CS_0024_003C_003E8__locals0.ordernumberSelected = "";
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems()).Count > 0)
+			if (radListOrders.SelectedItems.Count > 0)
 			{
-				CS_0024_003C_003E8__locals0.ordernumberSelected = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_Item(3).ToString();
+				CS_0024_003C_003E8__locals0.ordernumberSelected = radListOrders.SelectedItems[0][3].ToString();
 			}
 			if (list != null)
 			{
@@ -237,7 +234,7 @@ public class frmDeliveryManagement : frmMasterForm
 				customPager_0.lastPage = lastPage;
 				list = list.Skip(customPager_0.rowsPerPage * customPager_0.currentPage).Take(customPager_0.rowsPerPage).ToList();
 				customPager_0.AddPagerButtons();
-				((RadListView)radListOrders).get_Items().Clear();
+				radListOrders.Items.Clear();
 				using (List<OrderResult>.Enumerator enumerator = list.GetEnumerator())
 				{
 					while (enumerator.MoveNext())
@@ -272,10 +269,10 @@ public class frmDeliveryManagement : frmMasterForm
 			}
 			if (CS_0024_003C_003E8__locals0.ordernumberSelected != "")
 			{
-				ListViewDataItem val = ((IEnumerable<ListViewDataItem>)((RadListView)radListOrders).get_Items()).Where((ListViewDataItem a) => a.get_Item(3).ToString() == CS_0024_003C_003E8__locals0.ordernumberSelected).FirstOrDefault();
-				if (val != null)
+				ListViewDataItem listViewDataItem = radListOrders.Items.Where((ListViewDataItem a) => a[3].ToString() == CS_0024_003C_003E8__locals0.ordernumberSelected).FirstOrDefault();
+				if (listViewDataItem != null)
 				{
-					((RadListView)radListOrders).set_SelectedIndex(((RadListView)radListOrders).get_Items().IndexOf(val));
+					radListOrders.SelectedIndex = radListOrders.Items.IndexOf(listViewDataItem);
 				}
 			}
 			list = null;
@@ -290,12 +287,10 @@ public class frmDeliveryManagement : frmMasterForm
 
 	private void method_6(string string_0, string string_1, DateTime dateTime_1, string string_2, string string_3, string string_4, string string_5, bool bool_0, byte byte_0, short? nullable_0, DateTime? nullable_1, DateTime? nullable_2, DateTime? nullable_3)
 	{
-		//IL_027b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0282: Expected O, but got Unknown
 		string orderFlagString = MiscHelper.GetOrderFlagString(byte_0);
 		string text = (bool_0 ? "**PAID**\r\n" : "");
 		string text2 = ((!nullable_3.HasValue) ? "ASAP" : ((nullable_3.Value <= DateTime.Now) ? "ASAP" : nullable_3.ToString()));
-		string[] array = new string[14]
+		string[] values = new string[14]
 		{
 			string_1,
 			" CREATED: " + dateTime_1.ToElapsedTime().Replace("second", "sec").Replace("minute", "min")
@@ -313,17 +308,17 @@ public class frmDeliveryManagement : frmMasterForm
 			nullable_2.HasValue ? nullable_2.Value.ToString() : "",
 			bool_0.ToString()
 		};
-		ListViewDataItem val = new ListViewDataItem("", array);
+		ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
 		if (bool_0)
 		{
-			val.set_BackColor(Color.LightGreen);
+			listViewDataItem.BackColor = Color.LightGreen;
 		}
 		else
 		{
-			val.set_BackColor(Color.White);
+			listViewDataItem.BackColor = Color.White;
 		}
-		val.set_TextAlignment(ContentAlignment.TopLeft);
-		((RadListView)radListOrders).get_Items().Add(val);
+		listViewDataItem.TextAlignment = ContentAlignment.TopLeft;
+		radListOrders.Items.Add(listViewDataItem);
 	}
 
 	private void BtnCancel_Click(object sender, EventArgs e)
@@ -354,10 +349,10 @@ public class frmDeliveryManagement : frmMasterForm
 				CS_0024_003C_003E8__locals0.employeeId = Convert.ToInt32(MemoryLoadedObjects.ItemSelector.SingleSelectedKey);
 			}
 			GClass6 gClass = new GClass6();
-			foreach (ListViewDataItem item in ((IEnumerable<ListViewDataItem>)((RadListView)radListOrders).get_SelectedItems()).Where((ListViewDataItem a) => string.IsNullOrEmpty(a.get_Item(0).ToString())))
+			foreach (ListViewDataItem item in radListOrders.SelectedItems.Where((ListViewDataItem a) => string.IsNullOrEmpty(a[0].ToString())))
 			{
 				_003C_003Ec__DisplayClass17_1 CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass17_1();
-				CS_0024_003C_003E8__locals2.ordnum = item.get_Item(3).ToString();
+				CS_0024_003C_003E8__locals2.ordnum = item[3].ToString();
 				List<Order> list = gClass.Orders.Where((Order a) => a.OrderNumber == CS_0024_003C_003E8__locals2.ordnum).ToList();
 				if (list.Count > 0)
 				{
@@ -373,10 +368,10 @@ public class frmDeliveryManagement : frmMasterForm
 			return;
 		}
 		GClass6 gClass2 = new GClass6();
-		foreach (ListViewDataItem item2 in ((IEnumerable<ListViewDataItem>)((RadListView)radListOrders).get_SelectedItems()).Where((ListViewDataItem a) => !string.IsNullOrEmpty(a.get_Item(0).ToString())))
+		foreach (ListViewDataItem item2 in radListOrders.SelectedItems.Where((ListViewDataItem a) => !string.IsNullOrEmpty(a[0].ToString())))
 		{
 			_003C_003Ec__DisplayClass17_2 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass17_2();
-			CS_0024_003C_003E8__locals1.ordnum = item2.get_Item(3).ToString();
+			CS_0024_003C_003E8__locals1.ordnum = item2[3].ToString();
 			List<Order> list2 = gClass2.Orders.Where((Order a) => a.OrderNumber == CS_0024_003C_003E8__locals1.ordnum).ToList();
 			if (list2.Count > 0)
 			{
@@ -399,16 +394,16 @@ public class frmDeliveryManagement : frmMasterForm
 	private void method_7()
 	{
 		dateTime_0 = DateTime.Now;
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems()).Count <= 0 || ((RadListView)radListOrders).get_Items().get_Count() <= ((RadListView)radListOrders).get_SelectedIndex())
+		if (radListOrders.SelectedItems.Count <= 0 || radListOrders.Items.Count <= radListOrders.SelectedIndex)
 		{
 			return;
 		}
 		_003C_003Ec__DisplayClass19_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass19_0();
-		CS_0024_003C_003E8__locals0.ordnum = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_Item(3).ToString();
-		string customer = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_SubItems().get_Item(7).ToString();
-		string customerInfo = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_SubItems().get_Item(8).ToString();
-		string customerInfoName = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_SubItems().get_Item(9).ToString();
-		if (!Convert.ToBoolean(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_SubItems().get_Item(13).ToString()))
+		CS_0024_003C_003E8__locals0.ordnum = radListOrders.SelectedItems[0][3].ToString();
+		string customer = radListOrders.SelectedItems[0].SubItems[7].ToString();
+		string customerInfo = radListOrders.SelectedItems[0].SubItems[8].ToString();
+		string customerInfoName = radListOrders.SelectedItems[0].SubItems[9].ToString();
+		if (!Convert.ToBoolean(radListOrders.SelectedItems[0].SubItems[13].ToString()))
 		{
 			frmOrderEntry obj = new frmOrderEntry(CS_0024_003C_003E8__locals0.ordnum, customer, OrderTypes.Delivery, 0, customerInfoName, customerInfo);
 			obj.CashoutBill(isCashoutButton: true);
@@ -416,10 +411,10 @@ public class frmDeliveryManagement : frmMasterForm
 			obj.Dispose();
 			return;
 		}
-		foreach (ListViewDataItem item in (ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())
+		foreach (ListViewDataItem selectedItem in radListOrders.SelectedItems)
 		{
-			bool num = Convert.ToBoolean(item.get_SubItems().get_Item(13).ToString());
-			CS_0024_003C_003E8__locals0.ordnum = item.get_Item(3).ToString();
+			bool num = Convert.ToBoolean(selectedItem.SubItems[13].ToString());
+			CS_0024_003C_003E8__locals0.ordnum = selectedItem[3].ToString();
 			if (!num)
 			{
 				continue;
@@ -430,10 +425,10 @@ public class frmDeliveryManagement : frmMasterForm
 			{
 				continue;
 			}
-			foreach (Order item2 in list)
+			foreach (Order item in list)
 			{
-				item2.Synced = false;
-				item2.DateCleared = DateTime.Now;
+				item.Synced = false;
+				item.DateCleared = DateTime.Now;
 			}
 			Helper.SubmitChangesWithCatch(gClass);
 		}
@@ -486,12 +481,12 @@ public class frmDeliveryManagement : frmMasterForm
 
 	private void method_8()
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems()).Count > 0 && CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"] != null && CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"].ToString() != "0")
+		if (radListOrders.SelectedItems.Count > 0 && CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"] != null && CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"].ToString() != "0")
 		{
-			string text = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_SubItems().get_Item(10).ToString();
-			string text2 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_SubItems().get_Item(11).ToString();
-			string text3 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_SubItems().get_Item(12).ToString();
-			if (Convert.ToBoolean(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_SubItems().get_Item(13).ToString()))
+			string text = radListOrders.SelectedItems[0].SubItems[10].ToString();
+			string text2 = radListOrders.SelectedItems[0].SubItems[11].ToString();
+			string text3 = radListOrders.SelectedItems[0].SubItems[12].ToString();
+			if (Convert.ToBoolean(radListOrders.SelectedItems[0].SubItems[13].ToString()))
 			{
 				btnCashout.Text = "CLEAR";
 			}
@@ -503,7 +498,7 @@ public class frmDeliveryManagement : frmMasterForm
 			if (employee_0 != null && (employee_0.Users.FirstOrDefault().Role.RoleName == Roles.admin || employee_0.Users.FirstOrDefault().Role.RoleName == Roles.manager))
 			{
 				btnAssignDriver.Enabled = true;
-				if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_Item(0).ToString() != "")
+				if (radListOrders.SelectedItems[0][0].ToString() != "")
 				{
 					btnAssignDriver.Text = "REMOVE DRIVER";
 					btnAssignDriver.BackColor = Color.FromArgb(147, 101, 184);
@@ -595,10 +590,10 @@ public class frmDeliveryManagement : frmMasterForm
 		}
 		dateTime_0 = DateTime.Now;
 		GClass6 gClass = new GClass6();
-		foreach (ListViewDataItem item in (ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())
+		foreach (ListViewDataItem selectedItem in radListOrders.SelectedItems)
 		{
 			_003C_003Ec__DisplayClass29_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass29_1();
-			CS_0024_003C_003E8__locals1.ordnum = item.get_Item(3).ToString();
+			CS_0024_003C_003E8__locals1.ordnum = selectedItem[3].ToString();
 			List<Order> list = gClass.Orders.Where((Order a) => a.OrderNumber == CS_0024_003C_003E8__locals1.ordnum).ToList();
 			if (list.Count > 0)
 			{
@@ -623,12 +618,12 @@ public class frmDeliveryManagement : frmMasterForm
 	private void method_11(bool bool_0)
 	{
 		dateTime_0 = DateTime.Now;
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems()).Count <= 0)
+		if (radListOrders.SelectedItems.Count <= 0)
 		{
 			return;
 		}
 		_003C_003Ec__DisplayClass31_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass31_0();
-		ListViewDataItem val = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0];
+		ListViewDataItem listViewDataItem = radListOrders.SelectedItems[0];
 		CS_0024_003C_003E8__locals0.timeSelected = new frmTimePicker(DateTime.Now.AddMinutes(-5.0), 5);
 		if (CS_0024_003C_003E8__locals0.timeSelected.ShowDialog(this) != DialogResult.OK)
 		{
@@ -640,13 +635,13 @@ public class frmDeliveryManagement : frmMasterForm
 			new NotificationLabel(this, "Time cannot be later than current time.", NotificationTypes.Warning).Show();
 			return;
 		}
-		if (CS_0024_003C_003E8__locals0.timeSelected.Time < Convert.ToDateTime(val.get_SubItems().get_Item(11).ToString()))
+		if (CS_0024_003C_003E8__locals0.timeSelected.Time < Convert.ToDateTime(listViewDataItem.SubItems[11].ToString()))
 		{
 			new NotificationLabel(this, "Time cannot be earlier than pick up time.", NotificationTypes.Warning).Show();
 			return;
 		}
 		GClass6 gClass = new GClass6();
-		CS_0024_003C_003E8__locals1.ordnum = val.get_Item(3).ToString();
+		CS_0024_003C_003E8__locals1.ordnum = listViewDataItem[3].ToString();
 		List<Order> list = gClass.Orders.Where((Order a) => a.OrderNumber == CS_0024_003C_003E8__locals1.ordnum).ToList();
 		if (list.Count > 0)
 		{
@@ -766,29 +761,15 @@ public class frmDeliveryManagement : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0026: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002c: Expected O, but got Unknown
-		//IL_0036: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_0046: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004c: Expected O, but got Unknown
-		//IL_0056: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005d: Expected O, but got Unknown
-		//IL_0067: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006e: Expected O, but got Unknown
-		//IL_0078: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007f: Expected O, but got Unknown
-		//IL_0084: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008b: Expected O, but got Unknown
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmDeliveryManagement));
-		ListViewDetailColumn val = new ListViewDetailColumn("Column 0", "Column 0");
-		ListViewDetailColumn val2 = new ListViewDetailColumn("Column 1", "Column 1");
-		ListViewDetailColumn val3 = new ListViewDetailColumn("Column 2", "Column 2");
-		ListViewDetailColumn val4 = new ListViewDetailColumn("Column 3", "Column 3");
-		ListViewDetailColumn val5 = new ListViewDetailColumn("Column 4", "Column 4");
-		ListViewDetailColumn val6 = new ListViewDetailColumn("Column 5", "Column 5");
-		ListViewDataItem val7 = new ListViewDataItem("ListViewItem 1");
+		ListViewDetailColumn listViewDetailColumn = new ListViewDetailColumn("Column 0", "Column 0");
+		ListViewDetailColumn listViewDetailColumn2 = new ListViewDetailColumn("Column 1", "Column 1");
+		ListViewDetailColumn listViewDetailColumn3 = new ListViewDetailColumn("Column 2", "Column 2");
+		ListViewDetailColumn listViewDetailColumn4 = new ListViewDetailColumn("Column 3", "Column 3");
+		ListViewDetailColumn listViewDetailColumn5 = new ListViewDetailColumn("Column 4", "Column 4");
+		ListViewDetailColumn listViewDetailColumn6 = new ListViewDetailColumn("Column 5", "Column 5");
+		ListViewDataItem listViewDataItem = new ListViewDataItem("ListViewItem 1");
 		timer_0 = new Timer(icontainer_1);
 		col5 = new Label();
 		flowLayoutPanel1 = new FlowLayoutPanel();
@@ -1150,39 +1131,39 @@ public class frmDeliveryManagement : frmMasterForm
 		label9.TabIndex = 101;
 		label9.Text = "DELIVERY MANAGEMENT SYSTEM";
 		label9.TextAlign = ContentAlignment.MiddleCenter;
-		((RadListView)radListOrders).set_AllowArbitraryItemHeight(true);
-		((RadListView)radListOrders).set_AllowEdit(false);
-		((RadListView)radListOrders).set_AllowRemove(false);
-		((Control)(object)radListOrders).Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-		val.set_HeaderText("Column 0");
-		val.set_Width(122f);
-		val2.set_HeaderText("Column 1");
-		val2.set_Width(246f);
-		val3.set_HeaderText("Column 2");
-		val3.set_Width(131f);
-		val4.set_HeaderText("Column 3");
-		val4.set_Width(126f);
-		val5.set_HeaderText("Column 4");
-		val5.set_Width(75f);
-		val6.set_HeaderText("Column 5");
-		val6.set_Width(275f);
-		((RadListView)radListOrders).get_Columns().AddRange((ListViewDetailColumn[])(object)new ListViewDetailColumn[6] { val, val2, val3, val4, val5, val6 });
-		((RadListView)radListOrders).set_EnableKineticScrolling(true);
-		((Control)(object)radListOrders).Font = new Font("Courier New", 13.5f);
-		val7.set_Text("ListViewItem 1");
-		((RadListView)radListOrders).get_Items().AddRange((ListViewDataItem[])(object)new ListViewDataItem[1] { val7 });
-		((RadListView)radListOrders).set_ItemSpacing(-1);
-		((Control)(object)radListOrders).Location = new Point(1, 112);
-		((RadListView)radListOrders).set_MultiSelect(true);
-		((Control)(object)radListOrders).Name = "radListOrders";
-		((RadListView)radListOrders).set_SelectLastAddedItem(false);
-		((RadListView)radListOrders).set_ShowColumnHeaders(false);
-		((RadListView)radListOrders).set_ShowGridLines(true);
-		((Control)(object)radListOrders).Size = new Size(1009, 298);
-		((Control)(object)radListOrders).TabIndex = 227;
-		((Control)(object)radListOrders).Text = "radListView1";
-		((RadListView)radListOrders).set_ViewType((ListViewType)2);
-		((RadListView)radListOrders).add_SelectedItemChanged((EventHandler)radListOrders_SelectedItemChanged);
+		radListOrders.AllowArbitraryItemHeight = true;
+		radListOrders.AllowEdit = false;
+		radListOrders.AllowRemove = false;
+		radListOrders.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+		listViewDetailColumn.HeaderText = "Column 0";
+		listViewDetailColumn.Width = 122f;
+		listViewDetailColumn2.HeaderText = "Column 1";
+		listViewDetailColumn2.Width = 246f;
+		listViewDetailColumn3.HeaderText = "Column 2";
+		listViewDetailColumn3.Width = 131f;
+		listViewDetailColumn4.HeaderText = "Column 3";
+		listViewDetailColumn4.Width = 126f;
+		listViewDetailColumn5.HeaderText = "Column 4";
+		listViewDetailColumn5.Width = 75f;
+		listViewDetailColumn6.HeaderText = "Column 5";
+		listViewDetailColumn6.Width = 275f;
+		radListOrders.Columns.AddRange(listViewDetailColumn, listViewDetailColumn2, listViewDetailColumn3, listViewDetailColumn4, listViewDetailColumn5, listViewDetailColumn6);
+		radListOrders.EnableKineticScrolling = true;
+		radListOrders.Font = new Font("Courier New", 13.5f);
+		listViewDataItem.Text = "ListViewItem 1";
+		radListOrders.Items.AddRange(listViewDataItem);
+		radListOrders.ItemSpacing = -1;
+		radListOrders.Location = new Point(1, 112);
+		radListOrders.MultiSelect = true;
+		radListOrders.Name = "radListOrders";
+		radListOrders.SelectLastAddedItem = false;
+		radListOrders.ShowColumnHeaders = false;
+		radListOrders.ShowGridLines = true;
+		radListOrders.Size = new Size(1009, 298);
+		radListOrders.TabIndex = 227;
+		radListOrders.Text = "radListView1";
+		radListOrders.ViewType = ListViewType.DetailsView;
+		radListOrders.SelectedItemChanged += radListOrders_SelectedItemChanged;
 		chkPickedUp.BackColor = Color.LightGray;
 		chkPickedUp.Checked = true;
 		chkPickedUp.CheckState = CheckState.Checked;
@@ -1228,7 +1209,7 @@ public class frmDeliveryManagement : frmMasterForm
 		base.Controls.Add(col6);
 		base.Controls.Add(col1);
 		base.Controls.Add(col4);
-		base.Controls.Add((Control)(object)radListOrders);
+		base.Controls.Add(radListOrders);
 		base.Controls.Add(label9);
 		base.Name = "frmDeliveryManagement";
 		base.Opacity = 1.0;

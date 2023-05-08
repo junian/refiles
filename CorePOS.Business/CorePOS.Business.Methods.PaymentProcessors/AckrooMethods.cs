@@ -16,10 +16,6 @@ public static class AckrooMethods
 
 	public static AckrooGiftCardCreateResponse ActivateCard(string cardNumber)
 	{
-		//IL_00f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00fa: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0101: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0116: Expected O, but got Unknown
 		try
 		{
 			string device_id = "";
@@ -34,7 +30,7 @@ public static class AckrooMethods
 					device_id = apiKey.Split('|')[1].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 				}
 			}
-			var anon = new
+			var value = new
 			{
 				cardnumber = cardNumber.ToString(),
 				access_token = access_token,
@@ -45,11 +41,12 @@ public static class AckrooMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-				streamWriter.Write(value);
+				string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
+				streamWriter.Write(value2);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 			return JsonConvert.DeserializeObject<AckrooGiftCardCreateResponse>(streamReader.ReadToEnd());
@@ -69,10 +66,6 @@ public static class AckrooMethods
 
 	public static AckrooGiftCardClearCardResponse ClearCard(string cardNumber)
 	{
-		//IL_00f0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00fc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0111: Expected O, but got Unknown
 		try
 		{
 			string device_id = "";
@@ -87,7 +80,7 @@ public static class AckrooMethods
 					device_id = apiKey.Split('|')[1].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 				}
 			}
-			var anon = new
+			var value = new
 			{
 				cardnumber = cardNumber,
 				access_token = access_token,
@@ -98,11 +91,12 @@ public static class AckrooMethods
 			httpWebRequest.Method = "DELETE";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-				streamWriter.Write(value);
+				string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
+				streamWriter.Write(value2);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 			return JsonConvert.DeserializeObject<AckrooGiftCardClearCardResponse>(streamReader.ReadToEnd());
@@ -122,10 +116,6 @@ public static class AckrooMethods
 
 	public static AckrooGiftCardFUNDResponse FundCard(string cardNumber, decimal amount)
 	{
-		//IL_00f7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00fc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0103: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0118: Expected O, but got Unknown
 		try
 		{
 			string device_id = "";
@@ -140,7 +130,7 @@ public static class AckrooMethods
 					device_id = apiKey.Split('|')[1].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 				}
 			}
-			var anon = new
+			var value = new
 			{
 				amount = amount.ToString(),
 				cardnumber = cardNumber,
@@ -152,11 +142,12 @@ public static class AckrooMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-				streamWriter.Write(value);
+				string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
+				streamWriter.Write(value2);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 			return JsonConvert.DeserializeObject<AckrooGiftCardFUNDResponse>(streamReader.ReadToEnd());
@@ -176,10 +167,6 @@ public static class AckrooMethods
 
 	public static AckrooGiftCardREDEEMResponse RedeemCard(string cardNumber, decimal amount)
 	{
-		//IL_00f7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00fc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0103: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0118: Expected O, but got Unknown
 		try
 		{
 			string device_id = "";
@@ -194,7 +181,7 @@ public static class AckrooMethods
 					device_id = apiKey.Split('|')[1].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 				}
 			}
-			var anon = new
+			var value = new
 			{
 				amount = amount.ToString(),
 				cardnumber = cardNumber,
@@ -206,11 +193,12 @@ public static class AckrooMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-				streamWriter.Write(value);
+				string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
+				streamWriter.Write(value2);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 			return JsonConvert.DeserializeObject<AckrooGiftCardREDEEMResponse>(streamReader.ReadToEnd());
@@ -230,10 +218,6 @@ public static class AckrooMethods
 
 	public static AckrooGiftCardVoidResponse VoidTransaction(string transactionNumber)
 	{
-		//IL_00f0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00fc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0111: Expected O, but got Unknown
 		try
 		{
 			string device_id = "";
@@ -248,7 +232,7 @@ public static class AckrooMethods
 					device_id = apiKey.Split('|')[1].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 				}
 			}
-			var anon = new
+			var value = new
 			{
 				transaction_number = transactionNumber,
 				access_token = access_token,
@@ -259,11 +243,12 @@ public static class AckrooMethods
 			httpWebRequest.Method = "DELETE";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-				streamWriter.Write(value);
+				string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
+				streamWriter.Write(value2);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 			return JsonConvert.DeserializeObject<AckrooGiftCardVoidResponse>(streamReader.ReadToEnd());
@@ -283,10 +268,6 @@ public static class AckrooMethods
 
 	public static AckrooGiftCardFUNDResponse FundLoyaltyPoints(string cardNumber, decimal amount, string description = "")
 	{
-		//IL_00f8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00fd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0104: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0119: Expected O, but got Unknown
 		try
 		{
 			string device_id = "";
@@ -300,7 +281,7 @@ public static class AckrooMethods
 					access_token = apiKey.Split('|')[0].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 					device_id = apiKey.Split('|')[1].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 				}
-				var anon = new
+				var value = new
 				{
 					amount = amount.ToString(),
 					cardnumber = cardNumber,
@@ -313,11 +294,12 @@ public static class AckrooMethods
 				httpWebRequest.Method = "POST";
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-					streamWriter.Write(value);
+					string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
+					streamWriter.Write(value2);
 				}
 				using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 				return JsonConvert.DeserializeObject<AckrooGiftCardFUNDResponse>(streamReader.ReadToEnd());
@@ -339,10 +321,6 @@ public static class AckrooMethods
 
 	public static AckrooGiftCardFUNDResponse RefundLoyaltyPoints(string cardNumber, decimal amount)
 	{
-		//IL_00f7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00fc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0103: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0118: Expected O, but got Unknown
 		try
 		{
 			string device_id = "";
@@ -356,7 +334,7 @@ public static class AckrooMethods
 					access_token = apiKey.Split('|')[0].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 					device_id = apiKey.Split('|')[1].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 				}
-				var anon = new
+				var value = new
 				{
 					amount = amount.ToString(),
 					cardnumber = cardNumber,
@@ -368,11 +346,12 @@ public static class AckrooMethods
 				httpWebRequest.Method = "POST";
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-					streamWriter.Write(value);
+					string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
+					streamWriter.Write(value2);
 				}
 				using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 				return JsonConvert.DeserializeObject<AckrooGiftCardFUNDResponse>(streamReader.ReadToEnd());
@@ -394,10 +373,6 @@ public static class AckrooMethods
 
 	public static AckrooReversalResponse ReverseTransaction(string transactionNumber, string settingKeyJson, string cardnumber = null, string description = null, string clerk_id = null)
 	{
-		//IL_0114: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0119: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0120: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0135: Expected O, but got Unknown
 		try
 		{
 			string device_id = "";
@@ -411,7 +386,7 @@ public static class AckrooMethods
 					access_token = apiKey.Split('|')[0].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 					device_id = apiKey.Split('|')[1].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 				}
-				AckrooReversalRequest ackrooReversalRequest = new AckrooReversalRequest
+				AckrooReversalRequest value = new AckrooReversalRequest
 				{
 					transaction_number = transactionNumber,
 					access_token = access_token,
@@ -425,11 +400,12 @@ public static class AckrooMethods
 				httpWebRequest.Method = "POST";
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject((object)ackrooReversalRequest, (Formatting)1, val);
-					streamWriter.Write(value);
+					string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
+					streamWriter.Write(value2);
 				}
 				using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 				return JsonConvert.DeserializeObject<AckrooReversalResponse>(streamReader.ReadToEnd());
@@ -451,10 +427,6 @@ public static class AckrooMethods
 
 	public static AckrooGiftCardREDEEMResponse RedeemLoyaltyPoints(string cardNumber, decimal amount)
 	{
-		//IL_00f7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00fc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0103: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0118: Expected O, but got Unknown
 		try
 		{
 			string device_id = "";
@@ -468,7 +440,7 @@ public static class AckrooMethods
 					access_token = apiKey.Split('|')[0].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 					device_id = apiKey.Split('|')[1].Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
 				}
-				var anon = new
+				var value = new
 				{
 					amount = amount.ToString(),
 					cardnumber = cardNumber,
@@ -480,11 +452,12 @@ public static class AckrooMethods
 				httpWebRequest.Method = "POST";
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-					streamWriter.Write(value);
+					string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
+					streamWriter.Write(value2);
 				}
 				using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 				return JsonConvert.DeserializeObject<AckrooGiftCardREDEEMResponse>(streamReader.ReadToEnd());

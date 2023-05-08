@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using CorePOS.Business.Objects;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel.Settings.Payment;
@@ -71,7 +70,7 @@ public class frmCardTransactionFee : frmMasterForm
 		{
 			CardTransactionFeeObject transactionFeeSetting = SettingsHelper.GetTransactionFeeSetting(ddlCardType.SelectedValue.ToString());
 			ddlTender.SelectedValue = transactionFeeSetting.TenderType.ToString();
-			((Control)(object)txtAmount).Text = transactionFeeSetting.Amount.ToString();
+			txtAmount.Text = transactionFeeSetting.Amount.ToString();
 		}
 	}
 
@@ -84,17 +83,17 @@ public class frmCardTransactionFee : frmMasterForm
 	private void btnShowKeyboard_Amount_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Amount", 1, 128, ((Control)(object)txtAmount).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Amount", 1, 128, txtAmount.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtAmount).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtAmount.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
 
 	private void btnSave_Click(object sender, EventArgs e)
 	{
-		SettingsHelper.SetTransactionFeeSetting(ddlCardType.SelectedValue.ToString(), ddlTender.SelectedValue.ToString()[0], Convert.ToDecimal(((Control)(object)txtAmount).Text));
+		SettingsHelper.SetTransactionFeeSetting(ddlCardType.SelectedValue.ToString(), ddlTender.SelectedValue.ToString()[0], Convert.ToDecimal(txtAmount.Text));
 		new NotificationLabel(this, "Successfully Saved", NotificationTypes.Success);
 		base.DialogResult = DialogResult.None;
 	}
@@ -110,10 +109,6 @@ public class frmCardTransactionFee : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_006a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0074: Expected O, but got Unknown
-		//IL_08d4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08f5: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmCardTransactionFee));
 		ddlTender = new Class19();
 		label2 = new Label();
@@ -233,16 +228,16 @@ public class frmCardTransactionFee : frmMasterForm
 		label1.TabIndex = 257;
 		label1.Text = "Amount/Percentage";
 		label1.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)txtAmount).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtAmount).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtAmount).Location = new Point(154, 120);
-		((Control)(object)txtAmount).Name = "txtAmount";
-		((RadElement)((RadControl)txtAmount).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtAmount).Size = new Size(327, 35);
-		((Control)(object)txtAmount).TabIndex = 256;
-		((Control)(object)txtAmount).Click += btnShowKeyboard_Amount_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtAmount).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtAmount).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtAmount.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtAmount.ForeColor = Color.FromArgb(40, 40, 40);
+		txtAmount.Location = new Point(154, 120);
+		txtAmount.Name = "txtAmount";
+		txtAmount.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtAmount.Size = new Size(327, 35);
+		txtAmount.TabIndex = 256;
+		txtAmount.Click += btnShowKeyboard_Amount_Click;
+		((RadTextBoxControlElement)txtAmount.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtAmount.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Amount.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Amount.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Amount.FlatAppearance.BorderColor = Color.Black;
@@ -263,7 +258,7 @@ public class frmCardTransactionFee : frmMasterForm
 		base.ClientSize = new Size(537, 241);
 		base.Controls.Add(btnShowKeyboard_Amount);
 		base.Controls.Add(label1);
-		base.Controls.Add((Control)(object)txtAmount);
+		base.Controls.Add(txtAmount);
 		base.Controls.Add(ddlTender);
 		base.Controls.Add(label2);
 		base.Controls.Add(ddlCardType);
@@ -283,7 +278,7 @@ public class frmCardTransactionFee : frmMasterForm
 		base.Controls.SetChildIndex(ddlCardType, 0);
 		base.Controls.SetChildIndex(label2, 0);
 		base.Controls.SetChildIndex(ddlTender, 0);
-		base.Controls.SetChildIndex((Control)(object)txtAmount, 0);
+		base.Controls.SetChildIndex(txtAmount, 0);
 		base.Controls.SetChildIndex(label1, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_Amount, 0);
 		((ISupportInitialize)txtAmount).EndInit();

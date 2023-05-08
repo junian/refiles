@@ -13,7 +13,6 @@ using CorePOS.Business.Methods;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -162,9 +161,9 @@ public class frmReservations : frmMasterForm
 		list_2 = gclass6_0.BusinessHours.ToList();
 		if (Thread.CurrentThread.CurrentCulture.Name.Equals("fr-CA"))
 		{
-			((Control)(object)chkShowAll).Font = new Font(((Control)(object)chkShowAll).Font.FontFamily, ((Control)(object)chkShowAll).Font.Size - 1.25f);
-			chkShowAll.set_OffText("AFFICHER TOUS : NON");
-			chkShowAll.set_OnText("AFFICHER TOUS : OUI");
+			chkShowAll.Font = new Font(chkShowAll.Font.FontFamily, chkShowAll.Font.Size - 1.25f);
+			chkShowAll.OffText = "AFFICHER TOUS : NON";
+			chkShowAll.OnText = "AFFICHER TOUS : OUI";
 			method_16();
 		}
 		if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isCurrentlyTrainingMode"]))
@@ -239,23 +238,23 @@ public class frmReservations : frmMasterForm
 			new frmMessageBox(Resources.Please_select_correct_date_and).ShowDialog(this);
 			return;
 		}
-		if (((Control)(object)txtName).Text.Length > 49)
+		if (txtName.Text.Length > 49)
 		{
 			new NotificationLabel(this, "Name should be less than 50 characters. ", NotificationTypes.Notification).Show();
 		}
-		else if (!string.IsNullOrEmpty(((Control)(object)txtName).Text) && !string.IsNullOrEmpty(((Control)(object)txtPhone).Text) && !string.IsNullOrEmpty(((Control)(object)txtNumOfPeople).Text))
+		else if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtPhone.Text) && !string.IsNullOrEmpty(txtNumOfPeople.Text))
 		{
 			if (dateTime < DateTime.Now)
 			{
 				new NotificationLabel(this, Resources.You_cannot_create_a_reservatio, NotificationTypes.Notification).Show();
 				return;
 			}
-			if (Convert.ToInt32(((Control)(object)txtNumOfPeople).Text) == 0)
+			if (Convert.ToInt32(txtNumOfPeople.Text) == 0)
 			{
 				new NotificationLabel(this, Resources.You_cannot_create_a_reservatio0, NotificationTypes.Notification).Show();
 				return;
 			}
-			if (((Control)(object)txtPhone).Text.Length < 10)
+			if (txtPhone.Text.Length < 10)
 			{
 				new NotificationLabel(this, Resources.Phone_number_should_be_at_leas, NotificationTypes.Notification).Show();
 				return;
@@ -283,9 +282,9 @@ public class frmReservations : frmMasterForm
 				{
 					Customer customer = new Customer
 					{
-						CustomerName = ((Control)(object)txtName).Text.Trim(),
-						CustomerCell = ((Control)(object)txtPhone).Text.Trim(),
-						CustomerEmail = ((Control)(object)txtEmail).Text.Trim(),
+						CustomerName = txtName.Text.Trim(),
+						CustomerCell = txtPhone.Text.Trim(),
+						CustomerEmail = txtEmail.Text.Trim(),
 						DateCreated = DateTime.Now,
 						Active = true,
 						EmployeeID = int_0,
@@ -299,7 +298,7 @@ public class frmReservations : frmMasterForm
 					gclass6_0.SubmitChanges();
 					nullable_0 = customer.CustomerID;
 				}
-				dataManager.reservationSave(dateTime, int_0, ((Control)(object)txtName).Text, ((Control)(object)txtPhone).Text, Convert.ToInt16(((Control)(object)txtNumOfPeople).Text), txtComments.Text, ((Control)(object)txtEmail).Text, AppointmentTypes.reservation, nullable_0, long_0);
+				dataManager.reservationSave(dateTime, int_0, txtName.Text, txtPhone.Text, Convert.ToInt16(txtNumOfPeople.Text), txtComments.Text, txtEmail.Text, AppointmentTypes.reservation, nullable_0, long_0);
 				new NotificationLabel(this, Resources.Reservation_has_been_successfu, NotificationTypes.Success).Show();
 				UpdateList();
 				method_7();
@@ -308,10 +307,10 @@ public class frmReservations : frmMasterForm
 				btnMove.Enabled = false;
 				gmcziSlvhg.Enabled = false;
 				long_0 = 0L;
-				RadTextBoxControl obj2 = txtName;
-				RadTextBoxControl obj3 = txtNumOfPeople;
-				string text = (((Control)(object)txtPhone).Text = string.Empty);
-				string text4 = (((Control)(object)obj2).Text = (((Control)(object)obj3).Text = text));
+				RadTextBoxControl radTextBoxControl = txtName;
+				RadTextBoxControl radTextBoxControl2 = txtNumOfPeople;
+				string text = (txtPhone.Text = string.Empty);
+				string text4 = (radTextBoxControl.Text = (radTextBoxControl2.Text = text));
 				method_6(dateTime_0);
 				return;
 			}
@@ -347,7 +346,7 @@ public class frmReservations : frmMasterForm
 
 	public void UpdateList()
 	{
-		if (chkShowAll.get_Value())
+		if (chkShowAll.Value)
 		{
 			formHelper_0.addReservationsToList(lstItems);
 		}
@@ -406,11 +405,11 @@ public class frmReservations : frmMasterForm
 
 	private void method_7()
 	{
-		((Control)(object)txtPhone).Text = string.Empty;
-		((Control)(object)txtName).Text = string.Empty;
+		txtPhone.Text = string.Empty;
+		txtName.Text = string.Empty;
 		txtComments.Text = string.Empty;
-		((Control)(object)txtNumOfPeople).Text = string.Empty;
-		((Control)(object)txtEmail).Text = string.Empty;
+		txtNumOfPeople.Text = string.Empty;
+		txtEmail.Text = string.Empty;
 	}
 
 	private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -424,11 +423,11 @@ public class frmReservations : frmMasterForm
 			if (appointment != null)
 			{
 				new DateTime(appointment.StartDateTime.Year, appointment.StartDateTime.Month, 1);
-				((Control)(object)txtPhone).Text = appointment.CustomerCell;
-				((Control)(object)txtName).Text = appointment.CustomerName;
-				((Control)(object)txtNumOfPeople).Text = appointment.NumOfPeople.ToString();
+				txtPhone.Text = appointment.CustomerCell;
+				txtName.Text = appointment.CustomerName;
+				txtNumOfPeople.Text = appointment.NumOfPeople.ToString();
 				txtComments.Text = appointment.Comments;
-				((Control)(object)txtEmail).Text = appointment.CustomerEmail;
+				txtEmail.Text = appointment.CustomerEmail;
 				lblSelectedDate.Text = appointment.StartDateTime.ToLongDateString();
 				startTimePicker.Value = appointment.StartDateTime;
 				long_0 = appointment.AppointmentID;
@@ -499,10 +498,10 @@ public class frmReservations : frmMasterForm
 	private void QjeqfMoDub(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 	}
 
@@ -512,7 +511,7 @@ public class frmReservations : frmMasterForm
 		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_A_Number, 0);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPhone).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtPhone.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
@@ -522,7 +521,7 @@ public class frmReservations : frmMasterForm
 		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_A_Number, 0, 3);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtNumOfPeople).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtNumOfPeople.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
@@ -667,13 +666,13 @@ public class frmReservations : frmMasterForm
 	private void txtPhone_TextChanged(object sender, EventArgs e)
 	{
 		new FormHelper().validateNumberOnlyTextBox(txtPhone);
-		if (!string.IsNullOrEmpty(((Control)(object)txtPhone).Text.Trim()))
+		if (!string.IsNullOrEmpty(txtPhone.Text.Trim()))
 		{
-			Customer customerByPhone = CustomerMethods.GetCustomerByPhone(((Control)(object)txtPhone).Text.Trim());
+			Customer customerByPhone = CustomerMethods.GetCustomerByPhone(txtPhone.Text.Trim());
 			if (customerByPhone != null)
 			{
-				((Control)(object)txtName).Text = customerByPhone.CustomerName;
-				((Control)(object)txtEmail).Text = customerByPhone.CustomerEmail;
+				txtName.Text = customerByPhone.CustomerName;
+				txtEmail.Text = customerByPhone.CustomerEmail;
 				nullable_0 = customerByPhone.CustomerID;
 			}
 			else
@@ -710,10 +709,10 @@ public class frmReservations : frmMasterForm
 	private void btnShowKeyboard_Name_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Customer_Name, 1, 49, ((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Customer_Name, 1, 49, txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			KeUzIgehbp.Enabled = true;
 			btnNew.Enabled = true;
 		}
@@ -723,10 +722,10 @@ public class frmReservations : frmMasterForm
 	private void btnShowKeyboard_Phone_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Phone_Number, 0, 10, ((Control)(object)txtPhone).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Phone_Number, 0, 10, txtPhone.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPhone).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtPhone.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 			KeUzIgehbp.Enabled = true;
 			btnNew.Enabled = true;
 		}
@@ -736,10 +735,10 @@ public class frmReservations : frmMasterForm
 	private void btnShowKeyboard_NumOfPeople_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Number_of_People, 0, 3, ((Control)(object)txtNumOfPeople).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Number_of_People, 0, 3, txtNumOfPeople.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtNumOfPeople).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtNumOfPeople.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 			KeUzIgehbp.Enabled = true;
 			btnNew.Enabled = true;
 		}
@@ -762,10 +761,10 @@ public class frmReservations : frmMasterForm
 	private void btnShowKeyboard_Email_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Email, 1, 128, ((Control)(object)txtEmail).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Email, 1, 128, txtEmail.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtEmail).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtEmail.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			KeUzIgehbp.Enabled = true;
 			btnNew.Enabled = true;
 		}
@@ -895,12 +894,12 @@ public class frmReservations : frmMasterForm
 
 	private void btnSendText_Click(object sender, EventArgs e)
 	{
-		MailHelpers.SendSmsViaAppointment("reservation", Convert.ToInt32(long_0), ((Control)(object)txtPhone).Text, ((Control)(object)txtName).Text);
+		MailHelpers.SendSmsViaAppointment("reservation", Convert.ToInt32(long_0), txtPhone.Text, txtName.Text);
 	}
 
 	private void btnSendMail_Click(object sender, EventArgs e)
 	{
-		MailHelpers.SendEmailViaAppointment("reservation", Convert.ToInt32(long_0), ((Control)(object)txtEmail).Text, ((Control)(object)txtName).Text);
+		MailHelpers.SendEmailViaAppointment("reservation", Convert.ToInt32(long_0), txtEmail.Text, txtName.Text);
 	}
 
 	private void txtName_TextChanged(object sender, EventArgs e)
@@ -961,31 +960,6 @@ public class frmReservations : frmMasterForm
 
 	private void Yewzlloqkn()
 	{
-		//IL_0049: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0053: Expected O, but got Unknown
-		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0069: Expected O, but got Unknown
-		//IL_006a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0074: Expected O, but got Unknown
-		//IL_0075: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007f: Expected O, but got Unknown
-		//IL_0080: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008a: Expected O, but got Unknown
-		//IL_052a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_054b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0634: Unknown result type (might be due to invalid IL or missing references)
-		//IL_064c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_066d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_069a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06c7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06f4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_071b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0809: Unknown result type (might be due to invalid IL or missing references)
-		//IL_082a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08fa: Unknown result type (might be due to invalid IL or missing references)
-		//IL_091b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09d4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09f5: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmReservations));
 		label18 = new Label();
 		label17 = new Label();
@@ -1074,63 +1048,63 @@ public class frmReservations : frmMasterForm
 		btnShowKeyboard_Email.Name = "btnShowKeyboard_Email";
 		btnShowKeyboard_Email.UseVisualStyleBackColor = false;
 		btnShowKeyboard_Email.Click += btnShowKeyboard_Email_Click;
-		((Control)(object)txtEmail).BackColor = Color.White;
+		txtEmail.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtEmail, "txtEmail");
-		((Control)(object)txtEmail).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtEmail).Name = "txtEmail";
-		((RadElement)((RadControl)txtEmail).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtEmail).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtEmail).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtEmail).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtEmail.ForeColor = Color.FromArgb(40, 40, 40);
+		txtEmail.Name = "txtEmail";
+		txtEmail.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtEmail.Click += txtName_Click;
+		((RadTextBoxControlElement)txtEmail.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtEmail.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label13.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label13, "label13");
 		label13.ForeColor = Color.White;
 		label13.Name = "label13";
 		componentResourceManager.ApplyResources(chkShowAll, "chkShowAll");
-		((Control)(object)chkShowAll).Name = "chkShowAll";
-		chkShowAll.set_OffText("Show All : NO");
-		chkShowAll.set_OnText("Show All : YES");
-		((Control)(object)chkShowAll).Tag = "product";
-		chkShowAll.set_ToggleStateMode((ToggleStateMode)1);
-		chkShowAll.add_ValueChanged((EventHandler)chkShowAll_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkShowAll).GetChildAt(0)).set_ThumbOffset(110);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkShowAll).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkShowAll).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkShowAll).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkShowAll).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkShowAll).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkShowAll).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)txtNumOfPeople).BackColor = Color.White;
+		chkShowAll.Name = "chkShowAll";
+		chkShowAll.OffText = "Show All : NO";
+		chkShowAll.OnText = "Show All : YES";
+		chkShowAll.Tag = "product";
+		chkShowAll.ToggleStateMode = ToggleStateMode.Click;
+		chkShowAll.ValueChanged += chkShowAll_ValueChanged;
+		((RadToggleSwitchElement)chkShowAll.GetChildAt(0)).ThumbOffset = 110;
+		((RadToggleSwitchElement)chkShowAll.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkShowAll.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkShowAll.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkShowAll.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkShowAll.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkShowAll.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		txtNumOfPeople.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtNumOfPeople, "txtNumOfPeople");
-		((Control)(object)txtNumOfPeople).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtNumOfPeople).Name = "txtNumOfPeople";
-		((RadElement)((RadControl)txtNumOfPeople).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtNumOfPeople).Tag = "product";
-		txtNumOfPeople.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtNumOfPeople).TextChanged += txtNumOfPeople_TextChanged;
-		((Control)(object)txtNumOfPeople).Click += txtName_Click;
-		((Control)(object)txtNumOfPeople).KeyPress += txtPhone_KeyPress;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtNumOfPeople).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtNumOfPeople).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
-		((Control)(object)txtPhone).BackColor = Color.White;
+		txtNumOfPeople.ForeColor = Color.FromArgb(40, 40, 40);
+		txtNumOfPeople.Name = "txtNumOfPeople";
+		txtNumOfPeople.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtNumOfPeople.Tag = "product";
+		txtNumOfPeople.TextAlign = HorizontalAlignment.Center;
+		txtNumOfPeople.TextChanged += txtNumOfPeople_TextChanged;
+		txtNumOfPeople.Click += txtName_Click;
+		txtNumOfPeople.KeyPress += txtPhone_KeyPress;
+		((RadTextBoxControlElement)txtNumOfPeople.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtNumOfPeople.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
+		txtPhone.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtPhone, "txtPhone");
-		((Control)(object)txtPhone).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPhone).Name = "txtPhone";
-		((RadElement)((RadControl)txtPhone).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtPhone).TextChanged += txtPhone_TextChanged;
-		((Control)(object)txtPhone).Click += txtName_Click;
-		((Control)(object)txtPhone).KeyPress += txtPhone_KeyPress;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPhone).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPhone).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
-		((Control)(object)txtName).BackColor = Color.White;
+		txtPhone.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPhone.Name = "txtPhone";
+		txtPhone.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtPhone.TextChanged += txtPhone_TextChanged;
+		txtPhone.Click += txtName_Click;
+		txtPhone.KeyPress += txtPhone_KeyPress;
+		((RadTextBoxControlElement)txtPhone.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPhone.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
+		txtName.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtName, "txtName");
-		((Control)(object)txtName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtName).TextChanged += txtName_TextChanged;
-		((Control)(object)txtName).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtName.TextChanged += txtName_TextChanged;
+		txtName.Click += txtName_Click;
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Comments.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Comments.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Comments.FlatAppearance.BorderColor = Color.Black;
@@ -1400,12 +1374,12 @@ public class frmReservations : frmMasterForm
 		base.Controls.Add(label16);
 		base.Controls.Add(label15);
 		base.Controls.Add(btnShowKeyboard_Email);
-		base.Controls.Add((Control)(object)txtEmail);
+		base.Controls.Add(txtEmail);
 		base.Controls.Add(label13);
-		base.Controls.Add((Control)(object)chkShowAll);
-		base.Controls.Add((Control)(object)txtNumOfPeople);
-		base.Controls.Add((Control)(object)txtPhone);
-		base.Controls.Add((Control)(object)txtName);
+		base.Controls.Add(chkShowAll);
+		base.Controls.Add(txtNumOfPeople);
+		base.Controls.Add(txtPhone);
+		base.Controls.Add(txtName);
 		base.Controls.Add(btnShowKeyboard_Comments);
 		base.Controls.Add(label14);
 		base.Controls.Add(btnShowKeyboard_NumOfPeople);
@@ -1464,12 +1438,12 @@ public class frmReservations : frmMasterForm
 		base.Controls.SetChildIndex(btnShowKeyboard_NumOfPeople, 0);
 		base.Controls.SetChildIndex(label14, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_Comments, 0);
-		base.Controls.SetChildIndex((Control)(object)txtName, 0);
-		base.Controls.SetChildIndex((Control)(object)txtPhone, 0);
-		base.Controls.SetChildIndex((Control)(object)txtNumOfPeople, 0);
-		base.Controls.SetChildIndex((Control)(object)chkShowAll, 0);
+		base.Controls.SetChildIndex(txtName, 0);
+		base.Controls.SetChildIndex(txtPhone, 0);
+		base.Controls.SetChildIndex(txtNumOfPeople, 0);
+		base.Controls.SetChildIndex(chkShowAll, 0);
 		base.Controls.SetChildIndex(label13, 0);
-		base.Controls.SetChildIndex((Control)(object)txtEmail, 0);
+		base.Controls.SetChildIndex(txtEmail, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_Email, 0);
 		base.Controls.SetChildIndex(label15, 0);
 		base.Controls.SetChildIndex(label16, 0);

@@ -8,7 +8,6 @@ using CorePOS.Business.Methods;
 using CorePOS.Business.Objects;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -119,10 +118,10 @@ public class frmCustomField : frmMasterForm
 	private void YdhBknrOis_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Custom_Field_Value, 1, 128, ((Control)(object)txtCustomField).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Custom_Field_Value, 1, 128, txtCustomField.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtCustomField).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtCustomField.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -130,13 +129,9 @@ public class frmCustomField : frmMasterForm
 	private void btnAdd_Click(object sender, EventArgs e)
 	{
 		KeyValuePair<string, string> keyValuePair = (KeyValuePair<string, string>)listField.SelectedItem;
-		if (keyValuePair.Key != "0" && ((Control)(object)txtCustomField).Text != "" && !method_5(keyValuePair.Value))
+		if (keyValuePair.Key != "0" && txtCustomField.Text != "" && !method_5(keyValuePair.Value))
 		{
-			ListViewItem value = new ListViewItem(new string[2]
-			{
-				keyValuePair.Value,
-				((Control)(object)txtCustomField).Text
-			});
+			ListViewItem value = new ListViewItem(new string[2] { keyValuePair.Value, txtCustomField.Text });
 			listItemsCustomFieldValue.Items.Add(value);
 			btnAdd.Text = "Edit";
 			return;
@@ -146,7 +141,7 @@ public class frmCustomField : frmMasterForm
 			if (item.SubItems[0].Text == keyValuePair.Value)
 			{
 				btnAdd.Text = "Edit";
-				item.SubItems[1].Text = ((Control)(object)txtCustomField).Text;
+				item.SubItems[1].Text = txtCustomField.Text;
 			}
 		}
 	}
@@ -177,7 +172,7 @@ public class frmCustomField : frmMasterForm
 		if (listItemsCustomFieldValue.SelectedItems.Count > 0)
 		{
 			btnAdd.Text = "Edit";
-			((Control)(object)txtCustomField).Text = listItemsCustomFieldValue.SelectedItems[0].SubItems[1].Text;
+			txtCustomField.Text = listItemsCustomFieldValue.SelectedItems[0].SubItems[1].Text;
 			listField.Text = listItemsCustomFieldValue.SelectedItems[0].SubItems[0].Text;
 		}
 	}
@@ -188,7 +183,7 @@ public class frmCustomField : frmMasterForm
 		if (!method_5(keyValuePair.Value))
 		{
 			btnAdd.Text = "Add";
-			((Control)(object)txtCustomField).Text = "";
+			txtCustomField.Text = "";
 			return;
 		}
 		foreach (ListViewItem item in listItemsCustomFieldValue.Items)
@@ -196,7 +191,7 @@ public class frmCustomField : frmMasterForm
 			if (item.SubItems[0].Text == keyValuePair.Value)
 			{
 				btnAdd.Text = "Edit";
-				((Control)(object)txtCustomField).Text = item.SubItems[1].Text;
+				txtCustomField.Text = item.SubItems[1].Text;
 			}
 		}
 	}
@@ -217,10 +212,6 @@ public class frmCustomField : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_00a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ab: Expected O, but got Unknown
-		//IL_0677: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0698: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmCustomField));
 		label9 = new Label();
 		btnCancel = new Button();
@@ -314,16 +305,16 @@ public class frmCustomField : frmMasterForm
 		componentResourceManager.ApplyResources(label3, "label3");
 		label3.Name = "label3";
 		componentResourceManager.ApplyResources(txtCustomField, "txtCustomField");
-		((Control)(object)txtCustomField).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCustomField).Name = "txtCustomField";
-		((RadElement)((RadControl)txtCustomField).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCustomField).Click += txtCustomField_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCustomField).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCustomField).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCustomField.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCustomField.Name = "txtCustomField";
+		txtCustomField.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCustomField.Click += txtCustomField_Click;
+		((RadTextBoxControlElement)txtCustomField.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtCustomField.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;
 		BackColor = Color.FromArgb(35, 39, 56);
-		base.Controls.Add((Control)(object)txtCustomField);
+		base.Controls.Add(txtCustomField);
 		base.Controls.Add(label3);
 		base.Controls.Add(btnDeleteField);
 		base.Controls.Add(listItemsCustomFieldValue);

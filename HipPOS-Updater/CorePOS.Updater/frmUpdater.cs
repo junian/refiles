@@ -788,10 +788,6 @@ public class frmUpdater : Form
 
 	public static StatusCodeResponse GetUpdateUrl(CheckForUpdatesPostData req)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("https://apps.hipposhq.com" + "/api/GetUpdateUrl");
@@ -799,10 +795,11 @@ public class frmUpdater : Form
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)req, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(req, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());

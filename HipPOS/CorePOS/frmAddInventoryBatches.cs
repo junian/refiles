@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -85,7 +84,7 @@ public class frmAddInventoryBatches : frmMasterForm
 
 	private void btnSave_Click(object sender, EventArgs e)
 	{
-		if (string.IsNullOrEmpty(((Control)(object)txtBatchNumber).Text))
+		if (string.IsNullOrEmpty(txtBatchNumber.Text))
 		{
 			new NotificationLabel(this, "Please add a batch number.", NotificationTypes.Warning).Show();
 			return;
@@ -101,7 +100,7 @@ public class frmAddInventoryBatches : frmMasterForm
 			return;
 		}
 		GClass6 gClass = new GClass6();
-		if (gClass.InventoryBatches.Where((InventoryBatch a) => a.BatchNumber.ToUpper() == ((Control)(object)txtBatchNumber).Text.ToUpper() && a.ItemID == int_0).FirstOrDefault() != null)
+		if (gClass.InventoryBatches.Where((InventoryBatch a) => a.BatchNumber.ToUpper() == txtBatchNumber.Text.ToUpper() && a.ItemID == int_0).FirstOrDefault() != null)
 		{
 			new NotificationLabel(this, "Batch Number already exist.", NotificationTypes.Warning).Show();
 			return;
@@ -109,7 +108,7 @@ public class frmAddInventoryBatches : frmMasterForm
 		InventoryBatch inventoryBatch = new InventoryBatch
 		{
 			ItemID = int_0,
-			BatchNumber = ((Control)(object)txtBatchNumber).Text,
+			BatchNumber = txtBatchNumber.Text,
 			Decimal_0 = decimal_0,
 			QTYRemaining = decimal_0,
 			ReceivedDate = pickerReceivedDate.Value,
@@ -131,10 +130,10 @@ public class frmAddInventoryBatches : frmMasterForm
 	private void btnShowKeyboard_BatchNumber_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Inventory Batch", 0, 256, ((Control)(object)txtBatchNumber).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Inventory Batch", 0, 256, txtBatchNumber.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtBatchNumber).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtBatchNumber.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -182,10 +181,6 @@ public class frmAddInventoryBatches : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0032: Expected O, but got Unknown
-		//IL_0321: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0342: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAddInventoryBatches));
 		label1 = new Label();
 		label10 = new Label();
@@ -227,16 +222,16 @@ public class frmAddInventoryBatches : frmMasterForm
 		label10.TabIndex = 117;
 		label10.Text = "ADD INVENTORY BATCH";
 		label10.TextAlign = ContentAlignment.MiddleCenter;
-		((Control)(object)txtBatchNumber).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtBatchNumber).Location = new Point(147, 107);
-		txtBatchNumber.set_MaxLength(255);
-		((Control)(object)txtBatchNumber).Name = "txtBatchNumber";
-		((RadElement)((RadControl)txtBatchNumber).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtBatchNumber).Size = new Size(296, 35);
-		((Control)(object)txtBatchNumber).TabIndex = 118;
-		((Control)(object)txtBatchNumber).Click += btnShowKeyboard_BatchNumber_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtBatchNumber).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtBatchNumber).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtBatchNumber.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtBatchNumber.Location = new Point(147, 107);
+		txtBatchNumber.MaxLength = 255;
+		txtBatchNumber.Name = "txtBatchNumber";
+		txtBatchNumber.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtBatchNumber.Size = new Size(296, 35);
+		txtBatchNumber.TabIndex = 118;
+		txtBatchNumber.Click += btnShowKeyboard_BatchNumber_Click;
+		((RadTextBoxControlElement)txtBatchNumber.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtBatchNumber.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label2.BackColor = Color.FromArgb(132, 146, 146);
 		label2.Font = new Font("Microsoft Sans Serif", 12f);
 		label2.ForeColor = Color.White;
@@ -408,7 +403,7 @@ public class frmAddInventoryBatches : frmMasterForm
 		base.Controls.Add(pickerExpiryDate);
 		base.Controls.Add(label3);
 		base.Controls.Add(pickerReceivedDate);
-		base.Controls.Add((Control)(object)txtBatchNumber);
+		base.Controls.Add(txtBatchNumber);
 		base.Controls.Add(label2);
 		base.Controls.Add(label10);
 		base.Controls.Add(label1);

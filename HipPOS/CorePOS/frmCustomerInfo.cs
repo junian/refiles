@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -69,15 +68,15 @@ public class frmCustomerInfo : frmMasterForm
 		}
 		if (customerPhone == "Walk In")
 		{
-			((Control)(object)txtName).Text = customerPhone;
-			((Control)(object)txtPhone).Text = "";
+			txtName.Text = customerPhone;
+			txtPhone.Text = "";
 		}
 		else
 		{
-			((Control)(object)txtName).Text = customerName;
-			((Control)(object)txtPhone).Text = customerPhone;
+			txtName.Text = customerName;
+			txtPhone.Text = customerPhone;
 		}
-		((Control)(object)txtAddress).Text = customerAddress;
+		txtAddress.Text = customerAddress;
 		string_3 = customerName;
 		string_4 = customerPhone;
 		string_5 = customerAddress;
@@ -92,10 +91,10 @@ public class frmCustomerInfo : frmMasterForm
 	private void btnShowKeyboard_Name_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Name0, 0, 64, ((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Name0, 0, 64, txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -103,10 +102,10 @@ public class frmCustomerInfo : frmMasterForm
 	private void btnShowKeyboard_Phone_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Phone_Number, 0, 20, ((Control)(object)txtPhone).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Phone_Number, 0, 20, txtPhone.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPhone).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtPhone.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -114,10 +113,10 @@ public class frmCustomerInfo : frmMasterForm
 	private void btnShowKeyboard_Address_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Address, 0, 128, ((Control)(object)txtAddress).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Address, 0, 128, txtAddress.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtAddress).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtAddress.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -129,9 +128,9 @@ public class frmCustomerInfo : frmMasterForm
 
 	private void btnSaveOrder_Click(object sender, EventArgs e)
 	{
-		string_0 = ((Control)(object)txtName).Text;
-		string_1 = ((Control)(object)txtPhone).Text;
-		string_2 = ((Control)(object)txtAddress).Text;
+		string_0 = txtName.Text;
+		string_1 = txtPhone.Text;
+		string_2 = txtAddress.Text;
 		if (!string.IsNullOrEmpty(string_1) && string_1.Length < 4)
 		{
 			new frmMessageBox(Resources.Phone_number_must_be_a_minimum, Resources.Invalid_Input).ShowDialog(this);
@@ -177,18 +176,6 @@ public class frmCustomerInfo : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0032: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_0053: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005d: Expected O, but got Unknown
-		//IL_0074: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007e: Expected O, but got Unknown
-		//IL_03d0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03f1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05ac: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05cd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0788: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07a9: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmCustomerInfo));
 		panel1 = new Panel();
 		btnSaveOrder = new Button();
@@ -211,13 +198,13 @@ public class frmCustomerInfo : frmMasterForm
 		panel1.BorderStyle = BorderStyle.FixedSingle;
 		panel1.Controls.Add(btnSaveOrder);
 		panel1.Controls.Add(BtnCancel);
-		panel1.Controls.Add((Control)(object)txtAddress);
+		panel1.Controls.Add(txtAddress);
 		panel1.Controls.Add(btnShowKeyboard_Address);
 		panel1.Controls.Add(label2);
-		panel1.Controls.Add((Control)(object)txtPhone);
+		panel1.Controls.Add(txtPhone);
 		panel1.Controls.Add(btnShowKeyboard_Phone);
 		panel1.Controls.Add(label1);
-		panel1.Controls.Add((Control)(object)txtName);
+		panel1.Controls.Add(txtName);
 		panel1.Controls.Add(btnShowKeyboard_Name);
 		panel1.Controls.Add(lblMemberNo);
 		componentResourceManager.ApplyResources(panel1, "panel1");
@@ -241,13 +228,13 @@ public class frmCustomerInfo : frmMasterForm
 		BtnCancel.UseVisualStyleBackColor = false;
 		BtnCancel.Click += BtnCancel_Click;
 		componentResourceManager.ApplyResources(txtAddress, "txtAddress");
-		((Control)(object)txtAddress).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtAddress).Name = "txtAddress";
-		((RadElement)((RadControl)txtAddress).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtAddress).TextChanged += txtName_TextChanged;
-		((Control)(object)txtAddress).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtAddress).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtAddress).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtAddress.ForeColor = Color.FromArgb(40, 40, 40);
+		txtAddress.Name = "txtAddress";
+		txtAddress.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtAddress.TextChanged += txtName_TextChanged;
+		txtAddress.Click += txtName_Click;
+		((RadTextBoxControlElement)txtAddress.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtAddress.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Address.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Address.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Address.FlatAppearance.BorderColor = Color.Black;
@@ -264,13 +251,13 @@ public class frmCustomerInfo : frmMasterForm
 		label2.Name = "label2";
 		label2.Tag = "2,1";
 		componentResourceManager.ApplyResources(txtPhone, "txtPhone");
-		((Control)(object)txtPhone).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPhone).Name = "txtPhone";
-		((RadElement)((RadControl)txtPhone).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtPhone).TextChanged += txtName_TextChanged;
-		((Control)(object)txtPhone).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPhone).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPhone).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtPhone.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPhone.Name = "txtPhone";
+		txtPhone.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtPhone.TextChanged += txtName_TextChanged;
+		txtPhone.Click += txtName_Click;
+		((RadTextBoxControlElement)txtPhone.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPhone.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Phone.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Phone.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Phone.FlatAppearance.BorderColor = Color.Black;
@@ -287,13 +274,13 @@ public class frmCustomerInfo : frmMasterForm
 		label1.Name = "label1";
 		label1.Tag = "2,1";
 		componentResourceManager.ApplyResources(txtName, "txtName");
-		((Control)(object)txtName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtName).TextChanged += txtName_TextChanged;
-		((Control)(object)txtName).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtName.TextChanged += txtName_TextChanged;
+		txtName.Click += txtName_Click;
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Name.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Name.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Name.FlatAppearance.BorderColor = Color.Black;

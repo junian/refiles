@@ -12,7 +12,6 @@ using CorePOS.CustomControls;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -315,7 +314,7 @@ public class frmMultiBills : frmMasterForm
 			else
 			{
 				btnConfirmOnlineOrders.Visible = true;
-				list_2 = (from x in orderMethods_0.SearchOpenOrders(((Control)(object)txtSearchInfo).Text.Trim(), string_2, Convert.ToInt32(ddlDateRangeFilter.SelectedValue))
+				list_2 = (from x in orderMethods_0.SearchOpenOrders(txtSearchInfo.Text.Trim(), string_2, Convert.ToInt32(ddlDateRangeFilter.SelectedValue))
 					where x.OrderType != OrderTypes.DineIn || (x.OrderType == OrderTypes.DineIn && x.Customer.Contains("KIOSK"))
 					select x).ToList();
 				timer_1.Enabled = (bool_3 = CompanyHelper.UpdateCompanyHasUnconfirmedOnlineOrder(orderMethods_0.OpenOrders(OrderTypes.AllOnline).Count() > 0));
@@ -1160,7 +1159,7 @@ public class frmMultiBills : frmMasterForm
 
 	private void btnClearSearch_Click(object sender, EventArgs e)
 	{
-		((Control)(object)txtSearchInfo).Text = "";
+		txtSearchInfo.Text = "";
 		LoadFormProcedure();
 		base.DialogResult = DialogResult.None;
 	}
@@ -1207,10 +1206,10 @@ public class frmMultiBills : frmMasterForm
 	private void btnShowKeyboard_SearchInfo_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Search", 0, 256, ((Control)(object)txtSearchInfo).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Search", 0, 256, txtSearchInfo.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSearchInfo).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtSearchInfo.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			LoadFormProcedure();
 		}
 		base.DialogResult = DialogResult.None;
@@ -1280,10 +1279,6 @@ public class frmMultiBills : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_00b1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00bb: Expected O, but got Unknown
-		//IL_09a9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09ca: Unknown result type (might be due to invalid IL or missing references)
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmMultiBills));
 		timer_0 = new System.Windows.Forms.Timer(icontainer_1);
@@ -1344,7 +1339,7 @@ public class frmMultiBills : frmMasterForm
 		panel2.Controls.Add(btnOTFilter_ToGo);
 		panel2.Controls.Add(btnClearSearch);
 		panel2.Controls.Add(label3);
-		panel2.Controls.Add((Control)(object)txtSearchInfo);
+		panel2.Controls.Add(txtSearchInfo);
 		panel2.Controls.Add(btnShowKeyboard_SearchInfo);
 		panel2.Controls.Add(lblTitle);
 		panel2.Name = "panel2";
@@ -1425,12 +1420,12 @@ public class frmMultiBills : frmMasterForm
 		label3.ForeColor = Color.White;
 		label3.Name = "label3";
 		componentResourceManager.ApplyResources(txtSearchInfo, "txtSearchInfo");
-		((Control)(object)txtSearchInfo).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtSearchInfo).Name = "txtSearchInfo";
-		((RadElement)((RadControl)txtSearchInfo).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSearchInfo).TextChanged += txtSearchInfo_TextChanged;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSearchInfo).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSearchInfo).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSearchInfo.ForeColor = Color.FromArgb(40, 40, 40);
+		txtSearchInfo.Name = "txtSearchInfo";
+		txtSearchInfo.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSearchInfo.TextChanged += txtSearchInfo_TextChanged;
+		((RadTextBoxControlElement)txtSearchInfo.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSearchInfo.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(btnShowKeyboard_SearchInfo, "btnShowKeyboard_SearchInfo");
 		btnShowKeyboard_SearchInfo.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_SearchInfo.DialogResult = DialogResult.OK;

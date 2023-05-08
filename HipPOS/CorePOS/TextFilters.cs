@@ -18,8 +18,8 @@ public static class TextFilters
 		}
 		if (!(sender is TextBox textBox))
 		{
-			RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
-			if (e.KeyChar == '.' && ((Control)(object)val).Text.Contains("."))
+			RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
+			if (e.KeyChar == '.' && radTextBoxControl.Text.Contains("."))
 			{
 				e.Handled = true;
 			}

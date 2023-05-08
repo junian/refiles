@@ -10,7 +10,6 @@ using CorePOS.Business.Methods;
 using CorePOS.CommonForms;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel.Settings;
@@ -109,12 +108,6 @@ public class ReceiptSettings : UserControl
 
 	public ReceiptSettings()
 	{
-		//IL_031f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0332: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0343: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0364: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0374: Unknown result type (might be due to invalid IL or missing references)
-		//IL_037e: Expected O, but got Unknown
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
 		bool_0 = true;
@@ -188,14 +181,14 @@ public class ReceiptSettings : UserControl
 				{
 					if (setting.Value.Contains("ON"))
 					{
-						((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).set_Value(true);
+						((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Value = true;
 					}
 					else
 					{
-						((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).set_Value(false);
+						((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Value = false;
 					}
-					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).get_ToggleSwitchElement().add_ValueChanged((EventHandler)method_0);
-					((RadElement)((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).get_ToggleSwitchElement()).set_Tag(((Control)(RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Tag);
+					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).ToggleSwitchElement.ValueChanged += method_0;
+					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).ToggleSwitchElement.Tag = ((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Tag;
 				}
 			}
 		}
@@ -217,9 +210,9 @@ public class ReceiptSettings : UserControl
 			return;
 		}
 		_003C_003Ec__DisplayClass4_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass4_0();
-		CS_0024_003C_003E8__locals0.chkToggle = (RadToggleSwitchElement)((sender is RadToggleSwitchElement) ? sender : null);
-		Console.Write(((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag());
-		Setting setting = iqueryable_0.Where((Setting s) => ((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag().Equals(s.Key)).FirstOrDefault();
+		CS_0024_003C_003E8__locals0.chkToggle = sender as RadToggleSwitchElement;
+		Console.Write(CS_0024_003C_003E8__locals0.chkToggle.Tag);
+		Setting setting = iqueryable_0.Where((Setting s) => CS_0024_003C_003E8__locals0.chkToggle.Tag.Equals(s.Key)).FirstOrDefault();
 		if (setting != null)
 		{
 			if (setting.Value.ToUpper().Equals("ON"))
@@ -232,7 +225,7 @@ public class ReceiptSettings : UserControl
 			}
 			setting.Synced = false;
 			Helper.SubmitChangesWithCatch(gclass6_0);
-			SettingsHelper.SetSettingValueByKey(((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag().ToString(), setting.Value);
+			SettingsHelper.SetSettingValueByKey(CS_0024_003C_003E8__locals0.chkToggle.Tag.ToString(), setting.Value);
 		}
 	}
 
@@ -346,48 +339,12 @@ public class ReceiptSettings : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_00b7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00c1: Expected O, but got Unknown
-		//IL_00ee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f8: Expected O, but got Unknown
-		//IL_013b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0145: Expected O, but got Unknown
-		//IL_03f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_040d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0424: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0445: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0472: Unknown result type (might be due to invalid IL or missing references)
-		//IL_049f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04cc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07f6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_080e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0825: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0846: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0873: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08a0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08cd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a3e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a56: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a6d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a8e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0abb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ae8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b15: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d20: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d38: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d4f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d70: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d9d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0dca: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0df7: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.AdminPanel.Settings.ReceiptSettings));
 		this.lblFooterMessage = new System.Windows.Forms.Label();
 		this.label11 = new System.Windows.Forms.Label();
 		this.yvnFfcZplnw = new System.Windows.Forms.PictureBox();
 		this.label12 = new System.Windows.Forms.Label();
-		this.chkGratuityToReceipt = new RadToggleSwitch();
+		this.chkGratuityToReceipt = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.odrFfTcaMnm = new System.Windows.Forms.Label();
 		this.label22 = new System.Windows.Forms.Label();
 		this.pictureBox11 = new System.Windows.Forms.PictureBox();
@@ -398,19 +355,19 @@ public class ReceiptSettings : UserControl
 		this.label2 = new System.Windows.Forms.Label();
 		this.label3 = new System.Windows.Forms.Label();
 		this.btnUploadLogoReceipt = new System.Windows.Forms.Label();
-		this.chkDisplayOptions = new RadToggleSwitch();
+		this.chkDisplayOptions = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label4 = new System.Windows.Forms.Label();
 		this.label5 = new System.Windows.Forms.Label();
 		this.pictureBox2 = new System.Windows.Forms.PictureBox();
 		this.pictureBox4 = new System.Windows.Forms.PictureBox();
-		this.chkDisplayInstruction = new RadToggleSwitch();
+		this.chkDisplayInstruction = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label7 = new System.Windows.Forms.Label();
 		this.label8 = new System.Windows.Forms.Label();
 		this.label9 = new System.Windows.Forms.Label();
 		this.pictureBox7 = new System.Windows.Forms.PictureBox();
 		this.label13 = new System.Windows.Forms.Label();
 		this.pictureBox5 = new System.Windows.Forms.PictureBox();
-		this.chkDisplayChildItems = new RadToggleSwitch();
+		this.chkDisplayChildItems = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label10 = new System.Windows.Forms.Label();
 		this.label14 = new System.Windows.Forms.Label();
 		this.label16 = new System.Windows.Forms.Label();
@@ -457,18 +414,18 @@ public class ReceiptSettings : UserControl
 		this.label12.Name = "label12";
 		this.label12.Tag = "";
 		resources.ApplyResources(this.chkGratuityToReceipt, "chkGratuityToReceipt");
-		((System.Windows.Forms.Control)(object)this.chkGratuityToReceipt).Name = "chkGratuityToReceipt";
-		((System.Windows.Forms.Control)(object)this.chkGratuityToReceipt).Tag = "print_gratuity_info";
-		this.chkGratuityToReceipt.set_ThumbTickness(27);
-		this.chkGratuityToReceipt.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkGratuityToReceipt.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkGratuityToReceipt).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkGratuityToReceipt).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkGratuityToReceipt).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkGratuityToReceipt).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkGratuityToReceipt).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkGratuityToReceipt).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkGratuityToReceipt).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkGratuityToReceipt.Name = "chkGratuityToReceipt";
+		this.chkGratuityToReceipt.Tag = "print_gratuity_info";
+		this.chkGratuityToReceipt.ThumbTickness = 27;
+		this.chkGratuityToReceipt.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkGratuityToReceipt.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkGratuityToReceipt.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkGratuityToReceipt.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkGratuityToReceipt.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkGratuityToReceipt.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkGratuityToReceipt.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkGratuityToReceipt.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkGratuityToReceipt.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		resources.ApplyResources(this.odrFfTcaMnm, "label21");
 		this.odrFfTcaMnm.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.odrFfTcaMnm.Name = "label21";
@@ -511,18 +468,18 @@ public class ReceiptSettings : UserControl
 		this.btnUploadLogoReceipt.Tag = "receipt_footer_message";
 		this.btnUploadLogoReceipt.Click += new System.EventHandler(btnUploadLogoReceipt_Click);
 		resources.ApplyResources(this.chkDisplayOptions, "chkDisplayOptions");
-		((System.Windows.Forms.Control)(object)this.chkDisplayOptions).Name = "chkDisplayOptions";
-		((System.Windows.Forms.Control)(object)this.chkDisplayOptions).Tag = "display_option";
-		this.chkDisplayOptions.set_ThumbTickness(27);
-		this.chkDisplayOptions.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkDisplayOptions.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkDisplayOptions).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkDisplayOptions).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkDisplayOptions).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkDisplayOptions).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkDisplayOptions).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkDisplayOptions).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkDisplayOptions).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkDisplayOptions.Name = "chkDisplayOptions";
+		this.chkDisplayOptions.Tag = "display_option";
+		this.chkDisplayOptions.ThumbTickness = 27;
+		this.chkDisplayOptions.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkDisplayOptions.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkDisplayOptions.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkDisplayOptions.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkDisplayOptions.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayOptions.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayOptions.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayOptions.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayOptions.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		resources.ApplyResources(this.label4, "label4");
 		this.label4.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label4.Name = "label4";
@@ -539,18 +496,18 @@ public class ReceiptSettings : UserControl
 		this.pictureBox4.Name = "pictureBox4";
 		this.pictureBox4.TabStop = false;
 		resources.ApplyResources(this.chkDisplayInstruction, "chkDisplayInstruction");
-		((System.Windows.Forms.Control)(object)this.chkDisplayInstruction).Name = "chkDisplayInstruction";
-		((System.Windows.Forms.Control)(object)this.chkDisplayInstruction).Tag = "display_instruction";
-		this.chkDisplayInstruction.set_ThumbTickness(27);
-		this.chkDisplayInstruction.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkDisplayInstruction.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkDisplayInstruction).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkDisplayInstruction).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkDisplayInstruction).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkDisplayInstruction).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkDisplayInstruction).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkDisplayInstruction).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkDisplayInstruction).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkDisplayInstruction.Name = "chkDisplayInstruction";
+		this.chkDisplayInstruction.Tag = "display_instruction";
+		this.chkDisplayInstruction.ThumbTickness = 27;
+		this.chkDisplayInstruction.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkDisplayInstruction.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkDisplayInstruction.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkDisplayInstruction.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkDisplayInstruction.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayInstruction.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayInstruction.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayInstruction.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayInstruction.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		resources.ApplyResources(this.label7, "label7");
 		this.label7.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label7.Name = "label7";
@@ -576,18 +533,18 @@ public class ReceiptSettings : UserControl
 		this.pictureBox5.Name = "pictureBox5";
 		this.pictureBox5.TabStop = false;
 		resources.ApplyResources(this.chkDisplayChildItems, "chkDisplayChildItems");
-		((System.Windows.Forms.Control)(object)this.chkDisplayChildItems).Name = "chkDisplayChildItems";
-		((System.Windows.Forms.Control)(object)this.chkDisplayChildItems).Tag = "receipt_display_child_items";
-		this.chkDisplayChildItems.set_ThumbTickness(27);
-		this.chkDisplayChildItems.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkDisplayChildItems.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkDisplayChildItems).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkDisplayChildItems).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkDisplayChildItems).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkDisplayChildItems).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkDisplayChildItems).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkDisplayChildItems).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkDisplayChildItems).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkDisplayChildItems.Name = "chkDisplayChildItems";
+		this.chkDisplayChildItems.Tag = "receipt_display_child_items";
+		this.chkDisplayChildItems.ThumbTickness = 27;
+		this.chkDisplayChildItems.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkDisplayChildItems.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkDisplayChildItems.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkDisplayChildItems.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkDisplayChildItems.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayChildItems.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayChildItems.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayChildItems.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkDisplayChildItems.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		resources.ApplyResources(this.label10, "label10");
 		this.label10.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label10.Name = "label10";
@@ -682,7 +639,7 @@ public class ReceiptSettings : UserControl
 		base.Controls.Add(this.label_tipkitchen_title);
 		base.Controls.Add(this.label16);
 		base.Controls.Add(this.pictureBox5);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkDisplayChildItems);
+		base.Controls.Add(this.chkDisplayChildItems);
 		base.Controls.Add(this.label10);
 		base.Controls.Add(this.label14);
 		base.Controls.Add(this.ddlReceiptSize);
@@ -690,11 +647,11 @@ public class ReceiptSettings : UserControl
 		base.Controls.Add(this.pictureBox7);
 		base.Controls.Add(this.label13);
 		base.Controls.Add(this.pictureBox4);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkDisplayInstruction);
+		base.Controls.Add(this.chkDisplayInstruction);
 		base.Controls.Add(this.label7);
 		base.Controls.Add(this.label8);
 		base.Controls.Add(this.pictureBox2);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkDisplayOptions);
+		base.Controls.Add(this.chkDisplayOptions);
 		base.Controls.Add(this.label4);
 		base.Controls.Add(this.label5);
 		base.Controls.Add(this.btnUploadLogoReceipt);
@@ -705,7 +662,7 @@ public class ReceiptSettings : UserControl
 		base.Controls.Add(this.label1);
 		base.Controls.Add(this.pictureBox3);
 		base.Controls.Add(this.label6);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkGratuityToReceipt);
+		base.Controls.Add(this.chkGratuityToReceipt);
 		base.Controls.Add(this.odrFfTcaMnm);
 		base.Controls.Add(this.label22);
 		base.Controls.Add(this.pictureBox11);

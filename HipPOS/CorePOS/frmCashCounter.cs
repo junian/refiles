@@ -81,8 +81,6 @@ public class frmCashCounter : frmMasterForm
 
 	private void frmCashCounter_Load(object sender, EventArgs e)
 	{
-		//IL_00d2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00d9: Expected O, but got Unknown
 		string[] array = string_0;
 		foreach (string text in array)
 		{
@@ -96,24 +94,24 @@ public class frmCashCounter : frmMasterForm
 			label.Margin = new Padding(0, 1, 1, 0);
 			label.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
 			pnlBills.Controls.Add(label);
-			RadTextBoxControl val = new RadTextBoxControl();
-			((Control)(object)val).Name = "txt" + text;
+			RadTextBoxControl radTextBoxControl = new RadTextBoxControl();
+			radTextBoxControl.Name = "txt" + text;
 			if (dictionary_0 != null && dictionary_0.ContainsKey(text))
 			{
-				((Control)(object)val).Text = dictionary_0[text];
+				radTextBoxControl.Text = dictionary_0[text];
 			}
 			else
 			{
-				((Control)(object)val).Text = "0";
+				radTextBoxControl.Text = "0";
 			}
-			((Control)(object)val).Tag = text;
-			((Control)(object)val).Size = new Size(125, 50);
-			((Control)(object)val).Click += method_3;
-			((Control)(object)val).ForeColor = Color.Black;
-			val.set_TextAlign(HorizontalAlignment.Center);
-			((Control)(object)val).Margin = new Padding(0, 1, 1, 0);
-			((Control)(object)val).Font = new Font("Microsoft Sans Serif", 20f, FontStyle.Bold);
-			pnlBills.Controls.Add((Control)(object)val);
+			radTextBoxControl.Tag = text;
+			radTextBoxControl.Size = new Size(125, 50);
+			radTextBoxControl.Click += method_3;
+			radTextBoxControl.ForeColor = Color.Black;
+			radTextBoxControl.TextAlign = HorizontalAlignment.Center;
+			radTextBoxControl.Margin = new Padding(0, 1, 1, 0);
+			radTextBoxControl.Font = new Font("Microsoft Sans Serif", 20f, FontStyle.Bold);
+			pnlBills.Controls.Add(radTextBoxControl);
 			Button button = new Button();
 			button.BackColor = Color.FromArgb(80, 203, 116);
 			button.ForeColor = Color.White;
@@ -121,7 +119,7 @@ public class frmCashCounter : frmMasterForm
 			button.FlatAppearance.BorderSize = 0;
 			button.Name = "plus" + text;
 			button.Text = "+";
-			button.Tag = ((Control)(object)val).Name;
+			button.Tag = radTextBoxControl.Name;
 			button.Size = new Size(80, 50);
 			button.TextAlign = ContentAlignment.MiddleCenter;
 			button.Margin = new Padding(0, 1, 1, 0);
@@ -135,7 +133,7 @@ public class frmCashCounter : frmMasterForm
 			button2.FlatAppearance.BorderSize = 0;
 			button2.Name = "minus" + text;
 			button2.Text = "-";
-			button2.Tag = ((Control)(object)val).Name;
+			button2.Tag = radTextBoxControl.Name;
 			button2.Size = new Size(81, 50);
 			button2.TextAlign = ContentAlignment.MiddleCenter;
 			button2.Margin = new Padding(0, 1, 0, 0);
@@ -148,13 +146,13 @@ public class frmCashCounter : frmMasterForm
 
 	private void method_3(object sender, EventArgs e)
 	{
-		RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
-		string text = ((Control)(object)val).Tag.ToString();
+		RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
+		string text = radTextBoxControl.Tag.ToString();
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter $" + text + " bills Qty", 0, 5, ((Control)(object)val).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter $" + text + " bills Qty", 0, 5, radTextBoxControl.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)val).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			radTextBoxControl.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 			method_7();
 		}
 		base.DialogResult = DialogResult.None;
@@ -162,30 +160,26 @@ public class frmCashCounter : frmMasterForm
 
 	private void method_4(object sender, EventArgs e)
 	{
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002e: Expected O, but got Unknown
 		Button button = sender as Button;
-		RadTextBoxControl val = (RadTextBoxControl)pnlBills.Controls.Find(button.Tag.ToString(), searchAllChildren: false).FirstOrDefault();
-		if (val != null)
+		RadTextBoxControl radTextBoxControl = (RadTextBoxControl)pnlBills.Controls.Find(button.Tag.ToString(), searchAllChildren: false).FirstOrDefault();
+		if (radTextBoxControl != null)
 		{
-			int num = Convert.ToInt32(((Control)(object)val).Text);
-			((Control)(object)val).Text = (num + 1).ToString();
+			int num = Convert.ToInt32(radTextBoxControl.Text);
+			radTextBoxControl.Text = (num + 1).ToString();
 			method_7();
 		}
 	}
 
 	private void method_5(object sender, EventArgs e)
 	{
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002e: Expected O, but got Unknown
 		Button button = sender as Button;
-		RadTextBoxControl val = (RadTextBoxControl)pnlBills.Controls.Find(button.Tag.ToString(), searchAllChildren: false).FirstOrDefault();
-		if (val != null)
+		RadTextBoxControl radTextBoxControl = (RadTextBoxControl)pnlBills.Controls.Find(button.Tag.ToString(), searchAllChildren: false).FirstOrDefault();
+		if (radTextBoxControl != null)
 		{
-			int num = Convert.ToInt32(((Control)(object)val).Text);
+			int num = Convert.ToInt32(radTextBoxControl.Text);
 			if (num > 0)
 			{
-				((Control)(object)val).Text = (num - 1).ToString();
+				radTextBoxControl.Text = (num - 1).ToString();
 				method_7();
 			}
 		}
@@ -211,9 +205,9 @@ public class frmCashCounter : frmMasterForm
 		{
 			if (control is RadTextBoxControl)
 			{
-				object obj = ((control is RadTextBoxControl) ? control : null);
-				decimal num2 = Convert.ToDecimal(((Control)obj).Tag.ToString());
-				int num3 = Convert.ToInt32(((Control)obj).Text);
+				RadTextBoxControl obj = control as RadTextBoxControl;
+				decimal num2 = Convert.ToDecimal(obj.Tag.ToString());
+				int num3 = Convert.ToInt32(obj.Text);
 				num += num2 * (decimal)num3;
 			}
 		}

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
@@ -11,7 +10,6 @@ using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -124,14 +122,14 @@ public class frmWaitingList : frmMasterForm
 			label16.Location = new Point(label4.Right - label16.Width, label16.Location.Y);
 			label8.Location = new Point(label4.Right - label8.Width, label8.Location.Y);
 			label13.Width = label13.PreferredWidth;
-			((Control)(object)txtEmail).Width = ((Control)(object)txtEmail).Right - label13.Right - 1;
-			((Control)(object)txtEmail).Location = new Point(label13.Right + 1, ((Control)(object)txtEmail).Location.Y);
+			txtEmail.Width = txtEmail.Right - label13.Right - 1;
+			txtEmail.Location = new Point(label13.Right + 1, txtEmail.Location.Y);
 			label5.Width = label13.Width;
-			((Control)(object)txtPhone).Width = ((Control)(object)txtEmail).Width;
-			((Control)(object)txtPhone).Location = new Point(((Control)(object)txtEmail).Location.X, ((Control)(object)txtPhone).Location.Y);
+			txtPhone.Width = txtEmail.Width;
+			txtPhone.Location = new Point(txtEmail.Location.X, txtPhone.Location.Y);
 			label6.Width = label4.Width;
-			((Control)(object)txtName).Width = ((Control)(object)txtNumOfPeople).Width;
-			((Control)(object)txtName).Location = new Point(((Control)(object)txtNumOfPeople).Location.X, ((Control)(object)txtName).Location.Y);
+			txtName.Width = txtNumOfPeople.Width;
+			txtName.Location = new Point(txtNumOfPeople.Location.X, txtName.Location.Y);
 		}
 		method_3();
 		method_4();
@@ -139,9 +137,7 @@ public class frmWaitingList : frmMasterForm
 
 	private void method_3()
 	{
-		//IL_0283: Unknown result type (might be due to invalid IL or missing references)
-		//IL_028a: Expected O, but got Unknown
-		((RadListView)radListItems).get_Items().Clear();
+		radListItems.Items.Clear();
 		GClass6 gClass = new GClass6();
 		List<Appointment> list = (from a in gClass.Appointments
 			where a.DateCreated > DateTime.Now.Date && a.AppointmentType == AppointmentTypes.waiting_list && a.IsCleared == false
@@ -157,7 +153,7 @@ public class frmWaitingList : frmMasterForm
 				_003C_003Ec__DisplayClass8_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass8_0();
 				CS_0024_003C_003E8__locals0.waitingList = enumerator.Current;
 				Layout layout = source.Where((Layout x) => x.AppointmentID == CS_0024_003C_003E8__locals0.waitingList.AppointmentID).FirstOrDefault();
-				ListViewDataItem val = new ListViewDataItem("", new string[6]
+				ListViewDataItem listViewDataItem = new ListViewDataItem("", new string[6]
 				{
 					num.ToString(),
 					CS_0024_003C_003E8__locals0.waitingList.CustomerName,
@@ -166,8 +162,8 @@ public class frmWaitingList : frmMasterForm
 					CS_0024_003C_003E8__locals0.waitingList.DateCreated.ToShortTimeString(),
 					CS_0024_003C_003E8__locals0.waitingList.AppointmentID.ToString()
 				});
-				val.set_Font(((Control)(object)radListItems).Font);
-				((RadListView)radListItems).get_Items().Add(val);
+				listViewDataItem.Font = radListItems.Font;
+				radListItems.Items.Add(listViewDataItem);
 				num++;
 			}
 		}
@@ -186,12 +182,12 @@ public class frmWaitingList : frmMasterForm
 		{
 			return;
 		}
-		((RadListView)radListItems).get_SelectedItems().Clear();
-		foreach (ListViewDataItem item in ((RadListView)radListItems).get_Items())
+		radListItems.SelectedItems.Clear();
+		foreach (ListViewDataItem item in radListItems.Items)
 		{
-			if (item.get_SubItems().get_Item(5).ToString() == appointmentId.ToString())
+			if (item.SubItems[5].ToString() == appointmentId.ToString())
 			{
-				((RadListView)radListItems).Select((ListViewDataItem[])(object)new ListViewDataItem[1] { item });
+				radListItems.Select(new ListViewDataItem[1] { item });
 			}
 		}
 	}
@@ -199,20 +195,20 @@ public class frmWaitingList : frmMasterForm
 	private void btnSave_Click(object sender, EventArgs e)
 	{
 		DataManager dataManager = new DataManager();
-		if (string.IsNullOrEmpty(((Control)(object)txtName).Text))
+		if (string.IsNullOrEmpty(txtName.Text))
 		{
 			new frmMessageBox("Customer Name is required.").ShowDialog();
 		}
-		else if (!string.IsNullOrEmpty(((Control)(object)txtNumOfPeople).Text) && !(((Control)(object)txtNumOfPeople).Text == "0"))
+		else if (!string.IsNullOrEmpty(txtNumOfPeople.Text) && !(txtNumOfPeople.Text == "0"))
 		{
 			if (!nullable_0.HasValue)
 			{
 				GClass6 gClass = new GClass6();
 				Customer customer = new Customer
 				{
-					CustomerName = ((Control)(object)txtName).Text.Trim(),
-					CustomerCell = ((Control)(object)txtPhone).Text.Trim(),
-					CustomerEmail = ((Control)(object)txtEmail).Text.Trim(),
+					CustomerName = txtName.Text.Trim(),
+					CustomerCell = txtPhone.Text.Trim(),
+					CustomerEmail = txtEmail.Text.Trim(),
 					DateCreated = DateTime.Now,
 					LastModified = DateTime.Now,
 					Active = true,
@@ -226,7 +222,7 @@ public class frmWaitingList : frmMasterForm
 				gClass.SubmitChanges();
 				nullable_0 = customer.CustomerID;
 			}
-			dataManager.reservationSave(DateTime.Now, int_0, ((Control)(object)txtName).Text, ((Control)(object)txtPhone).Text, Convert.ToInt16(((Control)(object)txtNumOfPeople).Text), ((Control)(object)txtComments).Text, ((Control)(object)txtEmail).Text, AppointmentTypes.waiting_list, nullable_0, AppointmentId);
+			dataManager.reservationSave(DateTime.Now, int_0, txtName.Text, txtPhone.Text, Convert.ToInt16(txtNumOfPeople.Text), txtComments.Text, txtEmail.Text, AppointmentTypes.waiting_list, nullable_0, AppointmentId);
 			dataManager.SubmitChangesToDatabase();
 			if (AppointmentId != 0)
 			{
@@ -242,21 +238,20 @@ public class frmWaitingList : frmMasterForm
 
 	private void radListItems_SelectedItemChanged(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count <= 0)
+		if (radListItems.SelectedItems.Count <= 0)
 		{
 			return;
 		}
 		GClass6 gClass = new GClass6();
-		AppointmentId = Convert.ToInt32(((RadListView)radListItems).get_SelectedItem().get_SubItems().get_Item(5)
-			.ToString());
+		AppointmentId = Convert.ToInt32(radListItems.SelectedItem.SubItems[5].ToString());
 		if (AppointmentId != 0)
 		{
 			Appointment appointment = gClass.Appointments.Where((Appointment a) => a.AppointmentType == AppointmentTypes.waiting_list && a.AppointmentID == AppointmentId).FirstOrDefault();
-			((Control)(object)txtName).Text = appointment.CustomerName;
-			((Control)(object)txtPhone).Text = appointment.CustomerCell;
-			((Control)(object)txtEmail).Text = appointment.CustomerEmail;
-			((Control)(object)txtNumOfPeople).Text = appointment.NumOfPeople.ToString();
-			((Control)(object)txtComments).Text = appointment.Comments;
+			txtName.Text = appointment.CustomerName;
+			txtPhone.Text = appointment.CustomerCell;
+			txtEmail.Text = appointment.CustomerEmail;
+			txtNumOfPeople.Text = appointment.NumOfPeople.ToString();
+			txtComments.Text = appointment.Comments;
 			btnClear.Enabled = true;
 			nullable_0 = appointment.CustomerID;
 		}
@@ -264,7 +259,7 @@ public class frmWaitingList : frmMasterForm
 
 	private void btnClear_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0 && AppointmentId != 0)
+		if (radListItems.SelectedItems.Count > 0 && AppointmentId != 0)
 		{
 			GClass6 gClass = new GClass6();
 			Appointment appointment = gClass.Appointments.Where((Appointment a) => a.AppointmentType == AppointmentTypes.waiting_list && a.AppointmentID == AppointmentId).FirstOrDefault();
@@ -272,7 +267,7 @@ public class frmWaitingList : frmMasterForm
 			appointment.DateUpdated = DateTime.Now;
 			Helper.SubmitChangesWithCatch(gClass);
 			method_3();
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count == 0)
+			if (radListItems.SelectedItems.Count == 0)
 			{
 				method_4();
 			}
@@ -286,13 +281,13 @@ public class frmWaitingList : frmMasterForm
 
 	private void method_4()
 	{
-		((RadListView)radListItems).get_SelectedItems().Clear();
+		radListItems.SelectedItems.Clear();
 		btnClear.Enabled = false;
-		((Control)(object)txtName).Text = "";
-		((Control)(object)txtEmail).Text = "";
-		((Control)(object)txtPhone).Text = "";
-		((Control)(object)txtComments).Text = "";
-		((Control)(object)txtNumOfPeople).Text = "0";
+		txtName.Text = "";
+		txtEmail.Text = "";
+		txtPhone.Text = "";
+		txtComments.Text = "";
+		txtNumOfPeople.Text = "0";
 		AppointmentId = 0;
 		nullable_0 = null;
 	}
@@ -324,10 +319,10 @@ public class frmWaitingList : frmMasterForm
 	private void btnShowKeyboard_Name_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Customer_Name, 1, 50, ((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Customer_Name, 1, 50, txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			btnSave.Enabled = true;
 			btnNew.Enabled = true;
 		}
@@ -337,10 +332,10 @@ public class frmWaitingList : frmMasterForm
 	private void yycEfligPn(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Phone_Number, 0, 10, ((Control)(object)txtPhone).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Phone_Number, 0, 10, txtPhone.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPhone).Text = MemoryLoadedObjects.Numpad.valueEntered;
+			txtPhone.Text = MemoryLoadedObjects.Numpad.valueEntered;
 			btnSave.Enabled = true;
 			btnNew.Enabled = true;
 		}
@@ -350,10 +345,10 @@ public class frmWaitingList : frmMasterForm
 	private void btnShowKeyboard_Email_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Email, 1, 128, ((Control)(object)txtEmail).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Email, 1, 128, txtEmail.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtEmail).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtEmail.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			btnSave.Enabled = true;
 			btnNew.Enabled = true;
 		}
@@ -363,10 +358,10 @@ public class frmWaitingList : frmMasterForm
 	private void btnShowKeyboard_NumOfPeople_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Number_of_People, 0, 3, ((Control)(object)txtNumOfPeople).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Number_of_People, 0, 3, txtNumOfPeople.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtNumOfPeople).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtNumOfPeople.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 			btnSave.Enabled = true;
 			btnNew.Enabled = true;
 		}
@@ -376,10 +371,10 @@ public class frmWaitingList : frmMasterForm
 	private void btnShowKeyboard_Comments_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Notes, 1, 128, ((Control)(object)txtComments).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Notes, 1, 128, txtComments.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtComments).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtComments.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			btnSave.Enabled = true;
 			btnNew.Enabled = true;
 		}
@@ -404,12 +399,12 @@ public class frmWaitingList : frmMasterForm
 
 	private void btnSendText_Click(object sender, EventArgs e)
 	{
-		MailHelpers.SendSmsViaAppointment("waiting list", AppointmentId, ((Control)(object)txtPhone).Text, ((Control)(object)txtName).Text);
+		MailHelpers.SendSmsViaAppointment("waiting list", AppointmentId, txtPhone.Text, txtName.Text);
 	}
 
 	private void btnSendMail_Click(object sender, EventArgs e)
 	{
-		MailHelpers.SendEmailViaAppointment("waiting list", AppointmentId, ((Control)(object)txtEmail).Text, ((Control)(object)txtName).Text);
+		MailHelpers.SendEmailViaAppointment("waiting list", AppointmentId, txtEmail.Text, txtName.Text);
 	}
 
 	private void method_5()
@@ -430,13 +425,13 @@ public class frmWaitingList : frmMasterForm
 
 	private void txtPhone_TextChanged(object sender, EventArgs e)
 	{
-		if (!string.IsNullOrEmpty(((Control)(object)txtPhone).Text.Trim()))
+		if (!string.IsNullOrEmpty(txtPhone.Text.Trim()))
 		{
-			Customer customerByPhone = CustomerMethods.GetCustomerByPhone(((Control)(object)txtPhone).Text.Trim());
+			Customer customerByPhone = CustomerMethods.GetCustomerByPhone(txtPhone.Text.Trim());
 			if (customerByPhone != null)
 			{
-				((Control)(object)txtName).Text = customerByPhone.CustomerName;
-				((Control)(object)txtEmail).Text = customerByPhone.CustomerEmail;
+				txtName.Text = customerByPhone.CustomerName;
+				txtEmail.Text = customerByPhone.CustomerEmail;
 				nullable_0 = customerByPhone.CustomerID;
 			}
 			else
@@ -492,42 +487,12 @@ public class frmWaitingList : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0021: Expected O, but got Unknown
-		//IL_002b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0031: Expected O, but got Unknown
-		//IL_003b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0041: Expected O, but got Unknown
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0052: Expected O, but got Unknown
-		//IL_005c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0063: Expected O, but got Unknown
-		//IL_0064: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006e: Expected O, but got Unknown
-		//IL_0109: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0113: Expected O, but got Unknown
-		//IL_011f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0129: Expected O, but got Unknown
-		//IL_012a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0134: Expected O, but got Unknown
-		//IL_0135: Unknown result type (might be due to invalid IL or missing references)
-		//IL_013f: Expected O, but got Unknown
-		//IL_029f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02c0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ada: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0afb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c09: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c2a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ce3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d04: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0da6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0dc7: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmWaitingList));
-		ListViewDetailColumn val = new ListViewDetailColumn("Column 0", "No.");
-		ListViewDetailColumn val2 = new ListViewDetailColumn("Column 1", "Name");
-		ListViewDetailColumn val3 = new ListViewDetailColumn("Column 2", "Guests");
-		ListViewDetailColumn val4 = new ListViewDetailColumn("Column 3", "Logged");
-		ListViewDetailColumn val5 = new ListViewDetailColumn("Column 4", "Column 4");
+		ListViewDetailColumn listViewDetailColumn = new ListViewDetailColumn("Column 0", "No.");
+		ListViewDetailColumn listViewDetailColumn2 = new ListViewDetailColumn("Column 1", "Name");
+		ListViewDetailColumn listViewDetailColumn3 = new ListViewDetailColumn("Column 2", "Guests");
+		ListViewDetailColumn listViewDetailColumn4 = new ListViewDetailColumn("Column 3", "Logged");
+		ListViewDetailColumn listViewDetailColumn5 = new ListViewDetailColumn("Column 4", "Column 4");
 		txtComments = new RadTextBoxControl();
 		label8 = new Label();
 		label16 = new Label();
@@ -568,14 +533,14 @@ public class frmWaitingList : frmMasterForm
 		((ISupportInitialize)txtName).BeginInit();
 		((ISupportInitialize)radListItems).BeginInit();
 		SuspendLayout();
-		((Control)(object)txtComments).BackColor = Color.White;
+		txtComments.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtComments, "txtComments");
-		((Control)(object)txtComments).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtComments).Name = "txtComments";
-		((RadElement)((RadControl)txtComments).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtComments).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtComments).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtComments).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtComments.ForeColor = Color.FromArgb(40, 40, 40);
+		txtComments.Name = "txtComments";
+		txtComments.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtComments.Click += txtName_Click;
+		((RadTextBoxControlElement)txtComments.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtComments.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label8.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label8, "label8");
 		label8.ForeColor = Color.White;
@@ -678,45 +643,45 @@ public class frmWaitingList : frmMasterForm
 		btnShowKeyboard_Email.Name = "btnShowKeyboard_Email";
 		btnShowKeyboard_Email.UseVisualStyleBackColor = false;
 		btnShowKeyboard_Email.Click += btnShowKeyboard_Email_Click;
-		((Control)(object)txtEmail).BackColor = Color.White;
+		txtEmail.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtEmail, "txtEmail");
-		((Control)(object)txtEmail).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtEmail).Name = "txtEmail";
-		((RadElement)((RadControl)txtEmail).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtEmail).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtEmail).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtEmail).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtEmail.ForeColor = Color.FromArgb(40, 40, 40);
+		txtEmail.Name = "txtEmail";
+		txtEmail.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtEmail.Click += txtName_Click;
+		((RadTextBoxControlElement)txtEmail.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtEmail.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label13.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label13, "label13");
 		label13.ForeColor = Color.White;
 		label13.Name = "label13";
-		((Control)(object)txtNumOfPeople).BackColor = Color.White;
+		txtNumOfPeople.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtNumOfPeople, "txtNumOfPeople");
-		((Control)(object)txtNumOfPeople).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtNumOfPeople).Name = "txtNumOfPeople";
-		((RadElement)((RadControl)txtNumOfPeople).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtNumOfPeople).Tag = "product";
-		txtNumOfPeople.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtNumOfPeople).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtNumOfPeople).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtNumOfPeople).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
-		((Control)(object)txtPhone).BackColor = Color.White;
+		txtNumOfPeople.ForeColor = Color.FromArgb(40, 40, 40);
+		txtNumOfPeople.Name = "txtNumOfPeople";
+		txtNumOfPeople.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtNumOfPeople.Tag = "product";
+		txtNumOfPeople.TextAlign = HorizontalAlignment.Center;
+		txtNumOfPeople.Click += txtName_Click;
+		((RadTextBoxControlElement)txtNumOfPeople.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtNumOfPeople.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
+		txtPhone.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtPhone, "txtPhone");
-		((Control)(object)txtPhone).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPhone).Name = "txtPhone";
-		((RadElement)((RadControl)txtPhone).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtPhone).TextChanged += txtPhone_TextChanged;
-		((Control)(object)txtPhone).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPhone).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPhone).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
-		((Control)(object)txtName).BackColor = Color.White;
+		txtPhone.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPhone.Name = "txtPhone";
+		txtPhone.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtPhone.TextChanged += txtPhone_TextChanged;
+		txtPhone.Click += txtName_Click;
+		((RadTextBoxControlElement)txtPhone.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPhone.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
+		txtName.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtName, "txtName");
-		((Control)(object)txtName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtName).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtName.Click += txtName_Click;
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Comments.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Comments.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Comments.FlatAppearance.BorderColor = Color.Black;
@@ -777,30 +742,30 @@ public class frmWaitingList : frmMasterForm
 		componentResourceManager.ApplyResources(label10, "label10");
 		label10.ForeColor = Color.White;
 		label10.Name = "label10";
-		((RadListView)radListItems).set_AllowArbitraryItemHeight(true);
-		((RadListView)radListItems).set_AllowEdit(false);
-		((RadListView)radListItems).set_AllowRemove(false);
+		radListItems.AllowArbitraryItemHeight = true;
+		radListItems.AllowEdit = false;
+		radListItems.AllowRemove = false;
 		componentResourceManager.ApplyResources(radListItems, "radListItems");
-		val.set_HeaderText("No.");
-		val.set_Width(50f);
-		val2.set_HeaderText("Name");
-		val2.set_Width(251f);
-		val3.set_HeaderText("Guests");
-		val3.set_Width(60f);
-		val4.set_HeaderText("Logged");
-		val4.set_Width(114f);
-		val5.set_HeaderText("Column 4");
-		val5.set_Width(85f);
-		((RadListView)radListItems).get_Columns().AddRange((ListViewDetailColumn[])(object)new ListViewDetailColumn[5] { val, val2, val3, val4, val5 });
-		((RadListView)radListItems).set_EnableKineticScrolling(true);
-		((RadListView)radListItems).set_GroupItemSize(new Size(200, 40));
-		((RadListView)radListItems).set_ItemSize(new Size(200, 40));
-		((RadListView)radListItems).set_ItemSpacing(-1);
-		((Control)(object)radListItems).Name = "radListItems";
-		((RadListView)radListItems).set_ShowColumnHeaders(false);
-		((RadListView)radListItems).set_ShowGridLines(true);
-		((RadListView)radListItems).set_ViewType((ListViewType)2);
-		((RadListView)radListItems).add_SelectedItemChanged((EventHandler)radListItems_SelectedItemChanged);
+		listViewDetailColumn.HeaderText = "No.";
+		listViewDetailColumn.Width = 50f;
+		listViewDetailColumn2.HeaderText = "Name";
+		listViewDetailColumn2.Width = 251f;
+		listViewDetailColumn3.HeaderText = "Guests";
+		listViewDetailColumn3.Width = 60f;
+		listViewDetailColumn4.HeaderText = "Logged";
+		listViewDetailColumn4.Width = 114f;
+		listViewDetailColumn5.HeaderText = "Column 4";
+		listViewDetailColumn5.Width = 85f;
+		radListItems.Columns.AddRange(listViewDetailColumn, listViewDetailColumn2, listViewDetailColumn3, listViewDetailColumn4, listViewDetailColumn5);
+		radListItems.EnableKineticScrolling = true;
+		radListItems.GroupItemSize = new Size(200, 40);
+		radListItems.ItemSize = new Size(200, 40);
+		radListItems.ItemSpacing = -1;
+		radListItems.Name = "radListItems";
+		radListItems.ShowColumnHeaders = false;
+		radListItems.ShowGridLines = true;
+		radListItems.ViewType = ListViewType.DetailsView;
+		radListItems.SelectedItemChanged += radListItems_SelectedItemChanged;
 		componentResourceManager.ApplyResources(btnAssign, "btnAssign");
 		btnAssign.BackColor = Color.FromArgb(65, 168, 95);
 		btnAssign.FlatAppearance.BorderColor = Color.White;
@@ -818,7 +783,7 @@ public class frmWaitingList : frmMasterForm
 		base.AutoScaleMode = AutoScaleMode.Font;
 		base.Controls.Add(label19);
 		base.Controls.Add(btnAssign);
-		base.Controls.Add((Control)(object)txtComments);
+		base.Controls.Add(txtComments);
 		base.Controls.Add(label8);
 		base.Controls.Add(label16);
 		base.Controls.Add(btnSendMail);
@@ -833,11 +798,11 @@ public class frmWaitingList : frmMasterForm
 		base.Controls.Add(btnNew);
 		base.Controls.Add(btnSave);
 		base.Controls.Add(btnShowKeyboard_Email);
-		base.Controls.Add((Control)(object)txtEmail);
+		base.Controls.Add(txtEmail);
 		base.Controls.Add(label13);
-		base.Controls.Add((Control)(object)txtNumOfPeople);
-		base.Controls.Add((Control)(object)txtPhone);
-		base.Controls.Add((Control)(object)txtName);
+		base.Controls.Add(txtNumOfPeople);
+		base.Controls.Add(txtPhone);
+		base.Controls.Add(txtName);
 		base.Controls.Add(btnShowKeyboard_Comments);
 		base.Controls.Add(btnShowKeyboard_NumOfPeople);
 		base.Controls.Add(btnShowKeyboard_Phone);
@@ -847,7 +812,7 @@ public class frmWaitingList : frmMasterForm
 		base.Controls.Add(label5);
 		base.Controls.Add(label6);
 		base.Controls.Add(label11);
-		base.Controls.Add((Control)(object)radListItems);
+		base.Controls.Add(radListItems);
 		base.Controls.Add(label10);
 		base.Name = "frmWaitingList";
 		base.Opacity = 1.0;

@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel.Settings;
@@ -74,8 +73,6 @@ public class CloudSyncSettings : UserControl
 
 	public CloudSyncSettings()
 	{
-		//IL_017e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0191: Unknown result type (might be due to invalid IL or missing references)
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
 		bool_0 = true;
@@ -108,11 +105,11 @@ public class CloudSyncSettings : UserControl
 				}
 				else if (setting.Value.Contains("ON"))
 				{
-					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).set_Value(true);
+					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Value = true;
 				}
 				else
 				{
-					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).set_Value(false);
+					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Value = false;
 				}
 			}
 		}
@@ -127,25 +124,25 @@ public class CloudSyncSettings : UserControl
 		Setting setting2 = iqueryable_0.Where((Setting s) => label_cloudsync_time_range.Tag.Equals(s.Key)).FirstOrDefault();
 		if (setting2.Value.Contains("ON"))
 		{
-			chkTimeRange.set_Value(true);
+			chkTimeRange.Value = true;
 			label_cloudsync_time_range.Text = setting2.Value;
 		}
 		else
 		{
-			chkTimeRange.set_Value(false);
+			chkTimeRange.Value = false;
 			label_cloudsync_time_range.Text = setting2.Value;
 		}
 		if (Helper.GetConnectionString().Contains("AttachDbFilename"))
 		{
 			panel1.Visible = false;
 		}
-		else if (iqueryable_0.Where((Setting a) => a.Key == ((Control)(object)chkRunSyncService).Tag.ToString()).FirstOrDefault().Value.Contains("ON"))
+		else if (iqueryable_0.Where((Setting a) => a.Key == chkRunSyncService.Tag.ToString()).FirstOrDefault().Value.Contains("ON"))
 		{
-			chkRunSyncService.set_Value(true);
+			chkRunSyncService.Value = true;
 		}
 		else
 		{
-			chkRunSyncService.set_Value(false);
+			chkRunSyncService.Value = false;
 		}
 		bool_0 = false;
 	}
@@ -207,7 +204,7 @@ public class CloudSyncSettings : UserControl
 		{
 			return;
 		}
-		if (chkTimeRange.get_Value())
+		if (chkTimeRange.Value)
 		{
 			frmTimeRangeSelect frmTimeRangeSelect = new frmTimeRangeSelect();
 			if (frmTimeRangeSelect.ShowDialog() == DialogResult.OK)
@@ -220,7 +217,7 @@ public class CloudSyncSettings : UserControl
 			else
 			{
 				label_cloudsync_time_range.Text = "OFF";
-				chkTimeRange.set_Value(false);
+				chkTimeRange.Value = false;
 			}
 		}
 		else
@@ -243,7 +240,7 @@ public class CloudSyncSettings : UserControl
 		{
 			return;
 		}
-		Setting setting = iqueryable_0.Where((Setting s) => ((Control)(object)chkRunSyncService).Tag.Equals(s.Key)).FirstOrDefault();
+		Setting setting = iqueryable_0.Where((Setting s) => chkRunSyncService.Tag.Equals(s.Key)).FirstOrDefault();
 		if (setting != null)
 		{
 			if (setting.Value.ToUpper().Equals("ON"))
@@ -256,7 +253,7 @@ public class CloudSyncSettings : UserControl
 			}
 			setting.Synced = false;
 			Helper.SubmitChangesWithCatch(gclass6_0);
-			SettingsHelper.SetSettingValueByKey(((Control)(object)chkRunSyncService).Tag.ToString(), setting.Value);
+			SettingsHelper.SetSettingValueByKey(chkRunSyncService.Tag.ToString(), setting.Value);
 			if (new frmMessageBox(Resources.Hippos_needs_to_be_restarted_f, Resources.Settings_Changed0, CustomMessageBoxButtons.YesNo).ShowDialog(this) == DialogResult.Yes)
 			{
 				FormHelper.CleanupObjects();
@@ -276,24 +273,6 @@ public class CloudSyncSettings : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_008a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0094: Expected O, but got Unknown
-		//IL_00f8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0102: Expected O, but got Unknown
-		//IL_0512: Unknown result type (might be due to invalid IL or missing references)
-		//IL_052a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0541: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0562: Unknown result type (might be due to invalid IL or missing references)
-		//IL_058f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05bc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05e9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08cd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08e5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08fc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_091d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_094a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0977: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09a4: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager componentResourceManager = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.AdminPanel.Settings.CloudSyncSettings));
 		this.label_api_key = new System.Windows.Forms.Label();
 		this.label_0 = new System.Windows.Forms.Label();
@@ -306,7 +285,7 @@ public class CloudSyncSettings : UserControl
 		this.label4 = new System.Windows.Forms.Label();
 		this.pictureBox2 = new System.Windows.Forms.PictureBox();
 		this.label_cloudsync_time_range = new System.Windows.Forms.Label();
-		this.chkTimeRange = new RadToggleSwitch();
+		this.chkTimeRange = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label13 = new System.Windows.Forms.Label();
 		this.pictureBox7 = new System.Windows.Forms.PictureBox();
 		this.label14 = new System.Windows.Forms.Label();
@@ -316,7 +295,7 @@ public class CloudSyncSettings : UserControl
 		this.label_loyalty_processor_desc = new System.Windows.Forms.Label();
 		this.label_online_ordering_settings_title = new System.Windows.Forms.Label();
 		this.pictureBox17 = new System.Windows.Forms.PictureBox();
-		this.chkRunSyncService = new RadToggleSwitch();
+		this.chkRunSyncService = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label_capacity_desc = new System.Windows.Forms.Label();
 		this.label_capacity_title = new System.Windows.Forms.Label();
 		this.panel1 = new System.Windows.Forms.Panel();
@@ -376,20 +355,20 @@ public class CloudSyncSettings : UserControl
 		this.label_cloudsync_time_range.Name = "label_cloudsync_time_range";
 		this.label_cloudsync_time_range.Tag = "cloudsync_time_range";
 		componentResourceManager.ApplyResources(this.chkTimeRange, "chkTimeRange");
-		((System.Windows.Forms.Control)(object)this.chkTimeRange).Name = "chkTimeRange";
-		((System.Windows.Forms.Control)(object)this.chkTimeRange).Tag = "cloudsync_time_range";
-		this.chkTimeRange.set_ThumbTickness(27);
-		this.chkTimeRange.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkTimeRange.set_Value(false);
-		this.chkTimeRange.add_ValueChanged(new System.EventHandler(chkTimeRange_ValueChanged));
-		((System.Windows.Forms.Control)(object)this.chkTimeRange).Click += new System.EventHandler(chkTimeRange_Click);
-		((RadToggleSwitchElement)((RadControl)this.chkTimeRange).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkTimeRange).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkTimeRange).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkTimeRange).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkTimeRange).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkTimeRange).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkTimeRange).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkTimeRange.Name = "chkTimeRange";
+		this.chkTimeRange.Tag = "cloudsync_time_range";
+		this.chkTimeRange.ThumbTickness = 27;
+		this.chkTimeRange.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkTimeRange.Value = false;
+		this.chkTimeRange.ValueChanged += new System.EventHandler(chkTimeRange_ValueChanged);
+		this.chkTimeRange.Click += new System.EventHandler(chkTimeRange_Click);
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkTimeRange.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkTimeRange.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkTimeRange.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkTimeRange.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkTimeRange.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkTimeRange.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkTimeRange.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this.label13, "label13");
 		this.label13.BackColor = System.Drawing.Color.Transparent;
 		this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -426,19 +405,19 @@ public class CloudSyncSettings : UserControl
 		this.pictureBox17.Name = "pictureBox17";
 		this.pictureBox17.TabStop = false;
 		componentResourceManager.ApplyResources(this.chkRunSyncService, "chkRunSyncService");
-		((System.Windows.Forms.Control)(object)this.chkRunSyncService).Name = "chkRunSyncService";
-		((System.Windows.Forms.Control)(object)this.chkRunSyncService).Tag = "run_sync_service";
-		this.chkRunSyncService.set_ThumbTickness(27);
-		this.chkRunSyncService.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkRunSyncService.set_Value(false);
-		this.chkRunSyncService.add_ValueChanged(new System.EventHandler(chkRunSyncService_ValueChanged));
-		((RadToggleSwitchElement)((RadControl)this.chkRunSyncService).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkRunSyncService).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkRunSyncService).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkRunSyncService).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkRunSyncService).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkRunSyncService).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkRunSyncService).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkRunSyncService.Name = "chkRunSyncService";
+		this.chkRunSyncService.Tag = "run_sync_service";
+		this.chkRunSyncService.ThumbTickness = 27;
+		this.chkRunSyncService.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkRunSyncService.Value = false;
+		this.chkRunSyncService.ValueChanged += new System.EventHandler(chkRunSyncService_ValueChanged);
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkRunSyncService.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkRunSyncService.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkRunSyncService.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkRunSyncService.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkRunSyncService.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkRunSyncService.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkRunSyncService.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this.label_capacity_desc, "label_capacity_desc");
 		this.label_capacity_desc.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label_capacity_desc.Name = "label_capacity_desc";
@@ -448,7 +427,7 @@ public class CloudSyncSettings : UserControl
 		componentResourceManager.ApplyResources(this.label_capacity_title, "label_capacity_title");
 		this.label_capacity_title.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label_capacity_title.Name = "label_capacity_title";
-		this.panel1.Controls.Add((System.Windows.Forms.Control)(object)this.chkRunSyncService);
+		this.panel1.Controls.Add(this.chkRunSyncService);
 		this.panel1.Controls.Add(this.pictureBox17);
 		this.panel1.Controls.Add(this.label_capacity_title);
 		this.panel1.Controls.Add(this.label_capacity_desc);
@@ -462,7 +441,7 @@ public class CloudSyncSettings : UserControl
 		base.Controls.Add(this.label_online_ordering_settings_title);
 		base.Controls.Add(this.label6);
 		base.Controls.Add(this.label_cloudsync_time_range);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkTimeRange);
+		base.Controls.Add(this.chkTimeRange);
 		base.Controls.Add(this.label13);
 		base.Controls.Add(this.pictureBox7);
 		base.Controls.Add(this.label14);

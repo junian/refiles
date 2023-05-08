@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Drawing;
@@ -19,7 +18,6 @@ using CorePOS.CustomControls;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -432,18 +430,6 @@ public class frmOrderEntry : frmMasterForm
 
 	public frmOrderEntry(string _orderNumber = null, string _customer = null, string _orderType = "Dine In", short _guestCount = 1, string _customerInfoName = "", string _customerInfo = "", int _customerID = 0)
 	{
-		//IL_0137: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0141: Expected O, but got Unknown
-		//IL_0147: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0151: Expected O, but got Unknown
-		//IL_0157: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0161: Expected O, but got Unknown
-		//IL_0167: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0171: Expected O, but got Unknown
-		//IL_0177: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0181: Expected O, but got Unknown
-		//IL_0187: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0191: Expected O, but got Unknown
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = string.Empty;
 		string_1 = string.Empty;
@@ -534,102 +520,88 @@ public class frmOrderEntry : frmMasterForm
 
 	public void LoadFormData(string _orderNumber = null, string _customer = null, string _orderType = "Dine In", short _guestCount = 1, int _customerID = 0, string _customerInfoName = "", string _customerInfo = "", bool resetComboId = true, short assignedSeatNum = 1)
 	{
-		//IL_069f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06a9: Expected O, but got Unknown
 		pnlItems.Controls.Clear();
 		string settingValueByKey = SettingsHelper.GetSettingValueByKey("restaurant_mode");
 		if (SettingsHelper.GetSettingValueByKey("course_selection") == "ON" && settingValueByKey == "Dine In" && _orderType == OrderTypes.DineIn)
 		{
-			ListViewDataItemGroup obj = listViewDataItemGroup_1;
-			ListViewDataItemGroup obj2 = listViewDataItemGroup_2;
-			ListViewDataItemGroup obj3 = listViewDataItemGroup_3;
-			ListViewDataItemGroup obj4 = listViewDataItemGroup_4;
-			ListViewDataItemGroup obj5 = listViewDataItemGroup_5;
-			Color whiteSmoke;
-			((ListViewDataItem)listViewDataItemGroup_6).set_BackColor(whiteSmoke = Color.WhiteSmoke);
-			Color color;
-			((ListViewDataItem)obj5).set_BackColor(color = whiteSmoke);
-			Color color2;
-			((ListViewDataItem)obj4).set_BackColor(color2 = color);
-			Color color3;
-			((ListViewDataItem)obj3).set_BackColor(color3 = color2);
-			Color backColor;
-			((ListViewDataItem)obj2).set_BackColor(backColor = color3);
-			((ListViewDataItem)obj).set_BackColor(backColor);
-			ListViewDataItemGroup obj6 = listViewDataItemGroup_1;
-			ListViewDataItemGroup obj7 = listViewDataItemGroup_2;
-			ListViewDataItemGroup obj8 = listViewDataItemGroup_3;
-			ListViewDataItemGroup obj9 = listViewDataItemGroup_4;
-			ListViewDataItemGroup obj10 = listViewDataItemGroup_5;
-			Font font;
-			((ListViewDataItem)listViewDataItemGroup_6).set_Font(font = new Font(((Control)(object)radListItems).Font.FontFamily, 14f, FontStyle.Italic));
-			Font font2;
-			((ListViewDataItem)obj10).set_Font(font2 = font);
-			Font font3;
-			((ListViewDataItem)obj9).set_Font(font3 = font2);
-			Font font4;
-			((ListViewDataItem)obj8).set_Font(font4 = font3);
-			Font font5;
-			((ListViewDataItem)obj7).set_Font(font5 = font4);
-			((ListViewDataItem)obj6).set_Font(font5);
-			ListViewDataItemGroup obj11 = listViewDataItemGroup_1;
-			ListViewDataItemGroup obj12 = listViewDataItemGroup_2;
-			ListViewDataItemGroup obj13 = listViewDataItemGroup_3;
-			ListViewDataItemGroup obj14 = listViewDataItemGroup_4;
-			ListViewDataItemGroup obj15 = listViewDataItemGroup_5;
-			listViewDataItemGroup_6.set_Expanded(true);
-			obj15.set_Expanded(true);
-			obj14.set_Expanded(true);
-			obj13.set_Expanded(true);
-			obj12.set_Expanded(true);
-			obj11.set_Expanded(true);
-			ListViewDataItemGroup obj16 = listViewDataItemGroup_1;
-			ListViewDataItemGroup obj17 = listViewDataItemGroup_2;
-			ListViewDataItemGroup obj18 = listViewDataItemGroup_3;
-			ListViewDataItemGroup obj19 = listViewDataItemGroup_4;
-			ListViewDataItemGroup obj20 = listViewDataItemGroup_5;
-			((ListViewDataItem)listViewDataItemGroup_6).set_Visible(false);
-			((ListViewDataItem)obj20).set_Visible(false);
-			((ListViewDataItem)obj19).set_Visible(false);
-			((ListViewDataItem)obj18).set_Visible(false);
-			((ListViewDataItem)obj17).set_Visible(false);
-			((ListViewDataItem)obj16).set_Visible(false);
-			ListViewDataItemGroup obj21 = listViewDataItemGroup_1;
-			ListViewDataItemGroup obj22 = listViewDataItemGroup_2;
-			ListViewDataItemGroup obj23 = listViewDataItemGroup_3;
-			ListViewDataItemGroup obj24 = listViewDataItemGroup_4;
-			ListViewDataItemGroup obj25 = listViewDataItemGroup_5;
-			((ListViewDataItem)listViewDataItemGroup_6).set_Enabled(false);
-			((ListViewDataItem)obj25).set_Enabled(false);
-			((ListViewDataItem)obj24).set_Enabled(false);
-			((ListViewDataItem)obj23).set_Enabled(false);
-			((ListViewDataItem)obj22).set_Enabled(false);
-			((ListViewDataItem)obj21).set_Enabled(false);
-			((RadListView)radListItems).set_ShowGroups(true);
-			((ListViewDataItem)listViewDataItemGroup_1).set_BackColor(Color.Pink);
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_2))
+			ListViewDataItemGroup listViewDataItemGroup = listViewDataItemGroup_1;
+			ListViewDataItemGroup listViewDataItemGroup2 = listViewDataItemGroup_2;
+			ListViewDataItemGroup listViewDataItemGroup3 = listViewDataItemGroup_3;
+			ListViewDataItemGroup listViewDataItemGroup4 = listViewDataItemGroup_4;
+			ListViewDataItemGroup listViewDataItemGroup5 = listViewDataItemGroup_5;
+			Color color = (listViewDataItemGroup_6.BackColor = Color.WhiteSmoke);
+			Color color3 = (listViewDataItemGroup5.BackColor = color);
+			Color color5 = (listViewDataItemGroup4.BackColor = color3);
+			Color color7 = (listViewDataItemGroup3.BackColor = color5);
+			Color color10 = (listViewDataItemGroup.BackColor = (listViewDataItemGroup2.BackColor = color7));
+			ListViewDataItemGroup listViewDataItemGroup6 = listViewDataItemGroup_1;
+			ListViewDataItemGroup listViewDataItemGroup7 = listViewDataItemGroup_2;
+			ListViewDataItemGroup listViewDataItemGroup8 = listViewDataItemGroup_3;
+			ListViewDataItemGroup listViewDataItemGroup9 = listViewDataItemGroup_4;
+			ListViewDataItemGroup listViewDataItemGroup10 = listViewDataItemGroup_5;
+			Font font2 = (listViewDataItemGroup_6.Font = new Font(radListItems.Font.FontFamily, 14f, FontStyle.Italic));
+			Font font4 = (listViewDataItemGroup10.Font = font2);
+			Font font6 = (listViewDataItemGroup9.Font = font4);
+			Font font8 = (listViewDataItemGroup8.Font = font6);
+			Font font11 = (listViewDataItemGroup6.Font = (listViewDataItemGroup7.Font = font8));
+			ListViewDataItemGroup listViewDataItemGroup11 = listViewDataItemGroup_1;
+			ListViewDataItemGroup listViewDataItemGroup12 = listViewDataItemGroup_2;
+			ListViewDataItemGroup listViewDataItemGroup13 = listViewDataItemGroup_3;
+			ListViewDataItemGroup listViewDataItemGroup14 = listViewDataItemGroup_4;
+			ListViewDataItemGroup listViewDataItemGroup15 = listViewDataItemGroup_5;
+			listViewDataItemGroup_6.Expanded = true;
+			listViewDataItemGroup15.Expanded = true;
+			listViewDataItemGroup14.Expanded = true;
+			listViewDataItemGroup13.Expanded = true;
+			listViewDataItemGroup12.Expanded = true;
+			listViewDataItemGroup11.Expanded = true;
+			ListViewDataItemGroup listViewDataItemGroup16 = listViewDataItemGroup_1;
+			ListViewDataItemGroup listViewDataItemGroup17 = listViewDataItemGroup_2;
+			ListViewDataItemGroup listViewDataItemGroup18 = listViewDataItemGroup_3;
+			ListViewDataItemGroup listViewDataItemGroup19 = listViewDataItemGroup_4;
+			ListViewDataItemGroup listViewDataItemGroup20 = listViewDataItemGroup_5;
+			listViewDataItemGroup_6.Visible = false;
+			listViewDataItemGroup20.Visible = false;
+			listViewDataItemGroup19.Visible = false;
+			listViewDataItemGroup18.Visible = false;
+			listViewDataItemGroup17.Visible = false;
+			listViewDataItemGroup16.Visible = false;
+			ListViewDataItemGroup listViewDataItemGroup21 = listViewDataItemGroup_1;
+			ListViewDataItemGroup listViewDataItemGroup22 = listViewDataItemGroup_2;
+			ListViewDataItemGroup listViewDataItemGroup23 = listViewDataItemGroup_3;
+			ListViewDataItemGroup listViewDataItemGroup24 = listViewDataItemGroup_4;
+			ListViewDataItemGroup listViewDataItemGroup25 = listViewDataItemGroup_5;
+			listViewDataItemGroup_6.Enabled = false;
+			listViewDataItemGroup25.Enabled = false;
+			listViewDataItemGroup24.Enabled = false;
+			listViewDataItemGroup23.Enabled = false;
+			listViewDataItemGroup22.Enabled = false;
+			listViewDataItemGroup21.Enabled = false;
+			radListItems.ShowGroups = true;
+			listViewDataItemGroup_1.BackColor = Color.Pink;
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_2))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_2);
+				radListItems.Groups.Add(listViewDataItemGroup_2);
 			}
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_1))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_1))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_1);
+				radListItems.Groups.Add(listViewDataItemGroup_1);
 			}
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_4))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_4))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_4);
+				radListItems.Groups.Add(listViewDataItemGroup_4);
 			}
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_3))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_3))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_3);
+				radListItems.Groups.Add(listViewDataItemGroup_3);
 			}
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_5))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_5))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_5);
+				radListItems.Groups.Add(listViewDataItemGroup_5);
 			}
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_6))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_6))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_6);
+				radListItems.Groups.Add(listViewDataItemGroup_6);
 			}
 			Button button = btnChangeCourse;
 			btnFire.Visible = true;
@@ -637,11 +609,11 @@ public class frmOrderEntry : frmMasterForm
 		}
 		else
 		{
-			((RadListView)radListItems).get_Groups().Clear();
+			radListItems.Groups.Clear();
 			Button button2 = btnChangeCourse;
 			btnFire.Visible = false;
 			button2.Visible = false;
-			((RadListView)radListItems).set_ShowGroups(false);
+			radListItems.ShowGroups = false;
 		}
 		if (_orderType == OrderTypes.ToGo)
 		{
@@ -663,16 +635,16 @@ public class frmOrderEntry : frmMasterForm
 		string_13 = SettingsHelper.GetSettingValueByKey("upc_scanning");
 		if (string_13 == "OFF")
 		{
-			((Control)(object)txtBarcodeSearch).Visible = false;
+			txtBarcodeSearch.Visible = false;
 			pnlItems.Height = lblCategories.Location.Y - lblItemsHeader.Bottom - 2;
-			pnlItems.Location = new Point(pnlItems.Location.X, ((Control)(object)txtBarcodeSearch).Location.Y);
+			pnlItems.Location = new Point(pnlItems.Location.X, txtBarcodeSearch.Location.Y);
 		}
 		else
 		{
-			((Control)(object)txtBarcodeSearch).Visible = true;
-			pnlItems.Height = lblCategories.Location.Y - ((Control)(object)txtBarcodeSearch).Bottom - 2;
-			pnlItems.Location = new Point(pnlItems.Location.X, ((Control)(object)txtBarcodeSearch).Bottom);
-			((Control)(object)txtBarcodeSearch).Select();
+			txtBarcodeSearch.Visible = true;
+			pnlItems.Height = lblCategories.Location.Y - txtBarcodeSearch.Bottom - 2;
+			pnlItems.Location = new Point(pnlItems.Location.X, txtBarcodeSearch.Bottom);
+			txtBarcodeSearch.Select();
 		}
 		if (Thread.CurrentThread.CurrentCulture.Name.Equals("fr-CA"))
 		{
@@ -712,7 +684,7 @@ public class frmOrderEntry : frmMasterForm
 		}
 		string_10 = _customer;
 		string_6 = _customerInfo;
-		((RadListView)radListItems).add_CellFormatting(new ListViewCellFormattingEventHandler(radListItems_CellFormatting));
+		radListItems.CellFormatting += radListItems_CellFormatting;
 		btnPay.Enabled = true;
 		if (MemoryLoadedObjects.OrderEntrySecondScreen != null)
 		{
@@ -809,7 +781,7 @@ public class frmOrderEntry : frmMasterForm
 			decimal_5 = default(decimal);
 		}
 		method_4();
-		if (!string_5.Equals(OrderTypes.Delivery) && (!string_5.Equals(OrderTypes.PickUp) || ((RadListView)radListItems).get_Items().get_Count() <= 0))
+		if (!string_5.Equals(OrderTypes.Delivery) && (!string_5.Equals(OrderTypes.PickUp) || radListItems.Items.Count <= 0))
 		{
 			if (string_5.Equals(OrderTypes.DineIn) && bool_10)
 			{
@@ -926,11 +898,11 @@ public class frmOrderEntry : frmMasterForm
 		{
 			settingValueByKey = "Quick Service";
 		}
-		if (((RadListView)radListItems).get_Items().get_Count() > 0 && !string.IsNullOrEmpty(string_3))
+		if (radListItems.Items.Count > 0 && !string.IsNullOrEmpty(string_3))
 		{
 			btnClear.Text = Resources.VOID_ORDER;
 			btnClear.Image = picTrash.Image;
-			btnClear.Enabled = ((RadListView)radListItems).get_Items().get_Count() > 0;
+			btnClear.Enabled = radListItems.Items.Count > 0;
 		}
 		else if (string_5.Equals(OrderTypes.DineIn) && SettingsHelper.GetSettingValueByKey("restaurant_mode") == "Dine In")
 		{
@@ -1098,10 +1070,10 @@ public class frmOrderEntry : frmMasterForm
 		}
 		ImageList imageList = new ImageList();
 		imageList.ImageSize = new Size(1, 25);
-		((RadControl)radListItems).set_SmallImageList(imageList);
+		radListItems.SmallImageList = imageList;
 		if (MemoryLoadedObjects.OrderEntrySecondScreen != null)
 		{
-			((RadControl)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).set_SmallImageList(imageList);
+			MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.SmallImageList = imageList;
 		}
 		method_36();
 		method_46();
@@ -1112,18 +1084,18 @@ public class frmOrderEntry : frmMasterForm
 		}
 		if (int_10 == 0)
 		{
-			int_10 = ((Control)(object)radListItems).Height;
+			int_10 = radListItems.Height;
 		}
-		((Control)(object)radListItems).Height = int_10 - (pnlChangeSeat.Visible ? pnlChangeSeat.Height : 0);
+		radListItems.Height = int_10 - (pnlChangeSeat.Visible ? pnlChangeSeat.Height : 0);
 		int num5 = (verticalScrollControl1.Height = (verticalScrollControl1.inputedHeight = int_10 - pnlQty.Height));
 		verticalScrollControl1.RefreshSize();
 	}
 
 	private void radListItems_CellFormatting(object sender, ListViewCellFormattingEventArgs e)
 	{
-		if ((e.get_CellElement().get_Data().get_HeaderText() == "Price" || e.get_CellElement().get_Data().get_HeaderText() == "Ext. Price") && e.get_CellElement() is DetailListViewDataCellElement)
+		if ((e.CellElement.Data.HeaderText == "Price" || e.CellElement.Data.HeaderText == "Ext. Price") && e.CellElement is DetailListViewDataCellElement)
 		{
-			((LightVisualElement)e.get_CellElement()).set_TextAlignment(ContentAlignment.MiddleRight);
+			e.CellElement.TextAlignment = ContentAlignment.MiddleRight;
 		}
 	}
 
@@ -1254,12 +1226,12 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnRewardDiscount_Click(object sender, EventArgs e)
 	{
-		if (!string.IsNullOrEmpty(((RadListView)radListItems).get_SelectedItem().get_Item(2).ToString()) && !(Convert.ToDecimal(((RadListView)radListItems).get_SelectedItem().get_Item(2).ToString()) == 0m))
+		if (!string.IsNullOrEmpty(radListItems.SelectedItem[2].ToString()) && !(Convert.ToDecimal(radListItems.SelectedItem[2].ToString()) == 0m))
 		{
 			decimal selectedItemAmount = default(decimal);
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0)
+			if (radListItems.SelectedItems.Count > 0)
 			{
-				selectedItemAmount = Convert.ToDecimal(((RadListView)radListItems).get_SelectedItem().get_Item(2).ToString());
+				selectedItemAmount = Convert.ToDecimal(radListItems.SelectedItem[2].ToString());
 			}
 			if (TapMangoHelper.ProcessTapMangoLoyalty(this, null, decimal_0, "", selectedItemAmount) && TapMangoHelper.DiscountAmount > 0m)
 			{
@@ -1714,7 +1686,7 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnClear_Click(object sender, EventArgs e)
 	{
-		if (((RadListView)radListItems).get_Items().get_Count() > 0 && !string.IsNullOrEmpty(string_3))
+		if (radListItems.Items.Count > 0 && !string.IsNullOrEmpty(string_3))
 		{
 			if (SettingsHelper.CurrentTerminalMode == "Kiosk")
 			{
@@ -1815,10 +1787,10 @@ public class frmOrderEntry : frmMasterForm
 			new OrderMethods();
 			orderHelper_0.OrderPrintMadeCheck(orderstatus, string_3, string_5, string_7, string_4, lblEmployee.Text.Replace("EMPLOYEE: ", ""), list.Count());
 			string_3 = string.Empty;
-			((RadListView)radListItems).get_Items().Clear();
+			radListItems.Items.Clear();
 			if (MemoryLoadedObjects.OrderEntrySecondScreen != null)
 			{
-				((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().Clear();
+				MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Clear();
 			}
 			RecalculateTaxAndSubtotal();
 			if (string_5 == OrderTypes.DineIn)
@@ -1875,9 +1847,9 @@ public class frmOrderEntry : frmMasterForm
 		{
 			return;
 		}
-		foreach (ListViewDataItem item in ((RadListView)radListItems).get_Items())
+		foreach (ListViewDataItem item in radListItems.Items)
 		{
-			item.get_SubItems().set_Item(14, (object)MemoryLoadedObjects.Numpad.numberEntered.ToString());
+			item.SubItems[14] = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		orderOnHoldTime = Convert.ToInt32(MemoryLoadedObjects.Numpad.numberEntered);
 		new NotificationLabel(this, "Order will be held for " + orderOnHoldTime + " minutes.", NotificationTypes.Success).Show();
@@ -1887,15 +1859,15 @@ public class frmOrderEntry : frmMasterForm
 	{
 		if (!(string_5 == OrderTypes.PickUp) && !(string_5 == OrderTypes.PickUpOnline) && !(string_5 == OrderTypes.Delivery) && !(string_5 == OrderTypes.DeliveryOnline))
 		{
-			if (((RadControl)radListItems).get_Padding() != new Padding(0, 0, 0, 0))
+			if (radListItems.Padding != new Padding(0, 0, 0, 0))
 			{
-				((RadControl)radListItems).set_Padding(new Padding(0, 0, 0, 0));
+				radListItems.Padding = new Padding(0, 0, 0, 0);
 			}
 			btnChangeFulfillment.Visible = false;
 			return;
 		}
-		btnChangeFulfillment.Location = new Point(((Control)(object)radListItems).Location.X + 2, ((Control)(object)radListItems).Location.Y + ((Control)(object)radListItems).Height - btnChangeFulfillment.Height - 1);
-		((RadControl)radListItems).set_Padding(new Padding(0, 0, 0, 35));
+		btnChangeFulfillment.Location = new Point(radListItems.Location.X + 2, radListItems.Location.Y + radListItems.Height - btnChangeFulfillment.Height - 1);
+		radListItems.Padding = new Padding(0, 0, 0, 35);
 		btnChangeFulfillment.Visible = true;
 		if (dateFullfilment.HasValue)
 		{
@@ -2220,7 +2192,7 @@ public class frmOrderEntry : frmMasterForm
 						transparentLabel2.Font = new Font("Arial", 14f, FontStyle.Regular);
 						transparentLabel2.FlatStyle = FlatStyle.Flat;
 						transparentLabel2.Opacity = 70;
-						transparentLabel2.transparentBackColor = ColorPalette.WellRead;
+						transparentLabel2.transparentBackColor = CorePOS.Business.Enums.ColorPalette.WellRead;
 						transparentLabel2.Text = Resources.SOLD_OUT;
 						button.Controls.Add(transparentLabel2);
 						transparentLabel2.BringToFront();
@@ -2407,7 +2379,7 @@ public class frmOrderEntry : frmMasterForm
 			if (lblSubstitutionMode.Visible)
 			{
 				DataManager dataManager = new DataManager();
-				int num2 = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(4).ToString());
+				int num2 = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[4].ToString());
 				if (dataManager.getItemsInItem(num2).Count() > 0)
 				{
 					new NotificationLabel(this, Resources.You_cannot_substitute_the_main, NotificationTypes.Notification).Show();
@@ -2423,13 +2395,13 @@ public class frmOrderEntry : frmMasterForm
 				if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 				{
 					string empty = string.Empty;
-					if (!((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().Contains("SUB: "))
+					if (!radListItems.SelectedItems[0][1].ToString().Contains("SUB: "))
 					{
-						empty = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString();
+						empty = radListItems.SelectedItems[0][1].ToString();
 					}
 					else
 					{
-						empty = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString();
+						empty = radListItems.SelectedItems[0][1].ToString();
 						int num3 = empty.IndexOf("SUB: ") + "SUB: ".Length;
 						int num4 = empty.LastIndexOf(" FOR");
 						empty = empty.Substring(num3, num4 - num3);
@@ -2439,23 +2411,23 @@ public class frmOrderEntry : frmMasterForm
 					{
 						text = text.ToUpper();
 					}
-					((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(1, (object)("SUB: " + empty + " FOR " + text));
-					((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(2, (object)MemoryLoadedObjects.Numpad.numberEntered.ToString("0.00", Thread.CurrentThread.CurrentCulture));
-					string fraction = (string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString()) ? "1" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString());
-					((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(3, (object)(Convert.ToDecimal(MathHelper.FractionToDecimal(fraction)) * MemoryLoadedObjects.Numpad.numberEntered).ToString("0.00"));
-					((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(4, (object)CS_0024_003C_003E8__locals0.item.ItemID.ToString());
-					string text2 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString();
-					foreach (ListViewDataItem item in ((RadListView)radListItems).get_Items())
+					radListItems.SelectedItems[0][1] = "SUB: " + empty + " FOR " + text;
+					radListItems.SelectedItems[0][2] = MemoryLoadedObjects.Numpad.numberEntered.ToString("0.00", Thread.CurrentThread.CurrentCulture);
+					string fraction = (string.IsNullOrEmpty(radListItems.SelectedItems[0][0].ToString()) ? "1" : radListItems.SelectedItems[0][0].ToString());
+					radListItems.SelectedItems[0][3] = (Convert.ToDecimal(MathHelper.FractionToDecimal(fraction)) * MemoryLoadedObjects.Numpad.numberEntered).ToString("0.00");
+					radListItems.SelectedItems[0].SubItems[4] = CS_0024_003C_003E8__locals0.item.ItemID.ToString();
+					string text2 = radListItems.SelectedItems[0].SubItems[5].ToString();
+					foreach (ListViewDataItem item in radListItems.Items)
 					{
-						if (item.get_SubItems().get_Item(5).ToString() == text2)
+						if (item.SubItems[5].ToString() == text2)
 						{
-							item.get_SubItems().set_Item(7, (object)(item.get_SubItems().get_Item(7).ToString() + "==="));
+							item.SubItems[7] = item.SubItems[7].ToString() + "===";
 						}
 					}
-					((Control)(object)radListItems).Enabled = true;
+					radListItems.Enabled = true;
 					if (MemoryLoadedObjects.OrderEntrySecondScreen != null)
 					{
-						((Control)(object)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).Enabled = true;
+						MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Enabled = true;
 					}
 					btnItemSub.Text = Resources.ITEM_SUB;
 					lblSubstitutionMode.Visible = false;
@@ -2492,7 +2464,7 @@ public class frmOrderEntry : frmMasterForm
 					{
 						method_28(CS_0024_003C_003E8__locals0.item.ItemName, decimal_, CS_0024_003C_003E8__locals0.selectedTag, qty, short_4, bool_30: true, int_18, 0, num, bool_31: true, int_17, string_17);
 						MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.OptionScreen();
-						MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals0.item.ItemName, CS_0024_003C_003E8__locals0.item.ItemID, 1m, ((RadListView)radListItems).get_Items().get_Count() - 1, num, this, string_5, null, newItem: true, autoPopulate: true);
+						MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals0.item.ItemName, CS_0024_003C_003E8__locals0.item.ItemID, 1m, radListItems.Items.Count - 1, num, this, string_5, null, newItem: true, autoPopulate: true);
 						MemoryLoadedObjects.OptionScreen.courseGroup = method_26(CS_0024_003C_003E8__locals0.item.ItemCourse);
 						MemoryLoadedObjects.OptionScreen.Done();
 						short_4++;
@@ -2501,7 +2473,7 @@ public class frmOrderEntry : frmMasterForm
 					{
 						method_28(CS_0024_003C_003E8__locals0.item.ItemName, decimal_, CS_0024_003C_003E8__locals0.selectedTag, qty, short_4, bool_30: true, int_18, 0, num, bool_31: true, int_17, string_17);
 						MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.OptionScreen();
-						MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals0.item.ItemName, CS_0024_003C_003E8__locals0.item.ItemID, 1m, ((RadListView)radListItems).get_Items().get_Count() - 1, num, this, string_5);
+						MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals0.item.ItemName, CS_0024_003C_003E8__locals0.item.ItemID, 1m, radListItems.Items.Count - 1, num, this, string_5);
 						MemoryLoadedObjects.OptionScreen.courseGroup = method_26(CS_0024_003C_003E8__locals0.item.ItemCourse);
 						DialogResult dialogResult = MemoryLoadedObjects.OptionScreen.ShowDialog(this);
 						if (dialogResult != DialogResult.Cancel)
@@ -2511,14 +2483,14 @@ public class frmOrderEntry : frmMasterForm
 						else if (dialogResult == DialogResult.Cancel)
 						{
 							method_27(1m, CS_0024_003C_003E8__locals0.item.ItemID);
-							((RadListView)radListItems).get_Items().Remove(((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Last());
+							radListItems.Items.Remove(radListItems.Items.Last());
 							if (MemoryLoadedObjects.OrderEntrySecondScreen != null)
 							{
 								try
 								{
-									if (((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Count() > 0)
+									if (MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Count > 0)
 									{
-										((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().Remove(((IEnumerable<ListViewDataItem>)((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items()).Last());
+										MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Remove(MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Last());
 									}
 								}
 								catch
@@ -2552,18 +2524,18 @@ public class frmOrderEntry : frmMasterForm
 			{
 				MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.OptionScreen();
 				MemoryLoadedObjects.OptionScreen.courseGroup = listViewDataItemGroup_0;
-				MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals0.item.ItemName, CS_0024_003C_003E8__locals0.item.ItemID, 1m, ((RadListView)radListItems).get_Items().get_Count() - 1, num, this, string_5);
+				MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals0.item.ItemName, CS_0024_003C_003E8__locals0.item.ItemID, 1m, radListItems.Items.Count - 1, num, this, string_5);
 				if (MemoryLoadedObjects.OptionScreen.ShowDialog(this) == DialogResult.Cancel)
 				{
 					method_27(1m, CS_0024_003C_003E8__locals0.item.ItemID);
-					((RadListView)radListItems).get_Items().Remove(((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Last());
+					radListItems.Items.Remove(radListItems.Items.Last());
 					if (MemoryLoadedObjects.OrderEntrySecondScreen != null)
 					{
 						try
 						{
-							if (((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Count() > 0)
+							if (MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Count > 0)
 							{
-								((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().Remove(((IEnumerable<ListViewDataItem>)((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items()).Last());
+								MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Remove(MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Last());
 							}
 						}
 						catch
@@ -2601,7 +2573,7 @@ public class frmOrderEntry : frmMasterForm
 					{
 						MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.OptionScreen();
 						MemoryLoadedObjects.OptionScreen.courseGroup = listViewDataItemGroup_0;
-						MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals1.itemChildDetails.ItemName, CS_0024_003C_003E8__locals1.itemChildDetails.ItemID, 1m, ((RadListView)radListItems).get_Items().get_Count() - 1, num, this, string_5);
+						MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals1.itemChildDetails.ItemName, CS_0024_003C_003E8__locals1.itemChildDetails.ItemID, 1m, radListItems.Items.Count - 1, num, this, string_5);
 						if (MemoryLoadedObjects.OptionScreen.ShowDialog(this) == DialogResult.Cancel)
 						{
 							method_27(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals2.itemChild.Quantity.Value, CS_0024_003C_003E8__locals1.itemChildDetails.ItemID);
@@ -2635,7 +2607,7 @@ public class frmOrderEntry : frmMasterForm
 								{
 									MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.OptionScreen();
 									MemoryLoadedObjects.OptionScreen.courseGroup = listViewDataItemGroup_0;
-									MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals2.itemInGroup.ItemName, CS_0024_003C_003E8__locals2.itemInGroup.ItemID, 1m, ((RadListView)radListItems).get_Items().get_Count() - 1, num, this, string_5);
+									MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals2.itemInGroup.ItemName, CS_0024_003C_003E8__locals2.itemInGroup.ItemID, 1m, radListItems.Items.Count - 1, num, this, string_5);
 									if (MemoryLoadedObjects.OptionScreen.ShowDialog(this) == DialogResult.Cancel)
 									{
 										method_27(1m, CS_0024_003C_003E8__locals2.itemInGroup.ItemID);
@@ -2650,13 +2622,13 @@ public class frmOrderEntry : frmMasterForm
 			GC.Collect();
 			short_4++;
 		}
-		if (((RadListView)radListItems).get_Items().get_Count() > 0)
+		if (radListItems.Items.Count > 0)
 		{
-			((VirtualizedScrollPanel<ListViewDataItem, BaseListViewVisualItem>)(object)((RadListView)radListItems).get_ListViewElement().get_ViewElement()).get_Scroller().ScrollToItem(((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Last());
+			radListItems.ListViewElement.ViewElement.Scroller.ScrollToItem(radListItems.Items.Last());
 		}
-		if (MemoryLoadedObjects.OrderEntrySecondScreen != null && ((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Count() > 0)
+		if (MemoryLoadedObjects.OrderEntrySecondScreen != null && MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Count > 0)
 		{
-			((VirtualizedScrollPanel<ListViewDataItem, BaseListViewVisualItem>)(object)((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_ListViewElement().get_ViewElement()).get_Scroller().ScrollToItem(((IEnumerable<ListViewDataItem>)((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items()).Last());
+			MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.ListViewElement.ViewElement.Scroller.ScrollToItem(MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Last());
 		}
 		checkCombo(CS_0024_003C_003E8__locals0.selectedTag);
 		RecalculateTaxAndSubtotal();
@@ -2669,54 +2641,54 @@ public class frmOrderEntry : frmMasterForm
 	{
 		if (string_16.ToUpper() == "APPETIZER")
 		{
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_1))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_1))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_1);
+				radListItems.Groups.Add(listViewDataItemGroup_1);
 			}
-			((ListViewDataItem)listViewDataItemGroup_1).set_Visible(true);
+			listViewDataItemGroup_1.Visible = true;
 			return listViewDataItemGroup_1;
 		}
 		if (string_16.ToUpper() == "BEVERAGE")
 		{
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_2))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_2))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_2);
+				radListItems.Groups.Add(listViewDataItemGroup_2);
 			}
-			((ListViewDataItem)listViewDataItemGroup_2).set_Visible(true);
+			listViewDataItemGroup_2.Visible = true;
 			return listViewDataItemGroup_2;
 		}
 		if (string_16.ToUpper() == "DESSERT")
 		{
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_3))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_3))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_3);
+				radListItems.Groups.Add(listViewDataItemGroup_3);
 			}
-			((ListViewDataItem)listViewDataItemGroup_3).set_Visible(true);
+			listViewDataItemGroup_3.Visible = true;
 			return listViewDataItemGroup_3;
 		}
 		if (string_16.ToUpper().Contains("ENTR"))
 		{
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_4))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_4))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_4);
+				radListItems.Groups.Add(listViewDataItemGroup_4);
 			}
-			((ListViewDataItem)listViewDataItemGroup_4).set_Visible(true);
+			listViewDataItemGroup_4.Visible = true;
 			return listViewDataItemGroup_4;
 		}
 		if (string_16.ToUpper() == "SIDE")
 		{
-			if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_5))
+			if (!radListItems.Groups.Contains(listViewDataItemGroup_5))
 			{
-				((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_5);
+				radListItems.Groups.Add(listViewDataItemGroup_5);
 			}
-			((ListViewDataItem)listViewDataItemGroup_5).set_Visible(true);
+			listViewDataItemGroup_5.Visible = true;
 			return listViewDataItemGroup_5;
 		}
-		if (!((RadListView)radListItems).get_Groups().Contains(listViewDataItemGroup_6))
+		if (!radListItems.Groups.Contains(listViewDataItemGroup_6))
 		{
-			((RadListView)radListItems).get_Groups().Add(listViewDataItemGroup_6);
+			radListItems.Groups.Add(listViewDataItemGroup_6);
 		}
-		((ListViewDataItem)listViewDataItemGroup_6).set_Visible(true);
+		listViewDataItemGroup_6.Visible = true;
 		return listViewDataItemGroup_6;
 	}
 
@@ -2801,7 +2773,7 @@ public class frmOrderEntry : frmMasterForm
 					select i).ToList().Count() > 0)
 				{
 					MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.OptionScreen();
-					MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals1.comboItem.ItemName, CS_0024_003C_003E8__locals1.comboItem.ItemID, 1m, ((RadListView)radListItems).get_Items().get_Count() - 1, num, this, string_5);
+					MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals1.comboItem.ItemName, CS_0024_003C_003E8__locals1.comboItem.ItemID, 1m, radListItems.Items.Count - 1, num, this, string_5);
 					if (MemoryLoadedObjects.OptionScreen.ShowDialog(this) == DialogResult.Cancel)
 					{
 						method_27(1m, CS_0024_003C_003E8__locals1.comboItem.ItemID);
@@ -2818,11 +2790,11 @@ public class frmOrderEntry : frmMasterForm
 							CS_0024_003C_003E8__locals2.subItem = enumerator3.Current;
 							_003C_003Ec__DisplayClass154_6 CS_0024_003C_003E8__locals3 = new _003C_003Ec__DisplayClass154_6();
 							decimal? num3 = CS_0024_003C_003E8__locals2.subItem.Quantity;
-							List<ListViewDataItem> list2 = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem x) => x.get_SubItems().get_Item(4).ToString() == CS_0024_003C_003E8__locals2.subItem.ItemID.ToString() && Convert.ToBoolean(x.get_SubItems().get_Item(12).ToString())).ToList();
+							List<ListViewDataItem> list2 = radListItems.Items.Where((ListViewDataItem x) => x.SubItems[4].ToString() == CS_0024_003C_003E8__locals2.subItem.ItemID.ToString() && Convert.ToBoolean(x.SubItems[12].ToString())).ToList();
 							CS_0024_003C_003E8__locals3.mainGroupItem = list2.FirstOrDefault();
-							if (CS_0024_003C_003E8__locals3.mainGroupItem != null && CS_0024_003C_003E8__locals3.mainGroupItem.get_SubItems().get_Item(5).ToString() != "0")
+							if (CS_0024_003C_003E8__locals3.mainGroupItem != null && CS_0024_003C_003E8__locals3.mainGroupItem.SubItems[5].ToString() != "0")
 							{
-								((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem x) => x.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals3.mainGroupItem.get_SubItems().get_Item(5).ToString()).ToList();
+								radListItems.Items.Where((ListViewDataItem x) => x.SubItems[5].ToString() == CS_0024_003C_003E8__locals3.mainGroupItem.SubItems[5].ToString()).ToList();
 							}
 							using List<ListViewDataItem>.Enumerator enumerator4 = list2.GetEnumerator();
 							while (enumerator4.MoveNext())
@@ -2831,11 +2803,11 @@ public class frmOrderEntry : frmMasterForm
 								CS_0024_003C_003E8__locals4.lvMain = enumerator4.Current;
 								List<ListViewDataItem> list3 = new List<ListViewDataItem>();
 								list3.Add(CS_0024_003C_003E8__locals4.lvMain);
-								if (CS_0024_003C_003E8__locals4.lvMain != null && CS_0024_003C_003E8__locals4.lvMain.get_SubItems().get_Item(5).ToString() != "0")
+								if (CS_0024_003C_003E8__locals4.lvMain != null && CS_0024_003C_003E8__locals4.lvMain.SubItems[5].ToString() != "0")
 								{
-									list3 = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem x) => x.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals4.lvMain.get_SubItems().get_Item(5).ToString()).ToList();
+									list3 = radListItems.Items.Where((ListViewDataItem x) => x.SubItems[5].ToString() == CS_0024_003C_003E8__locals4.lvMain.SubItems[5].ToString()).ToList();
 								}
-								decimal num4 = Convert.ToDecimal(CS_0024_003C_003E8__locals4.lvMain.get_Item(0).ToString());
+								decimal num4 = Convert.ToDecimal(CS_0024_003C_003E8__locals4.lvMain[0].ToString());
 								decimal? num5 = num3;
 								if (!((num5.GetValueOrDefault() > default(decimal)) & num5.HasValue))
 								{
@@ -2847,8 +2819,8 @@ public class frmOrderEntry : frmMasterForm
 								{
 									foreach (ListViewDataItem item4 in list3)
 									{
-										item4.set_Item(0, (object)((decimal?)num4 - num3).ToString().Replace(".00", string.Empty));
-										item4.set_Item(3, (object)(Convert.ToDecimal(item4.get_Item(0).ToString(), Thread.CurrentThread.CurrentCulture) * Convert.ToDecimal(item4.get_Item(2).ToString(), Thread.CurrentThread.CurrentCulture)).ToString("0.00", Thread.CurrentThread.CurrentCulture));
+										item4[0] = ((decimal?)num4 - num3).ToString().Replace(".00", string.Empty);
+										item4[3] = (Convert.ToDecimal(item4[0].ToString(), Thread.CurrentThread.CurrentCulture) * Convert.ToDecimal(item4[2].ToString(), Thread.CurrentThread.CurrentCulture)).ToString("0.00", Thread.CurrentThread.CurrentCulture);
 									}
 									num3 = default(decimal);
 									continue;
@@ -2856,11 +2828,11 @@ public class frmOrderEntry : frmMasterForm
 								num3 -= (decimal?)num4;
 								foreach (ListViewDataItem item5 in list3)
 								{
-									if (MemoryLoadedObjects.OrderEntrySecondScreen != null && ((RadListView)radListItems).get_Items().get_Count() > 0)
+									if (MemoryLoadedObjects.OrderEntrySecondScreen != null && radListItems.Items.Count > 0)
 									{
-										((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().RemoveAt(((RadListView)radListItems).get_Items().IndexOf(item5));
+										MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.RemoveAt(radListItems.Items.IndexOf(item5));
 									}
-									((RadListView)radListItems).get_Items().Remove(item5);
+									radListItems.Items.Remove(item5);
 								}
 							}
 						}
@@ -2918,21 +2890,21 @@ public class frmOrderEntry : frmMasterForm
 						_003C_003Ec__DisplayClass154_2.itemChild = enumerator6.Current;
 						_003C_003Ec__DisplayClass154_11 CS_0024_003C_003E8__locals8 = new _003C_003Ec__DisplayClass154_11();
 						CS_0024_003C_003E8__locals8.CS_0024_003C_003E8__locals4 = _003C_003Ec__DisplayClass154_2;
-						List<ListViewDataItem> list4 = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem x) => x.get_SubItems().get_Item(4).ToString() == CS_0024_003C_003E8__locals8.CS_0024_003C_003E8__locals4.itemChild.ToString() && Convert.ToBoolean(x.get_SubItems().get_Item(12).ToString())).ToList();
+						List<ListViewDataItem> list4 = radListItems.Items.Where((ListViewDataItem x) => x.SubItems[4].ToString() == CS_0024_003C_003E8__locals8.CS_0024_003C_003E8__locals4.itemChild.ToString() && Convert.ToBoolean(x.SubItems[12].ToString())).ToList();
 						CS_0024_003C_003E8__locals8.mainGroupItem = list4.FirstOrDefault();
 						List<ListViewDataItem> list5 = new List<ListViewDataItem>();
-						if (CS_0024_003C_003E8__locals8.mainGroupItem != null && CS_0024_003C_003E8__locals8.mainGroupItem.get_SubItems().get_Item(5).ToString() != "0")
+						if (CS_0024_003C_003E8__locals8.mainGroupItem != null && CS_0024_003C_003E8__locals8.mainGroupItem.SubItems[5].ToString() != "0")
 						{
-							list4 = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem x) => x.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals8.mainGroupItem.get_SubItems().get_Item(5).ToString()).ToList();
-							list5 = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem x) => x.get_SubItems().get_Item(4).ToString() != CS_0024_003C_003E8__locals8.CS_0024_003C_003E8__locals4.itemChild.ToString() && x.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals8.mainGroupItem.get_SubItems().get_Item(5).ToString()).ToList();
+							list4 = radListItems.Items.Where((ListViewDataItem x) => x.SubItems[5].ToString() == CS_0024_003C_003E8__locals8.mainGroupItem.SubItems[5].ToString()).ToList();
+							list5 = radListItems.Items.Where((ListViewDataItem x) => x.SubItems[4].ToString() != CS_0024_003C_003E8__locals8.CS_0024_003C_003E8__locals4.itemChild.ToString() && x.SubItems[5].ToString() == CS_0024_003C_003E8__locals8.mainGroupItem.SubItems[5].ToString()).ToList();
 						}
 						foreach (ListViewDataItem item6 in list4)
 						{
-							if (MemoryLoadedObjects.OrderEntrySecondScreen != null && ((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Count() > 0)
+							if (MemoryLoadedObjects.OrderEntrySecondScreen != null && MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Count > 0)
 							{
-								((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().RemoveAt(((RadListView)radListItems).get_Items().IndexOf(item6));
+								MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.RemoveAt(radListItems.Items.IndexOf(item6));
 							}
-							((RadListView)radListItems).get_Items().Remove(item6);
+							radListItems.Items.Remove(item6);
 						}
 						CS_0024_003C_003E8__locals8.itemInGroup = MemoryLoadedData.all_active_items.Where((Item x) => x.ItemID == CS_0024_003C_003E8__locals8.CS_0024_003C_003E8__locals4.itemChild).FirstOrDefault();
 						if (CS_0024_003C_003E8__locals8.itemInGroup == null)
@@ -2945,10 +2917,10 @@ public class frmOrderEntry : frmMasterForm
 						foreach (ListViewDataItem item7 in list5)
 						{
 							_003C_003Ec__DisplayClass154_12 CS_0024_003C_003E8__locals9 = new _003C_003Ec__DisplayClass154_12();
-							CS_0024_003C_003E8__locals9.itemOptionChildId = Convert.ToInt32(item7.get_SubItems().get_Item(4).ToString());
+							CS_0024_003C_003E8__locals9.itemOptionChildId = Convert.ToInt32(item7.SubItems[4].ToString());
 							Item item3 = MemoryLoadedData.all_active_items.Where((Item x) => x.ItemID == CS_0024_003C_003E8__locals9.itemOptionChildId).FirstOrDefault();
 							int int_3 = orderHelper_0.CheckAndSelectBatchId(item3);
-							method_28("   " + item7.get_Item(1).ToString().ToUpper(), 0m, CS_0024_003C_003E8__locals9.itemOptionChildId, 1m, short_4, bool_30: false, int_3, 0, num);
+							method_28("   " + item7[1].ToString().ToUpper(), 0m, CS_0024_003C_003E8__locals9.itemOptionChildId, 1m, short_4, bool_30: false, int_3, 0, num);
 						}
 						list_11.Remove(CS_0024_003C_003E8__locals8.itemInGroup.ItemID);
 						if (!list_11.Contains(CS_0024_003C_003E8__locals8.itemInGroup.ItemID))
@@ -3019,8 +2991,6 @@ public class frmOrderEntry : frmMasterForm
 
 	private void method_28(string string_16, decimal decimal_7, int int_16, decimal qty = 1m, int int_17 = 0, bool bool_30 = true, int int_18 = 0, int int_19 = 0, int int_20 = 0, bool bool_31 = true, int int_21 = 0, string string_17 = "", int int_22 = 0)
 	{
-		//IL_0590: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0597: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass157_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass157_0();
 		CS_0024_003C_003E8__locals0.itemID = int_16;
 		GClass6 gClass = new GClass6();
@@ -3064,7 +3034,7 @@ public class frmOrderEntry : frmMasterForm
 		{
 			orderOnHoldTime = (int)(dateFullfilment.Value - DateTime.Now).TotalMinutes;
 		}
-		string[] array = new string[23]
+		string[] values = new string[23]
 		{
 			qty.ToString("0.####", Thread.CurrentThread.CurrentCulture),
 			string_16,
@@ -3090,19 +3060,19 @@ public class frmOrderEntry : frmMasterForm
 			false.ToString(),
 			""
 		};
-		ListViewDataItem val = new ListViewDataItem("", array);
+		ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
 		if (string_16.ToUpper() != "DELIVERY FEE")
 		{
 			Item item = MemoryLoadedData.all_active_items.Where((Item x) => x.ItemID == CS_0024_003C_003E8__locals0.itemID).FirstOrDefault();
-			val.set_Group(listViewDataItemGroup_0 = method_26((item != null) ? item.ItemCourse : ItemCourses.Uncategorized));
+			listViewDataItem.Group = (listViewDataItemGroup_0 = method_26((item != null) ? item.ItemCourse : ItemCourses.Uncategorized));
 		}
 		else
 		{
-			val.set_Group(listViewDataItemGroup_0 = method_26(ItemCourses.Uncategorized));
+			listViewDataItem.Group = (listViewDataItemGroup_0 = method_26(ItemCourses.Uncategorized));
 		}
-		val.set_Font(((Control)(object)radListItems).Font);
-		FormHelper.ChangeOrderEntryLVCellByIdentifier((RadListView)(object)radListItems, val, ((Control)(object)radListItems).Font.Size, text);
-		((RadListView)radListItems).get_Items().Add(val);
+		listViewDataItem.Font = radListItems.Font;
+		FormHelper.ChangeOrderEntryLVCellByIdentifier(radListItems, listViewDataItem, radListItems.Font.Size, text);
+		radListItems.Items.Add(listViewDataItem);
 		CloneListviewToSecondScreen();
 	}
 
@@ -3143,65 +3113,64 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnRemove_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count != 0)
+		if (radListItems.SelectedItems.Count != 0)
 		{
 			if (!string.IsNullOrEmpty(string_3) && AuthMethods.EmployeeAuthenticateControl(this, "btnRemove") == null)
 			{
 				return;
 			}
-			decimal discountFromDiscountDescription = OrderHelper.GetDiscountFromDiscountDescription(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(15).ToString(), DiscountTypes.Item);
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-				.ToUpper() == "DELIVERY FEE")
+			decimal discountFromDiscountDescription = OrderHelper.GetDiscountFromDiscountDescription(radListItems.SelectedItems[0].SubItems[15].ToString(), DiscountTypes.Item);
+			if (radListItems.SelectedItems[0].SubItems[1].ToString().ToUpper() == "DELIVERY FEE")
 			{
-				if (new frmMessageBox("This cannot be reversed.  Are you sure you want to remove the " + ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString() + "?", "Are You Sure?", CustomMessageBoxButtons.YesNo).ShowDialog() == DialogResult.No)
+				if (new frmMessageBox("This cannot be reversed.  Are you sure you want to remove the " + radListItems.SelectedItems[0].SubItems[1].ToString() + "?", "Are You Sure?", CustomMessageBoxButtons.YesNo).ShowDialog() == DialogResult.No)
 				{
 					return;
 				}
 				bool_22 = true;
 				isSaved = false;
 			}
-			ListViewDataItem selectedItem = ((RadListView)radListItems).get_SelectedItem();
-			ListViewDataItemGroup group = selectedItem.get_Group();
+			ListViewDataItem selectedItem = radListItems.SelectedItem;
+			ListViewDataItemGroup group = selectedItem.Group;
 			bool flag = false;
-			ListViewDataItem val;
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() != "0")
+			ListViewDataItem listViewDataItem;
+			if (radListItems.SelectedItems[0].SubItems[5].ToString() != "0")
 			{
-				((Control)(object)radListItems).Focus();
-				((RadListView)radListItems).set_MultiSelect(true);
-				string text = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString();
-				((RadListView)radListItems).get_SelectedItems().Clear();
-				foreach (ListViewDataItem item in ((RadListView)radListItems).get_Items())
+				radListItems.Focus();
+				radListItems.MultiSelect = true;
+				string text = radListItems.SelectedItems[0].SubItems[5].ToString();
+				radListItems.SelectedItems.Clear();
+				foreach (ListViewDataItem item in radListItems.Items)
 				{
-					if (item.get_SubItems().get_Item(5).ToString() == text)
+					if (item.SubItems[5].ToString() == text)
 					{
-						((RadListView)radListItems).Select((ListViewDataItem[])(object)new ListViewDataItem[1] { item });
+						radListItems.Select(new ListViewDataItem[1] { item });
 					}
 				}
-				val = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0];
+				listViewDataItem = radListItems.SelectedItems[0];
 			}
 			else
 			{
 				_003C_003Ec__DisplayClass159_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass159_0();
-				((RadListView)radListItems).set_MultiSelect(false);
-				CS_0024_003C_003E8__locals0.comboID = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString();
-				val = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals0.comboID.ToString() && !a.get_Item(1).ToString().Contains("ADD:") && !a.get_Item(1).ToString().Contains("OPT: ")).FirstOrDefault();
+				radListItems.MultiSelect = false;
+				CS_0024_003C_003E8__locals0.comboID = radListItems.SelectedItems[0].SubItems[5].ToString();
+				listViewDataItem = radListItems.Items.Where((ListViewDataItem a) => a.SubItems[5].ToString() == CS_0024_003C_003E8__locals0.comboID.ToString() && !a[1].ToString().Contains("ADD:") && !a[1].ToString().Contains("OPT: ")).FirstOrDefault();
 				if (CS_0024_003C_003E8__locals0.comboID.ToString() == "0")
 				{
 					flag = true;
 				}
 			}
 			int num = 0;
-			foreach (ListViewDataItem item2 in ((RadListView)radListItems).get_Items())
+			foreach (ListViewDataItem item2 in radListItems.Items)
 			{
-				if (item2.get_Font().Strikeout)
+				if (item2.Font.Strikeout)
 				{
 					num++;
 				}
 			}
-			int num2 = ((RadListView)radListItems).get_Items().IndexOf(val);
-			int num3 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count;
-			int num4 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count - 1;
-			if (val != null && val.get_SubItems().get_Item(4).ToString() == selectedItem.get_SubItems().get_Item(4).ToString())
+			int num2 = radListItems.Items.IndexOf(listViewDataItem);
+			int num3 = radListItems.SelectedItems.Count;
+			int num4 = radListItems.SelectedItems.Count - 1;
+			if (listViewDataItem != null && listViewDataItem.SubItems[4].ToString() == selectedItem.SubItems[4].ToString())
 			{
 				flag = true;
 			}
@@ -3211,9 +3180,9 @@ public class frmOrderEntry : frmMasterForm
 				if (num5 >= 0)
 				{
 					DataManager dataManager = new DataManager();
-					int itemID = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[num5].get_SubItems().get_Item(4).ToString());
+					int itemID = Convert.ToInt32(radListItems.SelectedItems[num5].SubItems[4].ToString());
 					Item oneItem = dataManager.getOneItem(itemID);
-					decimal num6 = MathHelper.FractionToDecimal(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[num5].get_Item(0).ToString());
+					decimal num6 = MathHelper.FractionToDecimal(radListItems.SelectedItems[num5][0].ToString());
 					method_27(num6, oneItem.ItemID);
 					if (!oneItem.OnSale)
 					{
@@ -3224,46 +3193,45 @@ public class frmOrderEntry : frmMasterForm
 						_ = oneItem.ItemSalePrice.Value;
 					}
 					bool flag2 = false;
-					if (!string.IsNullOrEmpty(string_3) && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[num5].get_SubItems().get_Count() >= 7)
+					if (!string.IsNullOrEmpty(string_3) && radListItems.SelectedItems[num5].SubItems.Count >= 7)
 					{
-						if (!string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[num5].get_SubItems().get_Item(6).ToString()))
+						if (!string.IsNullOrEmpty(radListItems.SelectedItems[num5].SubItems[6].ToString()))
 						{
-							if (num6 < 1m && !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[num5].get_SubItems().get_Item(1).ToString()
-								.Contains("   "))
+							if (num6 < 1m && !radListItems.SelectedItems[num5].SubItems[1].ToString().Contains("   "))
 							{
 								new NotificationLabel(this, "You cannot removed a shared item. ", NotificationTypes.Warning).Show();
 								btnRemove.Enabled = true;
 								break;
 							}
-							if (num + num3 == ((RadListView)radListItems).get_Items().get_Count() && !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font().Strikeout)
+							if (num + num3 == radListItems.Items.Count && !radListItems.SelectedItems[0].Font.Strikeout)
 							{
 								new NotificationLabel(this, Resources.If_you_are_cancelling_an_entir, NotificationTypes.Warning).Show();
 								btnRemove.Enabled = true;
 								break;
 							}
-							foreach (ListViewDataItem item3 in (ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())
+							foreach (ListViewDataItem selectedItem2 in radListItems.SelectedItems)
 							{
-								if (!item3.get_Font().Strikeout)
+								if (!selectedItem2.Font.Strikeout)
 								{
-									item3.set_Font(new Font(((Control)(object)radListItems).Font, ((Control)(object)radListItems).Font.Style | FontStyle.Strikeout));
+									selectedItem2.Font = new Font(radListItems.Font, radListItems.Font.Style | FontStyle.Strikeout);
 								}
-								else if (val == item3)
+								else if (listViewDataItem == selectedItem2)
 								{
-									item3.set_Font(new Font(((Control)(object)radListItems).Font, ((Control)(object)radListItems).Font.Style | FontStyle.Bold));
+									selectedItem2.Font = new Font(radListItems.Font, radListItems.Font.Style | FontStyle.Bold);
 								}
 								else
 								{
-									item3.set_Font(new Font(((Control)(object)radListItems).Font, ((Control)(object)radListItems).Font.Style | FontStyle.Regular));
+									selectedItem2.Font = new Font(radListItems.Font, radListItems.Font.Style | FontStyle.Regular);
 								}
 								num5--;
 								num3--;
 							}
-							btnRemove.Text = ((((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font() == null || !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font().Strikeout) ? "REMOVE ITEM" : "UNREMOVE ITEM");
+							btnRemove.Text = ((radListItems.SelectedItems[0].Font == null || !radListItems.SelectedItems[0].Font.Strikeout) ? "REMOVE ITEM" : "UNREMOVE ITEM");
 							CloneListviewToSecondScreen();
 						}
 						else
 						{
-							if (num + num3 == ((RadListView)radListItems).get_Items().get_Count() && num > 0)
+							if (num + num3 == radListItems.Items.Count && num > 0)
 							{
 								new NotificationLabel(this, Resources.If_you_are_cancelling_an_entir, NotificationTypes.Warning).Show();
 								btnRemove.Enabled = true;
@@ -3280,22 +3248,22 @@ public class frmOrderEntry : frmMasterForm
 					{
 						if (flag)
 						{
-							int selectedIndex = ((RadListView)radListItems).get_SelectedIndex();
-							if (MemoryLoadedObjects.OrderEntrySecondScreen != null && ((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Count() > 0)
+							int selectedIndex = radListItems.SelectedIndex;
+							if (MemoryLoadedObjects.OrderEntrySecondScreen != null && MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Count > 0)
 							{
-								((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().RemoveAt(selectedIndex);
+								MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.RemoveAt(selectedIndex);
 							}
-							((RadListView)radListItems).get_Items().RemoveAt(selectedIndex);
+							radListItems.Items.RemoveAt(selectedIndex);
 							num3--;
 						}
 						if (num5 > -1)
 						{
-							ListViewDataItem[] array = (ListViewDataItem[])(object)new ListViewDataItem[num5];
+							ListViewDataItem[] array = new ListViewDataItem[num5];
 							for (int i = num2; i < num2 + num5; i++)
 							{
-								array[i - num2] = ((RadListView)radListItems).get_Items().get_Item(i);
+								array[i - num2] = radListItems.Items[i];
 							}
-							((RadListView)radListItems).Select(array);
+							radListItems.Select(array);
 						}
 					}
 					num5--;
@@ -3315,7 +3283,7 @@ public class frmOrderEntry : frmMasterForm
 					decimal_1 = default(decimal);
 					new NotificationLabel(this, "Discount removed. The subtotal is less than the discount.", NotificationTypes.Warning).Show();
 				}
-				if (((RadListView)radListItems).get_Items().get_Count() <= 0 && !string_5.Equals(OrderTypes.PickUp) && !string_5.Equals(OrderTypes.Delivery) && !string_5.Equals(OrderTypes.ToGo))
+				if (radListItems.Items.Count <= 0 && !string_5.Equals(OrderTypes.PickUp) && !string_5.Equals(OrderTypes.Delivery) && !string_5.Equals(OrderTypes.ToGo))
 				{
 					btnClear.Text = Resources.CLEAR_TABLE;
 					btnClear.Image = picTrash.Image;
@@ -3338,14 +3306,14 @@ public class frmOrderEntry : frmMasterForm
 					}
 					if (string_5.Equals(OrderTypes.PickUp) || string_5.Equals(OrderTypes.Delivery))
 					{
-						btnClear.Enabled = ((RadListView)radListItems).get_Items().get_Count() > 0;
+						btnClear.Enabled = radListItems.Items.Count > 0;
 					}
 				}
-				if (group != null && ((IEnumerable<ListViewDataItem>)group.get_Items()).Count() == 0)
+				if (group != null && group.Items.Count() == 0)
 				{
-					((ListViewDataItem)group).set_Visible(false);
+					group.Visible = false;
 				}
-				if (((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => !a.get_Font().Strikeout).Count() == 1 && ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(4).ToString() == "-999").Any())
+				if (radListItems.Items.Where((ListViewDataItem a) => !a.Font.Strikeout).Count() == 1 && radListItems.Items.Where((ListViewDataItem a) => a.SubItems[4].ToString() == "-999").Any())
 				{
 					btnPay.Enabled = false;
 				}
@@ -3378,8 +3346,8 @@ public class frmOrderEntry : frmMasterForm
 				{
 					text = text.ToUpper();
 				}
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(1, (object)text);
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(4, (object)item.ItemID.ToString());
+				radListItems.SelectedItems[0][1] = text;
+				radListItems.SelectedItems[0][4] = item.ItemID.ToString();
 				CloneListviewToSecondScreen();
 			}
 		}
@@ -3394,15 +3362,15 @@ public class frmOrderEntry : frmMasterForm
 		decimal_0 = default(decimal);
 		DataManager dataManager = new DataManager();
 		List<Item> list = new List<Item>();
-		foreach (ListViewDataItem item3 in ((RadListView)radListItems).get_Items())
+		foreach (ListViewDataItem item3 in radListItems.Items)
 		{
-			if (!item3.get_Font().Strikeout)
+			if (!item3.Font.Strikeout)
 			{
 				_003C_003Ec__DisplayClass163_0 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass163_0();
-				decimal num2 = MathHelper.FractionToDecimal((string.IsNullOrEmpty(item3.get_Item(0).ToString()) ? "1" : item3.get_Item(0).ToString()).Replace(",", "."));
-				decimal num3 = Convert.ToDecimal(string.IsNullOrEmpty(item3.get_Item(2).ToString()) ? "0.00" : item3.get_Item(2).ToString(), Thread.CurrentThread.CurrentCulture);
-				CS_0024_003C_003E8__locals1.selectedTag = Convert.ToInt32(item3.get_SubItems().get_Item(4).ToString());
-				decimal num4 = ((num2 == 0m) ? 0m : (OrderHelper.GetDiscountFromDiscountDescription(item3.get_SubItems().get_Item(15).ToString(), DiscountTypes.Item) / num2));
+				decimal num2 = MathHelper.FractionToDecimal((string.IsNullOrEmpty(item3[0].ToString()) ? "1" : item3[0].ToString()).Replace(",", "."));
+				decimal num3 = Convert.ToDecimal(string.IsNullOrEmpty(item3[2].ToString()) ? "0.00" : item3[2].ToString(), Thread.CurrentThread.CurrentCulture);
+				CS_0024_003C_003E8__locals1.selectedTag = Convert.ToInt32(item3.SubItems[4].ToString());
+				decimal num4 = ((num2 == 0m) ? 0m : (OrderHelper.GetDiscountFromDiscountDescription(item3.SubItems[15].ToString(), DiscountTypes.Item) / num2));
 				Item item2 = ((CS_0024_003C_003E8__locals1.selectedTag == -999) ? dataManager.getDeliveryItem() : MemoryLoadedData.all_items.Where((Item x) => x.ItemID == CS_0024_003C_003E8__locals1.selectedTag).FirstOrDefault());
 				if (item2 != null)
 				{
@@ -3416,8 +3384,8 @@ public class frmOrderEntry : frmMasterForm
 						TaxRule = item2.TaxRule,
 						TaxRuleID = item2.TaxRuleID,
 						ItemTypeID = item2.ItemTypeID,
-						Barcode = item3.get_SubItems().get_Item(15).ToString(),
-						ItemCost = ((item3.get_SubItems().get_Item(8).ToString() == "-1") ? item2.ItemPrice : Convert.ToDecimal(item3.get_SubItems().get_Item(8).ToString())),
+						Barcode = item3.SubItems[15].ToString(),
+						ItemCost = ((item3.SubItems[8].ToString() == "-1") ? item2.ItemPrice : Convert.ToDecimal(item3.SubItems[8].ToString())),
 						Active = true,
 						TaxesIncluded = item2.TaxesIncluded
 					});
@@ -3471,7 +3439,7 @@ public class frmOrderEntry : frmMasterForm
 			MemoryLoadedObjects.OrderEntrySecondScreen.txtSubTotal.Text = decimal_0.ToString("0.00", Thread.CurrentThread.CurrentCulture);
 			MemoryLoadedObjects.OrderEntrySecondScreen.txtTotal.Text = (decimal_0 + num - decimal_1).ToString("0.00", Thread.CurrentThread.CurrentCulture);
 		}
-		if ((method_35() || !isSaved) && ((RadListView)radListItems).get_Items().get_Count() > 0)
+		if ((method_35() || !isSaved) && radListItems.Items.Count > 0)
 		{
 			isSaved = false;
 			Button button = btnSaveOrder;
@@ -3492,34 +3460,34 @@ public class frmOrderEntry : frmMasterForm
 		if (string_5 == OrderTypes.Delivery && decimal_5 > 0m && decimal_6 > 0m && !bool_27 && !bool_22)
 		{
 			bool_27 = true;
-			ListViewDataItem val = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(4).ToString() == "-999").FirstOrDefault();
+			ListViewDataItem listViewDataItem = radListItems.Items.Where((ListViewDataItem a) => a.SubItems[4].ToString() == "-999").FirstOrDefault();
 			decimal num5 = list.Where((Item a) => a.ItemID != -999).Sum((Item item) => Math.Round(item.InventoryCount * item.ItemPrice, 2, MidpointRounding.AwayFromZero));
-			if (val != null && num5 > decimal_6)
+			if (listViewDataItem != null && num5 > decimal_6)
 			{
-				if (!string.IsNullOrEmpty(val.get_SubItems().get_Item(6).ToString()))
+				if (!string.IsNullOrEmpty(listViewDataItem.SubItems[6].ToString()))
 				{
-					val.set_Font(new Font(val.get_Font().FontFamily, val.get_Font().Size, FontStyle.Strikeout));
+					listViewDataItem.Font = new Font(listViewDataItem.Font.FontFamily, listViewDataItem.Font.Size, FontStyle.Strikeout);
 				}
 				else
 				{
-					ListViewDataItemGroup group = val.get_Group();
-					((RadListView)radListItems).get_Items().Remove(val);
-					if (group != null && ((IEnumerable<ListViewDataItem>)group.get_Items()).Count() == 0)
+					ListViewDataItemGroup group = listViewDataItem.Group;
+					radListItems.Items.Remove(listViewDataItem);
+					if (group != null && group.Items.Count() == 0)
 					{
-						((ListViewDataItem)group).set_Visible(false);
+						group.Visible = false;
 					}
 				}
 				RecalculateTaxAndSubtotal();
 			}
 			else if (num5 <= decimal_6)
 			{
-				if (val == null)
+				if (listViewDataItem == null)
 				{
 					method_46();
 				}
 				else
 				{
-					val.set_Font(new Font(val.get_Font().FontFamily, val.get_Font().Size, FontStyle.Regular));
+					listViewDataItem.Font = new Font(listViewDataItem.Font.FontFamily, listViewDataItem.Font.Size, FontStyle.Regular);
 				}
 				RecalculateTaxAndSubtotal();
 			}
@@ -3534,7 +3502,7 @@ public class frmOrderEntry : frmMasterForm
 		}
 		if (SettingsHelper.GetSettingValueByKey("print_chit_cashout") == "ON" && SettingsHelper.GetSettingValueByKey("restaurant_mode") == "Quick Service")
 		{
-			if (!(string_5 == OrderTypes.DineIn) && !(string_5 == OrderTypes.ToGo) && ((RadListView)radListItems).get_Items().get_Count() != 0)
+			if (!(string_5 == OrderTypes.DineIn) && !(string_5 == OrderTypes.ToGo) && radListItems.Items.Count != 0)
 			{
 				if (string_5 == OrderTypes.Delivery || string_5 == OrderTypes.PickUp || string_5 == OrderTypes.PickUpOnline || string_5 == OrderTypes.DeliveryOnline || string_5 == OrderTypes.PickUpCurbsideOnline || string_5 == OrderTypes.DineInOnline)
 				{
@@ -3733,14 +3701,14 @@ public class frmOrderEntry : frmMasterForm
 			dataManager_0 = new DataManager();
 			if (dataManager_0.GetOrder(string_3).Count() == 0)
 			{
-				foreach (ListViewDataItem item in ((RadListView)radListItems).get_Items())
+				foreach (ListViewDataItem item in radListItems.Items)
 				{
-					int itemID = Convert.ToInt32(item.get_Item(4).ToString());
+					int itemID = Convert.ToInt32(item[4].ToString());
 					Item oneItem = dataManager_0.getOneItem(itemID);
-					string value = (string.IsNullOrEmpty(item.get_Item(2).ToString()) ? "0.00" : item.get_Item(2).ToString());
+					string value = (string.IsNullOrEmpty(item[2].ToString()) ? "0.00" : item[2].ToString());
 					if (oneItem != null && oneItem.ItemPrice != Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture))
 					{
-						item.set_Item(8, (object)Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture).ToString());
+						item[8] = Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture).ToString();
 					}
 				}
 				method_41(null, 0);
@@ -3775,14 +3743,14 @@ public class frmOrderEntry : frmMasterForm
 		lblSubTotal.Text = "0.00";
 		lblTotal.Text = "0.00";
 		list_2 = dataManager_0.GetTax();
-		((RadListView)radListItems).get_Items().Clear();
+		radListItems.Items.Clear();
 		if (MemoryLoadedObjects.OrderEntrySecondScreen != null)
 		{
 			MemoryLoadedObjects.OrderEntrySecondScreen.txtDiscount.Text = 0.ToString("0.00", Thread.CurrentThread.CurrentCulture);
 			MemoryLoadedObjects.OrderEntrySecondScreen.txtSubTotal.Text = 0.ToString("0.00", Thread.CurrentThread.CurrentCulture);
 			MemoryLoadedObjects.OrderEntrySecondScreen.txtTotalTax.Text = 0.ToString("0.00", Thread.CurrentThread.CurrentCulture);
 			MemoryLoadedObjects.OrderEntrySecondScreen.txtTotal.Text = 0.ToString("0.00", Thread.CurrentThread.CurrentCulture);
-			((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().Clear();
+			MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Clear();
 		}
 		decimal_0 = default(decimal);
 		decimal_4 = default(decimal);
@@ -3795,9 +3763,9 @@ public class frmOrderEntry : frmMasterForm
 
 	private bool method_35()
 	{
-		foreach (ListViewDataItem item in ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_Item(1).ToString() != ConstantItems.Delivery_Fee))
+		foreach (ListViewDataItem item in radListItems.Items.Where((ListViewDataItem a) => a[1].ToString() != ConstantItems.Delivery_Fee))
 		{
-			if (item.get_Font().Strikeout || string.IsNullOrEmpty(item.get_SubItems().get_Item(6).ToString()))
+			if (item.Font.Strikeout || string.IsNullOrEmpty(item.SubItems[6].ToString()))
 			{
 				return true;
 			}
@@ -3957,7 +3925,7 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnChangePrice_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count != 0)
+		if (radListItems.SelectedItems.Count != 0)
 		{
 			if ((sender as Control).Name == btnChangePrice.Name)
 			{
@@ -3989,7 +3957,7 @@ public class frmOrderEntry : frmMasterForm
 
 	private void method_39(string string_16)
 	{
-		int itemID = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(4).ToString());
+		int itemID = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[4].ToString());
 		Item oneItem = dataManager_0.getOneItem(itemID);
 		if (string_16 == "override")
 		{
@@ -3998,15 +3966,15 @@ public class frmOrderEntry : frmMasterForm
 			MemoryLoadedObjects.Numpad.LoadFormData((string_16 == "override") ? "Change Price" : "Item Discount", 2, 10, "", "", (string_16 == "override") ? true : false);
 			if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK && string_16 == "override")
 			{
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(2, (object)$"{MemoryLoadedObjects.Numpad.numberEntered:0.00}");
-				string text = (string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString()) ? "1" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString());
-				string value = (string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString()) ? "0.00" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString());
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(3, (object)(MathHelper.FractionToDecimal(text.Replace(",", ".")) * Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture)).ToString("0.00", Thread.CurrentThread.CurrentCulture));
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(8, (object)$"{MemoryLoadedObjects.Numpad.numberEntered:0.00}");
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(15, (object)OrderHelper.UpdateDiscountFromDiscountDescription(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(15).ToString(), DiscountTypes.Item, 0m));
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(15, (object)OrderHelper.UpdateDiscountFromDiscountDescription(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(15).ToString(), DiscountTypes.Promo, 0m));
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(18, (object)"-1");
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(20, (object)MemoryLoadedObjects.Numpad.numberEntered.ToString());
+				radListItems.SelectedItems[0][2] = $"{MemoryLoadedObjects.Numpad.numberEntered:0.00}";
+				string text = (string.IsNullOrEmpty(radListItems.SelectedItems[0][0].ToString()) ? "1" : radListItems.SelectedItems[0][0].ToString());
+				string value = (string.IsNullOrEmpty(radListItems.SelectedItems[0][2].ToString()) ? "0.00" : radListItems.SelectedItems[0][2].ToString());
+				radListItems.SelectedItems[0][3] = (MathHelper.FractionToDecimal(text.Replace(",", ".")) * Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture)).ToString("0.00", Thread.CurrentThread.CurrentCulture);
+				radListItems.SelectedItems[0].SubItems[8] = $"{MemoryLoadedObjects.Numpad.numberEntered:0.00}";
+				radListItems.SelectedItems[0].SubItems[15] = OrderHelper.UpdateDiscountFromDiscountDescription(radListItems.SelectedItems[0].SubItems[15].ToString(), DiscountTypes.Item, 0m);
+				radListItems.SelectedItems[0].SubItems[15] = OrderHelper.UpdateDiscountFromDiscountDescription(radListItems.SelectedItems[0].SubItems[15].ToString(), DiscountTypes.Promo, 0m);
+				radListItems.SelectedItems[0].SubItems[18] = "-1";
+				radListItems.SelectedItems[0].SubItems[20] = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 				RecalculateTaxAndSubtotal();
 				isSaved = false;
 			}
@@ -4014,31 +3982,27 @@ public class frmOrderEntry : frmMasterForm
 		}
 		if (string_16 == "discount" && btnItemDiscount.Text == Resources.ITEM_DISCOUNT)
 		{
-			if (!(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString() == "") && !(Convert.ToDecimal(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString()) == 0m))
+			if (!(radListItems.SelectedItems[0][2].ToString() == "") && !(Convert.ToDecimal(radListItems.SelectedItems[0][2].ToString()) == 0m))
 			{
-				decimal num = MathHelper.FractionToDecimal(string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString()) ? "1" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString());
-				decimal num2 = Convert.ToDecimal(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString());
-				string text2 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString();
+				decimal num = MathHelper.FractionToDecimal(string.IsNullOrEmpty(radListItems.SelectedItems[0][0].ToString()) ? "1" : radListItems.SelectedItems[0][0].ToString());
+				decimal num2 = Convert.ToDecimal(radListItems.SelectedItems[0][2].ToString());
+				string text2 = radListItems.SelectedItems[0][1].ToString();
 				if (text2.Contains("OPT:") || (text2.Contains("[") && text2.Contains("]")))
 				{
 					_003C_003Ec__DisplayClass175_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass175_0();
-					if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(3).ToString() == "")
+					if (radListItems.SelectedItems[0][3].ToString() == "")
 					{
 						new NotificationLabel(this, "Cannot apply item discount to a free option.", NotificationTypes.Notification).Show();
 						return;
 					}
-					CS_0024_003C_003E8__locals0.optionComboId = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(11).ToString();
-					CS_0024_003C_003E8__locals0.comboId = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString();
-					CS_0024_003C_003E8__locals0.optionTab = ((!((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-						.Contains("[") || !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-						.Contains("]")) ? "OPTIONS" : Regex.Match(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-						.ToUpper()
-						.Replace("OPT: ", "")
+					CS_0024_003C_003E8__locals0.optionComboId = radListItems.SelectedItems[0].SubItems[11].ToString();
+					CS_0024_003C_003E8__locals0.comboId = radListItems.SelectedItems[0].SubItems[5].ToString();
+					CS_0024_003C_003E8__locals0.optionTab = ((!radListItems.SelectedItems[0].SubItems[1].ToString().Contains("[") || !radListItems.SelectedItems[0].SubItems[1].ToString().Contains("]")) ? "OPTIONS" : Regex.Match(radListItems.SelectedItems[0].SubItems[1].ToString().ToUpper().Replace("OPT: ", "")
 						.Replace("ADD: ", "")
 						.Replace("   ", ""), "\\[([^]]*)\\]").Groups[1].Value);
 					CS_0024_003C_003E8__locals0.optionItemId = oneItem.ItemID;
-					ListViewDataItem val = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(11).ToString() == CS_0024_003C_003E8__locals0.optionComboId && !a.get_Font().Strikeout && a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals0.comboId && !a.get_Item(1).ToString().Contains("ADD:") && !a.get_Item(1).ToString().Contains("OPT:")).FirstOrDefault();
-					CS_0024_003C_003E8__locals0.mainItemId = Convert.ToInt32(val.get_SubItems().get_Item(4).ToString());
+					ListViewDataItem listViewDataItem = radListItems.Items.Where((ListViewDataItem a) => a.SubItems[11].ToString() == CS_0024_003C_003E8__locals0.optionComboId && !a.Font.Strikeout && a.SubItems[5].ToString() == CS_0024_003C_003E8__locals0.comboId && !a[1].ToString().Contains("ADD:") && !a[1].ToString().Contains("OPT:")).FirstOrDefault();
+					CS_0024_003C_003E8__locals0.mainItemId = Convert.ToInt32(listViewDataItem.SubItems[4].ToString());
 					new GClass6();
 					usp_ItemOptionsResult usp_ItemOptionsResult = MemoryLoadedObjects.all_item_options.Where((usp_ItemOptionsResult x) => !x.ToBeDeleted && ((x.GroupID > 0 && x.OptionsGroupShowOrderEntry == true) || x.GroupID == 0) && x.Option_ItemID == CS_0024_003C_003E8__locals0.optionItemId && x.ItemID == CS_0024_003C_003E8__locals0.mainItemId && x.Tab.ToUpper() == CS_0024_003C_003E8__locals0.optionTab.ToUpper()).FirstOrDefault();
 					if (usp_ItemOptionsResult != null)
@@ -4052,7 +4016,7 @@ public class frmOrderEntry : frmMasterForm
 					return;
 				}
 				decimal tenderDiscount = frmDiscount2.tenderDiscount;
-				string discountDesc = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(15).ToString();
+				string discountDesc = radListItems.SelectedItems[0].SubItems[15].ToString();
 				if (tenderDiscount > num2 * num)
 				{
 					new NotificationLabel(this, "Item discount cannot be more than the original price", NotificationTypes.Warning).Show();
@@ -4063,17 +4027,17 @@ public class frmOrderEntry : frmMasterForm
 					new NotificationLabel(this, "Cannot apply item discount, discount total for this item is greater than the item price.", NotificationTypes.Notification).Show();
 					return;
 				}
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(13, (object)frmDiscount2.discountReason);
-				((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(15, (object)OrderHelper.UpdateDiscountFromDiscountDescription(discountDesc, DiscountTypes.Item, tenderDiscount));
-				if (frmDiscount2.discountType == DiscountTypes.Percentage && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() != "0")
+				radListItems.SelectedItems[0].SubItems[13] = frmDiscount2.discountReason;
+				radListItems.SelectedItems[0].SubItems[15] = OrderHelper.UpdateDiscountFromDiscountDescription(discountDesc, DiscountTypes.Item, tenderDiscount);
+				if (frmDiscount2.discountType == DiscountTypes.Percentage && radListItems.SelectedItems[0].SubItems[5].ToString() != "0")
 				{
-					foreach (ListViewDataItem item in ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem listViewDataItem_0) => listViewDataItem_0.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString()))
+					foreach (ListViewDataItem item in radListItems.Items.Where((ListViewDataItem listViewDataItem_0) => listViewDataItem_0.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString()))
 					{
-						if (item.get_Item(2).ToString() != "" && Convert.ToDecimal(item.get_Item(2).ToString()) > 0m && item != ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0])
+						if (item[2].ToString() != "" && Convert.ToDecimal(item[2].ToString()) > 0m && item != radListItems.SelectedItems[0])
 						{
-							decimal value2 = Convert.ToDecimal(item.get_Item(3).ToString()) * frmDiscount2.percentDiscount;
-							item.get_SubItems().set_Item(13, (object)frmDiscount2.discountReason);
-							item.get_SubItems().set_Item(15, (object)OrderHelper.UpdateDiscountFromDiscountDescription(item.get_SubItems().get_Item(15).ToString(), DiscountTypes.Item, value2));
+							decimal value2 = Convert.ToDecimal(item[3].ToString()) * frmDiscount2.percentDiscount;
+							item.SubItems[13] = frmDiscount2.discountReason;
+							item.SubItems[15] = OrderHelper.UpdateDiscountFromDiscountDescription(item.SubItems[15].ToString(), DiscountTypes.Item, value2);
 						}
 					}
 				}
@@ -4090,19 +4054,19 @@ public class frmOrderEntry : frmMasterForm
 			}
 			return;
 		}
-		string discountDesc2 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(15).ToString();
+		string discountDesc2 = radListItems.SelectedItems[0].SubItems[15].ToString();
 		decimal discountFromDiscountDescription = OrderHelper.GetDiscountFromDiscountDescription(discountDesc2, DiscountTypes.Item);
 		lblDiscount.Text = (Convert.ToDecimal(lblDiscount.Text) - discountFromDiscountDescription).ToString("0.00");
-		((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(15, (object)OrderHelper.UpdateDiscountFromDiscountDescription(discountDesc2, DiscountTypes.Item, 0m));
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() != "0")
+		radListItems.SelectedItems[0].SubItems[15] = OrderHelper.UpdateDiscountFromDiscountDescription(discountDesc2, DiscountTypes.Item, 0m);
+		if (radListItems.SelectedItems[0].SubItems[5].ToString() != "0")
 		{
-			foreach (ListViewDataItem item2 in ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem listViewDataItem_0) => listViewDataItem_0.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString()))
+			foreach (ListViewDataItem item2 in radListItems.Items.Where((ListViewDataItem listViewDataItem_0) => listViewDataItem_0.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString()))
 			{
-				if (item2.get_Item(2).ToString() != "" && Convert.ToDecimal(item2.get_Item(2).ToString()) > 0m && item2 != ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0])
+				if (item2[2].ToString() != "" && Convert.ToDecimal(item2[2].ToString()) > 0m && item2 != radListItems.SelectedItems[0])
 				{
 					discountFromDiscountDescription = OrderHelper.GetDiscountFromDiscountDescription(discountDesc2, DiscountTypes.Item);
 					lblDiscount.Text = (Convert.ToDecimal(lblDiscount.Text) - discountFromDiscountDescription).ToString("0.00");
-					item2.get_SubItems().set_Item(15, (object)OrderHelper.UpdateDiscountFromDiscountDescription(item2.get_SubItems().get_Item(15).ToString(), DiscountTypes.Item, 0m));
+					item2.SubItems[15] = OrderHelper.UpdateDiscountFromDiscountDescription(item2.SubItems[15].ToString(), DiscountTypes.Item, 0m);
 				}
 			}
 		}
@@ -4131,7 +4095,7 @@ public class frmOrderEntry : frmMasterForm
 			button3.Enabled = false;
 			button2.Enabled = false;
 			button.Enabled = false;
-			if (((RadListView)radListItems).get_Items().get_Count() <= 0)
+			if (radListItems.Items.Count <= 0)
 			{
 				return;
 			}
@@ -4211,7 +4175,7 @@ public class frmOrderEntry : frmMasterForm
 				button3.Enabled = true;
 				button2.Enabled = true;
 				bool_20 = false;
-				if (((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => !a.get_Font().Strikeout).Count() == 1 && ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(4).ToString() == "-999").Any())
+				if (radListItems.Items.Where((ListViewDataItem a) => !a.Font.Strikeout).Count() == 1 && radListItems.Items.Where((ListViewDataItem a) => a.SubItems[4].ToString() == "-999").Any())
 				{
 					btnPay.Enabled = false;
 				}
@@ -4256,12 +4220,12 @@ public class frmOrderEntry : frmMasterForm
 				button5.Enabled = true;
 				button4.Enabled = true;
 				bool_20 = false;
-				if (((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => !a.get_Font().Strikeout).Count() == 1 && ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(4).ToString() == "-999").Any())
+				if (radListItems.Items.Where((ListViewDataItem a) => !a.Font.Strikeout).Count() == 1 && radListItems.Items.Where((ListViewDataItem a) => a.SubItems[4].ToString() == "-999").Any())
 				{
 					btnPay.Enabled = false;
 				}
 			}
-			else if (((RadListView)radListItems).get_Items().get_Count() == 0)
+			else if (radListItems.Items.Count == 0)
 			{
 				btnClose.Enabled = true;
 			}
@@ -4277,10 +4241,8 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnSplitMergeBill_Click(object sender, EventArgs e)
 	{
-		string fraction = (string.IsNullOrEmpty(((RadListView)radListItems).get_Items().get_Item(0).get_Item(0)
-			.ToString()) ? "1" : ((RadListView)radListItems).get_Items().get_Item(0).get_Item(0)
-			.ToString());
-		if (((RadListView)radListItems).get_Items().get_Count() <= 1 && (((RadListView)radListItems).get_Items().get_Count() != 1 || !(MathHelper.FractionToDecimal(fraction) > 0m)))
+		string fraction = (string.IsNullOrEmpty(radListItems.Items[0][0].ToString()) ? "1" : radListItems.Items[0][0].ToString());
+		if (radListItems.Items.Count <= 1 && (radListItems.Items.Count != 1 || !(MathHelper.FractionToDecimal(fraction) > 0m)))
 		{
 			new NotificationLabel(this, Resources.Not_enough_items_to_split_bill, NotificationTypes.Notification).Show();
 			return;
@@ -4318,7 +4280,7 @@ public class frmOrderEntry : frmMasterForm
 			}
 			if (MemoryLoadedObjects.OrderEntrySecondScreen != null)
 			{
-				((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().Clear();
+				MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Clear();
 			}
 			if (SettingsHelper.GetSettingValueByKey("restaurant_mode") == "Quick Service")
 			{
@@ -4362,7 +4324,7 @@ public class frmOrderEntry : frmMasterForm
 			{
 				string_3 = CS_0024_003C_003E8__locals0.searchText;
 				method_40(list);
-				((ScrollViewElement<VirtualizedStackContainer<ListViewDataItem>>)(object)((RadListView)radListItems).get_ListViewElement().get_ViewElement()).get_VScrollBar().set_Maximum(((RadListView)radListItems).get_Items().get_Count() * ((RadListView)radListItems).get_ItemSize().Height);
+				radListItems.ListViewElement.ViewElement.VScrollBar.Maximum = radListItems.Items.Count * radListItems.ItemSize.Height;
 				verticalScrollControl1.EnableDisableButtonsByScrollListView();
 				int_15 = 0;
 			}
@@ -4396,13 +4358,11 @@ public class frmOrderEntry : frmMasterForm
 
 	private void method_40(List<Order> list_12)
 	{
-		//IL_09f1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09f8: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass183_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass183_0();
 		method_34();
 		decimal num = default(decimal);
 		decimal num2 = default(decimal);
-		((RadListView)radListItems).BeginUpdate();
+		radListItems.BeginUpdate();
 		Order order = list_12.OrderBy((Order a) => a.DateCreated.Value).FirstOrDefault();
 		if (order != null)
 		{
@@ -4496,7 +4456,7 @@ public class frmOrderEntry : frmMasterForm
 					num5 = -1;
 					text2 = ((!item.ItemName.ToUpper().Contains(Resources._CUSTOM)) ? (CS_0024_003C_003E8__locals1.order.ItemSellPrice + ((CS_0024_003C_003E8__locals1.order.Qty > 0m) ? (CS_0024_003C_003E8__locals1.order.Discount / CS_0024_003C_003E8__locals1.order.Qty) : 0m)).ToString("0.00") : CS_0024_003C_003E8__locals1.order.ItemPrice.ToString("0.00"));
 				}
-				string[] array = new string[24]
+				string[] values = new string[24]
 				{
 					(!(CS_0024_003C_003E8__locals1.order.Qty < 1m)) ? MathHelper.RemoveTrailingZeros(CS_0024_003C_003E8__locals1.order.Qty.ToString()) : ((!item.UOM.isFractional) ? MathHelper.DecimalToFraction(CS_0024_003C_003E8__locals1.order.Qty) : MathHelper.RemoveTrailingZeros(CS_0024_003C_003E8__locals1.order.Qty.ToString())),
 					text,
@@ -4523,37 +4483,36 @@ public class frmOrderEntry : frmMasterForm
 					CS_0024_003C_003E8__locals1.order.FlagID.ToString(),
 					CS_0024_003C_003E8__locals1.order.DateFilled.HasValue.ToString()
 				};
-				ListViewDataItem val = new ListViewDataItem("", array);
-				val.set_Group(method_26(CS_0024_003C_003E8__locals1.order.ItemCourse));
-				val.set_Font(((Control)(object)radListItems).Font);
-				FormHelper.ChangeOrderEntryLVCellByIdentifier((RadListView)(object)radListItems, val, ((Control)(object)radListItems).Font.Size, CS_0024_003C_003E8__locals1.order.ItemIdentifier);
+				ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
+				listViewDataItem.Group = method_26(CS_0024_003C_003E8__locals1.order.ItemCourse);
+				listViewDataItem.Font = radListItems.Font;
+				FormHelper.ChangeOrderEntryLVCellByIdentifier(radListItems, listViewDataItem, radListItems.Font.Size, CS_0024_003C_003E8__locals1.order.ItemIdentifier);
 				if (CS_0024_003C_003E8__locals1.order.Void)
 				{
-					val.set_Font(new Font(((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).get_Font(), ((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).get_Font()
-						.Style | FontStyle.Strikeout));
+					listViewDataItem.Font = new Font(radListItems.Items[radListItems.Items.Count - 1].Font, radListItems.Items[radListItems.Items.Count - 1].Font.Style | FontStyle.Strikeout);
 				}
-				((RadListView)radListItems).get_Items().Add(val);
-				((RadListView)radListItems).set_AllowArbitraryItemHeight(true);
+				radListItems.Items.Add(listViewDataItem);
+				radListItems.AllowArbitraryItemHeight = true;
 				if (SettingsHelper.CurrentTerminalMode == "Patron")
 				{
-					((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).set_BackColor(Color.LightGray);
-					((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).set_ForeColor(Color.Gray);
+					radListItems.Items[radListItems.Items.Count - 1].BackColor = Color.LightGray;
+					radListItems.Items[radListItems.Items.Count - 1].ForeColor = Color.Gray;
 				}
 				if (CS_0024_003C_003E8__locals1.order.OrderOnHoldTime > 0 && CS_0024_003C_003E8__locals1.order.DateCreated.Value > DateTime.Now.AddMinutes(-CS_0024_003C_003E8__locals1.order.OrderOnHoldTime))
 				{
-					((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).set_BackColor(Color.FromArgb(50, 119, 155));
-					((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).set_ForeColor(Color.LightGray);
+					radListItems.Items[radListItems.Items.Count - 1].BackColor = Color.FromArgb(50, 119, 155);
+					radListItems.Items[radListItems.Items.Count - 1].ForeColor = Color.LightGray;
 				}
 				else
 				{
-					((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).set_BackColor(Color.White);
+					radListItems.Items[radListItems.Items.Count - 1].BackColor = Color.White;
 					if (CS_0024_003C_003E8__locals1.order.ItemIdentifier == "OptionItem")
 					{
-						((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).set_ForeColor(Color.DarkRed);
+						radListItems.Items[radListItems.Items.Count - 1].ForeColor = Color.DarkRed;
 					}
 					else
 					{
-						((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).set_ForeColor(Color.Black);
+						radListItems.Items[radListItems.Items.Count - 1].ForeColor = Color.Black;
 					}
 				}
 				if (string.IsNullOrEmpty(string_6))
@@ -4586,7 +4545,7 @@ public class frmOrderEntry : frmMasterForm
 				int_13 = (CS_0024_003C_003E8__locals1.order.CustomerID.HasValue ? CS_0024_003C_003E8__locals1.order.CustomerID.Value : 0);
 			}
 		}
-		((RadListView)radListItems).EndUpdate();
+		radListItems.EndUpdate();
 		if (bool_0 && OrderHelper.GetDiscountFromDiscountDescription(order.DiscountDesc, DiscountTypes.Order) > 0m)
 		{
 			btnOrdDiscount.Text = Resources.REMOVE_ORDER_DISCOUNT;
@@ -4644,7 +4603,7 @@ public class frmOrderEntry : frmMasterForm
 			button3.Enabled = false;
 			button2.Enabled = false;
 			button.Enabled = false;
-			if (((RadListView)radListItems).get_Items().get_Count() == 0)
+			if (radListItems.Items.Count == 0)
 			{
 				if (string_10 != string_4)
 				{
@@ -4942,7 +4901,7 @@ public class frmOrderEntry : frmMasterForm
 
 	private bool method_45(bool bool_30 = true)
 	{
-		if (((RadListView)radListItems).get_Items().get_Count() == 0)
+		if (radListItems.Items.Count == 0)
 		{
 			if (string_10 != string_4)
 			{
@@ -4965,16 +4924,16 @@ public class frmOrderEntry : frmMasterForm
 		{
 			orderOnHoldTime = (int)(dateFullfilment.Value - DateTime.Now).TotalMinutes;
 		}
-		foreach (ListViewDataItem item2 in ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).ToList())
+		foreach (ListViewDataItem item2 in radListItems.Items.ToList())
 		{
 			_003C_003Ec__DisplayClass189_0 CS_0024_003C_003E8__locals3 = new _003C_003Ec__DisplayClass189_0();
 			CS_0024_003C_003E8__locals3._003C_003E4__this = this;
-			if (dateFullfilment.HasValue && item2.get_SubItems().get_Item(14).ToString() != "-1")
+			if (dateFullfilment.HasValue && item2.SubItems[14].ToString() != "-1")
 			{
-				item2.get_SubItems().set_Item(14, (object)orderOnHoldTime.ToString());
+				item2.SubItems[14] = orderOnHoldTime.ToString();
 			}
 			CS_0024_003C_003E8__locals3.sold_item = new Item();
-			CS_0024_003C_003E8__locals3.itemFromDB = dataManager.getOneItem(Convert.ToInt32(item2.get_SubItems().get_Item(4).ToString()));
+			CS_0024_003C_003E8__locals3.itemFromDB = dataManager.getOneItem(Convert.ToInt32(item2.SubItems[4].ToString()));
 			CS_0024_003C_003E8__locals3.sold_item.ItemID = CS_0024_003C_003E8__locals3.itemFromDB.ItemID;
 			if (!CS_0024_003C_003E8__locals3.itemFromDB.ItemsInGroups.Any())
 			{
@@ -4994,44 +4953,44 @@ public class frmOrderEntry : frmMasterForm
 			CS_0024_003C_003E8__locals3.sold_item.OnSale = CS_0024_003C_003E8__locals3.itemFromDB.OnSale;
 			CS_0024_003C_003E8__locals3.sold_item.TaxRule = CS_0024_003C_003E8__locals3.itemFromDB.TaxRule;
 			CS_0024_003C_003E8__locals3.sold_item.TaxRuleID = CS_0024_003C_003E8__locals3.itemFromDB.TaxRuleID;
-			CS_0024_003C_003E8__locals3.sold_item.ItemCourse = ((item2.get_Group() == null) ? CS_0024_003C_003E8__locals3.itemFromDB.ItemCourse : ((item2.get_Group() != listViewDataItemGroup_6) ? ((ListViewDataItem)item2.get_Group()).get_Text().Substring(0, ((ListViewDataItem)item2.get_Group()).get_Text().Length - 1) : ((ListViewDataItem)item2.get_Group()).get_Text()));
-			string text = (item2.get_Item(1).ToString().Contains(" => INSTR: ") ? item2.get_Item(1).ToString().Substring(item2.get_Item(1).ToString().IndexOf(" => INSTR: ")) : "");
-			string itemName = ((!string.IsNullOrEmpty(text)) ? item2.get_Item(1).ToString().Replace(text, "") : item2.get_Item(1).ToString());
+			CS_0024_003C_003E8__locals3.sold_item.ItemCourse = ((item2.Group == null) ? CS_0024_003C_003E8__locals3.itemFromDB.ItemCourse : ((item2.Group != listViewDataItemGroup_6) ? item2.Group.Text.Substring(0, item2.Group.Text.Length - 1) : item2.Group.Text));
+			string text = (item2[1].ToString().Contains(" => INSTR: ") ? item2[1].ToString().Substring(item2[1].ToString().IndexOf(" => INSTR: ")) : "");
+			string itemName = ((!string.IsNullOrEmpty(text)) ? item2[1].ToString().Replace(text, "") : item2[1].ToString());
 			CS_0024_003C_003E8__locals3.sold_item.ItemName = itemName;
-			string value = (string.IsNullOrEmpty(item2.get_Item(2).ToString()) ? "0.00" : item2.get_Item(2).ToString());
+			string value = (string.IsNullOrEmpty(item2[2].ToString()) ? "0.00" : item2[2].ToString());
 			CS_0024_003C_003E8__locals3.sold_item.ItemPrice = Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture);
-			string text2 = (string.IsNullOrEmpty(item2.get_Item(0).ToString()) ? "1" : item2.get_Item(0).ToString());
+			string text2 = (string.IsNullOrEmpty(item2[0].ToString()) ? "1" : item2[0].ToString());
 			CS_0024_003C_003E8__locals3.sold_item.InventoryCount = MathHelper.FractionToDecimal(text2.ToString().Replace(",", "."));
 			_ = CS_0024_003C_003E8__locals3.sold_item.InventoryCount;
 			if (!(CS_0024_003C_003E8__locals3.sold_item.ItemPrice * CS_0024_003C_003E8__locals3.sold_item.InventoryCount > 100000m))
 			{
-				CS_0024_003C_003E8__locals3.sold_item.SortOrder = Convert.ToInt16(item2.get_SubItems().get_Item(5).ToString());
-				CS_0024_003C_003E8__locals3.sold_item.Temp = ((item2.get_SubItems().get_Count() >= 7) ? item2.get_SubItems().get_Item(6).ToString() : string.Empty);
-				CS_0024_003C_003E8__locals3.sold_item.Description = ((item2.get_SubItems().get_Count() >= 8) ? item2.get_SubItems().get_Item(7).ToString() : string.Empty);
+				CS_0024_003C_003E8__locals3.sold_item.SortOrder = Convert.ToInt16(item2.SubItems[5].ToString());
+				CS_0024_003C_003E8__locals3.sold_item.Temp = ((item2.SubItems.Count >= 7) ? item2.SubItems[6].ToString() : string.Empty);
+				CS_0024_003C_003E8__locals3.sold_item.Description = ((item2.SubItems.Count >= 8) ? item2.SubItems[7].ToString() : string.Empty);
 				if (CS_0024_003C_003E8__locals3.sold_item.Description.Length <= 250)
 				{
-					CS_0024_003C_003E8__locals3.sold_item.Active = !item2.get_Font().Strikeout;
-					CS_0024_003C_003E8__locals3.sold_item.MaxFreeOptions = ((item2.get_SubItems().get_Count() >= 7) ? Convert.ToInt32(item2.get_SubItems().get_Item(9).ToString()) : 0);
+					CS_0024_003C_003E8__locals3.sold_item.Active = !item2.Font.Strikeout;
+					CS_0024_003C_003E8__locals3.sold_item.MaxFreeOptions = ((item2.SubItems.Count >= 7) ? Convert.ToInt32(item2.SubItems[9].ToString()) : 0);
 					if (!CS_0024_003C_003E8__locals3.sold_item.ItemName.Contains("SUB:") && !CS_0024_003C_003E8__locals3.sold_item.ItemName.Contains("ADD:") && !CS_0024_003C_003E8__locals3.sold_item.ItemName.Contains("OPT:"))
 					{
-						CS_0024_003C_003E8__locals3.sold_item.ItemCost = ((item2.get_SubItems().get_Count() < 9 || !(item2.get_SubItems().get_Item(8).ToString() != "-1")) ? (-1m) : Convert.ToDecimal(item2.get_SubItems().get_Item(8).ToString(), Thread.CurrentThread.CurrentCulture));
+						CS_0024_003C_003E8__locals3.sold_item.ItemCost = ((item2.SubItems.Count < 9 || !(item2.SubItems[8].ToString() != "-1")) ? (-1m) : Convert.ToDecimal(item2.SubItems[8].ToString(), Thread.CurrentThread.CurrentCulture));
 					}
 					else
 					{
 						CS_0024_003C_003E8__locals3.sold_item.ItemCost = Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture);
 					}
-					CS_0024_003C_003E8__locals3.sold_item.Notes = ((item2.get_SubItems().get_Item(13) != null) ? item2.get_SubItems().get_Item(13).ToString() : "NO PROMO CODE");
-					CS_0024_003C_003E8__locals3.sold_item.StationID = item2.get_SubItems().get_Item(14).ToString();
-					CS_0024_003C_003E8__locals3.sold_item.Barcode = item2.get_SubItems().get_Item(15).ToString();
+					CS_0024_003C_003E8__locals3.sold_item.Notes = ((item2.SubItems[13] != null) ? item2.SubItems[13].ToString() : "NO PROMO CODE");
+					CS_0024_003C_003E8__locals3.sold_item.StationID = item2.SubItems[14].ToString();
+					CS_0024_003C_003E8__locals3.sold_item.Barcode = item2.SubItems[15].ToString();
 					CS_0024_003C_003E8__locals3.sold_item.ItemSalePrice = OrderHelper.GetDiscountFromDiscountDescription(CS_0024_003C_003E8__locals3.sold_item.Barcode, DiscountTypes.Item) / CS_0024_003C_003E8__locals3.sold_item.InventoryCount;
-					CS_0024_003C_003E8__locals3.sold_item.MinFreeOptions = Convert.ToInt32(item2.get_SubItems().get_Item(11).ToString());
-					CS_0024_003C_003E8__locals3.sold_item.ItemClassification = ((item2.get_SubItems().get_Item(16) == null) ? "MainItem" : item2.get_SubItems().get_Item(16).ToString());
-					CS_0024_003C_003E8__locals3.sold_item.ResetQty = Convert.ToDecimal(item2.get_SubItems().get_Item(17).ToString());
-					CS_0024_003C_003E8__locals3.sold_item.ItemLongName = item2.get_SubItems().get_Item(20).ToString();
+					CS_0024_003C_003E8__locals3.sold_item.MinFreeOptions = Convert.ToInt32(item2.SubItems[11].ToString());
+					CS_0024_003C_003E8__locals3.sold_item.ItemClassification = ((item2.SubItems[16] == null) ? "MainItem" : item2.SubItems[16].ToString());
+					CS_0024_003C_003E8__locals3.sold_item.ResetQty = Convert.ToDecimal(item2.SubItems[17].ToString());
+					CS_0024_003C_003E8__locals3.sold_item.ItemLongName = item2.SubItems[20].ToString();
 					CS_0024_003C_003E8__locals3.sold_item.DisableSoldOutItems = false;
-					if (!CS_0024_003C_003E8__locals3.sold_item.Active && item2.get_SubItems().get_Count() > 21 && item2.get_SubItems().get_Item(22).ToString() != ((byte)5).ToString())
+					if (!CS_0024_003C_003E8__locals3.sold_item.Active && item2.SubItems.Count > 21 && item2.SubItems[22].ToString() != ((byte)5).ToString())
 					{
-						if (bool_17 && !item2.get_Item(1).ToString().Contains("OPT:") && !item2.get_Item(1).ToString().Contains("DELIVERY") && !item2.get_Item(1).ToString().Contains("   "))
+						if (bool_17 && !item2[1].ToString().Contains("OPT:") && !item2[1].ToString().Contains("DELIVERY") && !item2[1].ToString().Contains("   "))
 						{
 							_003C_003Ec__DisplayClass189_1 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass189_1();
 							CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1 = CS_0024_003C_003E8__locals3;
@@ -5199,16 +5158,16 @@ public class frmOrderEntry : frmMasterForm
 		{
 			lblOrderType.Text = (string_5 = changeOrderType);
 			string_6 = address;
-			ListViewDataItem val = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(4).ToString() == "-999").FirstOrDefault();
-			if (val != null)
+			ListViewDataItem listViewDataItem = radListItems.Items.Where((ListViewDataItem a) => a.SubItems[4].ToString() == "-999").FirstOrDefault();
+			if (listViewDataItem != null)
 			{
-				if (!string.IsNullOrEmpty(val.get_SubItems().get_Item(6).ToString()))
+				if (!string.IsNullOrEmpty(listViewDataItem.SubItems[6].ToString()))
 				{
-					val.set_Font(new Font(val.get_Font().FontFamily, val.get_Font().Size, FontStyle.Strikeout));
+					listViewDataItem.Font = new Font(listViewDataItem.Font.FontFamily, listViewDataItem.Font.Size, FontStyle.Strikeout);
 				}
 				else
 				{
-					((RadListView)radListItems).get_Items().Remove(val);
+					radListItems.Items.Remove(listViewDataItem);
 				}
 				RecalculateTaxAndSubtotal();
 			}
@@ -5225,7 +5184,7 @@ public class frmOrderEntry : frmMasterForm
 		{
 			return;
 		}
-		if (((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(4).ToString() == "-999").FirstOrDefault() == null)
+		if (radListItems.Items.Where((ListViewDataItem a) => a.SubItems[4].ToString() == "-999").FirstOrDefault() == null)
 		{
 			if (new GClass6().Orders.Where((Order a) => a.OrderNumber == string_3 && a.ItemID == -999).FirstOrDefault() == null)
 			{
@@ -5237,13 +5196,11 @@ public class frmOrderEntry : frmMasterForm
 		}
 		else
 		{
-			ListViewDataItem val = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(4).ToString() == "-999").FirstOrDefault();
-			if (val != null && MathHelper.FractionToDecimal(val.get_Item(0).ToString()) == 1m)
+			ListViewDataItem listViewDataItem = radListItems.Items.Where((ListViewDataItem a) => a.SubItems[4].ToString() == "-999").FirstOrDefault();
+			if (listViewDataItem != null && MathHelper.FractionToDecimal(listViewDataItem[0].ToString()) == 1m)
 			{
 				isSaved = false;
-				object obj;
-				val.set_Item(3, obj = decimal_5.ToString("0.00"));
-				val.set_Item(2, obj);
+				object obj3 = (listViewDataItem[2] = (listViewDataItem[3] = decimal_5.ToString("0.00")));
 				RecalculateTaxAndSubtotal();
 			}
 		}
@@ -5292,27 +5249,27 @@ public class frmOrderEntry : frmMasterForm
 						btnClear.Enabled = true;
 					}
 				}
-				if (!btnPay.Enabled && singleSelectedItem != OrderTypes.MakeToStock && ((RadListView)radListItems).get_Items().get_Count() > 0)
+				if (!btnPay.Enabled && singleSelectedItem != OrderTypes.MakeToStock && radListItems.Items.Count > 0)
 				{
 					btnPay.Enabled = true;
 				}
-				foreach (ListViewDataItem item2 in ((RadListView)radListItems).get_Items())
+				foreach (ListViewDataItem item2 in radListItems.Items)
 				{
-					item2.get_SubItems().set_Item(14, (object)orderOnHoldTime.ToString());
+					item2.SubItems[14] = orderOnHoldTime.ToString();
 					if (string_5 == OrderTypes.MakeToStock)
 					{
 						_003C_003Ec__DisplayClass193_0 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass193_0();
-						CS_0024_003C_003E8__locals1.itemid = Convert.ToInt32(item2.get_SubItems().get_Item(4).ToString());
+						CS_0024_003C_003E8__locals1.itemid = Convert.ToInt32(item2.SubItems[4].ToString());
 						Item item = MemoryLoadedData.all_items.Where((Item a) => a.ItemID == CS_0024_003C_003E8__locals1.itemid).FirstOrDefault();
 						if (item.BatchStockQty > 1m)
 						{
-							item2.set_Item(0, (object)item.BatchStockQty.ToString("0.####", Thread.CurrentThread.CurrentCulture));
+							item2[0] = item.BatchStockQty.ToString("0.####", Thread.CurrentThread.CurrentCulture);
 						}
-						item2.set_Item(2, (object)$"{0:0.00}");
-						item2.set_Item(3, (object)$"{0:0.00}");
+						item2[2] = $"{0:0.00}";
+						item2[3] = $"{0:0.00}";
 					}
 				}
-				((Control)(object)radListItems).Refresh();
+				radListItems.Refresh();
 				RecalculateTaxAndSubtotal();
 				method_47(text, singleSelectedItem);
 				if (SettingsHelper.GetSettingValueByKey("quickservice_screen") == "OFF" && string_5 != OrderTypes.DineIn && string_5 != OrderTypes.ToGo)
@@ -5471,16 +5428,16 @@ public class frmOrderEntry : frmMasterForm
 		{
 			return;
 		}
-		ListViewDataItem val = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(4).ToString() == "-999").FirstOrDefault();
-		if (val != null)
+		ListViewDataItem listViewDataItem = radListItems.Items.Where((ListViewDataItem a) => a.SubItems[4].ToString() == "-999").FirstOrDefault();
+		if (listViewDataItem != null)
 		{
-			if (val.get_SubItems().get_Item(6).ToString() == string.Empty)
+			if (listViewDataItem.SubItems[6].ToString() == string.Empty)
 			{
-				((RadListView)radListItems).get_Items().Remove(val);
+				radListItems.Items.Remove(listViewDataItem);
 			}
 			else
 			{
-				val.set_Font(new Font(((Control)(object)radListItems).Font, ((Control)(object)radListItems).Font.Style | FontStyle.Strikeout));
+				listViewDataItem.Font = new Font(radListItems.Font, radListItems.Font.Style | FontStyle.Strikeout);
 			}
 			RecalculateTaxAndSubtotal();
 		}
@@ -5599,7 +5556,7 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnPrintBill_Click(object sender, EventArgs e)
 	{
-		if (((RadListView)radListItems).get_Items().get_Count() > 0)
+		if (radListItems.Items.Count > 0)
 		{
 			bool flag = true;
 			if (btnSaveOrder.Enabled || !isSaved || bool_25)
@@ -5634,7 +5591,7 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnInstructions_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0)
+		if (radListItems.SelectedItems.Count > 0)
 		{
 			MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Instructions();
 			MemoryLoadedObjects.Instructions.page_load(this);
@@ -5657,18 +5614,18 @@ public class frmOrderEntry : frmMasterForm
 
 	private void method_51(bool bool_30 = true, decimal qty = 0m)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count != 0)
+		if (radListItems.SelectedItems.Count != 0)
 		{
 			_003C_003Ec__DisplayClass204_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass204_0();
 			GClass6 gClass = new GClass6();
-			string value = (string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString()) ? "0.00" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString());
+			string value = (string.IsNullOrEmpty(radListItems.SelectedItems[0][2].ToString()) ? "0.00" : radListItems.SelectedItems[0][2].ToString());
 			decimal decimal_ = Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture);
-			decimal previousQty = Convert.ToDecimal(MathHelper.FractionToDecimal(string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString()) ? "1" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString()));
-			int selectedTag = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(4).ToString());
-			CS_0024_003C_003E8__locals0.itemId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(4).ToString());
+			decimal previousQty = Convert.ToDecimal(MathHelper.FractionToDecimal(string.IsNullOrEmpty(radListItems.SelectedItems[0][0].ToString()) ? "1" : radListItems.SelectedItems[0][0].ToString()));
+			int selectedTag = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[4].ToString());
+			CS_0024_003C_003E8__locals0.itemId = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[4].ToString());
 			Item item = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID == CS_0024_003C_003E8__locals0.itemId).FirstOrDefault();
-			CS_0024_003C_003E8__locals0.selectedComboId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString());
-			int num = ((((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Count() > 9 && !string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(9).ToString())) ? Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(9).ToString()) : 0);
+			CS_0024_003C_003E8__locals0.selectedComboId = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[5].ToString());
+			int num = ((radListItems.SelectedItems[0].SubItems.Count > 9 && !string.IsNullOrEmpty(radListItems.SelectedItems[0].SubItems[9].ToString())) ? Convert.ToInt32(radListItems.SelectedItems[0].SubItems[9].ToString()) : 0);
 			if (bool_30)
 			{
 				MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
@@ -5686,12 +5643,12 @@ public class frmOrderEntry : frmMasterForm
 			}
 			if (CS_0024_003C_003E8__locals0.selectedComboId > 0)
 			{
-				using IEnumerator<ListViewDataItem> enumerator = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals0.selectedComboId.ToString()).GetEnumerator();
+				using IEnumerator<ListViewDataItem> enumerator = radListItems.Items.Where((ListViewDataItem a) => a.SubItems[5].ToString() == CS_0024_003C_003E8__locals0.selectedComboId.ToString()).GetEnumerator();
 				while (enumerator.MoveNext())
 				{
 					_003C_003Ec__DisplayClass204_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass204_1();
 					CS_0024_003C_003E8__locals1.invetoryItem = enumerator.Current;
-					Item item2 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals1.invetoryItem.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+					Item item2 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals1.invetoryItem.SubItems[4].ToString()).FirstOrDefault();
 					if (!MiscHelper.CheckItemDisableSOldOut(this, item2, radListItems, qty, previousQty))
 					{
 						return;
@@ -5702,55 +5659,52 @@ public class frmOrderEntry : frmMasterForm
 			{
 				return;
 			}
-			CS_0024_003C_003E8__locals0.orderId = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(6).ToString();
+			CS_0024_003C_003E8__locals0.orderId = radListItems.SelectedItems[0].SubItems[6].ToString();
 			if (!string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.orderId))
 			{
 				Order order = gClass.Orders.Where((Order a) => a.OrderId == new Guid(CS_0024_003C_003E8__locals0.orderId)).FirstOrDefault();
 				if (order != null && (!string.IsNullOrEmpty(order.StationMade) || (string.IsNullOrEmpty(order.StationMade) && order.DateFilled.HasValue)))
 				{
-					short num2 = Convert.ToInt16(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString());
-					previousQty = Convert.ToDecimal(MathHelper.FractionToDecimal(string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString()) ? "1" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString()));
+					short num2 = Convert.ToInt16(radListItems.SelectedItems[0].SubItems[5].ToString());
+					previousQty = Convert.ToDecimal(MathHelper.FractionToDecimal(string.IsNullOrEmpty(radListItems.SelectedItems[0][0].ToString()) ? "1" : radListItems.SelectedItems[0][0].ToString()));
 					int num3 = orderHelper_0.CheckAndSelectBatchId(item);
-					bool bool_31 = Convert.ToBoolean(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(12).ToString());
+					bool bool_31 = Convert.ToBoolean(radListItems.SelectedItems[0].SubItems[12].ToString());
 					if (qty - previousQty == 0m)
 					{
 						return;
 					}
 					decimal num4 = qty / previousQty;
-					if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() != "0" && !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-						.Contains("ADD: "))
+					if (radListItems.SelectedItems[0].SubItems[5].ToString() != "0" && !radListItems.SelectedItems[0].SubItems[1].ToString().Contains("ADD: "))
 					{
 						List<ItemToAddToListModel> list = new List<ItemToAddToListModel>();
-						foreach (ListViewDataItem item4 in ((RadListView)radListItems).get_Items())
+						foreach (ListViewDataItem item4 in radListItems.Items)
 						{
-							if (item4.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() && !item4.get_Font().Strikeout)
+							if (item4.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString() && !item4.Font.Strikeout)
 							{
-								string text = item4.get_Item(1).ToString().ToUpper();
-								previousQty = Convert.ToDecimal(MathHelper.FractionToDecimal(item4.get_Item(0).ToString()));
-								decimal_ = Convert.ToDecimal(string.IsNullOrEmpty(item4.get_Item(2).ToString()) ? "0.00" : item4.get_Item(2).ToString(), Thread.CurrentThread.CurrentCulture);
-								selectedTag = Convert.ToInt32(item4.get_SubItems().get_Item(4).ToString());
-								bool_31 = Convert.ToBoolean(item4.get_SubItems().get_Item(12).ToString());
-								int batchId = Convert.ToInt32(item4.get_SubItems().get_Item(9).ToString());
-								int groupId = Convert.ToInt32(item4.get_SubItems().get_Item(10).ToString());
-								int optionComboId = Convert.ToInt32(item4.get_SubItems().get_Item(11).ToString());
-								int itemOptionId = Convert.ToInt32(item4.get_SubItems().get_Item(17).ToString());
+								string text = item4[1].ToString().ToUpper();
+								previousQty = Convert.ToDecimal(MathHelper.FractionToDecimal(item4[0].ToString()));
+								decimal_ = Convert.ToDecimal(string.IsNullOrEmpty(item4[2].ToString()) ? "0.00" : item4[2].ToString(), Thread.CurrentThread.CurrentCulture);
+								selectedTag = Convert.ToInt32(item4.SubItems[4].ToString());
+								bool_31 = Convert.ToBoolean(item4.SubItems[12].ToString());
+								int batchId = Convert.ToInt32(item4.SubItems[9].ToString());
+								int groupId = Convert.ToInt32(item4.SubItems[10].ToString());
+								int optionComboId = Convert.ToInt32(item4.SubItems[11].ToString());
+								int itemOptionId = Convert.ToInt32(item4.SubItems[17].ToString());
 								decimal d = previousQty * num4;
 								d = Math.Round(d, 2);
-								if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-									.ToUpper() != text && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-									.Contains("OPT:"))
+								if (radListItems.SelectedItems[0].SubItems[1].ToString().ToUpper() != text && radListItems.SelectedItems[0].SubItems[1].ToString().Contains("OPT:"))
 								{
 									d = previousQty;
 								}
 								decimal num5 = d - previousQty;
 								if (num5 < 0m)
 								{
-									item4.set_Item(0, (object)d.ToString("0.##"));
-									item4.set_Item(3, (object)(d * Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture)).ToString("0.00"));
+									item4[0] = d.ToString("0.##");
+									item4[3] = (d * Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture)).ToString("0.00");
 									decimal qty2 = previousQty - d;
 									list.Add(new ItemToAddToListModel
 									{
-										Name = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().ToUpper(),
+										Name = radListItems.SelectedItems[0][1].ToString().ToUpper(),
 										Price = decimal_,
 										ItemId = CS_0024_003C_003E8__locals0.itemId,
 										Qty = qty2,
@@ -5787,7 +5741,7 @@ public class frmOrderEntry : frmMasterForm
 							method_28(item5.Name, item5.Price, item5.ItemId, item5.Qty, item5.ComboId, item5.IsComboPotentialSearchable, item5.batchId, item5.GroupId, item5.optionComboId, bool_31: true, 0, "", item5.itemOptionId);
 							if (item5.isDeleted)
 							{
-								((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).set_Font(new Font(((Control)(object)radListItems).Font, ((Control)(object)radListItems).Font.Style | FontStyle.Strikeout));
+								radListItems.Items[radListItems.Items.Count - 1].Font = new Font(radListItems.Font, radListItems.Font.Style | FontStyle.Strikeout);
 							}
 						}
 						short_4++;
@@ -5805,23 +5759,23 @@ public class frmOrderEntry : frmMasterForm
 						if (num7 < 0m)
 						{
 							num7 = num6;
-							ListViewDataItem obj = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0];
-							obj.set_Item(0, (object)num6.ToString("0.##"));
-							obj.set_Item(3, (object)(num7 * Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture)).ToString("0.00"));
+							ListViewDataItem listViewDataItem = radListItems.SelectedItems[0];
+							listViewDataItem[0] = num6.ToString("0.##");
+							listViewDataItem[3] = (num7 * Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture)).ToString("0.00");
 							decimal qty3 = previousQty - num6;
-							method_28(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().ToUpper(), decimal_, CS_0024_003C_003E8__locals0.itemId, qty3, num2, bool_31, 0, 0, 0, bool_31: true, 0, "", Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(17)));
-							((RadListView)radListItems).get_Items().get_Item(((RadListView)radListItems).get_Items().get_Count() - 1).set_Font(new Font(((Control)(object)radListItems).Font, ((Control)(object)radListItems).Font.Style | FontStyle.Strikeout));
+							method_28(radListItems.SelectedItems[0][1].ToString().ToUpper(), decimal_, CS_0024_003C_003E8__locals0.itemId, qty3, num2, bool_31, 0, 0, 0, bool_31: true, 0, "", Convert.ToInt32(radListItems.SelectedItems[0].SubItems[17]));
+							radListItems.Items[radListItems.Items.Count - 1].Font = new Font(radListItems.Font, radListItems.Font.Style | FontStyle.Strikeout);
 						}
 						else
 						{
-							method_28(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().ToUpper(), decimal_, CS_0024_003C_003E8__locals0.itemId, num7, num2, bool_31, num3, 0, 0, bool_31: true, 0, "", Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(17)));
+							method_28(radListItems.SelectedItems[0][1].ToString().ToUpper(), decimal_, CS_0024_003C_003E8__locals0.itemId, num7, num2, bool_31, num3, 0, 0, bool_31: true, 0, "", Convert.ToInt32(radListItems.SelectedItems[0].SubItems[17]));
 						}
 						Button button2 = btnSaveOrder;
 						btnSaveClose.Enabled = true;
 						button2.Enabled = true;
 					}
 					RecalculateTaxAndSubtotal();
-					if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0 && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font().Strikeout)
+					if (radListItems.SelectedItems.Count > 0 && radListItems.SelectedItems[0].Font.Strikeout)
 					{
 						method_53(bool_30: false);
 						btnChangeQty.Enabled = false;
@@ -5835,7 +5789,7 @@ public class frmOrderEntry : frmMasterForm
 			}
 			else if (qty > 0m)
 			{
-				decimal num8 = Convert.ToDecimal(MathHelper.FractionToDecimal(string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString()) ? "1" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString()));
+				decimal num8 = Convert.ToDecimal(MathHelper.FractionToDecimal(string.IsNullOrEmpty(radListItems.SelectedItems[0][0].ToString()) ? "1" : radListItems.SelectedItems[0][0].ToString()));
 				bool flag = false;
 				if (num != 0 && qty > 1m && new frmMessageBox("All items have the same expiry date and batch/lot numbers?", "Batch Inventory", CustomMessageBoxButtons.YesNo).ShowDialog(this) == DialogResult.No)
 				{
@@ -5858,20 +5812,20 @@ public class frmOrderEntry : frmMasterForm
 					{
 						if (num9 == 0)
 						{
-							((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(0, (object)item6.qty.ToString("0.####"));
-							((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().set_Item(9, (object)item6.BatchId);
-							if (!string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString()))
+							radListItems.SelectedItems[0][0] = item6.qty.ToString("0.####");
+							radListItems.SelectedItems[0].SubItems[9] = item6.BatchId;
+							if (!string.IsNullOrEmpty(radListItems.SelectedItems[0][2].ToString()))
 							{
-								((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString();
+								radListItems.SelectedItems[0][2].ToString();
 							}
-							((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(3, (object)(item6.qty * Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture)).ToString("0.00"));
-							FormHelper.ChangeOrderEntryLVCellByIdentifier((RadListView)(object)radListItems, ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0], ((Control)(object)radListItems).Font.Size, ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(16).ToString());
+							radListItems.SelectedItems[0][3] = (item6.qty * Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture)).ToString("0.00");
+							FormHelper.ChangeOrderEntryLVCellByIdentifier(radListItems, radListItems.SelectedItems[0], radListItems.Font.Size, radListItems.SelectedItems[0].SubItems[16].ToString());
 						}
 						else
 						{
-							short int_ = Convert.ToInt16(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString());
-							bool bool_32 = Convert.ToBoolean(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(12).ToString());
-							method_28(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().ToUpper(), decimal_, CS_0024_003C_003E8__locals0.itemId, item6.qty, int_, bool_32, item6.BatchId, 0, 0, bool_31: true, 0, "", Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(17)));
+							short int_ = Convert.ToInt16(radListItems.SelectedItems[0].SubItems[5].ToString());
+							bool bool_32 = Convert.ToBoolean(radListItems.SelectedItems[0].SubItems[12].ToString());
+							method_28(radListItems.SelectedItems[0][1].ToString().ToUpper(), decimal_, CS_0024_003C_003E8__locals0.itemId, item6.qty, int_, bool_32, item6.BatchId, 0, 0, bool_31: true, 0, "", Convert.ToInt32(radListItems.SelectedItems[0].SubItems[17]));
 						}
 						num9++;
 					}
@@ -5881,25 +5835,24 @@ public class frmOrderEntry : frmMasterForm
 				decimal num10 = qty / num8;
 				if (!flag)
 				{
-					((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(1, (object)((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString());
-					((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(0, (object)qty.ToString("0.####"));
-					string value2 = (string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString()) ? "0.00" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString());
-					((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].set_Item(3, (object)(qty * Convert.ToDecimal(value2, Thread.CurrentThread.CurrentCulture)).ToString("0.00"));
-					FormHelper.ChangeOrderEntryLVCellByIdentifier((RadListView)(object)radListItems, ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0], ((Control)(object)radListItems).Font.Size, ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(16).ToString());
+					radListItems.SelectedItems[0][1] = radListItems.SelectedItems[0][1].ToString();
+					radListItems.SelectedItems[0][0] = qty.ToString("0.####");
+					string value2 = (string.IsNullOrEmpty(radListItems.SelectedItems[0][2].ToString()) ? "0.00" : radListItems.SelectedItems[0][2].ToString());
+					radListItems.SelectedItems[0][3] = (qty * Convert.ToDecimal(value2, Thread.CurrentThread.CurrentCulture)).ToString("0.00");
+					FormHelper.ChangeOrderEntryLVCellByIdentifier(radListItems, radListItems.SelectedItems[0], radListItems.Font.Size, radListItems.SelectedItems[0].SubItems[16].ToString());
 				}
-				if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() != "0" && !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-					.Contains("ADD: "))
+				if (radListItems.SelectedItems[0].SubItems[5].ToString() != "0" && !radListItems.SelectedItems[0].SubItems[1].ToString().Contains("ADD: "))
 				{
-					foreach (ListViewDataItem item7 in ((RadListView)radListItems).get_Items())
+					foreach (ListViewDataItem item7 in radListItems.Items)
 					{
-						if ((!(item7.get_SubItems().get_Item(17).ToString() != "0") || !item7.get_Font().Strikeout) && item7.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() && item7 != ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0])
+						if ((!(item7.SubItems[17].ToString() != "0") || !item7.Font.Strikeout) && item7.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString() && item7 != radListItems.SelectedItems[0])
 						{
-							string fraction = (string.IsNullOrEmpty(item7.get_Item(0).ToString()) ? "1" : item7.get_Item(0).ToString());
-							string text2 = (string.IsNullOrEmpty(item7.get_Item(2).ToString()) ? "0.00" : item7.get_Item(2).ToString());
+							string fraction = (string.IsNullOrEmpty(item7[0].ToString()) ? "1" : item7[0].ToString());
+							string text2 = (string.IsNullOrEmpty(item7[2].ToString()) ? "0.00" : item7[2].ToString());
 							decimal d2 = MathHelper.FractionToDecimal(fraction) * num10;
-							item7.set_Item(0, (object)Math.Round(d2, 2).ToString("0.####"));
-							item7.set_Item(3, (object)(Convert.ToDecimal(item7.get_Item(0).ToString()) * Convert.ToDecimal(text2.ToString(), Thread.CurrentThread.CurrentCulture)).ToString("0.00"));
-							FormHelper.ChangeOrderEntryLVCellByIdentifier((RadListView)(object)radListItems, item7, ((Control)(object)radListItems).Font.Size, item7.get_SubItems().get_Item(16).ToString());
+							item7[0] = Math.Round(d2, 2).ToString("0.####");
+							item7[3] = (Convert.ToDecimal(item7[0].ToString()) * Convert.ToDecimal(text2.ToString(), Thread.CurrentThread.CurrentCulture)).ToString("0.00");
+							FormHelper.ChangeOrderEntryLVCellByIdentifier(radListItems, item7, radListItems.Font.Size, item7.SubItems[16].ToString());
 						}
 					}
 				}
@@ -5909,7 +5862,7 @@ public class frmOrderEntry : frmMasterForm
 				button3.Enabled = true;
 				RecalculateTaxAndSubtotal();
 				checkCombo(selectedTag);
-				if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0 && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font().Strikeout)
+				if (radListItems.SelectedItems.Count > 0 && radListItems.SelectedItems[0].Font.Strikeout)
 				{
 					method_53(bool_30: false);
 					btnChangeQty.Enabled = false;
@@ -5929,22 +5882,22 @@ public class frmOrderEntry : frmMasterForm
 	private void radListItems_SelectedItemChanged(object sender, EventArgs e)
 	{
 		GClass6 gClass = new GClass6();
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0)
+		if (radListItems.SelectedItems.Count > 0)
 		{
 			_003C_003Ec__DisplayClass205_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass205_0();
 			btnRemove.Enabled = true;
 			btnInstructions.Enabled = true;
-			btnRemove.Text = ((((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font() == null || !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font().Strikeout) ? "REMOVE ITEM" : "UNREMOVE ITEM");
+			btnRemove.Text = ((radListItems.SelectedItems[0].Font == null || !radListItems.SelectedItems[0].Font.Strikeout) ? "REMOVE ITEM" : "UNREMOVE ITEM");
 			btnChangeCourse.Enabled = true;
 			btnChangeQty.Enabled = true;
 			btnRight.Enabled = true;
 			method_53(bool_30: true);
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() != string.Empty)
+			if (radListItems.SelectedItems[0].SubItems[5].ToString() != string.Empty)
 			{
 				_003C_003Ec__DisplayClass205_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass205_1();
-				if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() != "0")
+				if (radListItems.SelectedItems[0].SubItems[5].ToString() != "0")
 				{
-					if (dataManager_0.getItemsInItem(Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(4).ToString())).Count() > 0)
+					if (dataManager_0.getItemsInItem(Convert.ToInt32(radListItems.SelectedItems[0].SubItems[4].ToString())).Count() > 0)
 					{
 						Button button = btnItemSub;
 						btnItemSub.Visible = false;
@@ -5952,28 +5905,23 @@ public class frmOrderEntry : frmMasterForm
 					}
 					else
 					{
-						string value = (string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString()) ? "0.00" : ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(2).ToString());
-						if (!((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-							.Contains("OPT: ") && (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-							.Contains("   ") || ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-							.Contains("SUB: ")))
+						string value = (string.IsNullOrEmpty(radListItems.SelectedItems[0][2].ToString()) ? "0.00" : radListItems.SelectedItems[0][2].ToString());
+						if (!radListItems.SelectedItems[0].SubItems[1].ToString().Contains("OPT: ") && (radListItems.SelectedItems[0].SubItems[1].ToString().Contains("   ") || radListItems.SelectedItems[0].SubItems[1].ToString().Contains("SUB: ")))
 						{
-							if (!(Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture) == 0m) && !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-								.Contains("ADD: ") && !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(1).ToString()
-								.Contains("SUB: "))
+							if (!(Convert.ToDecimal(value, Thread.CurrentThread.CurrentCulture) == 0m) && !radListItems.SelectedItems[0].SubItems[1].ToString().Contains("ADD: ") && !radListItems.SelectedItems[0].SubItems[1].ToString().Contains("SUB: "))
 							{
 								bool flag = false;
-								if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() != "0")
+								if (radListItems.SelectedItems[0].SubItems[5].ToString() != "0")
 								{
-									foreach (ListViewDataItem item in ((RadListView)radListItems).get_Items())
+									foreach (ListViewDataItem item in radListItems.Items)
 									{
-										if (item.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() && (item.get_Item(1).ToString().Contains("ADD: ") || item.get_Item(1).ToString().Contains("OPT: ") || item.get_Item(1).ToString().Contains("SUB: ")))
+										if (item.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString() && (item[1].ToString().Contains("ADD: ") || item[1].ToString().Contains("OPT: ") || item[1].ToString().Contains("SUB: ")))
 										{
 											flag = true;
 											break;
 										}
 									}
-									if (((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem listViewDataItem_0) => listViewDataItem_0.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString()).Count() == 1)
+									if (radListItems.Items.Where((ListViewDataItem listViewDataItem_0) => listViewDataItem_0.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString()).Count() == 1)
 									{
 										flag = true;
 									}
@@ -6007,13 +5955,13 @@ public class frmOrderEntry : frmMasterForm
 							button5.Enabled = false;
 						}
 					}
-					if (!string.IsNullOrEmpty(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(2).ToString()))
+					if (!string.IsNullOrEmpty(radListItems.SelectedItems[0].SubItems[2].ToString()))
 					{
-						((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(2).ToString();
+						radListItems.SelectedItems[0].SubItems[2].ToString();
 					}
-					if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(16).ToString() == "MainItem")
+					if (radListItems.SelectedItems[0].SubItems[16].ToString() == "MainItem")
 					{
-						if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().Contains("SUB:"))
+						if (radListItems.SelectedItems[0][1].ToString().Contains("SUB:"))
 						{
 							btnChangeQty.Enabled = false;
 						}
@@ -6038,8 +5986,8 @@ public class frmOrderEntry : frmMasterForm
 					btnChangeQty.Enabled = true;
 					btnChangePrice.Enabled = true;
 				}
-				CS_0024_003C_003E8__locals1.itemId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(4).ToString());
-				if (gClass.ItemsWithOptions.Where((ItemsWithOption i) => i.ItemID == (int?)CS_0024_003C_003E8__locals1.itemId && i.ToBeDeleted == false).ToList().Count() > 0 && MathHelper.FractionToDecimal(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(0).ToString()) >= 1m)
+				CS_0024_003C_003E8__locals1.itemId = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[4].ToString());
+				if (gClass.ItemsWithOptions.Where((ItemsWithOption i) => i.ItemID == (int?)CS_0024_003C_003E8__locals1.itemId && i.ToBeDeleted == false).ToList().Count() > 0 && MathHelper.FractionToDecimal(radListItems.SelectedItems[0].SubItems[0].ToString()) >= 1m)
 				{
 					btnItemOptions.Enabled = true;
 				}
@@ -6055,7 +6003,7 @@ public class frmOrderEntry : frmMasterForm
 				button7.Enabled = false;
 				btnItemOptions.Enabled = false;
 			}
-			CS_0024_003C_003E8__locals0.orderId = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(6).ToString();
+			CS_0024_003C_003E8__locals0.orderId = radListItems.SelectedItems[0].SubItems[6].ToString();
 			if (CS_0024_003C_003E8__locals0.orderId != string.Empty)
 			{
 				_003C_003Ec__DisplayClass205_2 CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass205_2();
@@ -6066,7 +6014,7 @@ public class frmOrderEntry : frmMasterForm
 					btnChangeQty.Enabled = false;
 				}
 			}
-			string value2 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(10).ToString();
+			string value2 = radListItems.SelectedItems[0].SubItems[10].ToString();
 			if (CS_0024_003C_003E8__locals0.orderId == string.Empty && Convert.ToInt32(value2) > 0)
 			{
 				Button button8 = btnChangeComboItem;
@@ -6077,19 +6025,18 @@ public class frmOrderEntry : frmMasterForm
 			{
 				btnChangeComboItem.Visible = false;
 			}
-			btnRemove.Text = ((((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font() == null || !((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font().Strikeout) ? "REMOVE ITEM" : "UNREMOVE ITEM");
+			btnRemove.Text = ((radListItems.SelectedItems[0].Font == null || !radListItems.SelectedItems[0].Font.Strikeout) ? "REMOVE ITEM" : "UNREMOVE ITEM");
 			method_52();
 			btnItemDiscount.Enabled = true;
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(16) != null && (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(16).ToString() == "ChildItem" || ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(16).ToString() == "OptionItem" || ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().Contains("OPT:") || (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().Contains("[") && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().Contains("]"))) && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(3).ToString() == "")
+			if (radListItems.SelectedItems[0].SubItems[16] != null && (radListItems.SelectedItems[0].SubItems[16].ToString() == "ChildItem" || radListItems.SelectedItems[0].SubItems[16].ToString() == "OptionItem" || radListItems.SelectedItems[0][1].ToString().Contains("OPT:") || (radListItems.SelectedItems[0][1].ToString().Contains("[") && radListItems.SelectedItems[0][1].ToString().Contains("]"))) && radListItems.SelectedItems[0][3].ToString() == "")
 			{
 				btnItemDiscount.Enabled = false;
 			}
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString().ToUpper()
-				.Contains("DELIVERY FEE"))
+			if (radListItems.SelectedItems[0][1].ToString().ToUpper().Contains("DELIVERY FEE"))
 			{
 				btnChangeQty.Enabled = false;
 			}
-			int num = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(14).ToString());
+			int num = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[14].ToString());
 			Order order = null;
 			if (CS_0024_003C_003E8__locals0.orderId != string.Empty)
 			{
@@ -6103,7 +6050,7 @@ public class frmOrderEntry : frmMasterForm
 			{
 				btnFire.Enabled = false;
 			}
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0 && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font() != null && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Font().Strikeout)
+			if (radListItems.SelectedItems.Count > 0 && radListItems.SelectedItems[0].Font != null && radListItems.SelectedItems[0].Font.Strikeout)
 			{
 				btnChangeQty.Enabled = false;
 			}
@@ -6126,8 +6073,7 @@ public class frmOrderEntry : frmMasterForm
 	private void method_52()
 	{
 		btnItemDiscount.Text = Resources.ITEM_DISCOUNT;
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0 && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(15).ToString()
-			.Contains(DiscountTypes.Item))
+		if (radListItems.SelectedItems.Count > 0 && radListItems.SelectedItems[0].SubItems[15].ToString().Contains(DiscountTypes.Item))
 		{
 			btnItemDiscount.Text = Resources.REMOVE_ITEM_DISCOUNT;
 		}
@@ -6177,7 +6123,7 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnChangeCourse_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0)
+		if (radListItems.SelectedItems.Count > 0)
 		{
 			Dictionary<string, string> dictionary = new Dictionary<string, string>();
 			dictionary.Add(ItemCourses.Uncategorized, Resources.Uncategorized);
@@ -6191,27 +6137,27 @@ public class frmOrderEntry : frmMasterForm
 			{
 				return;
 			}
-			ListViewDataItem val = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0];
-			ListViewDataItemGroup group = val.get_Group();
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() != "0")
+			ListViewDataItem listViewDataItem = radListItems.SelectedItems[0];
+			ListViewDataItemGroup group = listViewDataItem.Group;
+			if (radListItems.SelectedItems[0].SubItems[5].ToString() != "0")
 			{
-				val = ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem listViewDataItem_0) => listViewDataItem_0.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() && listViewDataItem_0.get_SubItems().get_Item(16).ToString() == "MainItem").FirstOrDefault();
-				val.set_Group(method_26(frmButtonSelector2.SelectedValue));
-				foreach (ListViewDataItem item in ((RadListView)radListItems).get_Items())
+				listViewDataItem = radListItems.Items.Where((ListViewDataItem listViewDataItem_0) => listViewDataItem_0.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString() && listViewDataItem_0.SubItems[16].ToString() == "MainItem").FirstOrDefault();
+				listViewDataItem.Group = method_26(frmButtonSelector2.SelectedValue);
+				foreach (ListViewDataItem item in radListItems.Items)
 				{
-					if (item.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString() && (item.get_Item(1).ToString().Contains("ADD: ") || item.get_Item(1).ToString().Contains("OPT: ") || item.get_Item(1).ToString().Contains("SUB: ") || item.get_SubItems().get_Item(16).ToString() == "ChildItem"))
+					if (item.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString() && (item[1].ToString().Contains("ADD: ") || item[1].ToString().Contains("OPT: ") || item[1].ToString().Contains("SUB: ") || item.SubItems[16].ToString() == "ChildItem"))
 					{
-						item.set_Group(method_26(frmButtonSelector2.SelectedValue));
+						item.Group = method_26(frmButtonSelector2.SelectedValue);
 					}
 				}
 			}
 			else
 			{
-				val.set_Group(method_26(frmButtonSelector2.SelectedValue));
+				listViewDataItem.Group = method_26(frmButtonSelector2.SelectedValue);
 			}
-			if (((IEnumerable<ListViewDataItem>)group.get_Items()).Count() == 0)
+			if (group.Items.Count() == 0)
 			{
-				((ListViewDataItem)group).set_Visible(false);
+				group.Visible = false;
 			}
 			isSaved = false;
 			Button button = btnSaveClose;
@@ -6239,13 +6185,13 @@ public class frmOrderEntry : frmMasterForm
 			{
 				return;
 			}
-			foreach (ListViewDataItem item in ((RadListView)radListItems).get_Items())
+			foreach (ListViewDataItem item in radListItems.Items)
 			{
-				decimal num = Convert.ToDecimal(((item.get_Item(2).ToString() == "") ? "0.00" : item.get_Item(2).ToString()).RemoveAllNonNumeric());
+				decimal num = Convert.ToDecimal(((item[2].ToString() == "") ? "0.00" : item[2].ToString()).RemoveAllNonNumeric());
 				if (!(num < 0m))
 				{
-					decimal num2 = MathHelper.FractionToDecimal((item.get_Item(0).ToString() == "") ? "1" : item.get_Item(0).ToString());
-					decimal discountFromDiscountDescription = OrderHelper.GetDiscountFromDiscountDescription(item.get_SubItems().get_Item(15).ToString(), DiscountTypes.Item);
+					decimal num2 = MathHelper.FractionToDecimal((item[0].ToString() == "") ? "1" : item[0].ToString());
+					decimal discountFromDiscountDescription = OrderHelper.GetDiscountFromDiscountDescription(item.SubItems[15].ToString(), DiscountTypes.Item);
 					if (Math.Round(frmDiscount2.percentDiscount * num * num2, 4) + Math.Round(discountFromDiscountDescription, 4) > num * num2)
 					{
 						new NotificationLabel(this, "Cannot apply order discount, discount total for an item is greater than the item price.", NotificationTypes.Notification).Show();
@@ -6368,14 +6314,14 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnFire_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count <= 0)
+		if (radListItems.SelectedItems.Count <= 0)
 		{
 			return;
 		}
 		_003C_003Ec__DisplayClass224_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass224_0();
 		GClass6 gClass = new GClass6();
-		ListViewDataItem val = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0];
-		CS_0024_003C_003E8__locals0.itemId = Convert.ToInt32(val.get_SubItems().get_Item(4).ToString());
+		ListViewDataItem listViewDataItem = radListItems.SelectedItems[0];
+		CS_0024_003C_003E8__locals0.itemId = Convert.ToInt32(listViewDataItem.SubItems[4].ToString());
 		CS_0024_003C_003E8__locals0.item = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID == CS_0024_003C_003E8__locals0.itemId).FirstOrDefault();
 		if (CS_0024_003C_003E8__locals0.item == null)
 		{
@@ -6384,17 +6330,17 @@ public class frmOrderEntry : frmMasterForm
 		if (gClass.ItemCourses.Where((ItemCourse a) => a.Name == CS_0024_003C_003E8__locals0.item.ItemCourse).FirstOrDefault() != null)
 		{
 			_003C_003Ec__DisplayClass224_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass224_1();
-			CS_0024_003C_003E8__locals1.itemComboId = Convert.ToInt32(val.get_SubItems().get_Item(5).ToString());
+			CS_0024_003C_003E8__locals1.itemComboId = Convert.ToInt32(listViewDataItem.SubItems[5].ToString());
 			if (CS_0024_003C_003E8__locals1.itemComboId > 0)
 			{
-				foreach (ListViewDataItem item in ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals1.itemComboId.ToString()))
+				foreach (ListViewDataItem item in radListItems.Items.Where((ListViewDataItem a) => a.SubItems[5].ToString() == CS_0024_003C_003E8__locals1.itemComboId.ToString()))
 				{
-					item.get_SubItems().set_Item(14, (object)"-1");
+					item.SubItems[14] = "-1";
 				}
 			}
 			else
 			{
-				val.get_SubItems().set_Item(14, (object)"-1");
+				listViewDataItem.SubItems[14] = "-1";
 			}
 			new NotificationLabel(this, "Item sent to Station.", NotificationTypes.Success).Show();
 			btnSaveOrder_Click(null, null);
@@ -6458,9 +6404,9 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnChangeComboItem_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0 && ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0] != null)
+		if (radListItems.SelectedItems.Count > 0 && radListItems.SelectedItems[0] != null)
 		{
-			short num = Convert.ToInt16(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(10).ToString());
+			short num = Convert.ToInt16(radListItems.SelectedItems[0].SubItems[10].ToString());
 			if (num > 0)
 			{
 				method_31(num);
@@ -6481,7 +6427,7 @@ public class frmOrderEntry : frmMasterForm
 			button.Enabled = false;
 			isSaved = true;
 		}
-		if (int_1 == 2 && list_3.Count == 1 && ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(6).ToString() == string.Empty).Count() == 0)
+		if (int_1 == 2 && list_3.Count == 1 && radListItems.Items.Where((ListViewDataItem a) => a.SubItems[6].ToString() == string.Empty).Count() == 0)
 		{
 			list_3.Clear();
 		}
@@ -6605,12 +6551,12 @@ public class frmOrderEntry : frmMasterForm
 		new NotificationLabel(this, "Order fulfillment changed to " + text, NotificationTypes.Notification);
 		orderOnHoldTime = (int)(dateTime - DateTime.Now).TotalMinutes;
 		method_17();
-		foreach (ListViewDataItem item2 in ((RadListView)radListItems).get_Items())
+		foreach (ListViewDataItem item2 in radListItems.Items)
 		{
-			item2.get_SubItems().set_Item(14, (object)orderOnHoldTime.ToString());
+			item2.SubItems[14] = orderOnHoldTime.ToString();
 		}
 		isSaved = false;
-		if (((RadListView)radListItems).get_Items().get_Count() > 0)
+		if (radListItems.Items.Count > 0)
 		{
 			Button button = btnSaveClose;
 			btnSaveOrder.Enabled = true;
@@ -6639,7 +6585,7 @@ public class frmOrderEntry : frmMasterForm
 		Button button = (Button)sender;
 		if (lblSubstitutionMode.Visible)
 		{
-			((Control)(object)radListItems).Enabled = true;
+			radListItems.Enabled = true;
 			lblSubstitutionMode.Visible = false;
 			button.Text = Resources.ITEM_SUB;
 			Button button2 = btnRemove;
@@ -6686,9 +6632,9 @@ public class frmOrderEntry : frmMasterForm
 				DpoFeuYkxVM.Enabled = false;
 			}
 		}
-		else if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count > 0)
+		else if (radListItems.SelectedItems.Count > 0)
 		{
-			((Control)(object)radListItems).Enabled = false;
+			radListItems.Enabled = false;
 			button.Text = Resources.CANCEL_ITEM_SUB;
 			lblSubstitutionMode.Visible = true;
 			Button button12 = btnRemove;
@@ -6727,21 +6673,21 @@ public class frmOrderEntry : frmMasterForm
 
 	private void btnItemOptions_Click(object sender, EventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count <= 0)
+		if (radListItems.SelectedItems.Count <= 0)
 		{
 			return;
 		}
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0] != null)
+		if (radListItems.SelectedItems[0] != null)
 		{
 			_003C_003Ec__DisplayClass234_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass234_0();
 			new GClass6();
-			CS_0024_003C_003E8__locals0.itemID = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(4).ToString());
-			CS_0024_003C_003E8__locals0.comboId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString());
-			CS_0024_003C_003E8__locals0.optionComboId = Convert.ToInt32(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(11).ToString());
-			decimal num = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString().ToDecimalWithCleanUp();
-			ListViewDataItem val = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0];
-			decimal num2 = Convert.ToDecimal((val.get_Item(3).ToString() == "") ? "0" : val.get_Item(3).ToString());
-			if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems()).Count <= 0)
+			CS_0024_003C_003E8__locals0.itemID = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[4].ToString());
+			CS_0024_003C_003E8__locals0.comboId = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[5].ToString());
+			CS_0024_003C_003E8__locals0.optionComboId = Convert.ToInt32(radListItems.SelectedItems[0].SubItems[11].ToString());
+			decimal num = radListItems.SelectedItems[0][0].ToString().ToDecimalWithCleanUp();
+			ListViewDataItem listViewDataItem = radListItems.SelectedItems[0];
+			decimal num2 = Convert.ToDecimal((listViewDataItem[3].ToString() == "") ? "0" : listViewDataItem[3].ToString());
+			if (radListItems.SelectedItems.Count <= 0)
 			{
 				return;
 			}
@@ -6752,28 +6698,25 @@ public class frmOrderEntry : frmMasterForm
 			{
 				_003C_003Ec__DisplayClass234_1 CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass234_1();
 				CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1 = CS_0024_003C_003E8__locals0;
-				decimal itemQty = MathHelper.FractionToDecimal(((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(0).ToString());
-				CS_0024_003C_003E8__locals2.itemName = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_Item(1).ToString();
+				decimal itemQty = MathHelper.FractionToDecimal(radListItems.SelectedItems[0][0].ToString());
+				CS_0024_003C_003E8__locals2.itemName = radListItems.SelectedItems[0][1].ToString();
 				List<SelectedOptionObject> list = new List<SelectedOptionObject>();
-				foreach (ListViewDataItem item2 in ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_Item(1).ToString() != CS_0024_003C_003E8__locals2.itemName && a.get_SubItems().get_Item(11).ToString() == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.optionComboId.ToString() && !a.get_Font().Strikeout && a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.comboId.ToString() && (a.get_Item(1).ToString().Contains("ADD:") || a.get_Item(1).ToString().Contains("OPT: "))))
+				foreach (ListViewDataItem item2 in radListItems.Items.Where((ListViewDataItem a) => a[1].ToString() != CS_0024_003C_003E8__locals2.itemName && a.SubItems[11].ToString() == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.optionComboId.ToString() && !a.Font.Strikeout && a.SubItems[5].ToString() == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.comboId.ToString() && (a[1].ToString().Contains("ADD:") || a[1].ToString().Contains("OPT: "))))
 				{
-					string fraction = ((item2.get_Item(0).ToString() == "") ? "1" : item2.get_Item(0).ToString());
-					decimal num3 = MathHelper.ToDecimal((item2.get_Item(2).ToString() == "") ? "0.00" : item2.get_Item(2).ToString());
-					decimal num4 = MathHelper.ToDecimal((item2.get_Item(3).ToString() == "") ? "0.00" : item2.get_Item(3).ToString());
-					decimal num5 = MathHelper.ToDecimal(item2.get_SubItems().get_Item(8).ToString(), -1m);
+					string fraction = ((item2[0].ToString() == "") ? "1" : item2[0].ToString());
+					decimal num3 = MathHelper.ToDecimal((item2[2].ToString() == "") ? "0.00" : item2[2].ToString());
+					decimal num4 = MathHelper.ToDecimal((item2[3].ToString() == "") ? "0.00" : item2[3].ToString());
+					decimal num5 = MathHelper.ToDecimal(item2.SubItems[8].ToString(), -1m);
 					SelectedOptionObject item = new SelectedOptionObject
 					{
-						item_option_id = ((!string.IsNullOrEmpty(item2.get_SubItems().get_Item(17).ToString())) ? Convert.ToInt32(item2.get_SubItems().get_Item(17).ToString()) : 0),
-						tag = ((!item2.get_Item(1).ToString().Contains("[") || !item2.get_Item(1).ToString().Contains("]")) ? "OPTIONS" : Regex.Match(item2.get_Item(1).ToString().ToUpper()
-							.Replace("OPT: ", "")
+						item_option_id = ((!string.IsNullOrEmpty(item2.SubItems[17].ToString())) ? Convert.ToInt32(item2.SubItems[17].ToString()) : 0),
+						tag = ((!item2[1].ToString().Contains("[") || !item2[1].ToString().Contains("]")) ? "OPTIONS" : Regex.Match(item2[1].ToString().ToUpper().Replace("OPT: ", "")
 							.Replace("ADD: ", "")
 							.Replace("   ", ""), "\\[([^]]*)\\]").Groups[1].Value),
-						item_name = Regex.Replace(Regex.Replace(item2.get_Item(1).ToString().ToUpper()
-							.Replace("OPT: ", "")
+						item_name = Regex.Replace(Regex.Replace(item2[1].ToString().ToUpper().Replace("OPT: ", "")
 							.Replace("ADD: ", "")
 							.Replace("   ", ""), "(\\[.*\\])", "").Trim(), "(\\(.*\\)) ", ""),
-						option_itemId = Convert.ToInt32(item2.get_SubItems().get_Item(4).ToString()
-							.Trim()),
+						option_itemId = Convert.ToInt32(item2.SubItems[4].ToString().Trim()),
 						price = ((num5 == -1m) ? num3 : num5),
 						qty = MathHelper.FractionToDecimal(fraction),
 						is_solo_group_option = ((num5 * num != num4) ? true : false)
@@ -6842,19 +6785,19 @@ public class frmOrderEntry : frmMasterForm
 					newItem = true;
 				}
 				MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.OptionScreen();
-				MemoryLoadedObjects.OptionScreen.courseGroup = val.get_Group();
-				MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals2.itemName, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.itemID, itemQty, ((RadListView)radListItems).get_SelectedIndex(), CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.optionComboId, this, string_5, list, newItem);
+				MemoryLoadedObjects.OptionScreen.courseGroup = listViewDataItem.Group;
+				MemoryLoadedObjects.OptionScreen.LoadForm(CS_0024_003C_003E8__locals2.itemName, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.itemID, itemQty, radListItems.SelectedIndex, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.optionComboId, this, string_5, list, newItem);
 				MemoryLoadedObjects.OptionScreen.ShowDialog(this);
-				string text = val.get_SubItems().get_Item(15).ToString();
+				string text = listViewDataItem.SubItems[15].ToString();
 				if (!string.IsNullOrEmpty(text) && text.Contains(DiscountTypes.Item))
 				{
-					val.get_SubItems().get_Item(13).ToString();
-					decimal num8 = Convert.ToDecimal(val.get_Item(3).ToString());
+					listViewDataItem.SubItems[13].ToString();
+					decimal num8 = Convert.ToDecimal(listViewDataItem[3].ToString());
 					if (num8 != num2)
 					{
 						decimal num9 = OrderHelper.GetDiscountFromDiscountDescription(text, DiscountTypes.Item) / num2;
 						text = OrderHelper.UpdateDiscountFromDiscountDescription(text, DiscountTypes.Item, num8 * num9);
-						val.get_SubItems().set_Item(15, (object)text);
+						listViewDataItem.SubItems[15] = text;
 						RecalculateTaxAndSubtotal();
 					}
 				}
@@ -6945,7 +6888,7 @@ public class frmOrderEntry : frmMasterForm
 
 	private void method_57()
 	{
-		if (((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_Item(1).ToString().ToUpper() != "DELIVERY FEE").ToList().Count > 0)
+		if (radListItems.Items.Where((ListViewDataItem a) => a[1].ToString().ToUpper() != "DELIVERY FEE").ToList().Count > 0)
 		{
 			btnPay.Enabled = true;
 			if (frmMasterForm.lockedControls == null)
@@ -6955,7 +6898,7 @@ public class frmOrderEntry : frmMasterForm
 			btnOrderDiscount.Enabled = true;
 			btnPrintBill.Enabled = true;
 			btnSplitMergeBill.Enabled = true;
-			if (((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => !string.IsNullOrEmpty(a.get_SubItems().get_Item(6).ToString())).Count() > 0)
+			if (radListItems.Items.Where((ListViewDataItem a) => !string.IsNullOrEmpty(a.SubItems[6].ToString())).Count() > 0)
 			{
 				GglFeOneCle.Enabled = true;
 			}
@@ -6981,19 +6924,19 @@ public class frmOrderEntry : frmMasterForm
 
 	private void txtBarcodeSearch_GotFocus(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtBarcodeSearch).Text == Resources.Click_here_to_start_scanning_p)
+		if (txtBarcodeSearch.Text == Resources.Click_here_to_start_scanning_p)
 		{
-			((Control)(object)txtBarcodeSearch).ForeColor = HelperMethods.GetColor("Black");
-			((Control)(object)txtBarcodeSearch).Text = string.Empty;
+			txtBarcodeSearch.ForeColor = HelperMethods.GetColor("Black");
+			txtBarcodeSearch.Text = string.Empty;
 		}
 	}
 
 	private void txtBarcodeSearch_LostFocus(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtBarcodeSearch).Text == string.Empty)
+		if (txtBarcodeSearch.Text == string.Empty)
 		{
-			((Control)(object)txtBarcodeSearch).ForeColor = HelperMethods.GetColor("Gray");
-			((Control)(object)txtBarcodeSearch).Text = Resources.Click_here_to_start_scanning_p;
+			txtBarcodeSearch.ForeColor = HelperMethods.GetColor("Gray");
+			txtBarcodeSearch.Text = Resources.Click_here_to_start_scanning_p;
 		}
 	}
 
@@ -7003,37 +6946,37 @@ public class frmOrderEntry : frmMasterForm
 		{
 			return;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtBarcodeSearch).Text))
+		if (string.IsNullOrEmpty(txtBarcodeSearch.Text))
 		{
 			new frmMessageBox(Resources.The_barcode_field_is_blank_Ple).ShowDialog(this);
 			return;
 		}
 		new GClass6();
-		((Control)(object)txtBarcodeSearch).Text = ((Control)(object)txtBarcodeSearch).Text.Trim();
-		Item item = MemoryLoadedData.all_active_items.Where((Item item_0) => item_0.Barcode == ((Control)(object)txtBarcodeSearch).Text).FirstOrDefault();
+		txtBarcodeSearch.Text = txtBarcodeSearch.Text.Trim();
+		Item item = MemoryLoadedData.all_active_items.Where((Item item_0) => item_0.Barcode == txtBarcodeSearch.Text).FirstOrDefault();
 		if (item == null)
 		{
 			_003C_003Ec__DisplayClass242_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass242_0();
-			CS_0024_003C_003E8__locals0.bc = ((Control)(object)txtBarcodeSearch).Text;
+			CS_0024_003C_003E8__locals0.bc = txtBarcodeSearch.Text;
 			string value = "0";
-			if (((Control)(object)txtBarcodeSearch).Text.Length == 13)
+			if (txtBarcodeSearch.Text.Length == 13)
 			{
-				CS_0024_003C_003E8__locals0.bc = ((Control)(object)txtBarcodeSearch).Text.Substring(1, 6);
-				value = ((Control)(object)txtBarcodeSearch).Text.Substring(7, 5);
+				CS_0024_003C_003E8__locals0.bc = txtBarcodeSearch.Text.Substring(1, 6);
+				value = txtBarcodeSearch.Text.Substring(7, 5);
 			}
-			else if (((Control)(object)txtBarcodeSearch).Text.Length == 12)
+			else if (txtBarcodeSearch.Text.Length == 12)
 			{
-				CS_0024_003C_003E8__locals0.bc = ((Control)(object)txtBarcodeSearch).Text.Substring(0, 6);
-				value = ((Control)(object)txtBarcodeSearch).Text.Substring(6, 5);
+				CS_0024_003C_003E8__locals0.bc = txtBarcodeSearch.Text.Substring(0, 6);
+				value = txtBarcodeSearch.Text.Substring(6, 5);
 			}
-			if (CS_0024_003C_003E8__locals0.bc != ((Control)(object)txtBarcodeSearch).Text)
+			if (CS_0024_003C_003E8__locals0.bc != txtBarcodeSearch.Text)
 			{
 				item = MemoryLoadedData.all_active_items.Where((Item b) => b.UseSmartBarcode && CS_0024_003C_003E8__locals0.bc == b.Barcode).FirstOrDefault();
 			}
 			if (item == null)
 			{
 				new NotificationLabel(this, Resources.Item_not_found0, NotificationTypes.Warning).Show();
-				((Control)(object)txtBarcodeSearch).Text = string.Empty;
+				txtBarcodeSearch.Text = string.Empty;
 				return;
 			}
 			megFrVxorYX(item.ItemID, item.ItemName, Convert.ToDecimal(value) / 100m);
@@ -7042,7 +6985,7 @@ public class frmOrderEntry : frmMasterForm
 		{
 			megFrVxorYX(item.ItemID, item.ItemName);
 		}
-		((Control)(object)txtBarcodeSearch).Text = string.Empty;
+		txtBarcodeSearch.Text = string.Empty;
 		e.SuppressKeyPress = true;
 		e.Handled = true;
 	}
@@ -7074,61 +7017,46 @@ public class frmOrderEntry : frmMasterForm
 
 	public void CloneListviewToSecondScreen()
 	{
-		//IL_024f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0256: Expected O, but got Unknown
-		if (MemoryLoadedObjects.OrderEntrySecondScreen == null || ((RadListView)radListItems).get_Items().get_Count() < ((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Count())
+		if (MemoryLoadedObjects.OrderEntrySecondScreen == null || radListItems.Items.Count < MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Count)
 		{
 			return;
 		}
 		int num = 0;
-		foreach (ListViewDataItem item in ((RadListView)radListItems).get_Items())
+		foreach (ListViewDataItem item in radListItems.Items)
 		{
 			_ = item;
-			if (num < ((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Count())
+			if (num < MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Count)
 			{
 				for (int i = 0; i < 7; i++)
 				{
 					if (i <= 3)
 					{
-						((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Item(num).set_Item(i, (object)((RadListView)radListItems).get_Items().get_Item(num).get_Item(i)
-							.ToString());
+						MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items[num][i] = radListItems.Items[num][i].ToString();
 					}
 					else
 					{
-						((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Item(num).set_Item(i, (object)((RadListView)radListItems).get_Items().get_Item(num).get_SubItems()
-							.get_Item(i)
-							.ToString());
+						MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items[num][i] = radListItems.Items[num].SubItems[i].ToString();
 					}
 				}
-				((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Item(num).set_Font(((RadListView)radListItems).get_Items().get_Item(num).get_Font());
-				((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().get_Item(num).set_ForeColor(((RadListView)radListItems).get_Items().get_Item(num).get_ForeColor());
+				MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items[num].Font = radListItems.Items[num].Font;
+				MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items[num].ForeColor = radListItems.Items[num].ForeColor;
 			}
 			else
 			{
-				string[] array = new string[7]
+				string[] values = new string[7]
 				{
-					((RadListView)radListItems).get_Items().get_Item(num).get_Item(0)
-						.ToString(),
-					((RadListView)radListItems).get_Items().get_Item(num).get_Item(1)
-						.ToString(),
-					((RadListView)radListItems).get_Items().get_Item(num).get_Item(2)
-						.ToString(),
-					((RadListView)radListItems).get_Items().get_Item(num).get_Item(3)
-						.ToString(),
-					((RadListView)radListItems).get_Items().get_Item(num).get_SubItems()
-						.get_Item(4)
-						.ToString(),
-					((RadListView)radListItems).get_Items().get_Item(num).get_SubItems()
-						.get_Item(5)
-						.ToString(),
-					((RadListView)radListItems).get_Items().get_Item(num).get_SubItems()
-						.get_Item(6)
-						.ToString()
+					radListItems.Items[num][0].ToString(),
+					radListItems.Items[num][1].ToString(),
+					radListItems.Items[num][2].ToString(),
+					radListItems.Items[num][3].ToString(),
+					radListItems.Items[num].SubItems[4].ToString(),
+					radListItems.Items[num].SubItems[5].ToString(),
+					radListItems.Items[num].SubItems[6].ToString()
 				};
-				ListViewDataItem val = new ListViewDataItem("", array);
-				val.set_Font(((RadListView)radListItems).get_Items().get_Item(num).get_Font());
-				val.set_ForeColor(((RadListView)radListItems).get_Items().get_Item(num).get_ForeColor());
-				((RadListView)MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond).get_Items().Add(val);
+				ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
+				listViewDataItem.Font = radListItems.Items[num].Font;
+				listViewDataItem.ForeColor = radListItems.Items[num].ForeColor;
+				MemoryLoadedObjects.OrderEntrySecondScreen.radListItemsSecond.Items.Add(listViewDataItem);
 			}
 			num++;
 		}
@@ -7175,24 +7103,12 @@ public class frmOrderEntry : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0026: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002c: Expected O, but got Unknown
-		//IL_0036: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_0046: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004c: Expected O, but got Unknown
-		//IL_0056: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005d: Expected O, but got Unknown
-		//IL_024d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0257: Expected O, but got Unknown
-		//IL_1b5b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b7c: Unknown result type (might be due to invalid IL or missing references)
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmOrderEntry));
-		ListViewDetailColumn val = new ListViewDetailColumn("Column 0", "Qty");
-		ListViewDetailColumn val2 = new ListViewDetailColumn("Column 1", "Item Name");
-		ListViewDetailColumn val3 = new ListViewDetailColumn("Column 2", "Price");
-		ListViewDetailColumn val4 = new ListViewDetailColumn("Column 3", "Ext. Price");
+		ListViewDetailColumn listViewDetailColumn = new ListViewDetailColumn("Column 0", "Qty");
+		ListViewDetailColumn listViewDetailColumn2 = new ListViewDetailColumn("Column 1", "Item Name");
+		ListViewDetailColumn listViewDetailColumn3 = new ListViewDetailColumn("Column 2", "Price");
+		ListViewDetailColumn listViewDetailColumn4 = new ListViewDetailColumn("Column 3", "Ext. Price");
 		lblTotal = new Label();
 		lblTotalTax = new Label();
 		lblSubTotal = new Label();
@@ -7591,15 +7507,15 @@ public class frmOrderEntry : frmMasterForm
 		picItemInfo.TabStop = false;
 		picItemInfo.Click += picItemInfo_Click;
 		componentResourceManager.ApplyResources(txtBarcodeSearch, "txtBarcodeSearch");
-		((Control)(object)txtBarcodeSearch).ForeColor = Color.Gray;
-		((Control)(object)txtBarcodeSearch).Name = "txtBarcodeSearch";
-		((RadElement)((RadControl)txtBarcodeSearch).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtBarcodeSearch).TextChanged += txtBarcodeSearch_TextChanged;
-		((Control)(object)txtBarcodeSearch).GotFocus += txtBarcodeSearch_GotFocus;
-		((Control)(object)txtBarcodeSearch).KeyDown += txtBarcodeSearch_KeyDown;
-		((Control)(object)txtBarcodeSearch).LostFocus += txtBarcodeSearch_LostFocus;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtBarcodeSearch).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtBarcodeSearch).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtBarcodeSearch.ForeColor = Color.Gray;
+		txtBarcodeSearch.Name = "txtBarcodeSearch";
+		txtBarcodeSearch.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtBarcodeSearch.TextChanged += txtBarcodeSearch_TextChanged;
+		txtBarcodeSearch.GotFocus += txtBarcodeSearch_GotFocus;
+		txtBarcodeSearch.KeyDown += txtBarcodeSearch_KeyDown;
+		txtBarcodeSearch.LostFocus += txtBarcodeSearch_LostFocus;
+		((RadTextBoxControlElement)txtBarcodeSearch.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtBarcodeSearch.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(pnlTotals, "pnlTotals");
 		pnlTotals.Controls.Add(lblOrderNumber);
 		pnlTotals.Controls.Add(btnChangeCourse);
@@ -7638,31 +7554,31 @@ public class frmOrderEntry : frmMasterForm
 		componentResourceManager.ApplyResources(picTrash, "picTrash");
 		picTrash.Name = "picTrash";
 		picTrash.TabStop = false;
-		((RadListView)radListItems).set_AllowArbitraryItemHeight(true);
-		((RadListView)radListItems).set_AllowEdit(false);
-		((RadListView)radListItems).set_AllowRemove(false);
+		radListItems.AllowArbitraryItemHeight = true;
+		radListItems.AllowEdit = false;
+		radListItems.AllowRemove = false;
 		componentResourceManager.ApplyResources(radListItems, "radListItems");
-		val.set_HeaderText("Qty");
-		val.set_Width(40f);
-		val2.set_HeaderText("Item Name");
-		val2.set_Width(242f);
-		val3.set_HeaderText("Price");
-		val3.set_Width(57f);
-		val4.set_HeaderText("Ext. Price");
-		val4.set_Width(55f);
-		((RadListView)radListItems).get_Columns().AddRange((ListViewDetailColumn[])(object)new ListViewDetailColumn[4] { val, val2, val3, val4 });
-		((RadListView)radListItems).set_EnableCustomGrouping(true);
-		((RadListView)radListItems).set_EnableKineticScrolling(true);
-		((RadListView)radListItems).set_GroupIndent(0);
-		((RadListView)radListItems).set_GroupItemSize(new Size(300, 60));
-		((RadListView)radListItems).set_ItemSize(new Size(200, 40));
-		((RadListView)radListItems).set_ItemSpacing(-1);
-		((Control)(object)radListItems).Name = "radListItems";
-		((RadListView)radListItems).set_ShowColumnHeaders(false);
-		((RadListView)radListItems).set_ShowGridLines(true);
-		((RadListView)radListItems).set_ShowGroups(true);
-		((RadListView)radListItems).set_ViewType((ListViewType)2);
-		((RadListView)radListItems).add_SelectedItemChanged((EventHandler)radListItems_SelectedItemChanged);
+		listViewDetailColumn.HeaderText = "Qty";
+		listViewDetailColumn.Width = 40f;
+		listViewDetailColumn2.HeaderText = "Item Name";
+		listViewDetailColumn2.Width = 242f;
+		listViewDetailColumn3.HeaderText = "Price";
+		listViewDetailColumn3.Width = 57f;
+		listViewDetailColumn4.HeaderText = "Ext. Price";
+		listViewDetailColumn4.Width = 55f;
+		radListItems.Columns.AddRange(listViewDetailColumn, listViewDetailColumn2, listViewDetailColumn3, listViewDetailColumn4);
+		radListItems.EnableCustomGrouping = true;
+		radListItems.EnableKineticScrolling = true;
+		radListItems.GroupIndent = 0;
+		radListItems.GroupItemSize = new Size(300, 60);
+		radListItems.ItemSize = new Size(200, 40);
+		radListItems.ItemSpacing = -1;
+		radListItems.Name = "radListItems";
+		radListItems.ShowColumnHeaders = false;
+		radListItems.ShowGridLines = true;
+		radListItems.ShowGroups = true;
+		radListItems.ViewType = ListViewType.DetailsView;
+		radListItems.SelectedItemChanged += radListItems_SelectedItemChanged;
 		verticalScrollControl1.BackColor = Color.FromArgb(95, 95, 95);
 		verticalScrollControl1.ButtonDownEventOverride = null;
 		verticalScrollControl1.ButtonLastEventOverride = null;
@@ -7865,11 +7781,11 @@ public class frmOrderEntry : frmMasterForm
 		base.Controls.Add(lblItemsHeader);
 		base.Controls.Add(pnlGroups);
 		base.Controls.Add(pnlItems);
-		base.Controls.Add((Control)(object)txtBarcodeSearch);
+		base.Controls.Add(txtBarcodeSearch);
 		base.Controls.Add(pnlTotals);
 		base.Controls.Add(pnlNav);
 		base.Controls.Add(pnlChangeSeat);
-		base.Controls.Add((Control)(object)radListItems);
+		base.Controls.Add(radListItems);
 		base.MaximizeBox = false;
 		base.MinimizeBox = false;
 		base.Name = "frmOrderEntry";
@@ -7878,11 +7794,11 @@ public class frmOrderEntry : frmMasterForm
 		base.SizeGripStyle = SizeGripStyle.Hide;
 		base.WindowState = FormWindowState.Maximized;
 		base.Load += frmOrderEntry_Load;
-		base.Controls.SetChildIndex((Control)(object)radListItems, 0);
+		base.Controls.SetChildIndex(radListItems, 0);
 		base.Controls.SetChildIndex(pnlChangeSeat, 0);
 		base.Controls.SetChildIndex(pnlNav, 0);
 		base.Controls.SetChildIndex(pnlTotals, 0);
-		base.Controls.SetChildIndex((Control)(object)txtBarcodeSearch, 0);
+		base.Controls.SetChildIndex(txtBarcodeSearch, 0);
 		base.Controls.SetChildIndex(pnlItems, 0);
 		base.Controls.SetChildIndex(pnlGroups, 0);
 		base.Controls.SetChildIndex(lblItemsHeader, 0);
@@ -7957,13 +7873,13 @@ public class frmOrderEntry : frmMasterForm
 	[CompilerGenerated]
 	private bool method_62(ListViewDataItem listViewDataItem_0)
 	{
-		return listViewDataItem_0.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString();
+		return listViewDataItem_0.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString();
 	}
 
 	[CompilerGenerated]
 	private bool method_63(ListViewDataItem listViewDataItem_0)
 	{
-		return listViewDataItem_0.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString();
+		return listViewDataItem_0.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString();
 	}
 
 	[CompilerGenerated]
@@ -8011,15 +7927,15 @@ public class frmOrderEntry : frmMasterForm
 	[CompilerGenerated]
 	private bool method_70(ListViewDataItem listViewDataItem_0)
 	{
-		return listViewDataItem_0.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString();
+		return listViewDataItem_0.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString();
 	}
 
 	[CompilerGenerated]
 	private bool method_71(ListViewDataItem listViewDataItem_0)
 	{
-		if (listViewDataItem_0.get_SubItems().get_Item(5).ToString() == ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListItems).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString())
+		if (listViewDataItem_0.SubItems[5].ToString() == radListItems.SelectedItems[0].SubItems[5].ToString())
 		{
-			return listViewDataItem_0.get_SubItems().get_Item(16).ToString() == "MainItem";
+			return listViewDataItem_0.SubItems[16].ToString() == "MainItem";
 		}
 		return false;
 	}
@@ -8037,6 +7953,6 @@ public class frmOrderEntry : frmMasterForm
 	[CompilerGenerated]
 	private bool method_73(Item item_0)
 	{
-		return item_0.Barcode == ((Control)(object)txtBarcodeSearch).Text;
+		return item_0.Barcode == txtBarcodeSearch.Text;
 	}
 }

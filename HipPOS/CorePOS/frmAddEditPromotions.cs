@@ -254,31 +254,31 @@ public class frmAddEditPromotions : frmMasterForm
 	private void frmAddEditPromotions_Load(object sender, EventArgs e)
 	{
 		method_3();
-		((RadDropDownList)ddlGetIt).get_Items().Add("IT");
+		ddlGetIt.Items.Add("IT");
 		for (int i = 1; i <= 10; i++)
 		{
-			((RadDropDownList)ddlGetIt).get_Items().Add(i.ToString());
+			ddlGetIt.Items.Add(i.ToString());
 		}
-		((RadDropDownList)ddlGetIt).set_SelectedIndex(0);
-		((RadDropDownList)ddlTender).get_Items().Add("%");
-		((RadDropDownList)ddlTender).get_Items().Add("$");
-		((RadDropDownList)ddlTender).set_SelectedIndex(0);
+		ddlGetIt.SelectedIndex = 0;
+		ddlTender.Items.Add("%");
+		ddlTender.Items.Add("$");
+		ddlTender.SelectedIndex = 0;
 		List<string> list = new List<string>();
 		List<string> list2 = new List<string>();
 		if (promotion_0 != null)
 		{
-			((Control)(object)txtPromoName).Text = promotion_0.PromoName;
-			((Control)(object)txtPromoCode).Text = promotion_0.PromoCode;
-			chkActive.set_Value(promotion_0.Active);
+			txtPromoName.Text = promotion_0.PromoName;
+			txtPromoCode.Text = promotion_0.PromoCode;
+			chkActive.Value = promotion_0.Active;
 			if (promotion_0.StartDate.HasValue)
 			{
-				chkDateRange.set_Value(true);
+				chkDateRange.Value = true;
 				startDate.Value = promotion_0.StartDate.Value;
 				endDate.Value = promotion_0.EndDate.Value;
 			}
 			if (!string.IsNullOrEmpty(promotion_0.DayTimeOfWeek))
 			{
-				chkDaySale.set_Value(true);
+				chkDaySale.Value = true;
 				string[] array = promotion_0.DayTimeOfWeek.Split('|');
 				foreach (string obj in array)
 				{
@@ -289,8 +289,8 @@ public class frmAddEditPromotions : frmMasterForm
 					string s2 = array2[2];
 					CS_0024_003C_003E8__locals0.dayShortString = text.Substring(0, 3);
 					(from a in panel1.Controls.OfType<RadToggleSwitch>()
-						where ((Control)(object)a).Name.ToUpper().Contains(CS_0024_003C_003E8__locals0.dayShortString)
-						select a).FirstOrDefault().set_Value(true);
+						where a.Name.ToUpper().Contains(CS_0024_003C_003E8__locals0.dayShortString)
+						select a).FirstOrDefault().Value = true;
 					DateTimePicker dateTimePicker = (from a in base.Controls.OfType<DateTimePicker>()
 						where a.Name.ToUpper().Contains(CS_0024_003C_003E8__locals0.dayShortString) && a.Name.Contains("from")
 						select a).FirstOrDefault();
@@ -321,7 +321,7 @@ public class frmAddEditPromotions : frmMasterForm
 					chkDelivery.Checked = false;
 				}
 			}
-			((Control)(object)txtBuyQty).Text = promotion_0.BuyQty.Value.ToString("0.##");
+			txtBuyQty.Text = promotion_0.BuyQty.Value.ToString("0.##");
 			if (!string.IsNullOrEmpty(promotion_0.String_0))
 			{
 				list_2 = promotion_0.String_0.Split(',').ToList();
@@ -334,11 +334,11 @@ public class frmAddEditPromotions : frmMasterForm
 					ItemsInGroup itemsInGroup = MemoryLoadedData.ListOfItemsInGroupMemory.Where((ItemsInGroup itemsInGroup_0) => itemsInGroup_0.ItemID.ToString() == list_2[0]).FirstOrDefault();
 					if (itemsInGroup != null)
 					{
-						((RadDropDownList)ddlGroup1).set_SelectedValue((object)itemsInGroup.GroupID.ToString());
+						ddlGroup1.SelectedValue = itemsInGroup.GroupID.ToString();
 					}
 				}
 			}
-			((RadDropDownList)ddlGetIt).set_SelectedValue((object)promotion_0.GetQtyString);
+			ddlGetIt.SelectedValue = promotion_0.GetQtyString;
 			if (!string.IsNullOrEmpty(promotion_0.String_1))
 			{
 				list_3 = promotion_0.String_1.Split(',').ToList();
@@ -351,20 +351,20 @@ public class frmAddEditPromotions : frmMasterForm
 					ItemsInGroup itemsInGroup2 = MemoryLoadedData.ListOfItemsInGroupMemory.Where((ItemsInGroup itemsInGroup_0) => itemsInGroup_0.ItemID.ToString() == list_3[0]).FirstOrDefault();
 					if (itemsInGroup2 != null)
 					{
-						((RadDropDownList)ddlGroup2).set_SelectedValue((object)itemsInGroup2.GroupID.ToString());
+						ddlGroup2.SelectedValue = itemsInGroup2.GroupID.ToString();
 					}
 				}
 			}
-			((Control)(object)txtDiscountAmount).Text = (promotion_0.GetDiscountAmount.HasValue ? promotion_0.GetDiscountAmount.Value.ToString("0.####") : "0");
-			((RadDropDownList)ddlTender).set_SelectedValue((object)promotion_0.GetDiscountUOM);
+			txtDiscountAmount.Text = (promotion_0.GetDiscountAmount.HasValue ? promotion_0.GetDiscountAmount.Value.ToString("0.####") : "0");
+			ddlTender.SelectedValue = promotion_0.GetDiscountUOM;
 		}
 		Dictionary<int, string> dictionary = new Dictionary<int, string>();
 		dictionary.Add(-1, "** ALL ITEMS IN ALL GROUPS **");
-		if (((RadDropDownList)ddlGroup1).get_SelectedIndex() == 0)
+		if (ddlGroup1.SelectedIndex == 0)
 		{
 			method_5(pnlItems1, dictionary, list);
 		}
-		if (((RadDropDownList)ddlGroup2).get_SelectedIndex() == 0)
+		if (ddlGroup2.SelectedIndex == 0)
 		{
 			method_5(pnlItems2, dictionary, list2);
 		}
@@ -373,14 +373,14 @@ public class frmAddEditPromotions : frmMasterForm
 	private void method_3()
 	{
 		Dictionary<string, string> groups = AdminMethods.getGroups(ItemClassifications.Product, withShowItems: false);
-		((RadDropDownList)ddlGroup1).set_DisplayMember("Value");
-		((RadDropDownList)ddlGroup1).set_ValueMember("Key");
-		((RadDropDownList)ddlGroup1).set_DataSource((object)new BindingSource(groups, null));
-		((RadDropDownList)ddlGroup1).set_SelectedIndex(0);
-		((RadDropDownList)ddlGroup2).set_DisplayMember("Value");
-		((RadDropDownList)ddlGroup2).set_ValueMember("Key");
-		((RadDropDownList)ddlGroup2).set_DataSource((object)new BindingSource(groups, null));
-		((RadDropDownList)ddlGroup2).set_SelectedIndex(0);
+		ddlGroup1.DisplayMember = "Value";
+		ddlGroup1.ValueMember = "Key";
+		ddlGroup1.DataSource = new BindingSource(groups, null);
+		ddlGroup1.SelectedIndex = 0;
+		ddlGroup2.DisplayMember = "Value";
+		ddlGroup2.ValueMember = "Key";
+		ddlGroup2.DataSource = new BindingSource(groups, null);
+		ddlGroup2.SelectedIndex = 0;
 	}
 
 	private void method_4(Panel panel_0, KeyValuePair<string, string> keyValuePair_0, List<string> list_4)
@@ -488,7 +488,7 @@ public class frmAddEditPromotions : frmMasterForm
 				{
 					list_2.Clear();
 					list_2.Add(text);
-					((RadDropDownList)ddlGetIt).set_SelectedIndex(0);
+					ddlGetIt.SelectedIndex = 0;
 				}
 				else if (@class.Text == pnlItems2.Name)
 				{
@@ -600,30 +600,28 @@ public class frmAddEditPromotions : frmMasterForm
 
 	private void ddlGroup1_SelectedIndexChanged(object sender, PositionChangedEventArgs e)
 	{
-		method_4(pnlItems1, (KeyValuePair<string, string>)((RadDropDownList)ddlGroup1).get_SelectedItem().get_DataBoundItem(), list_2);
+		method_4(pnlItems1, (KeyValuePair<string, string>)ddlGroup1.SelectedItem.DataBoundItem, list_2);
 	}
 
 	private void ddlGroup2_SelectedIndexChanged(object sender, PositionChangedEventArgs e)
 	{
-		method_4(pnlItems2, (KeyValuePair<string, string>)((RadDropDownList)ddlGroup2).get_SelectedItem().get_DataBoundItem(), list_3);
+		method_4(pnlItems2, (KeyValuePair<string, string>)ddlGroup2.SelectedItem.DataBoundItem, list_3);
 	}
 
 	private void btnSave_Click(object sender, EventArgs e)
 	{
-		//IL_0351: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0358: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass15_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass15_0();
 		CS_0024_003C_003E8__locals0._003C_003E4__this = this;
-		if (!string.IsNullOrEmpty(((Control)(object)txtPromoName).Text) && (string.IsNullOrEmpty(((Control)(object)txtPromoName).Text) || !string.IsNullOrEmpty(((Control)(object)txtPromoName).Text.Replace(" ", string.Empty))))
+		if (!string.IsNullOrEmpty(txtPromoName.Text) && (string.IsNullOrEmpty(txtPromoName.Text) || !string.IsNullOrEmpty(txtPromoName.Text.Replace(" ", string.Empty))))
 		{
-			if (!string.IsNullOrEmpty(((Control)(object)txtPromoCode).Text) && (string.IsNullOrEmpty(((Control)(object)txtPromoCode).Text) || !string.IsNullOrEmpty(((Control)(object)txtPromoCode).Text.Replace(" ", string.Empty))))
+			if (!string.IsNullOrEmpty(txtPromoCode.Text) && (string.IsNullOrEmpty(txtPromoCode.Text) || !string.IsNullOrEmpty(txtPromoCode.Text.Replace(" ", string.Empty))))
 			{
-				if (!chkDateRange.get_Value() && !chkDaySale.get_Value())
+				if (!chkDateRange.Value && !chkDaySale.Value)
 				{
 					new NotificationLabel(this, "Please Turn ON Date Range and/or Day Sale.", NotificationTypes.Warning).Show();
 					return;
 				}
-				if (chkDateRange.get_Value())
+				if (chkDateRange.Value)
 				{
 					if (startDate.Value > endDate.Value)
 					{
@@ -657,39 +655,38 @@ public class frmAddEditPromotions : frmMasterForm
 				{
 					new NotificationLabel(this, "Please check at least 1 order type", NotificationTypes.Warning).Show();
 				}
-				else if (((Control)(object)txtBuyQty).Text == "0")
+				else if (txtBuyQty.Text == "0")
 				{
 					new NotificationLabel(this, "Buy qty cannot be 0", NotificationTypes.Warning).Show();
 				}
 				else if (list_2 != null && (list_2 == null || list_2.Count != 0))
 				{
-					if (((Control)(object)ddlGetIt).Text != "IT" && (list_3 == null || (list_3 != null && list_3.Count == 0)))
+					if (ddlGetIt.Text != "IT" && (list_3 == null || (list_3 != null && list_3.Count == 0)))
 					{
 						new NotificationLabel(this, "Please choose any GET item/s", NotificationTypes.Warning).Show();
 					}
-					else if (!string.IsNullOrEmpty(((Control)(object)txtDiscountAmount).Text) && (string.IsNullOrEmpty(((Control)(object)txtDiscountAmount).Text) || !(Convert.ToDecimal(((Control)(object)txtDiscountAmount).Text) == 0m)))
+					else if (!string.IsNullOrEmpty(txtDiscountAmount.Text) && (string.IsNullOrEmpty(txtDiscountAmount.Text) || !(Convert.ToDecimal(txtDiscountAmount.Text) == 0m)))
 					{
 						CS_0024_003C_003E8__locals0.promoId = 0;
 						if (promotion_0 != null)
 						{
 							CS_0024_003C_003E8__locals0.promoId = promotion_0.PromoId;
 						}
-						if (MemoryLoadedObjects.all_promotions.Where((Promotion a) => a.PromoId != CS_0024_003C_003E8__locals0.promoId && (a.PromoName.ToUpper() == ((Control)(object)CS_0024_003C_003E8__locals0._003C_003E4__this.txtPromoName).Text.ToUpper() || a.PromoCode.ToUpper() == ((Control)(object)CS_0024_003C_003E8__locals0._003C_003E4__this.txtPromoCode).Text.ToUpper())).FirstOrDefault() != null)
+						if (MemoryLoadedObjects.all_promotions.Where((Promotion a) => a.PromoId != CS_0024_003C_003E8__locals0.promoId && (a.PromoName.ToUpper() == CS_0024_003C_003E8__locals0._003C_003E4__this.txtPromoName.Text.ToUpper() || a.PromoCode.ToUpper() == CS_0024_003C_003E8__locals0._003C_003E4__this.txtPromoCode.Text.ToUpper())).FirstOrDefault() != null)
 						{
 							new NotificationLabel(this, "Promotion name/code already exist please change name/code.", NotificationTypes.Warning).Show();
 							return;
 						}
 						List<string> list2 = new List<string>();
-						if (chkDaySale.get_Value())
+						if (chkDaySale.Value)
 						{
 							foreach (Control control in panel1.Controls)
 							{
-								RadToggleSwitch val = (RadToggleSwitch)control;
-								if (val.get_Value())
+								if (((RadToggleSwitch)control).Value)
 								{
 									_003C_003Ec__DisplayClass15_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass15_1();
-									string text = ((Control)(object)val).Text.ToUpper();
-									CS_0024_003C_003E8__locals1.shortenedDayString = ((Control)(object)val).Name.Replace("chk", string.Empty);
+									string text = control.Text.ToUpper();
+									CS_0024_003C_003E8__locals1.shortenedDayString = control.Name.Replace("chk", string.Empty);
 									DateTimePicker dateTimePicker = (from a in base.Controls.OfType<DateTimePicker>()
 										where a.Name.Contains(CS_0024_003C_003E8__locals1.shortenedDayString) && a.Name.Contains("from")
 										select a).FirstOrDefault();
@@ -716,10 +713,10 @@ public class frmAddEditPromotions : frmMasterForm
 							}
 							gclass6_0.Promotions.InsertOnSubmit(promotion_0);
 						}
-						promotion_0.PromoName = ((Control)(object)txtPromoName).Text;
-						promotion_0.PromoCode = ((Control)(object)txtPromoCode).Text;
-						promotion_0.Active = chkActive.get_Value();
-						if (chkDateRange.get_Value())
+						promotion_0.PromoName = txtPromoName.Text;
+						promotion_0.PromoCode = txtPromoCode.Text;
+						promotion_0.Active = chkActive.Value;
+						if (chkDateRange.Value)
 						{
 							promotion_0.StartDate = startDate.Value.Date;
 							promotion_0.EndDate = endDate.Value.Date;
@@ -729,7 +726,7 @@ public class frmAddEditPromotions : frmMasterForm
 							promotion_0.StartDate = null;
 							promotion_0.EndDate = null;
 						}
-						if (chkDaySale.get_Value())
+						if (chkDaySale.Value)
 						{
 							if (list2.Count > 0)
 							{
@@ -752,12 +749,12 @@ public class frmAddEditPromotions : frmMasterForm
 						{
 							promotion_0.OrderTypes = "";
 						}
-						promotion_0.BuyQty = Convert.ToDecimal(((Control)(object)txtBuyQty).Text);
+						promotion_0.BuyQty = Convert.ToDecimal(txtBuyQty.Text);
 						promotion_0.String_0 = string.Join(",", list_2);
-						promotion_0.GetQtyString = ((Control)(object)ddlGetIt).Text;
+						promotion_0.GetQtyString = ddlGetIt.Text;
 						promotion_0.String_1 = string.Join(",", list_3);
-						promotion_0.GetDiscountAmount = Convert.ToDecimal(((Control)(object)txtDiscountAmount).Text);
-						promotion_0.GetDiscountUOM = ((Control)(object)ddlTender).Text;
+						promotion_0.GetDiscountAmount = Convert.ToDecimal(txtDiscountAmount.Text);
+						promotion_0.GetDiscountUOM = ddlTender.Text;
 						promotion_0.Synced = false;
 						promotion_0.DateModified = DateTime.Now;
 						promotion_0.IsDeleted = false;
@@ -800,10 +797,10 @@ public class frmAddEditPromotions : frmMasterForm
 	private void txtPromoName_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Promo Name", 0, 256, ((Control)(object)txtPromoName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Promo Name", 0, 256, txtPromoName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPromoName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtPromoName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -811,10 +808,10 @@ public class frmAddEditPromotions : frmMasterForm
 	private void txtPromoCode_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Promo Code", 0, 256, ((Control)(object)txtPromoCode).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Promo Code", 0, 256, txtPromoCode.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPromoCode).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtPromoCode.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -822,10 +819,10 @@ public class frmAddEditPromotions : frmMasterForm
 	private void txtBuyQty_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Buy Qty", 2, 8, ((Control)(object)txtBuyQty).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Buy Qty", 2, 8, txtBuyQty.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtBuyQty).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtBuyQty.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -833,17 +830,17 @@ public class frmAddEditPromotions : frmMasterForm
 	private void LukTxymxj4(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Discount Amount", 2, 8, ((Control)(object)txtDiscountAmount).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Discount Amount", 2, 8, txtDiscountAmount.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtDiscountAmount).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtDiscountAmount.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
 
 	private void ddlGetIt_SelectedIndexChanged(object sender, PositionChangedEventArgs e)
 	{
-		if (((RadDropDownList)ddlGetIt).get_SelectedIndex() == 0)
+		if (ddlGetIt.SelectedIndex == 0)
 		{
 			lblForItemsBelow.Text = "FOR";
 			lblDisableGETItems.Visible = true;
@@ -867,27 +864,27 @@ public class frmAddEditPromotions : frmMasterForm
 
 	private void method_7()
 	{
-		if (string.IsNullOrEmpty(((Control)(object)txtDiscountAmount).Text))
+		if (string.IsNullOrEmpty(txtDiscountAmount.Text))
 		{
 			return;
 		}
 		decimal result = default(decimal);
-		if (!decimal.TryParse(((Control)(object)txtDiscountAmount).Text, out result))
+		if (!decimal.TryParse(txtDiscountAmount.Text, out result))
 		{
-			((Control)(object)txtDiscountAmount).Text = "0";
+			txtDiscountAmount.Text = "0";
 		}
-		if (((Control)(object)ddlTender).Text == "%" && result > 100m)
+		if (ddlTender.Text == "%" && result > 100m)
 		{
-			((Control)(object)txtDiscountAmount).Text = "100";
+			txtDiscountAmount.Text = "100";
 			new NotificationLabel(this, "Percentage discount cannot be more than 100%.", NotificationTypes.Warning).Show();
 		}
 		else
 		{
-			if (!(((Control)(object)ddlTender).Text == "$"))
+			if (!(ddlTender.Text == "$"))
 			{
 				return;
 			}
-			if (((Control)(object)ddlGetIt).Text != "IT" && !list_3.Contains("-1"))
+			if (ddlGetIt.Text != "IT" && !list_3.Contains("-1"))
 			{
 				using (List<string>.Enumerator enumerator = list_3.GetEnumerator())
 				{
@@ -898,7 +895,7 @@ public class frmAddEditPromotions : frmMasterForm
 						Item item = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals0.getItem).FirstOrDefault();
 						if (item != null && item.ItemPrice < result)
 						{
-							((Control)(object)txtDiscountAmount).Text = "0";
+							txtDiscountAmount.Text = "0";
 							new NotificationLabel(this, "Tender discount cannot be more than item price selected.", NotificationTypes.Warning).Show();
 							break;
 						}
@@ -906,7 +903,7 @@ public class frmAddEditPromotions : frmMasterForm
 					return;
 				}
 			}
-			if (!(((Control)(object)ddlGetIt).Text == "IT") || list_3.Contains("-1"))
+			if (!(ddlGetIt.Text == "IT") || list_3.Contains("-1"))
 			{
 				return;
 			}
@@ -918,7 +915,7 @@ public class frmAddEditPromotions : frmMasterForm
 				Item item2 = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals1.buyItem).FirstOrDefault();
 				if (item2 != null && item2.ItemPrice < result)
 				{
-					((Control)(object)txtDiscountAmount).Text = "0";
+					txtDiscountAmount.Text = "0";
 					new NotificationLabel(this, "Tender discount cannot be more than item price selected.", NotificationTypes.Warning).Show();
 					break;
 				}
@@ -941,130 +938,6 @@ public class frmAddEditPromotions : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0033: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003d: Expected O, but got Unknown
-		//IL_0080: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008a: Expected O, but got Unknown
-		//IL_00ac: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00b6: Expected O, but got Unknown
-		//IL_01eb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01f5: Expected O, but got Unknown
-		//IL_01f6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0200: Expected O, but got Unknown
-		//IL_024e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0258: Expected O, but got Unknown
-		//IL_0259: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0263: Expected O, but got Unknown
-		//IL_026f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0279: Expected O, but got Unknown
-		//IL_027a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0284: Expected O, but got Unknown
-		//IL_0285: Unknown result type (might be due to invalid IL or missing references)
-		//IL_028f: Expected O, but got Unknown
-		//IL_0290: Unknown result type (might be due to invalid IL or missing references)
-		//IL_029a: Expected O, but got Unknown
-		//IL_029b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02a5: Expected O, but got Unknown
-		//IL_02a6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02b0: Expected O, but got Unknown
-		//IL_02b1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02bb: Expected O, but got Unknown
-		//IL_089d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08b5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08cd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08ee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_091b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0948: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0975: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0996: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0fd3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ff4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13d0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13f1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2c9b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2cbc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2d90: Unknown result type (might be due to invalid IL or missing references)
-		//IL_2db1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_33db: Unknown result type (might be due to invalid IL or missing references)
-		//IL_33f3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_340a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_342b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3458: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3485: Unknown result type (might be due to invalid IL or missing references)
-		//IL_34b2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_34d3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3560: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3578: Unknown result type (might be due to invalid IL or missing references)
-		//IL_358f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_35b0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_35dd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_360a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3637: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3658: Unknown result type (might be due to invalid IL or missing references)
-		//IL_383d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3855: Unknown result type (might be due to invalid IL or missing references)
-		//IL_386c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_388d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_38ba: Unknown result type (might be due to invalid IL or missing references)
-		//IL_38e7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3914: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3935: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3a18: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3a30: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3a47: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3a68: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3a95: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3ac2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3aef: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3b10: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3bf3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3c0b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3c22: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3c43: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3c70: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3c9d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3cca: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3ceb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3dcd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3de5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3dfc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3e1d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3e4a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3e77: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3ea4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3ec5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3fa8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3fc0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3fd7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_3ff8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4025: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4052: Unknown result type (might be due to invalid IL or missing references)
-		//IL_407f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_40a0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4186: Unknown result type (might be due to invalid IL or missing references)
-		//IL_419e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_41b5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_41d6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4203: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4230: Unknown result type (might be due to invalid IL or missing references)
-		//IL_425d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_427e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4364: Unknown result type (might be due to invalid IL or missing references)
-		//IL_437c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4393: Unknown result type (might be due to invalid IL or missing references)
-		//IL_43b4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_43e1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_440e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_443b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_445c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4dbe: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4dc8: Expected O, but got Unknown
-		//IL_4ebd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4ec7: Expected O, but got Unknown
-		//IL_4fbc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_4fc6: Expected O, but got Unknown
-		//IL_50bb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_50c5: Expected O, but got Unknown
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAddEditPromotions));
 		lblDisableGETItems = new Label();
 		btnShowKeyboard_PromoCode = new Button();
@@ -1222,22 +1095,22 @@ public class frmAddEditPromotions : frmMasterForm
 		btnShowKeyboard_PromoName.TabIndex = 351;
 		btnShowKeyboard_PromoName.UseVisualStyleBackColor = false;
 		btnShowKeyboard_PromoName.Click += txtPromoName_Click;
-		((Control)(object)chkActive).Location = new Point(800, 79);
-		((Control)(object)chkActive).Name = "chkActive";
-		chkActive.set_OffText("NO");
-		chkActive.set_OnText("YES");
-		((Control)(object)chkActive).Size = new Size(72, 35);
-		((Control)(object)chkActive).TabIndex = 349;
-		((Control)(object)chkActive).Tag = "";
-		chkActive.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbOffset(52);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkActive.Location = new Point(800, 79);
+		chkActive.Name = "chkActive";
+		chkActive.OffText = "NO";
+		chkActive.OnText = "YES";
+		chkActive.Size = new Size(72, 35);
+		chkActive.TabIndex = 349;
+		chkActive.Tag = "";
+		chkActive.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbOffset = 52;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label3.BackColor = Color.FromArgb(132, 146, 146);
 		label3.Font = new Font("Microsoft Sans Serif", 12f);
 		label3.ForeColor = Color.White;
@@ -1307,20 +1180,20 @@ public class frmAddEditPromotions : frmMasterForm
 		btnShowKeyboard_DiscountAmount.TabIndex = 338;
 		btnShowKeyboard_DiscountAmount.UseVisualStyleBackColor = false;
 		btnShowKeyboard_DiscountAmount.Click += LukTxymxj4;
-		((Control)(object)txtDiscountAmount).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtDiscountAmount).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtDiscountAmount).Location = new Point(761, 474);
-		((Control)(object)txtDiscountAmount).Name = "txtDiscountAmount";
-		((RadElement)((RadControl)txtDiscountAmount).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtDiscountAmount).Size = new Size(77, 35);
-		((Control)(object)txtDiscountAmount).TabIndex = 337;
-		((Control)(object)txtDiscountAmount).Tag = "product";
-		((Control)(object)txtDiscountAmount).Text = "0";
-		txtDiscountAmount.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtDiscountAmount).TextChanged += txtDiscountAmount_TextChanged;
-		((Control)(object)txtDiscountAmount).Click += LukTxymxj4;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtDiscountAmount).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtDiscountAmount).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtDiscountAmount.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtDiscountAmount.ForeColor = Color.FromArgb(40, 40, 40);
+		txtDiscountAmount.Location = new Point(761, 474);
+		txtDiscountAmount.Name = "txtDiscountAmount";
+		txtDiscountAmount.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtDiscountAmount.Size = new Size(77, 35);
+		txtDiscountAmount.TabIndex = 337;
+		txtDiscountAmount.Tag = "product";
+		txtDiscountAmount.Text = "0";
+		txtDiscountAmount.TextAlign = HorizontalAlignment.Center;
+		txtDiscountAmount.TextChanged += txtDiscountAmount_TextChanged;
+		txtDiscountAmount.Click += LukTxymxj4;
+		((RadTextBoxControlElement)txtDiscountAmount.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtDiscountAmount.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		lblForItemsBelow.BackColor = Color.FromArgb(132, 146, 146);
 		lblForItemsBelow.Font = new Font("Microsoft Sans Serif", 9f, FontStyle.Regular, GraphicsUnit.Point, 0);
 		lblForItemsBelow.ForeColor = Color.White;
@@ -1359,19 +1232,19 @@ public class frmAddEditPromotions : frmMasterForm
 		btnShowKeyboard_BuyQty.TabIndex = 333;
 		btnShowKeyboard_BuyQty.UseVisualStyleBackColor = false;
 		btnShowKeyboard_BuyQty.Click += txtBuyQty_Click;
-		((Control)(object)txtBuyQty).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtBuyQty).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtBuyQty).Location = new Point(91, 474);
-		((Control)(object)txtBuyQty).Name = "txtBuyQty";
-		((RadElement)((RadControl)txtBuyQty).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtBuyQty).Size = new Size(53, 35);
-		((Control)(object)txtBuyQty).TabIndex = 332;
-		((Control)(object)txtBuyQty).Tag = "product";
-		((Control)(object)txtBuyQty).Text = "0";
-		txtBuyQty.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtBuyQty).Click += txtBuyQty_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtBuyQty).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtBuyQty).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtBuyQty.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtBuyQty.ForeColor = Color.FromArgb(40, 40, 40);
+		txtBuyQty.Location = new Point(91, 474);
+		txtBuyQty.Name = "txtBuyQty";
+		txtBuyQty.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtBuyQty.Size = new Size(53, 35);
+		txtBuyQty.TabIndex = 332;
+		txtBuyQty.Tag = "product";
+		txtBuyQty.Text = "0";
+		txtBuyQty.TextAlign = HorizontalAlignment.Center;
+		txtBuyQty.Click += txtBuyQty_Click;
+		((RadTextBoxControlElement)txtBuyQty.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtBuyQty.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		label36.BackColor = Color.FromArgb(132, 146, 146);
 		label36.Font = new Font("Microsoft Sans Serif", 12f);
 		label36.ForeColor = Color.White;
@@ -1695,26 +1568,26 @@ public class frmAddEditPromotions : frmMasterForm
 		label26.Size = new Size(872, 35);
 		label26.TabIndex = 287;
 		label26.TextAlign = ContentAlignment.MiddleCenter;
-		((Control)(object)txtPromoCode).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtPromoCode).Location = new Point(158, 79);
-		txtPromoCode.set_MaxLength(255);
-		((Control)(object)txtPromoCode).Name = "txtPromoCode";
-		((RadElement)((RadControl)txtPromoCode).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtPromoCode).Size = new Size(441, 35);
-		((Control)(object)txtPromoCode).TabIndex = 286;
-		((Control)(object)txtPromoCode).Click += txtPromoCode_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPromoCode).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPromoCode).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
-		((Control)(object)txtPromoName).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtPromoName).Location = new Point(158, 43);
-		txtPromoName.set_MaxLength(255);
-		((Control)(object)txtPromoName).Name = "txtPromoName";
-		((RadElement)((RadControl)txtPromoName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtPromoName).Size = new Size(666, 35);
-		((Control)(object)txtPromoName).TabIndex = 284;
-		((Control)(object)txtPromoName).Click += txtPromoName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPromoName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPromoName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtPromoCode.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtPromoCode.Location = new Point(158, 79);
+		txtPromoCode.MaxLength = 255;
+		txtPromoCode.Name = "txtPromoCode";
+		txtPromoCode.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtPromoCode.Size = new Size(441, 35);
+		txtPromoCode.TabIndex = 286;
+		txtPromoCode.Click += txtPromoCode_Click;
+		((RadTextBoxControlElement)txtPromoCode.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPromoCode.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
+		txtPromoName.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtPromoName.Location = new Point(158, 43);
+		txtPromoName.MaxLength = 255;
+		txtPromoName.Name = "txtPromoName";
+		txtPromoName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtPromoName.Size = new Size(666, 35);
+		txtPromoName.TabIndex = 284;
+		txtPromoName.Click += txtPromoName_Click;
+		((RadTextBoxControlElement)txtPromoName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPromoName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label25.BackColor = Color.FromArgb(132, 146, 146);
 		label25.Font = new Font("Microsoft Sans Serif", 12f);
 		label25.ForeColor = Color.White;
@@ -1790,179 +1663,179 @@ public class frmAddEditPromotions : frmMasterForm
 		label19.Size = new Size(231, 215);
 		label19.TabIndex = 268;
 		label19.TextAlign = ContentAlignment.MiddleCenter;
-		((Control)(object)chkDaySale).Location = new Point(159, 186);
-		((Control)(object)chkDaySale).Name = "chkDaySale";
-		((Control)(object)chkDaySale).Size = new Size(72, 35);
-		((Control)(object)chkDaySale).TabIndex = 265;
-		chkDaySale.set_ToggleStateMode((ToggleStateMode)1);
-		chkDaySale.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkDaySale).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkDaySale).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkDaySale).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_Text("ON");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkDaySale).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkDateRange).Location = new Point(159, 150);
-		((Control)(object)chkDateRange).Name = "chkDateRange";
-		((Control)(object)chkDateRange).Size = new Size(72, 35);
-		((Control)(object)chkDateRange).TabIndex = 264;
-		chkDateRange.set_ToggleStateMode((ToggleStateMode)1);
-		chkDateRange.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkDateRange).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkDateRange).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkDateRange).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_Text("ON");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkDateRange).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		panel1.Controls.Add((Control)(object)chkSun);
-		panel1.Controls.Add((Control)(object)chkWed);
-		panel1.Controls.Add((Control)(object)chkTue);
-		panel1.Controls.Add((Control)(object)chkMon);
-		panel1.Controls.Add((Control)(object)chkThu);
-		panel1.Controls.Add((Control)(object)chkFri);
-		panel1.Controls.Add((Control)(object)chkSat);
+		chkDaySale.Location = new Point(159, 186);
+		chkDaySale.Name = "chkDaySale";
+		chkDaySale.Size = new Size(72, 35);
+		chkDaySale.TabIndex = 265;
+		chkDaySale.ToggleStateMode = ToggleStateMode.Click;
+		chkDaySale.Value = false;
+		((RadToggleSwitchElement)chkDaySale.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkDaySale.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkDaySale.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).Text = "ON";
+		((ToggleSwitchPartElement)chkDaySale.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkDateRange.Location = new Point(159, 150);
+		chkDateRange.Name = "chkDateRange";
+		chkDateRange.Size = new Size(72, 35);
+		chkDateRange.TabIndex = 264;
+		chkDateRange.ToggleStateMode = ToggleStateMode.Click;
+		chkDateRange.Value = false;
+		((RadToggleSwitchElement)chkDateRange.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkDateRange.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkDateRange.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).Text = "ON";
+		((ToggleSwitchPartElement)chkDateRange.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		panel1.Controls.Add(chkSun);
+		panel1.Controls.Add(chkWed);
+		panel1.Controls.Add(chkTue);
+		panel1.Controls.Add(chkMon);
+		panel1.Controls.Add(chkThu);
+		panel1.Controls.Add(chkFri);
+		panel1.Controls.Add(chkSat);
 		panel1.Location = new Point(232, 185);
 		panel1.Margin = new Padding(2);
 		panel1.Name = "panel1";
 		panel1.Size = new Size(142, 257);
 		panel1.TabIndex = 246;
-		((Control)(object)chkSun).Font = new Font("Segoe UI", 10f);
-		((Control)(object)chkSun).Location = new Point(0, 217);
-		((Control)(object)chkSun).Name = "chkSun";
-		chkSun.set_OffText("SUNDAY OFF");
-		chkSun.set_OnText("SUNDAY ON");
-		((Control)(object)chkSun).Size = new Size(142, 35);
-		((Control)(object)chkSun).TabIndex = 218;
-		((Control)(object)chkSun).Tag = "SundaySale";
-		((Control)(object)chkSun).Text = "Sunday";
-		chkSun.set_ToggleStateMode((ToggleStateMode)1);
-		chkSun.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkSun).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkSun).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkSun).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_Text("SUNDAY ON");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkSun).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkWed).Font = new Font("Segoe UI", 10f);
-		((Control)(object)chkWed).Location = new Point(0, 73);
-		((Control)(object)chkWed).Name = "chkWed";
-		chkWed.set_OffText("WEDNESDAY OFF");
-		chkWed.set_OnText("WEDNESDAY ON");
-		((Control)(object)chkWed).Size = new Size(142, 35);
-		((Control)(object)chkWed).TabIndex = 214;
-		((Control)(object)chkWed).Tag = "WednesdaySale";
-		((Control)(object)chkWed).Text = "Wednesday";
-		chkWed.set_ToggleStateMode((ToggleStateMode)1);
-		chkWed.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkWed).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkWed).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkWed).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_Text("WEDNESDAY ON");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkWed).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkTue).Font = new Font("Segoe UI", 10f);
-		((Control)(object)chkTue).Location = new Point(0, 37);
-		((Control)(object)chkTue).Name = "chkTue";
-		chkTue.set_OffText("TUESDAY OFF");
-		chkTue.set_OnText("TUESDAY ON");
-		((Control)(object)chkTue).Size = new Size(142, 35);
-		((Control)(object)chkTue).TabIndex = 213;
-		((Control)(object)chkTue).Tag = "TuesdaySale";
-		((Control)(object)chkTue).Text = "Tuesday";
-		chkTue.set_ToggleStateMode((ToggleStateMode)1);
-		chkTue.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkTue).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkTue).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkTue).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_Text("TUESDAY ON");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkTue).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkMon).Font = new Font("Segoe UI", 10f);
-		((Control)(object)chkMon).Location = new Point(0, 1);
-		((Control)(object)chkMon).Name = "chkMon";
-		chkMon.set_OffText("MONDAY OFF");
-		chkMon.set_OnText("MONDAY ON");
-		((Control)(object)chkMon).Size = new Size(142, 35);
-		((Control)(object)chkMon).TabIndex = 212;
-		((Control)(object)chkMon).Tag = "MondaySale";
-		((Control)(object)chkMon).Text = "Monday";
-		chkMon.set_ToggleStateMode((ToggleStateMode)1);
-		chkMon.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkMon).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkMon).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkMon).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_Text("MONDAY ON");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkMon).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkThu).Font = new Font("Segoe UI", 10f);
-		((Control)(object)chkThu).Location = new Point(0, 109);
-		((Control)(object)chkThu).Name = "chkThu";
-		chkThu.set_OffText("THURSDAY OFF");
-		chkThu.set_OnText("THURSDAY ON");
-		((Control)(object)chkThu).Size = new Size(142, 35);
-		((Control)(object)chkThu).TabIndex = 215;
-		((Control)(object)chkThu).Tag = "ThursdaySale";
-		((Control)(object)chkThu).Text = "Thursday";
-		chkThu.set_ToggleStateMode((ToggleStateMode)1);
-		chkThu.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkThu).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkThu).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkThu).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_Text("THURSDAY ON");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkThu).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkFri).Font = new Font("Segoe UI", 10f);
-		((Control)(object)chkFri).Location = new Point(0, 145);
-		((Control)(object)chkFri).Name = "chkFri";
-		chkFri.set_OffText("FRIDAY OFF");
-		chkFri.set_OnText("FRIDAY ON");
-		((Control)(object)chkFri).Size = new Size(142, 35);
-		((Control)(object)chkFri).TabIndex = 216;
-		((Control)(object)chkFri).Tag = "FridaySale";
-		((Control)(object)chkFri).Text = "Friday";
-		chkFri.set_ToggleStateMode((ToggleStateMode)1);
-		chkFri.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkFri).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkFri).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkFri).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_Text("FRIDAY ON");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkFri).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkSat).Font = new Font("Segoe UI", 10f);
-		((Control)(object)chkSat).Location = new Point(0, 181);
-		((Control)(object)chkSat).Name = "chkSat";
-		chkSat.set_OffText("SATURDAY OFF");
-		chkSat.set_OnText("SATURDAY ON");
-		((Control)(object)chkSat).Size = new Size(142, 35);
-		((Control)(object)chkSat).TabIndex = 217;
-		((Control)(object)chkSat).Tag = "SaturdaySale";
-		((Control)(object)chkSat).Text = "Saturday";
-		chkSat.set_ToggleStateMode((ToggleStateMode)1);
-		chkSat.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkSat).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkSat).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkSat).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_Text("SATURDAY ON");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkSat).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkSun.Font = new Font("Segoe UI", 10f);
+		chkSun.Location = new Point(0, 217);
+		chkSun.Name = "chkSun";
+		chkSun.OffText = "SUNDAY OFF";
+		chkSun.OnText = "SUNDAY ON";
+		chkSun.Size = new Size(142, 35);
+		chkSun.TabIndex = 218;
+		chkSun.Tag = "SundaySale";
+		chkSun.Text = "Sunday";
+		chkSun.ToggleStateMode = ToggleStateMode.Click;
+		chkSun.Value = false;
+		((RadToggleSwitchElement)chkSun.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkSun.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkSun.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).Text = "SUNDAY ON";
+		((ToggleSwitchPartElement)chkSun.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkWed.Font = new Font("Segoe UI", 10f);
+		chkWed.Location = new Point(0, 73);
+		chkWed.Name = "chkWed";
+		chkWed.OffText = "WEDNESDAY OFF";
+		chkWed.OnText = "WEDNESDAY ON";
+		chkWed.Size = new Size(142, 35);
+		chkWed.TabIndex = 214;
+		chkWed.Tag = "WednesdaySale";
+		chkWed.Text = "Wednesday";
+		chkWed.ToggleStateMode = ToggleStateMode.Click;
+		chkWed.Value = false;
+		((RadToggleSwitchElement)chkWed.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkWed.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkWed.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).Text = "WEDNESDAY ON";
+		((ToggleSwitchPartElement)chkWed.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkTue.Font = new Font("Segoe UI", 10f);
+		chkTue.Location = new Point(0, 37);
+		chkTue.Name = "chkTue";
+		chkTue.OffText = "TUESDAY OFF";
+		chkTue.OnText = "TUESDAY ON";
+		chkTue.Size = new Size(142, 35);
+		chkTue.TabIndex = 213;
+		chkTue.Tag = "TuesdaySale";
+		chkTue.Text = "Tuesday";
+		chkTue.ToggleStateMode = ToggleStateMode.Click;
+		chkTue.Value = false;
+		((RadToggleSwitchElement)chkTue.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkTue.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkTue.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).Text = "TUESDAY ON";
+		((ToggleSwitchPartElement)chkTue.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkMon.Font = new Font("Segoe UI", 10f);
+		chkMon.Location = new Point(0, 1);
+		chkMon.Name = "chkMon";
+		chkMon.OffText = "MONDAY OFF";
+		chkMon.OnText = "MONDAY ON";
+		chkMon.Size = new Size(142, 35);
+		chkMon.TabIndex = 212;
+		chkMon.Tag = "MondaySale";
+		chkMon.Text = "Monday";
+		chkMon.ToggleStateMode = ToggleStateMode.Click;
+		chkMon.Value = false;
+		((RadToggleSwitchElement)chkMon.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkMon.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkMon.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).Text = "MONDAY ON";
+		((ToggleSwitchPartElement)chkMon.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkThu.Font = new Font("Segoe UI", 10f);
+		chkThu.Location = new Point(0, 109);
+		chkThu.Name = "chkThu";
+		chkThu.OffText = "THURSDAY OFF";
+		chkThu.OnText = "THURSDAY ON";
+		chkThu.Size = new Size(142, 35);
+		chkThu.TabIndex = 215;
+		chkThu.Tag = "ThursdaySale";
+		chkThu.Text = "Thursday";
+		chkThu.ToggleStateMode = ToggleStateMode.Click;
+		chkThu.Value = false;
+		((RadToggleSwitchElement)chkThu.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkThu.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkThu.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).Text = "THURSDAY ON";
+		((ToggleSwitchPartElement)chkThu.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkFri.Font = new Font("Segoe UI", 10f);
+		chkFri.Location = new Point(0, 145);
+		chkFri.Name = "chkFri";
+		chkFri.OffText = "FRIDAY OFF";
+		chkFri.OnText = "FRIDAY ON";
+		chkFri.Size = new Size(142, 35);
+		chkFri.TabIndex = 216;
+		chkFri.Tag = "FridaySale";
+		chkFri.Text = "Friday";
+		chkFri.ToggleStateMode = ToggleStateMode.Click;
+		chkFri.Value = false;
+		((RadToggleSwitchElement)chkFri.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkFri.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkFri.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).Text = "FRIDAY ON";
+		((ToggleSwitchPartElement)chkFri.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkSat.Font = new Font("Segoe UI", 10f);
+		chkSat.Location = new Point(0, 181);
+		chkSat.Name = "chkSat";
+		chkSat.OffText = "SATURDAY OFF";
+		chkSat.OnText = "SATURDAY ON";
+		chkSat.Size = new Size(142, 35);
+		chkSat.TabIndex = 217;
+		chkSat.Tag = "SaturdaySale";
+		chkSat.Text = "Saturday";
+		chkSat.ToggleStateMode = ToggleStateMode.Click;
+		chkSat.Value = false;
+		((RadToggleSwitchElement)chkSat.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkSat.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkSat.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).Text = "SATURDAY ON";
+		((ToggleSwitchPartElement)chkSat.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label8.BackColor = Color.FromArgb(132, 146, 146);
 		label8.Font = new Font("Microsoft Sans Serif", 12f);
 		label8.ForeColor = Color.White;
@@ -2078,62 +1951,62 @@ public class frmAddEditPromotions : frmMasterForm
 		scrollItem1.Name = "scrollItem1";
 		scrollItem1.Size = new Size(50, 225);
 		scrollItem1.TabIndex = 346;
-		((Control)(object)ddlGroup2).AutoSize = false;
-		((Control)(object)ddlGroup2).BackColor = Color.White;
-		((RadDropDownList)ddlGroup2).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlGroup2).set_EnableKineticScrolling(true);
-		((Control)(object)ddlGroup2).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)ddlGroup2).Location = new Point(616, 510);
-		((Control)(object)ddlGroup2).Margin = new Padding(4, 5, 4, 5);
-		((Control)(object)ddlGroup2).Name = "ddlGroup2";
-		((RadElement)((RadControl)ddlGroup2).get_RootElement()).set_MinSize(new Size(0, 0));
-		((Control)(object)ddlGroup2).Size = new Size(398, 34);
-		((Control)(object)ddlGroup2).TabIndex = 344;
-		((Control)(object)ddlGroup2).Tag = "product";
-		((RadControl)ddlGroup2).set_ThemeName("Windows8");
-		((RadDropDownList)ddlGroup2).add_SelectedIndexChanged(new PositionChangedEventHandler(ddlGroup2_SelectedIndexChanged));
-		((Control)(object)ddlGroup1).AutoSize = false;
-		((Control)(object)ddlGroup1).BackColor = Color.White;
-		((RadDropDownList)ddlGroup1).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlGroup1).set_EnableKineticScrolling(true);
-		((Control)(object)ddlGroup1).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)ddlGroup1).Location = new Point(126, 510);
-		((Control)(object)ddlGroup1).Margin = new Padding(4, 5, 4, 5);
-		((Control)(object)ddlGroup1).Name = "ddlGroup1";
-		((RadElement)((RadControl)ddlGroup1).get_RootElement()).set_MinSize(new Size(0, 0));
-		((Control)(object)ddlGroup1).Size = new Size(369, 34);
-		((Control)(object)ddlGroup1).TabIndex = 342;
-		((Control)(object)ddlGroup1).Tag = "product";
-		((RadControl)ddlGroup1).set_ThemeName("Windows8");
-		((RadDropDownList)ddlGroup1).add_SelectedIndexChanged(new PositionChangedEventHandler(ddlGroup1_SelectedIndexChanged));
-		((Control)(object)ddlTender).AutoSize = false;
-		((Control)(object)ddlTender).BackColor = Color.White;
-		((RadDropDownList)ddlTender).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlTender).set_EnableKineticScrolling(true);
-		((Control)(object)ddlTender).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)ddlTender).Location = new Point(888, 474);
-		((Control)(object)ddlTender).Margin = new Padding(4, 5, 4, 5);
-		((Control)(object)ddlTender).Name = "ddlTender";
-		((RadElement)((RadControl)ddlTender).get_RootElement()).set_MinSize(new Size(0, 0));
-		((Control)(object)ddlTender).Size = new Size(58, 35);
-		((Control)(object)ddlTender).TabIndex = 339;
-		((Control)(object)ddlTender).Tag = "product";
-		((RadControl)ddlTender).set_ThemeName("Windows8");
-		((RadDropDownList)ddlTender).add_SelectedIndexChanged(new PositionChangedEventHandler(ddlTender_SelectedIndexChanged));
-		((Control)(object)ddlGetIt).AutoSize = false;
-		((Control)(object)ddlGetIt).BackColor = Color.White;
-		((RadDropDownList)ddlGetIt).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlGetIt).set_EnableKineticScrolling(true);
-		((Control)(object)ddlGetIt).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)ddlGetIt).Location = new Point(587, 474);
-		((Control)(object)ddlGetIt).Margin = new Padding(4, 5, 4, 5);
-		((Control)(object)ddlGetIt).Name = "ddlGetIt";
-		((RadElement)((RadControl)ddlGetIt).get_RootElement()).set_MinSize(new Size(0, 0));
-		((Control)(object)ddlGetIt).Size = new Size(67, 35);
-		((Control)(object)ddlGetIt).TabIndex = 335;
-		((Control)(object)ddlGetIt).Tag = "product";
-		((RadControl)ddlGetIt).set_ThemeName("Windows8");
-		((RadDropDownList)ddlGetIt).add_SelectedIndexChanged(new PositionChangedEventHandler(ddlGetIt_SelectedIndexChanged));
+		ddlGroup2.AutoSize = false;
+		ddlGroup2.BackColor = Color.White;
+		ddlGroup2.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlGroup2.EnableKineticScrolling = true;
+		ddlGroup2.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		ddlGroup2.Location = new Point(616, 510);
+		ddlGroup2.Margin = new Padding(4, 5, 4, 5);
+		ddlGroup2.Name = "ddlGroup2";
+		ddlGroup2.RootElement.MinSize = new Size(0, 0);
+		ddlGroup2.Size = new Size(398, 34);
+		ddlGroup2.TabIndex = 344;
+		ddlGroup2.Tag = "product";
+		ddlGroup2.ThemeName = "Windows8";
+		ddlGroup2.SelectedIndexChanged += ddlGroup2_SelectedIndexChanged;
+		ddlGroup1.AutoSize = false;
+		ddlGroup1.BackColor = Color.White;
+		ddlGroup1.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlGroup1.EnableKineticScrolling = true;
+		ddlGroup1.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		ddlGroup1.Location = new Point(126, 510);
+		ddlGroup1.Margin = new Padding(4, 5, 4, 5);
+		ddlGroup1.Name = "ddlGroup1";
+		ddlGroup1.RootElement.MinSize = new Size(0, 0);
+		ddlGroup1.Size = new Size(369, 34);
+		ddlGroup1.TabIndex = 342;
+		ddlGroup1.Tag = "product";
+		ddlGroup1.ThemeName = "Windows8";
+		ddlGroup1.SelectedIndexChanged += ddlGroup1_SelectedIndexChanged;
+		ddlTender.AutoSize = false;
+		ddlTender.BackColor = Color.White;
+		ddlTender.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlTender.EnableKineticScrolling = true;
+		ddlTender.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		ddlTender.Location = new Point(888, 474);
+		ddlTender.Margin = new Padding(4, 5, 4, 5);
+		ddlTender.Name = "ddlTender";
+		ddlTender.RootElement.MinSize = new Size(0, 0);
+		ddlTender.Size = new Size(58, 35);
+		ddlTender.TabIndex = 339;
+		ddlTender.Tag = "product";
+		ddlTender.ThemeName = "Windows8";
+		ddlTender.SelectedIndexChanged += ddlTender_SelectedIndexChanged;
+		ddlGetIt.AutoSize = false;
+		ddlGetIt.BackColor = Color.White;
+		ddlGetIt.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlGetIt.EnableKineticScrolling = true;
+		ddlGetIt.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		ddlGetIt.Location = new Point(587, 474);
+		ddlGetIt.Margin = new Padding(4, 5, 4, 5);
+		ddlGetIt.Name = "ddlGetIt";
+		ddlGetIt.RootElement.MinSize = new Size(0, 0);
+		ddlGetIt.Size = new Size(67, 35);
+		ddlGetIt.TabIndex = 335;
+		ddlGetIt.Tag = "product";
+		ddlGetIt.ThemeName = "Windows8";
+		ddlGetIt.SelectedIndexChanged += ddlGetIt_SelectedIndexChanged;
 		chkDelivery.Location = new Point(446, 441);
 		chkDelivery.Name = "chkDelivery";
 		chkDelivery.Size = new Size(30, 30);
@@ -2296,24 +2169,24 @@ public class frmAddEditPromotions : frmMasterForm
 		base.Controls.Add(lblDisableGETItems);
 		base.Controls.Add(btnShowKeyboard_PromoCode);
 		base.Controls.Add(btnShowKeyboard_PromoName);
-		base.Controls.Add((Control)(object)chkActive);
+		base.Controls.Add(chkActive);
 		base.Controls.Add(label3);
 		base.Controls.Add(scrollItem2);
 		base.Controls.Add(scrollItem1);
 		base.Controls.Add(pnlItems1);
-		base.Controls.Add((Control)(object)ddlGroup2);
+		base.Controls.Add(ddlGroup2);
 		base.Controls.Add(label41);
-		base.Controls.Add((Control)(object)ddlGroup1);
+		base.Controls.Add(ddlGroup1);
 		base.Controls.Add(label40);
 		base.Controls.Add(label39);
-		base.Controls.Add((Control)(object)ddlTender);
+		base.Controls.Add(ddlTender);
 		base.Controls.Add(btnShowKeyboard_DiscountAmount);
-		base.Controls.Add((Control)(object)txtDiscountAmount);
+		base.Controls.Add(txtDiscountAmount);
 		base.Controls.Add(lblForItemsBelow);
-		base.Controls.Add((Control)(object)ddlGetIt);
+		base.Controls.Add(ddlGetIt);
 		base.Controls.Add(label37);
 		base.Controls.Add(btnShowKeyboard_BuyQty);
-		base.Controls.Add((Control)(object)txtBuyQty);
+		base.Controls.Add(txtBuyQty);
 		base.Controls.Add(label36);
 		base.Controls.Add(label35);
 		base.Controls.Add(chkDelivery);
@@ -2346,8 +2219,8 @@ public class frmAddEditPromotions : frmMasterForm
 		base.Controls.Add(label11);
 		base.Controls.Add(label10);
 		base.Controls.Add(label26);
-		base.Controls.Add((Control)(object)txtPromoCode);
-		base.Controls.Add((Control)(object)txtPromoName);
+		base.Controls.Add(txtPromoCode);
+		base.Controls.Add(txtPromoName);
 		base.Controls.Add(label25);
 		base.Controls.Add(label5);
 		base.Controls.Add(lblOriginalPrice);
@@ -2355,8 +2228,8 @@ public class frmAddEditPromotions : frmMasterForm
 		base.Controls.Add(label22);
 		base.Controls.Add(label20);
 		base.Controls.Add(label19);
-		base.Controls.Add((Control)(object)chkDaySale);
-		base.Controls.Add((Control)(object)chkDateRange);
+		base.Controls.Add(chkDaySale);
+		base.Controls.Add(chkDateRange);
 		base.Controls.Add(panel1);
 		base.Controls.Add(label8);
 		base.Controls.Add(label2);

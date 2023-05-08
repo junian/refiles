@@ -66,17 +66,17 @@ public class frmManageOrderTickets : frmMasterForm
 
 	private void method_3()
 	{
-		((RadDropDownList)ddlGenKey).get_Items().Clear();
+		ddlGenKey.Items.Clear();
 		GClass6 gClass = new GClass6();
 		Dictionary<string, string> dictionary = new Dictionary<string, string> { { "0", "**ADD NEW TICKET RANGE**" } };
 		foreach (GenKey item in gClass.GenKeys.Where((GenKey a) => a.GenKeyID > 3 && a.KeyName != "OrderNumber" && a.KeyName != "RefundNumber" && a.KeyName != "OrderTicket").ToList())
 		{
 			dictionary.Add(item.GenKeyID.ToString(), item.KeyName);
 		}
-		((RadDropDownList)ddlGenKey).set_DisplayMember("Value");
-		((RadDropDownList)ddlGenKey).set_ValueMember("Key");
-		((RadDropDownList)ddlGenKey).set_DataSource((object)new BindingSource(dictionary, null));
-		((RadDropDownList)ddlGenKey).set_SelectedIndex(0);
+		ddlGenKey.DisplayMember = "Value";
+		ddlGenKey.ValueMember = "Key";
+		ddlGenKey.DataSource = new BindingSource(dictionary, null);
+		ddlGenKey.SelectedIndex = 0;
 	}
 
 	private void method_4()
@@ -111,20 +111,20 @@ public class frmManageOrderTickets : frmMasterForm
 	private void btnSave_Click(object sender, EventArgs e)
 	{
 		_003C_003Ec__DisplayClass6_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass6_0();
-		if (string.IsNullOrEmpty(((Control)(object)txtStartKey).Text))
+		if (string.IsNullOrEmpty(txtStartKey.Text))
 		{
 			new NotificationLabel(this, "Please add a start num", NotificationTypes.Warning).Show();
 			return;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtEndKey).Text))
+		if (string.IsNullOrEmpty(txtEndKey.Text))
 		{
 			new NotificationLabel(this, "Please add a end num", NotificationTypes.Warning).Show();
 			return;
 		}
 		GClass6 gClass = new GClass6();
-		CS_0024_003C_003E8__locals0.genKeyId = Convert.ToInt16(((RadDropDownList)ddlGenKey).get_SelectedValue().ToString());
-		int num = Convert.ToInt32(((Control)(object)txtStartKey).Text);
-		int num2 = Convert.ToInt32(((Control)(object)txtEndKey).Text);
+		CS_0024_003C_003E8__locals0.genKeyId = Convert.ToInt16(ddlGenKey.SelectedValue.ToString());
+		int num = Convert.ToInt32(txtStartKey.Text);
+		int num2 = Convert.ToInt32(txtEndKey.Text);
 		foreach (GenKey item in gClass.GenKeys.Where((GenKey a) => a.GenKeyID != CS_0024_003C_003E8__locals0.genKeyId && a.KeyName.Contains("OrderTicket") && a.StartKey != null && a.EndKey != null).ToList())
 		{
 			if (MathHelper.IsOverlapping(num, num2, item.StartKey.Value, item.EndKey.Value))
@@ -148,9 +148,9 @@ public class frmManageOrderTickets : frmMasterForm
 		if (CS_0024_003C_003E8__locals0.genKeyId != 0)
 		{
 			GenKey genKey = gClass.GenKeys.Where((GenKey a) => a.GenKeyID == CS_0024_003C_003E8__locals0.genKeyId).FirstOrDefault();
-			if (Convert.ToInt32(((Control)(object)txtStartKey).Text) != genKey.StartKey)
+			if (Convert.ToInt32(txtStartKey.Text) != genKey.StartKey)
 			{
-				genKey.LastKey = Convert.ToInt32(((Control)(object)txtStartKey).Text);
+				genKey.LastKey = Convert.ToInt32(txtStartKey.Text);
 			}
 			genKey.StartKey = num;
 			genKey.EndKey = num2;
@@ -160,7 +160,7 @@ public class frmManageOrderTickets : frmMasterForm
 		{
 			GenKey genKey2 = new GenKey
 			{
-				KeyName = "OrderTicket " + ((Control)(object)txtStartKey).Text + "-" + ((Control)(object)txtEndKey).Text,
+				KeyName = "OrderTicket " + txtStartKey.Text + "-" + txtEndKey.Text,
 				LastKey = num,
 				StartKey = num,
 				EndKey = num2
@@ -206,10 +206,10 @@ public class frmManageOrderTickets : frmMasterForm
 	private void btnShowKeyboard_StartKey_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Start Key", 0, 5, ((Control)(object)txtStartKey).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData("Start Key", 0, 5, txtStartKey.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtStartKey).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtStartKey.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -217,10 +217,10 @@ public class frmManageOrderTickets : frmMasterForm
 	private void btnShowKeyboard_EndKey_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("End Key", 0, 5, ((Control)(object)txtStartKey).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData("End Key", 0, 5, txtStartKey.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtEndKey).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtEndKey.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -243,19 +243,19 @@ public class frmManageOrderTickets : frmMasterForm
 
 	private void ddlGenKey_SelectedIndexChanged(object sender, PositionChangedEventArgs e)
 	{
-		if (((RadDropDownList)ddlGenKey).get_Items() == null || ((RadDropDownList)ddlGenKey).get_Items().get_Count() <= 0 || ((RadDropDownList)ddlGenKey).get_SelectedValue() == null)
+		if (ddlGenKey.Items == null || ddlGenKey.Items.Count <= 0 || ddlGenKey.SelectedValue == null)
 		{
 			return;
 		}
 		_003C_003Ec__DisplayClass11_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass11_0();
 		method_5();
-		CS_0024_003C_003E8__locals0.genKeyId = Convert.ToInt16(((RadDropDownList)ddlGenKey).get_SelectedValue().ToString());
+		CS_0024_003C_003E8__locals0.genKeyId = Convert.ToInt16(ddlGenKey.SelectedValue.ToString());
 		if (CS_0024_003C_003E8__locals0.genKeyId != 0)
 		{
 			GenKey genKey = new GClass6().GenKeys.Where((GenKey a) => a.GenKeyID == CS_0024_003C_003E8__locals0.genKeyId).FirstOrDefault();
 			List<OrderTypeGenKey> source = genKey.OrderTypeGenKeys.ToList();
-			((Control)(object)txtStartKey).Text = genKey.StartKey.ToString();
-			((Control)(object)txtEndKey).Text = genKey.EndKey.ToString();
+			txtStartKey.Text = genKey.StartKey.ToString();
+			txtEndKey.Text = genKey.EndKey.ToString();
 			{
 				foreach (object control in panel1.Controls)
 				{
@@ -271,8 +271,8 @@ public class frmManageOrderTickets : frmMasterForm
 				return;
 			}
 		}
-		((Control)(object)txtStartKey).Text = "";
-		((Control)(object)txtEndKey).Text = "";
+		txtStartKey.Text = "";
+		txtEndKey.Text = "";
 	}
 
 	protected override void Dispose(bool disposing)
@@ -286,16 +286,6 @@ public class frmManageOrderTickets : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0032: Expected O, but got Unknown
-		//IL_0049: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0053: Expected O, but got Unknown
-		//IL_0333: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0354: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0648: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0669: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ee6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ef0: Expected O, but got Unknown
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmManageOrderTickets));
 		lblHeaderTitle = new Label();
 		label2 = new Label();
@@ -340,15 +330,15 @@ public class frmManageOrderTickets : frmMasterForm
 		label2.TabIndex = 213;
 		label2.Text = "Start Number";
 		label2.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)txtStartKey).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtStartKey).Location = new Point(142, 386);
-		txtStartKey.set_MaxLength(50);
-		((Control)(object)txtStartKey).Name = "txtStartKey";
-		((RadElement)((RadControl)txtStartKey).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtStartKey).Size = new Size(101, 44);
-		((Control)(object)txtStartKey).TabIndex = 214;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtStartKey).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtStartKey).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtStartKey.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtStartKey.Location = new Point(142, 386);
+		txtStartKey.MaxLength = 50;
+		txtStartKey.Name = "txtStartKey";
+		txtStartKey.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtStartKey.Size = new Size(101, 44);
+		txtStartKey.TabIndex = 214;
+		((RadTextBoxControlElement)txtStartKey.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtStartKey.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_StartKey.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_StartKey.DialogResult = DialogResult.OK;
 		btnShowKeyboard_StartKey.FlatAppearance.BorderColor = Color.Black;
@@ -379,15 +369,15 @@ public class frmManageOrderTickets : frmMasterForm
 		btnShowKeyboard_EndKey.TabIndex = 219;
 		btnShowKeyboard_EndKey.UseVisualStyleBackColor = false;
 		btnShowKeyboard_EndKey.Click += btnShowKeyboard_EndKey_Click;
-		((Control)(object)txtEndKey).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtEndKey).Location = new Point(142, 431);
-		txtEndKey.set_MaxLength(50);
-		((Control)(object)txtEndKey).Name = "txtEndKey";
-		((RadElement)((RadControl)txtEndKey).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtEndKey).Size = new Size(101, 42);
-		((Control)(object)txtEndKey).TabIndex = 218;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtEndKey).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtEndKey).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtEndKey.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtEndKey.Location = new Point(142, 431);
+		txtEndKey.MaxLength = 50;
+		txtEndKey.Name = "txtEndKey";
+		txtEndKey.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtEndKey.Size = new Size(101, 42);
+		txtEndKey.TabIndex = 218;
+		((RadTextBoxControlElement)txtEndKey.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtEndKey.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label3.BackColor = Color.FromArgb(132, 146, 146);
 		label3.Font = new Font("Microsoft Sans Serif", 12f);
 		label3.ForeColor = Color.White;
@@ -491,23 +481,23 @@ public class frmManageOrderTickets : frmMasterForm
 		label9.TabIndex = 262;
 		label9.Text = "Ticket Name";
 		label9.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)ddlGenKey).AutoSize = false;
-		((Control)(object)ddlGenKey).BackColor = Color.White;
-		((RadDropDownList)ddlGenKey).set_DefaultItemsCountInDropDown(10);
-		((RadDropDownList)ddlGenKey).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlGenKey).set_EnableKineticScrolling(true);
-		((Control)(object)ddlGenKey).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)ddlGenKey).Location = new Point(142, 44);
-		((Control)(object)ddlGenKey).Name = "ddlGenKey";
-		((Control)(object)ddlGenKey).Size = new Size(455, 34);
-		((Control)(object)ddlGenKey).TabIndex = 263;
-		((RadControl)ddlGenKey).set_ThemeName("Windows8");
-		((RadDropDownList)ddlGenKey).add_SelectedIndexChanged(new PositionChangedEventHandler(ddlGenKey_SelectedIndexChanged));
+		ddlGenKey.AutoSize = false;
+		ddlGenKey.BackColor = Color.White;
+		ddlGenKey.DefaultItemsCountInDropDown = 10;
+		ddlGenKey.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlGenKey.EnableKineticScrolling = true;
+		ddlGenKey.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		ddlGenKey.Location = new Point(142, 44);
+		ddlGenKey.Name = "ddlGenKey";
+		ddlGenKey.Size = new Size(455, 34);
+		ddlGenKey.TabIndex = 263;
+		ddlGenKey.ThemeName = "Windows8";
+		ddlGenKey.SelectedIndexChanged += ddlGenKey_SelectedIndexChanged;
 		base.AutoScaleDimensions = new SizeF(6f, 13f);
 		base.AutoScaleMode = AutoScaleMode.Font;
 		base.ClientSize = new Size(602, 480);
 		base.Controls.Add(panel1);
-		base.Controls.Add((Control)(object)ddlGenKey);
+		base.Controls.Add(ddlGenKey);
 		base.Controls.Add(label9);
 		base.Controls.Add(label1);
 		base.Controls.Add(btnExit);
@@ -515,10 +505,10 @@ public class frmManageOrderTickets : frmMasterForm
 		base.Controls.Add(btnSave);
 		base.Controls.Add(label5);
 		base.Controls.Add(btnShowKeyboard_EndKey);
-		base.Controls.Add((Control)(object)txtEndKey);
+		base.Controls.Add(txtEndKey);
 		base.Controls.Add(label3);
 		base.Controls.Add(btnShowKeyboard_StartKey);
-		base.Controls.Add((Control)(object)txtStartKey);
+		base.Controls.Add(txtStartKey);
 		base.Controls.Add(label2);
 		base.Controls.Add(lblHeaderTitle);
 		base.Name = "frmManageOrderTickets";

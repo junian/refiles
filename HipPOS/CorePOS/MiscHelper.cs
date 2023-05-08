@@ -202,9 +202,8 @@ public static class MiscHelper
 
 	public static string GetSystemUIDCipher()
 	{
-		//IL_0000: Unknown result type (might be due to invalid IL or missing references)
-		//IL_000a: Expected O, but got Unknown
-		return ((object)DeviceIdBuilderExtensions.AddSystemDriveSerialNumber(DeviceIdBuilderExtensions.AddMotherboardSerialNumber(DeviceIdBuilderExtensions.AddProcessorId(new DeviceIdBuilder())))).ToString() + "Efwp6omJGeZudEmKVjZIRKGqm1OsXbSSIl9EI1OoJ9B412ypvzAYNBtAzTttUlb3";
+		return new DeviceIdBuilder().AddProcessorId().AddMotherboardSerialNumber().AddSystemDriveSerialNumber()
+			.ToString() + "Efwp6omJGeZudEmKVjZIRKGqm1OsXbSSIl9EI1OoJ9B412ypvzAYNBtAzTttUlb3";
 	}
 
 	public static void ProcessPayout(Form mainForm)
@@ -262,11 +261,11 @@ public static class MiscHelper
 				return false;
 			}
 			decimal num = default(decimal);
-			foreach (ListViewDataItem item2 in ((IEnumerable<ListViewDataItem>)((RadListView)radListItems).get_Items()).Where((ListViewDataItem a) => a.get_Item(1).ToString().ToUpper() == CS_0024_003C_003E8__locals0.item.ItemName.ToUpper()))
+			foreach (ListViewDataItem item2 in radListItems.Items.Where((ListViewDataItem a) => a[1].ToString().ToUpper() == CS_0024_003C_003E8__locals0.item.ItemName.ToUpper()))
 			{
-				if (!item2.get_Font().Strikeout && (item2.get_SubItems().get_Item(23) == null || string.IsNullOrEmpty(item2.get_SubItems().get_Item(23).ToString()) || (item2.get_SubItems().get_Item(23) != null && !Convert.ToBoolean(item2.get_SubItems().get_Item(23).ToString()))))
+				if (!item2.Font.Strikeout && (item2.SubItems[23] == null || string.IsNullOrEmpty(item2.SubItems[23].ToString()) || (item2.SubItems[23] != null && !Convert.ToBoolean(item2.SubItems[23].ToString()))))
 				{
-					decimal num2 = ((item2.get_Item(0).ToString() == "") ? 1m : MathHelper.FractionToDecimal(item2.get_Item(0).ToString()));
+					decimal num2 = ((item2[0].ToString() == "") ? 1m : MathHelper.FractionToDecimal(item2[0].ToString()));
 					num += num2;
 				}
 			}
@@ -299,7 +298,7 @@ public static class MiscHelper
 				if (!(_003C_003Ec__DisplayClass9_.material.InventoryCount <= 0m))
 				{
 					decimal num3 = default(decimal);
-					using (IEnumerator<ListViewDataItem> enumerator = ((RadListView)radListItems).get_Items().GetEnumerator())
+					using (IEnumerator<ListViewDataItem> enumerator = radListItems.Items.GetEnumerator())
 					{
 						while (enumerator.MoveNext())
 						{
@@ -308,8 +307,8 @@ public static class MiscHelper
 							_003C_003Ec__DisplayClass9_2.rvi = enumerator.Current;
 							_003C_003Ec__DisplayClass9_4 CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass9_4();
 							CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals2 = _003C_003Ec__DisplayClass9_2;
-							decimal num4 = ((CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals2.rvi.get_Item(0).ToString() == "") ? 1m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals2.rvi.get_Item(0).ToString()));
-							CS_0024_003C_003E8__locals2.otherItem = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals2.rvi.get_SubItems().get_Item(4).ToString()).FirstOrDefault();
+							decimal num4 = ((CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals2.rvi[0].ToString() == "") ? 1m : MathHelper.FractionToDecimal(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals2.rvi[0].ToString()));
+							CS_0024_003C_003E8__locals2.otherItem = MemoryLoadedData.all_active_items.Where((Item a) => a.ItemID.ToString() == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals2.rvi.SubItems[4].ToString()).FirstOrDefault();
 							if (CS_0024_003C_003E8__locals2.otherItem == null)
 							{
 								continue;

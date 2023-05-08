@@ -8,7 +8,6 @@ using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
 using CorePOS.Business.Objects;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -80,12 +79,12 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 			ddlOnlineOrderProviders.SelectedValue = onlineOrderSettingObject.Provider;
 			if (onlineOrderSettingObject.Provider == OnlineOrderProviders.Hippos)
 			{
-				string text2 = (((Control)(object)txtUrl).Text = (((Control)(object)txtApiKey).Text = string.Empty));
-				RadTextBoxControl obj = txtUrl;
-				((Control)(object)txtApiKey).Enabled = false;
-				((Control)(object)obj).Enabled = false;
+				string text2 = (txtUrl.Text = (txtApiKey.Text = string.Empty));
+				RadTextBoxControl radTextBoxControl = txtUrl;
+				txtApiKey.Enabled = false;
+				radTextBoxControl.Enabled = false;
 				ddlInterval.SelectedValue = onlineOrderSettingObject.PollInterval.ToString();
-				chkActive.set_Value(onlineOrderSettingObject.isActive);
+				chkActive.Value = onlineOrderSettingObject.isActive;
 			}
 		}
 	}
@@ -97,23 +96,23 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 
 	private void btnSave_Click(object sender, EventArgs e)
 	{
-		if (ddlOnlineOrderProviders.SelectedValue.ToString() == OnlineOrderProviders.Moduurn && (string.IsNullOrEmpty(((Control)(object)txtApiKey).Text.Trim()) || string.IsNullOrEmpty(((Control)(object)txtUrl).Text.Trim())) && chkActive.get_Value())
+		if (ddlOnlineOrderProviders.SelectedValue.ToString() == OnlineOrderProviders.Moduurn && (string.IsNullOrEmpty(txtApiKey.Text.Trim()) || string.IsNullOrEmpty(txtUrl.Text.Trim())) && chkActive.Value)
 		{
 			new NotificationLabel(this, "All fields are required.", NotificationTypes.Warning).Show();
 			return;
 		}
 		new GClass6();
-		SettingsHelper.OnlineOrderSettings.Save(ddlOnlineOrderProviders.SelectedValue.ToString(), ((Control)(object)txtUrl).Text.Trim(), ((Control)(object)txtApiKey).Text.Trim(), Convert.ToInt32(ddlInterval.SelectedValue), chkActive.get_Value());
+		SettingsHelper.OnlineOrderSettings.Save(ddlOnlineOrderProviders.SelectedValue.ToString(), txtUrl.Text.Trim(), txtApiKey.Text.Trim(), Convert.ToInt32(ddlInterval.SelectedValue), chkActive.Value);
 		new NotificationLabel(this, "Settings successfully saved.", NotificationTypes.Success).Show();
 	}
 
 	private void btnShowKeyboard_ApiKey_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("API Key", 1, 256, ((Control)(object)txtApiKey).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("API Key", 1, 256, txtApiKey.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtApiKey).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtApiKey.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -121,47 +120,47 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 	private void btnShowKeyboard_Url_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Url", 1, 1024, ((Control)(object)txtUrl).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Url", 1, 1024, txtUrl.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtUrl).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtUrl.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
 
 	private void ddlOnlineOrderProviders_SelectedIndexChanged(object sender, EventArgs e)
 	{
-		string text2 = (((Control)(object)txtUrl).Text = (((Control)(object)txtApiKey).Text = string.Empty));
+		string text2 = (txtUrl.Text = (txtApiKey.Text = string.Empty));
 		if (ddlOnlineOrderProviders.SelectedValue.ToString() == OnlineOrderProviders.Hippos)
 		{
-			RadTextBoxControl obj = txtUrl;
-			((Control)(object)txtApiKey).Enabled = false;
-			((Control)(object)obj).Enabled = false;
+			RadTextBoxControl radTextBoxControl = txtUrl;
+			txtApiKey.Enabled = false;
+			radTextBoxControl.Enabled = false;
 			Class19 @class = ddlInterval;
-			RadToggleSwitch obj2 = chkActive;
+			RadToggleSwitch radToggleSwitch = chkActive;
 			btnSave.Enabled = true;
-			((Control)(object)obj2).Enabled = true;
+			radToggleSwitch.Enabled = true;
 			@class.Enabled = true;
 		}
 		else
 		{
-			RadTextBoxControl obj3 = txtUrl;
-			RadTextBoxControl obj4 = txtApiKey;
+			RadTextBoxControl radTextBoxControl2 = txtUrl;
+			RadTextBoxControl radTextBoxControl3 = txtApiKey;
 			Class19 class2 = ddlInterval;
-			RadToggleSwitch obj5 = chkActive;
+			RadToggleSwitch radToggleSwitch2 = chkActive;
 			btnSave.Enabled = true;
-			((Control)(object)obj5).Enabled = true;
+			radToggleSwitch2.Enabled = true;
 			class2.Enabled = true;
-			((Control)(object)obj4).Enabled = true;
-			((Control)(object)obj3).Enabled = true;
+			radTextBoxControl3.Enabled = true;
+			radTextBoxControl2.Enabled = true;
 		}
 		OnlineOrderSettingObject onlineOrderSettingObject = SettingsHelper.OnlineOrderSettings.Get(ddlOnlineOrderProviders.SelectedValue.ToString());
 		if (onlineOrderSettingObject != null)
 		{
-			((Control)(object)txtUrl).Text = onlineOrderSettingObject.Url;
-			((Control)(object)txtApiKey).Text = onlineOrderSettingObject.ApiKey;
+			txtUrl.Text = onlineOrderSettingObject.Url;
+			txtApiKey.Text = onlineOrderSettingObject.ApiKey;
 			ddlInterval.SelectedValue = onlineOrderSettingObject.PollInterval.ToString();
-			chkActive.set_Value(onlineOrderSettingObject.isActive);
+			chkActive.Value = onlineOrderSettingObject.isActive;
 		}
 	}
 
@@ -176,24 +175,6 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_0075: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007f: Expected O, but got Unknown
-		//IL_00a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ab: Expected O, but got Unknown
-		//IL_027c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_029d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a22: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a43: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0de7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0dff: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e17: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e38: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e65: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e92: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ebf: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ee0: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmOnlineOrderSyncSettings));
 		label5 = new Label();
 		txtApiKey = new RadTextBoxControl();
@@ -228,15 +209,15 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 		label5.TabIndex = 233;
 		label5.Text = "Provider";
 		label5.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)txtApiKey).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtApiKey).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtApiKey).Location = new Point(126, 123);
-		((Control)(object)txtApiKey).Name = "txtApiKey";
-		((RadElement)((RadControl)txtApiKey).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtApiKey).Size = new Size(358, 35);
-		((Control)(object)txtApiKey).TabIndex = 232;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtApiKey).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtApiKey).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtApiKey.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtApiKey.ForeColor = Color.FromArgb(40, 40, 40);
+		txtApiKey.Location = new Point(126, 123);
+		txtApiKey.Name = "txtApiKey";
+		txtApiKey.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtApiKey.Size = new Size(358, 35);
+		txtApiKey.TabIndex = 232;
+		((RadTextBoxControlElement)txtApiKey.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtApiKey.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_ApiKey.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_ApiKey.DialogResult = DialogResult.OK;
 		btnShowKeyboard_ApiKey.FlatAppearance.BorderColor = Color.Black;
@@ -333,15 +314,15 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 		label3.TabIndex = 241;
 		label3.Text = "Url";
 		label3.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)txtUrl).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtUrl).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtUrl).Location = new Point(126, 87);
-		((Control)(object)txtUrl).Name = "txtUrl";
-		((RadElement)((RadControl)txtUrl).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtUrl).Size = new Size(358, 35);
-		((Control)(object)txtUrl).TabIndex = 240;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtUrl).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtUrl).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtUrl.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtUrl.ForeColor = Color.FromArgb(40, 40, 40);
+		txtUrl.Location = new Point(126, 87);
+		txtUrl.Name = "txtUrl";
+		txtUrl.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtUrl.Size = new Size(358, 35);
+		txtUrl.TabIndex = 240;
+		((RadTextBoxControlElement)txtUrl.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtUrl.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Url.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Url.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Url.FlatAppearance.BorderColor = Color.Black;
@@ -382,22 +363,22 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 		label6.TabIndex = 243;
 		label6.Text = "Active";
 		label6.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)chkActive).Location = new Point(464, 159);
-		((Control)(object)chkActive).Name = "chkActive";
-		chkActive.set_OffText("NO");
-		chkActive.set_OnText("YES");
-		((Control)(object)chkActive).Size = new Size(72, 35);
-		((Control)(object)chkActive).TabIndex = 244;
-		((Control)(object)chkActive).Tag = "";
-		chkActive.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbOffset(52);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkActive.Location = new Point(464, 159);
+		chkActive.Name = "chkActive";
+		chkActive.OffText = "NO";
+		chkActive.OnText = "YES";
+		chkActive.Size = new Size(72, 35);
+		chkActive.TabIndex = 244;
+		chkActive.Tag = "";
+		chkActive.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbOffset = 52;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		ddlInterval.BackColor = Color.White;
 		ddlInterval.DrawMode = DrawMode.OwnerDrawVariable;
 		ddlInterval.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -427,16 +408,16 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 		base.ClientSize = new Size(540, 328);
 		base.Controls.Add(label7);
 		base.Controls.Add(ddlInterval);
-		base.Controls.Add((Control)(object)chkActive);
+		base.Controls.Add(chkActive);
 		base.Controls.Add(label6);
 		base.Controls.Add(label4);
 		base.Controls.Add(label3);
-		base.Controls.Add((Control)(object)txtUrl);
+		base.Controls.Add(txtUrl);
 		base.Controls.Add(btnShowKeyboard_Url);
 		base.Controls.Add(label1);
 		base.Controls.Add(ddlOnlineOrderProviders);
 		base.Controls.Add(label5);
-		base.Controls.Add((Control)(object)txtApiKey);
+		base.Controls.Add(txtApiKey);
 		base.Controls.Add(btnShowKeyboard_ApiKey);
 		base.Controls.Add(ComglAgQy4);
 		base.Controls.Add(btnSave);

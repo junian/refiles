@@ -11,7 +11,6 @@ using CorePOS.Business.Methods;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -131,15 +130,15 @@ public class frmInventoryView : frmMasterForm
 		_003C_003Ec__DisplayClass10_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass10_0();
 		gclass6_0 = new GClass6();
 		CS_0024_003C_003E8__locals0.query = string.Empty;
-		if (((Control)(object)txtSearch).Text == Resources.Enter_Search_Criteria_Here)
+		if (txtSearch.Text == Resources.Enter_Search_Criteria_Here)
 		{
 			CS_0024_003C_003E8__locals0.query = string.Empty;
 		}
 		else
 		{
-			CS_0024_003C_003E8__locals0.query = ((Control)(object)txtSearch).Text.Trim();
+			CS_0024_003C_003E8__locals0.query = txtSearch.Text.Trim();
 		}
-		if (!chkMaterialsOnly.get_Value())
+		if (!chkMaterialsOnly.Value)
 		{
 			List<Item> list = (from t in gclass6_0.Items
 				where t.ItemClassification == ItemClassifications.Product && t.TrackInventory == true && t.ItemName.Contains(CS_0024_003C_003E8__locals0.query) && t.isDeleted == false
@@ -190,7 +189,7 @@ public class frmInventoryView : frmMasterForm
 					select i).ThenBy((Item x) => x.ItemName).ToList();
 			}
 		}
-		if (chkOutOfStock.get_Value())
+		if (chkOutOfStock.Value)
 		{
 			list_4 = list_4.Where((Item i) => i.InventoryCount <= 0m && i.ItemClassification == ItemClassifications.Product).ToList();
 		}
@@ -246,19 +245,19 @@ public class frmInventoryView : frmMasterForm
 
 	private void txtSearch_Enter(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSearch).Text == Resources.Enter_Search_Criteria_Here)
+		if (txtSearch.Text == Resources.Enter_Search_Criteria_Here)
 		{
-			((Control)(object)txtSearch).ForeColor = HelperMethods.GetColor("40, 40, 40");
-			((Control)(object)txtSearch).Text = string.Empty;
+			txtSearch.ForeColor = HelperMethods.GetColor("40, 40, 40");
+			txtSearch.Text = string.Empty;
 		}
 	}
 
 	private void txtSearch_Leave(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSearch).Text == string.Empty)
+		if (txtSearch.Text == string.Empty)
 		{
-			((Control)(object)txtSearch).ForeColor = HelperMethods.GetColor("Gray");
-			((Control)(object)txtSearch).Text = Resources.Enter_Search_Criteria_Here;
+			txtSearch.ForeColor = HelperMethods.GetColor("Gray");
+			txtSearch.Text = Resources.Enter_Search_Criteria_Here;
 		}
 	}
 
@@ -343,19 +342,19 @@ public class frmInventoryView : frmMasterForm
 
 	private void method_8(object sender, EventArgs e)
 	{
-		if (chkOutOfStock.get_Value())
+		if (chkOutOfStock.Value)
 		{
 			_003C_003Ec__DisplayClass20_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass20_0();
 			CS_0024_003C_003E8__locals0.query = string.Empty;
-			if (((Control)(object)txtSearch).Text == Resources.Enter_Search_Criteria_Here)
+			if (txtSearch.Text == Resources.Enter_Search_Criteria_Here)
 			{
 				CS_0024_003C_003E8__locals0.query = string.Empty;
 			}
 			else
 			{
-				CS_0024_003C_003E8__locals0.query = ((Control)(object)txtSearch).Text.Trim();
+				CS_0024_003C_003E8__locals0.query = txtSearch.Text.Trim();
 			}
-			if (!chkMaterialsOnly.get_Value())
+			if (!chkMaterialsOnly.Value)
 			{
 				List<Item> list = (from t in new DataManager(gclass6_0).getAllItems(CS_0024_003C_003E8__locals0.query)
 					where t.ItemClassification == ItemClassifications.Product && t.TrackInventory && t.InventoryCount <= 0m
@@ -393,16 +392,16 @@ public class frmInventoryView : frmMasterForm
 
 	private void method_10(object sender, EventArgs e)
 	{
-		if (chkMaterialsOnly.get_Value())
+		if (chkMaterialsOnly.Value)
 		{
 			comboGroup.Enabled = false;
-			((Control)(object)chkOutOfStock).Enabled = false;
+			chkOutOfStock.Enabled = false;
 			method_6();
 		}
 		else
 		{
 			comboGroup.Enabled = true;
-			((Control)(object)chkOutOfStock).Enabled = true;
+			chkOutOfStock.Enabled = true;
 			method_5();
 		}
 	}
@@ -420,16 +419,16 @@ public class frmInventoryView : frmMasterForm
 
 	private void btnShowKeyboard_Search_Click(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSearch).Text.Contains(Resources.Enter_Search_Criteria_Here))
+		if (txtSearch.Text.Contains(Resources.Enter_Search_Criteria_Here))
 		{
-			((Control)(object)txtSearch).Text = "";
+			txtSearch.Text = "";
 		}
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Search_Inventory, 0, 128, ((Control)(object)txtSearch).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Search_Inventory, 0, 128, txtSearch.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSearch).Text = MemoryLoadedObjects.Keyboard.textEntered;
-			((Control)(object)txtSearch).ForeColor = HelperMethods.GetColor("40, 40, 40");
+			txtSearch.Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtSearch.ForeColor = HelperMethods.GetColor("40, 40, 40");
 			method_4();
 		}
 		base.DialogResult = DialogResult.None;
@@ -558,28 +557,6 @@ public class frmInventoryView : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_004a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0054: Expected O, but got Unknown
-		//IL_0060: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006a: Expected O, but got Unknown
-		//IL_006b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0075: Expected O, but got Unknown
-		//IL_02a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02c2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03e2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03f9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_041a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0447: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0474: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04c8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0548: Unknown result type (might be due to invalid IL or missing references)
-		//IL_055f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0580: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05ad: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05da: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0607: Unknown result type (might be due to invalid IL or missing references)
-		//IL_062e: Unknown result type (might be due to invalid IL or missing references)
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmInventoryView));
 		timer_0 = new System.Windows.Forms.Timer(icontainer_1);
@@ -621,14 +598,14 @@ public class frmInventoryView : frmMasterForm
 		lblTrainingMode.ForeColor = Color.White;
 		lblTrainingMode.Name = "lblTrainingMode";
 		componentResourceManager.ApplyResources(txtSearch, "txtSearch");
-		((Control)(object)txtSearch).ForeColor = Color.Gray;
-		((Control)(object)txtSearch).Name = "txtSearch";
-		((RadElement)((RadControl)txtSearch).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSearch).Click += txtSearch_Click;
-		((Control)(object)txtSearch).Enter += txtSearch_Enter;
-		((Control)(object)txtSearch).Leave += txtSearch_Leave;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSearch).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSearch).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSearch.ForeColor = Color.Gray;
+		txtSearch.Name = "txtSearch";
+		txtSearch.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSearch.Click += txtSearch_Click;
+		txtSearch.Enter += txtSearch_Enter;
+		txtSearch.Leave += txtSearch_Leave;
+		((RadTextBoxControlElement)txtSearch.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSearch.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(btnShowKeyboard_Search, "btnShowKeyboard_Search");
 		btnShowKeyboard_Search.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Search.DialogResult = DialogResult.OK;
@@ -639,31 +616,31 @@ public class frmInventoryView : frmMasterForm
 		btnShowKeyboard_Search.UseVisualStyleBackColor = false;
 		btnShowKeyboard_Search.Click += btnShowKeyboard_Search_Click;
 		componentResourceManager.ApplyResources(chkMaterialsOnly, "chkMaterialsOnly");
-		((Control)(object)chkMaterialsOnly).Name = "chkMaterialsOnly";
-		chkMaterialsOnly.set_OffText("NO");
-		chkMaterialsOnly.set_OnText("YES");
-		chkMaterialsOnly.set_ToggleStateMode((ToggleStateMode)1);
-		chkMaterialsOnly.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkMaterialsOnly).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkMaterialsOnly).GetChildAt(0)).set_BorderWidth(1f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkMaterialsOnly).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkMaterialsOnly).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkMaterialsOnly).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkMaterialsOnly).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkMaterialsOnly).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkMaterialsOnly.Name = "chkMaterialsOnly";
+		chkMaterialsOnly.OffText = "NO";
+		chkMaterialsOnly.OnText = "YES";
+		chkMaterialsOnly.ToggleStateMode = ToggleStateMode.Click;
+		chkMaterialsOnly.Value = false;
+		((RadToggleSwitchElement)chkMaterialsOnly.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkMaterialsOnly.GetChildAt(0)).BorderWidth = 1f;
+		((ToggleSwitchPartElement)chkMaterialsOnly.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkMaterialsOnly.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkMaterialsOnly.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkMaterialsOnly.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkMaterialsOnly.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(chkOutOfStock, "chkOutOfStock");
-		((Control)(object)chkOutOfStock).Name = "chkOutOfStock";
-		chkOutOfStock.set_OffText("NO");
-		chkOutOfStock.set_OnText("YES");
-		chkOutOfStock.set_ToggleStateMode((ToggleStateMode)1);
-		chkOutOfStock.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkOutOfStock).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkOutOfStock).GetChildAt(0)).set_BorderWidth(1f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkOutOfStock).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkOutOfStock).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkOutOfStock).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkOutOfStock).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text1"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkOutOfStock).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkOutOfStock.Name = "chkOutOfStock";
+		chkOutOfStock.OffText = "NO";
+		chkOutOfStock.OnText = "YES";
+		chkOutOfStock.ToggleStateMode = ToggleStateMode.Click;
+		chkOutOfStock.Value = false;
+		((RadToggleSwitchElement)chkOutOfStock.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkOutOfStock.GetChildAt(0)).BorderWidth = 1f;
+		((ToggleSwitchPartElement)chkOutOfStock.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkOutOfStock.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkOutOfStock.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkOutOfStock.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text1");
+		((ToggleSwitchPartElement)chkOutOfStock.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label4.BackColor = Color.FromArgb(150, 166, 166);
 		label4.FlatStyle = FlatStyle.Flat;
 		componentResourceManager.ApplyResources(label4, "label4");
@@ -791,10 +768,10 @@ public class frmInventoryView : frmMasterForm
 		base.Controls.Add(btnUp);
 		base.Controls.Add(lblReadOnlyMode);
 		base.Controls.Add(lblTrainingMode);
-		base.Controls.Add((Control)(object)txtSearch);
+		base.Controls.Add(txtSearch);
 		base.Controls.Add(btnShowKeyboard_Search);
-		base.Controls.Add((Control)(object)chkMaterialsOnly);
-		base.Controls.Add((Control)(object)chkOutOfStock);
+		base.Controls.Add(chkMaterialsOnly);
+		base.Controls.Add(chkOutOfStock);
 		base.Controls.Add(label4);
 		base.Controls.Add(label3);
 		base.Controls.Add(comboGroup);

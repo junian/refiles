@@ -13,6 +13,7 @@ using CorePOS.Business.Methods;
 using CorePOS.Data;
 using Telerik.WinControls.UI;
 using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Interops.Signatures;
 using Vlc.DotNet.Forms;
 
 namespace CorePOS;
@@ -141,8 +142,6 @@ public class frmOrderEntryShowItems : frmMasterForm
 
 	public frmOrderEntryShowItems()
 	{
-		//IL_0337: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0341: Expected O, but got Unknown
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = AppDomain.CurrentDomain.BaseDirectory + "videos\\";
 		string_1 = new string[1] { "input-repeat=0" };
@@ -168,9 +167,9 @@ public class frmOrderEntryShowItems : frmMasterForm
 			textBox.Visible = false;
 			label2.Visible = false;
 			label.Visible = false;
-			((Control)(object)radListItemsSecond).Height += txtSubTotal.Height * 3;
-			lblSubTotal.Location = new Point(lblSubTotal.Location.X, ((Control)(object)radListItemsSecond).Bottom + 5);
-			txtSubTotal.Location = new Point(txtSubTotal.Location.X, ((Control)(object)radListItemsSecond).Bottom + 5);
+			radListItemsSecond.Height += txtSubTotal.Height * 3;
+			lblSubTotal.Location = new Point(lblSubTotal.Location.X, radListItemsSecond.Bottom + 5);
+			txtSubTotal.Location = new Point(txtSubTotal.Location.X, radListItemsSecond.Bottom + 5);
 			label3.Location = new Point(label3.Location.X, txtSubTotal.Bottom + 2);
 			txtDiscount.Location = new Point(txtDiscount.Location.X, txtSubTotal.Bottom + 2);
 			lblTotalTax.Location = new Point(lblTotalTax.Location.X, txtDiscount.Bottom + 2);
@@ -181,25 +180,25 @@ public class frmOrderEntryShowItems : frmMasterForm
 		txtTotal.TextChanged += txtTotal_TextChanged;
 		base.FormClosing += frmOrderEntryShowItems_FormClosing;
 		string settingValueByKey = SettingsHelper.GetSettingValueByKey("font_size_second_screen");
-		((Control)(object)radListItemsSecond).Font = new Font(((Control)(object)radListItemsSecond).Font.FontFamily, (float)Convert.ToDouble(settingValueByKey), ((Control)(object)radListItemsSecond).Font.Style);
-		((RadListView)radListItemsSecond).add_CellFormatting(new ListViewCellFormattingEventHandler(radListItemsSecond_CellFormatting));
+		radListItemsSecond.Font = new Font(radListItemsSecond.Font.FontFamily, (float)Convert.ToDouble(settingValueByKey), radListItemsSecond.Font.Style);
+		radListItemsSecond.CellFormatting += radListItemsSecond_CellFormatting;
 	}
 
 	private void frmOrderEntryShowItems_FormClosing(object sender, FormClosingEventArgs e)
 	{
 		timer_0.Enabled = false;
-		if (myVlcControl.get_IsPlaying())
+		if (myVlcControl.IsPlaying)
 		{
 			myVlcControl.Stop();
 		}
-		((Component)(object)myVlcControl).Dispose();
+		myVlcControl.Dispose();
 	}
 
 	private void radListItemsSecond_CellFormatting(object sender, ListViewCellFormattingEventArgs e)
 	{
-		if ((e.get_CellElement().get_Data().get_HeaderText() == "Price" || e.get_CellElement().get_Data().get_HeaderText() == "Ext. Price") && e.get_CellElement() is DetailListViewDataCellElement)
+		if ((e.CellElement.Data.HeaderText == "Price" || e.CellElement.Data.HeaderText == "Ext. Price") && e.CellElement is DetailListViewDataCellElement)
 		{
-			((LightVisualElement)e.get_CellElement()).set_TextAlignment(ContentAlignment.MiddleRight);
+			e.CellElement.TextAlignment = ContentAlignment.MiddleRight;
 		}
 	}
 
@@ -212,7 +211,7 @@ public class frmOrderEntryShowItems : frmMasterForm
 
 	public void ResetValues()
 	{
-		((RadListView)radListItemsSecond).get_Items().Clear();
+		radListItemsSecond.Items.Clear();
 		txtSubTotal.Text = 0.ToString("0.00", Thread.CurrentThread.CurrentCulture);
 		txtDiscount.Text = 0.ToString("0.00", Thread.CurrentThread.CurrentCulture);
 		txtTotalTax.Text = 0.ToString("0.00", Thread.CurrentThread.CurrentCulture);
@@ -286,7 +285,7 @@ public class frmOrderEntryShowItems : frmMasterForm
 			{
 				return;
 			}
-			if (myVlcControl.get_IsPlaying())
+			if (myVlcControl.IsPlaying)
 			{
 				myVlcControl.Stop();
 			}
@@ -346,9 +345,7 @@ public class frmOrderEntryShowItems : frmMasterForm
 
 	private void method_4(object sender, VlcMediaPlayerEndReachedEventArgs e)
 	{
-		//IL_0006: Unknown result type (might be due to invalid IL or missing references)
-		//IL_000c: Invalid comparison between Unknown and I4
-		if ((int)myVlcControl.get_State() != 6)
+		if (myVlcControl.State != MediaStates.Ended)
 		{
 			return;
 		}
@@ -371,8 +368,8 @@ public class frmOrderEntryShowItems : frmMasterForm
 
 	private void method_6(object sender, VlcLibDirectoryNeededEventArgs e)
 	{
-		e.set_VlcLibDirectory(new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + "\\lib\\vlclib\\"));
-		_ = e.get_VlcLibDirectory().Exists;
+		e.VlcLibDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + "\\lib\\vlclib\\");
+		_ = e.VlcLibDirectory.Exists;
 	}
 
 	private void timer_1_Tick(object sender, EventArgs e)
@@ -420,22 +417,12 @@ public class frmOrderEntryShowItems : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0026: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002c: Expected O, but got Unknown
-		//IL_0036: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_0046: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004c: Expected O, but got Unknown
-		//IL_0056: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005d: Expected O, but got Unknown
-		//IL_0182: Unknown result type (might be due to invalid IL or missing references)
-		//IL_018c: Expected O, but got Unknown
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmOrderEntryShowItems));
-		ListViewDetailColumn val = new ListViewDetailColumn("Column 0", "Qty");
-		ListViewDetailColumn val2 = new ListViewDetailColumn("Column 1", "Item Name");
-		ListViewDetailColumn val3 = new ListViewDetailColumn("Column 2", "Price");
-		ListViewDetailColumn val4 = new ListViewDetailColumn("Column 3", "Ext. Price");
+		ListViewDetailColumn listViewDetailColumn = new ListViewDetailColumn("Column 0", "Qty");
+		ListViewDetailColumn listViewDetailColumn2 = new ListViewDetailColumn("Column 1", "Item Name");
+		ListViewDetailColumn listViewDetailColumn3 = new ListViewDetailColumn("Column 2", "Price");
+		ListViewDetailColumn listViewDetailColumn4 = new ListViewDetailColumn("Column 3", "Ext. Price");
 		timer_0 = new System.Windows.Forms.Timer(icontainer_1);
 		panelItems = new Panel();
 		label6 = new Label();
@@ -501,7 +488,7 @@ public class frmOrderEntryShowItems : frmMasterForm
 		panelItems.Controls.Add(lblQty);
 		panelItems.Controls.Add(lblPrice);
 		panelItems.Controls.Add(lblExt);
-		panelItems.Controls.Add((Control)(object)radListItemsSecond);
+		panelItems.Controls.Add(radListItemsSecond);
 		componentResourceManager.ApplyResources(panelItems, "panelItems");
 		panelItems.Name = "panelItems";
 		componentResourceManager.ApplyResources(label6, "label6");
@@ -580,49 +567,49 @@ public class frmOrderEntryShowItems : frmMasterForm
 		componentResourceManager.ApplyResources(lblExt, "lblExt");
 		lblExt.ForeColor = Color.White;
 		lblExt.Name = "lblExt";
-		((RadListView)radListItemsSecond).set_AllowArbitraryItemHeight(true);
-		((RadListView)radListItemsSecond).set_AllowEdit(false);
-		((RadListView)radListItemsSecond).set_AllowRemove(false);
+		radListItemsSecond.AllowArbitraryItemHeight = true;
+		radListItemsSecond.AllowEdit = false;
+		radListItemsSecond.AllowRemove = false;
 		componentResourceManager.ApplyResources(radListItemsSecond, "radListItemsSecond");
-		val.set_HeaderText("Qty");
-		val.set_Width(40f);
-		val2.set_HeaderText("Item Name");
-		val2.set_Width(289f);
-		val3.set_HeaderText("Price");
-		val3.set_Width(78f);
-		val4.set_HeaderText("Ext. Price");
-		val4.set_Width(123f);
-		((RadListView)radListItemsSecond).get_Columns().AddRange((ListViewDetailColumn[])(object)new ListViewDetailColumn[4] { val, val2, val3, val4 });
-		((RadListView)radListItemsSecond).set_EnableCustomGrouping(true);
-		((RadListView)radListItemsSecond).set_EnableKineticScrolling(true);
-		((RadListView)radListItemsSecond).set_GroupIndent(0);
-		((RadListView)radListItemsSecond).set_GroupItemSize(new Size(300, 60));
-		((RadListView)radListItemsSecond).set_ItemSize(new Size(200, 40));
-		((RadListView)radListItemsSecond).set_ItemSpacing(-1);
-		((Control)(object)radListItemsSecond).Name = "radListItemsSecond";
-		((RadListView)radListItemsSecond).set_ShowColumnHeaders(false);
-		((RadListView)radListItemsSecond).set_ShowGridLines(true);
-		((RadListView)radListItemsSecond).set_ShowGroups(true);
-		((RadListView)radListItemsSecond).set_ViewType((ListViewType)2);
+		listViewDetailColumn.HeaderText = "Qty";
+		listViewDetailColumn.Width = 40f;
+		listViewDetailColumn2.HeaderText = "Item Name";
+		listViewDetailColumn2.Width = 289f;
+		listViewDetailColumn3.HeaderText = "Price";
+		listViewDetailColumn3.Width = 78f;
+		listViewDetailColumn4.HeaderText = "Ext. Price";
+		listViewDetailColumn4.Width = 123f;
+		radListItemsSecond.Columns.AddRange(listViewDetailColumn, listViewDetailColumn2, listViewDetailColumn3, listViewDetailColumn4);
+		radListItemsSecond.EnableCustomGrouping = true;
+		radListItemsSecond.EnableKineticScrolling = true;
+		radListItemsSecond.GroupIndent = 0;
+		radListItemsSecond.GroupItemSize = new Size(300, 60);
+		radListItemsSecond.ItemSize = new Size(200, 40);
+		radListItemsSecond.ItemSpacing = -1;
+		radListItemsSecond.Name = "radListItemsSecond";
+		radListItemsSecond.ShowColumnHeaders = false;
+		radListItemsSecond.ShowGridLines = true;
+		radListItemsSecond.ShowGroups = true;
+		radListItemsSecond.ViewType = ListViewType.DetailsView;
 		componentResourceManager.ApplyResources(lblPhone, "lblPhone");
 		lblPhone.ForeColor = Color.FromArgb(244, 156, 20);
 		lblPhone.Name = "lblPhone";
 		componentResourceManager.ApplyResources(panelLogo, "panelLogo");
 		panelLogo.BackColor = Color.FromArgb(35, 39, 56);
 		panelLogo.Controls.Add(picLogo);
-		panelLogo.Controls.Add((Control)(object)myVlcControl);
+		panelLogo.Controls.Add(myVlcControl);
 		panelLogo.Name = "panelLogo";
 		componentResourceManager.ApplyResources(picLogo, "picLogo");
 		picLogo.Name = "picLogo";
 		picLogo.TabStop = false;
-		((Control)(object)myVlcControl).BackColor = Color.FromArgb(35, 39, 56);
+		myVlcControl.BackColor = Color.FromArgb(35, 39, 56);
 		componentResourceManager.ApplyResources(myVlcControl, "myVlcControl");
-		((Control)(object)myVlcControl).Name = "myVlcControl";
-		myVlcControl.set_Spu(-1);
-		myVlcControl.set_VlcLibDirectory((DirectoryInfo)null);
-		myVlcControl.set_VlcMediaplayerOptions((string[])null);
-		myVlcControl.add_VlcLibDirectoryNeeded((EventHandler<VlcLibDirectoryNeededEventArgs>)method_6);
-		myVlcControl.add_EndReached((EventHandler<VlcMediaPlayerEndReachedEventArgs>)method_4);
+		myVlcControl.Name = "myVlcControl";
+		myVlcControl.Spu = -1;
+		myVlcControl.VlcLibDirectory = null;
+		myVlcControl.VlcMediaplayerOptions = null;
+		myVlcControl.VlcLibDirectoryNeeded += method_6;
+		myVlcControl.EndReached += method_4;
 		timer_1.Interval = 1000;
 		timer_1.Tick += timer_1_Tick;
 		pnlDisplayChange.BackColor = Color.FromArgb(30, 30, 30);

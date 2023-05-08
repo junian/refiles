@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.Primitives;
 using Telerik.WinControls.Themes;
@@ -13,89 +12,78 @@ internal class Class20 : RadDropDownList
 
 	public Class20()
 	{
-		//IL_0048: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0052: Expected O, but got Unknown
-		//IL_0063: Unknown result type (might be due to invalid IL or missing references)
 		Class26.Ggkj0JxzN9YmC();
-		((RadDropDownList)this)._002Ector();
+		base._002Ector();
 		method_3();
-		((RadDropDownList)this).get_ListElement().set_ItemHeight(28);
-		((VisualElement)((RadDropDownList)this).get_ListElement()).set_Font(new Font("Microsoft Sans Serif", 12f, FontStyle.Bold));
-		((RadDropDownList)this).set_EnableKineticScrolling(true);
-		((RadDropDownList)this).add_VisualListItemFormatting(new VisualListItemFormattingEventHandler(Class20_VisualListItemFormatting));
-		((RadElement)(BorderPrimitive)((RadElement)((RadDropDownList)this).get_DropDownListElement()).get_Children().get_Item(0)).set_Visibility((ElementVisibility)2);
-		((RadControl)this).set_ThemeName(((RadThemeComponentBase)windows8Theme_0).get_ThemeName());
-		((RadDropDownList)this).set_DropDownStyle((RadDropDownStyle)2);
-		((PopupEditorElement)((RadDropDownList)this).get_DropDownListElement()).get_ListElement().set_EnableKineticScrolling(true);
-		((RadElement)((ScrollViewElement<VirtualizedStackContainer<RadListDataItem>>)(object)((PopupEditorElement)((RadDropDownList)this).get_DropDownListElement()).get_ListElement()).get_VScrollBar()).set_MinSize(new Size(30, ((RadElement)((ScrollViewElement<VirtualizedStackContainer<RadListDataItem>>)(object)((PopupEditorElement)((RadDropDownList)this).get_DropDownListElement()).get_ListElement()).get_VScrollBar()).get_Size().Height));
+		base.ListElement.ItemHeight = 28;
+		base.ListElement.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		base.EnableKineticScrolling = true;
+		base.VisualListItemFormatting += Class20_VisualListItemFormatting;
+		((BorderPrimitive)base.DropDownListElement.Children[0]).Visibility = ElementVisibility.Collapsed;
+		ThemeName = windows8Theme_0.ThemeName;
+		DropDownStyle = RadDropDownStyle.DropDownList;
+		base.DropDownListElement.ListElement.EnableKineticScrolling = true;
+		base.DropDownListElement.ListElement.VScrollBar.MinSize = new Size(30, base.DropDownListElement.ListElement.VScrollBar.Size.Height);
 	}
 
 	private void Class20_VisualListItemFormatting(object sender, VisualItemFormattingEventArgs e)
 	{
-		//IL_00ae: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00c1: Unknown result type (might be due to invalid IL or missing references)
-		((RadElement)e.get_VisualItem()).remove_MouseEnter((EventHandler)method_2);
-		((RadElement)e.get_VisualItem()).remove_MouseLeave((EventHandler)method_1);
-		((RadElement)e.get_VisualItem()).add_MouseEnter((EventHandler)method_2);
-		((RadElement)e.get_VisualItem()).add_MouseLeave((EventHandler)method_1);
-		((RadElement)e.get_VisualItem()).add_Click((EventHandler)method_0);
-		if (e.get_VisualItem().get_Selected())
+		e.VisualItem.MouseEnter -= method_2;
+		e.VisualItem.MouseLeave -= method_1;
+		e.VisualItem.MouseEnter += method_2;
+		e.VisualItem.MouseLeave += method_1;
+		e.VisualItem.Click += method_0;
+		if (e.VisualItem.Selected)
 		{
-			((VisualElement)e.get_VisualItem()).set_BackColor(Color.Transparent);
-			((UIItemBase)e.get_VisualItem()).set_BorderColor(Color.Transparent);
+			e.VisualItem.BackColor = Color.Transparent;
+			e.VisualItem.BorderColor = Color.Transparent;
 		}
 		else
 		{
-			((RadObject)e.get_VisualItem()).ResetValue(VisualElement.BackColorProperty, (ValueResetFlags)32);
-			((RadObject)e.get_VisualItem()).ResetValue(LightVisualElement.BorderColorProperty, (ValueResetFlags)32);
+			e.VisualItem.ResetValue(VisualElement.BackColorProperty, ValueResetFlags.Local);
+			e.VisualItem.ResetValue(LightVisualElement.BorderColorProperty, ValueResetFlags.Local);
 		}
 	}
 
 	private void method_0(object sender, EventArgs e)
 	{
-		((RadItem)((sender is RadListVisualItem) ? sender : null)).Select();
+		(sender as RadListVisualItem).Select();
 	}
 
 	private void method_1(object sender, EventArgs e)
 	{
-		//IL_001a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0036: Unknown result type (might be due to invalid IL or missing references)
-		RadListVisualItem val = (RadListVisualItem)((sender is RadListVisualItem) ? sender : null);
-		if (val != null && !val.get_Selected())
+		RadListVisualItem radListVisualItem = sender as RadListVisualItem;
+		if (radListVisualItem != null && !radListVisualItem.Selected)
 		{
-			((RadObject)val).ResetValue(LightVisualElement.GradientStyleProperty, (ValueResetFlags)32);
-			((RadObject)val).ResetValue(VisualElement.ForeColorProperty, (ValueResetFlags)32);
-			((RadObject)val).ResetValue(VisualElement.BackColorProperty, (ValueResetFlags)32);
+			radListVisualItem.ResetValue(LightVisualElement.GradientStyleProperty, ValueResetFlags.Local);
+			radListVisualItem.ResetValue(VisualElement.ForeColorProperty, ValueResetFlags.Local);
+			radListVisualItem.ResetValue(VisualElement.BackColorProperty, ValueResetFlags.Local);
 		}
-		if (val.get_Selected())
+		if (radListVisualItem.Selected)
 		{
-			((VisualElement)val).set_BackColor(Color.Transparent);
-			((UIItemBase)val).set_BorderColor(Color.Transparent);
-			((VisualElement)val).set_ForeColor(Color.Black);
+			radListVisualItem.BackColor = Color.Transparent;
+			radListVisualItem.BorderColor = Color.Transparent;
+			radListVisualItem.ForeColor = Color.Black;
 		}
 	}
 
 	private void method_2(object sender, EventArgs e)
 	{
-		RadListVisualItem val = (RadListVisualItem)((sender is RadListVisualItem) ? sender : null);
-		if (val != null)
+		if (sender is RadListVisualItem radListVisualItem)
 		{
-			((UIItemBase)val).set_GradientStyle((GradientStyles)0);
-			((VisualElement)val).set_BackColor(Color.FromArgb(1, 110, 211));
-			((VisualElement)val).set_ForeColor(Color.White);
+			radListVisualItem.GradientStyle = GradientStyles.Solid;
+			radListVisualItem.BackColor = Color.FromArgb(1, 110, 211);
+			radListVisualItem.ForeColor = Color.White;
 		}
 	}
 
 	private void method_3()
 	{
-		//IL_0001: Unknown result type (might be due to invalid IL or missing references)
-		//IL_000b: Expected O, but got Unknown
 		windows8Theme_0 = new Windows8Theme();
 		((ISupportInitialize)this).BeginInit();
-		((Control)this).SuspendLayout();
+		SuspendLayout();
 		((ISupportInitialize)this).EndInit();
-		((Control)this).ResumeLayout(performLayout: false);
-		((Control)this).PerformLayout();
+		ResumeLayout(performLayout: false);
+		PerformLayout();
 	}
 }

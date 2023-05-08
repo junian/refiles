@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel;
@@ -79,16 +78,16 @@ public class frmCustomTipSharing : frmMasterForm
 		CS_0024_003C_003E8__locals0.tipId = Convert.ToInt32(ddlTipSharing.SelectedValue.ToString());
 		if (CS_0024_003C_003E8__locals0.tipId == 0)
 		{
-			((Control)(object)txtName).Text = "";
-			((Control)(object)txtTipSharing).Text = "";
+			txtName.Text = "";
+			txtTipSharing.Text = "";
 			ddlTipShareType.SelectedIndex = 0;
 			return;
 		}
 		CustomTipSharing customTipSharing = new GClass6().CustomTipSharings.Where((CustomTipSharing a) => a.Id == CS_0024_003C_003E8__locals0.tipId).FirstOrDefault();
 		if (customTipSharing != null)
 		{
-			((Control)(object)txtName).Text = customTipSharing.TipName;
-			((Control)(object)txtTipSharing).Text = customTipSharing.Percentage.ToString("0.00");
+			txtName.Text = customTipSharing.TipName;
+			txtTipSharing.Text = customTipSharing.Percentage.ToString("0.00");
 			ddlTipShareType.SelectedIndex = customTipSharing.TipShareType - 1;
 		}
 	}
@@ -97,17 +96,17 @@ public class frmCustomTipSharing : frmMasterForm
 	{
 		_003C_003Ec__DisplayClass4_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass4_0();
 		CS_0024_003C_003E8__locals0.tipId = Convert.ToInt32(ddlTipSharing.SelectedValue.ToString());
-		if (string.IsNullOrEmpty(((Control)(object)txtName).Text))
+		if (string.IsNullOrEmpty(txtName.Text))
 		{
 			new NotificationLabel(this, "Please add a name.", NotificationTypes.Warning).Show();
 			return;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtTipSharing).Text))
+		if (string.IsNullOrEmpty(txtTipSharing.Text))
 		{
 			new NotificationLabel(this, "Please add a percentage.", NotificationTypes.Warning).Show();
 			return;
 		}
-		decimal num = Convert.ToDecimal(((Control)(object)txtTipSharing).Text);
+		decimal num = Convert.ToDecimal(txtTipSharing.Text);
 		if (!(num > 100m) && !(num <= 0m))
 		{
 			GClass6 gClass = new GClass6();
@@ -117,7 +116,7 @@ public class frmCustomTipSharing : frmMasterForm
 			{
 				CustomTipSharing entity = new CustomTipSharing
 				{
-					TipName = ((Control)(object)txtName).Text,
+					TipName = txtName.Text,
 					Percentage = num,
 					TipShareType = num2
 				};
@@ -129,7 +128,7 @@ public class frmCustomTipSharing : frmMasterForm
 				CustomTipSharing customTipSharing = gClass.CustomTipSharings.Where((CustomTipSharing a) => a.Id == CS_0024_003C_003E8__locals0.tipId).FirstOrDefault();
 				if (customTipSharing != null)
 				{
-					customTipSharing.TipName = ((Control)(object)txtName).Text;
+					customTipSharing.TipName = txtName.Text;
 					customTipSharing.Percentage = num;
 					customTipSharing.TipShareType = num2;
 					Helper.SubmitChangesWithCatch(gClass);
@@ -177,10 +176,10 @@ public class frmCustomTipSharing : frmMasterForm
 	private void btnShowKeyboard_Name_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Name", 0, 256, ((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Name", 0, 256, txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -188,10 +187,10 @@ public class frmCustomTipSharing : frmMasterForm
 	private void txtTipSharing_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Percentage", 2, 5, ((Control)(object)txtTipSharing).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData("Percentage", 2, 5, txtTipSharing.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtTipSharing).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtTipSharing.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -207,14 +206,6 @@ public class frmCustomTipSharing : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_0075: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007f: Expected O, but got Unknown
-		//IL_02eb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_030c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ac9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0aea: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmCustomTipSharing));
 		btnShowKeyboard_TipSharing = new Button();
 		txtTipSharing = new RadTextBoxControl();
@@ -253,17 +244,17 @@ public class frmCustomTipSharing : frmMasterForm
 		btnShowKeyboard_TipSharing.TabIndex = 275;
 		btnShowKeyboard_TipSharing.UseVisualStyleBackColor = false;
 		btnShowKeyboard_TipSharing.Click += txtTipSharing_Click;
-		((Control)(object)txtTipSharing).Font = new Font("Microsoft Sans Serif", 15.75f);
-		((Control)(object)txtTipSharing).Location = new Point(140, 149);
-		txtTipSharing.set_MaxLength(255);
-		((Control)(object)txtTipSharing).Name = "txtTipSharing";
-		((RadElement)((RadControl)txtTipSharing).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtTipSharing).Size = new Size(115, 33);
-		((Control)(object)txtTipSharing).TabIndex = 274;
-		((Control)(object)txtTipSharing).Tag = "tip_kitchen";
-		((Control)(object)txtTipSharing).Click += txtTipSharing_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtTipSharing).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtTipSharing).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtTipSharing.Font = new Font("Microsoft Sans Serif", 15.75f);
+		txtTipSharing.Location = new Point(140, 149);
+		txtTipSharing.MaxLength = 255;
+		txtTipSharing.Name = "txtTipSharing";
+		txtTipSharing.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtTipSharing.Size = new Size(115, 33);
+		txtTipSharing.TabIndex = 274;
+		txtTipSharing.Tag = "tip_kitchen";
+		txtTipSharing.Click += txtTipSharing_Click;
+		((RadTextBoxControlElement)txtTipSharing.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtTipSharing.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label10.BackColor = Color.FromArgb(132, 146, 146);
 		label10.Font = new Font("Microsoft Sans Serif", 12f);
 		label10.ForeColor = SystemColors.ButtonFace;
@@ -359,16 +350,16 @@ public class frmCustomTipSharing : frmMasterForm
 		label12.TabIndex = 276;
 		label12.Text = "%";
 		label12.TextAlign = ContentAlignment.MiddleRight;
-		((Control)(object)txtName).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtName).Location = new Point(140, 113);
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtName).Size = new Size(293, 35);
-		((Control)(object)txtName).TabIndex = 281;
-		((Control)(object)txtName).Click += btnShowKeyboard_Name_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtName.Location = new Point(140, 113);
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtName.Size = new Size(293, 35);
+		txtName.TabIndex = 281;
+		txtName.Click += btnShowKeyboard_Name_Click;
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label2.BackColor = Color.FromArgb(132, 146, 146);
 		label2.Font = new Font("Microsoft Sans Serif", 12f);
 		label2.ForeColor = SystemColors.ButtonFace;
@@ -465,14 +456,14 @@ public class frmCustomTipSharing : frmMasterForm
 		base.Controls.Add(ddlTipShareType);
 		base.Controls.Add(label3);
 		base.Controls.Add(label6);
-		base.Controls.Add((Control)(object)txtName);
+		base.Controls.Add(txtName);
 		base.Controls.Add(label2);
 		base.Controls.Add(btnShowKeyboard_Name);
 		base.Controls.Add(ddlTipSharing);
 		base.Controls.Add(label1);
 		base.Controls.Add(label12);
 		base.Controls.Add(btnShowKeyboard_TipSharing);
-		base.Controls.Add((Control)(object)txtTipSharing);
+		base.Controls.Add(txtTipSharing);
 		base.Controls.Add(label10);
 		base.Controls.Add(btnDelete);
 		base.Controls.Add(btnAddNew);

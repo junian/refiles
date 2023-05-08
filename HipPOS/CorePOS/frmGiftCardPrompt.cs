@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -100,16 +99,16 @@ public class frmGiftCardPrompt : frmMasterForm
 		{
 			btnSave.Text = "GIFT CARD";
 		}
-		((Control)(object)txtCardNumber).Select();
+		txtCardNumber.Select();
 	}
 
 	private void txtCardNumber_KeyPress(object sender, KeyPressEventArgs e)
 	{
 		if (e.KeyChar == '\r')
 		{
-			if (((Control)(object)txtCardNumber).Text.Contains(";") || ((Control)(object)txtCardNumber).Text.Contains("="))
+			if (txtCardNumber.Text.Contains(";") || txtCardNumber.Text.Contains("="))
 			{
-				((Control)(object)txtCardNumber).Text = ((Control)(object)txtCardNumber).Text.Split('=')[0].Replace(";", "");
+				txtCardNumber.Text = txtCardNumber.Text.Split('=')[0].Replace(";", "");
 			}
 			if (!bool_0)
 			{
@@ -125,12 +124,12 @@ public class frmGiftCardPrompt : frmMasterForm
 
 	private void method_3(int int_1)
 	{
-		if (string.IsNullOrEmpty(((Control)(object)txtCardNumber).Text))
+		if (string.IsNullOrEmpty(txtCardNumber.Text))
 		{
 			new NotificationLabel(this, "Please enter a card number.", NotificationTypes.Warning).Show();
 			return;
 		}
-		CardNumber = ((Control)(object)txtCardNumber).Text;
+		CardNumber = txtCardNumber.Text;
 		CardType = int_1;
 		base.DialogResult = DialogResult.OK;
 		Dispose();
@@ -140,10 +139,10 @@ public class frmGiftCardPrompt : frmMasterForm
 	private void btnShowKeyboard_CardNumber_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("ENTER CARD NUMBER", 0, 24, ((Control)(object)txtCardNumber).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("ENTER CARD NUMBER", 0, 24, txtCardNumber.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtCardNumber).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtCardNumber.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -159,10 +158,6 @@ public class frmGiftCardPrompt : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_04ea: Unknown result type (might be due to invalid IL or missing references)
-		//IL_050b: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmGiftCardPrompt));
 		boDeAndfTT = new Button();
 		btnCancel = new Button();
@@ -225,17 +220,17 @@ public class frmGiftCardPrompt : frmMasterForm
 		label1.TabIndex = 243;
 		label1.Text = "Card Number";
 		label1.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)txtCardNumber).Font = new Font("Microsoft Sans Serif", 14f, FontStyle.Bold);
-		((Control)(object)txtCardNumber).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCardNumber).Location = new Point(126, 49);
-		((Control)(object)txtCardNumber).Name = "txtCardNumber";
-		((RadElement)((RadControl)txtCardNumber).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCardNumber).Size = new Size(268, 35);
-		((Control)(object)txtCardNumber).TabIndex = 242;
-		((Control)(object)txtCardNumber).Click += btnShowKeyboard_CardNumber_Click;
-		((Control)(object)txtCardNumber).KeyPress += txtCardNumber_KeyPress;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCardNumber).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCardNumber).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCardNumber.Font = new Font("Microsoft Sans Serif", 14f, FontStyle.Bold);
+		txtCardNumber.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCardNumber.Location = new Point(126, 49);
+		txtCardNumber.Name = "txtCardNumber";
+		txtCardNumber.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCardNumber.Size = new Size(268, 35);
+		txtCardNumber.TabIndex = 242;
+		txtCardNumber.Click += btnShowKeyboard_CardNumber_Click;
+		txtCardNumber.KeyPress += txtCardNumber_KeyPress;
+		((RadTextBoxControlElement)txtCardNumber.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtCardNumber.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_CardNumber.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_CardNumber.FlatAppearance.BorderColor = Color.Black;
 		btnShowKeyboard_CardNumber.FlatAppearance.BorderSize = 0;
@@ -271,7 +266,7 @@ public class frmGiftCardPrompt : frmMasterForm
 		base.Controls.Add(btnCancel);
 		base.Controls.Add(label3);
 		base.Controls.Add(label1);
-		base.Controls.Add((Control)(object)txtCardNumber);
+		base.Controls.Add(txtCardNumber);
 		base.Controls.Add(btnShowKeyboard_CardNumber);
 		base.Controls.Add(btnSave);
 		base.Name = "frmGiftCardPrompt";

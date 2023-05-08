@@ -75,11 +75,11 @@ public class frmAddEditInstructions : frmMasterForm
 	{
 		if (string_0 != "instruction")
 		{
-			((Control)(object)ddlStations).Visible = false;
+			ddlStations.Visible = false;
 			btnShowNumpad_InstructionDescription.Location = new Point(btnSaveInstruction.Left - btnShowNumpad_InstructionDescription.Size.Width - 1, btnShowNumpad_InstructionDescription.Location.Y);
-			((Control)(object)txtInstructionDescription).Size = new Size(((Control)(object)txtInstructionDescription).Left + btnShowNumpad_InstructionDescription.Left - 1, ((Control)(object)txtInstructionDescription).Height);
+			txtInstructionDescription.Size = new Size(txtInstructionDescription.Left + btnShowNumpad_InstructionDescription.Left - 1, txtInstructionDescription.Height);
 			int_1 = 256;
-			txtInstructionDescription.set_MaxLength(int_1);
+			txtInstructionDescription.MaxLength = int_1;
 			Text = "Add/Edit Instructions";
 		}
 		if (string_0 == ReasonTypes.discount)
@@ -118,7 +118,7 @@ public class frmAddEditInstructions : frmMasterForm
 			btnDown.Visible = true;
 			button.Visible = true;
 			lblHideControls.Visible = false;
-			((Control)(object)ddlStations).Visible = true;
+			ddlStations.Visible = true;
 			pbClose.Visible = false;
 			StationMethods stationMethods = new StationMethods();
 			Dictionary<string, string> dictionary = new Dictionary<string, string> { { "0", "All Station" } };
@@ -126,17 +126,17 @@ public class frmAddEditInstructions : frmMasterForm
 			{
 				dictionary.Add(station.StationID.ToString(), station.StationName);
 			}
-			((RadDropDownList)ddlStations).set_DisplayMember("Value");
-			((RadDropDownList)ddlStations).set_ValueMember("Key");
-			((RadDropDownList)ddlStations).set_DataSource((object)new BindingSource(dictionary, null));
+			ddlStations.DisplayMember = "Value";
+			ddlStations.ValueMember = "Key";
+			ddlStations.DataSource = new BindingSource(dictionary, null);
 		}
 		Dictionary<string, string> dictionary2 = HelperMethods.ButtonColors();
 		dictionary2.Remove("Red");
 		dictionary2.Remove("Gold");
-		((RadDropDownList)ddlColors).set_DisplayMember("Key");
-		((RadDropDownList)ddlColors).set_ValueMember("Value");
-		((RadDropDownList)ddlColors).set_DataSource((object)new BindingSource(dictionary2, null));
-		((RadDropDownList)ddlColors).set_SelectedValue((object)dictionary2["Gray"]);
+		ddlColors.DisplayMember = "Key";
+		ddlColors.ValueMember = "Value";
+		ddlColors.DataSource = new BindingSource(dictionary2, null);
+		ddlColors.SelectedValue = dictionary2["Gray"];
 		method_3();
 		bool_0 = false;
 	}
@@ -164,7 +164,7 @@ public class frmAddEditInstructions : frmMasterForm
 		}
 		foreach (ListViewItem item3 in lstInstructions.Items)
 		{
-			if (item3.Text == ((Control)(object)txtInstructionDescription).Text)
+			if (item3.Text == txtInstructionDescription.Text)
 			{
 				item3.Focused = true;
 				item3.Selected = true;
@@ -180,19 +180,19 @@ public class frmAddEditInstructions : frmMasterForm
 			return;
 		}
 		GClass6 gClass = new GClass6();
-		((Control)(object)txtInstructionDescription).Text = lstInstructions.SelectedItems[0].Text;
+		txtInstructionDescription.Text = lstInstructions.SelectedItems[0].Text;
 		if (string_0 == "instruction")
 		{
 			SpecialInstruction specialInstruction = gClass.SpecialInstructions.Where((SpecialInstruction s) => s.Instruction == lstInstructions.SelectedItems[0].Text).FirstOrDefault();
 			int_0 = specialInstruction.SpecialInstructionID;
-			((RadDropDownList)ddlStations).set_SelectedValue((object)specialInstruction.StationID.ToString());
+			ddlStations.SelectedValue = specialInstruction.StationID.ToString();
 			string text = specialInstruction.Color;
 			if (string.IsNullOrEmpty(specialInstruction.Color) || text == HelperMethods.ButtonColors()["Gold"])
 			{
 				text = (specialInstruction.Color = HelperMethods.ButtonColors()["Gray"]);
 				Helper.SubmitChangesWithCatch(gClass);
 			}
-			((RadDropDownList)ddlColors).set_SelectedValue((object)text);
+			ddlColors.SelectedValue = text;
 			method_5();
 		}
 		else
@@ -206,7 +206,7 @@ public class frmAddEditInstructions : frmMasterForm
 	private void btnSaveInstruction_Click(object sender, EventArgs e)
 	{
 		GClass6 gClass = new GClass6();
-		if (((Control)(object)txtInstructionDescription).Text == string.Empty)
+		if (txtInstructionDescription.Text == string.Empty)
 		{
 			new frmMessageBox(Resources.Please_enter_a + string_0 + Resources._description, Resources.Invalid_Description).ShowDialog(this);
 			return;
@@ -215,28 +215,28 @@ public class frmAddEditInstructions : frmMasterForm
 		{
 			if (string_0 == "instruction")
 			{
-				if (gClass.SpecialInstructions.Where((SpecialInstruction a) => a.Instruction.ToUpper() == ((Control)(object)txtInstructionDescription).Text.ToUpper()).FirstOrDefault() != null)
+				if (gClass.SpecialInstructions.Where((SpecialInstruction a) => a.Instruction.ToUpper() == txtInstructionDescription.Text.ToUpper()).FirstOrDefault() != null)
 				{
 					new frmMessageBox("Instruction already exists please add another one.", "Instruction Exists").Show();
 					return;
 				}
 				SpecialInstruction entity = new SpecialInstruction
 				{
-					Instruction = ((Control)(object)txtInstructionDescription).Text,
-					StationID = ((!(((RadDropDownList)ddlStations).get_SelectedValue().ToString() == string.Empty)) ? int.Parse(((RadDropDownList)ddlStations).get_SelectedValue().ToString()) : 0),
-					Color = ((RadDropDownList)ddlColors).get_SelectedValue().ToString(),
+					Instruction = txtInstructionDescription.Text,
+					StationID = ((!(ddlStations.SelectedValue.ToString() == string.Empty)) ? int.Parse(ddlStations.SelectedValue.ToString()) : 0),
+					Color = ddlColors.SelectedValue.ToString(),
 					Synced = false
 				};
 				gClass.SpecialInstructions.InsertOnSubmit(entity);
 			}
 			else
 			{
-				if (((Control)(object)txtInstructionDescription).Text.Length > 100)
+				if (txtInstructionDescription.Text.Length > 100)
 				{
 					new frmMessageBox("Reason is too long. Please shorten it.", "ERROR").ShowDialog();
 					return;
 				}
-				if (gClass.Reasons.Where((Reason a) => a.Value.ToUpper() == ((Control)(object)txtInstructionDescription).Text.ToUpper() && a.ReasonType == string_0).FirstOrDefault() != null)
+				if (gClass.Reasons.Where((Reason a) => a.Value.ToUpper() == txtInstructionDescription.Text.ToUpper() && a.ReasonType == string_0).FirstOrDefault() != null)
 				{
 					new frmMessageBox("Reason already exists please add another one.", "Reason Exists").Show();
 					return;
@@ -244,7 +244,7 @@ public class frmAddEditInstructions : frmMasterForm
 				Reason entity2 = new Reason
 				{
 					ReasonType = string_0,
-					Value = ((Control)(object)txtInstructionDescription).Text
+					Value = txtInstructionDescription.Text
 				};
 				gClass.Reasons.InsertOnSubmit(entity2);
 			}
@@ -253,25 +253,25 @@ public class frmAddEditInstructions : frmMasterForm
 		{
 			if (string_0 == "instruction")
 			{
-				if (gClass.SpecialInstructions.Where((SpecialInstruction a) => a.SpecialInstructionID != int_0 && a.Instruction.ToUpper() == ((Control)(object)txtInstructionDescription).Text.ToUpper()).Count() > 0)
+				if (gClass.SpecialInstructions.Where((SpecialInstruction a) => a.SpecialInstructionID != int_0 && a.Instruction.ToUpper() == txtInstructionDescription.Text.ToUpper()).Count() > 0)
 				{
 					new frmMessageBox("Instruction already exists please add another one.", "Instruction Exists").Show();
 					return;
 				}
 				SpecialInstruction specialInstruction = gClass.SpecialInstructions.Where((SpecialInstruction s) => s.SpecialInstructionID == int_0).FirstOrDefault();
-				specialInstruction.StationID = ((!(((RadDropDownList)ddlStations).get_SelectedValue().ToString() == string.Empty)) ? int.Parse(((RadDropDownList)ddlStations).get_SelectedValue().ToString()) : 0);
-				specialInstruction.Instruction = ((Control)(object)txtInstructionDescription).Text;
-				specialInstruction.Color = ((RadDropDownList)ddlColors).get_SelectedValue().ToString();
+				specialInstruction.StationID = ((!(ddlStations.SelectedValue.ToString() == string.Empty)) ? int.Parse(ddlStations.SelectedValue.ToString()) : 0);
+				specialInstruction.Instruction = txtInstructionDescription.Text;
+				specialInstruction.Color = ddlColors.SelectedValue.ToString();
 				specialInstruction.Synced = false;
 			}
 			else
 			{
-				if (gClass.Reasons.Where((Reason a) => a.Value.ToUpper() == ((Control)(object)txtInstructionDescription).Text.ToUpper() && a.ReasonType == string_0).Count() > 1)
+				if (gClass.Reasons.Where((Reason a) => a.Value.ToUpper() == txtInstructionDescription.Text.ToUpper() && a.ReasonType == string_0).Count() > 1)
 				{
 					new frmMessageBox("Reason already exists please add another one.", "Reason Exists").Show();
 					return;
 				}
-				gClass.Reasons.Where((Reason s) => s.Id == int_0).FirstOrDefault().Value = ((Control)(object)txtInstructionDescription).Text;
+				gClass.Reasons.Where((Reason s) => s.Id == int_0).FirstOrDefault().Value = txtInstructionDescription.Text;
 			}
 		}
 		try
@@ -328,7 +328,7 @@ public class frmAddEditInstructions : frmMasterForm
 				specialInstruction2.Synced = false;
 				Helper.SubmitChangesWithCatch(gClass);
 			}
-			((Control)(object)txtInstructionDescription).Text = "";
+			txtInstructionDescription.Text = "";
 			method_3();
 			int_0 = 0;
 		}
@@ -344,22 +344,22 @@ public class frmAddEditInstructions : frmMasterForm
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
 		if (Thread.CurrentThread.CurrentCulture.Name.Equals("fr-CA"))
 		{
-			MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + Resources._description0 + " de l'" + string_0, 1, int_1, ((Control)(object)txtInstructionDescription).Text);
+			MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + Resources._description0 + " de l'" + string_0, 1, int_1, txtInstructionDescription.Text);
 		}
 		else
 		{
-			MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + string_0.Substring(0, 1).ToUpper() + string_0.Substring(1) + Resources._Description1, 1, int_1, ((Control)(object)txtInstructionDescription).Text);
+			MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + string_0.Substring(0, 1).ToUpper() + string_0.Substring(1) + Resources._Description1, 1, int_1, txtInstructionDescription.Text);
 		}
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtInstructionDescription).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtInstructionDescription.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
 
 	private void btnAdd_Click(object sender, EventArgs e)
 	{
-		((Control)(object)txtInstructionDescription).Text = string.Empty;
+		txtInstructionDescription.Text = string.Empty;
 		int_0 = 0;
 		lstInstructions.SelectedItems.Clear();
 		btnShowNumpad_InstructionDescription_Click(this, null);
@@ -477,10 +477,6 @@ public class frmAddEditInstructions : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_0237: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0258: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAddEditInstructions));
 		btnAdd = new Button();
 		txtInstructionDescription = new RadTextBoxControl();
@@ -515,12 +511,12 @@ public class frmAddEditInstructions : frmMasterForm
 		btnAdd.UseVisualStyleBackColor = false;
 		btnAdd.Click += btnAdd_Click;
 		componentResourceManager.ApplyResources(txtInstructionDescription, "txtInstructionDescription");
-		((Control)(object)txtInstructionDescription).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtInstructionDescription).Name = "txtInstructionDescription";
-		((RadElement)((RadControl)txtInstructionDescription).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtInstructionDescription).Click += txtInstructionDescription_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtInstructionDescription).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtInstructionDescription).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtInstructionDescription.ForeColor = Color.FromArgb(40, 40, 40);
+		txtInstructionDescription.Name = "txtInstructionDescription";
+		txtInstructionDescription.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtInstructionDescription.Click += txtInstructionDescription_Click;
+		((RadTextBoxControlElement)txtInstructionDescription.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtInstructionDescription.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowNumpad_InstructionDescription.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowNumpad_InstructionDescription.DialogResult = DialogResult.OK;
 		btnShowNumpad_InstructionDescription.FlatAppearance.BorderColor = Color.Black;
@@ -574,21 +570,21 @@ public class frmAddEditInstructions : frmMasterForm
 		pbClose.TabStop = false;
 		pbClose.Click += pbClose_Click;
 		componentResourceManager.ApplyResources(ddlStations, "ddlStations");
-		((Control)(object)ddlStations).BackColor = Color.White;
-		((RadDropDownList)ddlStations).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlStations).set_EnableKineticScrolling(true);
-		((Control)(object)ddlStations).Name = "ddlStations";
-		((RadElement)((RadControl)ddlStations).get_RootElement()).set_MinSize(new Size(200, 0));
-		((Control)(object)ddlStations).Tag = "product";
-		((RadControl)ddlStations).set_ThemeName("Windows8");
+		ddlStations.BackColor = Color.White;
+		ddlStations.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlStations.EnableKineticScrolling = true;
+		ddlStations.Name = "ddlStations";
+		ddlStations.RootElement.MinSize = new Size(200, 0);
+		ddlStations.Tag = "product";
+		ddlStations.ThemeName = "Windows8";
 		componentResourceManager.ApplyResources(ddlColors, "ddlColors");
-		((Control)(object)ddlColors).BackColor = Color.White;
-		((RadDropDownList)ddlColors).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlColors).set_EnableKineticScrolling(true);
-		((Control)(object)ddlColors).Name = "ddlColors";
-		((RadElement)((RadControl)ddlColors).get_RootElement()).set_MinSize(new Size(150, 0));
-		((Control)(object)ddlColors).Tag = "product";
-		((RadControl)ddlColors).set_ThemeName("Windows8");
+		ddlColors.BackColor = Color.White;
+		ddlColors.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlColors.EnableKineticScrolling = true;
+		ddlColors.Name = "ddlColors";
+		ddlColors.RootElement.MinSize = new Size(150, 0);
+		ddlColors.Tag = "product";
+		ddlColors.ThemeName = "Windows8";
 		label6.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label6, "label6");
 		label6.ForeColor = Color.White;
@@ -635,13 +631,13 @@ public class frmAddEditInstructions : frmMasterForm
 		base.Controls.Add(btnDown);
 		base.Controls.Add(btnUp);
 		base.Controls.Add(lblHideControls);
-		base.Controls.Add((Control)(object)ddlColors);
+		base.Controls.Add(ddlColors);
 		base.Controls.Add(label6);
 		base.Controls.Add(btnShowNumpad_InstructionDescription);
-		base.Controls.Add((Control)(object)ddlStations);
+		base.Controls.Add(ddlStations);
 		base.Controls.Add(pbClose);
 		base.Controls.Add(btnAdd);
-		base.Controls.Add((Control)(object)txtInstructionDescription);
+		base.Controls.Add(txtInstructionDescription);
 		base.Controls.Add(label4);
 		base.Controls.Add(btnRemoveInstruction);
 		base.Controls.Add(btnSaveInstruction);

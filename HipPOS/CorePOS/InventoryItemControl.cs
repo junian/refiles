@@ -10,7 +10,6 @@ using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -110,16 +109,16 @@ public class InventoryItemControl : UserControl
 		lblUOM.Left = ControlHelpers.ControlWidthFixer(_PanelItems, 4.0);
 		txtQtyCurrent.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0) - 1;
 		txtQtyCurrent.Left = ControlHelpers.ControlWidthFixer(_PanelItems, 5.0) + 1;
-		((Control)(object)txtQtyChange).Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0) - 1;
-		((Control)(object)txtQtyChange).Left = ControlHelpers.ControlWidthFixer(_PanelItems, 6.0) + 1;
-		((Control)(object)txtQtyNew).Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0) - 1;
-		((Control)(object)txtQtyNew).Left = ControlHelpers.ControlWidthFixer(_PanelItems, 7.0) + 1;
+		txtQtyChange.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0) - 1;
+		txtQtyChange.Left = ControlHelpers.ControlWidthFixer(_PanelItems, 6.0) + 1;
+		txtQtyNew.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0) - 1;
+		txtQtyNew.Left = ControlHelpers.ControlWidthFixer(_PanelItems, 7.0) + 1;
 		if (MemoryLoadedObjects.isMultipleLocation)
 		{
-			((Control)(object)txtComment).Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0) - 1;
-			((Control)(object)txtComment).Left = ((Control)(object)txtQtyNew).Right + 2;
+			txtComment.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0) - 1;
+			txtComment.Left = txtQtyNew.Right + 2;
 			btnEdit.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0) - 15;
-			btnEdit.Left = ((Control)(object)txtComment).Right + 1;
+			btnEdit.Left = txtComment.Right + 1;
 			btnViewLogs.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0);
 			btnViewLogs.Left = btnEdit.Right + 1;
 			btnOtherLoc.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0);
@@ -127,10 +126,10 @@ public class InventoryItemControl : UserControl
 		}
 		else
 		{
-			((Control)(object)txtComment).Width = ControlHelpers.ControlWidthFixer(_PanelItems, 2.0) - 1;
-			((Control)(object)txtComment).Left = ((Control)(object)txtQtyNew).Right + 2;
+			txtComment.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 2.0) - 1;
+			txtComment.Left = txtQtyNew.Right + 2;
 			btnEdit.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0) - 15;
-			btnEdit.Left = ((Control)(object)txtComment).Right + 1;
+			btnEdit.Left = txtComment.Right + 1;
 			btnViewLogs.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 1.0);
 			btnViewLogs.Left = btnEdit.Right + 1;
 			btnOtherLoc.Visible = false;
@@ -159,22 +158,22 @@ public class InventoryItemControl : UserControl
 			txtQtyCurrent.Text = Math.Round(item_0.InventoryCount, 0).ToString();
 		}
 		lblUOM.Text = item_0.UOM.Name;
-		RadTextBoxControl obj2 = txtQtyChange;
-		RadTextBoxControl obj3 = txtQtyNew;
+		RadTextBoxControl radTextBoxControl = txtQtyChange;
+		RadTextBoxControl radTextBoxControl2 = txtQtyNew;
 		Button button = btnEdit;
 		Button button2 = btnViewLogs;
-		bool flag2 = (((Control)(object)txtComment).Enabled = !bool_4);
+		bool flag2 = (txtComment.Enabled = !bool_4);
 		bool flag4 = (button2.Enabled = flag2);
 		bool flag6 = (button.Enabled = flag4);
-		bool enabled = (((Control)(object)obj3).Enabled = flag6);
-		((Control)(object)obj2).Enabled = enabled;
-		txtQtyChange.set_MaxLength(11);
-		txtQtyNew.set_MaxLength(11);
+		bool enabled = (radTextBoxControl2.Enabled = flag6);
+		radTextBoxControl.Enabled = enabled;
+		txtQtyChange.MaxLength = 11;
+		txtQtyNew.MaxLength = 11;
 	}
 
 	public bool checkIfEntryExist()
 	{
-		if (((Control)(object)txtQtyNew).Text != string.Empty)
+		if (txtQtyNew.Text != string.Empty)
 		{
 			return true;
 		}
@@ -183,9 +182,9 @@ public class InventoryItemControl : UserControl
 
 	public bool checkIfValueIsValid()
 	{
-		if (((Control)(object)txtQtyNew).Text != string.Empty)
+		if (txtQtyNew.Text != string.Empty)
 		{
-			if (!decimal.TryParse(((Control)(object)txtQtyChange).Text, out var result) || !decimal.TryParse(((Control)(object)txtQtyNew).Text, out result))
+			if (!decimal.TryParse(txtQtyChange.Text, out var result) || !decimal.TryParse(txtQtyNew.Text, out result))
 			{
 				new frmMessageBox(Resources.Please_Input_a_valid_number_de + lblItemName.Text + "\"").ShowDialog(this);
 				return false;
@@ -202,15 +201,15 @@ public class InventoryItemControl : UserControl
 	public bool Save(string Note = "")
 	{
 		bool result = false;
-		if (((Control)(object)txtQtyNew).Text != string.Empty)
+		if (txtQtyNew.Text != string.Empty)
 		{
 			_ = item_0.ItemID;
 			gclass6_0.Refresh(RefreshMode.OverwriteCurrentValues, item_0);
-			decimal num = Convert.ToDecimal(((Control)(object)txtQtyNew).Text.Trim());
+			decimal num = Convert.ToDecimal(txtQtyNew.Text.Trim());
 			decimal inventoryCount = item_0.InventoryCount;
 			bool flag = false;
 			Note = ((Note == "") ? "" : (Note + ". "));
-			string text = ((!(((Control)(object)txtComment).Text == "") || !(Note == "")) ? (Note + ((Control)(object)txtComment).Text) : (Resources.Inventory_Update_by + string_1));
+			string text = ((!(txtComment.Text == "") || !(Note == "")) ? (Note + txtComment.Text) : (Resources.Inventory_Update_by + string_1));
 			if (item_0.TrackExpiryDate && item_0.TrackInventory && num > inventoryCount)
 			{
 				frmAddInventoryBatches frmAddInventoryBatches2 = new frmAddInventoryBatches(item_0.ItemID, num - inventoryCount);
@@ -240,7 +239,7 @@ public class InventoryItemControl : UserControl
 				try
 				{
 					item_0.Synced = false;
-					item_0.InventoryCount = Convert.ToDecimal(((Control)(object)txtQtyNew).Text.Trim());
+					item_0.InventoryCount = Convert.ToDecimal(txtQtyNew.Text.Trim());
 					Helper.SubmitChangesWithCatch(gclass6_0);
 				}
 				catch
@@ -292,7 +291,7 @@ public class InventoryItemControl : UserControl
 		}
 		gclass6_0.Refresh(RefreshMode.OverwriteCurrentValues, item_0);
 		method_0();
-		string text2 = (((Control)(object)txtQtyChange).Text = (((Control)(object)txtQtyNew).Text = string.Empty));
+		string text2 = (txtQtyChange.Text = (txtQtyNew.Text = string.Empty));
 	}
 
 	private void method_1(object sender, EventArgs e)
@@ -306,36 +305,36 @@ public class InventoryItemControl : UserControl
 			return;
 		}
 		bool_2 = true;
-		if (((Control)(object)txtQtyChange).Text.Trim() == string.Empty)
+		if (txtQtyChange.Text.Trim() == string.Empty)
 		{
-			((Control)(object)txtQtyNew).Text = string.Empty;
+			txtQtyNew.Text = string.Empty;
 			isSaveNeeded = false;
 		}
 		else
 		{
 			decimal result = default(decimal);
-			decimal.TryParse(((Control)(object)txtQtyChange).Text.Trim(), out result);
+			decimal.TryParse(txtQtyChange.Text.Trim(), out result);
 			decimal num = item_0.InventoryCount + result;
 			if (num < 0m && item_0.InventoryCount >= 0m)
 			{
 				new frmMessageBox(Resources.This_change_will_result_in_a_n, Resources.Invalid_Quantity_Entered).ShowDialog(this);
-				((Control)(object)txtQtyChange).Text = string.Empty;
+				txtQtyChange.Text = string.Empty;
 			}
 			else if (num > 999999m)
 			{
 				new frmMessageBox(Resources.Inventory_limit_reached_Please, Resources.Invalid_Quantity_Entered).ShowDialog(this);
-				if (((Control)(object)txtQtyChange).Text.Length > 6)
+				if (txtQtyChange.Text.Length > 6)
 				{
-					((Control)(object)txtQtyChange).Text = ((Control)(object)txtQtyChange).Text.Substring(0, 6);
+					txtQtyChange.Text = txtQtyChange.Text.Substring(0, 6);
 				}
-				if (((Control)(object)txtQtyNew).Text.Length > 6)
+				if (txtQtyNew.Text.Length > 6)
 				{
-					((Control)(object)txtQtyNew).Text = ((Control)(object)txtQtyNew).Text.Substring(0, 6);
+					txtQtyNew.Text = txtQtyNew.Text.Substring(0, 6);
 				}
 			}
 			else
 			{
-				((Control)(object)txtQtyNew).Text = MathHelper.RemoveTrailingZeros(num.ToString("0.0000"));
+				txtQtyNew.Text = MathHelper.RemoveTrailingZeros(num.ToString("0.0000"));
 			}
 			isSaveNeeded = true;
 		}
@@ -358,36 +357,36 @@ public class InventoryItemControl : UserControl
 			return;
 		}
 		bool_3 = true;
-		if (((Control)(object)txtQtyNew).Text.Trim() == string.Empty)
+		if (txtQtyNew.Text.Trim() == string.Empty)
 		{
-			((Control)(object)txtQtyChange).Text = string.Empty;
+			txtQtyChange.Text = string.Empty;
 			isSaveNeeded = false;
 		}
 		else
 		{
 			decimal result = default(decimal);
-			decimal.TryParse(((Control)(object)txtQtyNew).Text.Trim(), out result);
+			decimal.TryParse(txtQtyNew.Text.Trim(), out result);
 			if (result > 999999m)
 			{
 				new frmMessageBox(Resources.Inventory_limit_reached_Please, Resources.Invalid_Quantity_Entered).ShowDialog(this);
-				if (((Control)(object)txtQtyChange).Text.Length > 6)
+				if (txtQtyChange.Text.Length > 6)
 				{
-					((Control)(object)txtQtyChange).Text = ((Control)(object)txtQtyChange).Text.Substring(0, 6);
+					txtQtyChange.Text = txtQtyChange.Text.Substring(0, 6);
 				}
-				if (((Control)(object)txtQtyNew).Text.Length > 6)
+				if (txtQtyNew.Text.Length > 6)
 				{
-					((Control)(object)txtQtyNew).Text = ((Control)(object)txtQtyNew).Text.Substring(0, 6);
+					txtQtyNew.Text = txtQtyNew.Text.Substring(0, 6);
 				}
 			}
 			else if (result >= 0m)
 			{
 				decimal num = result - item_0.InventoryCount;
-				((Control)(object)txtQtyChange).Text = MathHelper.RemoveTrailingZeros(num.ToString("0.0000"));
+				txtQtyChange.Text = MathHelper.RemoveTrailingZeros(num.ToString("0.0000"));
 			}
 			else
 			{
 				new frmMessageBox(Resources.You_cannot_change_the_inventor, Resources.Invalid_Quantity_Entered).ShowDialog(this);
-				string text2 = (((Control)(object)txtQtyNew).Text = (((Control)(object)txtQtyChange).Text = string.Empty));
+				string text2 = (txtQtyNew.Text = (txtQtyChange.Text = string.Empty));
 			}
 			isSaveNeeded = true;
 		}
@@ -414,30 +413,30 @@ public class InventoryItemControl : UserControl
 	private void txtQtyChange_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_A_Change, 2, 6, ((Control)(object)txtQtyChange).Text, "", allowNegative: true);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_A_Change, 2, 6, txtQtyChange.Text, "", allowNegative: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtQtyChange).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtQtyChange.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
 	private void txtQtyNew_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_A_New_Quantity, 0, 8, ((Control)(object)txtQtyNew).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_A_New_Quantity, 0, 8, txtQtyNew.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtQtyNew).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtQtyNew.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
 	private void txtComment_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Notes, 1, 128, ((Control)(object)txtComment).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Notes, 1, 128, txtComment.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtComment).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtComment.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 	}
 
@@ -457,21 +456,6 @@ public class InventoryItemControl : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_0054: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005e: Expected O, but got Unknown
-		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0069: Expected O, but got Unknown
-		//IL_006a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0074: Expected O, but got Unknown
-		//IL_03e4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03ff: Unknown result type (might be due to invalid IL or missing references)
-		//IL_042b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_052f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_054a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0576: Unknown result type (might be due to invalid IL or missing references)
-		//IL_064c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0667: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0693: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.InventoryItemControl));
 		this.lblItemName = new System.Windows.Forms.Label();
 		this.lblGroupName = new System.Windows.Forms.Label();
@@ -479,9 +463,9 @@ public class InventoryItemControl : UserControl
 		this.btnViewLogs = new System.Windows.Forms.Button();
 		this.lblUOM = new System.Windows.Forms.Label();
 		this.txtQtyCurrent = new System.Windows.Forms.Label();
-		this.txtQtyChange = new RadTextBoxControl();
-		this.txtQtyNew = new RadTextBoxControl();
-		this.txtComment = new RadTextBoxControl();
+		this.txtQtyChange = new Telerik.WinControls.UI.RadTextBoxControl();
+		this.txtQtyNew = new Telerik.WinControls.UI.RadTextBoxControl();
+		this.txtComment = new Telerik.WinControls.UI.RadTextBoxControl();
 		this.btnOtherLoc = new System.Windows.Forms.Button();
 		((System.ComponentModel.ISupportInitialize)this.txtQtyChange).BeginInit();
 		((System.ComponentModel.ISupportInitialize)this.txtQtyNew).BeginInit();
@@ -520,42 +504,42 @@ public class InventoryItemControl : UserControl
 		resources.ApplyResources(this.txtQtyCurrent, "txtQtyCurrent");
 		this.txtQtyCurrent.Name = "txtQtyCurrent";
 		resources.ApplyResources(this.txtQtyChange, "txtQtyChange");
-		((System.Windows.Forms.Control)(object)this.txtQtyChange).BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
-		((System.Windows.Forms.Control)(object)this.txtQtyChange).ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
-		((System.Windows.Forms.Control)(object)this.txtQtyChange).Name = "txtQtyChange";
-		((RadElement)((RadControl)this.txtQtyChange).get_RootElement()).set_MinSize(new System.Drawing.Size(65, 30));
-		((RadElement)((RadControl)this.txtQtyChange).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		this.txtQtyChange.set_TextAlign(System.Windows.Forms.HorizontalAlignment.Center);
-		((System.Windows.Forms.Control)(object)this.txtQtyChange).TextChanged += new System.EventHandler(txtQtyChange_TextChanged);
-		((System.Windows.Forms.Control)(object)this.txtQtyChange).Click += new System.EventHandler(txtQtyChange_Click);
-		((System.Windows.Forms.Control)(object)this.txtQtyChange).KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtQtyChange_KeyPress);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtQtyChange).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(RadTextBoxControlElement)((RadControl)this.txtQtyChange).GetChildAt(0)).set_Padding((System.Windows.Forms.Padding)resources.GetObject("resource.Padding"));
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtQtyChange).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtQtyChange.BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
+		this.txtQtyChange.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
+		this.txtQtyChange.Name = "txtQtyChange";
+		this.txtQtyChange.RootElement.MinSize = new System.Drawing.Size(65, 30);
+		this.txtQtyChange.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtQtyChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+		this.txtQtyChange.TextChanged += new System.EventHandler(txtQtyChange_TextChanged);
+		this.txtQtyChange.Click += new System.EventHandler(txtQtyChange_Click);
+		this.txtQtyChange.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtQtyChange_KeyPress);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtQtyChange.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtQtyChange.GetChildAt(0)).Padding = (System.Windows.Forms.Padding)resources.GetObject("resource.Padding");
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtQtyChange.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		resources.ApplyResources(this.txtQtyNew, "txtQtyNew");
-		((System.Windows.Forms.Control)(object)this.txtQtyNew).BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
-		((System.Windows.Forms.Control)(object)this.txtQtyNew).ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
-		((System.Windows.Forms.Control)(object)this.txtQtyNew).Name = "txtQtyNew";
-		((RadElement)((RadControl)this.txtQtyNew).get_RootElement()).set_MinSize(new System.Drawing.Size(65, 30));
-		((RadElement)((RadControl)this.txtQtyNew).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		this.txtQtyNew.set_TextAlign(System.Windows.Forms.HorizontalAlignment.Center);
-		((System.Windows.Forms.Control)(object)this.txtQtyNew).TextChanged += new System.EventHandler(txtQtyNew_TextChanged);
-		((System.Windows.Forms.Control)(object)this.txtQtyNew).Click += new System.EventHandler(txtQtyNew_Click);
-		((System.Windows.Forms.Control)(object)this.txtQtyNew).KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtQtyNew_KeyPress);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtQtyNew).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(RadTextBoxControlElement)((RadControl)this.txtQtyNew).GetChildAt(0)).set_Padding((System.Windows.Forms.Padding)resources.GetObject("resource.Padding1"));
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtQtyNew).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtQtyNew.BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
+		this.txtQtyNew.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
+		this.txtQtyNew.Name = "txtQtyNew";
+		this.txtQtyNew.RootElement.MinSize = new System.Drawing.Size(65, 30);
+		this.txtQtyNew.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtQtyNew.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+		this.txtQtyNew.TextChanged += new System.EventHandler(txtQtyNew_TextChanged);
+		this.txtQtyNew.Click += new System.EventHandler(txtQtyNew_Click);
+		this.txtQtyNew.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtQtyNew_KeyPress);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtQtyNew.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtQtyNew.GetChildAt(0)).Padding = (System.Windows.Forms.Padding)resources.GetObject("resource.Padding1");
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtQtyNew.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		resources.ApplyResources(this.txtComment, "txtComment");
-		((System.Windows.Forms.Control)(object)this.txtComment).BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
-		((System.Windows.Forms.Control)(object)this.txtComment).ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
-		((System.Windows.Forms.Control)(object)this.txtComment).Name = "txtComment";
-		((RadElement)((RadControl)this.txtComment).get_RootElement()).set_MinSize(new System.Drawing.Size(70, 30));
-		((RadElement)((RadControl)this.txtComment).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		this.txtComment.set_TextAlign(System.Windows.Forms.HorizontalAlignment.Center);
-		((System.Windows.Forms.Control)(object)this.txtComment).Click += new System.EventHandler(txtComment_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtComment).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(RadTextBoxControlElement)((RadControl)this.txtComment).GetChildAt(0)).set_Padding((System.Windows.Forms.Padding)resources.GetObject("resource.Padding2"));
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtComment).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtComment.BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
+		this.txtComment.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
+		this.txtComment.Name = "txtComment";
+		this.txtComment.RootElement.MinSize = new System.Drawing.Size(70, 30);
+		this.txtComment.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtComment.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+		this.txtComment.Click += new System.EventHandler(txtComment_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtComment.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtComment.GetChildAt(0)).Padding = (System.Windows.Forms.Padding)resources.GetObject("resource.Padding2");
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtComment.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		this.btnOtherLoc.BackColor = System.Drawing.Color.FromArgb(147, 101, 184);
 		this.btnOtherLoc.FlatAppearance.BorderColor = System.Drawing.Color.Black;
 		this.btnOtherLoc.FlatAppearance.BorderSize = 0;
@@ -568,13 +552,13 @@ public class InventoryItemControl : UserControl
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 		this.BackColor = System.Drawing.Color.FromArgb(35, 39, 56);
 		base.Controls.Add(this.btnOtherLoc);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtQtyNew);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtQtyChange);
+		base.Controls.Add(this.txtQtyNew);
+		base.Controls.Add(this.txtQtyChange);
 		base.Controls.Add(this.txtQtyCurrent);
 		base.Controls.Add(this.lblUOM);
 		base.Controls.Add(this.lblGroupName);
 		base.Controls.Add(this.lblItemName);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtComment);
+		base.Controls.Add(this.txtComment);
 		base.Controls.Add(this.btnEdit);
 		base.Controls.Add(this.btnViewLogs);
 		this.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);

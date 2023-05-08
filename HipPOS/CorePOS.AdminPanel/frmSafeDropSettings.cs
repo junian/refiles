@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel;
@@ -41,8 +40,8 @@ public class frmSafeDropSettings : frmMasterForm
 
 	private void frmSafeDropSettings_Load(object sender, EventArgs e)
 	{
-		((Control)(object)txtBill).Text = SettingsHelper.GetSettingValueByKey("safe_drop_bill");
-		((Control)(object)txtTil).Text = SettingsHelper.GetSettingValueByKey("safe_drop_til");
+		txtBill.Text = SettingsHelper.GetSettingValueByKey("safe_drop_bill");
+		txtTil.Text = SettingsHelper.GetSettingValueByKey("safe_drop_til");
 	}
 
 	private void btnCancel_Click(object sender, EventArgs e)
@@ -56,14 +55,14 @@ public class frmSafeDropSettings : frmMasterForm
 		Setting setting = gClass.Settings.Where((Setting s) => s.Key.Equals("safe_drop_bill")).FirstOrDefault();
 		if (setting != null)
 		{
-			setting.Value = ((Control)(object)txtBill).Text;
+			setting.Value = txtBill.Text;
 			gClass.SubmitChanges();
 			SettingsHelper.SetSettingValueByKey("safe_drop_bill", setting.Value);
 		}
 		Setting setting2 = gClass.Settings.Where((Setting s) => s.Key.Equals("safe_drop_til")).FirstOrDefault();
 		if (setting2 != null)
 		{
-			setting2.Value = ((Control)(object)txtTil).Text;
+			setting2.Value = txtTil.Text;
 			gClass.SubmitChanges();
 			SettingsHelper.SetSettingValueByKey("safe_drop_til", setting2.Value);
 		}
@@ -74,10 +73,10 @@ public class frmSafeDropSettings : frmMasterForm
 	private void btnShowKeyboard_Bill_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Bill Greater than", 4, 8, ((Control)(object)txtBill).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Bill Greater than", 4, 8, txtBill.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtBill).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtBill.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -85,10 +84,10 @@ public class frmSafeDropSettings : frmMasterForm
 	private void btnShowKeyboard_Til_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Til Greater than", 4, 8, ((Control)(object)txtTil).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Til Greater than", 4, 8, txtTil.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtTil).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtTil.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -104,14 +103,6 @@ public class frmSafeDropSettings : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_0232: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0253: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0528: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0549: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmSafeDropSettings));
 		label2 = new Label();
 		txtTil = new RadTextBoxControl();
@@ -137,16 +128,16 @@ public class frmSafeDropSettings : frmMasterForm
 		label2.TabIndex = 247;
 		label2.Text = "Cash Amount in Til Greater Than or Equal To:";
 		label2.TextAlign = ContentAlignment.MiddleRight;
-		((Control)(object)txtTil).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtTil).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtTil).Location = new Point(330, 86);
-		((Control)(object)txtTil).Name = "txtTil";
-		((RadElement)((RadControl)txtTil).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtTil).Size = new Size(116, 35);
-		((Control)(object)txtTil).TabIndex = 246;
-		((Control)(object)txtTil).Click += btnShowKeyboard_Til_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtTil).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtTil).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtTil.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtTil.ForeColor = Color.FromArgb(40, 40, 40);
+		txtTil.Location = new Point(330, 86);
+		txtTil.Name = "txtTil";
+		txtTil.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtTil.Size = new Size(116, 35);
+		txtTil.TabIndex = 246;
+		txtTil.Click += btnShowKeyboard_Til_Click;
+		((RadTextBoxControlElement)txtTil.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtTil.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Til.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Til.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Til.FlatAppearance.BorderColor = Color.Black;
@@ -174,16 +165,16 @@ public class frmSafeDropSettings : frmMasterForm
 		label1.TabIndex = 244;
 		label1.Text = "Notes Larger Than or Equal To:";
 		label1.TextAlign = ContentAlignment.MiddleRight;
-		((Control)(object)txtBill).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtBill).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtBill).Location = new Point(330, 50);
-		((Control)(object)txtBill).Name = "txtBill";
-		((RadElement)((RadControl)txtBill).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtBill).Size = new Size(116, 35);
-		((Control)(object)txtBill).TabIndex = 243;
-		((Control)(object)txtBill).Click += btnShowKeyboard_Bill_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtBill).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtBill).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtBill.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtBill.ForeColor = Color.FromArgb(40, 40, 40);
+		txtBill.Location = new Point(330, 50);
+		txtBill.Name = "txtBill";
+		txtBill.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtBill.Size = new Size(116, 35);
+		txtBill.TabIndex = 243;
+		txtBill.Click += btnShowKeyboard_Bill_Click;
+		((RadTextBoxControlElement)txtBill.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtBill.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Bill.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Bill.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Bill.FlatAppearance.BorderColor = Color.Black;
@@ -243,10 +234,10 @@ public class frmSafeDropSettings : frmMasterForm
 		base.AutoScaleMode = AutoScaleMode.Font;
 		base.ClientSize = new Size(499, 205);
 		base.Controls.Add(label2);
-		base.Controls.Add((Control)(object)txtTil);
+		base.Controls.Add(txtTil);
 		base.Controls.Add(btnShowKeyboard_Til);
 		base.Controls.Add(label1);
-		base.Controls.Add((Control)(object)txtBill);
+		base.Controls.Add(txtBill);
 		base.Controls.Add(btnShowKeyboard_Bill);
 		base.Controls.Add(btnCancel);
 		base.Controls.Add(btnSave);

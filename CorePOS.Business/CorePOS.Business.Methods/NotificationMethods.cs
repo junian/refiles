@@ -20,10 +20,6 @@ public class NotificationMethods
 {
 	public static bool SendSMS(string token, string recipient_number, string message)
 	{
-		//IL_0058: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0064: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0079: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.sync_server + "/api/sms/sms");
@@ -31,16 +27,16 @@ public class NotificationMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				SMSQueueMsgModel obj = new SMSQueueMsgModel
+				string value = JsonConvert.SerializeObject(new SMSQueueMsgModel
 				{
 					token = token,
 					message = message,
 					recipient_number = recipient_number
-				};
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)obj, (Formatting)1, val);
+				}, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -69,10 +65,6 @@ public class NotificationMethods
 
 	public static void sendError_old(string message)
 	{
-		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0074: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0089: Expected O, but got Unknown
 		string requestUriString = "https://digitalcraft.hipchat.com/v2/room/3018177/notification?auth_token=hyLmu0X6S3QUFReqYUOAesHvUYXv5nGTkPhFPUml";
 		try
 		{
@@ -81,17 +73,17 @@ public class NotificationMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				HipChatMsg obj = new HipChatMsg
+				string value = JsonConvert.SerializeObject(new HipChatMsg
 				{
 					color = "red",
 					notify = true,
 					message = "[HIPPOS-RESTAURANT]\r" + message,
 					message_format = "text"
-				};
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)obj, (Formatting)1, val);
+				}, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -118,8 +110,6 @@ public class NotificationMethods
 		}
 		new Thread((ThreadStart)delegate
 		{
-			//IL_0021: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0027: Expected O, but got Unknown
 			try
 			{
 				CompanySetup companySetup = new GClass6().CompanySetups.FirstOrDefault();
@@ -128,17 +118,19 @@ public class NotificationMethods
 				{
 					text = companySetup.Name;
 				}
-				Crash val = new Crash();
-				val.set_InnerException((CS_0024_003C_003E8__locals0.error.InnerException == null) ? string.Empty : CS_0024_003C_003E8__locals0.error.InnerException.Message);
-				val.set_Source((CS_0024_003C_003E8__locals0.error.Source != null) ? CS_0024_003C_003E8__locals0.error.Source : string.Empty);
-				val.set_StackTrace((CS_0024_003C_003E8__locals0.error.StackTrace != null) ? CS_0024_003C_003E8__locals0.error.StackTrace.Replace("\\", "/") : string.Empty);
-				val.set_TargetSite((CS_0024_003C_003E8__locals0.error.TargetSite != null) ? CS_0024_003C_003E8__locals0.error.TargetSite.Name : string.Empty);
+				Crash granular = new Crash
+				{
+					InnerException = ((CS_0024_003C_003E8__locals0.error.InnerException == null) ? string.Empty : CS_0024_003C_003E8__locals0.error.InnerException.Message),
+					Source = ((CS_0024_003C_003E8__locals0.error.Source != null) ? CS_0024_003C_003E8__locals0.error.Source : string.Empty),
+					StackTrace = ((CS_0024_003C_003E8__locals0.error.StackTrace != null) ? CS_0024_003C_003E8__locals0.error.StackTrace.Replace("\\", "/") : string.Empty),
+					TargetSite = ((CS_0024_003C_003E8__locals0.error.TargetSite != null) ? CS_0024_003C_003E8__locals0.error.TargetSite.Name : string.Empty)
+				};
 				if (CS_0024_003C_003E8__locals0.error == null)
 				{
 					throw new Exception("Error Exception was NULL");
 				}
 				string path = AppDomain.CurrentDomain.BaseDirectory + "\\DebugMode.txt";
-				AddCrash.AddCrashFunction("rmEUNuAw0tEBRYQLnPcC", string.IsNullOrEmpty(text) ? BrandingTerms.SoftwareName : (BrandingTerms.SoftwareName + " - " + text), string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.version) ? CorePOS.Data.Properties.Settings.Default["AppVersion"].ToString() : CS_0024_003C_003E8__locals0.version, CS_0024_003C_003E8__locals0.systemInfo, File.Exists(path) ? ("[*** DEBUG MODE ***] " + CS_0024_003C_003E8__locals0.error.Message.Replace("\\", "/")) : ((CS_0024_003C_003E8__locals0.isSilent ? "[***SILENT LOG***] " : string.Empty) + CS_0024_003C_003E8__locals0.error.Message.Replace("\\", "/")), val);
+				AddCrash.AddCrashFunction("rmEUNuAw0tEBRYQLnPcC", string.IsNullOrEmpty(text) ? BrandingTerms.SoftwareName : (BrandingTerms.SoftwareName + " - " + text), string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.version) ? CorePOS.Data.Properties.Settings.Default["AppVersion"].ToString() : CS_0024_003C_003E8__locals0.version, CS_0024_003C_003E8__locals0.systemInfo, File.Exists(path) ? ("[*** DEBUG MODE ***] " + CS_0024_003C_003E8__locals0.error.Message.Replace("\\", "/")) : ((CS_0024_003C_003E8__locals0.isSilent ? "[***SILENT LOG***] " : string.Empty) + CS_0024_003C_003E8__locals0.error.Message.Replace("\\", "/")), granular);
 			}
 			catch (Exception ex)
 			{
@@ -155,8 +147,6 @@ public class NotificationMethods
 		_003C_003Ec__DisplayClass4_.systemInfo = systemInfo;
 		new Thread((ThreadStart)delegate
 		{
-			//IL_0021: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0027: Expected O, but got Unknown
 			try
 			{
 				CompanySetup companySetup = new GClass6().CompanySetups.FirstOrDefault();
@@ -165,17 +155,19 @@ public class NotificationMethods
 				{
 					text = companySetup.Name;
 				}
-				Crash val = new Crash();
-				val.set_InnerException(_003C_003Ec__DisplayClass4_.error);
-				val.set_Source(_003C_003Ec__DisplayClass4_.error);
-				val.set_StackTrace("");
-				val.set_TargetSite("");
+				Crash granular = new Crash
+				{
+					InnerException = _003C_003Ec__DisplayClass4_.error,
+					Source = _003C_003Ec__DisplayClass4_.error,
+					StackTrace = "",
+					TargetSite = ""
+				};
 				if (_003C_003Ec__DisplayClass4_.error == null)
 				{
 					throw new Exception("Error Exception was NULL");
 				}
 				string path = AppDomain.CurrentDomain.BaseDirectory + "\\DebugMode.txt";
-				AddCrash.AddCrashFunction("rmEUNuAw0tEBRYQLnPcC", string.IsNullOrEmpty(text) ? BrandingTerms.SoftwareName : (BrandingTerms.SoftwareName + " - " + text), string.IsNullOrEmpty(_003C_003Ec__DisplayClass4_.version) ? CorePOS.Data.Properties.Settings.Default["AppVersion"].ToString() : _003C_003Ec__DisplayClass4_.version, _003C_003Ec__DisplayClass4_.systemInfo, File.Exists(path) ? ("[*** DEBUG MODE ***] " + _003C_003Ec__DisplayClass4_.error) : _003C_003Ec__DisplayClass4_.error, val);
+				AddCrash.AddCrashFunction("rmEUNuAw0tEBRYQLnPcC", string.IsNullOrEmpty(text) ? BrandingTerms.SoftwareName : (BrandingTerms.SoftwareName + " - " + text), string.IsNullOrEmpty(_003C_003Ec__DisplayClass4_.version) ? CorePOS.Data.Properties.Settings.Default["AppVersion"].ToString() : _003C_003Ec__DisplayClass4_.version, _003C_003Ec__DisplayClass4_.systemInfo, File.Exists(path) ? ("[*** DEBUG MODE ***] " + _003C_003Ec__DisplayClass4_.error) : _003C_003Ec__DisplayClass4_.error, granular);
 			}
 			catch (Exception ex)
 			{

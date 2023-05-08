@@ -306,14 +306,6 @@ public static class MemoryLoadedObjects
 		{
 			get
 			{
-				//IL_00ca: Unknown result type (might be due to invalid IL or missing references)
-				//IL_00d6: Unknown result type (might be due to invalid IL or missing references)
-				//IL_00e2: Unknown result type (might be due to invalid IL or missing references)
-				//IL_00ec: Expected O, but got Unknown
-				//IL_00ec: Expected O, but got Unknown
-				//IL_00ec: Expected O, but got Unknown
-				//IL_00e7: Unknown result type (might be due to invalid IL or missing references)
-				//IL_00f1: Expected O, but got Unknown
 				if (icloverConnector_0 == null)
 				{
 					if (string.IsNullOrEmpty(string_0) || string.IsNullOrEmpty(string_1) || string.IsNullOrEmpty(string_3))
@@ -327,15 +319,15 @@ public static class MemoryLoadedObjects
 							pairingAuthCode = this_terminal.CloverAuthCode;
 						}
 					}
-					string text = "ws://" + string_0 + ":" + string_1 + "/remote_pay";
-					string text2 = "6P96BCHV0PFFY.VDQT4YQP13E2C";
+					string endpoint = "ws://" + string_0 + ":" + string_1 + "/remote_pay";
+					string remoteApplicationID = "6P96BCHV0PFFY.VDQT4YQP13E2C";
 					if (isInternalDev)
 					{
-						text2 = "Y009WD8Y45XCR.WRKX2AAD5ZK0G";
+						remoteApplicationID = "Y009WD8Y45XCR.WRKX2AAD5ZK0G";
 					}
-					icloverConnector_0 = CloverConnectorFactory.createICloverConnector((CloverDeviceConfiguration)new WebSocketCloverDeviceConfiguration(text, text2, false, 1, "HipPOS", string_3, string_2, new OnPairingCodeHandler(OnPairingCode), new OnPairingSuccessHandler(OnPairingSuccess), new OnPairingStateHandler(OnPairingState)));
+					icloverConnector_0 = CloverConnectorFactory.createICloverConnector(new WebSocketCloverDeviceConfiguration(endpoint, remoteApplicationID, enableLogging: false, 1, "HipPOS", string_3, string_2, OnPairingCode, OnPairingSuccess, OnPairingState));
 					smethod_0(new CloverConnectionListener(icloverConnector_0));
-					icloverConnector_0.AddCloverConnectorListener((ICloverConnectorListener)(object)cloverConnectionListener_0);
+					icloverConnector_0.AddCloverConnectorListener(cloverConnectionListener_0);
 					icloverConnector_0.InitializeConnection();
 				}
 				return icloverConnector_0;

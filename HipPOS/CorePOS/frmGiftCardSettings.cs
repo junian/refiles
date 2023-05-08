@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using CorePOS.Business.Methods.PaymentProcessors;
 using CorePOS.Business.Objects;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -82,41 +81,41 @@ public class frmGiftCardSettings : frmMasterForm
 	{
 		if (ddlGiftCards.SelectedValue.ToString() == "Ackroo")
 		{
-			((Control)(object)txtDevice).Visible = true;
-			((Control)(object)txtApiKey).Text = "Access token";
+			txtDevice.Visible = true;
+			txtApiKey.Text = "Access token";
 			ddlLocations.Visible = false;
 			label2.Text = "Device Id";
 			btnDIsplayLocations.Visible = false;
 		}
 		else if (ddlGiftCards.SelectedValue.ToString() == "TapMango")
 		{
-			((Control)(object)txtDevice).Visible = false;
-			((Control)(object)txtApiKey).Text = "API Key";
+			txtDevice.Visible = false;
+			txtApiKey.Text = "API Key";
 			ddlLocations.Visible = true;
 			label2.Text = "Location";
 			btnDIsplayLocations.Visible = true;
 		}
-		((Control)(object)txtApiKey).Text = "";
-		((Control)(object)txtDevice).Text = "";
-		chkActive.set_Value(false);
+		txtApiKey.Text = "";
+		txtDevice.Text = "";
+		chkActive.Value = false;
 		CardProcessorObject cardProcessorSetting = SettingsHelper.GetCardProcessorSetting(ddlGiftCards.SelectedValue.ToString(), string_0);
 		if (cardProcessorSetting == null)
 		{
 			return;
 		}
-		chkActive.set_Value(cardProcessorSetting.isActive);
+		chkActive.Value = cardProcessorSetting.isActive;
 		if (cardProcessorSetting.Processor == "Ackroo")
 		{
 			List<string> list = cardProcessorSetting.ApiKey.Split('|').ToList();
 			if (list.Count > 1)
 			{
-				((Control)(object)txtApiKey).Text = list[0];
-				((Control)(object)txtDevice).Text = list[1];
+				txtApiKey.Text = list[0];
+				txtDevice.Text = list[1];
 			}
 		}
 		else if (cardProcessorSetting.Processor == "TapMango")
 		{
-			((Control)(object)txtApiKey).Text = cardProcessorSetting.ApiKey;
+			txtApiKey.Text = cardProcessorSetting.ApiKey;
 		}
 	}
 
@@ -137,19 +136,19 @@ public class frmGiftCardSettings : frmMasterForm
 			new NotificationLabel(this, "Please select a Gift card provider.", NotificationTypes.Warning).Show();
 			return;
 		}
-		if (string.IsNullOrEmpty(((Control)(object)txtApiKey).Text))
+		if (string.IsNullOrEmpty(txtApiKey.Text))
 		{
 			new NotificationLabel(this, "Please add an api key", NotificationTypes.Warning).Show();
 			return;
 		}
 		if (ddlGiftCards.SelectedValue.ToString() == "Ackroo")
 		{
-			if (string.IsNullOrEmpty(((Control)(object)txtDevice).Text))
+			if (string.IsNullOrEmpty(txtDevice.Text))
 			{
 				new NotificationLabel(this, "Please add a device.", NotificationTypes.Warning).Show();
 				return;
 			}
-			SettingsHelper.SetCardProcessorSetting(string_0, ddlGiftCards.SelectedValue.ToString(), ((Control)(object)txtApiKey).Text + "|" + ((Control)(object)txtDevice).Text, "", chkActive.get_Value());
+			SettingsHelper.SetCardProcessorSetting(string_0, ddlGiftCards.SelectedValue.ToString(), txtApiKey.Text + "|" + txtDevice.Text, "", chkActive.Value);
 		}
 		else if (ddlGiftCards.SelectedValue.ToString() == "TapMango")
 		{
@@ -158,7 +157,7 @@ public class frmGiftCardSettings : frmMasterForm
 				new NotificationLabel(this, "Please choose a location.", NotificationTypes.Warning).Show();
 				return;
 			}
-			SettingsHelper.SetCardProcessorSetting(string_0, ddlGiftCards.SelectedValue.ToString(), ((Control)(object)txtApiKey).Text, ddlLocations.SelectedValue.ToString(), chkActive.get_Value());
+			SettingsHelper.SetCardProcessorSetting(string_0, ddlGiftCards.SelectedValue.ToString(), txtApiKey.Text, ddlLocations.SelectedValue.ToString(), chkActive.Value);
 		}
 		new NotificationLabel(this, "Settings successfully saved.", NotificationTypes.Success).Show();
 	}
@@ -166,10 +165,10 @@ public class frmGiftCardSettings : frmMasterForm
 	private void btnShowKeyboard_ApiKey_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Access Token", 1, 128, ((Control)(object)txtApiKey).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Access Token", 1, 128, txtApiKey.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtApiKey).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtApiKey.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -177,10 +176,10 @@ public class frmGiftCardSettings : frmMasterForm
 	private void btnShowKeyboard_Device_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Device ID", 1, 128, ((Control)(object)txtDevice).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Device ID", 1, 128, txtDevice.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtDevice).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtDevice.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -196,7 +195,7 @@ public class frmGiftCardSettings : frmMasterForm
 		{
 			return;
 		}
-		TapMangoLocationListResponse locations = TapMangoMethods.GetLocations(((Control)(object)txtApiKey).Text);
+		TapMangoLocationListResponse locations = TapMangoMethods.GetLocations(txtApiKey.Text);
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
 		if (locations != null && locations.data != null && locations.data.Count > 0)
 		{
@@ -240,24 +239,6 @@ public class frmGiftCardSettings : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_0075: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007f: Expected O, but got Unknown
-		//IL_0261: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0279: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0290: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02b1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02de: Unknown result type (might be due to invalid IL or missing references)
-		//IL_030b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0338: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0359: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05ff: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0620: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0af9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b1a: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmGiftCardSettings));
 		label13 = new Label();
 		chkActive = new RadToggleSwitch();
@@ -290,23 +271,23 @@ public class frmGiftCardSettings : frmMasterForm
 		label13.TabIndex = 247;
 		label13.Tag = "product";
 		label13.TextAlign = ContentAlignment.MiddleRight;
-		((Control)(object)chkActive).Location = new Point(128, 161);
-		((Control)(object)chkActive).Name = "chkActive";
-		chkActive.set_OffText("NO");
-		chkActive.set_OnText("YES");
-		((Control)(object)chkActive).Size = new Size(72, 35);
-		((Control)(object)chkActive).TabIndex = 239;
-		((Control)(object)chkActive).Tag = "product";
-		chkActive.set_ToggleStateMode((ToggleStateMode)1);
-		chkActive.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_Text("YES");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkActive.Location = new Point(128, 161);
+		chkActive.Name = "chkActive";
+		chkActive.OffText = "NO";
+		chkActive.OnText = "YES";
+		chkActive.Size = new Size(72, 35);
+		chkActive.TabIndex = 239;
+		chkActive.Tag = "product";
+		chkActive.ToggleStateMode = ToggleStateMode.Click;
+		chkActive.Value = false;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).Text = "YES";
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label21.BackColor = Color.FromArgb(132, 146, 146);
 		label21.Font = new Font("Microsoft Sans Serif", 12f);
 		label21.ForeColor = Color.White;
@@ -333,15 +314,15 @@ public class frmGiftCardSettings : frmMasterForm
 		label2.TabIndex = 238;
 		label2.Text = "Device Id";
 		label2.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)txtDevice).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtDevice).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtDevice).Location = new Point(128, 125);
-		((Control)(object)txtDevice).Name = "txtDevice";
-		((RadElement)((RadControl)txtDevice).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtDevice).Size = new Size(358, 35);
-		((Control)(object)txtDevice).TabIndex = 237;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtDevice).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtDevice).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtDevice.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtDevice.ForeColor = Color.FromArgb(40, 40, 40);
+		txtDevice.Location = new Point(128, 125);
+		txtDevice.Name = "txtDevice";
+		txtDevice.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtDevice.Size = new Size(358, 35);
+		txtDevice.TabIndex = 237;
+		((RadTextBoxControlElement)txtDevice.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtDevice.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Device.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Device.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Device.FlatAppearance.BorderColor = Color.Black;
@@ -398,16 +379,16 @@ public class frmGiftCardSettings : frmMasterForm
 		label5.TabIndex = 233;
 		label5.Text = "Provider";
 		label5.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)txtApiKey).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtApiKey).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtApiKey).Location = new Point(128, 89);
-		((Control)(object)txtApiKey).Name = "txtApiKey";
-		((RadElement)((RadControl)txtApiKey).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtApiKey).Size = new Size(358, 35);
-		((Control)(object)txtApiKey).TabIndex = 232;
-		((Control)(object)txtApiKey).TextChanged += txtApiKey_TextChanged;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtApiKey).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtApiKey).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtApiKey.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtApiKey.ForeColor = Color.FromArgb(40, 40, 40);
+		txtApiKey.Location = new Point(128, 89);
+		txtApiKey.Name = "txtApiKey";
+		txtApiKey.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtApiKey.Size = new Size(358, 35);
+		txtApiKey.TabIndex = 232;
+		txtApiKey.TextChanged += txtApiKey_TextChanged;
+		((RadTextBoxControlElement)txtApiKey.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtApiKey.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_ApiKey.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_ApiKey.DialogResult = DialogResult.OK;
 		btnShowKeyboard_ApiKey.FlatAppearance.BorderColor = Color.Black;
@@ -498,15 +479,15 @@ public class frmGiftCardSettings : frmMasterForm
 		base.Controls.Add(btnDIsplayLocations);
 		base.Controls.Add(ddlLocations);
 		base.Controls.Add(label13);
-		base.Controls.Add((Control)(object)chkActive);
+		base.Controls.Add(chkActive);
 		base.Controls.Add(label21);
 		base.Controls.Add(label2);
-		base.Controls.Add((Control)(object)txtDevice);
+		base.Controls.Add(txtDevice);
 		base.Controls.Add(btnShowKeyboard_Device);
 		base.Controls.Add(label1);
 		base.Controls.Add(ddlGiftCards);
 		base.Controls.Add(label5);
-		base.Controls.Add((Control)(object)txtApiKey);
+		base.Controls.Add(txtApiKey);
 		base.Controls.Add(btnShowKeyboard_ApiKey);
 		base.Controls.Add(btnCancel);
 		base.Controls.Add(btnSave);

@@ -15,7 +15,6 @@ using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
 using Newtonsoft.Json;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -120,7 +119,7 @@ public class frmRefund : frmMasterForm
 		{
 			lblTrainingMode.Visible = false;
 		}
-		if (!string.IsNullOrEmpty(((Control)(object)txtSearchBox).Text))
+		if (!string.IsNullOrEmpty(txtSearchBox.Text))
 		{
 			btnSearch.Enabled = true;
 		}
@@ -137,9 +136,9 @@ public class frmRefund : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		this._002Ector();
-		((Control)(object)txtSearchBox).Text = orderNumber;
+		txtSearchBox.Text = orderNumber;
 		btnSearch.Enabled = true;
-		string_0 = ((Control)(object)txtSearchBox).Text.Trim();
+		string_0 = txtSearchBox.Text.Trim();
 		method_5();
 	}
 
@@ -467,7 +466,7 @@ public class frmRefund : frmMasterForm
 								OrderNumber = string_0,
 								DateCreated = DateTime.Now,
 								Type = "reponse",
-								Data = JsonConvert.SerializeObject((object)ackrooGiftCardFUNDResponse),
+								Data = JsonConvert.SerializeObject(ackrooGiftCardFUNDResponse),
 								ProcessorName = "Ackroo".ToUpper() + " LOYALTY CARD EARNED",
 								EncryptedCardNumber = StringCipher.Encrypt(text4, "DigitalCraftHipPOS")
 							};
@@ -686,7 +685,7 @@ public class frmRefund : frmMasterForm
 			lstRefundItems.Items.Clear();
 			btnCancel.Enabled = false;
 			btnSearch.Enabled = false;
-			((Control)(object)txtSearchBox).Text = "";
+			txtSearchBox.Text = "";
 			btnSave.Enabled = false;
 			base.DialogResult = DialogResult.None;
 		}
@@ -723,14 +722,14 @@ public class frmRefund : frmMasterForm
 
 	private void btnSearch_Click(object sender, EventArgs e)
 	{
-		string_0 = ((Control)(object)txtSearchBox).Text.Trim();
+		string_0 = txtSearchBox.Text.Trim();
 		method_5();
 	}
 
 	private void method_5()
 	{
 		DataManager dataManager = new DataManager();
-		if (!(((Control)(object)txtSearchBox).Text != Resources.Enter_Order_Number_Here) || string.IsNullOrEmpty(((Control)(object)txtSearchBox).Text.Trim()))
+		if (!(txtSearchBox.Text != Resources.Enter_Order_Number_Here) || string.IsNullOrEmpty(txtSearchBox.Text.Trim()))
 		{
 			return;
 		}
@@ -781,19 +780,19 @@ public class frmRefund : frmMasterForm
 
 	private void txtSearchBox_Enter(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSearchBox).Text == Resources.Enter_Order_Number_Here)
+		if (txtSearchBox.Text == Resources.Enter_Order_Number_Here)
 		{
-			((Control)(object)txtSearchBox).ForeColor = HelperMethods.GetColor("Black");
-			((Control)(object)txtSearchBox).Text = string.Empty;
+			txtSearchBox.ForeColor = HelperMethods.GetColor("Black");
+			txtSearchBox.Text = string.Empty;
 		}
 	}
 
 	private void txtSearchBox_Leave(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSearchBox).Text == string.Empty)
+		if (txtSearchBox.Text == string.Empty)
 		{
-			((Control)(object)txtSearchBox).ForeColor = HelperMethods.GetColor("Gray");
-			((Control)(object)txtSearchBox).Text = Resources.Enter_Order_Number_Here;
+			txtSearchBox.ForeColor = HelperMethods.GetColor("Gray");
+			txtSearchBox.Text = Resources.Enter_Order_Number_Here;
 		}
 	}
 
@@ -1189,12 +1188,12 @@ public class frmRefund : frmMasterForm
 	private void btnShowKeyboard_SearchBox_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Search_for_Order, 1, 128, ((Control)(object)txtSearchBox).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Search_for_Order, 1, 128, txtSearchBox.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
 			btnSearch.Enabled = true;
-			((Control)(object)txtSearchBox).Text = MemoryLoadedObjects.Keyboard.textEntered.Trim();
-			string_0 = ((Control)(object)txtSearchBox).Text.Trim();
+			txtSearchBox.Text = MemoryLoadedObjects.Keyboard.textEntered.Trim();
+			string_0 = txtSearchBox.Text.Trim();
 			method_5();
 		}
 		base.DialogResult = DialogResult.None;
@@ -1301,10 +1300,6 @@ public class frmRefund : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_00c2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00cc: Expected O, but got Unknown
-		//IL_0b60: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b81: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmRefund));
 		pnlMain = new Panel();
 		btnAllRight = new Button();
@@ -1354,7 +1349,7 @@ public class frmRefund : frmMasterForm
 		pnlMain.Controls.Add(label1);
 		pnlMain.Controls.Add(btnShowKeyboard_SearchBox);
 		pnlMain.Controls.Add(btnSave);
-		pnlMain.Controls.Add((Control)(object)txtSearchBox);
+		pnlMain.Controls.Add(txtSearchBox);
 		pnlMain.Controls.Add(btnRight);
 		pnlMain.Controls.Add(label6);
 		pnlMain.Controls.Add(lstRefundsVScroll);
@@ -1464,15 +1459,15 @@ public class frmRefund : frmMasterForm
 		btnSave.EnabledChanged += btnSave_EnabledChanged;
 		btnSave.Click += btnSave_Click;
 		componentResourceManager.ApplyResources(txtSearchBox, "txtSearchBox");
-		((Control)(object)txtSearchBox).Name = "txtSearchBox";
-		((RadElement)((RadControl)txtSearchBox).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSearchBox).TextChanged += txtSearchBox_TextChanged;
-		((Control)(object)txtSearchBox).Click += txtSearchBox_Click;
-		((Control)(object)txtSearchBox).Enter += txtSearchBox_Enter;
-		((Control)(object)txtSearchBox).KeyUp += txtSearchBox_KeyUp;
-		((Control)(object)txtSearchBox).Leave += txtSearchBox_Leave;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSearchBox).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSearchBox).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(8.888887f, 7.573965f));
+		txtSearchBox.Name = "txtSearchBox";
+		txtSearchBox.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSearchBox.TextChanged += txtSearchBox_TextChanged;
+		txtSearchBox.Click += txtSearchBox_Click;
+		txtSearchBox.Enter += txtSearchBox_Enter;
+		txtSearchBox.KeyUp += txtSearchBox_KeyUp;
+		txtSearchBox.Leave += txtSearchBox_Leave;
+		((RadTextBoxControlElement)txtSearchBox.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSearchBox.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(8.888887f, 7.573965f);
 		componentResourceManager.ApplyResources(btnRight, "btnRight");
 		btnRight.BackColor = Color.Gray;
 		btnRight.FlatAppearance.BorderColor = Color.Black;

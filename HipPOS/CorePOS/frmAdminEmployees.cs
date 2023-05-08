@@ -113,42 +113,42 @@ public class frmAdminEmployees : frmMasterForm
 		_003C_003Ec__DisplayClass6_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass6_0();
 		CS_0024_003C_003E8__locals0._003C_003E4__this = this;
 		gclass6_0.Refresh(RefreshMode.OverwriteCurrentValues);
-		if (!(((Control)(object)txtPIN).Text == "") && ((Control)(object)txtPIN).Text != null)
+		if (!(txtPIN.Text == "") && txtPIN.Text != null)
 		{
-			if (!HelperMethods.IsDigitsOnly(((Control)(object)txtPIN).Text))
+			if (!HelperMethods.IsDigitsOnly(txtPIN.Text))
 			{
 				new frmMessageBox(Resources.Please_use_only_digits_for_pin).ShowDialog(this);
 			}
-			else if (((Control)(object)txtPIN).Text.Length > 10)
+			else if (txtPIN.Text.Length > 10)
 			{
 				new frmMessageBox(Resources._10_digits_is_the_maximum_numb).ShowDialog(this);
 			}
-			else if (!(((Control)(object)txtFirstName).Text.Trim() == string.Empty) && !(((Control)(object)txtLastName).Text.Trim() == string.Empty))
+			else if (!(txtFirstName.Text.Trim() == string.Empty) && !(txtLastName.Text.Trim() == string.Empty))
 			{
 				Employee employee;
 				if (int_0 == 0)
 				{
-					if (gclass6_0.Users.Where((User u) => u.PIN == ((Control)(object)txtPIN).Text.Trim()).Count() > 0)
+					if (gclass6_0.Users.Where((User u) => u.PIN == txtPIN.Text.Trim()).Count() > 0)
 					{
 						new frmMessageBox(Resources.PIN_already_in_use_Please_sele).ShowDialog(this);
 						return;
 					}
 					employee = new Employee();
-					employee.EmployeeName = ((Control)(object)txtFirstName).Text.Trim() + " " + ((Control)(object)txtLastName).Text.Trim();
-					employee.FirstName = ((Control)(object)txtFirstName).Text.Trim();
-					employee.LastName = ((Control)(object)txtLastName).Text.Trim();
-					employee.isActive = chkEmployeeActive.get_Value();
-					employee.Phone1 = ((Control)(object)txtCell).Text.Trim();
-					employee.Phone2 = ((Control)(object)txtHomePhone).Text.Trim();
+					employee.EmployeeName = txtFirstName.Text.Trim() + " " + txtLastName.Text.Trim();
+					employee.FirstName = txtFirstName.Text.Trim();
+					employee.LastName = txtLastName.Text.Trim();
+					employee.isActive = chkEmployeeActive.Value;
+					employee.Phone1 = txtCell.Text.Trim();
+					employee.Phone2 = txtHomePhone.Text.Trim();
 					employee.Synced = false;
 					gclass6_0.Employees.InsertOnSubmit(employee);
 					Helper.SubmitChangesWithCatch(gclass6_0);
 					int_0 = employee.EmployeeID;
 					CS_0024_003C_003E8__locals0.user = new User();
 					CS_0024_003C_003E8__locals0.user.EmployeeID = int_0;
-					CS_0024_003C_003E8__locals0.user.Active = chkPinActive.get_Value();
-					CS_0024_003C_003E8__locals0.user.PIN = (string.IsNullOrEmpty(((Control)(object)txtPIN).Text) ? "0" : ((Control)(object)txtPIN).Text.Trim());
-					CS_0024_003C_003E8__locals0.user.RoleID = Convert.ToInt16(((RadDropDownList)ddlRoles).get_SelectedValue());
+					CS_0024_003C_003E8__locals0.user.Active = chkPinActive.Value;
+					CS_0024_003C_003E8__locals0.user.PIN = (string.IsNullOrEmpty(txtPIN.Text) ? "0" : txtPIN.Text.Trim());
+					CS_0024_003C_003E8__locals0.user.RoleID = Convert.ToInt16(ddlRoles.SelectedValue);
 					gclass6_0.Users.InsertOnSubmit(CS_0024_003C_003E8__locals0.user);
 					Helper.SubmitChangesWithCatch(gclass6_0);
 				}
@@ -162,36 +162,36 @@ public class frmAdminEmployees : frmMasterForm
 						new frmMessageBox(Resources.Something_went_wrong_saving_th).ShowDialog(this);
 						return;
 					}
-					if (gclass6_0.Users.Where((User u) => u.PIN == ((Control)(object)txtPIN).Text.Trim() && u.UserID != CS_0024_003C_003E8__locals0.user.UserID).Count() > 0)
+					if (gclass6_0.Users.Where((User u) => u.PIN == txtPIN.Text.Trim() && u.UserID != CS_0024_003C_003E8__locals0.user.UserID).Count() > 0)
 					{
 						new frmMessageBox(Resources.PIN_already_in_use_Please_sele0).ShowDialog(this);
 						return;
 					}
 					CS_0024_003C_003E8__locals1.adminRole = gclass6_0.Roles.Where((Role u) => u.RoleName == Roles.admin).FirstOrDefault();
-					if (CS_0024_003C_003E8__locals1.adminRole != null && gclass6_0.Users.Where((User u) => u.Active == true && u.RoleID == CS_0024_003C_003E8__locals1.adminRole.RoleID).Count() == 1 && CS_0024_003C_003E8__locals0.user.RoleID == CS_0024_003C_003E8__locals1.adminRole.RoleID && (!chkEmployeeActive.get_Value() || Convert.ToInt16(((RadDropDownList)ddlRoles).get_SelectedValue()) != CS_0024_003C_003E8__locals1.adminRole.RoleID))
+					if (CS_0024_003C_003E8__locals1.adminRole != null && gclass6_0.Users.Where((User u) => u.Active == true && u.RoleID == CS_0024_003C_003E8__locals1.adminRole.RoleID).Count() == 1 && CS_0024_003C_003E8__locals0.user.RoleID == CS_0024_003C_003E8__locals1.adminRole.RoleID && (!chkEmployeeActive.Value || Convert.ToInt16(ddlRoles.SelectedValue) != CS_0024_003C_003E8__locals1.adminRole.RoleID))
 					{
 						new frmMessageBox(Resources.It_s_required_to_have_at_least).ShowDialog(this);
 						return;
 					}
-					employee.FirstName = ((Control)(object)txtFirstName).Text.Trim();
-					employee.LastName = ((Control)(object)txtLastName).Text.Trim();
-					employee.EmployeeName = ((Control)(object)txtFirstName).Text.Trim() + " " + ((Control)(object)txtLastName).Text.Trim();
-					employee.isActive = chkEmployeeActive.get_Value();
-					employee.Phone1 = ((Control)(object)txtCell).Text.Trim();
-					employee.Phone2 = ((Control)(object)txtHomePhone).Text.Trim();
+					employee.FirstName = txtFirstName.Text.Trim();
+					employee.LastName = txtLastName.Text.Trim();
+					employee.EmployeeName = txtFirstName.Text.Trim() + " " + txtLastName.Text.Trim();
+					employee.isActive = chkEmployeeActive.Value;
+					employee.Phone1 = txtCell.Text.Trim();
+					employee.Phone2 = txtHomePhone.Text.Trim();
 					employee.Synced = false;
 					string text = CS_0024_003C_003E8__locals0.user.PIN.ToString().Trim();
-					CS_0024_003C_003E8__locals0.user.Active = chkPinActive.get_Value();
-					CS_0024_003C_003E8__locals0.user.PIN = ((Control)(object)txtPIN).Text.Trim();
+					CS_0024_003C_003E8__locals0.user.Active = chkPinActive.Value;
+					CS_0024_003C_003E8__locals0.user.PIN = txtPIN.Text.Trim();
 					try
 					{
-						CS_0024_003C_003E8__locals0.user.RoleID = Convert.ToInt16(((RadDropDownList)ddlRoles).get_SelectedValue());
+						CS_0024_003C_003E8__locals0.user.RoleID = Convert.ToInt16(ddlRoles.SelectedValue);
 					}
 					catch
 					{
-						CS_0024_003C_003E8__locals0.user.Role = gclass6_0.Roles.Where((Role x) => x.RoleID == Convert.ToInt16(((RadDropDownList)ddlRoles).get_SelectedValue())).FirstOrDefault();
+						CS_0024_003C_003E8__locals0.user.Role = gclass6_0.Roles.Where((Role x) => x.RoleID == Convert.ToInt16(ddlRoles.SelectedValue)).FirstOrDefault();
 					}
-					if (SettingsHelper.GetSettingValueByKey("hippos_time") == "Enabled" && text != ((Control)(object)txtPIN).Text.Trim() && !method_4(text, ((Control)(object)txtPIN).Text.Trim(), CS_0024_003C_003E8__locals0.user.HipposTimeEmployeeID))
+					if (SettingsHelper.GetSettingValueByKey("hippos_time") == "Enabled" && text != txtPIN.Text.Trim() && !method_4(text, txtPIN.Text.Trim(), CS_0024_003C_003E8__locals0.user.HipposTimeEmployeeID))
 					{
 						new NotificationLabel(this, Resources.Unable_to_Save_Employee_to_Hip, NotificationTypes.Warning).Show();
 					}
@@ -303,9 +303,9 @@ public class frmAdminEmployees : frmMasterForm
 		{
 			dictionary.Add(item.RoleID.ToString(), item.RoleName);
 		}
-		((RadDropDownList)ddlRoles).set_DisplayMember("Value");
-		((RadDropDownList)ddlRoles).set_ValueMember("Key");
-		((RadDropDownList)ddlRoles).set_DataSource((object)new BindingSource(dictionary, null));
+		ddlRoles.DisplayMember = "Value";
+		ddlRoles.ValueMember = "Key";
+		ddlRoles.DataSource = new BindingSource(dictionary, null);
 	}
 
 	private void method_5(bool bool_1)
@@ -333,14 +333,14 @@ public class frmAdminEmployees : frmMasterForm
 
 	private void method_6()
 	{
-		RadTextBoxControl obj = txtFirstName;
-		RadTextBoxControl obj2 = txtLastName;
-		RadTextBoxControl obj3 = txtCell;
-		RadTextBoxControl obj4 = txtHomePhone;
-		string text = (((Control)(object)txtPIN).Text = string.Empty);
-		string text3 = (((Control)(object)obj4).Text = text);
-		string text5 = (((Control)(object)obj3).Text = text3);
-		string text8 = (((Control)(object)obj).Text = (((Control)(object)obj2).Text = text5));
+		RadTextBoxControl radTextBoxControl = txtFirstName;
+		RadTextBoxControl radTextBoxControl2 = txtLastName;
+		RadTextBoxControl radTextBoxControl3 = txtCell;
+		RadTextBoxControl radTextBoxControl4 = txtHomePhone;
+		string text = (txtPIN.Text = string.Empty);
+		string text3 = (radTextBoxControl4.Text = text);
+		string text5 = (radTextBoxControl3.Text = text3);
+		string text8 = (radTextBoxControl.Text = (radTextBoxControl2.Text = text5));
 	}
 
 	private void lstEmployees_SelectedIndexChanged(object sender, EventArgs e)
@@ -368,14 +368,14 @@ public class frmAdminEmployees : frmMasterForm
 			}
 			if (employee != null && user != null)
 			{
-				((Control)(object)txtFirstName).Text = employee.FirstName;
-				((Control)(object)txtLastName).Text = employee.LastName;
-				((Control)(object)txtCell).Text = employee.Phone1;
-				((Control)(object)txtHomePhone).Text = employee.Phone2;
-				((Control)(object)txtPIN).Text = user.PIN.ToString();
-				chkEmployeeActive.set_Value(employee.isActive);
-				chkPinActive.set_Value(user.Active);
-				((RadDropDownList)ddlRoles).set_SelectedValue((object)user.RoleID.ToString());
+				txtFirstName.Text = employee.FirstName;
+				txtLastName.Text = employee.LastName;
+				txtCell.Text = employee.Phone1;
+				txtHomePhone.Text = employee.Phone2;
+				txtPIN.Text = user.PIN.ToString();
+				chkEmployeeActive.Value = employee.isActive;
+				chkPinActive.Value = user.Active;
+				ddlRoles.SelectedValue = user.RoleID.ToString();
 				btnNew.Enabled = true;
 			}
 			else
@@ -395,10 +395,10 @@ public class frmAdminEmployees : frmMasterForm
 	private void method_8(string string_0, RadTextBoxControl radTextBoxControl_0)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(string_0, 1, 64, ((Control)(object)radTextBoxControl_0).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(string_0, 1, 64, radTextBoxControl_0.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)radTextBoxControl_0).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			radTextBoxControl_0.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -406,10 +406,10 @@ public class frmAdminEmployees : frmMasterForm
 	private void method_9(string string_0, RadTextBoxControl radTextBoxControl_0, int int_1 = 2, int int_2 = 4)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(string_0, int_1, int_2, ((Control)(object)radTextBoxControl_0).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData(string_0, int_1, int_2, radTextBoxControl_0.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)radTextBoxControl_0).Text = MemoryLoadedObjects.Numpad.valueEntered;
+			radTextBoxControl_0.Text = MemoryLoadedObjects.Numpad.valueEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -450,7 +450,7 @@ public class frmAdminEmployees : frmMasterForm
 
 	private void chkShowInActive_ValueChanged(object sender, EventArgs e)
 	{
-		bool_0 = chkShowInActive.get_Value();
+		bool_0 = chkShowInActive.Value;
 		method_5(bool_0);
 	}
 
@@ -469,53 +469,6 @@ public class frmAdminEmployees : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0012: Unknown result type (might be due to invalid IL or missing references)
-		//IL_001c: Expected O, but got Unknown
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0032: Expected O, but got Unknown
-		//IL_0033: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003d: Expected O, but got Unknown
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_0049: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0053: Expected O, but got Unknown
-		//IL_0054: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005e: Expected O, but got Unknown
-		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0069: Expected O, but got Unknown
-		//IL_0244: Unknown result type (might be due to invalid IL or missing references)
-		//IL_025c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_027d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02aa: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02d7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0304: Unknown result type (might be due to invalid IL or missing references)
-		//IL_032b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03bf: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03e0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0472: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0493: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0525: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0546: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05f9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_068b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06ac: Unknown result type (might be due to invalid IL or missing references)
-		//IL_071e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0736: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0757: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0784: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07b1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07de: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0805: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0879: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0891: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08b2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08df: Unknown result type (might be due to invalid IL or missing references)
-		//IL_090c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0939: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0960: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAdminEmployees));
 		chkShowInActive = new RadToggleSwitch();
 		txtPIN = new RadTextBoxControl();
@@ -558,78 +511,78 @@ public class frmAdminEmployees : frmMasterForm
 		((ISupportInitialize)ddlRoles).BeginInit();
 		SuspendLayout();
 		componentResourceManager.ApplyResources(chkShowInActive, "chkShowInActive");
-		((Control)(object)chkShowInActive).Name = "chkShowInActive";
-		chkShowInActive.set_OffText("INACTIVE EMPLOYEES");
-		chkShowInActive.set_OnText("ACTIVE EMPLOYEES");
-		((Control)(object)chkShowInActive).Tag = "product";
-		chkShowInActive.set_ToggleStateMode((ToggleStateMode)1);
-		chkShowInActive.add_ValueChanged((EventHandler)chkShowInActive_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkShowInActive).GetChildAt(0)).set_ThumbOffset(123);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkShowInActive).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkShowInActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkShowInActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkShowInActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkShowInActive).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkShowInActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkShowInActive.Name = "chkShowInActive";
+		chkShowInActive.OffText = "INACTIVE EMPLOYEES";
+		chkShowInActive.OnText = "ACTIVE EMPLOYEES";
+		chkShowInActive.Tag = "product";
+		chkShowInActive.ToggleStateMode = ToggleStateMode.Click;
+		chkShowInActive.ValueChanged += chkShowInActive_ValueChanged;
+		((RadToggleSwitchElement)chkShowInActive.GetChildAt(0)).ThumbOffset = 123;
+		((RadToggleSwitchElement)chkShowInActive.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkShowInActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkShowInActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkShowInActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkShowInActive.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkShowInActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(txtPIN, "txtPIN");
-		((Control)(object)txtPIN).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPIN).Name = "txtPIN";
-		((RadElement)((RadControl)txtPIN).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtPIN).Click += txtLastName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPIN).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPIN).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtPIN.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPIN.Name = "txtPIN";
+		txtPIN.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtPIN.Click += txtLastName_Click;
+		((RadTextBoxControlElement)txtPIN.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPIN.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtCell, "txtCell");
-		((Control)(object)txtCell).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCell).Name = "txtCell";
-		((RadElement)((RadControl)txtCell).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCell).Click += txtLastName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCell).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCell).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCell.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCell.Name = "txtCell";
+		txtCell.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCell.Click += txtLastName_Click;
+		((RadTextBoxControlElement)txtCell.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtCell.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtHomePhone, "txtHomePhone");
-		((Control)(object)txtHomePhone).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtHomePhone).Name = "txtHomePhone";
-		((RadElement)((RadControl)txtHomePhone).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtHomePhone).Click += txtLastName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtHomePhone).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtHomePhone).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtHomePhone.ForeColor = Color.FromArgb(40, 40, 40);
+		txtHomePhone.Name = "txtHomePhone";
+		txtHomePhone.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtHomePhone.Click += txtLastName_Click;
+		((RadTextBoxControlElement)txtHomePhone.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtHomePhone.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtFirstName, "txtFirstName");
-		((Control)(object)txtFirstName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtFirstName).Name = "txtFirstName";
-		((RadElement)((RadControl)txtFirstName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtFirstName).Click += txtLastName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtFirstName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtFirstName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtFirstName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtFirstName.Name = "txtFirstName";
+		txtFirstName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtFirstName.Click += txtLastName_Click;
+		((RadTextBoxControlElement)txtFirstName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtFirstName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtLastName, "txtLastName");
-		((Control)(object)txtLastName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtLastName).Name = "txtLastName";
-		((RadElement)((RadControl)txtLastName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtLastName).Click += txtLastName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtLastName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtLastName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtLastName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtLastName.Name = "txtLastName";
+		txtLastName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtLastName.Click += txtLastName_Click;
+		((RadTextBoxControlElement)txtLastName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtLastName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(chkPinActive, "chkPinActive");
-		((Control)(object)chkPinActive).Name = "chkPinActive";
-		chkPinActive.set_OffText("NO");
-		chkPinActive.set_OnText("YES");
-		chkPinActive.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)chkPinActive).GetChildAt(0)).set_ThumbOffset(59);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkPinActive).GetChildAt(0)).set_BorderWidth(1f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPinActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPinActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPinActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkPinActive).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text1"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkPinActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkPinActive.Name = "chkPinActive";
+		chkPinActive.OffText = "NO";
+		chkPinActive.OnText = "YES";
+		chkPinActive.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)chkPinActive.GetChildAt(0)).ThumbOffset = 59;
+		((RadToggleSwitchElement)chkPinActive.GetChildAt(0)).BorderWidth = 1f;
+		((ToggleSwitchPartElement)chkPinActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkPinActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPinActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPinActive.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text1");
+		((ToggleSwitchPartElement)chkPinActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(chkEmployeeActive, "chkEmployeeActive");
-		((Control)(object)chkEmployeeActive).Name = "chkEmployeeActive";
-		chkEmployeeActive.set_OffText("NO");
-		chkEmployeeActive.set_OnText("YES");
-		chkEmployeeActive.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)chkEmployeeActive).GetChildAt(0)).set_ThumbOffset(52);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkEmployeeActive).GetChildAt(0)).set_BorderWidth(1f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEmployeeActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEmployeeActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEmployeeActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkEmployeeActive).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text2"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkEmployeeActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkEmployeeActive.Name = "chkEmployeeActive";
+		chkEmployeeActive.OffText = "NO";
+		chkEmployeeActive.OnText = "YES";
+		chkEmployeeActive.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)chkEmployeeActive.GetChildAt(0)).ThumbOffset = 52;
+		((RadToggleSwitchElement)chkEmployeeActive.GetChildAt(0)).BorderWidth = 1f;
+		((ToggleSwitchPartElement)chkEmployeeActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkEmployeeActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkEmployeeActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkEmployeeActive.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text2");
+		((ToggleSwitchPartElement)chkEmployeeActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		btnShowKeyboard_LastName.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_LastName.DialogResult = DialogResult.OK;
 		btnShowKeyboard_LastName.FlatAppearance.BorderColor = Color.Black;
@@ -773,24 +726,24 @@ public class frmAdminEmployees : frmMasterForm
 		btnSyncEmployeeToCloud.UseVisualStyleBackColor = false;
 		btnSyncEmployeeToCloud.Click += btnSyncEmployeeToCloud_Click;
 		componentResourceManager.ApplyResources(ddlRoles, "ddlRoles");
-		((Control)(object)ddlRoles).BackColor = Color.White;
-		((RadDropDownList)ddlRoles).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlRoles).set_EnableKineticScrolling(true);
-		((Control)(object)ddlRoles).Name = "ddlRoles";
-		((RadControl)ddlRoles).set_ThemeName("Windows8");
+		ddlRoles.BackColor = Color.White;
+		ddlRoles.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlRoles.EnableKineticScrolling = true;
+		ddlRoles.Name = "ddlRoles";
+		ddlRoles.ThemeName = "Windows8";
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;
 		BackColor = Color.FromArgb(35, 39, 56);
-		base.Controls.Add((Control)(object)ddlRoles);
+		base.Controls.Add(ddlRoles);
 		base.Controls.Add(btnSyncEmployeeToCloud);
-		base.Controls.Add((Control)(object)chkShowInActive);
-		base.Controls.Add((Control)(object)txtPIN);
-		base.Controls.Add((Control)(object)txtCell);
-		base.Controls.Add((Control)(object)txtHomePhone);
-		base.Controls.Add((Control)(object)txtFirstName);
-		base.Controls.Add((Control)(object)txtLastName);
-		base.Controls.Add((Control)(object)chkPinActive);
-		base.Controls.Add((Control)(object)chkEmployeeActive);
+		base.Controls.Add(chkShowInActive);
+		base.Controls.Add(txtPIN);
+		base.Controls.Add(txtCell);
+		base.Controls.Add(txtHomePhone);
+		base.Controls.Add(txtFirstName);
+		base.Controls.Add(txtLastName);
+		base.Controls.Add(chkPinActive);
+		base.Controls.Add(chkEmployeeActive);
 		base.Controls.Add(btnShowKeyboard_LastName);
 		base.Controls.Add(btnShowKeyboard_PIN);
 		base.Controls.Add(btnShowKeyboard_HomePhone);

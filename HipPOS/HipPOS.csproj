@@ -48,30 +48,58 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CorePOS.Business">
-      <HintPath>..\..\Hippos-de4dot\CorePOS.Business.dll</HintPath>
+      <HintPath>..\Hippos-bin\CorePOS.Business.dll</HintPath>
     </Reference>
     <Reference Include="CorePOS.Data">
-      <HintPath>..\..\Hippos-de4dot\CorePOS.Data.dll</HintPath>
+      <HintPath>..\Hippos-bin\CorePOS.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.UI" />
+    <Reference Include="Telerik.WinControls.UI">
+      <HintPath>..\Hippos-bin\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
-    <Reference Include="Vlc.DotNet.Forms" />
-    <Reference Include="Telerik.WinControls" />
-    <Reference Include="Telerik.WinControls.Themes.Windows8" />
-    <Reference Include="CloverConnector" />
-    <Reference Include="Vlc.DotNet.Core" />
+    <Reference Include="Vlc.DotNet.Forms">
+      <HintPath>..\Hippos-bin\Vlc.DotNet.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls">
+      <HintPath>..\Hippos-bin\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Windows8">
+      <HintPath>..\Hippos-bin\Telerik.WinControls.Themes.Windows8.dll</HintPath>
+    </Reference>
+    <Reference Include="CloverConnector">
+      <HintPath>..\Hippos-bin\CloverConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Core">
+      <HintPath>..\Hippos-bin\Vlc.DotNet.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="Traysoft.AddTapi" />
+    <Reference Include="Traysoft.AddTapi">
+      <HintPath>..\Hippos-bin\Traysoft.AddTapi.dll</HintPath>
+    </Reference>
     <Reference Include="System.ServiceProcess" />
-    <Reference Include="Microsoft.ReportViewer.WinForms" />
-    <Reference Include="CloverWindowsTransport" />
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>..\Hippos-bin\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="CloverWindowsTransport">
+      <HintPath>..\Hippos-bin\CloverWindowsTransport.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Linq" />
-    <Reference Include="Newtonsoft.Json" />
-    <Reference Include="CloverWindowsSDK" />
-    <Reference Include="UnitsNet" />
-    <Reference Include="Vlc.DotNet.Core.Interops" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Hippos-bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="CloverWindowsSDK">
+      <HintPath>..\Hippos-bin\CloverWindowsSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="UnitsNet">
+      <HintPath>..\Hippos-bin\UnitsNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Core.Interops">
+      <HintPath>..\Hippos-bin\Vlc.DotNet.Core.Interops.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
-    <Reference Include="DeviceId" />
+    <Reference Include="DeviceId">
+      <HintPath>..\Hippos-bin\DeviceId.dll</HintPath>
+    </Reference>
     <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
   </ItemGroup>

@@ -16,7 +16,6 @@ using CorePOS.CustomControls;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -599,7 +598,7 @@ public class frmStationTiles : frmMasterForm
 			lblCounter.Text = int_1.ToString();
 			await Task.Run(delegate
 			{
-				CS_0024_003C_003E8__locals0._003C_003E4__this.method_6(((Control)(object)CS_0024_003C_003E8__locals0._003C_003E4__this.txtSearchInfo).Text, CS_0024_003C_003E8__locals0._003C_003E4__this.cqvEnKpyg0, ref CS_0024_003C_003E8__locals0.isNotify, ref CS_0024_003C_003E8__locals0.isItemsCancelled, ref CS_0024_003C_003E8__locals0.isItemModified);
+				CS_0024_003C_003E8__locals0._003C_003E4__this.method_6(CS_0024_003C_003E8__locals0._003C_003E4__this.txtSearchInfo.Text, CS_0024_003C_003E8__locals0._003C_003E4__this.cqvEnKpyg0, ref CS_0024_003C_003E8__locals0.isNotify, ref CS_0024_003C_003E8__locals0.isItemsCancelled, ref CS_0024_003C_003E8__locals0.isItemModified);
 			});
 			CS_0024_003C_003E8__locals0.isNotify = list_2.Where((OrderChit x) => x.isUpdated).Count() > 0;
 		}
@@ -1001,17 +1000,17 @@ public class frmStationTiles : frmMasterForm
 
 	private void btnClearSearch_Click(object sender, EventArgs e)
 	{
-		((Control)(object)txtSearchInfo).Text = "";
+		txtSearchInfo.Text = "";
 		method_5();
 	}
 
 	private void btnShowKeyboard_SearchInfo_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Search Orders", 0, 49, ((Control)(object)txtSearchInfo).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Search Orders", 0, 49, txtSearchInfo.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSearchInfo).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtSearchInfo.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			base.DialogResult = DialogResult.None;
 		}
 	}
@@ -1040,10 +1039,6 @@ public class frmStationTiles : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_00a6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00b0: Expected O, but got Unknown
-		//IL_0a15: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a36: Unknown result type (might be due to invalid IL or missing references)
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmStationTiles));
 		timer_0 = new System.Windows.Forms.Timer(icontainer_1);
@@ -1096,7 +1091,7 @@ public class frmStationTiles : frmMasterForm
 		pnlMain.Controls.Add(btnOTFilter_DineIn);
 		pnlMain.Controls.Add(btnClearSearch);
 		pnlMain.Controls.Add(label3);
-		pnlMain.Controls.Add((Control)(object)txtSearchInfo);
+		pnlMain.Controls.Add(txtSearchInfo);
 		pnlMain.Controls.Add(btnShowKeyboard_SearchInfo);
 		pnlMain.Controls.Add(lblTraining);
 		pnlMain.Controls.Add(btnPutOrderOnHold);
@@ -1184,13 +1179,13 @@ public class frmStationTiles : frmMasterForm
 		label3.ForeColor = Color.White;
 		label3.Name = "label3";
 		componentResourceManager.ApplyResources(txtSearchInfo, "txtSearchInfo");
-		((Control)(object)txtSearchInfo).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtSearchInfo).Name = "txtSearchInfo";
-		((RadElement)((RadControl)txtSearchInfo).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSearchInfo).TextChanged += txtSearchInfo_TextChanged;
-		((Control)(object)txtSearchInfo).Click += btnShowKeyboard_SearchInfo_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSearchInfo).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSearchInfo).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSearchInfo.ForeColor = Color.FromArgb(40, 40, 40);
+		txtSearchInfo.Name = "txtSearchInfo";
+		txtSearchInfo.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSearchInfo.TextChanged += txtSearchInfo_TextChanged;
+		txtSearchInfo.Click += btnShowKeyboard_SearchInfo_Click;
+		((RadTextBoxControlElement)txtSearchInfo.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSearchInfo.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(btnShowKeyboard_SearchInfo, "btnShowKeyboard_SearchInfo");
 		btnShowKeyboard_SearchInfo.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_SearchInfo.DialogResult = DialogResult.OK;

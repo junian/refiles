@@ -144,11 +144,11 @@ public class ItemOptionControl : UserControl
 	{
 		get
 		{
-			return Convert.ToDecimal(string.IsNullOrEmpty(((Control)(object)inaJsyyrmO).Text) ? "0" : ((Control)(object)inaJsyyrmO).Text.Trim());
+			return Convert.ToDecimal(string.IsNullOrEmpty(inaJsyyrmO.Text) ? "0" : inaJsyyrmO.Text.Trim());
 		}
 		set
 		{
-			((Control)(object)inaJsyyrmO).Text = value.ToString("0.00");
+			inaJsyyrmO.Text = value.ToString("0.00");
 		}
 	}
 
@@ -156,11 +156,11 @@ public class ItemOptionControl : UserControl
 	{
 		get
 		{
-			return Convert.ToDecimal(string.IsNullOrEmpty(((Control)(object)txtQty).Text) ? "0" : ((Control)(object)txtQty).Text.Trim());
+			return Convert.ToDecimal(string.IsNullOrEmpty(txtQty.Text) ? "0" : txtQty.Text.Trim());
 		}
 		set
 		{
-			((Control)(object)txtQty).Text = value.ToString("0.0");
+			txtQty.Text = value.ToString("0.0");
 		}
 	}
 
@@ -199,10 +199,10 @@ public class ItemOptionControl : UserControl
 		ddlOptionGroup.DataSource = new BindingSource(groups, null);
 		Dictionary<string, string> dictionary = HelperMethods.ButtonColors();
 		dictionary.Remove("Red");
-		((RadDropDownList)ddlColors).set_DisplayMember("Key");
-		((RadDropDownList)ddlColors).set_ValueMember("Value");
-		((RadDropDownList)ddlColors).set_DataSource((object)new BindingSource(dictionary, null));
-		((RadDropDownList)ddlColors).set_SelectedValue((object)dictionary["Gray"]);
+		ddlColors.DisplayMember = "Key";
+		ddlColors.ValueMember = "Value";
+		ddlColors.DataSource = new BindingSource(dictionary, null);
+		ddlColors.SelectedValue = dictionary["Gray"];
 		method_0();
 		chkPreselect.CheckedChanged += chkPreselectOption_CheckedChanged;
 	}
@@ -222,12 +222,12 @@ public class ItemOptionControl : UserControl
 		_003C_003Ec__DisplayClass39_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass39_0();
 		CS_0024_003C_003E8__locals0._003C_003E4__this = this;
 		CS_0024_003C_003E8__locals0.Tab = Tab;
-		if (Convert.ToDecimal(string.IsNullOrEmpty(((Control)(object)inaJsyyrmO).Text) ? "0" : ((Control)(object)inaJsyyrmO).Text) > 1000m)
+		if (Convert.ToDecimal(string.IsNullOrEmpty(inaJsyyrmO.Text) ? "0" : inaJsyyrmO.Text) > 1000m)
 		{
 			new frmMessageBox("Price is too large.", "error").ShowDialog();
 			return;
 		}
-		if (Convert.ToDecimal(string.IsNullOrEmpty(((Control)(object)txtQty).Text) ? "0" : ((Control)(object)txtQty).Text) > 1000m)
+		if (Convert.ToDecimal(string.IsNullOrEmpty(txtQty.Text) ? "0" : txtQty.Text) > 1000m)
 		{
 			new frmMessageBox("Qty is too large.", "error").ShowDialog();
 			return;
@@ -269,11 +269,11 @@ public class ItemOptionControl : UserControl
 		}
 		itemsWithOption.GroupID = CS_0024_003C_003E8__locals0.groupID;
 		itemsWithOption.AllowAdditional = chkAllowAdditional.Checked;
-		itemsWithOption.Price = Convert.ToDecimal(string.IsNullOrEmpty(((Control)(object)inaJsyyrmO).Text) ? "0" : ((Control)(object)inaJsyyrmO).Text);
-		itemsWithOption.Qty = Convert.ToDecimal(string.IsNullOrEmpty(((Control)(object)txtQty).Text) ? "0" : ((Control)(object)txtQty).Text);
+		itemsWithOption.Price = Convert.ToDecimal(string.IsNullOrEmpty(inaJsyyrmO.Text) ? "0" : inaJsyyrmO.Text);
+		itemsWithOption.Qty = Convert.ToDecimal(string.IsNullOrEmpty(txtQty.Text) ? "0" : txtQty.Text);
 		itemsWithOption.Synced = false;
 		itemsWithOption.ToBeDeleted = false;
-		itemsWithOption.Color = ((RadDropDownList)ddlColors).get_SelectedValue().ToString();
+		itemsWithOption.Color = ddlColors.SelectedValue.ToString();
 		itemsWithOption.Preselect = chkPreselect.Checked;
 		itemsWithOption.GroupOrderTypes = GroupOrderTypes;
 		Helper.SubmitChangesWithCatch(gclass6_0);
@@ -323,21 +323,21 @@ public class ItemOptionControl : UserControl
 			chkInclude.Checked = true;
 			chkAllowAdditional.Checked = itemsWithOption.AllowAdditional;
 			chkPreselect.Checked = itemsWithOption.Preselect;
-			((Control)(object)inaJsyyrmO).Text = itemsWithOption.Price.ToString("0.00");
-			((Control)(object)txtQty).Text = itemsWithOption.Qty.ToString("0.0");
+			inaJsyyrmO.Text = itemsWithOption.Price.ToString("0.00");
+			txtQty.Text = itemsWithOption.Qty.ToString("0.0");
 			ddlOptionGroup.SelectedValue = itemsWithOption.GroupID.ToString();
 			string selectedValue = itemsWithOption.Color;
 			if (string.IsNullOrEmpty(itemsWithOption.Color))
 			{
 				selectedValue = HelperMethods.ButtonColors()["Gray"];
 			}
-			((RadDropDownList)ddlColors).set_SelectedValue((object)selectedValue);
+			ddlColors.SelectedValue = selectedValue;
 		}
 	}
 
 	public bool checkIfValueIsValid()
 	{
-		if (((Control)(object)inaJsyyrmO).Text != string.Empty && !decimal.TryParse(((Control)(object)inaJsyyrmO).Text, out var _))
+		if (inaJsyyrmO.Text != string.Empty && !decimal.TryParse(inaJsyyrmO.Text, out var _))
 		{
 			new NotificationLabel(base.ParentForm, Resources.Please_Input_a_valid_number_de + lblOptionName.Text + "\"", NotificationTypes.Notification).Show();
 			return false;
@@ -367,20 +367,20 @@ public class ItemOptionControl : UserControl
 	private void inaJsyyrmO_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Option_Price, 2, 8, ((Control)(object)inaJsyyrmO).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Option_Price, 2, 8, inaJsyyrmO.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)inaJsyyrmO).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString("0.00");
+			inaJsyyrmO.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString("0.00");
 		}
 	}
 
 	private void txtQty_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Option Qty, Enter 0 For Unlimited", 1, 3, ((Control)(object)txtQty).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Option Qty, Enter 0 For Unlimited", 1, 3, txtQty.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtQty).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString("0.0");
+			txtQty.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString("0.0");
 		}
 	}
 
@@ -395,22 +395,12 @@ public class ItemOptionControl : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_01c1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01dc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0208: Unknown result type (might be due to invalid IL or missing references)
-		//IL_033e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0359: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0385: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.ItemOptionControl));
 		this.lblOptionName = new System.Windows.Forms.Label();
-		this.inaJsyyrmO = new RadTextBoxControl();
+		this.inaJsyyrmO = new Telerik.WinControls.UI.RadTextBoxControl();
 		this.label1 = new System.Windows.Forms.Label();
 		this.label2 = new System.Windows.Forms.Label();
-		this.txtQty = new RadTextBoxControl();
+		this.txtQty = new Telerik.WinControls.UI.RadTextBoxControl();
 		this.ddlOptionGroup = new Class19();
 		this.chkAllowAdditional = new Class17();
 		this.chkInclude = new Class17();
@@ -426,34 +416,34 @@ public class ItemOptionControl : UserControl
 		this.lblOptionName.ForeColor = System.Drawing.Color.FromArgb(44, 44, 44);
 		this.lblOptionName.Name = "lblOptionName";
 		this.lblOptionName.UseMnemonic = false;
-		((System.Windows.Forms.Control)(object)this.inaJsyyrmO).BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
+		this.inaJsyyrmO.BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
 		resources.ApplyResources(this.inaJsyyrmO, "txtPrice");
-		((System.Windows.Forms.Control)(object)this.inaJsyyrmO).ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
-		((System.Windows.Forms.Control)(object)this.inaJsyyrmO).Name = "txtPrice";
-		((RadElement)((RadControl)this.inaJsyyrmO).get_RootElement()).set_MinSize(new System.Drawing.Size(65, 29));
-		((RadElement)((RadControl)this.inaJsyyrmO).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		this.inaJsyyrmO.set_TextAlign(System.Windows.Forms.HorizontalAlignment.Center);
-		((System.Windows.Forms.Control)(object)this.inaJsyyrmO).Click += new System.EventHandler(inaJsyyrmO_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.inaJsyyrmO).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(RadTextBoxControlElement)((RadControl)this.inaJsyyrmO).GetChildAt(0)).set_Padding((System.Windows.Forms.Padding)resources.GetObject("resource.Padding"));
-		((RadElement)(TextBoxViewElement)((RadControl)this.inaJsyyrmO).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.inaJsyyrmO.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
+		this.inaJsyyrmO.Name = "txtPrice";
+		this.inaJsyyrmO.RootElement.MinSize = new System.Drawing.Size(65, 29);
+		this.inaJsyyrmO.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.inaJsyyrmO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+		this.inaJsyyrmO.Click += new System.EventHandler(inaJsyyrmO_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.inaJsyyrmO.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.inaJsyyrmO.GetChildAt(0)).Padding = (System.Windows.Forms.Padding)resources.GetObject("resource.Padding");
+		((Telerik.WinControls.UI.TextBoxViewElement)this.inaJsyyrmO.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		this.label1.BackColor = System.Drawing.Color.White;
 		resources.ApplyResources(this.label1, "label1");
 		this.label1.Name = "label1";
 		this.label2.BackColor = System.Drawing.Color.White;
 		resources.ApplyResources(this.label2, "label2");
 		this.label2.Name = "label2";
-		((System.Windows.Forms.Control)(object)this.txtQty).BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
+		this.txtQty.BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
 		resources.ApplyResources(this.txtQty, "txtQty");
-		((System.Windows.Forms.Control)(object)this.txtQty).ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
-		((System.Windows.Forms.Control)(object)this.txtQty).Name = "txtQty";
-		((RadElement)((RadControl)this.txtQty).get_RootElement()).set_MinSize(new System.Drawing.Size(0, 0));
-		((RadElement)((RadControl)this.txtQty).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		this.txtQty.set_TextAlign(System.Windows.Forms.HorizontalAlignment.Center);
-		((System.Windows.Forms.Control)(object)this.txtQty).Click += new System.EventHandler(txtQty_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtQty).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(RadTextBoxControlElement)((RadControl)this.txtQty).GetChildAt(0)).set_Padding((System.Windows.Forms.Padding)resources.GetObject("resource.Padding1"));
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtQty).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtQty.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
+		this.txtQty.Name = "txtQty";
+		this.txtQty.RootElement.MinSize = new System.Drawing.Size(0, 0);
+		this.txtQty.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+		this.txtQty.Click += new System.EventHandler(txtQty_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtQty.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtQty.GetChildAt(0)).Padding = (System.Windows.Forms.Padding)resources.GetObject("resource.Padding1");
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtQty.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		this.ddlOptionGroup.BackColor = System.Drawing.Color.White;
 		this.ddlOptionGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
 		this.ddlOptionGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -473,23 +463,23 @@ public class ItemOptionControl : UserControl
 		this.chkPreselect.Name = "chkPreselect";
 		this.chkPreselect.UseVisualStyleBackColor = true;
 		resources.ApplyResources(this.ddlColors, "ddlColors");
-		((System.Windows.Forms.Control)(object)this.ddlColors).BackColor = System.Drawing.Color.White;
-		((RadDropDownList)this.ddlColors).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)this.ddlColors).set_EnableKineticScrolling(true);
-		((System.Windows.Forms.Control)(object)this.ddlColors).Name = "ddlColors";
-		((RadElement)((RadControl)this.ddlColors).get_RootElement()).set_MinSize(new System.Drawing.Size(0, 0));
-		((System.Windows.Forms.Control)(object)this.ddlColors).Tag = "product";
-		((RadControl)this.ddlColors).set_ThemeName("Windows8");
+		this.ddlColors.BackColor = System.Drawing.Color.White;
+		this.ddlColors.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+		this.ddlColors.EnableKineticScrolling = true;
+		this.ddlColors.Name = "ddlColors";
+		this.ddlColors.RootElement.MinSize = new System.Drawing.Size(0, 0);
+		this.ddlColors.Tag = "product";
+		this.ddlColors.ThemeName = "Windows8";
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 		this.BackColor = System.Drawing.Color.LightGray;
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.ddlColors);
+		base.Controls.Add(this.ddlColors);
 		base.Controls.Add(this.chkPreselect);
 		base.Controls.Add(this.label3);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtQty);
+		base.Controls.Add(this.txtQty);
 		base.Controls.Add(this.ddlOptionGroup);
 		base.Controls.Add(this.chkAllowAdditional);
 		base.Controls.Add(this.chkInclude);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.inaJsyyrmO);
+		base.Controls.Add(this.inaJsyyrmO);
 		base.Controls.Add(this.lblOptionName);
 		base.Controls.Add(this.label1);
 		base.Controls.Add(this.label2);

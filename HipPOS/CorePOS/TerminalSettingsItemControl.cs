@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.CommonForms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Traysoft.AddTapi;
 
@@ -50,20 +49,20 @@ public class TerminalSettingsItemControl : UserControl
 		ddlModemDevices.Items.Add("NONE");
 		try
 		{
-			TapiApp.set_SerialNumber("44HEA5M-Q5M9D5K-WPCI8O2-KOUQD");
+			TapiApp.SerialNumber = "44HEA5M-Q5M9D5K-WPCI8O2-KOUQD";
 			TapiApp.Initialize("CallerID");
 		}
 		catch
 		{
 		}
-		foreach (TapiLine line in TapiApp.get_Lines())
+		foreach (TapiLine line in TapiApp.Lines)
 		{
-			ddlModemDevices.Items.Add(line.get_Name());
+			ddlModemDevices.Items.Add(line.Name);
 		}
 		if (terminal != null)
 		{
 			lblDeviceName.Text = terminal.SystemName;
-			((Control)(object)txtProductKey).Text = terminal.ProductKey;
+			txtProductKey.Text = terminal.ProductKey;
 			lblDefaultOrderTypes.Text = terminal.DefaultOrderTypes;
 			ddlModemDevices.Text = terminal.PhoneModemDeviceName;
 			lblIP.Text = terminal.PaymentTerminalAddress;
@@ -89,12 +88,12 @@ public class TerminalSettingsItemControl : UserControl
 
 	private void txtProductKey_Click(object sender, EventArgs e)
 	{
-		RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
+		RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Enter " + ((Control)(object)val).Tag.ToString(), 0, 50, ((Control)(object)val).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Enter " + radTextBoxControl.Tag.ToString(), 0, 50, radTextBoxControl.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)val).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			radTextBoxControl.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 	}
 
@@ -119,7 +118,7 @@ public class TerminalSettingsItemControl : UserControl
 			}
 		}
 		terminal_0.SystemName = lblDeviceName.Text.ToUpper();
-		terminal_0.ProductKey = ((Control)(object)txtProductKey).Text.ToUpper();
+		terminal_0.ProductKey = txtProductKey.Text.ToUpper();
 		terminal_0.DefaultOrderTypes = lblDefaultOrderTypes.Text;
 		terminal_0.Status = "active";
 	}
@@ -179,12 +178,8 @@ public class TerminalSettingsItemControl : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_0011: Unknown result type (might be due to invalid IL or missing references)
-		//IL_001b: Expected O, but got Unknown
-		//IL_012d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_014e: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager componentResourceManager = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.TerminalSettingsItemControl));
-		this.txtProductKey = new RadTextBoxControl();
+		this.txtProductKey = new Telerik.WinControls.UI.RadTextBoxControl();
 		this.btnRemove = new System.Windows.Forms.PictureBox();
 		this.lblIP = new System.Windows.Forms.Label();
 		this.lblDefaultOrderTypes = new System.Windows.Forms.Label();
@@ -197,15 +192,15 @@ public class TerminalSettingsItemControl : UserControl
 		((System.ComponentModel.ISupportInitialize)this.imgSetupPayment).BeginInit();
 		((System.ComponentModel.ISupportInitialize)this.imgSetupOrderTypes).BeginInit();
 		base.SuspendLayout();
-		((System.Windows.Forms.Control)(object)this.txtProductKey).BackColor = System.Drawing.Color.White;
+		this.txtProductKey.BackColor = System.Drawing.Color.White;
 		componentResourceManager.ApplyResources(this.txtProductKey, "txtProductKey");
-		((System.Windows.Forms.Control)(object)this.txtProductKey).ForeColor = System.Drawing.SystemColors.ControlText;
-		((System.Windows.Forms.Control)(object)this.txtProductKey).Name = "txtProductKey";
-		((RadElement)((RadControl)this.txtProductKey).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((System.Windows.Forms.Control)(object)this.txtProductKey).Tag = "Product Key";
-		((System.Windows.Forms.Control)(object)this.txtProductKey).Click += new System.EventHandler(txtProductKey_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtProductKey).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtProductKey).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtProductKey.ForeColor = System.Drawing.SystemColors.ControlText;
+		this.txtProductKey.Name = "txtProductKey";
+		this.txtProductKey.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtProductKey.Tag = "Product Key";
+		this.txtProductKey.Click += new System.EventHandler(txtProductKey_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtProductKey.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtProductKey.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		this.btnRemove.BackColor = System.Drawing.Color.Transparent;
 		componentResourceManager.ApplyResources(this.btnRemove, "btnRemove");
 		this.btnRemove.Name = "btnRemove";
@@ -248,7 +243,7 @@ public class TerminalSettingsItemControl : UserControl
 		base.Controls.Add(this.lblDefaultOrderTypes);
 		base.Controls.Add(this.lblIP);
 		base.Controls.Add(this.btnRemove);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtProductKey);
+		base.Controls.Add(this.txtProductKey);
 		componentResourceManager.ApplyResources(this, "$this");
 		base.Name = "TerminalSettingsItemControl";
 		base.Load += new System.EventHandler(TerminalSettingsItemControl_Load);

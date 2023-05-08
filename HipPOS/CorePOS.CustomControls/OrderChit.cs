@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
@@ -405,7 +404,7 @@ public class OrderChit : UserControl
 		{
 			if (value)
 			{
-				transparentLabel_0.TransparentBackColor = ColorPalette.Mariner;
+				transparentLabel_0.TransparentBackColor = CorePOS.Business.Enums.ColorPalette.Mariner;
 				transparentLabel_0.Opacity = 50;
 				bool_4 = true;
 			}
@@ -458,7 +457,7 @@ public class OrderChit : UserControl
 			return;
 		}
 		bool_3 = ((SettingsHelper.GetSettingValueByKey("confirm_online_orders") == "ON") ? true : false);
-		_ = ((Control)(object)customListViewTelerik_0).Height;
+		_ = customListViewTelerik_0.Height;
 		isUpdated = false;
 		isItemCancelled = false;
 		isItemChanged = false;
@@ -501,7 +500,7 @@ public class OrderChit : UserControl
 				{
 					Invoke((MethodInvoker)delegate
 					{
-						((Component)(object)CS_0024_003C_003E8__locals0._003C_003E4__this.customListViewTelerik_0).Dispose();
+						CS_0024_003C_003E8__locals0._003C_003E4__this.customListViewTelerik_0.Dispose();
 						CS_0024_003C_003E8__locals0._003C_003E4__this.Dispose();
 					});
 				}
@@ -525,8 +524,8 @@ public class OrderChit : UserControl
 					{
 						panel.Width = CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.Width;
 					}
-					((RadListView)CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).get_Items().Clear();
-					((RadListView)CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).set_ItemSize(new Size(0, (int)(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize * 2.75f)));
+					CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items.Clear();
+					CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.ItemSize = new Size(0, (int)(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize * 2.75f));
 				});
 				CS_0024_003C_003E8__locals4.listHeight = 50;
 				CS_0024_003C_003E8__locals4.formsHelper = new FormHelper();
@@ -610,9 +609,8 @@ public class OrderChit : UserControl
 									{
 										try
 										{
-											CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.formsHelper.subAddItemsToStationChitTelerik((RadListView)(object)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0, "", CS_0024_003C_003E8__locals1.c1, CS_0024_003C_003E8__locals1.c2, CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.mainItemOrder.Void, CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.mainItemOrder.ItemIdentifier, CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize);
-											CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight + ((RadListView)CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).get_Items().get_Item(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row).get_ActualSize()
-												.Height;
+											CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.formsHelper.subAddItemsToStationChitTelerik(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0, "", CS_0024_003C_003E8__locals1.c1, CS_0024_003C_003E8__locals1.c2, CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.mainItemOrder.Void, CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.mainItemOrder.ItemIdentifier, CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize);
+											CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight = CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight + CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items[CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row].ActualSize.Height;
 											CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.mainItemShowed.Add(CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals5.mainItemOrder.OrderId.ToString());
 										}
 										catch
@@ -642,9 +640,8 @@ public class OrderChit : UserControl
 							{
 								try
 								{
-									CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.formsHelper.subAddItemsToStationChitTelerik((RadListView)(object)CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0, "", CS_0024_003C_003E8__locals5.col1, CS_0024_003C_003E8__locals5.col2, CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.order.Void, CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.order.ItemIdentifier, CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize);
-									CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight = CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight + ((RadListView)CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).get_Items().get_Item(CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row).get_ActualSize()
-										.Height;
+									CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.formsHelper.subAddItemsToStationChitTelerik(CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0, "", CS_0024_003C_003E8__locals5.col1, CS_0024_003C_003E8__locals5.col2, CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.order.Void, CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.order.ItemIdentifier, CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize);
+									CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight = CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight + CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items[CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row].ActualSize.Height;
 								}
 								catch
 								{
@@ -666,12 +663,11 @@ public class OrderChit : UserControl
 								{
 									if (!CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.formsHelper.IsDisposed)
 									{
-										CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.formsHelper.subAddItemsToTakeoutChitTelerik((RadListView)(object)CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0, "", CS_0024_003C_003E8__locals2.col1, CS_0024_003C_003E8__locals2.col2, CS_0024_003C_003E8__locals2.col3, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.order.ComboID, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.order.Void, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.order.ItemIdentifier, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize);
+										CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.formsHelper.subAddItemsToTakeoutChitTelerik(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0, "", CS_0024_003C_003E8__locals2.col1, CS_0024_003C_003E8__locals2.col2, CS_0024_003C_003E8__locals2.col3, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.order.ComboID, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.order.Void, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.order.ItemIdentifier, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize);
 									}
-									if (!((Control)(object)CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).IsDisposed)
+									if (!CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.IsDisposed)
 									{
-										CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.listHeight = CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.listHeight + ((RadListView)CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).get_Items().get_Item(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.row).get_ActualSize()
-											.Height;
+										CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.listHeight = CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.listHeight + CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items[CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.row].ActualSize.Height;
 									}
 								}
 								catch
@@ -704,11 +700,11 @@ public class OrderChit : UserControl
 						}
 					}
 				}
-				if (((RadListView)customListViewTelerik_0).get_Items().get_Count() == 0)
+				if (customListViewTelerik_0.Items.Count == 0)
 				{
 					Invoke((MethodInvoker)delegate
 					{
-						((Component)(object)CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).Dispose();
+						CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Dispose();
 						CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.Dispose();
 					});
 					return;
@@ -720,19 +716,19 @@ public class OrderChit : UserControl
 				}
 				Invoke((MethodInvoker)delegate
 				{
-					Size size3 = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_0.Size = (((Control)(object)CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).Size = new Size(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.Width, CS_0024_003C_003E8__locals4.listHeight)));
-					if (((RadListView)CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).get_Items().get_Count() > 0)
+					Size size3 = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_0.Size = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Size = new Size(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.Width, CS_0024_003C_003E8__locals4.listHeight)));
+					if (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items.Count > 0)
 					{
-						((RadListView)CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).set_SelectedIndex(0);
+						CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.SelectedIndex = 0;
 					}
-					((RadListView)CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).get_SelectedItems().Clear();
+					CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.SelectedItems.Clear();
 					if (CS_0024_003C_003E8__locals4.firstOrder.OrderType == OrderTypes.Catering)
 					{
 						List<ProcessorPaymentType> paymentTypes = PaymentTypeMethods.GetPaymentTypes(CS_0024_003C_003E8__locals4.firstOrder.PaymentMethods);
 						decimal num3 = paymentTypes.Sum((ProcessorPaymentType a) => a.Amount);
 						decimal num4 = CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.TotalTotal - paymentTypes.Sum((ProcessorPaymentType a) => a.Amount);
 						CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_2.Text = "DEPOSIT/Paid: $" + num3 + "\nBALANCE: $" + num4.ToString("0.00");
-						CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_2.Location = new Point(0, ((Control)(object)CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).Bottom - CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_2.Size.Height);
+						CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_2.Location = new Point(0, CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Bottom - CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_2.Size.Height);
 					}
 				});
 				if (label_0 != null)
@@ -744,7 +740,7 @@ public class OrderChit : UserControl
 					{
 						Invoke((MethodInvoker)delegate
 						{
-							((Component)(object)CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).Dispose();
+							CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Dispose();
 							CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.Dispose();
 						});
 						return;
@@ -856,10 +852,10 @@ public class OrderChit : UserControl
 								CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.ClickLabel.Tag = string.Join("|", array);
 							}
 						}
-						CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.Height = ((Control)(object)CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).Height + 35 + CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.label_0.Height;
+						CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.Height = CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Height + 35 + CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.label_0.Height;
 						if (CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 != ScreenType.station)
 						{
-							CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Location = new Point(((Control)(object)CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).Right - CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Size.Width - 10, ((Control)(object)CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).Top - CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Size.Height + 3);
+							CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Location = new Point(CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Right - CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Size.Width - 10, CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Top - CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Size.Height + 3);
 						}
 						else
 						{
@@ -871,7 +867,7 @@ public class OrderChit : UserControl
 				{
 					Invoke((MethodInvoker)delegate
 					{
-						CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.Height = ((Control)(object)CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0).Height + 35;
+						CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.Height = CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Height + 35;
 					});
 				}
 				Invoke((MethodInvoker)delegate
@@ -963,14 +959,6 @@ public class OrderChit : UserControl
 
 	private void method_1(string string_9)
 	{
-		//IL_09d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09df: Expected O, but got Unknown
-		//IL_09fe: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a05: Expected O, but got Unknown
-		//IL_0a86: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a8d: Expected O, but got Unknown
-		//IL_0ba5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0baf: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass109_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass109_0();
 		CS_0024_003C_003E8__locals0.orderNumber = string_9;
 		CS_0024_003C_003E8__locals0._003C_003E4__this = this;
@@ -1079,7 +1067,7 @@ public class OrderChit : UserControl
 		{
 			CS_0024_003C_003E8__locals0.headerlabel.Text = "*PAID* " + CS_0024_003C_003E8__locals0.headerlabel.Text.ToUpper();
 		}
-		CS_0024_003C_003E8__locals0.headerlabel.Name = "header" + ((Control)(object)CS_0024_003C_003E8__locals0.listView).Name.ToUpper();
+		CS_0024_003C_003E8__locals0.headerlabel.Name = "header" + CS_0024_003C_003E8__locals0.listView.Name.ToUpper();
 		Invoke((MethodInvoker)delegate
 		{
 			CS_0024_003C_003E8__locals0._003C_003E4__this.Controls.Add(CS_0024_003C_003E8__locals0.headerlabel);
@@ -1115,7 +1103,7 @@ public class OrderChit : UserControl
 		}
 		CS_0024_003C_003E8__locals0.lblOrderNum.TextAlign = ContentAlignment.MiddleLeft;
 		CS_0024_003C_003E8__locals0.lblOrderNum.ForeColor = Color.White;
-		CS_0024_003C_003E8__locals0.lblOrderNum.Name = "lblOrderNum" + ((Control)(object)CS_0024_003C_003E8__locals0.listView).Name;
+		CS_0024_003C_003E8__locals0.lblOrderNum.Name = "lblOrderNum" + CS_0024_003C_003E8__locals0.listView.Name;
 		CS_0024_003C_003E8__locals0.lblOrderNum.Padding = new Padding(10, 0, 0, 0);
 		CS_0024_003C_003E8__locals0.lblOrderNum.Font = new Font("Arial", HeaderLabelFontSize, FontStyle.Bold);
 		Invoke((MethodInvoker)delegate
@@ -1130,7 +1118,7 @@ public class OrderChit : UserControl
 		CS_0024_003C_003E8__locals0.lblCustomer.ForeColor = Color.Maroon;
 		CS_0024_003C_003E8__locals0.lblCustomer.BackColor = Color.LightGray;
 		CS_0024_003C_003E8__locals0.lblCustomer.Font = new Font("Arial", FooterLabelFontSize + 2f, FontStyle.Bold);
-		CS_0024_003C_003E8__locals0.lblCustomer.Name = "lblCustomer" + ((Control)(object)CS_0024_003C_003E8__locals0.listView).Name;
+		CS_0024_003C_003E8__locals0.lblCustomer.Name = "lblCustomer" + CS_0024_003C_003E8__locals0.listView.Name;
 		CS_0024_003C_003E8__locals0.lblCustomer.Padding = new Padding(5, 5, 5, 5);
 		if (!bool_5)
 		{
@@ -1145,7 +1133,7 @@ public class OrderChit : UserControl
 		CS_0024_003C_003E8__locals0.lblTimer.ForeColor = Color.Black;
 		CS_0024_003C_003E8__locals0.lblTimer.BackColor = Color.LightGray;
 		CS_0024_003C_003E8__locals0.lblTimer.Font = new Font("Arial", FooterLabelFontSize, FontStyle.Bold);
-		CS_0024_003C_003E8__locals0.lblTimer.Name = "lblTimer" + ((Control)(object)CS_0024_003C_003E8__locals0.listView).Name;
+		CS_0024_003C_003E8__locals0.lblTimer.Name = "lblTimer" + CS_0024_003C_003E8__locals0.listView.Name;
 		CS_0024_003C_003E8__locals0.lblTimer.Padding = new Padding(5, 5, 5, 5);
 		CS_0024_003C_003E8__locals0.lblTimer.AutoSize = true;
 		CS_0024_003C_003E8__locals0.lblTimer.Location = new Point(CS_0024_003C_003E8__locals0.lblCustomer.Location.X + CS_0024_003C_003E8__locals0.lblCustomer.Size.Width - CS_0024_003C_003E8__locals0.lblTimer.Width, CS_0024_003C_003E8__locals0.lblCustomer.Location.Y);
@@ -1162,54 +1150,56 @@ public class OrderChit : UserControl
 			CS_0024_003C_003E8__locals0._003C_003E4__this.label_0 = CS_0024_003C_003E8__locals0.lblCustomer;
 			CS_0024_003C_003E8__locals0._003C_003E4__this.label_3 = CS_0024_003C_003E8__locals0.lblTimer;
 		});
-		((Control)(object)CS_0024_003C_003E8__locals0.listView).Location = new Point(CS_0024_003C_003E8__locals0.lblCustomer.Location.X, CS_0024_003C_003E8__locals0.lblCustomer.Location.Y + CS_0024_003C_003E8__locals0.lblCustomer.Size.Height);
-		((Control)(object)CS_0024_003C_003E8__locals0.listView).Name = CS_0024_003C_003E8__locals0.orderNumber.ToString();
-		((Control)(object)CS_0024_003C_003E8__locals0.listView).Tag = OrderType + "|" + text + "|" + customerInfoPhone + "|" + customerInfoName + "|" + customerInfo;
+		CS_0024_003C_003E8__locals0.listView.Location = new Point(CS_0024_003C_003E8__locals0.lblCustomer.Location.X, CS_0024_003C_003E8__locals0.lblCustomer.Location.Y + CS_0024_003C_003E8__locals0.lblCustomer.Size.Height);
+		CS_0024_003C_003E8__locals0.listView.Name = CS_0024_003C_003E8__locals0.orderNumber.ToString();
+		CS_0024_003C_003E8__locals0.listView.Tag = OrderType + "|" + text + "|" + customerInfoPhone + "|" + customerInfoName + "|" + customerInfo;
 		string items = Resources.Items;
-		ListViewDetailColumn val = new ListViewDetailColumn("Qty", "Qty");
-		val.set_Width(40f);
-		((Collection<ListViewDetailColumn>)(object)((RadListView)CS_0024_003C_003E8__locals0.listView).get_Columns()).Add(val);
-		ListViewDetailColumn val2 = new ListViewDetailColumn(items, items);
-		val2.set_Width((float)(base.Width - 50));
+		ListViewDetailColumn item = new ListViewDetailColumn("Qty", "Qty")
+		{
+			Width = 40f
+		};
+		CS_0024_003C_003E8__locals0.listView.Columns.Add(item);
+		ListViewDetailColumn listViewDetailColumn = new ListViewDetailColumn(items, items);
+		listViewDetailColumn.Width = base.Width - 50;
 		if (string_8 != ScreenType.station)
 		{
-			val2.set_Width((float)(base.Width - 100));
+			listViewDetailColumn.Width = base.Width - 100;
 		}
-		((Collection<ListViewDetailColumn>)(object)((RadListView)CS_0024_003C_003E8__locals0.listView).get_Columns()).Add(val2);
-		((RadListView)CS_0024_003C_003E8__locals0.listView).set_ItemSize(new Size(0, 50));
-		((RadListView)CS_0024_003C_003E8__locals0.listView).set_AllowArbitraryItemHeight(true);
+		CS_0024_003C_003E8__locals0.listView.Columns.Add(listViewDetailColumn);
+		CS_0024_003C_003E8__locals0.listView.ItemSize = new Size(0, 50);
+		CS_0024_003C_003E8__locals0.listView.AllowArbitraryItemHeight = true;
 		if (string_8 != ScreenType.station)
 		{
-			ListViewDetailColumn val3 = new ListViewDetailColumn("Price", "Price");
-			val3.set_Width(50f);
-			((Collection<ListViewDetailColumn>)(object)((RadListView)CS_0024_003C_003E8__locals0.listView).get_Columns()).Add(val3);
+			ListViewDetailColumn listViewDetailColumn2 = new ListViewDetailColumn("Price", "Price");
+			listViewDetailColumn2.Width = 50f;
+			CS_0024_003C_003E8__locals0.listView.Columns.Add(listViewDetailColumn2);
 		}
-		((RadListView)CS_0024_003C_003E8__locals0.listView).set_ViewType((ListViewType)2);
-		((ScrollableControl)(object)CS_0024_003C_003E8__locals0.listView).AutoScroll = false;
-		((RadListView)CS_0024_003C_003E8__locals0.listView).get_ListViewElement().set_HorizontalScrollState((ScrollState)2);
-		((ScrollableControl)(object)CS_0024_003C_003E8__locals0.listView).AutoScroll = true;
-		((RadListView)CS_0024_003C_003E8__locals0.listView).set_MultiSelect(false);
-		((RadListView)CS_0024_003C_003E8__locals0.listView).set_FullRowSelect(true);
-		((RadListView)CS_0024_003C_003E8__locals0.listView).set_ShowGridLines(true);
+		CS_0024_003C_003E8__locals0.listView.ViewType = ListViewType.DetailsView;
+		CS_0024_003C_003E8__locals0.listView.AutoScroll = false;
+		CS_0024_003C_003E8__locals0.listView.ListViewElement.HorizontalScrollState = ScrollState.AlwaysHide;
+		CS_0024_003C_003E8__locals0.listView.AutoScroll = true;
+		CS_0024_003C_003E8__locals0.listView.MultiSelect = false;
+		CS_0024_003C_003E8__locals0.listView.FullRowSelect = true;
+		CS_0024_003C_003E8__locals0.listView.ShowGridLines = true;
 		int num2 = num * 35;
 		num2 = ((num2 > 140) ? num2 : 140);
-		((Control)(object)CS_0024_003C_003E8__locals0.listView).Size = new Size(base.Width, num2);
-		((Control)(object)CS_0024_003C_003E8__locals0.listView).MouseUp += method_4;
-		((Control)(object)CS_0024_003C_003E8__locals0.listView).Font = new Font(((Control)(object)CS_0024_003C_003E8__locals0.listView).Font.FontFamily, FontSize, FontStyle.Regular);
-		((ScrollableControl)(object)CS_0024_003C_003E8__locals0.listView).AutoScroll = false;
-		((RadListView)CS_0024_003C_003E8__locals0.listView).set_EnableKineticScrolling(false);
-		((RadListView)CS_0024_003C_003E8__locals0.listView).set_VerticalScrollState((ScrollState)2);
-		((RadListView)CS_0024_003C_003E8__locals0.listView).add_CellFormatting(new ListViewCellFormattingEventHandler(method_3));
+		CS_0024_003C_003E8__locals0.listView.Size = new Size(base.Width, num2);
+		CS_0024_003C_003E8__locals0.listView.MouseUp += method_4;
+		CS_0024_003C_003E8__locals0.listView.Font = new Font(CS_0024_003C_003E8__locals0.listView.Font.FontFamily, FontSize, FontStyle.Regular);
+		CS_0024_003C_003E8__locals0.listView.AutoScroll = false;
+		CS_0024_003C_003E8__locals0.listView.EnableKineticScrolling = false;
+		CS_0024_003C_003E8__locals0.listView.VerticalScrollState = ScrollState.AlwaysHide;
+		CS_0024_003C_003E8__locals0.listView.CellFormatting += method_3;
 		Invoke((MethodInvoker)delegate
 		{
-			CS_0024_003C_003E8__locals0._003C_003E4__this.Controls.Add((Control)(object)CS_0024_003C_003E8__locals0.listView);
-			((Control)(object)CS_0024_003C_003E8__locals0.listView).BringToFront();
+			CS_0024_003C_003E8__locals0._003C_003E4__this.Controls.Add(CS_0024_003C_003E8__locals0.listView);
+			CS_0024_003C_003E8__locals0.listView.BringToFront();
 			CS_0024_003C_003E8__locals0._003C_003E4__this.customListViewTelerik_0 = CS_0024_003C_003E8__locals0.listView;
 		});
 		CS_0024_003C_003E8__locals0.lblTotal = new TransparentLabel();
 		CS_0024_003C_003E8__locals0.lblTotal.Size = new Size(base.Size.Width * 3 / 4, 35);
 		CS_0024_003C_003E8__locals0.lblTotal.Font = new Font("Arial", FontSize + 2f, FontStyle.Bold);
-		CS_0024_003C_003E8__locals0.lblTotal.Location = new Point(((Control)(object)customListViewTelerik_0).Right - CS_0024_003C_003E8__locals0.lblTotal.Size.Width - 10, ((Control)(object)customListViewTelerik_0).Top - CS_0024_003C_003E8__locals0.lblTotal.Size.Height + 3);
+		CS_0024_003C_003E8__locals0.lblTotal.Location = new Point(customListViewTelerik_0.Right - CS_0024_003C_003E8__locals0.lblTotal.Size.Width - 10, customListViewTelerik_0.Top - CS_0024_003C_003E8__locals0.lblTotal.Size.Height + 3);
 		CS_0024_003C_003E8__locals0.lblTotal.TextAlign = ContentAlignment.BottomRight;
 		CS_0024_003C_003E8__locals0.lblTotal.textAlign = StringAlignment.Far;
 		CS_0024_003C_003E8__locals0.lblTotal.ForeColor = Color.Black;
@@ -1241,8 +1231,8 @@ public class OrderChit : UserControl
 		CS_0024_003C_003E8__locals0.tlbl.TransparentBackColor = Color.White;
 		CS_0024_003C_003E8__locals0.tlbl.Opacity = 0;
 		CS_0024_003C_003E8__locals0.tlbl.Font = new Font("Arial", 25f, FontStyle.Bold);
-		CS_0024_003C_003E8__locals0.tlbl.Size = ((Control)(object)customListViewTelerik_0).Size;
-		Point point2 = (CS_0024_003C_003E8__locals0.tlbl.Location = (ClickLabel.Location = ((Control)(object)customListViewTelerik_0).Location));
+		CS_0024_003C_003E8__locals0.tlbl.Size = customListViewTelerik_0.Size;
+		Point point2 = (CS_0024_003C_003E8__locals0.tlbl.Location = (ClickLabel.Location = customListViewTelerik_0.Location));
 		Invoke((MethodInvoker)delegate
 		{
 			CS_0024_003C_003E8__locals0._003C_003E4__this.Controls.Add(CS_0024_003C_003E8__locals0.tlbl);
@@ -1256,7 +1246,7 @@ public class OrderChit : UserControl
 			CS_0024_003C_003E8__locals1.lblCateringInfo = new TransparentLabel();
 			CS_0024_003C_003E8__locals1.lblCateringInfo.Size = new Size(base.Size.Width, 50);
 			CS_0024_003C_003E8__locals1.lblCateringInfo.Font = new Font("Arial", FontSize + 2f, FontStyle.Bold);
-			CS_0024_003C_003E8__locals1.lblCateringInfo.Location = new Point(0, ((Control)(object)customListViewTelerik_0).Bottom - CS_0024_003C_003E8__locals1.lblCateringInfo.Size.Height);
+			CS_0024_003C_003E8__locals1.lblCateringInfo.Location = new Point(0, customListViewTelerik_0.Bottom - CS_0024_003C_003E8__locals1.lblCateringInfo.Size.Height);
 			CS_0024_003C_003E8__locals1.lblCateringInfo.TextAlign = ContentAlignment.MiddleLeft;
 			CS_0024_003C_003E8__locals1.lblCateringInfo.textAlign = StringAlignment.Near;
 			CS_0024_003C_003E8__locals1.lblCateringInfo.ForeColor = Color.Black;
@@ -1287,9 +1277,9 @@ public class OrderChit : UserControl
 
 	private void method_3(object sender, ListViewCellFormattingEventArgs e)
 	{
-		if (e.get_CellElement().get_Data().get_HeaderText() == "Price" && e.get_CellElement() is DetailListViewDataCellElement)
+		if (e.CellElement.Data.HeaderText == "Price" && e.CellElement is DetailListViewDataCellElement)
 		{
-			((LightVisualElement)e.get_CellElement()).set_TextAlignment(ContentAlignment.MiddleRight);
+			e.CellElement.TextAlignment = ContentAlignment.MiddleRight;
 		}
 	}
 

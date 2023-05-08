@@ -18,15 +18,7 @@ public class CloverUtils
 
 	public static CloverDeviceConfiguration GetNetworkConfiguration()
 	{
-		//IL_001e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0036: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0040: Expected O, but got Unknown
-		//IL_0040: Expected O, but got Unknown
-		//IL_0040: Expected O, but got Unknown
-		//IL_003b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0041: Expected O, but got Unknown
-		return (CloverDeviceConfiguration)new WebSocketCloverDeviceConfiguration("ws://192.168.2.131:9999/remote_pay", "VDQT4YQP13E2C", false, 1, "HipPOS", "C042UQ83950245", (string)null, new OnPairingCodeHandler(OnPairingCode), new OnPairingSuccessHandler(OnPairingSuccess), new OnPairingStateHandler(OnPairingState));
+		return new WebSocketCloverDeviceConfiguration("ws://192.168.2.131:9999/remote_pay", "VDQT4YQP13E2C", enableLogging: false, 1, "HipPOS", "C042UQ83950245", null, OnPairingCode, OnPairingSuccess, OnPairingState);
 	}
 
 	public static void OnPairingCode(string pairingCode)

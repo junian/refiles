@@ -8,7 +8,6 @@ using CorePOS.Business.Methods;
 using CorePOS.Business.Objects;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -77,19 +76,19 @@ public class frmSettingsEmail : frmMasterForm
 	private void frmSettingsEmail_Load(object sender, EventArgs e)
 	{
 		list_2 = gclass6_0.Settings.Where((Setting s) => s.Key.Contains("smtp")).ToList();
-		((Control)(object)txtServer).Text = list_2.Where((Setting s) => s.Key == "smtp_server").FirstOrDefault().Value;
-		((Control)(object)txtUsername).Text = list_2.Where((Setting s) => s.Key == "smtp_username").FirstOrDefault().Value;
-		((Control)(object)txtPort).Text = list_2.Where((Setting s) => s.Key == "smtp_port").FirstOrDefault().Value;
-		radToggleSwitch_0.set_Value(Convert.ToBoolean(list_2.Where((Setting s) => s.Key == "smtp_use_ssl").FirstOrDefault().Value));
-		if (((Control)(object)txtServer).Text.ToLower().Contains("gmail"))
+		txtServer.Text = list_2.Where((Setting s) => s.Key == "smtp_server").FirstOrDefault().Value;
+		txtUsername.Text = list_2.Where((Setting s) => s.Key == "smtp_username").FirstOrDefault().Value;
+		txtPort.Text = list_2.Where((Setting s) => s.Key == "smtp_port").FirstOrDefault().Value;
+		radToggleSwitch_0.Value = Convert.ToBoolean(list_2.Where((Setting s) => s.Key == "smtp_use_ssl").FirstOrDefault().Value);
+		if (txtServer.Text.ToLower().Contains("gmail"))
 		{
 			ddlEmailServices.Text = "Gmail";
 		}
-		else if (((Control)(object)txtServer).Text.ToLower().Contains("yahoo"))
+		else if (txtServer.Text.ToLower().Contains("yahoo"))
 		{
 			ddlEmailServices.Text = "Yahoo";
 		}
-		else if (((Control)(object)txtServer).Text.ToLower().Contains("outlook"))
+		else if (txtServer.Text.ToLower().Contains("outlook"))
 		{
 			ddlEmailServices.Text = "Hotmail/Outlook";
 		}
@@ -100,8 +99,8 @@ public class frmSettingsEmail : frmMasterForm
 		string text = StringCipher.Decrypt(list_2.Where((Setting s) => s.Key == "smtp_password").FirstOrDefault().Value, "DigitalCraftHipPOS");
 		if (text == "false")
 		{
-			((Control)(object)txtPassword).Text = list_2.Where((Setting s) => s.Key == "smtp_password").FirstOrDefault().Value;
-			string value = StringCipher.Encrypt(((Control)(object)txtPassword).Text, "DigitalCraftHipPOS");
+			txtPassword.Text = list_2.Where((Setting s) => s.Key == "smtp_password").FirstOrDefault().Value;
+			string value = StringCipher.Encrypt(txtPassword.Text, "DigitalCraftHipPOS");
 			list_2.Where((Setting s) => s.Key == "smtp_password").FirstOrDefault().Value = value;
 			try
 			{
@@ -114,7 +113,7 @@ public class frmSettingsEmail : frmMasterForm
 		}
 		else
 		{
-			((Control)(object)txtPassword).Text = text;
+			txtPassword.Text = text;
 		}
 		bool_0 = false;
 	}
@@ -128,10 +127,10 @@ public class frmSettingsEmail : frmMasterForm
 	private void btnShowKeyboard_Username_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMTP_Username, 1, 128, ((Control)(object)txtUsername).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMTP_Username, 1, 128, txtUsername.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtUsername).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtUsername.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -139,10 +138,10 @@ public class frmSettingsEmail : frmMasterForm
 	private void btnShowKeyboard_Password_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMTP_Password, 1, 128, ((Control)(object)txtPassword).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMTP_Password, 1, 128, txtPassword.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPassword).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtPassword.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -150,10 +149,10 @@ public class frmSettingsEmail : frmMasterForm
 	private void btnShowKeyboard_Server_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMTP_Server_Address, 1, 128, ((Control)(object)txtServer).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMTP_Server_Address, 1, 128, txtServer.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtServer).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtServer.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -161,21 +160,21 @@ public class frmSettingsEmail : frmMasterForm
 	private void btnShowKeyboard_Port_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_SMTP_Port_Number, 0, 5, ((Control)(object)txtPort).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_SMTP_Port_Number, 0, 5, txtPort.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtPort).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtPort.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
 
 	private void btnSave_Click(object sender, EventArgs e)
 	{
-		list_2.Where((Setting s) => s.Key == "smtp_server").FirstOrDefault().Value = ((Control)(object)txtServer).Text.Trim();
-		list_2.Where((Setting s) => s.Key == "smtp_username").FirstOrDefault().Value = ((Control)(object)txtUsername).Text.Trim();
-		list_2.Where((Setting s) => s.Key == "smtp_password").FirstOrDefault().Value = StringCipher.Encrypt(((Control)(object)txtPassword).Text, "DigitalCraftHipPOS");
-		list_2.Where((Setting s) => s.Key == "smtp_port").FirstOrDefault().Value = ((Control)(object)txtPort).Text.Trim();
-		list_2.Where((Setting s) => s.Key == "smtp_use_ssl").FirstOrDefault().Value = radToggleSwitch_0.get_Value().ToString();
+		list_2.Where((Setting s) => s.Key == "smtp_server").FirstOrDefault().Value = txtServer.Text.Trim();
+		list_2.Where((Setting s) => s.Key == "smtp_username").FirstOrDefault().Value = txtUsername.Text.Trim();
+		list_2.Where((Setting s) => s.Key == "smtp_password").FirstOrDefault().Value = StringCipher.Encrypt(txtPassword.Text, "DigitalCraftHipPOS");
+		list_2.Where((Setting s) => s.Key == "smtp_port").FirstOrDefault().Value = txtPort.Text.Trim();
+		list_2.Where((Setting s) => s.Key == "smtp_use_ssl").FirstOrDefault().Value = radToggleSwitch_0.Value.ToString();
 		Helper.SubmitChangesWithCatch(gclass6_0);
 		new NotificationLabel(this, "E-mail settings saved.", NotificationTypes.Success).Show();
 	}
@@ -185,11 +184,11 @@ public class frmSettingsEmail : frmMasterForm
 		SMTPSettings sMTPSettings = new SMTPSettings();
 		try
 		{
-			sMTPSettings.server = ((Control)(object)txtServer).Text;
-			sMTPSettings.password = ((Control)(object)txtPassword).Text;
-			sMTPSettings.port = Convert.ToInt32(((Control)(object)txtPort).Text);
-			sMTPSettings.sslEnable = radToggleSwitch_0.get_Value();
-			sMTPSettings.username = ((Control)(object)txtUsername).Text;
+			sMTPSettings.server = txtServer.Text;
+			sMTPSettings.password = txtPassword.Text;
+			sMTPSettings.port = Convert.ToInt32(txtPort.Text);
+			sMTPSettings.sslEnable = radToggleSwitch_0.Value;
+			sMTPSettings.username = txtUsername.Text;
 			new frmMessageBox(NotificationMethods.sendEmail(sMTPSettings, sMTPSettings.username, Resources.Hippos_Test_Email, Resources.This_is_a_test_message_from_Hi), Resources.SMTP_Test_Result).ShowDialog();
 		}
 		catch (Exception ex)
@@ -206,27 +205,27 @@ public class frmSettingsEmail : frmMasterForm
 		}
 		if (ddlEmailServices.Text == "Other")
 		{
-			((Control)(object)txtServer).Text = "";
+			txtServer.Text = "";
 			return;
 		}
 		method_4();
 		if (ddlEmailServices.Text == "Gmail")
 		{
-			((Control)(object)txtServer).Text = "smtp.gmail.com";
-			((Control)(object)txtPort).Text = "587";
-			radToggleSwitch_0.set_Value(true);
+			txtServer.Text = "smtp.gmail.com";
+			txtPort.Text = "587";
+			radToggleSwitch_0.Value = true;
 		}
 		else if (ddlEmailServices.Text == "Hotmail/Outlook")
 		{
-			((Control)(object)txtServer).Text = "smtp-mail.outlook.com";
-			((Control)(object)txtPort).Text = "587";
-			radToggleSwitch_0.set_Value(true);
+			txtServer.Text = "smtp-mail.outlook.com";
+			txtPort.Text = "587";
+			radToggleSwitch_0.Value = true;
 		}
 		else if (ddlEmailServices.Text == "Yahoo")
 		{
-			((Control)(object)txtServer).Text = "smtp.mail.yahoo.com";
-			((Control)(object)txtPort).Text = "465";
-			radToggleSwitch_0.set_Value(true);
+			txtServer.Text = "smtp.mail.yahoo.com";
+			txtPort.Text = "465";
+			radToggleSwitch_0.Value = true;
 		}
 		else
 		{
@@ -236,23 +235,23 @@ public class frmSettingsEmail : frmMasterForm
 
 	private void method_3(bool bool_1)
 	{
-		RadTextBoxControl obj = txtServer;
-		RadTextBoxControl obj2 = txtUsername;
-		RadTextBoxControl obj3 = txtPassword;
-		bool flag2 = (((Control)(object)txtPort).Enabled = bool_1);
-		bool flag4 = (((Control)(object)obj3).Enabled = flag2);
-		bool enabled = (((Control)(object)obj2).Enabled = flag4);
-		((Control)(object)obj).Enabled = enabled;
+		RadTextBoxControl radTextBoxControl = txtServer;
+		RadTextBoxControl radTextBoxControl2 = txtUsername;
+		RadTextBoxControl radTextBoxControl3 = txtPassword;
+		bool flag2 = (txtPort.Enabled = bool_1);
+		bool flag4 = (radTextBoxControl3.Enabled = flag2);
+		bool enabled = (radTextBoxControl2.Enabled = flag4);
+		radTextBoxControl.Enabled = enabled;
 	}
 
 	private void method_4()
 	{
-		RadTextBoxControl obj = txtServer;
-		RadTextBoxControl obj2 = txtUsername;
-		RadTextBoxControl obj3 = txtPassword;
-		string text = (((Control)(object)txtPort).Text = string.Empty);
-		string text3 = (((Control)(object)obj3).Text = text);
-		string text6 = (((Control)(object)obj).Text = (((Control)(object)obj2).Text = text3));
+		RadTextBoxControl radTextBoxControl = txtServer;
+		RadTextBoxControl radTextBoxControl2 = txtUsername;
+		RadTextBoxControl radTextBoxControl3 = txtPassword;
+		string text = (txtPort.Text = string.Empty);
+		string text3 = (radTextBoxControl3.Text = text);
+		string text6 = (radTextBoxControl.Text = (radTextBoxControl2.Text = text3));
 	}
 
 	protected override void Dispose(bool disposing)
@@ -266,30 +265,6 @@ public class frmSettingsEmail : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0032: Expected O, but got Unknown
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0069: Expected O, but got Unknown
-		//IL_0080: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008a: Expected O, but got Unknown
-		//IL_00c2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00cc: Expected O, but got Unknown
-		//IL_024c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0264: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0285: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02b2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02df: Unknown result type (might be due to invalid IL or missing references)
-		//IL_030c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03d9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03fa: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0567: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0588: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0716: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09f9: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmSettingsEmail));
 		btnShowCustomField = new Button();
 		label4 = new Label();
@@ -331,24 +306,24 @@ public class frmSettingsEmail : frmMasterForm
 		label4.ForeColor = Color.White;
 		label4.Name = "label4";
 		componentResourceManager.ApplyResources(radToggleSwitch_0, "chkUseSSL");
-		((Control)(object)radToggleSwitch_0).Name = "chkUseSSL";
-		radToggleSwitch_0.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)radToggleSwitch_0).GetChildAt(0)).set_ThumbOffset(86);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)radToggleSwitch_0).GetChildAt(0)).set_BorderWidth(1f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)radToggleSwitch_0).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)radToggleSwitch_0).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)radToggleSwitch_0).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)radToggleSwitch_0).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		radToggleSwitch_0.Name = "chkUseSSL";
+		radToggleSwitch_0.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)radToggleSwitch_0.GetChildAt(0)).ThumbOffset = 86;
+		((RadToggleSwitchElement)radToggleSwitch_0.GetChildAt(0)).BorderWidth = 1f;
+		((ToggleSwitchPartElement)radToggleSwitch_0.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)radToggleSwitch_0.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)radToggleSwitch_0.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)radToggleSwitch_0.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(label10, "label10");
 		label10.BackColor = Color.FromArgb(132, 146, 146);
 		label10.ForeColor = Color.White;
 		label10.Name = "label10";
 		componentResourceManager.ApplyResources(txtPort, "txtPort");
-		((Control)(object)txtPort).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPort).Name = "txtPort";
-		((RadElement)((RadControl)txtPort).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPort).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPort).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtPort.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPort.Name = "txtPort";
+		txtPort.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtPort.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPort.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Port.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Port.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Port.FlatAppearance.BorderColor = Color.Black;
@@ -363,11 +338,11 @@ public class frmSettingsEmail : frmMasterForm
 		label3.ForeColor = Color.White;
 		label3.Name = "label3";
 		componentResourceManager.ApplyResources(txtPassword, "txtPassword");
-		((Control)(object)txtPassword).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPassword).Name = "txtPassword";
-		((RadElement)((RadControl)txtPassword).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPassword).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtPassword).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtPassword.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPassword.Name = "txtPassword";
+		txtPassword.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtPassword.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtPassword.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Password.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Password.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Password.FlatAppearance.BorderColor = Color.Black;
@@ -382,11 +357,11 @@ public class frmSettingsEmail : frmMasterForm
 		label2.ForeColor = Color.White;
 		label2.Name = "label2";
 		componentResourceManager.ApplyResources(txtUsername, "txtUsername");
-		((Control)(object)txtUsername).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtUsername).Name = "txtUsername";
-		((RadElement)((RadControl)txtUsername).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtUsername).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtUsername).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtUsername.ForeColor = Color.FromArgb(40, 40, 40);
+		txtUsername.Name = "txtUsername";
+		txtUsername.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtUsername.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtUsername.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Username.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Username.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Username.FlatAppearance.BorderColor = Color.Black;
@@ -420,11 +395,11 @@ public class frmSettingsEmail : frmMasterForm
 		label9.ForeColor = Color.White;
 		label9.Name = "label9";
 		componentResourceManager.ApplyResources(txtServer, "txtServer");
-		((Control)(object)txtServer).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtServer).Name = "txtServer";
-		((RadElement)((RadControl)txtServer).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtServer).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtServer).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtServer.ForeColor = Color.FromArgb(40, 40, 40);
+		txtServer.Name = "txtServer";
+		txtServer.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtServer.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtServer.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Server.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Server.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Server.FlatAppearance.BorderColor = Color.Black;
@@ -462,20 +437,20 @@ public class frmSettingsEmail : frmMasterForm
 		BackColor = Color.FromArgb(35, 39, 56);
 		base.Controls.Add(label6);
 		base.Controls.Add(ddlEmailServices);
-		base.Controls.Add((Control)(object)txtServer);
+		base.Controls.Add(txtServer);
 		base.Controls.Add(btnShowKeyboard_Server);
 		base.Controls.Add(label5);
 		base.Controls.Add(btnShowCustomField);
 		base.Controls.Add(label4);
-		base.Controls.Add((Control)(object)radToggleSwitch_0);
+		base.Controls.Add(radToggleSwitch_0);
 		base.Controls.Add(label10);
-		base.Controls.Add((Control)(object)txtPort);
+		base.Controls.Add(txtPort);
 		base.Controls.Add(btnShowKeyboard_Port);
 		base.Controls.Add(label3);
-		base.Controls.Add((Control)(object)txtPassword);
+		base.Controls.Add(txtPassword);
 		base.Controls.Add(btnShowKeyboard_Password);
 		base.Controls.Add(label2);
-		base.Controls.Add((Control)(object)txtUsername);
+		base.Controls.Add(txtUsername);
 		base.Controls.Add(btnShowKeyboard_Username);
 		base.Controls.Add(label1);
 		base.Controls.Add(btnCancel);

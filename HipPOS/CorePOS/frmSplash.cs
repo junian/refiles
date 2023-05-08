@@ -265,8 +265,8 @@ public class frmSplash : Form
 	{
 		try
 		{
-			MemoryLoadedObjects.callerID.Name = e.get_Call().get_CallerIDName();
-			MemoryLoadedObjects.callerID.Number = e.get_Call().get_CallerID().Replace("+", string.Empty);
+			MemoryLoadedObjects.callerID.Name = e.Call.CallerIDName;
+			MemoryLoadedObjects.callerID.Number = e.Call.CallerID.Replace("+", string.Empty);
 			if (MemoryLoadedObjects.callerID.Number.Length > 10 && MemoryLoadedObjects.callerID.Number.Substring(0, 1) == "1")
 			{
 				MemoryLoadedObjects.callerID.Number = MemoryLoadedObjects.callerID.Number.Substring(1, MemoryLoadedObjects.callerID.Number.Length - 1);
@@ -282,14 +282,12 @@ public class frmSplash : Form
 
 	private void method_2(object sender, TapiCallInfoEventArgs e)
 	{
-		//IL_0002: Unknown result type (might be due to invalid IL or missing references)
-		//IL_000c: Unknown result type (might be due to invalid IL or missing references)
 		try
 		{
-			if ((e.get_CallInfoState() & 0x8000) != 0)
+			if ((e.CallInfoState & TapiCallInfoState.CallerID) != 0)
 			{
-				MemoryLoadedObjects.callerID.Name = ((TapiEventArgs)e).get_Call().get_CallerIDName();
-				MemoryLoadedObjects.callerID.Number = ((TapiEventArgs)e).get_Call().get_CallerID().Replace("+", string.Empty);
+				MemoryLoadedObjects.callerID.Name = e.Call.CallerIDName;
+				MemoryLoadedObjects.callerID.Number = e.Call.CallerID.Replace("+", string.Empty);
 				if (MemoryLoadedObjects.callerID.Number.Length > 10 && MemoryLoadedObjects.callerID.Number.Substring(0, 1) == "1")
 				{
 					MemoryLoadedObjects.callerID.Number = MemoryLoadedObjects.callerID.Number.Substring(1, MemoryLoadedObjects.callerID.Number.Length - 1);
@@ -481,10 +479,6 @@ public class frmSplash : Form
 
 	private void frmSplash_Load(object sender, EventArgs e)
 	{
-		//IL_0153: Unknown result type (might be due to invalid IL or missing references)
-		//IL_015d: Expected O, but got Unknown
-		//IL_0164: Unknown result type (might be due to invalid IL or missing references)
-		//IL_016e: Expected O, but got Unknown
 		terminal_0 = MemoryLoadedObjects.this_terminal;
 		bool_1 = SettingsHelper.GetSettingValueByKey("confirm_online_orders") == "ON";
 		if (terminal_0 != null)
@@ -507,21 +501,19 @@ public class frmSplash : Form
 			{
 				try
 				{
-					TapiApp.set_SerialNumber("44HEA5M-Q5M9D5K-WPCI8O2-KOUQD");
+					TapiApp.SerialNumber = "44HEA5M-Q5M9D5K-WPCI8O2-KOUQD";
 					TapiApp.Initialize("CallerID");
-					TapiLine val = (from tapiLine_0 in TapiApp.get_Lines()
-						where tapiLine_0.get_Name() == terminal_0.PhoneModemDeviceName
-						select tapiLine_0).FirstOrDefault();
-					if (val != null)
+					TapiLine tapiLine = TapiApp.Lines.Where((TapiLine tapiLine_0) => tapiLine_0.Name == terminal_0.PhoneModemDeviceName).FirstOrDefault();
+					if (tapiLine != null)
 					{
-						if (val.get_IsOpen())
+						if (tapiLine.IsOpen)
 						{
 							return;
 						}
-						TapiApp.add_IncomingCall(new TapiEventHandler(method_1));
-						TapiApp.add_CallInfo(new TapiCallInfoEventHandler(method_2));
-						val.set_RingsToAnswer(0);
-						val.Open(true, (TapiCallHandler)null);
+						TapiApp.IncomingCall += method_1;
+						TapiApp.CallInfo += method_2;
+						tapiLine.RingsToAnswer = 0;
+						tapiLine.Open(monitorIncomingCalls: true, null);
 					}
 				}
 				catch
@@ -2928,6 +2920,6 @@ public class frmSplash : Form
 	[CompilerGenerated]
 	private bool method_25(TapiLine tapiLine_0)
 	{
-		return tapiLine_0.get_Name() == terminal_0.PhoneModemDeviceName;
+		return tapiLine_0.Name == terminal_0.PhoneModemDeviceName;
 	}
 }

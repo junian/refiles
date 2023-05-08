@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
@@ -55,16 +53,12 @@ public class PrintHelper
 
 	public PrintHelper(string printerName = null)
 	{
-		//IL_0032: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_0048: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0052: Expected O, but got Unknown
 		Class26.Ggkj0JxzN9YmC();
 		companies = new List<CompanySetup>();
 		list_0 = ReceiptMethods.GetTaxRate().ToList();
 		base._002Ector();
-		reportDataSource_0 = new ReportDataSource("CompanyDS", (IEnumerable)companies);
-		reportDataSource_1 = new ReportDataSource("TaxDS", (IEnumerable)list_0);
+		reportDataSource_0 = new ReportDataSource("CompanyDS", companies);
+		reportDataSource_1 = new ReportDataSource("TaxDS", list_0);
 		companies.Add(CompanyHelper.CompanyDataSetup);
 		if (printerName != null)
 		{
@@ -111,144 +105,6 @@ public class PrintHelper
 
 	public void PrintReceipt(string rlang, string orderNumber, bool printPaymentTransaction = false, int splitBillEvenly = 1, string savePath = null, bool tipFlag = false, bool email = false, string printerName = null, decimal gcValue = 0m, decimal lcValue = 0m)
 	{
-		//IL_003b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0041: Expected O, but got Unknown
-		//IL_010d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0117: Expected O, but got Unknown
-		//IL_0123: Unknown result type (might be due to invalid IL or missing references)
-		//IL_012d: Expected O, but got Unknown
-		//IL_0195: Unknown result type (might be due to invalid IL or missing references)
-		//IL_019f: Expected O, but got Unknown
-		//IL_01b7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01c1: Expected O, but got Unknown
-		//IL_01cd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01d7: Expected O, but got Unknown
-		//IL_01e3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01ed: Expected O, but got Unknown
-		//IL_01fb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0205: Expected O, but got Unknown
-		//IL_0211: Unknown result type (might be due to invalid IL or missing references)
-		//IL_021b: Expected O, but got Unknown
-		//IL_0227: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0231: Expected O, but got Unknown
-		//IL_024f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0259: Expected O, but got Unknown
-		//IL_0564: Unknown result type (might be due to invalid IL or missing references)
-		//IL_056b: Expected O, but got Unknown
-		//IL_0581: Unknown result type (might be due to invalid IL or missing references)
-		//IL_058b: Expected O, but got Unknown
-		//IL_05bb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05c5: Expected O, but got Unknown
-		//IL_05cd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05d7: Expected O, but got Unknown
-		//IL_05df: Unknown result type (might be due to invalid IL or missing references)
-		//IL_05e9: Expected O, but got Unknown
-		//IL_060e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0618: Expected O, but got Unknown
-		//IL_0642: Unknown result type (might be due to invalid IL or missing references)
-		//IL_064c: Expected O, but got Unknown
-		//IL_06d3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06dd: Expected O, but got Unknown
-		//IL_0744: Unknown result type (might be due to invalid IL or missing references)
-		//IL_074e: Expected O, but got Unknown
-		//IL_07a7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07b1: Expected O, but got Unknown
-		//IL_0825: Unknown result type (might be due to invalid IL or missing references)
-		//IL_082c: Expected O, but got Unknown
-		//IL_08aa: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08b1: Expected O, but got Unknown
-		//IL_090d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0917: Expected O, but got Unknown
-		//IL_093a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0944: Expected O, but got Unknown
-		//IL_095a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0964: Expected O, but got Unknown
-		//IL_09e7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09f1: Expected O, but got Unknown
-		//IL_0a1b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a25: Expected O, but got Unknown
-		//IL_0a4f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a59: Expected O, but got Unknown
-		//IL_0a66: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a70: Expected O, but got Unknown
-		//IL_0a7b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a85: Expected O, but got Unknown
-		//IL_0a90: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a9a: Expected O, but got Unknown
-		//IL_0c56: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c60: Expected O, but got Unknown
-		//IL_0c72: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c7c: Expected O, but got Unknown
-		//IL_0c8e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c98: Expected O, but got Unknown
-		//IL_0d0a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d14: Expected O, but got Unknown
-		//IL_0d49: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d53: Expected O, but got Unknown
-		//IL_0e15: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e1f: Expected O, but got Unknown
-		//IL_0e40: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e4a: Expected O, but got Unknown
-		//IL_0e6e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e78: Expected O, but got Unknown
-		//IL_1045: Unknown result type (might be due to invalid IL or missing references)
-		//IL_104f: Expected O, but got Unknown
-		//IL_1063: Unknown result type (might be due to invalid IL or missing references)
-		//IL_106d: Expected O, but got Unknown
-		//IL_1074: Unknown result type (might be due to invalid IL or missing references)
-		//IL_107e: Expected O, but got Unknown
-		//IL_1089: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1093: Expected O, but got Unknown
-		//IL_10c4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_10ce: Expected O, but got Unknown
-		//IL_10d9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_10e3: Expected O, but got Unknown
-		//IL_10ee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_10f8: Expected O, but got Unknown
-		//IL_1103: Unknown result type (might be due to invalid IL or missing references)
-		//IL_110d: Expected O, but got Unknown
-		//IL_1118: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1122: Expected O, but got Unknown
-		//IL_112d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1137: Expected O, but got Unknown
-		//IL_1142: Unknown result type (might be due to invalid IL or missing references)
-		//IL_114c: Expected O, but got Unknown
-		//IL_1157: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1161: Expected O, but got Unknown
-		//IL_116c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1176: Expected O, but got Unknown
-		//IL_1181: Unknown result type (might be due to invalid IL or missing references)
-		//IL_118b: Expected O, but got Unknown
-		//IL_1196: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11a0: Expected O, but got Unknown
-		//IL_11ab: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11b5: Expected O, but got Unknown
-		//IL_11c0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11ca: Expected O, but got Unknown
-		//IL_11d5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11df: Expected O, but got Unknown
-		//IL_11ea: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11f4: Expected O, but got Unknown
-		//IL_11ff: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1209: Expected O, but got Unknown
-		//IL_1214: Unknown result type (might be due to invalid IL or missing references)
-		//IL_121e: Expected O, but got Unknown
-		//IL_1229: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1233: Expected O, but got Unknown
-		//IL_123e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1248: Expected O, but got Unknown
-		//IL_1253: Unknown result type (might be due to invalid IL or missing references)
-		//IL_125d: Expected O, but got Unknown
-		//IL_1268: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1272: Expected O, but got Unknown
-		//IL_12ba: Unknown result type (might be due to invalid IL or missing references)
-		//IL_12c4: Expected O, but got Unknown
-		//IL_12d1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_12db: Expected O, but got Unknown
-		//IL_133a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1344: Expected O, but got Unknown
-		//IL_1404: Unknown result type (might be due to invalid IL or missing references)
-		//IL_140e: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass14_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass14_0();
 		CS_0024_003C_003E8__locals0.orderNumber = orderNumber;
 		if (!string.IsNullOrEmpty(printerName))
@@ -258,9 +114,9 @@ public class PrintHelper
 		CultureInfo cultureInfo = new CultureInfo(rlang);
 		Thread.CurrentThread.CurrentCulture = cultureInfo;
 		Thread.CurrentThread.CurrentUICulture = cultureInfo;
-		LocalReport val = new LocalReport();
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Clear();
-		val.set_ReportEmbeddedResource("CorePOS.Reports.Receipt.rdlc");
+		LocalReport localReport = new LocalReport();
+		localReport.DataSources.Clear();
+		localReport.ReportEmbeddedResource = "CorePOS.Reports.Receipt.rdlc";
 		GClass6 gClass = new GClass6();
 		if (MemoryLoadedObjects.receipt_logo == null)
 		{
@@ -271,32 +127,32 @@ public class PrintHelper
 			if (!string.IsNullOrEmpty(MemoryLoadedObjects.receipt_logo.ImageAsText))
 			{
 				byte[] array = Convert.FromBase64String(MemoryLoadedObjects.receipt_logo.ImageAsText);
-				((Report)val).SetParameters(new ReportParameter("ReportLogo", Convert.ToBase64String(array), true));
-				((Report)val).SetParameters(new ReportParameter("ReportLogoMimeType", "image/png", true));
+				localReport.SetParameters(new ReportParameter("ReportLogo", Convert.ToBase64String(array), visible: true));
+				localReport.SetParameters(new ReportParameter("ReportLogoMimeType", "image/png", visible: true));
 				Image image;
 				using (MemoryStream stream = new MemoryStream(array))
 				{
 					image = Image.FromStream(stream);
 				}
 				float num = (float)image.Width / (float)image.Height * 0.868f;
-				((Report)val).SetParameters(new ReportParameter("LogoWidth", (int)((3.3f - num) / 2f * 72.28f) + "pt", true));
+				localReport.SetParameters(new ReportParameter("LogoWidth", (int)((3.3f - num) / 2f * 72.28f) + "pt", visible: true));
 				image.Dispose();
 			}
 			else
 			{
-				((Report)val).SetParameters(new ReportParameter("ReportLogo", "R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", false));
-				((Report)val).SetParameters(new ReportParameter("ReportLogoMimeType", "image/png", false));
-				((Report)val).SetParameters(new ReportParameter("LogoWidth", "50", true));
+				localReport.SetParameters(new ReportParameter("ReportLogo", "R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", visible: false));
+				localReport.SetParameters(new ReportParameter("ReportLogoMimeType", "image/png", visible: false));
+				localReport.SetParameters(new ReportParameter("LogoWidth", "50", visible: true));
 			}
 		}
 		else
 		{
-			((Report)val).SetParameters(new ReportParameter("ReportLogo", "R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", false));
-			((Report)val).SetParameters(new ReportParameter("ReportLogoMimeType", "image/png", false));
-			((Report)val).SetParameters(new ReportParameter("LogoWidth", "50", true));
+			localReport.SetParameters(new ReportParameter("ReportLogo", "R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", visible: false));
+			localReport.SetParameters(new ReportParameter("ReportLogoMimeType", "image/png", visible: false));
+			localReport.SetParameters(new ReportParameter("LogoWidth", "50", visible: true));
 		}
 		int num2 = Convert.ToInt32(SettingsHelper.GetSettingValueByKey("receipt_font_size_additional"));
-		((Report)val).SetParameters(new ReportParameter("prmFontSize", num2.ToString()));
+		localReport.SetParameters(new ReportParameter("prmFontSize", num2.ToString()));
 		List<ReceiptOrder> orderToPrintReceipt = ReceiptMethods.GetOrderToPrintReceipt(CS_0024_003C_003E8__locals0.orderNumber);
 		decimal num3 = default(decimal);
 		ReceiptOrder receiptOrder = orderToPrintReceipt.Where((ReceiptOrder a) => a.ItemName.Contains("Cash Rounding")).FirstOrDefault();
@@ -359,56 +215,56 @@ public class PrintHelper
 		{
 			text3 = "Online";
 		}
-		ReportDataSource val2 = new ReportDataSource("ReceiptDS", (IEnumerable)orderToPrintReceipt);
+		ReportDataSource reportDataSource = new ReportDataSource("ReceiptDS", orderToPrintReceipt);
 		string orderType = orderToPrintReceipt.FirstOrDefault().OrderType;
-		((Report)val).SetParameters(new ReportParameter("prmOrderType", orderType));
+		localReport.SetParameters(new ReportParameter("prmOrderType", orderType));
 		if (SettingsHelper.GetSettingValueByKey("order_type_receipt").Split(',').Contains(orderType))
 		{
-			((Report)val).SetParameters(new ReportParameter("prmBigOrderType", orderType.ToUpper()));
+			localReport.SetParameters(new ReportParameter("prmBigOrderType", orderType.ToUpper()));
 		}
-		((Report)val).SetParameters(new ReportParameter("prmEmployeeName", text2));
-		((Report)val).SetParameters(new ReportParameter("prmCashierName", text3));
+		localReport.SetParameters(new ReportParameter("prmEmployeeName", text2));
+		localReport.SetParameters(new ReportParameter("prmCashierName", text3));
 		if (string.IsNullOrEmpty(orderToPrintReceipt.FirstOrDefault().CustomerInfoName))
 		{
-			((Report)val).SetParameters(new ReportParameter("prmCustomer", orderToPrintReceipt.FirstOrDefault().Customer));
+			localReport.SetParameters(new ReportParameter("prmCustomer", orderToPrintReceipt.FirstOrDefault().Customer));
 		}
 		else
 		{
-			((Report)val).SetParameters(new ReportParameter("prmCustomer", orderToPrintReceipt.FirstOrDefault().Customer + "-" + orderToPrintReceipt.FirstOrDefault().CustomerInfoName));
+			localReport.SetParameters(new ReportParameter("prmCustomer", orderToPrintReceipt.FirstOrDefault().Customer + "-" + orderToPrintReceipt.FirstOrDefault().CustomerInfoName));
 		}
 		decimal num6 = default(decimal);
 		if (orderToPrintReceipt.Where((ReceiptOrder a) => !a.Void).Any())
 		{
 			num6 = orderToPrintReceipt.Where((ReceiptOrder a) => !a.Void).First().TipAmount;
 		}
-		((Report)val).SetParameters(new ReportParameter("prmHasRoundedTotal", (num3 != 0m) ? "True" : "False"));
-		((Report)val).SetParameters(new ReportParameter("prmRoundedTotal", (orderToPrintReceipt.Where((ReceiptOrder a) => !a.Void).Sum((ReceiptOrder a) => a.Total) + num3 + num6).ToString()));
-		((Report)val).SetParameters(new ReportParameter("prmDiscount", orderToPrintReceipt.Where((ReceiptOrder a) => !a.Void).Sum((ReceiptOrder a) => a.Discount).ToString()));
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(val2);
-		val2.set_Value((object)orderToPrintReceipt);
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(reportDataSource_0);
-		reportDataSource_0.set_Value((object)companies);
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(reportDataSource_1);
-		reportDataSource_1.set_Value((object)list_0);
+		localReport.SetParameters(new ReportParameter("prmHasRoundedTotal", (num3 != 0m) ? "True" : "False"));
+		localReport.SetParameters(new ReportParameter("prmRoundedTotal", (orderToPrintReceipt.Where((ReceiptOrder a) => !a.Void).Sum((ReceiptOrder a) => a.Total) + num3 + num6).ToString()));
+		localReport.SetParameters(new ReportParameter("prmDiscount", orderToPrintReceipt.Where((ReceiptOrder a) => !a.Void).Sum((ReceiptOrder a) => a.Discount).ToString()));
+		localReport.DataSources.Add(reportDataSource);
+		reportDataSource.Value = orderToPrintReceipt;
+		localReport.DataSources.Add(reportDataSource_0);
+		reportDataSource_0.Value = companies;
+		localReport.DataSources.Add(reportDataSource_1);
+		reportDataSource_1.Value = list_0;
 		List<ProcessorPaymentType> paymentTypes = PaymentTypeMethods.GetPaymentTypes(orderToPrintReceipt.FirstOrDefault().PaymentMethods);
-		ReportDataSource val3 = new ReportDataSource("PaymentTypeDS", (IEnumerable)paymentTypes);
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(val3);
-		val3.set_Value((object)paymentTypes);
+		ReportDataSource reportDataSource2 = new ReportDataSource("PaymentTypeDS", paymentTypes);
+		localReport.DataSources.Add(reportDataSource2);
+		reportDataSource2.Value = paymentTypes;
 		List<ProcessorPaymentType> taxTypes = PaymentTypeMethods.GetTaxTypes(string.Join("", (from a in orderToPrintReceipt
 			where !a.Void
 			select a.TaxDesc).ToList()), withPercentage: true);
-		ReportDataSource val4 = new ReportDataSource("TaxTypeDS", (IEnumerable)taxTypes);
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(val4);
-		val4.set_Value((object)taxTypes);
+		ReportDataSource reportDataSource3 = new ReportDataSource("TaxTypeDS", taxTypes);
+		localReport.DataSources.Add(reportDataSource3);
+		reportDataSource3.Value = taxTypes;
 		if (splitBillEvenly > 1)
 		{
-			((Report)val).SetParameters(new ReportParameter("prmSplitBillTotal", (orderToPrintReceipt.Sum((ReceiptOrder a) => a.Total) / (decimal)splitBillEvenly).ToString()));
+			localReport.SetParameters(new ReportParameter("prmSplitBillTotal", (orderToPrintReceipt.Sum((ReceiptOrder a) => a.Total) / (decimal)splitBillEvenly).ToString()));
 		}
 		Order order = orderToPrintReceipt.FirstOrDefault();
 		if (order != null)
 		{
-			((Report)val).SetParameters(new ReportParameter("prmChange", order.TenderChange.ToString()));
-			((Report)val).SetParameters(new ReportParameter("prmCash", order.TenderAmount.ToString()));
+			localReport.SetParameters(new ReportParameter("prmChange", order.TenderChange.ToString()));
+			localReport.SetParameters(new ReportParameter("prmCash", order.TenderAmount.ToString()));
 		}
 		if (tipFlag)
 		{
@@ -418,15 +274,15 @@ public class PrintHelper
 				num7 += decimal.ToDouble(item2.Total);
 			}
 			num7 /= (double)splitBillEvenly;
-			((Report)val).SetParameters(new ReportParameter("prmTip15", "15% -  $" + (0.15 * num7).ToString("F")));
-			((Report)val).SetParameters(new ReportParameter("prmTip18", "18% -  $" + (0.18 * num7).ToString("F")));
-			((Report)val).SetParameters(new ReportParameter("prmTip20", "20% -  $" + (0.2 * num7).ToString("F")));
+			localReport.SetParameters(new ReportParameter("prmTip15", "15% -  $" + (0.15 * num7).ToString("F")));
+			localReport.SetParameters(new ReportParameter("prmTip18", "18% -  $" + (0.18 * num7).ToString("F")));
+			localReport.SetParameters(new ReportParameter("prmTip20", "20% -  $" + (0.2 * num7).ToString("F")));
 		}
 		else
 		{
-			((Report)val).SetParameters(new ReportParameter("prmTip15", ""));
-			((Report)val).SetParameters(new ReportParameter("prmTip18", ""));
-			((Report)val).SetParameters(new ReportParameter("prmTip20", ""));
+			localReport.SetParameters(new ReportParameter("prmTip15", ""));
+			localReport.SetParameters(new ReportParameter("prmTip18", ""));
+			localReport.SetParameters(new ReportParameter("prmTip20", ""));
 		}
 		IQueryable<Order> source = gClass.Orders.Where((Order o) => o.OrderNumber == CS_0024_003C_003E8__locals0.orderNumber && o.ComboID != 0);
 		decimal num8 = default(decimal);
@@ -434,94 +290,94 @@ public class PrintHelper
 		{
 			num8 += DataManager.GetComboDiscount(item3.ItemID);
 		}
-		((Report)val).SetParameters(new ReportParameter("prmSavedTotal", (num8 + orderToPrintReceipt.Where((ReceiptOrder d) => !d.DateRefunded.HasValue).Sum((ReceiptOrder a) => a.Discount)).ToString()));
-		((Report)val).SetParameters(new ReportParameter("prmDiscountReason", orderToPrintReceipt.FirstOrDefault().DiscountReason));
-		((Report)val).SetParameters(new ReportParameter("prmTaxChangeReason", orderToPrintReceipt.FirstOrDefault().TaxChangeReason));
+		localReport.SetParameters(new ReportParameter("prmSavedTotal", (num8 + orderToPrintReceipt.Where((ReceiptOrder d) => !d.DateRefunded.HasValue).Sum((ReceiptOrder a) => a.Discount)).ToString()));
+		localReport.SetParameters(new ReportParameter("prmDiscountReason", orderToPrintReceipt.FirstOrDefault().DiscountReason));
+		localReport.SetParameters(new ReportParameter("prmTaxChangeReason", orderToPrintReceipt.FirstOrDefault().TaxChangeReason));
 		if (orderType == OrderTypes.Catering)
 		{
 			decimal num9 = paymentTypes.Sum((ProcessorPaymentType a) => a.Amount);
-			((Report)val).SetParameters(new ReportParameter("prmBalance", (orderToPrintReceipt.Sum((ReceiptOrder a) => a.Total) - num9).ToString()));
+			localReport.SetParameters(new ReportParameter("prmBalance", (orderToPrintReceipt.Sum((ReceiptOrder a) => a.Total) - num9).ToString()));
 		}
-		string text4 = ((orderToPrintReceipt.FirstOrDefault().OrderType == OrderTypes.TakeOutOnline) ? "" : orderToPrintReceipt.FirstOrDefault().CustomerInfo);
-		((Report)val).SetParameters(new ReportParameter("prmCustomerInfo", text4));
+		string value = ((orderToPrintReceipt.FirstOrDefault().OrderType == OrderTypes.TakeOutOnline) ? "" : orderToPrintReceipt.FirstOrDefault().CustomerInfo);
+		localReport.SetParameters(new ReportParameter("prmCustomerInfo", value));
 		string empty = string.Empty;
 		empty = ((SettingsHelper.GetSettingValueByKey("use_order_ticket") == "ON") ? ((!string.IsNullOrEmpty(orderToPrintReceipt.FirstOrDefault().OrderTicketNumber)) ? OrderHelper.formatTicket(orderToPrintReceipt.FirstOrDefault().OrderTicketNumber) : orderToPrintReceipt.FirstOrDefault().OrderNumber) : ((string.IsNullOrEmpty(orderToPrintReceipt.FirstOrDefault().SubSource) || string.IsNullOrEmpty(orderToPrintReceipt.FirstOrDefault().OrderTicketNumber)) ? orderToPrintReceipt.FirstOrDefault().OrderNumber : orderToPrintReceipt.FirstOrDefault().OrderTicketNumber));
 		if (empty.Length > 15)
 		{
 			empty = empty.Substring(empty.Length - 4, 4).ToUpper();
 		}
-		((Report)val).SetParameters(new ReportParameter("prmOrderTicketNumber", empty));
+		localReport.SetParameters(new ReportParameter("prmOrderTicketNumber", empty));
 		if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isCurrentlyTrainingMode"]))
 		{
-			((Report)val).SetParameters(new ReportParameter("prmTrainingMode", Resources._TRAINING_MODE));
+			localReport.SetParameters(new ReportParameter("prmTrainingMode", Resources._TRAINING_MODE));
 		}
 		string settingValueByKey = SettingsHelper.GetSettingValueByKey("receipt_footer_message");
-		((Report)val).SetParameters(new ReportParameter("prmFooterMessage", string.IsNullOrEmpty(settingValueByKey) ? " " : settingValueByKey));
+		localReport.SetParameters(new ReportParameter("prmFooterMessage", string.IsNullOrEmpty(settingValueByKey) ? " " : settingValueByKey));
 		List<TransactionReceipt> list = (from x in gClass.TransactionReceipts
 			where x.OrderNumber.Equals(CS_0024_003C_003E8__locals0.orderNumber) && x.MerchantReceipt.Contains("APPROVED")
 			select x into y
 			orderby y.DateCreated descending
 			select y).ToList();
-		string text5 = string.Empty;
+		string text4 = string.Empty;
 		if (printPaymentTransaction && list != null && list.Count > 0)
 		{
 			foreach (TransactionReceipt item4 in list)
 			{
-				text5 += ((item4 != null) ? item4.CustomerReceipt : string.Empty);
+				text4 += ((item4 != null) ? item4.CustomerReceipt : string.Empty);
 			}
-			text5 = text5.Replace("\u001a", " ").Replace("\u001b\u0017", "  ").Replace("\u001b\u0017\u001b\u001a", "    ")
+			text4 = text4.Replace("\u001a", " ").Replace("\u001b\u0017", "  ").Replace("\u001b\u0017\u001b\u001a", "    ")
 				.Replace("\u001b", "  ");
 		}
-		((Report)val).SetParameters(new ReportParameter("prmPaymentCardTransactionData", text5));
+		localReport.SetParameters(new ReportParameter("prmPaymentCardTransactionData", text4));
 		string settingValueByKey2 = SettingsHelper.GetSettingValueByKey("auto_gratuity");
-		((Report)val).SetParameters(new ReportParameter("prmAutoGratuity", settingValueByKey2));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage", rlang));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Phone", Resources.Phone));
-		string text6 = Resources.Tax_No + ":";
+		localReport.SetParameters(new ReportParameter("prmAutoGratuity", settingValueByKey2));
+		localReport.SetParameters(new ReportParameter("prmLanguage", rlang));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Phone", Resources.Phone));
+		string value2 = Resources.Tax_No + ":";
 		if (string.IsNullOrEmpty(CompanyHelper.CompanyDataSetup.String_0))
 		{
-			text6 = "";
+			value2 = "";
 		}
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_TaxNo", text6));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Order", Resources._Order));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_OrderType", Resources.Order_Type));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Date", Resources._Date));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Time", Resources.Time));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Customer", Resources.Customer0));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Server", Resources.Server));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Cashier", "Cashier"));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_QTY", Resources.QTY));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_ITEMS", Resources.ITEMS0));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_PRICE", Resources.PRICE0));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Subtotal", Resources.Subtotal));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Tax", Resources.Tax));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Total", Resources.Total));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_YourShare", Resources.Your_Share_of_the_bill));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_DiscountReason", Resources.Discount_Reason));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_TaxChange", Resources.Tax_Change));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Tendered", Resources.Tendered));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Change", Resources.Change0));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_PaymentMethods", Resources.Payment_Methods));
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_PoweredBy", Resources.Powered_by_Hippos_Software));
+		localReport.SetParameters(new ReportParameter("prmLanguage_TaxNo", value2));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Order", Resources._Order));
+		localReport.SetParameters(new ReportParameter("prmLanguage_OrderType", Resources.Order_Type));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Date", Resources._Date));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Time", Resources.Time));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Customer", Resources.Customer0));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Server", Resources.Server));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Cashier", "Cashier"));
+		localReport.SetParameters(new ReportParameter("prmLanguage_QTY", Resources.QTY));
+		localReport.SetParameters(new ReportParameter("prmLanguage_ITEMS", Resources.ITEMS0));
+		localReport.SetParameters(new ReportParameter("prmLanguage_PRICE", Resources.PRICE0));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Subtotal", Resources.Subtotal));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Tax", Resources.Tax));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Total", Resources.Total));
+		localReport.SetParameters(new ReportParameter("prmLanguage_YourShare", Resources.Your_Share_of_the_bill));
+		localReport.SetParameters(new ReportParameter("prmLanguage_DiscountReason", Resources.Discount_Reason));
+		localReport.SetParameters(new ReportParameter("prmLanguage_TaxChange", Resources.Tax_Change));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Tendered", Resources.Tendered));
+		localReport.SetParameters(new ReportParameter("prmLanguage_Change", Resources.Change0));
+		localReport.SetParameters(new ReportParameter("prmLanguage_PaymentMethods", Resources.Payment_Methods));
+		localReport.SetParameters(new ReportParameter("prmLanguage_PoweredBy", Resources.Powered_by_Hippos_Software));
 		if (!(SettingsHelper.CurrentTerminalMode == "Kiosk") && !SettingsHelper.GetSettingValueByKey("now_serving_screen").Contains("ON") && !SettingsHelper.GetSettingValueByKey("use_order_ticket").Contains("ON"))
 		{
-			((Report)val).SetParameters(new ReportParameter("prmKiosk_Mode", "false"));
+			localReport.SetParameters(new ReportParameter("prmKiosk_Mode", "false"));
 		}
 		else
 		{
-			((Report)val).SetParameters(new ReportParameter("prmKiosk_Mode", "true"));
+			localReport.SetParameters(new ReportParameter("prmKiosk_Mode", "true"));
 		}
-		string text7 = "";
+		string text5 = "";
 		if (gcValue >= 0m)
 		{
-			text7 = text7 + "GIFT CARD BAL: " + gcValue + "\n";
+			text5 = text5 + "GIFT CARD BAL: " + gcValue + "\n";
 		}
 		if (lcValue >= 0m)
 		{
-			text7 = text7 + "LOYALTY CARD BAL: " + lcValue + "\n";
+			text5 = text5 + "LOYALTY CARD BAL: " + lcValue + "\n";
 		}
-		((Report)val).SetParameters(new ReportParameter("prmGiftCardValue", text7));
-		((Report)val).Refresh();
+		localReport.SetParameters(new ReportParameter("prmGiftCardValue", text5));
+		localReport.Refresh();
 		for (int j = 0; j < splitBillEvenly; j++)
 		{
 			if (splitBillEvenly != 1 && j == splitBillEvenly - 1)
@@ -531,21 +387,21 @@ public class PrintHelper
 				decimal num12 = Math.Round(num11, 2) * (decimal)splitBillEvenly;
 				if (num10 != num12)
 				{
-					((Report)val).SetParameters(new ReportParameter("prmSplitBillTotal", ((num10 > num12) ? (num11 + Convert.ToDecimal(0.01)) : (num11 - Convert.ToDecimal(0.01))).ToString()));
+					localReport.SetParameters(new ReportParameter("prmSplitBillTotal", ((num10 > num12) ? (num11 + Convert.ToDecimal(0.01)) : (num11 - Convert.ToDecimal(0.01))).ToString()));
 				}
 			}
 			if (savePath == null)
 			{
-				method_2(val);
+				method_2(localReport);
 				method_5(SettingsHelper.GetSettingValueByKey("receipt_size"), -1, bool_1: true);
 			}
 			else
 			{
-				method_2(val, "png");
+				method_2(localReport, "png");
 				method_6(savePath);
 			}
 		}
-		val.Dispose();
+		localReport.Dispose();
 		GC.Collect();
 	}
 
@@ -584,64 +440,26 @@ public class PrintHelper
 		_003C_003Ec__DisplayClass17_.rlang = SettingsHelper.GetSettingValueByKey("receipt_language");
 		new Thread((ThreadStart)delegate
 		{
-			//IL_0022: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0028: Expected O, but got Unknown
-			//IL_0055: Unknown result type (might be due to invalid IL or missing references)
-			//IL_005b: Expected O, but got Unknown
-			//IL_0067: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0071: Expected O, but got Unknown
-			//IL_00fa: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0101: Expected O, but got Unknown
-			//IL_01e1: Unknown result type (might be due to invalid IL or missing references)
-			//IL_01eb: Expected O, but got Unknown
-			//IL_020c: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0216: Expected O, but got Unknown
-			//IL_023a: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0244: Expected O, but got Unknown
-			//IL_03f7: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0401: Expected O, but got Unknown
-			//IL_0423: Unknown result type (might be due to invalid IL or missing references)
-			//IL_042d: Expected O, but got Unknown
-			//IL_0438: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0442: Expected O, but got Unknown
-			//IL_044d: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0457: Expected O, but got Unknown
-			//IL_0462: Unknown result type (might be due to invalid IL or missing references)
-			//IL_046c: Expected O, but got Unknown
-			//IL_0477: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0481: Expected O, but got Unknown
-			//IL_048c: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0496: Expected O, but got Unknown
-			//IL_04a1: Unknown result type (might be due to invalid IL or missing references)
-			//IL_04ab: Expected O, but got Unknown
-			//IL_04b6: Unknown result type (might be due to invalid IL or missing references)
-			//IL_04c0: Expected O, but got Unknown
-			//IL_04cb: Unknown result type (might be due to invalid IL or missing references)
-			//IL_04d5: Expected O, but got Unknown
-			//IL_04eb: Unknown result type (might be due to invalid IL or missing references)
-			//IL_04f5: Expected O, but got Unknown
-			//IL_0500: Unknown result type (might be due to invalid IL or missing references)
-			//IL_050a: Expected O, but got Unknown
 			CultureInfo cultureInfo = new CultureInfo(_003C_003Ec__DisplayClass17_.rlang);
 			Thread.CurrentThread.CurrentCulture = cultureInfo;
 			Thread.CurrentThread.CurrentUICulture = cultureInfo;
-			LocalReport val = new LocalReport();
+			LocalReport localReport = new LocalReport();
 			GClass6 gClass = new GClass6();
-			((Collection<ReportDataSource>)(object)val.get_DataSources()).Clear();
-			val.set_ReportEmbeddedResource("CorePOS.Reports.RefundReceipt.rdlc");
+			localReport.DataSources.Clear();
+			localReport.ReportEmbeddedResource = "CorePOS.Reports.RefundReceipt.rdlc";
 			List<Order> refundOrderToPrintReceipt = ReceiptMethods.GetRefundOrderToPrintReceipt(_003C_003Ec__DisplayClass17_.refundNumber);
-			ReportDataSource val2 = new ReportDataSource("ReceiptDS", (IEnumerable)refundOrderToPrintReceipt);
-			((Report)val).SetParameters(new ReportParameter("prmRefundNumber", _003C_003Ec__DisplayClass17_.refundNumber));
-			((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(val2);
-			val2.set_Value((object)refundOrderToPrintReceipt);
-			((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(_003C_003Ec__DisplayClass17_._003C_003E4__this.reportDataSource_0);
-			_003C_003Ec__DisplayClass17_._003C_003E4__this.reportDataSource_0.set_Value((object)_003C_003Ec__DisplayClass17_._003C_003E4__this.companies);
-			((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(_003C_003Ec__DisplayClass17_._003C_003E4__this.reportDataSource_1);
-			_003C_003Ec__DisplayClass17_._003C_003E4__this.reportDataSource_1.set_Value((object)_003C_003Ec__DisplayClass17_._003C_003E4__this.list_0);
+			ReportDataSource reportDataSource = new ReportDataSource("ReceiptDS", refundOrderToPrintReceipt);
+			localReport.SetParameters(new ReportParameter("prmRefundNumber", _003C_003Ec__DisplayClass17_.refundNumber));
+			localReport.DataSources.Add(reportDataSource);
+			reportDataSource.Value = refundOrderToPrintReceipt;
+			localReport.DataSources.Add(_003C_003Ec__DisplayClass17_._003C_003E4__this.reportDataSource_0);
+			_003C_003Ec__DisplayClass17_._003C_003E4__this.reportDataSource_0.Value = _003C_003Ec__DisplayClass17_._003C_003E4__this.companies;
+			localReport.DataSources.Add(_003C_003Ec__DisplayClass17_._003C_003E4__this.reportDataSource_1);
+			_003C_003Ec__DisplayClass17_._003C_003E4__this.reportDataSource_1.Value = _003C_003Ec__DisplayClass17_._003C_003E4__this.list_0;
 			List<RefundDS> refundDS = ReceiptMethods.GetRefundDS(_003C_003Ec__DisplayClass17_.refundNumber);
-			ReportDataSource val3 = new ReportDataSource("RefundsDS", (IEnumerable)refundDS);
-			((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(val3);
-			val3.set_Value((object)refundDS);
+			ReportDataSource reportDataSource2 = new ReportDataSource("RefundsDS", refundDS);
+			localReport.DataSources.Add(reportDataSource2);
+			reportDataSource2.Value = refundDS;
 			bool flag = false;
 			List<ReceiptOrder> list = ReceiptMethods.GetOrderToPrintReceipt(refundOrderToPrintReceipt.First().OrderNumber).ToList();
 			if (list.All((ReceiptOrder a) => a.Void) && list.Count == refundOrderToPrintReceipt.Count)
@@ -649,13 +467,13 @@ public class PrintHelper
 				flag = true;
 			}
 			string text = refundDS.FirstOrDefault().RefundPaymentMethod.ToUpper();
-			((Report)val).SetParameters(new ReportParameter("prmTipAmount", ((!(text != Resources.CASH0) || !(text != "GIFT CERTIFICATE") || !(text != "COUPON") || !(text != "STORE CREDIT") || !flag) ? 0m : refundDS.FirstOrDefault().TipAmount).ToString("0.00;(0.00)")));
+			localReport.SetParameters(new ReportParameter("prmTipAmount", ((!(text != Resources.CASH0) || !(text != "GIFT CERTIFICATE") || !(text != "COUPON") || !(text != "STORE CREDIT") || !flag) ? 0m : refundDS.FirstOrDefault().TipAmount).ToString("0.00;(0.00)")));
 			if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isCurrentlyTrainingMode"]))
 			{
-				((Report)val).SetParameters(new ReportParameter("prmTrainingMode", Resources._TRAINING_MODE));
+				localReport.SetParameters(new ReportParameter("prmTrainingMode", Resources._TRAINING_MODE));
 			}
 			string settingValueByKey = SettingsHelper.GetSettingValueByKey("receipt_footer_message");
-			((Report)val).SetParameters(new ReportParameter("prmFooterMessage", string.IsNullOrEmpty(settingValueByKey) ? " " : settingValueByKey));
+			localReport.SetParameters(new ReportParameter("prmFooterMessage", string.IsNullOrEmpty(settingValueByKey) ? " " : settingValueByKey));
 			string text2 = string.Empty;
 			List<TransactionReceipt> list2 = (from x in gClass.TransactionReceipts
 				where x.RefundNumber == _003C_003Ec__DisplayClass17_.refundNumber && x.MerchantReceipt.Contains("APPROVED")
@@ -675,40 +493,36 @@ public class PrintHelper
 			}
 			text2 = text2.Replace("\u001a", " ").Replace("\u001b\u0017", "  ").Replace("\u001b\u0017\u001b\u001a", "    ")
 				.Replace("\u001b", "  ");
-			((Report)val).SetParameters(new ReportParameter("prmPaymentCardTransactionData", text2));
-			((Report)val).SetParameters(new ReportParameter("prmRefundPaymentType", (flag2 ? "Void" : "Refund Payment") + " Method: " + text));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_RefundReceipt", Resources.REFUND_RECEIPT));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_RefundNumber", Resources.REFUND_NUMBER));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_Date", Resources._Date));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_QTY", Resources.QTY));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_ITEMS", Resources.ITEMS0));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_PRICE", Resources.PRICE0));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_Subtotal", Resources.Subtotal));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_Tax", Resources.Tax));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_RefundTotal", flag2 ? "Void Total" : Resources.Refund_Total));
-			((Report)val).SetParameters(new ReportParameter("prmLanguage_PoweredBy", Resources.Powered_by_Hippos_Software));
-			_003C_003Ec__DisplayClass17_._003C_003E4__this.method_2(val);
+			localReport.SetParameters(new ReportParameter("prmPaymentCardTransactionData", text2));
+			localReport.SetParameters(new ReportParameter("prmRefundPaymentType", (flag2 ? "Void" : "Refund Payment") + " Method: " + text));
+			localReport.SetParameters(new ReportParameter("prmLanguage_RefundReceipt", Resources.REFUND_RECEIPT));
+			localReport.SetParameters(new ReportParameter("prmLanguage_RefundNumber", Resources.REFUND_NUMBER));
+			localReport.SetParameters(new ReportParameter("prmLanguage_Date", Resources._Date));
+			localReport.SetParameters(new ReportParameter("prmLanguage_QTY", Resources.QTY));
+			localReport.SetParameters(new ReportParameter("prmLanguage_ITEMS", Resources.ITEMS0));
+			localReport.SetParameters(new ReportParameter("prmLanguage_PRICE", Resources.PRICE0));
+			localReport.SetParameters(new ReportParameter("prmLanguage_Subtotal", Resources.Subtotal));
+			localReport.SetParameters(new ReportParameter("prmLanguage_Tax", Resources.Tax));
+			localReport.SetParameters(new ReportParameter("prmLanguage_RefundTotal", flag2 ? "Void Total" : Resources.Refund_Total));
+			localReport.SetParameters(new ReportParameter("prmLanguage_PoweredBy", Resources.Powered_by_Hippos_Software));
+			_003C_003Ec__DisplayClass17_._003C_003E4__this.method_2(localReport);
 			_003C_003Ec__DisplayClass17_._003C_003E4__this.method_5(SettingsHelper.GetSettingValueByKey("receipt_size"), -1, bool_1: true);
-			val.Dispose();
+			localReport.Dispose();
 			GC.Collect();
 		}).Start();
 	}
 
 	public void PrintAppointments(List<Appointment> appointments)
 	{
-		//IL_0000: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0006: Expected O, but got Unknown
-		//IL_0022: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0028: Expected O, but got Unknown
-		LocalReport val = new LocalReport();
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Clear();
-		val.set_ReportEmbeddedResource("CorePOS.Reports.AppointmentList.rdlc");
-		ReportDataSource val2 = new ReportDataSource("AppointmentDS", (IEnumerable)appointments);
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(val2);
-		val2.set_Value((object)appointments);
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(reportDataSource_0);
-		reportDataSource_0.set_Value((object)companies);
-		method_2(val);
+		LocalReport localReport = new LocalReport();
+		localReport.DataSources.Clear();
+		localReport.ReportEmbeddedResource = "CorePOS.Reports.AppointmentList.rdlc";
+		ReportDataSource reportDataSource = new ReportDataSource("AppointmentDS", appointments);
+		localReport.DataSources.Add(reportDataSource);
+		reportDataSource.Value = appointments;
+		localReport.DataSources.Add(reportDataSource_0);
+		reportDataSource_0.Value = companies;
+		method_2(localReport);
 		method_5(SettingsHelper.GetSettingValueByKey("receipt_size"));
 	}
 
@@ -1606,32 +1420,18 @@ public class PrintHelper
 
 	public void PrintDeliveryCommission(DateTime startDate, DateTime endDate, int EmployeeId, string reportType)
 	{
-		//IL_0020: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0026: Expected O, but got Unknown
-		//IL_0053: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0059: Expected O, but got Unknown
-		//IL_04ce: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04d8: Expected O, but got Unknown
-		//IL_0509: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0513: Expected O, but got Unknown
-		//IL_0524: Unknown result type (might be due to invalid IL or missing references)
-		//IL_052e: Expected O, but got Unknown
-		//IL_0536: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0540: Expected O, but got Unknown
-		//IL_0547: Unknown result type (might be due to invalid IL or missing references)
-		//IL_054e: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass20_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass20_0();
 		CS_0024_003C_003E8__locals0.endDate = endDate;
 		CS_0024_003C_003E8__locals0.startDate = startDate;
 		CS_0024_003C_003E8__locals0.EmployeeId = EmployeeId;
 		GClass6 gClass = new GClass6();
-		LocalReport val = new LocalReport();
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Clear();
-		val.set_ReportEmbeddedResource("CorePOS.Reports.DeliveryCommissions.rdlc");
+		LocalReport localReport = new LocalReport();
+		localReport.DataSources.Clear();
+		localReport.ReportEmbeddedResource = "CorePOS.Reports.DeliveryCommissions.rdlc";
 		List<CompanySetup> list = new List<CompanySetup> { CompanyHelper.CompanyDataSetup };
-		ReportDataSource val2 = new ReportDataSource("CompanyDS", (IEnumerable)list);
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(val2);
-		val2.set_Value((object)list);
+		ReportDataSource reportDataSource = new ReportDataSource("CompanyDS", list);
+		localReport.DataSources.Add(reportDataSource);
+		reportDataSource.Value = list;
 		IQueryable<Order> source = gClass.Orders.Where((Order o) => ((o.DeliveryTime <= CS_0024_003C_003E8__locals0.endDate && o.DeliveryTime >= CS_0024_003C_003E8__locals0.startDate) || (o.DatePaid <= CS_0024_003C_003E8__locals0.endDate && o.DatePaid >= CS_0024_003C_003E8__locals0.startDate)) && (o.OrderType == OrderTypes.Delivery || o.OrderType == OrderTypes.DeliveryOnline));
 		if (CS_0024_003C_003E8__locals0.EmployeeId != 0)
 		{
@@ -1676,19 +1476,19 @@ public class PrintHelper
 				}
 			}
 		}
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_Phone", Resources.Phone));
-		string text2 = Resources.Tax_No + ":";
+		localReport.SetParameters(new ReportParameter("prmLanguage_Phone", Resources.Phone));
+		string value = Resources.Tax_No + ":";
 		if (string.IsNullOrEmpty(CompanyHelper.CompanyDataSetup.String_0))
 		{
-			text2 = "";
+			value = "";
 		}
-		((Report)val).SetParameters(new ReportParameter("prmLanguage_TaxNo", text2));
-		((Report)val).SetParameters(new ReportParameter("prmCurrentDate", CS_0024_003C_003E8__locals0.startDate.ToLongDateString()));
-		((Report)val).SetParameters(new ReportParameter("prmTitle", text));
-		ReportDataSource val3 = new ReportDataSource("CommissionTotalDS", (IEnumerable)list3);
-		((Collection<ReportDataSource>)(object)val.get_DataSources()).Add(val3);
-		val3.set_Value((object)list3);
-		method_2(val);
+		localReport.SetParameters(new ReportParameter("prmLanguage_TaxNo", value));
+		localReport.SetParameters(new ReportParameter("prmCurrentDate", CS_0024_003C_003E8__locals0.startDate.ToLongDateString()));
+		localReport.SetParameters(new ReportParameter("prmTitle", text));
+		ReportDataSource reportDataSource2 = new ReportDataSource("CommissionTotalDS", list3);
+		localReport.DataSources.Add(reportDataSource2);
+		reportDataSource2.Value = list3;
+		method_2(localReport);
 		method_5(SettingsHelper.GetSettingValueByKey("receipt_size"));
 	}
 
@@ -1723,27 +1523,19 @@ public class PrintHelper
 		_003C_003Ec__DisplayClass22_1 CS_0024_003C_003E8__locals0;
 		new Thread((ThreadStart)delegate
 		{
-			//IL_0001: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0007: Expected O, but got Unknown
-			//IL_0057: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0061: Expected O, but got Unknown
-			//IL_006d: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0077: Expected O, but got Unknown
-			//IL_0082: Unknown result type (might be due to invalid IL or missing references)
-			//IL_008c: Expected O, but got Unknown
 			try
 			{
-				LocalReport val = new LocalReport();
-				((Collection<ReportDataSource>)(object)val.get_DataSources()).Clear();
-				((Collection<ReportDataSource>)(object)val.get_DataSources()).Clear();
-				val.set_ReportEmbeddedResource("CorePOS.Reports.Blank.rdlc");
+				LocalReport localReport = new LocalReport();
+				localReport.DataSources.Clear();
+				localReport.DataSources.Clear();
+				localReport.ReportEmbeddedResource = "CorePOS.Reports.Blank.rdlc";
 				DayEndTotalsObject dayEndTotalsObject = new PrintHelper().GenerateDayEndTotalsHTML(_003C_003Ec__DisplayClass22_.startDate, _003C_003Ec__DisplayClass22_.endDate, _003C_003Ec__DisplayClass22_.EmployeeId, _003C_003Ec__DisplayClass22_.TerminalId);
-				((Report)val).SetParameters(new ReportParameter("prmFontSize", "12"));
-				((Report)val).SetParameters(new ReportParameter("prmTextString", dayEndTotalsObject.DayEndHtml));
-				((Report)val).SetParameters(new ReportParameter("prmFontFamily", "Courier New"));
-				_003C_003Ec__DisplayClass22_._003C_003E4__this.method_2(val);
+				localReport.SetParameters(new ReportParameter("prmFontSize", "12"));
+				localReport.SetParameters(new ReportParameter("prmTextString", dayEndTotalsObject.DayEndHtml));
+				localReport.SetParameters(new ReportParameter("prmFontFamily", "Courier New"));
+				_003C_003Ec__DisplayClass22_._003C_003E4__this.method_2(localReport);
 				_003C_003Ec__DisplayClass22_._003C_003E4__this.method_5(SettingsHelper.GetSettingValueByKey("receipt_size"), -1, bool_1: true);
-				val.Dispose();
+				localReport.Dispose();
 				GC.Collect();
 			}
 			catch (Exception)
@@ -1760,20 +1552,17 @@ public class PrintHelper
 
 	private void method_2(LocalReport localReport_0, string string_2 = "EMF", int int_2 = 297, string string_3 = "80mm")
 	{
-		//IL_004c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0058: Expected O, but got Unknown
 		string text = "<DeviceInfo>\r\n                <OutputFormat>%OUTPUT_FORMAT%</OutputFormat>\r\n                <PageWidth>%WIDTH%</PageWidth>\r\n                <PageHeight>%HEIGHT%mm</PageHeight>\r\n                <MarginTop>0mm</MarginTop>\r\n                <MarginLeft>0mm</MarginLeft>\r\n                <MarginRight>0mm</MarginRight>\r\n                <MarginBottom>0mm</MarginBottom>\r\n            </DeviceInfo>";
 		text = text.Replace("%OUTPUT_FORMAT%", string_2);
 		text = text.Replace("%HEIGHT%", Convert.ToString(int_2));
 		text = text.Replace("%WIDTH%", string_3);
 		ilist_0 = new List<Stream>();
-		Warning[] array = default(Warning[]);
-		localReport_0.Render("Image", text, new CreateStreamCallback(method_0), ref array);
+		localReport_0.Render("Image", text, method_0, out var warnings);
 		foreach (Stream item in ilist_0)
 		{
 			item.Position = 0L;
 		}
-		array = null;
+		warnings = null;
 	}
 
 	private void method_3(object object_0, PrintPageEventArgs printPageEventArgs_0, bool bool_1)
@@ -2033,34 +1822,6 @@ public class PrintHelper
 		}
 		new Thread((ThreadStart)delegate
 		{
-			//IL_00d8: Unknown result type (might be due to invalid IL or missing references)
-			//IL_00de: Expected O, but got Unknown
-			//IL_018a: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0194: Expected O, but got Unknown
-			//IL_019c: Unknown result type (might be due to invalid IL or missing references)
-			//IL_01a6: Expected O, but got Unknown
-			//IL_0259: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0263: Expected O, but got Unknown
-			//IL_026b: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0275: Expected O, but got Unknown
-			//IL_027d: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0287: Expected O, but got Unknown
-			//IL_028f: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0299: Expected O, but got Unknown
-			//IL_02a1: Unknown result type (might be due to invalid IL or missing references)
-			//IL_02ab: Expected O, but got Unknown
-			//IL_02b3: Unknown result type (might be due to invalid IL or missing references)
-			//IL_02bd: Expected O, but got Unknown
-			//IL_02c5: Unknown result type (might be due to invalid IL or missing references)
-			//IL_02cf: Expected O, but got Unknown
-			//IL_02d7: Unknown result type (might be due to invalid IL or missing references)
-			//IL_02e1: Expected O, but got Unknown
-			//IL_0308: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0312: Expected O, but got Unknown
-			//IL_031e: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0328: Expected O, but got Unknown
-			//IL_0334: Unknown result type (might be due to invalid IL or missing references)
-			//IL_033e: Expected O, but got Unknown
 			_003C_003Ec__DisplayClass30_1 _003C_003Ec__DisplayClass30_ = new _003C_003Ec__DisplayClass30_1();
 			_003C_003Ec__DisplayClass30_.CS_0024_003C_003E8__locals1 = CS_0024_003C_003E8__locals0;
 			_003C_003Ec__DisplayClass30_.p = new PrintDocument();
@@ -2089,67 +1850,67 @@ public class PrintHelper
 			}
 			if (CS_0024_003C_003E8__locals0.isHTML)
 			{
-				LocalReport val = new LocalReport();
-				((Collection<ReportDataSource>)(object)val.get_DataSources()).Clear();
+				LocalReport localReport = new LocalReport();
+				localReport.DataSources.Clear();
 				int int_ = 297;
 				if (CS_0024_003C_003E8__locals0.station != null && CS_0024_003C_003E8__locals0.station.ChitFormat != 1 && CS_0024_003C_003E8__locals0.station.ChitFormat != 3 && CS_0024_003C_003E8__locals0.station.ChitFormat != 5)
 				{
 					if (CS_0024_003C_003E8__locals0.station != null && CS_0024_003C_003E8__locals0.station.ChitFormat == 6)
 					{
 						string[] array = CS_0024_003C_003E8__locals0.message.Split(new string[1] { "%DATA_BREAK%" }, StringSplitOptions.None);
-						string text2 = array[0];
-						string text3 = array[1];
+						string value = array[0];
+						string value2 = array[1];
 						CS_0024_003C_003E8__locals0.message = array[2];
-						val.set_ReportEmbeddedResource("CorePOS.Reports.BlankChit6.rdlc");
-						((Report)val).SetParameters(new ReportParameter("prmOrderNumber", text2));
-						((Report)val).SetParameters(new ReportParameter("prmTableNumber", text3));
+						localReport.ReportEmbeddedResource = "CorePOS.Reports.BlankChit6.rdlc";
+						localReport.SetParameters(new ReportParameter("prmOrderNumber", value));
+						localReport.SetParameters(new ReportParameter("prmTableNumber", value2));
 						int_ = 3276;
 					}
 					else if (CS_0024_003C_003E8__locals0.station != null && CS_0024_003C_003E8__locals0.station.ChitFormat == 2)
 					{
-						val.set_ReportEmbeddedResource("CorePOS.Reports.BlankLabel.rdlc");
+						localReport.ReportEmbeddedResource = "CorePOS.Reports.BlankLabel.rdlc";
 						int_ = 32;
 					}
 					else if (CS_0024_003C_003E8__locals0.station != null && CS_0024_003C_003E8__locals0.station.ChitFormat == 4)
 					{
 						string[] array2 = CS_0024_003C_003E8__locals0.message.Split(new string[1] { "%DATA_BREAK%" }, StringSplitOptions.None);
-						string text4 = array2[0];
-						string text5 = array2[1];
-						string text6 = array2[2];
-						string text7 = array2[3];
-						string text8 = array2[4];
-						string text9 = array2[5];
-						string text10 = array2[6];
+						string value3 = array2[0];
+						string value4 = array2[1];
+						string value5 = array2[2];
+						string value6 = array2[3];
+						string value7 = array2[4];
+						string value8 = array2[5];
+						string value9 = array2[6];
 						CS_0024_003C_003E8__locals0.message = array2[7];
-						val.set_ReportEmbeddedResource("CorePOS.Reports.LargeLabelChit.rdlc");
-						((Report)val).SetParameters(new ReportParameter("prmCustomerInfo", text10));
-						((Report)val).SetParameters(new ReportParameter("prmOrderType", text4));
-						((Report)val).SetParameters(new ReportParameter("prmChitNumber", text5));
-						((Report)val).SetParameters(new ReportParameter("prmOrderTicket", text6));
-						((Report)val).SetParameters(new ReportParameter("prmOrderDates", text7));
-						((Report)val).SetParameters(new ReportParameter("prmOrderTotals", text8));
-						((Report)val).SetParameters(new ReportParameter("prmOrderStatus", text9));
-						((Report)val).SetParameters(new ReportParameter("prmCustomerInfo", text10));
+						localReport.ReportEmbeddedResource = "CorePOS.Reports.LargeLabelChit.rdlc";
+						localReport.SetParameters(new ReportParameter("prmCustomerInfo", value9));
+						localReport.SetParameters(new ReportParameter("prmOrderType", value3));
+						localReport.SetParameters(new ReportParameter("prmChitNumber", value4));
+						localReport.SetParameters(new ReportParameter("prmOrderTicket", value5));
+						localReport.SetParameters(new ReportParameter("prmOrderDates", value6));
+						localReport.SetParameters(new ReportParameter("prmOrderTotals", value7));
+						localReport.SetParameters(new ReportParameter("prmOrderStatus", value8));
+						localReport.SetParameters(new ReportParameter("prmCustomerInfo", value9));
 						int_ = 40;
 					}
 				}
 				else
 				{
-					val.set_ReportEmbeddedResource("CorePOS.Reports.Blank.rdlc");
+					localReport.ReportEmbeddedResource = "CorePOS.Reports.Blank.rdlc";
 					int_ = 3276;
 				}
-				((Report)val).SetParameters(new ReportParameter("prmFontSize", CS_0024_003C_003E8__locals0.FontSize.ToString()));
-				((Report)val).SetParameters(new ReportParameter("prmTextString", CS_0024_003C_003E8__locals0.message));
-				((Report)val).SetParameters(new ReportParameter("prmFontFamily", CS_0024_003C_003E8__locals0.fontFamily));
-				CS_0024_003C_003E8__locals0._003C_003E4__this.method_2(val, "EMF", int_, text);
+				localReport.SetParameters(new ReportParameter("prmFontSize", CS_0024_003C_003E8__locals0.FontSize.ToString()));
+				localReport.SetParameters(new ReportParameter("prmTextString", CS_0024_003C_003E8__locals0.message));
+				localReport.SetParameters(new ReportParameter("prmFontFamily", CS_0024_003C_003E8__locals0.fontFamily));
+				CS_0024_003C_003E8__locals0._003C_003E4__this.method_2(localReport, "EMF", int_, text);
 				try
 				{
 					CS_0024_003C_003E8__locals0._003C_003E4__this.method_5(text, int_);
 				}
 				catch
 				{
-					string text11 = ((!string.IsNullOrEmpty(MemoryLoadedObjects.this_terminal.DefaultPrinter)) ? MemoryLoadedObjects.this_terminal.DefaultPrinter : SettingsHelper.GetSettingValueByKey("printer_default"));
-					if (CS_0024_003C_003E8__locals0._003C_003E4__this.string_0 == text11)
+					string text2 = ((!string.IsNullOrEmpty(MemoryLoadedObjects.this_terminal.DefaultPrinter)) ? MemoryLoadedObjects.this_terminal.DefaultPrinter : SettingsHelper.GetSettingValueByKey("printer_default"));
+					if (CS_0024_003C_003E8__locals0._003C_003E4__this.string_0 == text2)
 					{
 						if (CS_0024_003C_003E8__locals0._003C_003E4__this.method_7())
 						{
@@ -2158,7 +1919,7 @@ public class PrintHelper
 					}
 					else
 					{
-						CS_0024_003C_003E8__locals0._003C_003E4__this.string_0 = text11;
+						CS_0024_003C_003E8__locals0._003C_003E4__this.string_0 = text2;
 						CS_0024_003C_003E8__locals0._003C_003E4__this.method_5(text, int_);
 					}
 				}
@@ -2181,8 +1942,8 @@ public class PrintHelper
 				}
 				catch
 				{
-					string text12 = ((!string.IsNullOrEmpty(MemoryLoadedObjects.this_terminal.DefaultPrinter)) ? MemoryLoadedObjects.this_terminal.DefaultPrinter : SettingsHelper.GetSettingValueByKey("printer_default"));
-					if (CS_0024_003C_003E8__locals0._003C_003E4__this.string_0 == text12)
+					string text3 = ((!string.IsNullOrEmpty(MemoryLoadedObjects.this_terminal.DefaultPrinter)) ? MemoryLoadedObjects.this_terminal.DefaultPrinter : SettingsHelper.GetSettingValueByKey("printer_default"));
+					if (CS_0024_003C_003E8__locals0._003C_003E4__this.string_0 == text3)
 					{
 						if (CS_0024_003C_003E8__locals0._003C_003E4__this.method_7())
 						{

@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel;
@@ -47,7 +46,7 @@ public class frmManageTerminalSettings : frmMasterForm
 		_003C_003Ec__DisplayClass5_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass5_0();
 		pnlTerminals.Controls.Clear();
 		pnlTerminals.Controls.Add(terminalSettingsHeaderControl_0);
-		CS_0024_003C_003E8__locals0.status = (chkActive.get_Value() ? "active" : "inactive");
+		CS_0024_003C_003E8__locals0.status = (chkActive.Value ? "active" : "inactive");
 		list_2 = gclass6_0.Terminals.Where((Terminal x) => x.OperatingMode == "Normal" && x.Status == CS_0024_003C_003E8__locals0.status).ToList();
 		foreach (Terminal item in list_2)
 		{
@@ -78,16 +77,6 @@ public class frmManageTerminalSettings : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0032: Expected O, but got Unknown
-		//IL_0291: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02a9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02c1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02e2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_030f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_033c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0369: Unknown result type (might be due to invalid IL or missing references)
-		//IL_038a: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmManageTerminalSettings));
 		label3 = new Label();
 		pnlTerminals = new FlowLayoutPanel();
@@ -118,23 +107,23 @@ public class frmManageTerminalSettings : frmMasterForm
 		pnlTerminals.Padding = new Padding(0, 0, 20, 0);
 		pnlTerminals.Size = new Size(1008, 708);
 		pnlTerminals.TabIndex = 250;
-		((Control)(object)chkActive).Location = new Point(12, 12);
-		((Control)(object)chkActive).Name = "chkActive";
-		chkActive.set_OffText("INACTIVE TERMINALS");
-		chkActive.set_OnText("ACTIVE TERMINALS");
-		((Control)(object)chkActive).Size = new Size(115, 35);
-		((Control)(object)chkActive).TabIndex = 18;
-		((Control)(object)chkActive).Tag = "";
-		chkActive.set_ToggleStateMode((ToggleStateMode)1);
-		chkActive.add_ValueChanged((EventHandler)cgkFmloNyDH);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbOffset(95);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_Text("ACTIVE TERMINALS");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkActive.Location = new Point(12, 12);
+		chkActive.Name = "chkActive";
+		chkActive.OffText = "INACTIVE TERMINALS";
+		chkActive.OnText = "ACTIVE TERMINALS";
+		chkActive.Size = new Size(115, 35);
+		chkActive.TabIndex = 18;
+		chkActive.Tag = "";
+		chkActive.ToggleStateMode = ToggleStateMode.Click;
+		chkActive.ValueChanged += cgkFmloNyDH;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbOffset = 95;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).Text = "ACTIVE TERMINALS";
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		pictureBox1.BackColor = Color.FromArgb(156, 89, 184);
 		pictureBox1.Image = (Image)componentResourceManager.GetObject("pictureBox1.Image");
@@ -150,7 +139,7 @@ public class frmManageTerminalSettings : frmMasterForm
 		base.AutoScaleMode = AutoScaleMode.Font;
 		base.ClientSize = new Size(1024, 768);
 		base.Controls.Add(pictureBox1);
-		base.Controls.Add((Control)(object)chkActive);
+		base.Controls.Add(chkActive);
 		base.Controls.Add(pnlTerminals);
 		base.Controls.Add(label3);
 		base.Name = "frmManageTerminalSettings";

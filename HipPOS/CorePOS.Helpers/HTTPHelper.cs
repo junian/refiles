@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data.Linq;
 using System.Drawing;
 using System.Globalization;
@@ -10,18 +9,14 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms;
-using com.clover.remotepay.sdk;
 using CorePOS.Business;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
 using CorePOS.Business.Methods.PaymentProcessors;
 using CorePOS.Business.Objects;
 using CorePOS.Business.Objects.InAppAPI;
-using CorePOS.Business.Objects.PaymentObjects;
 using CorePOS.Data;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.Helpers;
@@ -95,10 +90,6 @@ public class HTTPHelper
 
 	private void method_1(HttpListenerContext httpListenerContext_0)
 	{
-		//IL_00b8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00bd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ca: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00df: Expected O, but got Unknown
 		Encoding.UTF8.GetBytes("ACK");
 		httpListenerContext_0.Response.StatusCode = 200;
 		httpListenerContext_0.Response.KeepAlive = true;
@@ -108,16 +99,17 @@ public class HTTPHelper
 		httpListenerContext_0.Response.AppendHeader("Access-Control-Allow-Origin", "*");
 		try
 		{
-			string text;
+			string value;
 			using (Stream stream = httpListenerContext_0.Request.InputStream)
 			{
 				using StreamReader streamReader = new StreamReader(stream, Encoding.UTF8);
-				text = streamReader.ReadToEnd();
+				value = streamReader.ReadToEnd();
 			}
-			JsonSerializerSettings val = new JsonSerializerSettings();
-			val.set_MaxDepth((int?)10);
-			val.set_ContractResolver((IContractResolver)(object)new HelperMethods.IgnoreContractResolver("Signature"));
-			APIRequestObj aPIRequestObj = JsonConvert.DeserializeObject<APIRequestObj>(text, val);
+			APIRequestObj aPIRequestObj = JsonConvert.DeserializeObject<APIRequestObj>(value, new JsonSerializerSettings
+			{
+				MaxDepth = 10,
+				ContractResolver = new HelperMethods.IgnoreContractResolver("Signature")
+			});
 			if (aPIRequestObj == null)
 			{
 				return;
@@ -229,22 +221,19 @@ public class HTTPHelper
 
 	private void method_3(HttpListenerContext httpListenerContext_0, int int_0, string string_0)
 	{
-		//IL_001c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0021: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0028: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003d: Expected O, but got Unknown
 		try
 		{
-			APIResponseObj obj = new APIResponseObj
+			APIResponseObj value = new APIResponseObj
 			{
 				code = int_0,
 				message = string_0
 			};
 			HttpListenerResponse response = httpListenerContext_0.Response;
-			JsonSerializerSettings val = new JsonSerializerSettings();
-			val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-			val.set_MaxDepth((int?)2000);
-			string s = JsonConvert.SerializeObject((object)obj, (Formatting)1, val);
+			string s = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+			{
+				ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+				MaxDepth = 2000
+			});
 			byte[] bytes = Encoding.UTF8.GetBytes(s);
 			response.ContentLength64 = bytes.Length;
 			response.OutputStream.Write(bytes, 0, bytes.Length);
@@ -256,15 +245,12 @@ public class HTTPHelper
 
 	private void method_4(HttpListenerContext httpListenerContext_0, object object_0)
 	{
-		//IL_0008: Unknown result type (might be due to invalid IL or missing references)
-		//IL_000d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0014: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0025: Expected O, but got Unknown
 		HttpListenerResponse response = httpListenerContext_0.Response;
-		JsonSerializerSettings val = new JsonSerializerSettings();
-		val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-		val.set_MaxDepth((int?)1);
-		string s = JsonConvert.SerializeObject(object_0, (Formatting)1, val);
+		string s = JsonConvert.SerializeObject(object_0, Formatting.Indented, new JsonSerializerSettings
+		{
+			ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+			MaxDepth = 1
+		});
 		byte[] bytes = Encoding.UTF8.GetBytes(s);
 		response.ContentLength64 = bytes.Length;
 		response.OutputStream.Write(bytes, 0, bytes.Length);
@@ -967,16 +953,6 @@ public class HTTPHelper
 
 	private void method_15(HttpListenerContext httpListenerContext_0, APIRequestObj apirequestObj_0)
 	{
-		//IL_00e3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ed: Expected O, but got Unknown
-		//IL_00f9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0103: Expected O, but got Unknown
-		//IL_010f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0119: Expected O, but got Unknown
-		//IL_0125: Unknown result type (might be due to invalid IL or missing references)
-		//IL_012f: Expected O, but got Unknown
-		//IL_02dc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02e3: Expected O, but got Unknown
 		_003C_003Ec__DisplayClass19_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass19_0();
 		DataManager dataManager = new DataManager();
 		APIResponseObj aPIResponseObj = new APIResponseObj();
@@ -986,7 +962,7 @@ public class HTTPHelper
 		{
 			aPIResponseObj.code = 200;
 			aPIResponseObj.message = "success";
-			aPIResponseObj.data = JsonConvert.SerializeObject((object)orderResponseObject);
+			aPIResponseObj.data = JsonConvert.SerializeObject(orderResponseObject);
 			method_4(httpListenerContext_0, aPIResponseObj);
 			return;
 		}
@@ -994,15 +970,15 @@ public class HTTPHelper
 		CS_0024_003C_003E8__locals0.intList = apirequestObj_0.order_items.Select((OrderedItem x) => x.itemID).Distinct().ToList();
 		List<Item> source2 = MemoryLoadedData.all_active_items.Where((Item x) => CS_0024_003C_003E8__locals0.intList.Contains(x.ItemID)).ToList();
 		CustomListViewTelerik customListViewTelerik = new CustomListViewTelerik();
-		((Control)(object)customListViewTelerik).Font = new Font("Microsoft Sans Serif", 10f, FontStyle.Regular);
-		((Collection<ListViewDetailColumn>)(object)((RadListView)customListViewTelerik).get_Columns()).Add(new ListViewDetailColumn("Qty"));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)customListViewTelerik).get_Columns()).Add(new ListViewDetailColumn("ItemName"));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)customListViewTelerik).get_Columns()).Add(new ListViewDetailColumn("Price"));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)customListViewTelerik).get_Columns()).Add(new ListViewDetailColumn("Ext. Price"));
+		customListViewTelerik.Font = new Font("Microsoft Sans Serif", 10f, FontStyle.Regular);
+		customListViewTelerik.Columns.Add(new ListViewDetailColumn("Qty"));
+		customListViewTelerik.Columns.Add(new ListViewDetailColumn("ItemName"));
+		customListViewTelerik.Columns.Add(new ListViewDetailColumn("Price"));
+		customListViewTelerik.Columns.Add(new ListViewDetailColumn("Ext. Price"));
 		short OeComboId = apirequestObj_0.order_items.Max((OrderedItem a) => a.comboID);
 		foreach (OrderedItem item2 in apirequestObj_0.order_items.OrderBy((OrderedItem x) => x.sortOrder))
 		{
-			string[] array = new string[23]
+			string[] values = new string[23]
 			{
 				item2.itemQty.ToString(),
 				item2.itemName,
@@ -1028,19 +1004,19 @@ public class HTTPHelper
 				false.ToString(),
 				""
 			};
-			ListViewDataItem val = new ListViewDataItem("", array);
-			val.set_Font(((Control)(object)customListViewTelerik).Font);
-			((RadListView)customListViewTelerik).get_Items().Add(val);
+			ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
+			listViewDataItem.Font = customListViewTelerik.Font;
+			customListViewTelerik.Items.Add(listViewDataItem);
 		}
-		foreach (ListViewDataItem item3 in ((RadListView)customListViewTelerik).get_Items())
+		foreach (ListViewDataItem item3 in customListViewTelerik.Items)
 		{
 			_003C_003Ec__DisplayClass19_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass19_1();
-			CS_0024_003C_003E8__locals1.itemID = Convert.ToInt32(item3.get_SubItems().get_Item(4).ToString());
+			CS_0024_003C_003E8__locals1.itemID = Convert.ToInt32(item3.SubItems[4].ToString());
 			Item itemToAdd = source2.Where((Item x) => x.ItemID.Equals(CS_0024_003C_003E8__locals1.itemID)).FirstOrDefault();
 			PromotionCheck promotion = PromotionMethods.GetPromotion(customListViewTelerik, itemToAdd, apirequestObj_0.orderHeader.orderType, DateTime.Now);
 			if (promotion != null && promotion.IsPromotion)
 			{
-				item3.get_SubItems().set_Item(18, (object)promotion.PromotionId.ToString());
+				item3.SubItems[18] = promotion.PromotionId.ToString();
 			}
 		}
 		PromotionMethods.RecalculatePromotion(customListViewTelerik, apirequestObj_0.orderHeader.orderType, DateTime.Now, ref OeComboId);
@@ -1049,17 +1025,17 @@ public class HTTPHelper
 		decimal num2 = default(decimal);
 		CS_0024_003C_003E8__locals0.selectedTag = 0;
 		decimal num3 = default(decimal);
-		foreach (ListViewDataItem item4 in ((RadListView)customListViewTelerik).get_Items())
+		foreach (ListViewDataItem item4 in customListViewTelerik.Items)
 		{
-			if (!item4.get_Font().Strikeout)
+			if (!item4.Font.Strikeout)
 			{
-				num = MathHelper.FractionToDecimal((string.IsNullOrEmpty(item4.get_Item(0).ToString()) ? "1" : item4.get_Item(0).ToString()).Replace(",", "."));
-				num2 = Convert.ToDecimal(string.IsNullOrEmpty(item4.get_Item(2).ToString()) ? "0.00" : item4.get_Item(2).ToString(), Thread.CurrentThread.CurrentCulture);
-				CS_0024_003C_003E8__locals0.selectedTag = Convert.ToInt32(item4.get_SubItems().get_Item(4).ToString());
-				num3 = ((num == 0m) ? 0m : (OrderHelper.GetDiscountFromDiscountDescription(item4.get_SubItems().get_Item(15).ToString(), DiscountTypes.Item) / num));
+				num = MathHelper.FractionToDecimal((string.IsNullOrEmpty(item4[0].ToString()) ? "1" : item4[0].ToString()).Replace(",", "."));
+				num2 = Convert.ToDecimal(string.IsNullOrEmpty(item4[2].ToString()) ? "0.00" : item4[2].ToString(), Thread.CurrentThread.CurrentCulture);
+				CS_0024_003C_003E8__locals0.selectedTag = Convert.ToInt32(item4.SubItems[4].ToString());
+				num3 = ((num == 0m) ? 0m : (OrderHelper.GetDiscountFromDiscountDescription(item4.SubItems[15].ToString(), DiscountTypes.Item) / num));
 				Item item = ((CS_0024_003C_003E8__locals0.selectedTag == -999) ? dataManager.getDeliveryItem() : MemoryLoadedData.all_items.Where((Item x) => x.ItemID == CS_0024_003C_003E8__locals0.selectedTag).FirstOrDefault());
-				string temp = item4.get_SubItems().get_Item(6).ToString();
-				string notes = item4.get_SubItems().get_Item(7).ToString();
+				string temp = item4.SubItems[6].ToString();
+				string notes = item4.SubItems[7].ToString();
 				if (item != null)
 				{
 					short num4 = (short)((item.ItemsInGroups.Count() > 0) ? item.ItemsInGroups.FirstOrDefault().GroupID.Value : 0);
@@ -1074,10 +1050,10 @@ public class HTTPHelper
 						TaxRule = item.TaxRule,
 						TaxRuleID = item.TaxRuleID,
 						ItemTypeID = item.ItemTypeID,
-						SortOrder = Convert.ToInt16(item4.get_SubItems().get_Item(5).ToString()),
-						Barcode = item4.get_SubItems().get_Item(15).ToString(),
-						ItemCost = ((item4.get_SubItems().get_Item(8).ToString() == "-1") ? item.ItemPrice : Convert.ToDecimal(item4.get_SubItems().get_Item(8).ToString())),
-						Description = item4.get_SubItems().get_Item(16).ToString(),
+						SortOrder = Convert.ToInt16(item4.SubItems[5].ToString()),
+						Barcode = item4.SubItems[15].ToString(),
+						ItemCost = ((item4.SubItems[8].ToString() == "-1") ? item.ItemPrice : Convert.ToDecimal(item4.SubItems[8].ToString())),
+						Description = item4.SubItems[16].ToString(),
 						Active = true,
 						TaxesIncluded = item.TaxesIncluded,
 						Temp = temp,
@@ -1134,7 +1110,7 @@ public class HTTPHelper
 		}).ToList();
 		aPIResponseObj.code = 200;
 		aPIResponseObj.message = "success";
-		aPIResponseObj.data = JsonConvert.SerializeObject((object)orderResponseObject);
+		aPIResponseObj.data = JsonConvert.SerializeObject(orderResponseObject);
 		method_4(httpListenerContext_0, aPIResponseObj);
 		source = null;
 		CS_0024_003C_003E8__locals0.intList = null;
@@ -1480,15 +1456,11 @@ public class HTTPHelper
 
 	private void method_28(HttpListenerContext httpListenerContext_0, APIRequestObj apirequestObj_0)
 	{
-		//IL_0103: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0108: Unknown result type (might be due to invalid IL or missing references)
-		//IL_010f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0124: Expected O, but got Unknown
 		new GClass6();
 		APIResponseObj aPIResponseObj = new APIResponseObj();
 		if (apirequestObj_0.clover_response != null)
 		{
-			decimal num = (decimal)apirequestObj_0.clover_response.get_Payment().get_amount() / 100m;
+			decimal num = (decimal)apirequestObj_0.clover_response.Payment.amount / 100m;
 			if (num <= 0m)
 			{
 				aPIResponseObj.code = 401;
@@ -1497,17 +1469,17 @@ public class HTTPHelper
 				return;
 			}
 			PaymentTransactionObject paymentTransactionObject = new PaymentTransactionObject();
-			paymentTransactionObject.approvalcode = apirequestObj_0.clover_response.get_Payment().get_cardTransaction().get_authCode();
-			paymentTransactionObject.cardaccount = apirequestObj_0.clover_response.get_Payment().get_cardTransaction().get_last4();
+			paymentTransactionObject.approvalcode = apirequestObj_0.clover_response.Payment.cardTransaction.authCode;
+			paymentTransactionObject.cardaccount = apirequestObj_0.clover_response.Payment.cardTransaction.last4;
 			paymentTransactionObject.invoicenumber = apirequestObj_0.orderHeader.orderNumber;
-			paymentTransactionObject.responsecode = (((BaseResponse)apirequestObj_0.clover_response).get_Success() ? "00" : "51");
-			paymentTransactionObject.totalamount = apirequestObj_0.clover_response.get_Payment().get_amount().ToString();
+			paymentTransactionObject.responsecode = (apirequestObj_0.clover_response.Success ? "00" : "51");
+			paymentTransactionObject.totalamount = apirequestObj_0.clover_response.Payment.amount.ToString();
 			paymentTransactionObject.transaction_type = "sale";
-			PaymentResponse clover_response = apirequestObj_0.clover_response;
-			JsonSerializerSettings val = new JsonSerializerSettings();
-			val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-			val.set_MaxDepth((int?)2000);
-			paymentTransactionObject.rawdata = JsonConvert.SerializeObject((object)clover_response, (Formatting)1, val);
+			paymentTransactionObject.rawdata = JsonConvert.SerializeObject(apirequestObj_0.clover_response, Formatting.Indented, new JsonSerializerSettings
+			{
+				ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+				MaxDepth = 2000
+			});
 			string text = FirstData.FormatCloverReceipt("sale", paymentTransactionObject.rawdata, apirequestObj_0.orderHeader.orderNumber);
 			string text4 = (paymentTransactionObject.customerreceipt = (paymentTransactionObject.merchantreceipt = text));
 			PaymentHelper.RecordPaymentTransactionLog(PaymentProviderNames.FirstData, PaymentTerminalModels.Clover.Flex, httpListenerContext_0.Request.RemoteEndPoint.Address.ToString(), httpListenerContext_0.Request.RemoteEndPoint.Port, "request made on clover app", "request", apirequestObj_0.orderHeader.orderNumber, "");
@@ -1551,7 +1523,7 @@ public class HTTPHelper
 			{
 				string_ = "Interac";
 			}
-			method_30(apirequestObj_0.orderHeader.orderNumber, num, ((decimal?)apirequestObj_0.clover_response.get_Payment().get_tipAmount() / (decimal?)100m).Value, string_, (short)apirequestObj_0.orderHeader.employeeID);
+			method_30(apirequestObj_0.orderHeader.orderNumber, num, ((decimal?)apirequestObj_0.clover_response.Payment.tipAmount / (decimal?)100m).Value, string_, (short)apirequestObj_0.orderHeader.employeeID);
 			aPIResponseObj.code = 200;
 			aPIResponseObj.message = "Success";
 		}
@@ -1565,10 +1537,6 @@ public class HTTPHelper
 
 	private void method_29(HttpListenerContext httpListenerContext_0, APIRequestObj apirequestObj_0)
 	{
-		//IL_0103: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0108: Unknown result type (might be due to invalid IL or missing references)
-		//IL_010f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0124: Expected O, but got Unknown
 		new GClass6();
 		APIResponseObj aPIResponseObj = new APIResponseObj();
 		if (apirequestObj_0.clover_response != null)
@@ -1588,11 +1556,11 @@ public class HTTPHelper
 			paymentTransactionObject.responsecode = ((apirequestObj_0.poynt_response.status == "AUTHORIZED") ? "00" : "51");
 			paymentTransactionObject.totalamount = apirequestObj_0.poynt_response.amounts.transactionAmount.ToString();
 			paymentTransactionObject.transaction_type = "sale";
-			PoyntTransactionObject poynt_response = apirequestObj_0.poynt_response;
-			JsonSerializerSettings val = new JsonSerializerSettings();
-			val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-			val.set_MaxDepth((int?)2000);
-			paymentTransactionObject.rawdata = JsonConvert.SerializeObject((object)poynt_response, (Formatting)1, val);
+			paymentTransactionObject.rawdata = JsonConvert.SerializeObject(apirequestObj_0.poynt_response, Formatting.Indented, new JsonSerializerSettings
+			{
+				ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+				MaxDepth = 2000
+			});
 			Poynt.FormatPoyntReceipt("sale", paymentTransactionObject.rawdata);
 			PaymentHelper.RecordPaymentTransactionLog(PaymentProviderNames.FirstData, PaymentTerminalModels.Clover.Flex, httpListenerContext_0.Request.RemoteEndPoint.Address.ToString(), httpListenerContext_0.Request.RemoteEndPoint.Port, "request made on poynt app", "request", apirequestObj_0.orderHeader.orderNumber, "");
 			PaymentHelper.RecordPaymentTransactionLog(PaymentProviderNames.FirstData, PaymentTerminalModels.Clover.Flex, httpListenerContext_0.Request.RemoteEndPoint.Address.ToString(), httpListenerContext_0.Request.RemoteEndPoint.Port, paymentTransactionObject.rawdata, "response", apirequestObj_0.orderHeader.orderNumber, "");

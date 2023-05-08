@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using CorePOS.Business.Objects;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel.Settings.OrderEntry;
@@ -72,8 +71,8 @@ public class frmDeliveryFeeSettings : frmMasterForm
 	{
 		pnlCalculations.Controls.Add(deliveryFeeCalculationHeaderControl_0);
 		DeliveryFeeSettingsObject deliveryFeeSettings = SettingsHelper.DeliveryFeeSettings.GetDeliveryFeeSettings();
-		((Control)(object)txtBaseRate).Text = deliveryFeeSettings.BaseRate.ToString("0.00");
-		((Control)(object)txtFreeDeliveryChargeOver).Text = deliveryFeeSettings.FreeDeliveryOver.ToString("0.00");
+		txtBaseRate.Text = deliveryFeeSettings.BaseRate.ToString("0.00");
+		txtFreeDeliveryChargeOver.Text = deliveryFeeSettings.FreeDeliveryOver.ToString("0.00");
 		ddlUOMDistance.Text = deliveryFeeSettings.String_0;
 		foreach (DeliveryFeeFromToPerKM item in deliveryFeeSettings.ListOfFeeCalculation)
 		{
@@ -85,7 +84,7 @@ public class frmDeliveryFeeSettings : frmMasterForm
 
 	private void txtSampleDistance_TextChanged(object sender, EventArgs e)
 	{
-		SampleDistance = ((Control)(object)txtSampleDistance).Text.ToDecimalWithCleanUp();
+		SampleDistance = txtSampleDistance.Text.ToDecimalWithCleanUp();
 		SampleDistance = Math.Ceiling(SampleDistance);
 		TotalSampleCalc = default(decimal);
 		foreach (Control control in pnlCalculations.Controls)
@@ -96,7 +95,7 @@ public class frmDeliveryFeeSettings : frmMasterForm
 				TotalSampleCalc += deliveryFeeCalculationItemControl.CalculateChange(SampleDistance);
 			}
 		}
-		TotalSampleCalc += ((Control)(object)txtBaseRate).Text.ToDecimalWithCleanUp();
+		TotalSampleCalc += txtBaseRate.Text.ToDecimalWithCleanUp();
 		lblSampleCalculation.Text = "Total Calculation: $" + TotalSampleCalc.ToString("0.00");
 	}
 
@@ -110,8 +109,8 @@ public class frmDeliveryFeeSettings : frmMasterForm
 	private void btnSave_Click(object sender, EventArgs e)
 	{
 		DeliveryFeeSettingsObject deliveryFeeSettingsObject = new DeliveryFeeSettingsObject();
-		deliveryFeeSettingsObject.BaseRate = ((Control)(object)txtBaseRate).Text.ToDecimalWithCleanUp();
-		deliveryFeeSettingsObject.FreeDeliveryOver = ((Control)(object)txtFreeDeliveryChargeOver).Text.ToDecimalWithCleanUp();
+		deliveryFeeSettingsObject.BaseRate = txtBaseRate.Text.ToDecimalWithCleanUp();
+		deliveryFeeSettingsObject.FreeDeliveryOver = txtFreeDeliveryChargeOver.Text.ToDecimalWithCleanUp();
 		deliveryFeeSettingsObject.String_0 = ddlUOMDistance.Text;
 		List<DeliveryFeeFromToPerKM> list = new List<DeliveryFeeFromToPerKM>();
 		foreach (Control control in pnlCalculations.Controls)
@@ -153,10 +152,10 @@ public class frmDeliveryFeeSettings : frmMasterForm
 	private void txtSampleDistance_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Sample Distance", 4, 8, ((Control)(object)txtSampleDistance).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Sample Distance", 4, 8, txtSampleDistance.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSampleDistance).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtSampleDistance.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -164,10 +163,10 @@ public class frmDeliveryFeeSettings : frmMasterForm
 	private void btnShowKeyboard_BaseRate_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Base Rate", 2, 8, ((Control)(object)txtBaseRate).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Base Rate", 2, 8, txtBaseRate.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtBaseRate).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtBaseRate.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -180,10 +179,10 @@ public class frmDeliveryFeeSettings : frmMasterForm
 	private void btnShowKeyboard_FreeDeliveryChargeOver_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Total Amount For Free Delivery", 2, 8, ((Control)(object)txtFreeDeliveryChargeOver).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Total Amount For Free Delivery", 2, 8, txtFreeDeliveryChargeOver.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtFreeDeliveryChargeOver).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtFreeDeliveryChargeOver.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -199,19 +198,6 @@ public class frmDeliveryFeeSettings : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_0049: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0053: Expected O, but got Unknown
-		//IL_00c2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00cc: Expected O, but got Unknown
-		//IL_02a2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02c3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_065e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_067f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11f1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_120c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1232: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmDeliveryFeeSettings));
 		label9 = new Label();
 		txtBaseRate = new RadTextBoxControl();
@@ -249,16 +235,16 @@ public class frmDeliveryFeeSettings : frmMasterForm
 		label9.TabIndex = 101;
 		label9.Text = "DELIVERY FEE SETTINGS";
 		label9.TextAlign = ContentAlignment.MiddleCenter;
-		((Control)(object)txtBaseRate).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtBaseRate).Location = new Point(132, 43);
-		txtBaseRate.set_MaxLength(255);
-		((Control)(object)txtBaseRate).Name = "txtBaseRate";
-		((RadElement)((RadControl)txtBaseRate).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtBaseRate).Size = new Size(69, 33);
-		((Control)(object)txtBaseRate).TabIndex = 112;
-		((Control)(object)txtBaseRate).Click += btnShowKeyboard_BaseRate_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtBaseRate).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtBaseRate).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtBaseRate.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtBaseRate.Location = new Point(132, 43);
+		txtBaseRate.MaxLength = 255;
+		txtBaseRate.Name = "txtBaseRate";
+		txtBaseRate.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtBaseRate.Size = new Size(69, 33);
+		txtBaseRate.TabIndex = 112;
+		txtBaseRate.Click += btnShowKeyboard_BaseRate_Click;
+		((RadTextBoxControlElement)txtBaseRate.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtBaseRate.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label1.BackColor = Color.FromArgb(132, 146, 146);
 		label1.Font = new Font("Microsoft Sans Serif", 11f);
 		label1.ForeColor = Color.White;
@@ -296,17 +282,17 @@ public class frmDeliveryFeeSettings : frmMasterForm
 		btnShowKeyboard_SampleDistance.TabIndex = 248;
 		btnShowKeyboard_SampleDistance.UseVisualStyleBackColor = false;
 		btnShowKeyboard_SampleDistance.Click += txtSampleDistance_Click;
-		((Control)(object)txtSampleDistance).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtSampleDistance).Location = new Point(373, 77);
-		txtSampleDistance.set_MaxLength(255);
-		((Control)(object)txtSampleDistance).Name = "txtSampleDistance";
-		((RadElement)((RadControl)txtSampleDistance).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSampleDistance).Size = new Size(95, 35);
-		((Control)(object)txtSampleDistance).TabIndex = 246;
-		((Control)(object)txtSampleDistance).TextChanged += txtSampleDistance_TextChanged;
-		((Control)(object)txtSampleDistance).Click += txtSampleDistance_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSampleDistance).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSampleDistance).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSampleDistance.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtSampleDistance.Location = new Point(373, 77);
+		txtSampleDistance.MaxLength = 255;
+		txtSampleDistance.Name = "txtSampleDistance";
+		txtSampleDistance.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSampleDistance.Size = new Size(95, 35);
+		txtSampleDistance.TabIndex = 246;
+		txtSampleDistance.TextChanged += txtSampleDistance_TextChanged;
+		txtSampleDistance.Click += txtSampleDistance_Click;
+		((RadTextBoxControlElement)txtSampleDistance.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSampleDistance.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label2.BackColor = Color.FromArgb(132, 146, 146);
 		label2.Font = new Font("Microsoft Sans Serif", 11f);
 		label2.ForeColor = Color.White;
@@ -452,17 +438,17 @@ public class frmDeliveryFeeSettings : frmMasterForm
 		btnShowKeyboard_FreeDeliveryChargeOver.TabIndex = 297;
 		btnShowKeyboard_FreeDeliveryChargeOver.UseVisualStyleBackColor = false;
 		btnShowKeyboard_FreeDeliveryChargeOver.Click += btnShowKeyboard_FreeDeliveryChargeOver_Click;
-		((Control)(object)txtFreeDeliveryChargeOver).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtFreeDeliveryChargeOver).Location = new Point(391, 43);
-		txtFreeDeliveryChargeOver.set_MaxLength(255);
-		((Control)(object)txtFreeDeliveryChargeOver).Name = "txtFreeDeliveryChargeOver";
-		((RadControl)txtFreeDeliveryChargeOver).set_Padding(new Padding(10, 0, 0, 0));
-		((RadElement)((RadControl)txtFreeDeliveryChargeOver).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtFreeDeliveryChargeOver).Size = new Size(77, 33);
-		((Control)(object)txtFreeDeliveryChargeOver).TabIndex = 295;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtFreeDeliveryChargeOver).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(RadTextBoxControlElement)((RadControl)txtFreeDeliveryChargeOver).GetChildAt(0)).set_Padding(new Padding(10, 0, 0, 0));
-		((RadElement)(TextBoxViewElement)((RadControl)txtFreeDeliveryChargeOver).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtFreeDeliveryChargeOver.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtFreeDeliveryChargeOver.Location = new Point(391, 43);
+		txtFreeDeliveryChargeOver.MaxLength = 255;
+		txtFreeDeliveryChargeOver.Name = "txtFreeDeliveryChargeOver";
+		txtFreeDeliveryChargeOver.Padding = new Padding(10, 0, 0, 0);
+		txtFreeDeliveryChargeOver.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtFreeDeliveryChargeOver.Size = new Size(77, 33);
+		txtFreeDeliveryChargeOver.TabIndex = 295;
+		((RadTextBoxControlElement)txtFreeDeliveryChargeOver.GetChildAt(0)).BorderWidth = 0f;
+		((RadTextBoxControlElement)txtFreeDeliveryChargeOver.GetChildAt(0)).Padding = new Padding(10, 0, 0, 0);
+		((TextBoxViewElement)txtFreeDeliveryChargeOver.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label5.BackColor = Color.FromArgb(132, 146, 146);
 		label5.Font = new Font("Microsoft Sans Serif", 9f);
 		label5.ForeColor = Color.White;
@@ -502,7 +488,7 @@ public class frmDeliveryFeeSettings : frmMasterForm
 		base.Controls.Add(label4);
 		base.Controls.Add(label37);
 		base.Controls.Add(btnShowKeyboard_FreeDeliveryChargeOver);
-		base.Controls.Add((Control)(object)txtFreeDeliveryChargeOver);
+		base.Controls.Add(txtFreeDeliveryChargeOver);
 		base.Controls.Add(label5);
 		base.Controls.Add(btnShowKeyboard_BaseRate);
 		base.Controls.Add(ddlUOMDistance);
@@ -511,12 +497,12 @@ public class frmDeliveryFeeSettings : frmMasterForm
 		base.Controls.Add(btnSave);
 		base.Controls.Add(pnlCalculations);
 		base.Controls.Add(btnShowKeyboard_SampleDistance);
-		base.Controls.Add((Control)(object)txtSampleDistance);
+		base.Controls.Add(txtSampleDistance);
 		base.Controls.Add(label2);
 		base.Controls.Add(btnAddToUnit);
 		base.Controls.Add(label3);
 		base.Controls.Add(label22);
-		base.Controls.Add((Control)(object)txtBaseRate);
+		base.Controls.Add(txtBaseRate);
 		base.Controls.Add(label1);
 		base.Controls.Add(label9);
 		base.Name = "frmDeliveryFeeSettings";

@@ -99,10 +99,6 @@ public static class TapMangoMethods
 
 	public static TapMangoEventSuccessResponse RedeemReward(long customerId, string rewardCode)
 	{
-		//IL_0090: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0095: Unknown result type (might be due to invalid IL or missing references)
-		//IL_009c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00b1: Expected O, but got Unknown
 		try
 		{
 			string text = "";
@@ -113,7 +109,7 @@ public static class TapMangoMethods
 			}
 			if (!string.IsNullOrEmpty(text))
 			{
-				var anon = new
+				var value = new
 				{
 					code = rewardCode
 				};
@@ -123,11 +119,12 @@ public static class TapMangoMethods
 				httpWebRequest.Headers.Add(HttpRequestHeader.Authorization, "ApiKey " + text);
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-					streamWriter.Write(value);
+					string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
+					streamWriter.Write(value2);
 				}
 				HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
 				if (httpWebResponse.StatusCode != HttpStatusCode.BadRequest && httpWebResponse.StatusCode != HttpStatusCode.NotFound)
@@ -161,10 +158,6 @@ public static class TapMangoMethods
 
 	public static TapMangoEventSuccessResponse ProcessPayment(long customerId, decimal amount, string method)
 	{
-		//IL_0091: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0096: Unknown result type (might be due to invalid IL or missing references)
-		//IL_009d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00b2: Expected O, but got Unknown
 		try
 		{
 			string text = "";
@@ -175,18 +168,19 @@ public static class TapMangoMethods
 			}
 			if (!string.IsNullOrEmpty(text))
 			{
-				var anon = new { amount, method };
+				var value = new { amount, method };
 				HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("https://openapi.tapmango.com:443/api/v1/customers/" + customerId + "/events/Payment");
 				httpWebRequest.ContentType = "application/json";
 				httpWebRequest.Method = "POST";
 				httpWebRequest.Headers.Add(HttpRequestHeader.Authorization, "ApiKey " + text);
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject((object)anon, (Formatting)1, val);
-					streamWriter.Write(value);
+					string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
+					streamWriter.Write(value2);
 				}
 				HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
 				if (httpWebResponse.StatusCode != HttpStatusCode.BadRequest && httpWebResponse.StatusCode != HttpStatusCode.NotFound)

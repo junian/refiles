@@ -14,10 +14,6 @@ public class ETimeCardMethods
 {
 	public static StatusCodeResponseLocation GetLocationData(object token)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.sync_server + "/api/location/GetLocationData");
@@ -25,10 +21,11 @@ public class ETimeCardMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject(token, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(token, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -52,10 +49,6 @@ public class ETimeCardMethods
 
 	public static AccessTokenReponseObject PinAuthentication(AccessTokenRequestObject data)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.etime_card_server + "/API/Default.aspx?type=login");
@@ -63,10 +56,11 @@ public class ETimeCardMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)data, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -90,10 +84,6 @@ public class ETimeCardMethods
 
 	public static ClocksInOutReponseObject EmployeePunchInOut(HipposClockInOutRequestObject data, string type)
 	{
-		//IL_0040: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0045: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0061: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:24286/" + "/API/Default.aspx?type=" + type);
@@ -101,10 +91,11 @@ public class ETimeCardMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)data, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -126,10 +117,6 @@ public class ETimeCardMethods
 
 	public static ClocksInOutReponseObject SyncPunchInOut(HipposClockInOutListPostObject data)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.etime_card_server + "/API/Default.aspx?type=sync_clock_in_out");
@@ -137,10 +124,11 @@ public class ETimeCardMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)data, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -159,10 +147,6 @@ public class ETimeCardMethods
 
 	public static HipposClockInOutListPostObject SyncPunchInOutFromHipposTime(HipposClockInOutRequestObject data)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.etime_card_server + "/API/Default.aspx?type=sync_clock_in_out_hippos_time");
@@ -170,10 +154,11 @@ public class ETimeCardMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)data, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -192,10 +177,6 @@ public class ETimeCardMethods
 
 	public static ClocksInOutReponseObject ConfirmPunchInOut(HipposClockInOutListPostObject data)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.etime_card_server + "/API/Default.aspx?type=confirm_clock_in_out");
@@ -203,10 +184,11 @@ public class ETimeCardMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)data, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -225,10 +207,6 @@ public class ETimeCardMethods
 
 	public static EmployeeAccountPinResponseObject UpdateEmployeeAccountPin(EmployeeAccountPinRequestObject data)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.etime_card_server + "/API/Default.aspx?type=update_employee_pin");
@@ -236,10 +214,11 @@ public class ETimeCardMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)data, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -261,10 +240,6 @@ public class ETimeCardMethods
 
 	public static EmployeeAccountPinResponseObject CreateEmployee(CreateEmployeeAccountObject data)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.etime_card_server + "/API/Default.aspx?type=hippos_create_employee");
@@ -272,10 +247,11 @@ public class ETimeCardMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)data, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -297,10 +273,6 @@ public class ETimeCardMethods
 
 	public static EmployeeAccountPinResponseObject CheckEmployeeExist(CreateEmployeeAccountObject data)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.etime_card_server + "/API/Default.aspx?type=check_employee_exist");
@@ -308,10 +280,11 @@ public class ETimeCardMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)data, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());

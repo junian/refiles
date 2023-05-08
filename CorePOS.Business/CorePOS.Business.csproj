@@ -14,19 +14,33 @@
   <ItemGroup />
   <ItemGroup>
     <Reference Include="CorePOS.Data">
-      <HintPath>..\..\Hippos-de4dot\CorePOS.Data.dll</HintPath>
+      <HintPath>..\Hippos-bin\CorePOS.Data.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
-    <Reference Include="CloverConnector" />
-    <Reference Include="Newtonsoft.Json" />
+    <Reference Include="CloverConnector">
+      <HintPath>..\Hippos-bin\CloverConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Hippos-bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="CrashGrab" />
-    <Reference Include="Microsoft.WindowsAzure.Storage" />
-    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement" />
-    <Reference Include="UnitsNet" />
-    <Reference Include="CloverWindowsSDK" />
+    <Reference Include="CrashGrab">
+      <HintPath>..\Hippos-bin\CrashGrab.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\Hippos-bin\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement">
+      <HintPath>..\Hippos-bin\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
+    </Reference>
+    <Reference Include="UnitsNet">
+      <HintPath>..\Hippos-bin\UnitsNet.dll</HintPath>
+    </Reference>
+    <Reference Include="CloverWindowsSDK">
+      <HintPath>..\Hippos-bin\CloverWindowsSDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

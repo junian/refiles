@@ -101,7 +101,7 @@ public class frmLoader : Form
 		Thread.CurrentThread.CurrentCulture = currentCulture;
 		Thread.CurrentThread.CurrentUICulture = currentCulture;
 		InitializeComponent();
-		progressBar1.set_Maximum(int_1);
+		progressBar1.Maximum = int_1;
 		CorePOS.Data.Properties.Settings.Default["AppVersion"] = AppSettings.AppVersion;
 	}
 
@@ -155,7 +155,7 @@ public class frmLoader : Form
 				}
 				int_0++;
 				int_2++;
-				progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+				progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 				bool_0 = false;
 				break;
 			}
@@ -164,7 +164,7 @@ public class frmLoader : Form
 				method_2();
 				int_2++;
 				int_0++;
-				progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+				progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 				bool_0 = false;
 				break;
 			case 12:
@@ -172,7 +172,7 @@ public class frmLoader : Form
 				method_20();
 				int_2++;
 				int_0++;
-				progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+				progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 				bool_0 = false;
 				break;
 			case 13:
@@ -184,7 +184,7 @@ public class frmLoader : Form
 				timer_8.Enabled = true;
 				int_2++;
 				int_0++;
-				progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+				progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 				bool_0 = false;
 				break;
 			}
@@ -344,7 +344,7 @@ public class frmLoader : Form
 		{
 			int_0++;
 			int_2++;
-			progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+			progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 			bool_0 = false;
 		}
 		GC.Collect();
@@ -359,7 +359,7 @@ public class frmLoader : Form
 			new GClass6().Taxes.FirstOrDefault();
 			int_0++;
 			int_2++;
-			progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+			progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 			bool_0 = false;
 		}
 		catch (Exception ex)
@@ -396,7 +396,7 @@ public class frmLoader : Form
 		bool_0 = true;
 		int_0++;
 		int_2++;
-		progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+		progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 		bool_0 = false;
 	}
 
@@ -439,7 +439,7 @@ public class frmLoader : Form
 		{
 			int_0++;
 			int_2++;
-			progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+			progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 			bool_0 = false;
 		}
 	}
@@ -515,7 +515,7 @@ public class frmLoader : Form
 						bool_1 = false;
 						int_0++;
 						int_2++;
-						progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+						progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 						bool_0 = false;
 					}
 				}
@@ -545,7 +545,7 @@ public class frmLoader : Form
 		{
 			int_0++;
 			int_2++;
-			progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+			progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 			bool_0 = false;
 		}
 		checkForUpdatesPostData = null;
@@ -584,7 +584,7 @@ public class frmLoader : Form
 			NotificationMethods.sendCrash(AppSettings.AppVersion, Environment.OSVersion.VersionString, error);
 			int_0++;
 			int_2++;
-			progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+			progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 			bool_0 = false;
 		}
 	}
@@ -596,7 +596,7 @@ public class frmLoader : Form
 			Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\HipPOS-Updater.exe");
 		}
 		int_2++;
-		progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+		progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 		bool_0 = false;
 		Application.Exit();
 	}
@@ -762,7 +762,7 @@ public class frmLoader : Form
 		{
 			int_0++;
 			int_2++;
-			progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+			progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 			bool_0 = false;
 		}
 		GC.Collect();
@@ -811,7 +811,7 @@ public class frmLoader : Form
 		HelperMethods.SetSystemTime();
 		int_0++;
 		int_2++;
-		progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+		progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 		bool_0 = false;
 		GC.Collect();
 	}
@@ -832,7 +832,7 @@ public class frmLoader : Form
 					int_0++;
 					int_2++;
 					bool_0 = false;
-					progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+					progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 					return;
 				}
 			}
@@ -850,7 +850,7 @@ public class frmLoader : Form
 		}
 		int_0++;
 		int_2++;
-		progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+		progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 		bool_0 = false;
 	}
 
@@ -904,7 +904,7 @@ public class frmLoader : Form
 		}
 		int_0++;
 		int_2++;
-		progressBar1.set_Value1((int_2 > progressBar1.get_Maximum()) ? progressBar1.get_Maximum() : int_2);
+		progressBar1.Value1 = ((int_2 > progressBar1.Maximum) ? progressBar1.Maximum : int_2);
 		bool_0 = false;
 		gClass = null;
 		subscriptionResponseData = null;
@@ -1782,36 +1782,13 @@ public class frmLoader : Form
 
 	private void InitializeComponent()
 	{
-		//IL_0055: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005f: Expected O, but got Unknown
-		//IL_0250: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0271: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0292: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02b3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02d4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0316: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0337: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0358: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0379: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0397: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03be: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03eb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0418: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0445: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0472: Unknown result type (might be due to invalid IL or missing references)
-		//IL_048f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04bc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04e9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0516: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0543: Unknown result type (might be due to invalid IL or missing references)
 		this.icontainer_0 = new System.ComponentModel.Container();
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.frmLoader));
 		this.timer_0 = new System.Windows.Forms.Timer(this.icontainer_0);
 		this.timer_1 = new System.Windows.Forms.Timer(this.icontainer_0);
 		this.lblVersion = new System.Windows.Forms.Label();
 		this.panel1 = new System.Windows.Forms.Panel();
-		this.progressBar1 = new RadProgressBar();
+		this.progressBar1 = new Telerik.WinControls.UI.RadProgressBar();
 		this.pictureBox2 = new System.Windows.Forms.PictureBox();
 		this.timer_2 = new System.Windows.Forms.Timer(this.icontainer_0);
 		this.timer_3 = new System.Windows.Forms.Timer(this.icontainer_0);
@@ -1834,35 +1811,35 @@ public class frmLoader : Form
 		resources.ApplyResources(this.lblVersion, "lblVersion");
 		this.lblVersion.Name = "lblVersion";
 		this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-		this.panel1.Controls.Add((System.Windows.Forms.Control)(object)this.progressBar1);
+		this.panel1.Controls.Add(this.progressBar1);
 		this.panel1.Controls.Add(this.pictureBox2);
 		this.panel1.Controls.Add(this.lblVersion);
 		resources.ApplyResources(this.panel1, "panel1");
 		this.panel1.Name = "panel1";
 		resources.ApplyResources(this.progressBar1, "progressBar1");
-		((System.Windows.Forms.Control)(object)this.progressBar1).ForeColor = System.Drawing.Color.White;
-		((System.Windows.Forms.Control)(object)this.progressBar1).Name = "progressBar1";
-		((RadItem)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_Text(resources.GetString("resource.Text"));
-		((UIItemBase)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BorderColor(System.Drawing.Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BorderColor2(System.Drawing.Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BorderColor3(System.Drawing.Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BorderColor4(System.Drawing.Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BorderInnerColor(System.Drawing.Color.FromArgb(21, 23, 33));
-		((UIItemBase)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BorderBottomColor(System.Drawing.Color.FromArgb(0, 0, 0));
-		((VisualElement)(RadProgressBarElement)((RadControl)this.progressBar1).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(35, 39, 56));
-		((UIItemBase)(ProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
-		((RadElement)(ProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(0)).set_Visibility((ElementVisibility)2);
-		((UIItemBase)(UpperProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(1)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(UpperProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(1)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(UpperProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(1)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(UpperProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(1)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
-		((RadElement)(UpperProgressIndicatorElement)((RadControl)this.progressBar1).GetChildAt(0).GetChildAt(1)).set_Visibility((ElementVisibility)2);
+		this.progressBar1.ForeColor = System.Drawing.Color.White;
+		this.progressBar1.Name = "progressBar1";
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).Text = resources.GetString("resource.Text");
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BorderColor = System.Drawing.Color.FromArgb(35, 39, 56);
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BorderColor2 = System.Drawing.Color.FromArgb(35, 39, 56);
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BorderColor3 = System.Drawing.Color.FromArgb(35, 39, 56);
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BorderColor4 = System.Drawing.Color.FromArgb(35, 39, 56);
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BorderInnerColor = System.Drawing.Color.FromArgb(21, 23, 33);
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(35, 39, 56);
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(35, 39, 56);
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(35, 39, 56);
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BorderBottomColor = System.Drawing.Color.FromArgb(0, 0, 0);
+		((Telerik.WinControls.UI.RadProgressBarElement)this.progressBar1.GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(35, 39, 56);
+		((Telerik.WinControls.UI.ProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(0)).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+		((Telerik.WinControls.UI.UpperProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(1)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.UpperProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(1)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.UpperProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(1)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.UpperProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(1)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.UpperProgressIndicatorElement)this.progressBar1.GetChildAt(0).GetChildAt(1)).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
 		resources.ApplyResources(this.pictureBox2, "pictureBox2");
 		this.pictureBox2.Name = "pictureBox2";
 		this.pictureBox2.TabStop = false;

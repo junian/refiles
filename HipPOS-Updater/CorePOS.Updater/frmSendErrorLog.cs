@@ -57,15 +57,13 @@ public class frmSendErrorLog : Form
 
 	public static void sendCrash(string version, string systemInfo, Exception error)
 	{
-		//IL_0001: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0007: Expected O, but got Unknown
 		try
 		{
-			Crash val = new Crash();
-			val.set_InnerException((error.InnerException == null) ? string.Empty : error.InnerException.Message.Replace("\\", "/").Replace("\"", ""));
-			val.set_Source(error.Source.Replace("\\", "/").Replace("\"", ""));
-			val.set_StackTrace(error.StackTrace.Replace("\\", "/").Replace("\"", ""));
-			val.set_TargetSite(error.TargetSite.Name.Replace("\\", "/").Replace("\"", ""));
+			Crash crash = new Crash();
+			crash.InnerException = ((error.InnerException == null) ? string.Empty : error.InnerException.Message.Replace("\\", "/").Replace("\"", ""));
+			crash.Source = error.Source.Replace("\\", "/").Replace("\"", "");
+			crash.StackTrace = error.StackTrace.Replace("\\", "/").Replace("\"", "");
+			crash.TargetSite = error.TargetSite.Name.Replace("\\", "/").Replace("\"", "");
 			if (error == null)
 			{
 				throw new Exception("Error Exception was NULL");
@@ -80,7 +78,7 @@ public class frmSendErrorLog : Form
 				Process.Start(text);
 			}
 			string text3 = error.Message.Replace("\\", "/").Replace("\"", "");
-			AddCrash.AddCrashFunction("rmEUNuAw0tEBRYQLnPcC", "Hippos Updater.", Common.appVersion, systemInfo, File.Exists(text) ? ("[*** DEBUG MODE ***] " + text3) : text3, val);
+			AddCrash.AddCrashFunction("rmEUNuAw0tEBRYQLnPcC", "Hippos Updater.", Common.appVersion, systemInfo, File.Exists(text) ? ("[*** DEBUG MODE ***] " + text3) : text3, crash);
 		}
 		catch (Exception)
 		{
@@ -90,10 +88,6 @@ public class frmSendErrorLog : Form
 
 	public static void sendError(string message)
 	{
-		//IL_0068: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0074: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0089: Expected O, but got Unknown
 		string requestUriString = "https://digitalcraft.hipchat.com/v2/room/3018177/notification?auth_token=hyLmu0X6S3QUFReqYUOAesHvUYXv5nGTkPhFPUml";
 		try
 		{
@@ -102,17 +96,17 @@ public class frmSendErrorLog : Form
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				HipChatMsg obj = new HipChatMsg
+				string value = JsonConvert.SerializeObject(new HipChatMsg
 				{
 					color = "red",
 					notify = true,
 					message = "[HIPPOS-RESTAURANT]\r" + message,
 					message_format = "text"
-				};
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)obj, (Formatting)1, val);
+				}, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());

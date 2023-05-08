@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
@@ -11,7 +10,6 @@ using CorePOS.Business.Objects;
 using CorePOS.CustomControls;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -142,7 +140,7 @@ public class frmQuickServiceListView : frmMasterForm
 		customPager_0 = new CustomPager();
 		CustomPager customPager = customPager_0;
 		customPager.PagerButton_Click = (EventHandler)Delegate.Combine(customPager.PagerButton_Click, new EventHandler(method_6));
-		customPager_0.rowsPerPage = ((Control)(object)radListOrders).Height / 37;
+		customPager_0.rowsPerPage = radListOrders.Height / 37;
 		customPager_0.Height = 50;
 		base.Controls.Add(customPager_0);
 		base.Activated += frmQuickServiceListView_Activated;
@@ -187,23 +185,21 @@ public class frmQuickServiceListView : frmMasterForm
 
 	private void method_3()
 	{
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListOrders).get_Columns())[0].set_Width((float)(lblOrderType.Width + 1));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListOrders).get_Columns())[1].set_Width((float)(lblReceivedTime.Width + 1));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListOrders).get_Columns())[2].set_Width((float)(lblFulfillment.Width + 1));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListOrders).get_Columns())[3].set_Width((float)(lblOrderNumber.Width + 1));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListOrders).get_Columns())[4].set_Width((float)(lblTicketNumber.Width + 1));
-		((Collection<ListViewDetailColumn>)(object)((RadListView)radListOrders).get_Columns())[5].set_Width((float)(lblCustomerInfo.Width - 50));
+		radListOrders.Columns[0].Width = lblOrderType.Width + 1;
+		radListOrders.Columns[1].Width = lblReceivedTime.Width + 1;
+		radListOrders.Columns[2].Width = lblFulfillment.Width + 1;
+		radListOrders.Columns[3].Width = lblOrderNumber.Width + 1;
+		radListOrders.Columns[4].Width = lblTicketNumber.Width + 1;
+		radListOrders.Columns[5].Width = lblCustomerInfo.Width - 50;
 	}
 
 	private void frmQuickServiceListView_Load(object sender, EventArgs e)
 	{
-		//IL_000d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0017: Expected O, but got Unknown
-		((RadListView)radListOrders).add_ItemMouseClick(new ListViewItemEventHandler(fUwXewmPr4));
+		radListOrders.ItemMouseClick += fUwXewmPr4;
 		method_3();
-		customPager_0.Location = new Point(((Control)(object)radListOrders).Location.X, ((Control)(object)radListOrders).Bottom);
-		customPager_0.Size = new Size(((Control)(object)radListOrders).Width, customPager_0.Height);
-		((RadListView)radListOrders).get_Items().Clear();
+		customPager_0.Location = new Point(radListOrders.Location.X, radListOrders.Bottom);
+		customPager_0.Size = new Size(radListOrders.Width, customPager_0.Height);
+		radListOrders.Items.Clear();
 		method_4();
 		bool_2 = false;
 	}
@@ -222,15 +218,15 @@ public class frmQuickServiceListView : frmMasterForm
 
 	private void fUwXewmPr4(object sender, ListViewItemEventArgs e)
 	{
-		if (((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems()).Count <= 0)
+		if (radListOrders.SelectedItems.Count <= 0)
 		{
 			return;
 		}
 		_003C_003Ec__DisplayClass19_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass19_0();
 		GClass6 gClass = new GClass6();
-		CS_0024_003C_003E8__locals0.orderNumber = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_Item(3).ToString();
-		string text = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_Item(5).ToString();
-		int selectedIndex = ((RadListView)radListOrders).get_SelectedIndex();
+		CS_0024_003C_003E8__locals0.orderNumber = radListOrders.SelectedItems[0][3].ToString();
+		string text = radListOrders.SelectedItems[0][5].ToString();
+		int selectedIndex = radListOrders.SelectedIndex;
 		Order order = gClass.Orders.Where((Order o) => o.OrderNumber == CS_0024_003C_003E8__locals0.orderNumber && o.Void == false).FirstOrDefault();
 		if (order == null)
 		{
@@ -302,7 +298,7 @@ public class frmQuickServiceListView : frmMasterForm
 			}
 			if (new frmMessageBox("Do you want to clear this order (" + text2 + ")?", "Clear Order", CustomMessageBoxButtons.YesNo).ShowDialog() == DialogResult.Yes)
 			{
-				((RadListView)radListOrders).get_Items().RemoveAt(selectedIndex);
+				radListOrders.Items.RemoveAt(selectedIndex);
 				OrderHelper orderHelper2 = new OrderHelper();
 				orderHelper2.ClearOrder(CS_0024_003C_003E8__locals0.orderNumber, order.OrderType);
 				MiscHelper.NotifyCustomer(this, order.OrderNumber, order.Customer, order.OrderType, suppressAlreadySentNotification: true);
@@ -310,7 +306,7 @@ public class frmQuickServiceListView : frmMasterForm
 			}
 			return;
 		}
-		string text3 = ((ReadOnlyCollection<ListViewDataItem>)(object)((RadListView)radListOrders).get_SelectedItems())[0].get_SubItems().get_Item(5).ToString();
+		string text3 = radListOrders.SelectedItems[0].SubItems[5].ToString();
 		if (SettingsHelper.GetSettingValueByKey("confirm_online_orders") == "ON" && (order.OrderType == OrderTypes.DeliveryOnline || order.OrderType == OrderTypes.TakeOutOnline) && text3 == ((byte)1).ToString())
 		{
 			method_10(CS_0024_003C_003E8__locals0.orderNumber);
@@ -365,9 +361,9 @@ public class frmQuickServiceListView : frmMasterForm
 			{
 				btnConfirmOnlineOrders.BackColor = (Color)btnConfirmOnlineOrders.Tag;
 			}
-			if (!bool_8 || (((IEnumerable<ListViewDataItem>)((RadListView)radListOrders).get_Items()).Count() < customPager_0.rowsPerPage && customPager_0.currentPage != customPager_0.lastPage))
+			if (!bool_8 || (radListOrders.Items.Count() < customPager_0.rowsPerPage && customPager_0.currentPage != customPager_0.lastPage))
 			{
-				list_3 = (from a in orderMethods_0.SearchOpenOrders(((Control)(object)txtSearchInfo).Text.Trim(), string_0, Convert.ToInt32(ddlDateRangeFilter.SelectedValue))
+				list_3 = (from a in orderMethods_0.SearchOpenOrders(txtSearchInfo.Text.Trim(), string_0, Convert.ToInt32(ddlDateRangeFilter.SelectedValue))
 					orderby a.FulFillmentAt.HasValue, a.FulFillmentAt.HasValue ? a.FulFillmentAt.Value : a.DateCreated
 					select a into x
 					group x by x.OrderNumber into y
@@ -386,7 +382,7 @@ public class frmQuickServiceListView : frmMasterForm
 				customPager_0.lastPage = num3;
 				List<OrderResult> list = list_3.Skip(customPager_0.rowsPerPage * customPager_0.currentPage).Take(customPager_0.rowsPerPage).ToList();
 				customPager_0.AddPagerButtons();
-				((RadListView)radListOrders).get_Items().Clear();
+				radListOrders.Items.Clear();
 				foreach (OrderResult item in list)
 				{
 					string string_ = item.Customer + " " + item.CustomerInfo + " " + item.CustomerInfoName;
@@ -416,8 +412,6 @@ public class frmQuickServiceListView : frmMasterForm
 
 	private void method_5(string string_1, string string_2, string string_3, DateTime dateTime_0, DateTime? nullable_0, string string_4, bool bool_8, byte byte_0, bool bool_9, string string_5)
 	{
-		//IL_0124: Unknown result type (might be due to invalid IL or missing references)
-		//IL_012b: Expected O, but got Unknown
 		string obj = (bool_8 ? "**PAID** " : "") + (bool_9 ? "** NOTIFIED ** " : string.Empty);
 		string text = "";
 		text = ((!nullable_0.HasValue) ? "ASAP" : ((nullable_0.Value <= DateTime.Now) ? "ASAP" : ((!(nullable_0.Value.Date > DateTime.Now.Date)) ? nullable_0.Value.ToShortTimeString() : nullable_0.Value.ToString("MM/dd HH:mm"))));
@@ -427,7 +421,7 @@ public class frmQuickServiceListView : frmMasterForm
 			text2 = " NOTES: " + string_5;
 		}
 		string text3 = obj + string_4 + text2;
-		string[] array = new string[7]
+		string[] values = new string[7]
 		{
 			string_3,
 			(dateTime_0.AddHours(24.0) < DateTime.Now) ? dateTime_0.ToShortDateString() : dateTime_0.ToShortTimeString(),
@@ -437,16 +431,16 @@ public class frmQuickServiceListView : frmMasterForm
 			text3,
 			byte_0.ToString()
 		};
-		ListViewDataItem val = new ListViewDataItem("", array);
+		ListViewDataItem listViewDataItem = new ListViewDataItem("", values);
 		if (bool_8)
 		{
-			val.set_BackColor(Color.LightGreen);
+			listViewDataItem.BackColor = Color.LightGreen;
 		}
 		else
 		{
-			val.set_BackColor(Color.White);
+			listViewDataItem.BackColor = Color.White;
 		}
-		((RadListView)radListOrders).get_Items().Add(val);
+		radListOrders.Items.Add(listViewDataItem);
 	}
 
 	private void method_6(object sender, EventArgs e)
@@ -520,11 +514,11 @@ public class frmQuickServiceListView : frmMasterForm
 		{
 			return;
 		}
-		foreach (ListViewDataItem item in ((RadListView)radListOrders).get_Items())
+		foreach (ListViewDataItem item in radListOrders.Items)
 		{
-			if (item.get_Item(2) != null)
+			if (item[2] != null)
 			{
-				string text = item.get_Item(2).ToString();
+				string text = item[2].ToString();
 				try
 				{
 					PrintHelper.GenerateReceipt(text, printPaymentTransaction: true, 1, null, tipFlag: false, email: false, MemoryLoadedObjects.this_terminal.DefaultPrinter);
@@ -627,10 +621,10 @@ public class frmQuickServiceListView : frmMasterForm
 	private void btnShowKeyboard_SearchInfo_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Search Orders", 0, 49, ((Control)(object)txtSearchInfo).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Search Orders", 0, 49, txtSearchInfo.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSearchInfo).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtSearchInfo.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			base.DialogResult = DialogResult.None;
 		}
 	}
@@ -653,7 +647,7 @@ public class frmQuickServiceListView : frmMasterForm
 
 	private void btnClearSearch_Click(object sender, EventArgs e)
 	{
-		((Control)(object)txtSearchInfo).Text = "";
+		txtSearchInfo.Text = "";
 		method_4();
 	}
 
@@ -801,33 +795,15 @@ public class frmQuickServiceListView : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0026: Unknown result type (might be due to invalid IL or missing references)
-		//IL_002c: Expected O, but got Unknown
-		//IL_0036: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_0046: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004c: Expected O, but got Unknown
-		//IL_0056: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005d: Expected O, but got Unknown
-		//IL_0067: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006e: Expected O, but got Unknown
-		//IL_0078: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007f: Expected O, but got Unknown
-		//IL_0084: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008b: Expected O, but got Unknown
-		//IL_015d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0167: Expected O, but got Unknown
-		//IL_19b9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_19da: Unknown result type (might be due to invalid IL or missing references)
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmQuickServiceListView));
-		ListViewDetailColumn val = new ListViewDetailColumn("Column 0", "Column 0");
-		ListViewDetailColumn val2 = new ListViewDetailColumn("Column 1", "Column 1");
-		ListViewDetailColumn val3 = new ListViewDetailColumn("Column 2", "Column 2");
-		ListViewDetailColumn val4 = new ListViewDetailColumn("Column 3", "Column 3");
-		ListViewDetailColumn val5 = new ListViewDetailColumn("Column 4", "Column 4");
-		ListViewDetailColumn val6 = new ListViewDetailColumn("Column 5", "Column 5");
-		ListViewDataItem val7 = new ListViewDataItem("ListViewItem 1");
+		ListViewDetailColumn listViewDetailColumn = new ListViewDetailColumn("Column 0", "Column 0");
+		ListViewDetailColumn listViewDetailColumn2 = new ListViewDetailColumn("Column 1", "Column 1");
+		ListViewDetailColumn listViewDetailColumn3 = new ListViewDetailColumn("Column 2", "Column 2");
+		ListViewDetailColumn listViewDetailColumn4 = new ListViewDetailColumn("Column 3", "Column 3");
+		ListViewDetailColumn listViewDetailColumn5 = new ListViewDetailColumn("Column 4", "Column 4");
+		ListViewDetailColumn listViewDetailColumn6 = new ListViewDetailColumn("Column 5", "Column 5");
+		ListViewDataItem listViewDataItem = new ListViewDataItem("ListViewItem 1");
 		lblFulfillment = new Label();
 		lblCustomerInfo = new Label();
 		lblOrderType = new Label();
@@ -1135,31 +1111,31 @@ public class frmQuickServiceListView : frmMasterForm
 		lblTitle.TabIndex = 108;
 		lblTitle.Text = "ORDERS";
 		lblTitle.TextAlign = ContentAlignment.MiddleCenter;
-		((RadListView)radListOrders).set_AllowArbitraryItemHeight(true);
-		((RadListView)radListOrders).set_AllowEdit(false);
-		((RadListView)radListOrders).set_AllowRemove(false);
-		((Control)(object)radListOrders).Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-		val.set_HeaderText("Column 0");
-		val2.set_HeaderText("Column 1");
-		val3.set_HeaderText("Column 2");
-		val4.set_HeaderText("Column 3");
-		val5.set_HeaderText("Column 4");
-		val6.set_HeaderText("Column 5");
-		((RadListView)radListOrders).get_Columns().AddRange((ListViewDetailColumn[])(object)new ListViewDetailColumn[6] { val, val2, val3, val4, val5, val6 });
-		((RadListView)radListOrders).set_EnableKineticScrolling(true);
-		((Control)(object)radListOrders).Font = new Font("Microsoft Sans Serif", 13.5f, FontStyle.Bold);
-		val7.set_Text("ListViewItem 1");
-		((RadListView)radListOrders).get_Items().AddRange((ListViewDataItem[])(object)new ListViewDataItem[1] { val7 });
-		((RadListView)radListOrders).set_ItemSpacing(-1);
-		((Control)(object)radListOrders).Location = new Point(1, 109);
-		((Control)(object)radListOrders).Name = "radListOrders";
-		((RadListView)radListOrders).set_ShowColumnHeaders(false);
-		((RadListView)radListOrders).set_ShowGridLines(true);
-		((Control)(object)radListOrders).Size = new Size(989, 535);
-		((Control)(object)radListOrders).TabIndex = 138;
-		((Control)(object)radListOrders).Text = "radListView1";
-		((RadListView)radListOrders).set_ViewType((ListViewType)2);
-		((RadListView)radListOrders).add_SelectedItemChanged((EventHandler)radListOrders_SelectedItemChanged);
+		radListOrders.AllowArbitraryItemHeight = true;
+		radListOrders.AllowEdit = false;
+		radListOrders.AllowRemove = false;
+		radListOrders.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+		listViewDetailColumn.HeaderText = "Column 0";
+		listViewDetailColumn2.HeaderText = "Column 1";
+		listViewDetailColumn3.HeaderText = "Column 2";
+		listViewDetailColumn4.HeaderText = "Column 3";
+		listViewDetailColumn5.HeaderText = "Column 4";
+		listViewDetailColumn6.HeaderText = "Column 5";
+		radListOrders.Columns.AddRange(listViewDetailColumn, listViewDetailColumn2, listViewDetailColumn3, listViewDetailColumn4, listViewDetailColumn5, listViewDetailColumn6);
+		radListOrders.EnableKineticScrolling = true;
+		radListOrders.Font = new Font("Microsoft Sans Serif", 13.5f, FontStyle.Bold);
+		listViewDataItem.Text = "ListViewItem 1";
+		radListOrders.Items.AddRange(listViewDataItem);
+		radListOrders.ItemSpacing = -1;
+		radListOrders.Location = new Point(1, 109);
+		radListOrders.Name = "radListOrders";
+		radListOrders.ShowColumnHeaders = false;
+		radListOrders.ShowGridLines = true;
+		radListOrders.Size = new Size(989, 535);
+		radListOrders.TabIndex = 138;
+		radListOrders.Text = "radListView1";
+		radListOrders.ViewType = ListViewType.DetailsView;
+		radListOrders.SelectedItemChanged += radListOrders_SelectedItemChanged;
 		btnChange.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		btnChange.BackColor = Color.FromArgb(214, 142, 81);
 		btnChange.FlatAppearance.BorderColor = Color.Black;
@@ -1186,18 +1162,18 @@ public class frmQuickServiceListView : frmMasterForm
 		label3.TabIndex = 222;
 		label3.Text = "Search:";
 		label3.TextAlign = ContentAlignment.MiddleCenter;
-		((Control)(object)txtSearchInfo).Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-		((Control)(object)txtSearchInfo).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtSearchInfo).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtSearchInfo).Location = new Point(67, 37);
-		((Control)(object)txtSearchInfo).Name = "txtSearchInfo";
-		((RadElement)((RadControl)txtSearchInfo).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSearchInfo).Size = new Size(147, 35);
-		((Control)(object)txtSearchInfo).TabIndex = 220;
-		((Control)(object)txtSearchInfo).TextChanged += txtSearchInfo_TextChanged;
-		((Control)(object)txtSearchInfo).Click += btnShowKeyboard_SearchInfo_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSearchInfo).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSearchInfo).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSearchInfo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+		txtSearchInfo.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtSearchInfo.ForeColor = Color.FromArgb(40, 40, 40);
+		txtSearchInfo.Location = new Point(67, 37);
+		txtSearchInfo.Name = "txtSearchInfo";
+		txtSearchInfo.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSearchInfo.Size = new Size(147, 35);
+		txtSearchInfo.TabIndex = 220;
+		txtSearchInfo.TextChanged += txtSearchInfo_TextChanged;
+		txtSearchInfo.Click += btnShowKeyboard_SearchInfo_Click;
+		((RadTextBoxControlElement)txtSearchInfo.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSearchInfo.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_SearchInfo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 		btnShowKeyboard_SearchInfo.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_SearchInfo.DialogResult = DialogResult.OK;
@@ -1448,14 +1424,14 @@ public class frmQuickServiceListView : frmMasterForm
 		base.Controls.Add(lblCounter);
 		base.Controls.Add(btnScreenRefresh);
 		base.Controls.Add(label3);
-		base.Controls.Add((Control)(object)txtSearchInfo);
+		base.Controls.Add(txtSearchInfo);
 		base.Controls.Add(btnShowKeyboard_SearchInfo);
 		base.Controls.Add(btnChange);
 		base.Controls.Add(lblFulfillment);
 		base.Controls.Add(lblCustomerInfo);
 		base.Controls.Add(lblOrderType);
 		base.Controls.Add(lblOrderNumber);
-		base.Controls.Add((Control)(object)radListOrders);
+		base.Controls.Add(radListOrders);
 		base.Controls.Add(flowLayoutPanel1);
 		base.Controls.Add(lblTitle);
 		base.Name = "frmQuickServiceListView";
@@ -1465,14 +1441,14 @@ public class frmQuickServiceListView : frmMasterForm
 		base.Load += frmQuickServiceListView_Load;
 		base.Controls.SetChildIndex(lblTitle, 0);
 		base.Controls.SetChildIndex(flowLayoutPanel1, 0);
-		base.Controls.SetChildIndex((Control)(object)radListOrders, 0);
+		base.Controls.SetChildIndex(radListOrders, 0);
 		base.Controls.SetChildIndex(lblOrderNumber, 0);
 		base.Controls.SetChildIndex(lblOrderType, 0);
 		base.Controls.SetChildIndex(lblCustomerInfo, 0);
 		base.Controls.SetChildIndex(lblFulfillment, 0);
 		base.Controls.SetChildIndex(btnChange, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_SearchInfo, 0);
-		base.Controls.SetChildIndex((Control)(object)txtSearchInfo, 0);
+		base.Controls.SetChildIndex(txtSearchInfo, 0);
 		base.Controls.SetChildIndex(label3, 0);
 		base.Controls.SetChildIndex(btnScreenRefresh, 0);
 		base.Controls.SetChildIndex(lblCounter, 0);

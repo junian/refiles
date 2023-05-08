@@ -231,36 +231,36 @@ public class CloverConnectionListener : DefaultCloverConnectorListener
 	public CloverConnectionListener(ICloverConnector cloverConnector)
 	{
 		Class2.oOsq41PzvTVMr();
-		((DefaultCloverConnectorListener)this)._002Ector(cloverConnector);
+		base._002Ector(cloverConnector);
 	}
 
 	public override void OnDeviceReady(MerchantInfo merchantInfo)
 	{
-		((DefaultCloverConnectorListener)this).OnDeviceReady(merchantInfo);
+		base.OnDeviceReady(merchantInfo);
 		deviceReady = true;
 	}
 
 	public override void OnDeviceConnected()
 	{
-		((DefaultCloverConnectorListener)this).OnDeviceConnected();
+		base.OnDeviceConnected();
 		deviceConnected = true;
 	}
 
 	public override void OnDeviceDisconnected()
 	{
-		((DefaultCloverConnectorListener)this).OnDeviceDisconnected();
+		base.OnDeviceDisconnected();
 		Console.WriteLine("Disconnected");
 	}
 
 	public override void OnSaleResponse(SaleResponse response)
 	{
-		((DefaultCloverConnectorListener)this).OnSaleResponse(response);
+		base.OnSaleResponse(response);
 		saleDone = true;
-		success = ((BaseResponse)response).get_Success();
+		success = response.Success;
 		if (success)
 		{
-			paymentId = ((PaymentResponse)response).get_Payment().get_id();
-			orderId = ((PaymentResponse)response).get_Payment().get_order().get_id();
+			paymentId = response.Payment.id;
+			orderId = response.Payment.order.id;
 		}
 		saleResponse = response;
 	}
@@ -271,24 +271,24 @@ public class CloverConnectionListener : DefaultCloverConnectorListener
 
 	public override void OnRefundPaymentResponse(RefundPaymentResponse response)
 	{
-		((DefaultCloverConnectorListener)this).OnRefundPaymentResponse(response);
+		base.OnRefundPaymentResponse(response);
 		try
 		{
-			if (((BaseResponse)response).get_Success())
+			if (response.Success)
 			{
-				Refund refund = response.get_Refund();
+				Refund refund = response.Refund;
 				success = true;
 				refundResponse = response;
 				Console.WriteLine("Refund request successful");
-				Console.WriteLine(" ID: " + refund.get_id());
-				Console.WriteLine(" Amount: " + refund.get_amount());
-				Console.WriteLine(" Order ID: " + response.get_OrderId());
-				Console.WriteLine(" Payment ID: " + response.get_PaymentId());
+				Console.WriteLine(" ID: " + refund.id);
+				Console.WriteLine(" Amount: " + refund.amount);
+				Console.WriteLine(" Order ID: " + response.OrderId);
+				Console.WriteLine(" Payment ID: " + response.PaymentId);
 			}
 			else
 			{
 				success = false;
-				Console.Error.WriteLine("Refund request failed - " + ((BaseResponse)response).get_Reason());
+				Console.Error.WriteLine("Refund request failed - " + response.Reason);
 			}
 		}
 		catch
@@ -300,15 +300,15 @@ public class CloverConnectionListener : DefaultCloverConnectorListener
 
 	public override void OnRetrieveDeviceStatusResponse(RetrieveDeviceStatusResponse response)
 	{
-		((DefaultCloverConnectorListener)this).OnRetrieveDeviceStatusResponse(response);
+		base.OnRetrieveDeviceStatusResponse(response);
 		statusResponse = response;
 	}
 
 	public override void OnCloseoutResponse(CloseoutResponse response)
 	{
-		((DefaultCloverConnectorListener)this).OnCloseoutResponse(response);
+		base.OnCloseoutResponse(response);
 		closeoutResponse = response;
 		closeoutDone = true;
-		success = ((BaseResponse)response).get_Success();
+		success = response.Success;
 	}
 }

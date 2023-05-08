@@ -12,7 +12,6 @@ using CorePOS.CommonForms;
 using CorePOS.CustomControls;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -366,21 +365,21 @@ public class frmAddEditOptions : frmMasterForm
 			select x).Count();
 		if (usp_ItemOptionsResult != null)
 		{
-			((Control)(object)txtMaxGroupOptions).Text = usp_ItemOptionsResult.MaxGroupOptions.ToString();
-			((Control)(object)txtMinGroupOptions).Text = usp_ItemOptionsResult.MinGroupOptions.ToString();
+			txtMaxGroupOptions.Text = usp_ItemOptionsResult.MaxGroupOptions.ToString();
+			txtMinGroupOptions.Text = usp_ItemOptionsResult.MinGroupOptions.ToString();
 			string_1 = usp_ItemOptionsResult.GroupOrderTypes;
-			chkExcludeFreeOpt.set_Value(usp_ItemOptionsResult.ExcludeFromFreeOption);
-			((Control)(object)txtMaxFreeGroupOpt).Text = usp_ItemOptionsResult.MaxFreeOptionPerGroup.ToString();
+			chkExcludeFreeOpt.Value = usp_ItemOptionsResult.ExcludeFromFreeOption;
+			txtMaxFreeGroupOpt.Text = usp_ItemOptionsResult.MaxFreeOptionPerGroup.ToString();
 		}
 		else
 		{
-			((Control)(object)txtMaxGroupOptions).Text = "0";
-			((Control)(object)txtMinGroupOptions).Text = "0";
+			txtMaxGroupOptions.Text = "0";
+			txtMinGroupOptions.Text = "0";
 			string_1 = string_2;
-			chkExcludeFreeOpt.set_Value(false);
-			((Control)(object)txtMaxFreeGroupOpt).Text = "-1";
+			chkExcludeFreeOpt.Value = false;
+			txtMaxFreeGroupOpt.Text = "-1";
 		}
-		method_12(Convert.ToDecimal(((Control)(object)txtMaxGroupOptions).Text));
+		method_12(Convert.ToDecimal(txtMaxGroupOptions.Text));
 		GC.Collect();
 	}
 
@@ -405,12 +404,12 @@ public class frmAddEditOptions : frmMasterForm
 	private void txtPrice_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Option_Price, 2, 8, ((Control)(object)txtPrice).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Option_Price, 2, 8, txtPrice.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) != DialogResult.OK)
 		{
 			return;
 		}
-		((Control)(object)txtPrice).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString("0.00");
+		txtPrice.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString("0.00");
 		foreach (ItemOptionControl control in TabsRyLoFp.Controls)
 		{
 			control.Price = MemoryLoadedObjects.Numpad.numberEntered;
@@ -420,12 +419,12 @@ public class frmAddEditOptions : frmMasterForm
 	private void txtOptionQty_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Option Qty, Enter 0 For Unlimited", 1, 3, ((Control)(object)txtOptionQty).Text, "", allowNegative: false, useNotifLabel: true);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Option Qty, Enter 0 For Unlimited", 1, 3, txtOptionQty.Text, "", allowNegative: false, useNotifLabel: true);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) != DialogResult.OK)
 		{
 			return;
 		}
-		((Control)(object)txtOptionQty).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString("0.0");
+		txtOptionQty.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString("0.0");
 		foreach (ItemOptionControl control in TabsRyLoFp.Controls)
 		{
 			control.Qty = MemoryLoadedObjects.Numpad.numberEntered;
@@ -445,9 +444,9 @@ public class frmAddEditOptions : frmMasterForm
 		_003C_003Ec__DisplayClass21_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass21_0();
 		CS_0024_003C_003E8__locals0._003C_003E4__this = this;
 		bool flag = false;
-		short num = Convert.ToInt16(string.IsNullOrEmpty(((Control)(object)txtMaxGroupOptions).Text) ? "0" : ((Control)(object)txtMaxGroupOptions).Text);
-		short num2 = Convert.ToInt16(string.IsNullOrEmpty(((Control)(object)txtMinGroupOptions).Text) ? "0" : ((Control)(object)txtMinGroupOptions).Text);
-		short num3 = Convert.ToInt16(string.IsNullOrEmpty(((Control)(object)txtMaxFreeGroupOpt).Text) ? "-1" : ((Control)(object)txtMaxFreeGroupOpt).Text);
+		short num = Convert.ToInt16(string.IsNullOrEmpty(txtMaxGroupOptions.Text) ? "0" : txtMaxGroupOptions.Text);
+		short num2 = Convert.ToInt16(string.IsNullOrEmpty(txtMinGroupOptions.Text) ? "0" : txtMinGroupOptions.Text);
+		short num3 = Convert.ToInt16(string.IsNullOrEmpty(txtMaxFreeGroupOpt.Text) ? "-1" : txtMaxFreeGroupOpt.Text);
 		if (num3 < -1)
 		{
 			new NotificationLabel(this, "Minimum group options cannot be less than -1. -1 is for any free group option. 0 for no free group option.", NotificationTypes.Warning).Show();
@@ -519,7 +518,7 @@ public class frmAddEditOptions : frmMasterForm
 				item.MaxGroupOptions = num;
 				item.MinGroupOptions = num2;
 				item.GroupOrderTypes = string_1;
-				item.ExcludeFromFreeOption = chkExcludeFreeOpt.get_Value();
+				item.ExcludeFromFreeOption = chkExcludeFreeOpt.Value;
 				item.MaxFreeOptionPerGroup = num3;
 			}
 			Helper.SubmitChangesWithCatch(gClass);
@@ -731,7 +730,7 @@ public class frmAddEditOptions : frmMasterForm
 
 	private void method_11()
 	{
-		string text2 = (((Control)(object)txtOptionQty).Text = (((Control)(object)txtPrice).Text = string.Empty));
+		string text2 = (txtOptionQty.Text = (txtPrice.Text = string.Empty));
 	}
 
 	private void btnMoveCopy_Click(object sender, EventArgs e)
@@ -742,10 +741,10 @@ public class frmAddEditOptions : frmMasterForm
 	private void txtMaxGroupOptions_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Max Group Options", 0, 3, ((Control)(object)txtMaxGroupOptions).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Max Group Options", 0, 3, txtMaxGroupOptions.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtMaxGroupOptions).Text = MemoryLoadedObjects.Numpad.valueEntered;
+			txtMaxGroupOptions.Text = MemoryLoadedObjects.Numpad.valueEntered;
 			method_12(MemoryLoadedObjects.Numpad.numberEntered);
 		}
 	}
@@ -753,20 +752,20 @@ public class frmAddEditOptions : frmMasterForm
 	private void txtMinGroupOptions_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Min Group Options", 0, 3, ((Control)(object)txtMinGroupOptions).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Min Group Options", 0, 3, txtMinGroupOptions.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtMinGroupOptions).Text = MemoryLoadedObjects.Numpad.valueEntered;
+			txtMinGroupOptions.Text = MemoryLoadedObjects.Numpad.valueEntered;
 		}
 	}
 
 	private void txtMaxFreeGroupOpt_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Max FREE Group Options", 0, 3, ((Control)(object)txtMaxFreeGroupOpt).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Max FREE Group Options", 0, 3, txtMaxFreeGroupOpt.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtMaxFreeGroupOpt).Text = MemoryLoadedObjects.Numpad.valueEntered;
+			txtMaxFreeGroupOpt.Text = MemoryLoadedObjects.Numpad.valueEntered;
 		}
 	}
 
@@ -825,7 +824,7 @@ public class frmAddEditOptions : frmMasterForm
 		Class17 @class = (Class17)sender;
 		if (@class.Checked)
 		{
-			if (int_0 == Convert.ToInt32(((Control)(object)txtMaxGroupOptions).Text) && Convert.ToInt32(((Control)(object)txtMaxGroupOptions).Text) > 0)
+			if (int_0 == Convert.ToInt32(txtMaxGroupOptions.Text) && Convert.ToInt32(txtMaxGroupOptions.Text) > 0)
 			{
 				@class.Checked = !@class.Checked;
 				new NotificationLabel(this, "Max group options cannot be less than pre-selected options.", NotificationTypes.Notification).Show();
@@ -908,38 +907,6 @@ public class frmAddEditOptions : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0054: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005e: Expected O, but got Unknown
-		//IL_0075: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007f: Expected O, but got Unknown
-		//IL_00e3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ed: Expected O, but got Unknown
-		//IL_00ee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f8: Expected O, but got Unknown
-		//IL_0130: Unknown result type (might be due to invalid IL or missing references)
-		//IL_013a: Expected O, but got Unknown
-		//IL_0193: Unknown result type (might be due to invalid IL or missing references)
-		//IL_019d: Expected O, but got Unknown
-		//IL_0929: Unknown result type (might be due to invalid IL or missing references)
-		//IL_094a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a94: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0aac: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ac3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ae4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b11: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b3e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b6b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b92: Unknown result type (might be due to invalid IL or missing references)
-		//IL_100d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_102e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_10ba: Unknown result type (might be due to invalid IL or missing references)
-		//IL_10db: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13e1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13fc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1428: Unknown result type (might be due to invalid IL or missing references)
-		//IL_17e9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1804: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1830: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAddEditOptions));
 		verticalScrollControl2 = new VerticalScrollControl();
 		pnlTabs = new FlowLayoutPanel();
@@ -1034,10 +1001,10 @@ public class frmAddEditOptions : frmMasterForm
 		label10.BackColor = Color.FromArgb(147, 101, 184);
 		label10.ForeColor = Color.White;
 		label10.Name = "label10";
-		pnlAllControls.Controls.Add((Control)(object)txtMaxFreeGroupOpt);
+		pnlAllControls.Controls.Add(txtMaxFreeGroupOpt);
 		pnlAllControls.Controls.Add(label17);
 		pnlAllControls.Controls.Add(label16);
-		pnlAllControls.Controls.Add((Control)(object)chkExcludeFreeOpt);
+		pnlAllControls.Controls.Add(chkExcludeFreeOpt);
 		pnlAllControls.Controls.Add(label15);
 		pnlAllControls.Controls.Add(btnSetGroupDependency);
 		pnlAllControls.Controls.Add(btnGroupOrderTypes);
@@ -1047,14 +1014,14 @@ public class frmAddEditOptions : frmMasterForm
 		pnlAllControls.Controls.Add(label13);
 		pnlAllControls.Controls.Add(lblDisableMaxGroupOpt);
 		pnlAllControls.Controls.Add(label12);
-		pnlAllControls.Controls.Add((Control)(object)txtMinGroupOptions);
-		pnlAllControls.Controls.Add((Control)(object)txtMaxGroupOptions);
+		pnlAllControls.Controls.Add(txtMinGroupOptions);
+		pnlAllControls.Controls.Add(txtMaxGroupOptions);
 		pnlAllControls.Controls.Add(label24);
 		pnlAllControls.Controls.Add(btnMoveCopy);
 		pnlAllControls.Controls.Add(fjylSbkHv9);
 		pnlAllControls.Controls.Add(chkExistingOptionsOnly);
 		pnlAllControls.Controls.Add(label11);
-		pnlAllControls.Controls.Add((Control)(object)txtOptionQty);
+		pnlAllControls.Controls.Add(txtOptionQty);
 		pnlAllControls.Controls.Add(label8);
 		pnlAllControls.Controls.Add(ddlOptionGroup);
 		pnlAllControls.Controls.Add(label3);
@@ -1063,7 +1030,7 @@ public class frmAddEditOptions : frmMasterForm
 		pnlAllControls.Controls.Add(label7);
 		pnlAllControls.Controls.Add(TabsRyLoFp);
 		pnlAllControls.Controls.Add(chkAllowAdditionalAll);
-		pnlAllControls.Controls.Add((Control)(object)txtPrice);
+		pnlAllControls.Controls.Add(txtPrice);
 		pnlAllControls.Controls.Add(lblOptionName);
 		pnlAllControls.Controls.Add(chkIncludeAll);
 		pnlAllControls.Controls.Add(ddlGroupFilter);
@@ -1079,12 +1046,12 @@ public class frmAddEditOptions : frmMasterForm
 		pnlAllControls.Name = "pnlAllControls";
 		pnlAllControls.Paint += pnlAllControls_Paint;
 		componentResourceManager.ApplyResources(txtMaxFreeGroupOpt, "txtMaxFreeGroupOpt");
-		((Control)(object)txtMaxFreeGroupOpt).Name = "txtMaxFreeGroupOpt";
-		((RadElement)((RadControl)txtMaxFreeGroupOpt).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtMaxFreeGroupOpt).Tag = "product";
-		((Control)(object)txtMaxFreeGroupOpt).Click += txtMaxFreeGroupOpt_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtMaxFreeGroupOpt).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtMaxFreeGroupOpt).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtMaxFreeGroupOpt.Name = "txtMaxFreeGroupOpt";
+		txtMaxFreeGroupOpt.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtMaxFreeGroupOpt.Tag = "product";
+		txtMaxFreeGroupOpt.Click += txtMaxFreeGroupOpt_Click;
+		((RadTextBoxControlElement)txtMaxFreeGroupOpt.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtMaxFreeGroupOpt.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label17.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label17, "label17");
 		label17.ForeColor = Color.White;
@@ -1096,20 +1063,20 @@ public class frmAddEditOptions : frmMasterForm
 		label16.ForeColor = Color.White;
 		label16.Name = "label16";
 		componentResourceManager.ApplyResources(chkExcludeFreeOpt, "chkExcludeFreeOpt");
-		((Control)(object)chkExcludeFreeOpt).Name = "chkExcludeFreeOpt";
-		chkExcludeFreeOpt.set_OffText("NO");
-		chkExcludeFreeOpt.set_OnText("YES");
-		((Control)(object)chkExcludeFreeOpt).Tag = "product";
-		chkExcludeFreeOpt.set_ToggleStateMode((ToggleStateMode)1);
-		chkExcludeFreeOpt.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkExcludeFreeOpt).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkExcludeFreeOpt).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkExcludeFreeOpt).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkExcludeFreeOpt).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkExcludeFreeOpt).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkExcludeFreeOpt).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkExcludeFreeOpt).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkExcludeFreeOpt).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkExcludeFreeOpt.Name = "chkExcludeFreeOpt";
+		chkExcludeFreeOpt.OffText = "NO";
+		chkExcludeFreeOpt.OnText = "YES";
+		chkExcludeFreeOpt.Tag = "product";
+		chkExcludeFreeOpt.ToggleStateMode = ToggleStateMode.Click;
+		chkExcludeFreeOpt.Value = false;
+		((RadToggleSwitchElement)chkExcludeFreeOpt.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkExcludeFreeOpt.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkExcludeFreeOpt.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkExcludeFreeOpt.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkExcludeFreeOpt.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkExcludeFreeOpt.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkExcludeFreeOpt.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkExcludeFreeOpt.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label15.BackColor = Color.FromArgb(132, 146, 146);
 		label15.FlatStyle = FlatStyle.Flat;
 		componentResourceManager.ApplyResources(label15, "label15");
@@ -1165,19 +1132,19 @@ public class frmAddEditOptions : frmMasterForm
 		label12.Name = "label12";
 		label12.Tag = "product";
 		componentResourceManager.ApplyResources(txtMinGroupOptions, "txtMinGroupOptions");
-		((Control)(object)txtMinGroupOptions).Name = "txtMinGroupOptions";
-		((RadElement)((RadControl)txtMinGroupOptions).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtMinGroupOptions).Tag = "product";
-		((Control)(object)txtMinGroupOptions).Click += txtMinGroupOptions_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtMinGroupOptions).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtMinGroupOptions).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtMinGroupOptions.Name = "txtMinGroupOptions";
+		txtMinGroupOptions.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtMinGroupOptions.Tag = "product";
+		txtMinGroupOptions.Click += txtMinGroupOptions_Click;
+		((RadTextBoxControlElement)txtMinGroupOptions.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtMinGroupOptions.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtMaxGroupOptions, "txtMaxGroupOptions");
-		((Control)(object)txtMaxGroupOptions).Name = "txtMaxGroupOptions";
-		((RadElement)((RadControl)txtMaxGroupOptions).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtMaxGroupOptions).Tag = "product";
-		((Control)(object)txtMaxGroupOptions).Click += txtMaxGroupOptions_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtMaxGroupOptions).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtMaxGroupOptions).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtMaxGroupOptions.Name = "txtMaxGroupOptions";
+		txtMaxGroupOptions.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtMaxGroupOptions.Tag = "product";
+		txtMaxGroupOptions.Click += txtMaxGroupOptions_Click;
+		((RadTextBoxControlElement)txtMaxGroupOptions.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtMaxGroupOptions.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label24.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label24, "label24");
 		label24.ForeColor = Color.White;
@@ -1211,17 +1178,17 @@ public class frmAddEditOptions : frmMasterForm
 		componentResourceManager.ApplyResources(label11, "label11");
 		label11.ForeColor = Color.White;
 		label11.Name = "label11";
-		((Control)(object)txtOptionQty).BackColor = Color.FromArgb(255, 255, 192);
+		txtOptionQty.BackColor = Color.FromArgb(255, 255, 192);
 		componentResourceManager.ApplyResources(txtOptionQty, "txtOptionQty");
-		((Control)(object)txtOptionQty).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtOptionQty).Name = "txtOptionQty";
-		((RadElement)((RadControl)txtOptionQty).get_RootElement()).set_MinSize(new Size(40, 29));
-		((RadElement)((RadControl)txtOptionQty).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		txtOptionQty.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtOptionQty).Click += txtOptionQty_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtOptionQty).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(RadTextBoxControlElement)((RadControl)txtOptionQty).GetChildAt(0)).set_Padding((Padding)componentResourceManager.GetObject("resource.Padding"));
-		((RadElement)(TextBoxViewElement)((RadControl)txtOptionQty).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtOptionQty.ForeColor = Color.FromArgb(40, 40, 40);
+		txtOptionQty.Name = "txtOptionQty";
+		txtOptionQty.RootElement.MinSize = new Size(40, 29);
+		txtOptionQty.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtOptionQty.TextAlign = HorizontalAlignment.Center;
+		txtOptionQty.Click += txtOptionQty_Click;
+		((RadTextBoxControlElement)txtOptionQty.GetChildAt(0)).BorderWidth = 0f;
+		((RadTextBoxControlElement)txtOptionQty.GetChildAt(0)).Padding = (Padding)componentResourceManager.GetObject("resource.Padding");
+		((TextBoxViewElement)txtOptionQty.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label8.BackColor = Color.FromArgb(50, 119, 155);
 		componentResourceManager.ApplyResources(label8, "label8");
 		label8.ForeColor = Color.White;
@@ -1265,17 +1232,17 @@ public class frmAddEditOptions : frmMasterForm
 		chkAllowAdditionalAll.Name = "chkAllowAdditionalAll";
 		chkAllowAdditionalAll.UseVisualStyleBackColor = true;
 		chkAllowAdditionalAll.CheckedChanged += chkAllowAdditionalAll_CheckedChanged;
-		((Control)(object)txtPrice).BackColor = Color.FromArgb(255, 255, 192);
+		txtPrice.BackColor = Color.FromArgb(255, 255, 192);
 		componentResourceManager.ApplyResources(txtPrice, "txtPrice");
-		((Control)(object)txtPrice).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtPrice).Name = "txtPrice";
-		((RadElement)((RadControl)txtPrice).get_RootElement()).set_MinSize(new Size(65, 29));
-		((RadElement)((RadControl)txtPrice).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		txtPrice.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtPrice).Click += txtPrice_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtPrice).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(RadTextBoxControlElement)((RadControl)txtPrice).GetChildAt(0)).set_Padding((Padding)componentResourceManager.GetObject("resource.Padding1"));
-		((RadElement)(TextBoxViewElement)((RadControl)txtPrice).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtPrice.ForeColor = Color.FromArgb(40, 40, 40);
+		txtPrice.Name = "txtPrice";
+		txtPrice.RootElement.MinSize = new Size(65, 29);
+		txtPrice.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtPrice.TextAlign = HorizontalAlignment.Center;
+		txtPrice.Click += txtPrice_Click;
+		((RadTextBoxControlElement)txtPrice.GetChildAt(0)).BorderWidth = 0f;
+		((RadTextBoxControlElement)txtPrice.GetChildAt(0)).Padding = (Padding)componentResourceManager.GetObject("resource.Padding1");
+		((TextBoxViewElement)txtPrice.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		lblOptionName.BackColor = Color.FromArgb(50, 119, 155);
 		componentResourceManager.ApplyResources(lblOptionName, "lblOptionName");
 		lblOptionName.ForeColor = Color.White;

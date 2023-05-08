@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -96,10 +95,10 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 			{
 				_003C_003Ec__DisplayClass7_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass7_0();
 				CS_0024_003C_003E8__locals0.chk = enumerator.Current;
-				Setting setting = iqueryable_0.Where((Setting x) => x.Key == ((Control)(object)CS_0024_003C_003E8__locals0.chk).Tag.ToString()).FirstOrDefault();
+				Setting setting = iqueryable_0.Where((Setting x) => x.Key == CS_0024_003C_003E8__locals0.chk.Tag.ToString()).FirstOrDefault();
 				if (setting != null)
 				{
-					CS_0024_003C_003E8__locals0.chk.set_Value((setting.Value == "ON") ? true : false);
+					CS_0024_003C_003E8__locals0.chk.Value = ((setting.Value == "ON") ? true : false);
 				}
 			}
 		}
@@ -128,8 +127,6 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 
 	private void xKlkkkmysX_Click(object sender, EventArgs e)
 	{
-		//IL_00b1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00bb: Expected O, but got Unknown
 		iqueryable_0 = TurDzAjoFA.Settings.Where((Setting x) => x.Key.Contains("eodreport"));
 		using (List<Control>.Enumerator enumerator = base.Controls.OfType<RadToggleSwitch>().Cast<Control>().ToList()
 			.GetEnumerator())
@@ -138,10 +135,10 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 			{
 				_003C_003Ec__DisplayClass10_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass10_0();
 				CS_0024_003C_003E8__locals0.chk = (RadToggleSwitch)enumerator.Current;
-				Setting setting = iqueryable_0.Where((Setting x) => x.Key == ((Control)(object)CS_0024_003C_003E8__locals0.chk).Tag.ToString()).FirstOrDefault();
+				Setting setting = iqueryable_0.Where((Setting x) => x.Key == CS_0024_003C_003E8__locals0.chk.Tag.ToString()).FirstOrDefault();
 				if (setting != null)
 				{
-					setting.Value = (CS_0024_003C_003E8__locals0.chk.get_Value() ? "ON" : "OFF");
+					setting.Value = (CS_0024_003C_003E8__locals0.chk.Value ? "ON" : "OFF");
 				}
 			}
 		}
@@ -160,42 +157,42 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 
 	private void cjokvWxObQ_ValueChanged(object sender, EventArgs e)
 	{
-		method_3(((Control)(object)cjokvWxObQ).Tag.ToString(), cjokvWxObQ.get_Value());
+		method_3(cjokvWxObQ.Tag.ToString(), cjokvWxObQ.Value);
 	}
 
 	private void chkTenderSummary_ValueChanged(object sender, EventArgs e)
 	{
-		method_3(((Control)(object)chkTenderSummary).Tag.ToString(), chkTenderSummary.get_Value());
+		method_3(chkTenderSummary.Tag.ToString(), chkTenderSummary.Value);
 	}
 
 	private void chkSalesSummary_ValueChanged(object sender, EventArgs e)
 	{
-		method_3(((Control)(object)chkSalesSummary).Tag.ToString(), chkSalesSummary.get_Value());
+		method_3(chkSalesSummary.Tag.ToString(), chkSalesSummary.Value);
 	}
 
 	private void chkVoidSummary_ValueChanged(object sender, EventArgs e)
 	{
-		method_3(((Control)(object)chkVoidSummary).Tag.ToString(), chkVoidSummary.get_Value());
+		method_3(chkVoidSummary.Tag.ToString(), chkVoidSummary.Value);
 	}
 
 	private void chkRefundSummary_ValueChanged(object sender, EventArgs e)
 	{
-		method_3(((Control)(object)chkRefundSummary).Tag.ToString(), chkRefundSummary.get_Value());
+		method_3(chkRefundSummary.Tag.ToString(), chkRefundSummary.Value);
 	}
 
 	private void chkOtherInfo_ValueChanged(object sender, EventArgs e)
 	{
-		method_3(((Control)(object)chkOtherInfo).Tag.ToString(), chkOtherInfo.get_Value());
+		method_3(chkOtherInfo.Tag.ToString(), chkOtherInfo.Value);
 	}
 
 	private void chkEmployeeSummary_ValueChanged(object sender, EventArgs e)
 	{
-		method_3(((Control)(object)chkEmployeeSummary).Tag.ToString(), chkEmployeeSummary.get_Value());
+		method_3(chkEmployeeSummary.Tag.ToString(), chkEmployeeSummary.Value);
 	}
 
 	private void chkTipShareSummary_ValueChanged(object sender, EventArgs e)
 	{
-		method_3(((Control)(object)chkTipShareSummary).Tag.ToString(), chkTipShareSummary.get_Value());
+		method_3(chkTipShareSummary.Tag.ToString(), chkTipShareSummary.Value);
 	}
 
 	protected override void Dispose(bool disposing)
@@ -209,96 +206,6 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0069: Expected O, but got Unknown
-		//IL_006a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0074: Expected O, but got Unknown
-		//IL_0080: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008a: Expected O, but got Unknown
-		//IL_00b7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00c1: Expected O, but got Unknown
-		//IL_00c2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00cc: Expected O, but got Unknown
-		//IL_00cd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00d7: Expected O, but got Unknown
-		//IL_00d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00e2: Expected O, but got Unknown
-		//IL_00e3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ed: Expected O, but got Unknown
-		//IL_00f9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0103: Expected O, but got Unknown
-		//IL_099a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09b2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09c9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09ea: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a17: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a44: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a71: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a92: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b63: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b7b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b92: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0bb3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0be0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c0d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c3a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c5b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e17: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e2f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e46: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e67: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e94: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ec1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0eee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f0f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_138c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13a4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13bb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13dc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1409: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1436: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1463: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1484: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1558: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1570: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1587: Unknown result type (might be due to invalid IL or missing references)
-		//IL_15a8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_15d5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1602: Unknown result type (might be due to invalid IL or missing references)
-		//IL_162f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1650: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1724: Unknown result type (might be due to invalid IL or missing references)
-		//IL_173c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1753: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1774: Unknown result type (might be due to invalid IL or missing references)
-		//IL_17a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_17ce: Unknown result type (might be due to invalid IL or missing references)
-		//IL_17fb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_181c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_18f0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1908: Unknown result type (might be due to invalid IL or missing references)
-		//IL_191f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1940: Unknown result type (might be due to invalid IL or missing references)
-		//IL_196d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_199a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_19c7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_19e8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1abc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1ad4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1aeb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b0c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b39: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b66: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1b93: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1bb4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1cbe: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1cd6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1ced: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1d0e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1d3b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1d68: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1d95: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1db6: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmDayEndClosingPrintSettings));
 		lblHeaderTitle = new Label();
 		label1 = new Label();
@@ -434,42 +341,42 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 		label3.TabIndex = 248;
 		label3.Text = "Refund Summary";
 		label3.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)chkTenderSummary).Location = new Point(485, 86);
-		((Control)(object)chkTenderSummary).Name = "chkTenderSummary";
-		chkTenderSummary.set_OffText("HIDDEN");
-		chkTenderSummary.set_OnText("SHOW");
-		((Control)(object)chkTenderSummary).Size = new Size(100, 40);
-		((Control)(object)chkTenderSummary).TabIndex = 251;
-		((Control)(object)chkTenderSummary).Tag = "eodreport_tender_summary";
-		chkTenderSummary.set_ToggleStateMode((ToggleStateMode)1);
-		chkTenderSummary.set_Value(false);
-		chkTenderSummary.add_ValueChanged((EventHandler)chkTenderSummary_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkTenderSummary).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkTenderSummary).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkTenderSummary).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTenderSummary).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTenderSummary).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTenderSummary).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkTenderSummary).GetChildAt(0).GetChildAt(0)).set_Text("SHOW");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkTenderSummary).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)cjokvWxObQ).Location = new Point(485, 45);
-		((Control)(object)cjokvWxObQ).Name = "chkCompanyInfo";
-		cjokvWxObQ.set_OffText("HIDDEN");
-		cjokvWxObQ.set_OnText("SHOW");
-		((Control)(object)cjokvWxObQ).Size = new Size(100, 40);
-		((Control)(object)cjokvWxObQ).TabIndex = 255;
-		((Control)(object)cjokvWxObQ).Tag = "eodreport_company_info";
-		cjokvWxObQ.set_ToggleStateMode((ToggleStateMode)1);
-		cjokvWxObQ.set_Value(false);
-		cjokvWxObQ.add_ValueChanged((EventHandler)cjokvWxObQ_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)cjokvWxObQ).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)cjokvWxObQ).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)cjokvWxObQ).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)cjokvWxObQ).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)cjokvWxObQ).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)cjokvWxObQ).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)cjokvWxObQ).GetChildAt(0).GetChildAt(0)).set_Text("SHOW");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)cjokvWxObQ).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkTenderSummary.Location = new Point(485, 86);
+		chkTenderSummary.Name = "chkTenderSummary";
+		chkTenderSummary.OffText = "HIDDEN";
+		chkTenderSummary.OnText = "SHOW";
+		chkTenderSummary.Size = new Size(100, 40);
+		chkTenderSummary.TabIndex = 251;
+		chkTenderSummary.Tag = "eodreport_tender_summary";
+		chkTenderSummary.ToggleStateMode = ToggleStateMode.Click;
+		chkTenderSummary.Value = false;
+		chkTenderSummary.ValueChanged += chkTenderSummary_ValueChanged;
+		((RadToggleSwitchElement)chkTenderSummary.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkTenderSummary.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkTenderSummary.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkTenderSummary.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkTenderSummary.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTenderSummary.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTenderSummary.GetChildAt(0).GetChildAt(0)).Text = "SHOW";
+		((ToggleSwitchPartElement)chkTenderSummary.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		cjokvWxObQ.Location = new Point(485, 45);
+		cjokvWxObQ.Name = "chkCompanyInfo";
+		cjokvWxObQ.OffText = "HIDDEN";
+		cjokvWxObQ.OnText = "SHOW";
+		cjokvWxObQ.Size = new Size(100, 40);
+		cjokvWxObQ.TabIndex = 255;
+		cjokvWxObQ.Tag = "eodreport_company_info";
+		cjokvWxObQ.ToggleStateMode = ToggleStateMode.Click;
+		cjokvWxObQ.Value = false;
+		cjokvWxObQ.ValueChanged += cjokvWxObQ_ValueChanged;
+		((RadToggleSwitchElement)cjokvWxObQ.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)cjokvWxObQ.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)cjokvWxObQ.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)cjokvWxObQ.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)cjokvWxObQ.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)cjokvWxObQ.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)cjokvWxObQ.GetChildAt(0).GetChildAt(0)).Text = "SHOW";
+		((ToggleSwitchPartElement)cjokvWxObQ.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label5.BackColor = Color.FromArgb(132, 146, 146);
 		label5.Font = new Font("Microsoft Sans Serif", 12f);
 		label5.ForeColor = SystemColors.ButtonFace;
@@ -482,24 +389,24 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 		label5.TabIndex = 254;
 		label5.Text = "Void Summary";
 		label5.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)chkSalesSummary).Location = new Point(485, 127);
-		((Control)(object)chkSalesSummary).Name = "chkSalesSummary";
-		chkSalesSummary.set_OffText("HIDDEN");
-		chkSalesSummary.set_OnText("SHOW");
-		((Control)(object)chkSalesSummary).Size = new Size(100, 40);
-		((Control)(object)chkSalesSummary).TabIndex = 259;
-		((Control)(object)chkSalesSummary).Tag = "eodreport_sales_summary";
-		chkSalesSummary.set_ToggleStateMode((ToggleStateMode)1);
-		chkSalesSummary.set_Value(false);
-		chkSalesSummary.add_ValueChanged((EventHandler)chkSalesSummary_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkSalesSummary).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkSalesSummary).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkSalesSummary).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSalesSummary).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSalesSummary).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkSalesSummary).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkSalesSummary).GetChildAt(0).GetChildAt(0)).set_Text("SHOW");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkSalesSummary).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkSalesSummary.Location = new Point(485, 127);
+		chkSalesSummary.Name = "chkSalesSummary";
+		chkSalesSummary.OffText = "HIDDEN";
+		chkSalesSummary.OnText = "SHOW";
+		chkSalesSummary.Size = new Size(100, 40);
+		chkSalesSummary.TabIndex = 259;
+		chkSalesSummary.Tag = "eodreport_sales_summary";
+		chkSalesSummary.ToggleStateMode = ToggleStateMode.Click;
+		chkSalesSummary.Value = false;
+		chkSalesSummary.ValueChanged += chkSalesSummary_ValueChanged;
+		((RadToggleSwitchElement)chkSalesSummary.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkSalesSummary.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkSalesSummary.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkSalesSummary.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkSalesSummary.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSalesSummary.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkSalesSummary.GetChildAt(0).GetChildAt(0)).Text = "SHOW";
+		((ToggleSwitchPartElement)chkSalesSummary.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label9.BackColor = Color.FromArgb(132, 146, 146);
 		label9.Font = new Font("Microsoft Sans Serif", 12f);
 		label9.ForeColor = SystemColors.ButtonFace;
@@ -548,117 +455,117 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 		label4.TabIndex = 265;
 		label4.Text = "Tip Share Summary";
 		label4.TextAlign = ContentAlignment.MiddleLeft;
-		((Control)(object)chkVoidSummary).Location = new Point(485, 168);
-		((Control)(object)chkVoidSummary).Name = "chkVoidSummary";
-		chkVoidSummary.set_OffText("HIDDEN");
-		chkVoidSummary.set_OnText("SHOW");
-		((Control)(object)chkVoidSummary).Size = new Size(100, 40);
-		((Control)(object)chkVoidSummary).TabIndex = 256;
-		((Control)(object)chkVoidSummary).Tag = "eodreport_void_summary";
-		chkVoidSummary.set_ToggleStateMode((ToggleStateMode)1);
-		chkVoidSummary.set_Value(false);
-		chkVoidSummary.add_ValueChanged((EventHandler)chkVoidSummary_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkVoidSummary).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkVoidSummary).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkVoidSummary).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkVoidSummary).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkVoidSummary).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkVoidSummary).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkVoidSummary).GetChildAt(0).GetChildAt(0)).set_Text("SHOW");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkVoidSummary).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkTipShareSummary).Location = new Point(485, 373);
-		((Control)(object)chkTipShareSummary).Name = "chkTipShareSummary";
-		chkTipShareSummary.set_OffText("HIDDEN");
-		chkTipShareSummary.set_OnText("SHOW");
-		((Control)(object)chkTipShareSummary).Size = new Size(100, 40);
-		((Control)(object)chkTipShareSummary).TabIndex = 262;
-		((Control)(object)chkTipShareSummary).Tag = "eodreport_tipshare_summary";
-		chkTipShareSummary.set_ToggleStateMode((ToggleStateMode)1);
-		chkTipShareSummary.set_Value(false);
-		chkTipShareSummary.add_ValueChanged((EventHandler)chkTipShareSummary_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkTipShareSummary).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkTipShareSummary).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkTipShareSummary).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTipShareSummary).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTipShareSummary).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTipShareSummary).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkTipShareSummary).GetChildAt(0).GetChildAt(0)).set_Text("SHOW");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkTipShareSummary).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkEmployeeSummary).Location = new Point(485, 332);
-		((Control)(object)chkEmployeeSummary).Name = "chkEmployeeSummary";
-		chkEmployeeSummary.set_OffText("HIDDEN");
-		chkEmployeeSummary.set_OnText("SHOW");
-		((Control)(object)chkEmployeeSummary).Size = new Size(100, 40);
-		((Control)(object)chkEmployeeSummary).TabIndex = 263;
-		((Control)(object)chkEmployeeSummary).Tag = "eodreport_employee_summary";
-		chkEmployeeSummary.set_ToggleStateMode((ToggleStateMode)1);
-		chkEmployeeSummary.set_Value(false);
-		chkEmployeeSummary.add_ValueChanged((EventHandler)chkEmployeeSummary_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkEmployeeSummary).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkEmployeeSummary).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkEmployeeSummary).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEmployeeSummary).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEmployeeSummary).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkEmployeeSummary).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkEmployeeSummary).GetChildAt(0).GetChildAt(0)).set_Text("SHOW");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkEmployeeSummary).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkRefundSummary).Location = new Point(485, 209);
-		((Control)(object)chkRefundSummary).Name = "chkRefundSummary";
-		chkRefundSummary.set_OffText("HIDDEN");
-		chkRefundSummary.set_OnText("SHOW");
-		((Control)(object)chkRefundSummary).Size = new Size(100, 40);
-		((Control)(object)chkRefundSummary).TabIndex = 261;
-		((Control)(object)chkRefundSummary).Tag = "eodreport_refund_summary";
-		chkRefundSummary.set_ToggleStateMode((ToggleStateMode)1);
-		chkRefundSummary.set_Value(false);
-		chkRefundSummary.add_ValueChanged((EventHandler)chkRefundSummary_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkRefundSummary).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkRefundSummary).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkRefundSummary).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkRefundSummary).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkRefundSummary).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkRefundSummary).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkRefundSummary).GetChildAt(0).GetChildAt(0)).set_Text("SHOW");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkRefundSummary).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((Control)(object)chkOtherInfo).Location = new Point(485, 291);
-		((Control)(object)chkOtherInfo).Name = "chkOtherInfo";
-		chkOtherInfo.set_OffText("HIDDEN");
-		chkOtherInfo.set_OnText("SHOW");
-		((Control)(object)chkOtherInfo).Size = new Size(100, 40);
-		((Control)(object)chkOtherInfo).TabIndex = 260;
-		((Control)(object)chkOtherInfo).Tag = "eodreport_other_info";
-		chkOtherInfo.set_ToggleStateMode((ToggleStateMode)1);
-		chkOtherInfo.set_Value(false);
-		chkOtherInfo.add_ValueChanged((EventHandler)chkOtherInfo_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkOtherInfo).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkOtherInfo).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkOtherInfo).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkOtherInfo).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkOtherInfo).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkOtherInfo).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkOtherInfo).GetChildAt(0).GetChildAt(0)).set_Text("SHOW");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkOtherInfo).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkVoidSummary.Location = new Point(485, 168);
+		chkVoidSummary.Name = "chkVoidSummary";
+		chkVoidSummary.OffText = "HIDDEN";
+		chkVoidSummary.OnText = "SHOW";
+		chkVoidSummary.Size = new Size(100, 40);
+		chkVoidSummary.TabIndex = 256;
+		chkVoidSummary.Tag = "eodreport_void_summary";
+		chkVoidSummary.ToggleStateMode = ToggleStateMode.Click;
+		chkVoidSummary.Value = false;
+		chkVoidSummary.ValueChanged += chkVoidSummary_ValueChanged;
+		((RadToggleSwitchElement)chkVoidSummary.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkVoidSummary.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkVoidSummary.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkVoidSummary.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkVoidSummary.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkVoidSummary.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkVoidSummary.GetChildAt(0).GetChildAt(0)).Text = "SHOW";
+		((ToggleSwitchPartElement)chkVoidSummary.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkTipShareSummary.Location = new Point(485, 373);
+		chkTipShareSummary.Name = "chkTipShareSummary";
+		chkTipShareSummary.OffText = "HIDDEN";
+		chkTipShareSummary.OnText = "SHOW";
+		chkTipShareSummary.Size = new Size(100, 40);
+		chkTipShareSummary.TabIndex = 262;
+		chkTipShareSummary.Tag = "eodreport_tipshare_summary";
+		chkTipShareSummary.ToggleStateMode = ToggleStateMode.Click;
+		chkTipShareSummary.Value = false;
+		chkTipShareSummary.ValueChanged += chkTipShareSummary_ValueChanged;
+		((RadToggleSwitchElement)chkTipShareSummary.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkTipShareSummary.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkTipShareSummary.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkTipShareSummary.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkTipShareSummary.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTipShareSummary.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTipShareSummary.GetChildAt(0).GetChildAt(0)).Text = "SHOW";
+		((ToggleSwitchPartElement)chkTipShareSummary.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkEmployeeSummary.Location = new Point(485, 332);
+		chkEmployeeSummary.Name = "chkEmployeeSummary";
+		chkEmployeeSummary.OffText = "HIDDEN";
+		chkEmployeeSummary.OnText = "SHOW";
+		chkEmployeeSummary.Size = new Size(100, 40);
+		chkEmployeeSummary.TabIndex = 263;
+		chkEmployeeSummary.Tag = "eodreport_employee_summary";
+		chkEmployeeSummary.ToggleStateMode = ToggleStateMode.Click;
+		chkEmployeeSummary.Value = false;
+		chkEmployeeSummary.ValueChanged += chkEmployeeSummary_ValueChanged;
+		((RadToggleSwitchElement)chkEmployeeSummary.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkEmployeeSummary.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkEmployeeSummary.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkEmployeeSummary.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkEmployeeSummary.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkEmployeeSummary.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkEmployeeSummary.GetChildAt(0).GetChildAt(0)).Text = "SHOW";
+		((ToggleSwitchPartElement)chkEmployeeSummary.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkRefundSummary.Location = new Point(485, 209);
+		chkRefundSummary.Name = "chkRefundSummary";
+		chkRefundSummary.OffText = "HIDDEN";
+		chkRefundSummary.OnText = "SHOW";
+		chkRefundSummary.Size = new Size(100, 40);
+		chkRefundSummary.TabIndex = 261;
+		chkRefundSummary.Tag = "eodreport_refund_summary";
+		chkRefundSummary.ToggleStateMode = ToggleStateMode.Click;
+		chkRefundSummary.Value = false;
+		chkRefundSummary.ValueChanged += chkRefundSummary_ValueChanged;
+		((RadToggleSwitchElement)chkRefundSummary.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkRefundSummary.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkRefundSummary.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkRefundSummary.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkRefundSummary.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkRefundSummary.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkRefundSummary.GetChildAt(0).GetChildAt(0)).Text = "SHOW";
+		((ToggleSwitchPartElement)chkRefundSummary.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		chkOtherInfo.Location = new Point(485, 291);
+		chkOtherInfo.Name = "chkOtherInfo";
+		chkOtherInfo.OffText = "HIDDEN";
+		chkOtherInfo.OnText = "SHOW";
+		chkOtherInfo.Size = new Size(100, 40);
+		chkOtherInfo.TabIndex = 260;
+		chkOtherInfo.Tag = "eodreport_other_info";
+		chkOtherInfo.ToggleStateMode = ToggleStateMode.Click;
+		chkOtherInfo.Value = false;
+		chkOtherInfo.ValueChanged += chkOtherInfo_ValueChanged;
+		((RadToggleSwitchElement)chkOtherInfo.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkOtherInfo.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkOtherInfo.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkOtherInfo.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkOtherInfo.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkOtherInfo.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkOtherInfo.GetChildAt(0).GetChildAt(0)).Text = "SHOW";
+		((ToggleSwitchPartElement)chkOtherInfo.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		panel1.Location = new Point(6, 47);
 		panel1.Name = "panel1";
 		panel1.Size = new Size(448, 671);
 		panel1.TabIndex = 266;
-		((Control)(object)chkPayoutSummary).Location = new Point(485, 250);
-		((Control)(object)chkPayoutSummary).Name = "chkPayoutSummary";
-		chkPayoutSummary.set_OffText("HIDDEN");
-		chkPayoutSummary.set_OnText("SHOW");
-		((Control)(object)chkPayoutSummary).Size = new Size(100, 40);
-		((Control)(object)chkPayoutSummary).TabIndex = 267;
-		((Control)(object)chkPayoutSummary).Tag = "eodreport_payout_summary";
-		chkPayoutSummary.set_ToggleStateMode((ToggleStateMode)1);
-		chkPayoutSummary.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkPayoutSummary).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkPayoutSummary).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkPayoutSummary).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPayoutSummary).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPayoutSummary).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkPayoutSummary).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkPayoutSummary).GetChildAt(0).GetChildAt(0)).set_Text("SHOW");
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkPayoutSummary).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkPayoutSummary.Location = new Point(485, 250);
+		chkPayoutSummary.Name = "chkPayoutSummary";
+		chkPayoutSummary.OffText = "HIDDEN";
+		chkPayoutSummary.OnText = "SHOW";
+		chkPayoutSummary.Size = new Size(100, 40);
+		chkPayoutSummary.TabIndex = 267;
+		chkPayoutSummary.Tag = "eodreport_payout_summary";
+		chkPayoutSummary.ToggleStateMode = ToggleStateMode.Click;
+		chkPayoutSummary.Value = false;
+		((RadToggleSwitchElement)chkPayoutSummary.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkPayoutSummary.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkPayoutSummary.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkPayoutSummary.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkPayoutSummary.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPayoutSummary.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkPayoutSummary.GetChildAt(0).GetChildAt(0)).Text = "SHOW";
+		((ToggleSwitchPartElement)chkPayoutSummary.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label6.BackColor = Color.FromArgb(132, 146, 146);
 		label6.Font = new Font("Microsoft Sans Serif", 12f);
 		label6.ForeColor = SystemColors.ButtonFace;
@@ -674,22 +581,22 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 		base.AutoScaleDimensions = new SizeF(6f, 13f);
 		base.AutoScaleMode = AutoScaleMode.Font;
 		base.ClientSize = new Size(775, 723);
-		base.Controls.Add((Control)(object)chkPayoutSummary);
+		base.Controls.Add(chkPayoutSummary);
 		base.Controls.Add(label6);
 		base.Controls.Add(panel1);
-		base.Controls.Add((Control)(object)chkTipShareSummary);
-		base.Controls.Add((Control)(object)chkEmployeeSummary);
-		base.Controls.Add((Control)(object)chkVoidSummary);
-		base.Controls.Add((Control)(object)chkRefundSummary);
+		base.Controls.Add(chkTipShareSummary);
+		base.Controls.Add(chkEmployeeSummary);
+		base.Controls.Add(chkVoidSummary);
+		base.Controls.Add(chkRefundSummary);
 		base.Controls.Add(label4);
-		base.Controls.Add((Control)(object)chkOtherInfo);
+		base.Controls.Add(chkOtherInfo);
 		base.Controls.Add(label11);
 		base.Controls.Add(label10);
 		base.Controls.Add(label9);
-		base.Controls.Add((Control)(object)chkSalesSummary);
-		base.Controls.Add((Control)(object)cjokvWxObQ);
+		base.Controls.Add(chkSalesSummary);
+		base.Controls.Add(cjokvWxObQ);
 		base.Controls.Add(label5);
-		base.Controls.Add((Control)(object)chkTenderSummary);
+		base.Controls.Add(chkTenderSummary);
 		base.Controls.Add(label3);
 		base.Controls.Add(btnCancel);
 		base.Controls.Add(btnPreview);

@@ -6,7 +6,6 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -128,9 +127,9 @@ public class InventoryBatchReductionControl : UserControl
 
 	public void Save()
 	{
-		if (!string.IsNullOrEmpty(((Control)(object)txtValue).Text))
+		if (!string.IsNullOrEmpty(txtValue.Text))
 		{
-			decimal num = Convert.ToDecimal(((Control)(object)txtValue).Text);
+			decimal num = Convert.ToDecimal(txtValue.Text);
 			GClass6 gClass = new GClass6();
 			InventoryBatch inventoryBatch = gClass.InventoryBatches.Where((InventoryBatch a) => a.Id == int_0).FirstOrDefault();
 			if (inventoryBatch != null)
@@ -144,7 +143,7 @@ public class InventoryBatchReductionControl : UserControl
 
 	private void txtValue_TextChanged(object sender, EventArgs e)
 	{
-		value = Convert.ToDecimal(((Control)(object)txtValue).Text);
+		value = Convert.ToDecimal(txtValue.Text);
 		if (eventHandler_0 != null)
 		{
 			eventHandler_0(sender, e);
@@ -154,10 +153,10 @@ public class InventoryBatchReductionControl : UserControl
 	private void txtValue_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Reduction Count", 2, 6, ((Control)(object)txtValue).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Reduction Count", 2, 6, txtValue.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtValue).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtValue.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
@@ -172,16 +171,11 @@ public class InventoryBatchReductionControl : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_002d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0037: Expected O, but got Unknown
-		//IL_043c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0457: Unknown result type (might be due to invalid IL or missing references)
-		//IL_047c: Unknown result type (might be due to invalid IL or missing references)
 		this.lblBatchNumber = new System.Windows.Forms.Label();
 		this.lblReceivedDate = new System.Windows.Forms.Label();
 		this.lblExpiryDate = new System.Windows.Forms.Label();
 		this.txtQtyRemaining = new System.Windows.Forms.Label();
-		this.txtValue = new RadTextBoxControl();
+		this.txtValue = new Telerik.WinControls.UI.RadTextBoxControl();
 		((System.ComponentModel.ISupportInitialize)this.txtValue).BeginInit();
 		base.SuspendLayout();
 		this.lblBatchNumber.BackColor = System.Drawing.Color.FromArgb(224, 224, 224);
@@ -220,28 +214,28 @@ public class InventoryBatchReductionControl : UserControl
 		this.txtQtyRemaining.Size = new System.Drawing.Size(71, 30);
 		this.txtQtyRemaining.TabIndex = 198;
 		this.txtQtyRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-		((System.Windows.Forms.Control)(object)this.txtValue).BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
-		((System.Windows.Forms.Control)(object)this.txtValue).Font = new System.Drawing.Font("Microsoft Sans Serif", 11f);
-		((System.Windows.Forms.Control)(object)this.txtValue).ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
-		((System.Windows.Forms.Control)(object)this.txtValue).Location = new System.Drawing.Point(576, 0);
-		this.txtValue.set_MaxLength(128);
-		((System.Windows.Forms.Control)(object)this.txtValue).MinimumSize = new System.Drawing.Size(70, 30);
-		((System.Windows.Forms.Control)(object)this.txtValue).Name = "txtValue";
-		((RadControl)this.txtValue).set_Padding(new System.Windows.Forms.Padding(0, 0, 6, 0));
-		((RadElement)((RadControl)this.txtValue).get_RootElement()).set_MinSize(new System.Drawing.Size(70, 30));
-		((RadElement)((RadControl)this.txtValue).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((System.Windows.Forms.Control)(object)this.txtValue).Size = new System.Drawing.Size(164, 30);
-		((System.Windows.Forms.Control)(object)this.txtValue).TabIndex = 201;
-		this.txtValue.set_TextAlign(System.Windows.Forms.HorizontalAlignment.Center);
-		((System.Windows.Forms.Control)(object)this.txtValue).TextChanged += new System.EventHandler(txtValue_TextChanged);
-		((System.Windows.Forms.Control)(object)this.txtValue).Click += new System.EventHandler(txtValue_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtValue).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(RadTextBoxControlElement)((RadControl)this.txtValue).GetChildAt(0)).set_Padding(new System.Windows.Forms.Padding(0, 0, 6, 0));
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtValue).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtValue.BackColor = System.Drawing.Color.FromArgb(255, 255, 192);
+		this.txtValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 11f);
+		this.txtValue.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
+		this.txtValue.Location = new System.Drawing.Point(576, 0);
+		this.txtValue.MaxLength = 128;
+		this.txtValue.MinimumSize = new System.Drawing.Size(70, 30);
+		this.txtValue.Name = "txtValue";
+		this.txtValue.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
+		this.txtValue.RootElement.MinSize = new System.Drawing.Size(70, 30);
+		this.txtValue.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtValue.Size = new System.Drawing.Size(164, 30);
+		this.txtValue.TabIndex = 201;
+		this.txtValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+		this.txtValue.TextChanged += new System.EventHandler(txtValue_TextChanged);
+		this.txtValue.Click += new System.EventHandler(txtValue_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtValue.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtValue.GetChildAt(0)).Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtValue.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 13f);
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 		this.BackColor = System.Drawing.Color.FromArgb(35, 39, 56);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtValue);
+		base.Controls.Add(this.txtValue);
 		base.Controls.Add(this.txtQtyRemaining);
 		base.Controls.Add(this.lblExpiryDate);
 		base.Controls.Add(this.lblReceivedDate);

@@ -44,7 +44,7 @@ public class frmDataTranfer : frmMasterForm
 		timer_0.Enabled = true;
 		timer_0.Start();
 		timer_0.Interval = 100;
-		progressBar1.set_Maximum(100);
+		progressBar1.Maximum = 100;
 		timer_0.Tick += timer_0_Tick;
 		new Thread(method_3).Start();
 	}
@@ -96,7 +96,7 @@ public class frmDataTranfer : frmMasterForm
 
 	private void timer_0_Tick(object sender, EventArgs e)
 	{
-		if (progressBar1.get_Value1() == 100)
+		if (progressBar1.Value1 == 100)
 		{
 			timer_0.Stop();
 			Close();
@@ -207,14 +207,14 @@ public class frmDataTranfer : frmMasterForm
 				}
 				sqlConnection.Close();
 			}
-			progressBar1.set_Value1(5);
+			progressBar1.Value1 = 5;
 			if (list.Count == 0)
 			{
-				progressBar1.set_Value1(100);
+				progressBar1.Value1 = 100;
 				return;
 			}
 			method_4(method_5(list));
-			progressBar1.set_Value1(10);
+			progressBar1.Value1 = 10;
 			double num = 80.0 / (double)list.Count;
 			foreach (string item in list.Where((string a) => a != "Orders"))
 			{
@@ -223,15 +223,15 @@ public class frmDataTranfer : frmMasterForm
 				string empty = string.Empty;
 				empty = ((!trtBspiTpp(item)) ? method_7(item, bool_1: false) : method_7(item, bool_1: true));
 				method_4(empty);
-				progressBar1.set_Value1((Convert.ToInt16((double)progressBar1.get_Value1() + num) > 100) ? 100 : Convert.ToInt16((double)progressBar1.get_Value1() + num));
+				progressBar1.Value1 = ((Convert.ToInt16((double)progressBar1.Value1 + num) > 100) ? 100 : Convert.ToInt16((double)progressBar1.Value1 + num));
 			}
 			method_4(method_6(list));
-			progressBar1.set_Value1(100);
+			progressBar1.Value1 = 100;
 		}
 		catch (Exception ex)
 		{
 			new frmMessageBox(Resources.Error_of_copying_data_from_pro + text + ") : " + ex.Message).ShowDialog();
-			progressBar1.set_Value1(100);
+			progressBar1.Value1 = 100;
 		}
 	}
 
@@ -246,29 +246,6 @@ public class frmDataTranfer : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_0091: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00b2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00d3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0115: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0136: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0157: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0178: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0199: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01ba: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01d8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01ff: Unknown result type (might be due to invalid IL or missing references)
-		//IL_022c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0259: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0286: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02b3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02d0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02fd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_032a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0357: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0384: Unknown result type (might be due to invalid IL or missing references)
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmDataTranfer));
 		progressBar1 = new RadProgressBar();
@@ -277,36 +254,36 @@ public class frmDataTranfer : frmMasterForm
 		((ISupportInitialize)progressBar1).BeginInit();
 		SuspendLayout();
 		componentResourceManager.ApplyResources(progressBar1, "progressBar1");
-		((Control)(object)progressBar1).ForeColor = Color.White;
-		((Control)(object)progressBar1).Name = "progressBar1";
-		((RadItem)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((UIItemBase)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BorderColor(Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BorderColor2(Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BorderColor3(Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BorderColor4(Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BorderInnerColor(Color.FromArgb(21, 23, 33));
-		((UIItemBase)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BackColor2(Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BackColor3(Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BackColor4(Color.FromArgb(35, 39, 56));
-		((UIItemBase)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BorderBottomColor(Color.FromArgb(0, 0, 0));
-		((VisualElement)(RadProgressBarElement)((RadControl)progressBar1).GetChildAt(0)).set_BackColor(Color.FromArgb(35, 39, 56));
-		((UIItemBase)(ProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((VisualElement)(ProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((RadElement)(ProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(0)).set_Visibility((ElementVisibility)2);
-		((UIItemBase)(UpperProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(1)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(UpperProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(1)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(UpperProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(1)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((VisualElement)(UpperProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(1)).set_BackColor(Color.FromArgb(247, 192, 82));
-		((RadElement)(UpperProgressIndicatorElement)((RadControl)progressBar1).GetChildAt(0).GetChildAt(1)).set_Visibility((ElementVisibility)2);
+		progressBar1.ForeColor = Color.White;
+		progressBar1.Name = "progressBar1";
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BorderColor = Color.FromArgb(35, 39, 56);
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BorderColor2 = Color.FromArgb(35, 39, 56);
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BorderColor3 = Color.FromArgb(35, 39, 56);
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BorderColor4 = Color.FromArgb(35, 39, 56);
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BorderInnerColor = Color.FromArgb(21, 23, 33);
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BackColor2 = Color.FromArgb(35, 39, 56);
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BackColor3 = Color.FromArgb(35, 39, 56);
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BackColor4 = Color.FromArgb(35, 39, 56);
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BorderBottomColor = Color.FromArgb(0, 0, 0);
+		((RadProgressBarElement)progressBar1.GetChildAt(0)).BackColor = Color.FromArgb(35, 39, 56);
+		((ProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
+		((ProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(0)).Visibility = ElementVisibility.Collapsed;
+		((UpperProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(1)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((UpperProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(1)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((UpperProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(1)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((UpperProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(1)).BackColor = Color.FromArgb(247, 192, 82);
+		((UpperProgressIndicatorElement)progressBar1.GetChildAt(0).GetChildAt(1)).Visibility = ElementVisibility.Collapsed;
 		componentResourceManager.ApplyResources(label1, "label1");
 		label1.ForeColor = Color.White;
 		label1.Name = "label1";
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;
 		base.Controls.Add(label1);
-		base.Controls.Add((Control)(object)progressBar1);
+		base.Controls.Add(progressBar1);
 		base.Name = "frmDataTranfer";
 		base.Opacity = 1.0;
 		base.Load += frmDataTranfer_Load;

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -70,19 +69,19 @@ public class frmManageCustomField : frmMasterForm
 
 	private void btnAdd_Click(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtField).Text != null && ((Control)(object)txtField).Text != "" && !method_4(((Control)(object)txtField).Text))
+		if (txtField.Text != null && txtField.Text != "" && !method_4(txtField.Text))
 		{
-			listCustomField.Items.Add(((Control)(object)txtField).Text);
+			listCustomField.Items.Add(txtField.Text);
 			GClass6 gClass = new GClass6();
 			CustomField entity = new CustomField
 			{
-				Value = ((Control)(object)txtField).Text
+				Value = txtField.Text
 			};
 			gClass.CustomFields.InsertOnSubmit(entity);
 			try
 			{
 				Helper.SubmitChangesWithCatch(gClass);
-				((Control)(object)txtField).Text = "";
+				txtField.Text = "";
 				method_3();
 			}
 			catch (Exception ex)
@@ -146,10 +145,10 @@ public class frmManageCustomField : frmMasterForm
 	private void btnShowKeyboard_AddCustomField_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Custom_Field, 1, 128, ((Control)(object)txtField).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Custom_Field, 1, 128, txtField.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtField).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtField.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -174,7 +173,7 @@ public class frmManageCustomField : frmMasterForm
 			customField.Value = MemoryLoadedObjects.Keyboard.textEntered;
 			customField.Sycned = false;
 			Helper.SubmitChangesWithCatch(gClass);
-			((Control)(object)txtField).Text = "";
+			txtField.Text = "";
 			method_3();
 		}
 		base.DialogResult = DialogResult.None;
@@ -191,10 +190,6 @@ public class frmManageCustomField : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0069: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0073: Expected O, but got Unknown
-		//IL_0472: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0493: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmManageCustomField));
 		lblTitle = new Label();
 		label3 = new Label();
@@ -259,12 +254,12 @@ public class frmManageCustomField : frmMasterForm
 		btnShowKeyboard_AddCustomField.UseVisualStyleBackColor = false;
 		btnShowKeyboard_AddCustomField.Click += btnShowKeyboard_AddCustomField_Click;
 		componentResourceManager.ApplyResources(txtField, "txtField");
-		((Control)(object)txtField).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtField).Name = "txtField";
-		((RadElement)((RadControl)txtField).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtField).Click += txtField_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtField).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtField).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtField.ForeColor = Color.FromArgb(40, 40, 40);
+		txtField.Name = "txtField";
+		txtField.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtField.Click += txtField_Click;
+		((RadTextBoxControlElement)txtField.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtField.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnEdit.BackColor = Color.FromArgb(42, 102, 134);
 		btnEdit.FlatAppearance.BorderSize = 0;
 		componentResourceManager.ApplyResources(btnEdit, "btnEdit");
@@ -276,7 +271,7 @@ public class frmManageCustomField : frmMasterForm
 		base.AutoScaleMode = AutoScaleMode.Font;
 		BackColor = Color.FromArgb(35, 39, 56);
 		base.Controls.Add(btnEdit);
-		base.Controls.Add((Control)(object)txtField);
+		base.Controls.Add(txtField);
 		base.Controls.Add(btnShowKeyboard_AddCustomField);
 		base.Controls.Add(btnDone);
 		base.Controls.Add(btnAdd);
@@ -298,7 +293,7 @@ public class frmManageCustomField : frmMasterForm
 		base.Controls.SetChildIndex(btnAdd, 0);
 		base.Controls.SetChildIndex(btnDone, 0);
 		base.Controls.SetChildIndex(btnShowKeyboard_AddCustomField, 0);
-		base.Controls.SetChildIndex((Control)(object)txtField, 0);
+		base.Controls.SetChildIndex(txtField, 0);
 		base.Controls.SetChildIndex(PersistentNotification, 0);
 		base.Controls.SetChildIndex(btnEdit, 0);
 		((ISupportInitialize)txtField).EndInit();

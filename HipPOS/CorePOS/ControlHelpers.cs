@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -41,9 +39,9 @@ public static class ControlHelpers
 			Control parent;
 			try
 			{
-				RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
-				CS_0024_003C_003E8__locals0.name = ((Control)(object)val).Name.Replace("txt", string.Empty);
-				parent = ((Control)(object)val).Parent;
+				RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
+				CS_0024_003C_003E8__locals0.name = radTextBoxControl.Name.Replace("txt", string.Empty);
+				parent = radTextBoxControl.Parent;
 			}
 			catch
 			{
@@ -140,53 +138,51 @@ public static class ControlHelpers
 		}
 		list.ForEach(delegate(Control x)
 		{
-			//IL_0001: Unknown result type (might be due to invalid IL or missing references)
-			//IL_0007: Expected O, but got Unknown
-			RadToggleSwitch val = (RadToggleSwitch)x;
-			if (val.get_OnText() == "YES")
+			RadToggleSwitch radToggleSwitch = (RadToggleSwitch)x;
+			if (radToggleSwitch.OnText == "YES")
 			{
-				val.set_OnText(Resources.YES);
-				val.set_OffText(Resources.NO);
+				radToggleSwitch.OnText = Resources.YES;
+				radToggleSwitch.OffText = Resources.NO;
 			}
-			else if (val.get_OnText() == "ON")
+			else if (radToggleSwitch.OnText == "ON")
 			{
-				val.set_OnText(Resources.ON);
-				val.set_OffText(Resources.OFF);
+				radToggleSwitch.OnText = Resources.ON;
+				radToggleSwitch.OffText = Resources.OFF;
 			}
-			else if (val.get_OnText() == "MONDAY ON")
+			else if (radToggleSwitch.OnText == "MONDAY ON")
 			{
-				val.set_OnText(Resources.Monday.ToUpper() + " " + Resources.ON);
-				val.set_OffText(Resources.Monday.ToUpper() + " " + Resources.OFF);
+				radToggleSwitch.OnText = Resources.Monday.ToUpper() + " " + Resources.ON;
+				radToggleSwitch.OffText = Resources.Monday.ToUpper() + " " + Resources.OFF;
 			}
-			else if (val.get_OnText() == "TUESDAY ON")
+			else if (radToggleSwitch.OnText == "TUESDAY ON")
 			{
-				val.set_OnText(Resources.Tuesday.ToUpper() + " " + Resources.ON);
-				val.set_OffText(Resources.Tuesday.ToUpper() + " " + Resources.OFF);
+				radToggleSwitch.OnText = Resources.Tuesday.ToUpper() + " " + Resources.ON;
+				radToggleSwitch.OffText = Resources.Tuesday.ToUpper() + " " + Resources.OFF;
 			}
-			else if (val.get_OnText() == "WEDNESDAY ON")
+			else if (radToggleSwitch.OnText == "WEDNESDAY ON")
 			{
-				val.set_OnText(Resources.Wednesday.ToUpper() + " " + Resources.ON);
-				val.set_OffText(Resources.Wednesday.ToUpper() + " " + Resources.OFF);
+				radToggleSwitch.OnText = Resources.Wednesday.ToUpper() + " " + Resources.ON;
+				radToggleSwitch.OffText = Resources.Wednesday.ToUpper() + " " + Resources.OFF;
 			}
-			else if (val.get_OnText() == "THURSDAY ON")
+			else if (radToggleSwitch.OnText == "THURSDAY ON")
 			{
-				val.set_OnText(Resources.Thursday.ToUpper() + " " + Resources.ON);
-				val.set_OffText(Resources.Thursday.ToUpper() + " " + Resources.OFF);
+				radToggleSwitch.OnText = Resources.Thursday.ToUpper() + " " + Resources.ON;
+				radToggleSwitch.OffText = Resources.Thursday.ToUpper() + " " + Resources.OFF;
 			}
-			else if (val.get_OnText() == "FRIDAY ON")
+			else if (radToggleSwitch.OnText == "FRIDAY ON")
 			{
-				val.set_OnText(Resources.Friday.ToUpper() + " " + Resources.ON);
-				val.set_OffText(Resources.Friday.ToUpper() + " " + Resources.OFF);
+				radToggleSwitch.OnText = Resources.Friday.ToUpper() + " " + Resources.ON;
+				radToggleSwitch.OffText = Resources.Friday.ToUpper() + " " + Resources.OFF;
 			}
-			else if (val.get_OnText() == "SATURDAY ON")
+			else if (radToggleSwitch.OnText == "SATURDAY ON")
 			{
-				val.set_OnText(Resources.Saturday.ToUpper() + " " + Resources.ON);
-				val.set_OffText(Resources.Saturday.ToUpper() + " " + Resources.OFF);
+				radToggleSwitch.OnText = Resources.Saturday.ToUpper() + " " + Resources.ON;
+				radToggleSwitch.OffText = Resources.Saturday.ToUpper() + " " + Resources.OFF;
 			}
-			else if (val.get_OnText() == "SUNDAY ON")
+			else if (radToggleSwitch.OnText == "SUNDAY ON")
 			{
-				val.set_OnText(Resources.Sunday.ToUpper() + " " + Resources.ON);
-				val.set_OffText(Resources.Sunday.ToUpper() + " " + Resources.OFF);
+				radToggleSwitch.OnText = Resources.Sunday.ToUpper() + " " + Resources.ON;
+				radToggleSwitch.OffText = Resources.Sunday.ToUpper() + " " + Resources.OFF;
 			}
 		});
 	}
@@ -304,9 +300,9 @@ public static class ControlHelpers
 			}
 			else if (item is CustomListViewTelerik)
 			{
-				foreach (ListViewDetailColumn item2 in (Collection<ListViewDetailColumn>)(object)((RadListView)(item as CustomListViewTelerik)).get_Columns())
+				foreach (ListViewDetailColumn column2 in (item as CustomListViewTelerik).Columns)
 				{
-					((DisposableObject)item2).Dispose();
+					column2.Dispose();
 				}
 			}
 			item.Dispose();

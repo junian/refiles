@@ -17,7 +17,6 @@ using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
 using Newtonsoft.Json;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -221,10 +220,10 @@ public class frmCustomersMini : frmMasterForm
 		{
 			lblTrainingMode.Visible = false;
 		}
-		((Control)(object)txtAddress).Text = string.Empty;
-		((Control)(object)txtName).Text = string.Empty;
-		((Control)(object)txtCell).Text = string.Empty;
-		((Control)(object)txtEmail).Text = string.Empty;
+		txtAddress.Text = string.Empty;
+		txtName.Text = string.Empty;
+		txtCell.Text = string.Empty;
+		txtEmail.Text = string.Empty;
 		list_2 = new List<GlobalOrderHistoryObjects.Order>();
 		list_3 = new List<GlobalOrderHistoryObjects.CustomerInfo>();
 		customerInfo_0 = new GlobalOrderHistoryObjects.CustomerInfo();
@@ -248,21 +247,21 @@ public class frmCustomersMini : frmMasterForm
 		if (!string.IsNullOrEmpty(string_0))
 		{
 			btnDuplicate.Enabled = false;
-			((Control)(object)txtCell).Text = string_0;
+			txtCell.Text = string_0;
 			method_5();
-			if (lstCustomers.Items.Count == 0 && ((Control)(object)txtCell).Text == MemoryLoadedObjects.callerID.Number)
+			if (lstCustomers.Items.Count == 0 && txtCell.Text == MemoryLoadedObjects.callerID.Number)
 			{
-				((Control)(object)txtName).Text = MemoryLoadedObjects.callerID.Name.ToUpper();
+				txtName.Text = MemoryLoadedObjects.callerID.Name.ToUpper();
 			}
 		}
 	}
 
 	private bool method_3()
 	{
-		if (string_1 == OrderTypes.Delivery && ((Control)(object)txtAddress).Text == string.Empty)
+		if (string_1 == OrderTypes.Delivery && txtAddress.Text == string.Empty)
 		{
 			btnShowKeyboard_Address_Click(btnShowKeyboard_Address, null);
-			if (((Control)(object)txtAddress).Text == string.Empty)
+			if (txtAddress.Text == string.Empty)
 			{
 				new NotificationLabel(this, "Address is required for delivery orders.", NotificationTypes.Notification).Show();
 				return false;
@@ -283,10 +282,10 @@ public class frmCustomersMini : frmMasterForm
 		{
 			if (bool_0 && method_4())
 			{
-				returnCell = ((Control)(object)txtCell).Text;
-				returnName = ((Control)(object)txtName).Text;
-				returnEmail = ((Control)(object)txtEmail).Text;
-				returnAddress = ((Control)(object)txtAddress).Text;
+				returnCell = txtCell.Text;
+				returnName = txtName.Text;
+				returnEmail = txtEmail.Text;
+				returnAddress = txtAddress.Text;
 				base.DialogResult = DialogResult.OK;
 			}
 			else
@@ -297,8 +296,8 @@ public class frmCustomersMini : frmMasterForm
 		else
 		{
 			method_4();
-			string address = ((string_1 == OrderTypes.Delivery) ? ((Control)(object)txtAddress).Text : string.Empty);
-			MemoryLoadedObjects.OrderEntry.ChangeToDeliveryTakeout(((Control)(object)txtName).Text, ((Control)(object)txtCell).Text, address, string_1);
+			string address = ((string_1 == OrderTypes.Delivery) ? txtAddress.Text : string.Empty);
+			MemoryLoadedObjects.OrderEntry.ChangeToDeliveryTakeout(txtName.Text, txtCell.Text, address, string_1);
 			base.DialogResult = DialogResult.Yes;
 		}
 		btnCancel.Enabled = true;
@@ -308,21 +307,21 @@ public class frmCustomersMini : frmMasterForm
 	{
 		_003C_003Ec__DisplayClass36_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass36_0();
 		CS_0024_003C_003E8__locals0._003C_003E4__this = this;
-		if (((Control)(object)txtCell).Text == string.Empty)
+		if (txtCell.Text == string.Empty)
 		{
 			new NotificationLabel(this, "Phone number is required.", NotificationTypes.Notification).Show();
 			return false;
 		}
-		if (!string.IsNullOrEmpty(((Control)(object)txtEmail).Text) && !Regex.IsMatch(((Control)(object)txtEmail).Text, "\\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\\Z", RegexOptions.IgnoreCase))
+		if (!string.IsNullOrEmpty(txtEmail.Text) && !Regex.IsMatch(txtEmail.Text, "\\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\\Z", RegexOptions.IgnoreCase))
 		{
 			new frmMessageBox(Resources.E_mail_address_is_not_in_corre).ShowDialog(this);
 			base.DialogResult = DialogResult.None;
 			return false;
 		}
-		string text = ((Control)(object)txtCell).Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
+		string text = txtCell.Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
 			.Trim();
 		CS_0024_003C_003E8__locals0.queryCellPhone = ((text == "" || text == null) ? "XXXXXXXXXXX0" : text);
-		string text2 = ((Control)(object)txtEmail).Text;
+		string text2 = txtEmail.Text;
 		CS_0024_003C_003E8__locals0.queryCustomerEmail = ((text2 == "" || text2 == null) ? "XXXXXXXXXXXXX" : text2);
 		Customer customer;
 		if (int_0 == 0)
@@ -348,28 +347,28 @@ public class frmCustomersMini : frmMasterForm
 		{
 			customer = gclass6_0.Customers.Where((Customer a) => a.CustomerID == int_0).FirstOrDefault();
 		}
-		customer.CustomerName = ((Control)(object)txtName).Text.Trim();
-		customer.CustomerCell = ((Control)(object)txtCell).Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
+		customer.CustomerName = txtName.Text.Trim();
+		customer.CustomerCell = txtCell.Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
 			.Trim();
-		customer.CustomerEmail = ((Control)(object)txtEmail).Text;
+		customer.CustomerEmail = txtEmail.Text;
 		customer.LastModified = DateTime.Now;
 		customer.Active = true;
 		customer.LastModified = DateTime.Now;
-		if (!string.IsNullOrEmpty(((Control)(object)txtAddress).Text) && string_1 == OrderTypes.Delivery)
+		if (!string.IsNullOrEmpty(txtAddress.Text) && string_1 == OrderTypes.Delivery)
 		{
-			TravelInfo totalDistanceFromDeliveryAddress = GoogleMethods.GetTotalDistanceFromDeliveryAddress(((Control)(object)txtAddress).Text);
+			TravelInfo totalDistanceFromDeliveryAddress = GoogleMethods.GetTotalDistanceFromDeliveryAddress(txtAddress.Text);
 			if (totalDistanceFromDeliveryAddress.Distance > 0m && totalDistanceFromDeliveryAddress.TravelTime > 0)
 			{
 				customer.DeliveryTravelDistanceKM = totalDistanceFromDeliveryAddress.Distance;
 				customer.DeliveryTravelTimeMinutes = totalDistanceFromDeliveryAddress.TravelTime;
 			}
 		}
-		else if (string.IsNullOrEmpty(((Control)(object)txtAddress).Text))
+		else if (string.IsNullOrEmpty(txtAddress.Text))
 		{
 			customer.DeliveryTravelDistanceKM = null;
 			customer.DeliveryTravelTimeMinutes = 0;
 		}
-		customer.Address = ((Control)(object)txtAddress).Text.Trim();
+		customer.Address = txtAddress.Text.Trim();
 		Helper.SubmitChangesWithCatch(gclass6_0);
 		int_0 = customer.CustomerID;
 		return true;
@@ -384,7 +383,7 @@ public class frmCustomersMini : frmMasterForm
 	{
 		lstCustomers.SelectedIndices.Clear();
 		method_8();
-		((Control)(object)txtCell).Text = string_0;
+		txtCell.Text = string_0;
 	}
 
 	private void method_5()
@@ -603,7 +602,7 @@ public class frmCustomersMini : frmMasterForm
 		}
 		else
 		{
-			((Control)(object)txtCell).Text = string_0;
+			txtCell.Text = string_0;
 		}
 		if (lstCustomers.Items.Count == 1 && string_0.Length >= 10)
 		{
@@ -613,10 +612,6 @@ public class frmCustomersMini : frmMasterForm
 
 	private GlobalOrderHistoryObjects.Response method_6(string string_7)
 	{
-		//IL_0088: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0094: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00a9: Expected O, but got Unknown
 		GlobalOrderHistoryObjects.Response result = new GlobalOrderHistoryObjects.Response();
 		if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isHipposServersOnline"]))
 		{
@@ -624,7 +619,7 @@ public class frmCustomersMini : frmMasterForm
 			httpWebRequest.ContentType = "application/json";
 			httpWebRequest.Method = "POST";
 			httpWebRequest.Proxy = null;
-			GlobalOrderHistoryObjects.Request request = new GlobalOrderHistoryObjects.Request
+			GlobalOrderHistoryObjects.Request value = new GlobalOrderHistoryObjects.Request
 			{
 				phone_number = string_7,
 				token = string_2
@@ -632,11 +627,12 @@ public class frmCustomersMini : frmMasterForm
 			httpWebRequest.Timeout = 10000;
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)request, (Formatting)1, val);
-				streamWriter.Write(value);
+				string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
+				streamWriter.Write(value2);
 			}
 			try
 			{
@@ -655,10 +651,10 @@ public class frmCustomersMini : frmMasterForm
 
 	private void method_7(Customer customer_0)
 	{
-		((Control)(object)txtCell).Text = customer_0.CustomerCell;
-		((Control)(object)txtEmail).Text = customer_0.CustomerEmail;
-		((Control)(object)txtName).Text = customer_0.CustomerName;
-		((Control)(object)txtAddress).Text = customer_0.Address;
+		txtCell.Text = customer_0.CustomerCell;
+		txtEmail.Text = customer_0.CustomerEmail;
+		txtName.Text = customer_0.CustomerName;
+		txtAddress.Text = customer_0.Address;
 		btnCancel.Enabled = true;
 	}
 
@@ -666,10 +662,10 @@ public class frmCustomersMini : frmMasterForm
 	{
 		int_0 = 0;
 		bool_0 = true;
-		((Control)(object)txtCell).Text = string.Empty;
-		((Control)(object)txtEmail).Text = string.Empty;
-		((Control)(object)txtName).Text = string.Empty;
-		((Control)(object)txtAddress).Text = string.Empty;
+		txtCell.Text = string.Empty;
+		txtEmail.Text = string.Empty;
+		txtName.Text = string.Empty;
+		txtAddress.Text = string.Empty;
 		btnDuplicate.Enabled = false;
 	}
 
@@ -683,10 +679,10 @@ public class frmCustomersMini : frmMasterForm
 	private void btnShowKeyboard_Name_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Name0, 0, 50, ((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Name0, 0, 50, txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			bool_0 = true;
 		}
 		base.DialogResult = DialogResult.None;
@@ -695,10 +691,10 @@ public class frmCustomersMini : frmMasterForm
 	private void btnShowKeyboard_Cell_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Cellphone_No, 0, 10, ((Control)(object)txtCell).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Cellphone_No, 0, 10, txtCell.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtCell).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtCell.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 			bool_0 = true;
 		}
 		base.DialogResult = DialogResult.None;
@@ -707,10 +703,10 @@ public class frmCustomersMini : frmMasterForm
 	private void btnShowKeyboard_Email_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Email, 1, 128, ((Control)(object)txtEmail).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Email, 1, 128, txtEmail.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtEmail).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtEmail.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			bool_0 = true;
 		}
 		base.DialogResult = DialogResult.None;
@@ -802,10 +798,10 @@ public class frmCustomersMini : frmMasterForm
 	private void btnShowKeyboard_Address_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Address, 0, 255, ((Control)(object)txtAddress).Text, multiline: true);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Address, 0, 255, txtAddress.Text, multiline: true);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtAddress).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtAddress.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			bool_0 = true;
 		}
 		base.DialogResult = DialogResult.None;
@@ -860,7 +856,7 @@ public class frmCustomersMini : frmMasterForm
 			string newOrderNumber = OrderMethods.GetNewOrderNumber();
 			OrderHelper.DuplicateOrder(list, customerInfo_0, newOrderNumber, string_1, Convert.ToInt16(CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"].ToString()), (string_1 == OrderTypes.Delivery) ? true : false, orderOnHoldTime, FulfillmentDate);
 			MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.OrderEntry();
-			MemoryLoadedObjects.OrderEntry.LoadFormData(newOrderNumber, ((Control)(object)txtCell).Text, string_1, 0, int_0, ((Control)(object)txtName).Text, (string_1 == OrderTypes.Delivery) ? ((Control)(object)txtAddress).Text : string.Empty, resetComboId: true, 1);
+			MemoryLoadedObjects.OrderEntry.LoadFormData(newOrderNumber, txtCell.Text, string_1, 0, int_0, txtName.Text, (string_1 == OrderTypes.Delivery) ? txtAddress.Text : string.Empty, resetComboId: true, 1);
 			base.DialogResult = DialogResult.Ignore;
 			Close();
 		}
@@ -919,22 +915,6 @@ public class frmCustomersMini : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_006a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0074: Expected O, but got Unknown
-		//IL_008b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0095: Expected O, but got Unknown
-		//IL_0096: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00a0: Expected O, but got Unknown
-		//IL_00a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ab: Expected O, but got Unknown
-		//IL_06f7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0718: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08bc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08dd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_096f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0990: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a22: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a43: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmCustomersMini));
 		lblWIndowTitle = new Label();
 		pnlMain = new Panel();
@@ -985,12 +965,12 @@ public class frmCustomersMini : frmMasterForm
 		pnlMain.Controls.Add(label1);
 		pnlMain.Controls.Add(lstOrderHistory);
 		pnlMain.Controls.Add(btnDuplicate);
-		pnlMain.Controls.Add((Control)(object)txtAddress);
+		pnlMain.Controls.Add(txtAddress);
 		pnlMain.Controls.Add(btnShowKeyboard_Address);
 		pnlMain.Controls.Add(label4);
-		pnlMain.Controls.Add((Control)(object)txtEmail);
-		pnlMain.Controls.Add((Control)(object)txtCell);
-		pnlMain.Controls.Add((Control)(object)txtName);
+		pnlMain.Controls.Add(txtEmail);
+		pnlMain.Controls.Add(txtCell);
+		pnlMain.Controls.Add(txtName);
 		pnlMain.Controls.Add(btnShowKeyboard_Email);
 		pnlMain.Controls.Add(lstCustomers);
 		pnlMain.Controls.Add(btnShowKeyboard_Cell);
@@ -1039,13 +1019,13 @@ public class frmCustomersMini : frmMasterForm
 		btnDuplicate.UseVisualStyleBackColor = false;
 		btnDuplicate.Click += btnDuplicate_Click;
 		componentResourceManager.ApplyResources(txtAddress, "txtAddress");
-		((Control)(object)txtAddress).ForeColor = Color.FromArgb(40, 40, 40);
-		txtAddress.set_Multiline(true);
-		((Control)(object)txtAddress).Name = "txtAddress";
-		((RadElement)((RadControl)txtAddress).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtAddress).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtAddress).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtAddress).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtAddress.ForeColor = Color.FromArgb(40, 40, 40);
+		txtAddress.Multiline = true;
+		txtAddress.Name = "txtAddress";
+		txtAddress.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtAddress.Click += txtName_Click;
+		((RadTextBoxControlElement)txtAddress.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtAddress.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Address.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Address.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Address.FlatAppearance.BorderColor = Color.Black;
@@ -1062,26 +1042,26 @@ public class frmCustomersMini : frmMasterForm
 		label4.Name = "label4";
 		label4.Tag = "5,5";
 		componentResourceManager.ApplyResources(txtEmail, "txtEmail");
-		((Control)(object)txtEmail).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtEmail).Name = "txtEmail";
-		((RadElement)((RadControl)txtEmail).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtEmail).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtEmail).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtEmail).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtEmail.ForeColor = Color.FromArgb(40, 40, 40);
+		txtEmail.Name = "txtEmail";
+		txtEmail.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtEmail.Click += txtName_Click;
+		((RadTextBoxControlElement)txtEmail.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtEmail.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtCell, "txtCell");
-		((Control)(object)txtCell).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCell).Name = "txtCell";
-		((RadElement)((RadControl)txtCell).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCell).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCell).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCell).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCell.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCell.Name = "txtCell";
+		txtCell.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCell.Click += txtName_Click;
+		((RadTextBoxControlElement)txtCell.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtCell.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtName, "txtName");
-		((Control)(object)txtName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtName).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtName.Click += txtName_Click;
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Email.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Email.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Email.FlatAppearance.BorderColor = Color.Black;

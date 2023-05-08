@@ -204,10 +204,6 @@ public class SyncMethods
 
 	public static StatusCodeResponseUpdate CheckForUpdate(CheckForUpdatesPostData req)
 	{
-		//IL_006a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0076: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008b: Expected O, but got Unknown
 		try
 		{
 			if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isHipposServersOnline"]))
@@ -219,10 +215,11 @@ public class SyncMethods
 				httpWebRequest.Timeout = 10000;
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject((object)req, (Formatting)1, val);
+					string value = JsonConvert.SerializeObject(req, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
 					streamWriter.Write(value);
 				}
 				using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -253,10 +250,6 @@ public class SyncMethods
 
 	public static ValidateProductKeyResponse ValidateProductKey(ValidateProductKeyPostData key)
 	{
-		//IL_0050: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0055: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0071: Expected O, but got Unknown
 		HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.sync_server + "/api/validateproductkey");
 		httpWebRequest.ContentType = "application/json";
 		httpWebRequest.Method = "POST";
@@ -264,10 +257,11 @@ public class SyncMethods
 		httpWebRequest.Timeout = 30000;
 		using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 		{
-			JsonSerializerSettings val = new JsonSerializerSettings();
-			val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-			val.set_MaxDepth((int?)2000);
-			string value = JsonConvert.SerializeObject((object)key, (Formatting)1, val);
+			string value = JsonConvert.SerializeObject(key, Formatting.Indented, new JsonSerializerSettings
+			{
+				ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+				MaxDepth = 2000
+			});
 			streamWriter.Write(value);
 		}
 		using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -290,10 +284,6 @@ public class SyncMethods
 
 	public static SubscriptionResponseData GetSubscriptions(GetSubscriptionPostModel data)
 	{
-		//IL_008d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0092: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0099: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ae: Expected O, but got Unknown
 		try
 		{
 			if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isHipposServersOnline"]))
@@ -308,10 +298,11 @@ public class SyncMethods
 				httpWebRequest.Timeout = 10000;
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject((object)data, (Formatting)1, val);
+					string value = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
 					streamWriter.Write(value);
 				}
 				using HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
@@ -341,10 +332,6 @@ public class SyncMethods
 
 	public static StatusCodeResponse UpdateOrderStatusInOrdering(string OrderNumber, string Status, string CustomerOrderID = "", string paymentMethod = "", string source = "Hippos", int preptimeMinutes = -1, string ThirdPartyOrderId = "")
 	{
-		//IL_0326: Unknown result type (might be due to invalid IL or missing references)
-		//IL_032b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0332: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0347: Expected O, but got Unknown
 		try
 		{
 			if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isHipposServersOnline"]))
@@ -412,7 +399,7 @@ public class SyncMethods
 						break;
 					}
 				}
-				object obj = new
+				object value = new
 				{
 					token = GetToken(),
 					OrderNumber = OrderNumber,
@@ -431,11 +418,12 @@ public class SyncMethods
 				httpWebRequest.Timeout = 10000;
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject(obj, (Formatting)1, val);
-					streamWriter.Write(value);
+					string value2 = JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
+					streamWriter.Write(value2);
 				}
 				using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
 				return JsonConvert.DeserializeObject<StatusCodeResponse>(streamReader.ReadToEnd());
@@ -462,10 +450,6 @@ public class SyncMethods
 
 	public static string SyncTask(object req, string url)
 	{
-		//IL_005b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0067: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007c: Expected O, but got Unknown
 		try
 		{
 			if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isHipposServersOnline"]))
@@ -476,10 +460,11 @@ public class SyncMethods
 				httpWebRequest.Proxy = null;
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject(req, (Formatting)1, val);
+					string value = JsonConvert.SerializeObject(req, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
 					streamWriter.Write(value);
 				}
 				using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -506,10 +491,6 @@ public class SyncMethods
 
 	public static string SyncTaskWithResponseData(object req, string url)
 	{
-		//IL_0067: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0073: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0088: Expected O, but got Unknown
 		try
 		{
 			if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isHipposServersOnline"]))
@@ -521,10 +502,11 @@ public class SyncMethods
 				httpWebRequest.Proxy = null;
 				using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 				{
-					JsonSerializerSettings val = new JsonSerializerSettings();
-					val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-					val.set_MaxDepth((int?)2000);
-					string value = JsonConvert.SerializeObject(req, (Formatting)1, val);
+					string value = JsonConvert.SerializeObject(req, Formatting.Indented, new JsonSerializerSettings
+					{
+						ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+						MaxDepth = 2000
+					});
 					streamWriter.Write(value);
 				}
 				using HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
@@ -577,10 +559,6 @@ public class SyncMethods
 
 	public static OtherLocInventoryCountResponseModel GetOtherLocsInventory(TokenItemObject req)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.sync_server + "/api/GetOtherLocationInventory");
@@ -588,10 +566,11 @@ public class SyncMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)req, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(req, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -613,10 +592,6 @@ public class SyncMethods
 
 	public static StatusCodeResponse CheckIfMultipleLocation(CheckForUpdatesPostData req)
 	{
-		//IL_003f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0044: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0060: Expected O, but got Unknown
 		try
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Servers.sync_server + "/api/CheckMultipleLocation");
@@ -624,10 +599,11 @@ public class SyncMethods
 			httpWebRequest.Method = "POST";
 			using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
 			{
-				JsonSerializerSettings val = new JsonSerializerSettings();
-				val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-				val.set_MaxDepth((int?)2000);
-				string value = JsonConvert.SerializeObject((object)req, (Formatting)1, val);
+				string value = JsonConvert.SerializeObject(req, Formatting.Indented, new JsonSerializerSettings
+				{
+					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+					MaxDepth = 2000
+				});
 				streamWriter.Write(value);
 			}
 			using StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream());
@@ -1186,21 +1162,21 @@ public class SyncMethods
 					WriteToSyncLog("Hippos: " + num + " order items received.", "OnlineOrderSync_");
 					if (CS_0024_003C_003E8__locals0.res.orderList != null && num > 0)
 					{
-						OnlineOrderSyncQueue onlineOrderSyncQueue = gClass.OnlineOrderSyncQueues.Where((OnlineOrderSyncQueue a) => a.Provider == OnlineOrderProviders.Hippos && a.RawData == JsonConvert.SerializeObject((object)CS_0024_003C_003E8__locals0.res.orderList)).FirstOrDefault();
+						OnlineOrderSyncQueue onlineOrderSyncQueue = gClass.OnlineOrderSyncQueues.Where((OnlineOrderSyncQueue a) => a.Provider == OnlineOrderProviders.Hippos && a.RawData == JsonConvert.SerializeObject(CS_0024_003C_003E8__locals0.res.orderList)).FirstOrDefault();
 						if (onlineOrderSyncQueue == null)
 						{
 							OnlineOrderSyncQueue entity = new OnlineOrderSyncQueue
 							{
 								Provider = OnlineOrderProviders.Hippos,
 								DateCreated = DateTime.Now,
-								RawData = JsonConvert.SerializeObject((object)CS_0024_003C_003E8__locals0.res.orderList)
+								RawData = JsonConvert.SerializeObject(CS_0024_003C_003E8__locals0.res.orderList)
 							};
 							gClass.OnlineOrderSyncQueues.InsertOnSubmit(entity);
 							Helper.SubmitChangesWithCatch(gClass);
 						}
 						else
 						{
-							onlineOrderSyncQueue.RawData = JsonConvert.SerializeObject((object)CS_0024_003C_003E8__locals0.res.orderList);
+							onlineOrderSyncQueue.RawData = JsonConvert.SerializeObject(CS_0024_003C_003E8__locals0.res.orderList);
 							onlineOrderSyncQueue.DateCreated = DateTime.Now;
 							onlineOrderSyncQueue.DateProcessed = null;
 							Helper.SubmitChangesWithCatch(gClass);
@@ -4661,8 +4637,6 @@ public class SyncMethods
 
 	public static void UploadVideos()
 	{
-		//IL_01a3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01aa: Expected O, but got Unknown
 		try
 		{
 			currentlyUploading = true;
@@ -4683,20 +4657,20 @@ public class SyncMethods
 				}, "/api/Azure/GetAzureBlobConnectionString"));
 				if (azureBlobKeyPostResponseModel.code == 200)
 				{
-					CloudBlobClient obj = CloudStorageAccount.Parse(azureBlobKeyPostResponseModel.Key).CreateCloudBlobClient();
-					string text = "hipposhq-videos";
-					CloudBlobContainer containerReference = obj.GetContainerReference(text);
+					CloudBlobClient cloudBlobClient = CloudStorageAccount.Parse(azureBlobKeyPostResponseModel.Key).CreateCloudBlobClient();
+					string containerName = "hipposhq-videos";
+					CloudBlobContainer containerReference = cloudBlobClient.GetContainerReference(containerName);
 					try
 					{
-						FileStream fileStream = File.Open(string_0 + item.ImageName, FileMode.Open);
-						string text2 = azureBlobKeyPostResponseModel.LocationId + "-second_screen_video-" + item.ImageName;
-						CloudBlockBlob blockBlobReference = containerReference.GetBlockBlobReference(text2);
-						((CloudBlob)blockBlobReference).DeleteIfExists((DeleteSnapshotsOption)0, (AccessCondition)null, (BlobRequestOptions)null, (OperationContext)null);
-						TransferManager.get_Configurations().set_ParallelOperations(64);
-						TransferManager.get_Configurations().set_BlockSize(4194304);
-						SingleTransferContext val = new SingleTransferContext();
-						TransferManager.UploadAsync((Stream)fileStream, (CloudBlob)(object)blockBlobReference, (UploadOptions)null, val);
-						item.ImageAsText = "https://hipposhq.blob.core.windows.net/hipposhq-videos/" + text2;
+						FileStream sourceStream = File.Open(string_0 + item.ImageName, FileMode.Open);
+						string text = azureBlobKeyPostResponseModel.LocationId + "-second_screen_video-" + item.ImageName;
+						CloudBlockBlob blockBlobReference = containerReference.GetBlockBlobReference(text);
+						blockBlobReference.DeleteIfExists();
+						TransferManager.Configurations.ParallelOperations = 64;
+						TransferManager.Configurations.BlockSize = 4194304;
+						SingleTransferContext context = new SingleTransferContext();
+						TransferManager.UploadAsync(sourceStream, blockBlobReference, null, context);
+						item.ImageAsText = "https://hipposhq.blob.core.windows.net/hipposhq-videos/" + text;
 						Helper.SubmitChangesWithCatch(gClass);
 						break;
 					}
@@ -4717,8 +4691,6 @@ public class SyncMethods
 
 	public static void UploadImages()
 	{
-		//IL_01f7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01fe: Expected O, but got Unknown
 		try
 		{
 			currentlyUploading = true;
@@ -4729,26 +4701,26 @@ public class SyncMethods
 				{
 					continue;
 				}
-				using MemoryStream memoryStream = new MemoryStream(Convert.FromBase64String(item.ImageAsText));
+				using MemoryStream sourceStream = new MemoryStream(Convert.FromBase64String(item.ImageAsText));
 				AzureBlobKeyPostResponseModel azureBlobKeyPostResponseModel = JsonConvert.DeserializeObject<AzureBlobKeyPostResponseModel>(SyncTaskWithResponseData(new AzureBlobKeyPostDataModel
 				{
 					token = sync_token
 				}, "/api/Azure/GetAzureBlobConnectionString"));
 				if (azureBlobKeyPostResponseModel.code == 200)
 				{
-					CloudBlobClient obj = CloudStorageAccount.Parse(azureBlobKeyPostResponseModel.Key).CreateCloudBlobClient();
-					string text = "hipposhq-item-images";
-					CloudBlobContainer containerReference = obj.GetContainerReference(text);
+					CloudBlobClient cloudBlobClient = CloudStorageAccount.Parse(azureBlobKeyPostResponseModel.Key).CreateCloudBlobClient();
+					string containerName = "hipposhq-item-images";
+					CloudBlobContainer containerReference = cloudBlobClient.GetContainerReference(containerName);
 					try
 					{
-						string text2 = "ss-img-" + azureBlobKeyPostResponseModel.LocationId + "_" + Guid.NewGuid().ToString() + ".png";
-						CloudBlockBlob blockBlobReference = containerReference.GetBlockBlobReference(text2);
-						((CloudBlob)blockBlobReference).DeleteIfExists((DeleteSnapshotsOption)0, (AccessCondition)null, (BlobRequestOptions)null, (OperationContext)null);
-						TransferManager.get_Configurations().set_ParallelOperations(64);
-						TransferManager.get_Configurations().set_BlockSize(4194304);
-						SingleTransferContext val = new SingleTransferContext();
-						TransferManager.UploadAsync((Stream)memoryStream, (CloudBlob)(object)blockBlobReference, (UploadOptions)null, val);
-						item.BlobName = "https://hipposhq.blob.core.windows.net/hipposhq-item-images/" + text2;
+						string text = "ss-img-" + azureBlobKeyPostResponseModel.LocationId + "_" + Guid.NewGuid().ToString() + ".png";
+						CloudBlockBlob blockBlobReference = containerReference.GetBlockBlobReference(text);
+						blockBlobReference.DeleteIfExists();
+						TransferManager.Configurations.ParallelOperations = 64;
+						TransferManager.Configurations.BlockSize = 4194304;
+						SingleTransferContext context = new SingleTransferContext();
+						TransferManager.UploadAsync(sourceStream, blockBlobReference, null, context);
+						item.BlobName = "https://hipposhq.blob.core.windows.net/hipposhq-item-images/" + text;
 						Helper.SubmitChangesWithCatch(gClass);
 					}
 					catch (Exception ex)

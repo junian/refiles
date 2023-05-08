@@ -10,7 +10,6 @@ using CorePOS.Business.Methods;
 using CorePOS.Business.Objects;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -83,7 +82,7 @@ public class frmEditLayoutTableEdit : frmMasterForm
 
 	public Layout AddedTable => layout_0;
 
-	public string NewTableName => ((Control)(object)txtTableName).Text;
+	public string NewTableName => txtTableName.Text;
 
 	public frmEditLayoutTableEdit(TransparentLabel _btnTable, List<Layout> _currentLayout, string title = "EDIT TABLE")
 	{
@@ -97,7 +96,7 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		new FormHelper().ResizeButtonFonts(this);
 		string_0 = _btnTable.Text;
 		transparentLabel_0 = _btnTable;
-		string_1 = ((Control)(object)txtSection).Text;
+		string_1 = txtSection.Text;
 		lstShapes.SelectedIndex = 0;
 		list_2 = _currentLayout;
 		lblTitle.Text = title;
@@ -110,28 +109,28 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		{
 			Layout layout = list_2.Where((Layout layout_1) => layout_1.TableName == string_0).FirstOrDefault();
 			int_0 = layout.TableID;
-			((Control)(object)txtTableName).Text = layout.TableName;
+			txtTableName.Text = layout.TableName;
 			lstSections.SelectedIndex = lstSections.FindStringExact(layout.Section.ToString());
 			if (layout.Round)
 			{
 				lstShapes.SelectedIndex = 1;
-				((Control)(object)txtAngleOfRotation).Enabled = false;
+				txtAngleOfRotation.Enabled = false;
 			}
 			else
 			{
 				lstShapes.SelectedIndex = 0;
-				((Control)(object)txtAngleOfRotation).Enabled = true;
-				((Control)(object)txtAngleOfRotation).Text = layout.AngleOfRotation.ToString();
+				txtAngleOfRotation.Enabled = true;
+				txtAngleOfRotation.Text = layout.AngleOfRotation.ToString();
 			}
-			((Control)(object)txtNumberSeats).Text = layout.NumOfSeats.Value.ToString();
-			chkTableIsActive.set_Value(layout.Active);
+			txtNumberSeats.Text = layout.NumOfSeats.Value.ToString();
+			chkTableIsActive.Value = layout.Active;
 		}
 		else
 		{
 			lstSections.SelectedIndex = 0;
-			((Control)(object)txtAngleOfRotation).Text = "0";
-			((Control)(object)txtNumberSeats).Text = "1";
-			chkTableIsActive.set_Value(true);
+			txtAngleOfRotation.Text = "0";
+			txtNumberSeats.Text = "1";
+			chkTableIsActive.Value = true;
 		}
 	}
 
@@ -146,34 +145,34 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		_003C_003Ec__DisplayClass16_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass16_0();
 		CS_0024_003C_003E8__locals0._003C_003E4__this = this;
 		int result;
-		if (((Control)(object)txtTableName).Text.ToUpper().Contains("TABLE"))
+		if (txtTableName.Text.ToUpper().Contains("TABLE"))
 		{
 			new frmMessageBox(Resources.Please_do_not_include_the_word, Resources.NAMING_ERROR).ShowDialog(this);
 		}
-		else if (((Control)(object)txtTableName).Text.IndexOfAny(GlobalConstants.SpecialChars) != -1)
+		else if (txtTableName.Text.IndexOfAny(GlobalConstants.SpecialChars) != -1)
 		{
 			new frmMessageBox("Table name should not contain special characters.", Resources.NAMING_ERROR).ShowDialog(this);
 		}
-		else if (((Control)(object)txtTableName).Text.Length >= 19)
+		else if (txtTableName.Text.Length >= 19)
 		{
 			new frmMessageBox("Table name is too long.", Resources.NAMING_ERROR).ShowDialog(this);
 		}
-		else if (string.IsNullOrEmpty(((Control)(object)txtTableName).Text))
+		else if (string.IsNullOrEmpty(txtTableName.Text))
 		{
 			new frmMessageBox(Resources.Please_input_a_table_name, Resources.NAMING_ERROR).ShowDialog(this);
 		}
-		else if (((Control)(object)txtSection).Visible && string.IsNullOrEmpty(((Control)(object)txtSection).Text))
+		else if (txtSection.Visible && string.IsNullOrEmpty(txtSection.Text))
 		{
 			new frmMessageBox(Resources.Please_input_a_new_section_nam, Resources.SECTION_NAME_ERROR).ShowDialog(this);
 		}
-		else if (!string.IsNullOrEmpty(((Control)(object)txtNumberSeats).Text) && int.TryParse(((Control)(object)txtNumberSeats).Text, out result))
+		else if (!string.IsNullOrEmpty(txtNumberSeats.Text) && int.TryParse(txtNumberSeats.Text, out result))
 		{
-			if (!method_3(int_0, ((Control)(object)txtTableName).Text))
+			if (!method_3(int_0, txtTableName.Text))
 			{
 				new frmMessageBox(Resources.Table_name_has_already_been_us, Resources.DUPLICATE_TABLE_NAME).ShowDialog(this);
 				return;
 			}
-			int num = Convert.ToInt32(((Control)(object)txtNumberSeats).Text);
+			int num = Convert.ToInt32(txtNumberSeats.Text);
 			if (num < 1)
 			{
 				new frmMessageBox(Resources.Table_cannot_seat_less_than_1_, Resources.MINIMUM_REQUIREMENT).ShowDialog(this);
@@ -184,11 +183,11 @@ public class frmEditLayoutTableEdit : frmMasterForm
 				new frmMessageBox(Resources.Table_cannot_seat_more_than_30, Resources.MAXIMUM_REQUIREMENT).ShowDialog(this);
 				return;
 			}
-			CS_0024_003C_003E8__locals0.SectionSelected = ((lstSections.SelectedItem.ToString() == "Add New") ? ((Control)(object)txtSection).Text : lstSections.SelectedItem.ToString());
-			if (lstSections.SelectedItem.ToString() != "Add New" && ((Control)(object)txtSection).Text != string_1 && !string.IsNullOrEmpty(((Control)(object)txtSection).Text))
+			CS_0024_003C_003E8__locals0.SectionSelected = ((lstSections.SelectedItem.ToString() == "Add New") ? txtSection.Text : lstSections.SelectedItem.ToString());
+			if (lstSections.SelectedItem.ToString() != "Add New" && txtSection.Text != string_1 && !string.IsNullOrEmpty(txtSection.Text))
 			{
 				List<Layout> list = gclass6_0.Layouts.Where((Layout l) => l.Section == CS_0024_003C_003E8__locals0.SectionSelected).ToList();
-				CS_0024_003C_003E8__locals0.SectionSelected = ((Control)(object)txtSection).Text;
+				CS_0024_003C_003E8__locals0.SectionSelected = txtSection.Text;
 				foreach (Layout item in list)
 				{
 					item.Section = CS_0024_003C_003E8__locals0.SectionSelected;
@@ -197,14 +196,14 @@ public class frmEditLayoutTableEdit : frmMasterForm
 			if (int_0 == 0)
 			{
 				Layout layout = new Layout();
-				layout.TableName = ((Control)(object)txtTableName).Text.Trim();
-				layout.AngleOfRotation = Convert.ToInt32(((Control)(object)txtAngleOfRotation).Text);
+				layout.TableName = txtTableName.Text.Trim();
+				layout.AngleOfRotation = Convert.ToInt32(txtAngleOfRotation.Text);
 				layout.Rotation = 'H';
 				layout.Section = CS_0024_003C_003E8__locals0.SectionSelected;
 				layout.NumOfSeats = num;
 				layout.X = transparentLabel_0.Location.X;
 				layout.Y = transparentLabel_0.Location.Y;
-				layout.Active = chkTableIsActive.get_Value();
+				layout.Active = chkTableIsActive.Value;
 				layout.Round = bool_0;
 				layout.TableID = 1;
 				if (list_2 != null && list_2.Count > 0)
@@ -225,14 +224,14 @@ public class frmEditLayoutTableEdit : frmMasterForm
 					new frmMessageBox(Resources.Table_cannot_be_edited_Table_i, Resources.Edit_Error).ShowDialog(this);
 					return;
 				}
-				CS_0024_003C_003E8__locals1.tableToEdit.TableName = ((Control)(object)txtTableName).Text;
+				CS_0024_003C_003E8__locals1.tableToEdit.TableName = txtTableName.Text;
 				CS_0024_003C_003E8__locals1.tableToEdit.Section = CS_0024_003C_003E8__locals0.SectionSelected;
-				CS_0024_003C_003E8__locals1.tableToEdit.AngleOfRotation = Convert.ToInt32(((Control)(object)txtAngleOfRotation).Text);
+				CS_0024_003C_003E8__locals1.tableToEdit.AngleOfRotation = Convert.ToInt32(txtAngleOfRotation.Text);
 				CS_0024_003C_003E8__locals1.tableToEdit.Rotation = 'H';
 				CS_0024_003C_003E8__locals1.tableToEdit.NumOfSeats = num;
 				CS_0024_003C_003E8__locals1.tableToEdit.X = transparentLabel_0.Location.X;
 				CS_0024_003C_003E8__locals1.tableToEdit.Y = transparentLabel_0.Location.Y;
-				CS_0024_003C_003E8__locals1.tableToEdit.Active = chkTableIsActive.get_Value();
+				CS_0024_003C_003E8__locals1.tableToEdit.Active = chkTableIsActive.Value;
 				CS_0024_003C_003E8__locals1.tableToEdit.Round = bool_0;
 			}
 			base.DialogResult = DialogResult.OK;
@@ -266,47 +265,47 @@ public class frmEditLayoutTableEdit : frmMasterForm
 	{
 		btnEditSection.Visible = true;
 		string_1 = lstSections.SelectedItem.ToString();
-		((Control)(object)txtSection).Text = "";
+		txtSection.Text = "";
 		if (lstSections.SelectedItem.ToString() == "Add New")
 		{
 			btnShowKeyboard_Section.Visible = true;
-			((Control)(object)txtSection).Visible = true;
-			((Control)(object)txtSection).Focus();
+			txtSection.Visible = true;
+			txtSection.Focus();
 			btnEditSection.Visible = false;
 		}
 		else
 		{
 			btnShowKeyboard_Section.Visible = false;
-			((Control)(object)txtSection).Visible = false;
+			txtSection.Visible = false;
 			btnEditSection.Visible = true;
 		}
 	}
 
 	private void method_5(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSection).Text == string_1)
+		if (txtSection.Text == string_1)
 		{
-			((Control)(object)txtSection).ForeColor = Color.Black;
+			txtSection.ForeColor = Color.Black;
 		}
 		if (string_1 == "Add New")
 		{
-			((Control)(object)txtSection).Text = "";
+			txtSection.Text = "";
 		}
 	}
 
 	private void method_6(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSection).Text == string.Empty)
+		if (txtSection.Text == string.Empty)
 		{
 			if (lstSections.SelectedItem.ToString() == "Add New")
 			{
-				((Control)(object)txtSection).Text = Resources.Enter_Section_Name;
+				txtSection.Text = Resources.Enter_Section_Name;
 			}
 			else
 			{
-				((Control)(object)txtSection).Text = string_1;
+				txtSection.Text = string_1;
 			}
-			((Control)(object)txtSection).ForeColor = Color.Gray;
+			txtSection.ForeColor = Color.Gray;
 		}
 	}
 
@@ -317,19 +316,19 @@ public class frmEditLayoutTableEdit : frmMasterForm
 	private void btnEditSection_Click(object sender, EventArgs e)
 	{
 		btnEditSection.Visible = false;
-		((Control)(object)txtSection).Visible = true;
+		txtSection.Visible = true;
 		btnShowKeyboard_Section.Visible = true;
 		if (string_1 == "Add New")
 		{
-			((Control)(object)txtSection).Text = "";
-			((Control)(object)txtSection).Focus();
+			txtSection.Text = "";
+			txtSection.Focus();
 		}
 		else
 		{
-			((Control)(object)txtSection).Text = string_1;
-			((Control)(object)txtSection).Focus();
-			txtSection.set_SelectionStart((((Control)(object)txtSection).Text.Length > 0) ? ((Control)(object)txtSection).Text.Length : 0);
-			txtSection.set_SelectionLength(0);
+			txtSection.Text = string_1;
+			txtSection.Focus();
+			txtSection.SelectionStart = ((txtSection.Text.Length > 0) ? txtSection.Text.Length : 0);
+			txtSection.SelectionLength = 0;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -339,13 +338,13 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		if (lstShapes.SelectedItem.ToString() == Resources.Circle)
 		{
 			bool_0 = true;
-			((Control)(object)txtAngleOfRotation).Enabled = false;
+			txtAngleOfRotation.Enabled = false;
 			lblRotation.Enabled = false;
 		}
 		else
 		{
 			bool_0 = false;
-			((Control)(object)txtAngleOfRotation).Enabled = true;
+			txtAngleOfRotation.Enabled = true;
 			lblRotation.Enabled = true;
 		}
 	}
@@ -366,10 +365,10 @@ public class frmEditLayoutTableEdit : frmMasterForm
 	private void btnShowKeyboard_Section_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Section_Name, 1, 128, ((Control)(object)txtSection).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Section_Name, 1, 128, txtSection.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSection).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtSection.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -382,10 +381,10 @@ public class frmEditLayoutTableEdit : frmMasterForm
 	private void btnShowKeyboard_TableName_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Table_Name, 1, 18, ((Control)(object)txtTableName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Table_Name, 1, 18, txtTableName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtTableName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtTableName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -393,10 +392,10 @@ public class frmEditLayoutTableEdit : frmMasterForm
 	private void jfcAyOjrXR_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Angle_of_Rotation, 0, 3, ((Control)(object)txtAngleOfRotation).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Angle_of_Rotation, 0, 3, txtAngleOfRotation.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtAngleOfRotation).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtAngleOfRotation.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -404,10 +403,10 @@ public class frmEditLayoutTableEdit : frmMasterForm
 	private void btnShowKeyboard_NumberSeats_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_No_of_Seat, 0, 2, ((Control)(object)txtNumberSeats).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_No_of_Seat, 0, 2, txtNumberSeats.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtNumberSeats).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtNumberSeats.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -423,31 +422,6 @@ public class frmEditLayoutTableEdit : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_003e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0048: Expected O, but got Unknown
-		//IL_006a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0074: Expected O, but got Unknown
-		//IL_0075: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007f: Expected O, but got Unknown
-		//IL_0080: Unknown result type (might be due to invalid IL or missing references)
-		//IL_008a: Expected O, but got Unknown
-		//IL_008b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0095: Expected O, but got Unknown
-		//IL_0416: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0437: Unknown result type (might be due to invalid IL or missing references)
-		//IL_068b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06ac: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0738: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0759: Unknown result type (might be due to invalid IL or missing references)
-		//IL_07eb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_080c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_087e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0896: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08b7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08e4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0911: Unknown result type (might be due to invalid IL or missing references)
-		//IL_093e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0965: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmEditLayoutTableEdit));
 		jfcAyOjrXR = new Button();
 		btnShowKeyboard_NumberSeats = new Button();
@@ -510,14 +484,14 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		label2.ForeColor = Color.White;
 		label2.Name = "label2";
 		componentResourceManager.ApplyResources(txtAngleOfRotation, "txtAngleOfRotation");
-		((Control)(object)txtAngleOfRotation).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtAngleOfRotation).Name = "txtAngleOfRotation";
-		((RadElement)((RadControl)txtAngleOfRotation).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtAngleOfRotation).Tag = "product";
-		txtAngleOfRotation.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtAngleOfRotation).Click += txtTableName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtAngleOfRotation).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtAngleOfRotation).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtAngleOfRotation.ForeColor = Color.FromArgb(40, 40, 40);
+		txtAngleOfRotation.Name = "txtAngleOfRotation";
+		txtAngleOfRotation.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtAngleOfRotation.Tag = "product";
+		txtAngleOfRotation.TextAlign = HorizontalAlignment.Center;
+		txtAngleOfRotation.Click += txtTableName_Click;
+		((RadTextBoxControlElement)txtAngleOfRotation.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtAngleOfRotation.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		componentResourceManager.ApplyResources(btnShowKeyboard_Section, "btnShowKeyboard_Section");
 		btnShowKeyboard_Section.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Section.DialogResult = DialogResult.OK;
@@ -545,40 +519,40 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		label6.ForeColor = Color.White;
 		label6.Name = "label6";
 		componentResourceManager.ApplyResources(txtNumberSeats, "txtNumberSeats");
-		((Control)(object)txtNumberSeats).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtNumberSeats).Name = "txtNumberSeats";
-		((RadElement)((RadControl)txtNumberSeats).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtNumberSeats).Tag = "product";
-		txtNumberSeats.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtNumberSeats).Click += txtTableName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtNumberSeats).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtNumberSeats).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtNumberSeats.ForeColor = Color.FromArgb(40, 40, 40);
+		txtNumberSeats.Name = "txtNumberSeats";
+		txtNumberSeats.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtNumberSeats.Tag = "product";
+		txtNumberSeats.TextAlign = HorizontalAlignment.Center;
+		txtNumberSeats.Click += txtTableName_Click;
+		((RadTextBoxControlElement)txtNumberSeats.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtNumberSeats.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		componentResourceManager.ApplyResources(txtSection, "txtSection");
-		((Control)(object)txtSection).ForeColor = Color.Silver;
-		((Control)(object)txtSection).Name = "txtSection";
-		((RadElement)((RadControl)txtSection).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSection).Click += txtTableName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSection).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSection).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSection.ForeColor = Color.Silver;
+		txtSection.Name = "txtSection";
+		txtSection.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSection.Click += txtTableName_Click;
+		((RadTextBoxControlElement)txtSection.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSection.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtTableName, "txtTableName");
-		((Control)(object)txtTableName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtTableName).Name = "txtTableName";
-		((RadElement)((RadControl)txtTableName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtTableName).Click += txtTableName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtTableName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtTableName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtTableName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtTableName.Name = "txtTableName";
+		txtTableName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtTableName.Click += txtTableName_Click;
+		((RadTextBoxControlElement)txtTableName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtTableName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(chkTableIsActive, "chkTableIsActive");
-		((Control)(object)chkTableIsActive).Name = "chkTableIsActive";
-		chkTableIsActive.set_OffText("NO");
-		chkTableIsActive.set_OnText("YES");
-		chkTableIsActive.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)chkTableIsActive).GetChildAt(0)).set_ThumbOffset(85);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkTableIsActive).GetChildAt(0)).set_BorderWidth(1f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTableIsActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTableIsActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTableIsActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkTableIsActive).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkTableIsActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkTableIsActive.Name = "chkTableIsActive";
+		chkTableIsActive.OffText = "NO";
+		chkTableIsActive.OnText = "YES";
+		chkTableIsActive.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)chkTableIsActive.GetChildAt(0)).ThumbOffset = 85;
+		((RadToggleSwitchElement)chkTableIsActive.GetChildAt(0)).BorderWidth = 1f;
+		((ToggleSwitchPartElement)chkTableIsActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkTableIsActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTableIsActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTableIsActive.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkTableIsActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(lblTitle, "lblTitle");
 		lblTitle.BackColor = Color.FromArgb(156, 89, 184);
 		lblTitle.ForeColor = Color.White;
@@ -656,14 +630,14 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		base.Controls.Add(btnShowKeyboard_NumberSeats);
 		base.Controls.Add(btnShowKeyboard_TableName);
 		base.Controls.Add(label2);
-		base.Controls.Add((Control)(object)txtAngleOfRotation);
+		base.Controls.Add(txtAngleOfRotation);
 		base.Controls.Add(btnShowKeyboard_Section);
 		base.Controls.Add(lstShapes);
 		base.Controls.Add(label6);
-		base.Controls.Add((Control)(object)txtNumberSeats);
-		base.Controls.Add((Control)(object)txtSection);
-		base.Controls.Add((Control)(object)txtTableName);
-		base.Controls.Add((Control)(object)chkTableIsActive);
+		base.Controls.Add(txtNumberSeats);
+		base.Controls.Add(txtSection);
+		base.Controls.Add(txtTableName);
+		base.Controls.Add(chkTableIsActive);
 		base.Controls.Add(lblTitle);
 		base.Controls.Add(btnEditSection);
 		base.Controls.Add(label5);

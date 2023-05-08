@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -77,8 +76,8 @@ public class frmAssignSupplier : frmMasterForm
 
 	private void frmAssignSupplier_Load(object sender, EventArgs e)
 	{
-		((Control)(object)txtSupplier).GotFocus += txtSupplier_GotFocus;
-		((Control)(object)txtSupplier).LostFocus += txtSupplier_LostFocus;
+		txtSupplier.GotFocus += txtSupplier_GotFocus;
+		txtSupplier.LostFocus += txtSupplier_LostFocus;
 		method_3();
 		method_4();
 	}
@@ -141,14 +140,14 @@ public class frmAssignSupplier : frmMasterForm
 
 	private void ddlSupplier_SelectedIndexChanged(object sender, EventArgs e)
 	{
-		((Control)(object)txtSupplier).ForeColor = Color.Black;
+		txtSupplier.ForeColor = Color.Black;
 		if (ddlSupplier.SelectedValue.ToString() == "0")
 		{
 			method_5(bool_0: true);
 		}
 		else
 		{
-			((Control)(object)txtSupplier).Text = ddlSupplier.Text;
+			txtSupplier.Text = ddlSupplier.Text;
 		}
 	}
 
@@ -164,14 +163,14 @@ public class frmAssignSupplier : frmMasterForm
 				return;
 			}
 		}
-		if (!string.IsNullOrEmpty(((Control)(object)txtSupplier).Text) && !(((Control)(object)txtSupplier).Text == "Enter Supplier Name"))
+		if (!string.IsNullOrEmpty(txtSupplier.Text) && !(txtSupplier.Text == "Enter Supplier Name"))
 		{
 			Supplier supplier;
 			if (ddlSupplier.SelectedValue.ToString() == "0")
 			{
 				supplier = new Supplier
 				{
-					Name = ((Control)(object)txtSupplier).Text,
+					Name = txtSupplier.Text,
 					Synced = false
 				};
 				gClass.Suppliers.InsertOnSubmit(supplier);
@@ -182,7 +181,7 @@ public class frmAssignSupplier : frmMasterForm
 				supplier = gClass.Suppliers.Where((Supplier a) => a.Id.ToString() == ddlSupplier.SelectedValue.ToString()).FirstOrDefault();
 				if (supplier != null)
 				{
-					supplier.Name = ((Control)(object)txtSupplier).Text;
+					supplier.Name = txtSupplier.Text;
 					supplier.Synced = false;
 					Helper.SubmitChangesWithCatch(gClass);
 				}
@@ -205,19 +204,19 @@ public class frmAssignSupplier : frmMasterForm
 
 	private void txtSupplier_GotFocus(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSupplier).Text == "Enter Supplier Name")
+		if (txtSupplier.Text == "Enter Supplier Name")
 		{
-			((Control)(object)txtSupplier).ForeColor = Color.Black;
-			((Control)(object)txtSupplier).Text = "";
+			txtSupplier.ForeColor = Color.Black;
+			txtSupplier.Text = "";
 		}
 	}
 
 	private void txtSupplier_LostFocus(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSupplier).Text == string.Empty)
+		if (txtSupplier.Text == string.Empty)
 		{
-			((Control)(object)txtSupplier).Text = "Enter Supplier Name";
-			((Control)(object)txtSupplier).ForeColor = Color.Gray;
+			txtSupplier.Text = "Enter Supplier Name";
+			txtSupplier.ForeColor = Color.Gray;
 		}
 	}
 
@@ -262,7 +261,7 @@ public class frmAssignSupplier : frmMasterForm
 	private void method_5(bool bool_0)
 	{
 		string title = "Supplier Name";
-		string default_text = ((Control)(object)txtSupplier).Text;
+		string default_text = txtSupplier.Text;
 		if (bool_0)
 		{
 			title = "Add New Supplier";
@@ -272,7 +271,7 @@ public class frmAssignSupplier : frmMasterForm
 		MemoryLoadedObjects.Keyboard.LoadFormData(title, 0, 256, default_text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSupplier).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtSupplier.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -288,10 +287,6 @@ public class frmAssignSupplier : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_0295: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02b6: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAssignSupplier));
 		btnShowKeyboard_Supplier = new Button();
 		txtSupplier = new RadTextBoxControl();
@@ -325,16 +320,16 @@ public class frmAssignSupplier : frmMasterForm
 		btnShowKeyboard_Supplier.TabIndex = 223;
 		btnShowKeyboard_Supplier.UseVisualStyleBackColor = false;
 		btnShowKeyboard_Supplier.Click += btnShowKeyboard_Supplier_Click;
-		((Control)(object)txtSupplier).Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-		((Control)(object)txtSupplier).ForeColor = Color.Silver;
-		((Control)(object)txtSupplier).Location = new Point(428, 72);
-		((Control)(object)txtSupplier).Name = "txtSupplier";
-		((RadElement)((RadControl)txtSupplier).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSupplier).Size = new Size(294, 33);
-		((Control)(object)txtSupplier).TabIndex = 222;
-		((Control)(object)txtSupplier).Text = "Enter Supplier Name";
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSupplier).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSupplier).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSupplier.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+		txtSupplier.ForeColor = Color.Silver;
+		txtSupplier.Location = new Point(428, 72);
+		txtSupplier.Name = "txtSupplier";
+		txtSupplier.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSupplier.Size = new Size(294, 33);
+		txtSupplier.TabIndex = 222;
+		txtSupplier.Text = "Enter Supplier Name";
+		((RadTextBoxControlElement)txtSupplier.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSupplier.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		lblTitle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		lblTitle.BackColor = Color.FromArgb(156, 89, 184);
 		lblTitle.Font = new Font("Microsoft Sans Serif", 14f, FontStyle.Bold);
@@ -538,7 +533,7 @@ public class frmAssignSupplier : frmMasterForm
 		base.Controls.Add(lblItemName);
 		base.Controls.Add(label1);
 		base.Controls.Add(btnShowKeyboard_Supplier);
-		base.Controls.Add((Control)(object)txtSupplier);
+		base.Controls.Add(txtSupplier);
 		base.Controls.Add(lblTitle);
 		base.Controls.Add(ddlSupplier);
 		base.Controls.Add(label4);

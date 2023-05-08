@@ -12,7 +12,6 @@ using CorePOS.Business.Methods;
 using CorePOS.Business.Objects;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel.Settings;
@@ -137,12 +136,6 @@ public class PrintSettings : UserControl
 
 	public PrintSettings()
 	{
-		//IL_03ac: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03c0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03d2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03f4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0405: Unknown result type (might be due to invalid IL or missing references)
-		//IL_040f: Expected O, but got Unknown
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
 		bool_0 = true;
@@ -198,7 +191,7 @@ public class PrintSettings : UserControl
 					}
 					continue;
 				}
-				if (CS_0024_003C_003E8__locals0.ctrl.Name == ((Control)(object)chkOrderTickets).Name)
+				if (CS_0024_003C_003E8__locals0.ctrl.Name == chkOrderTickets.Name)
 				{
 					if (setting.Value == "ON")
 					{
@@ -211,14 +204,14 @@ public class PrintSettings : UserControl
 				}
 				if (setting.Value.Contains("ON"))
 				{
-					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).set_Value(true);
+					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Value = true;
 				}
 				else
 				{
-					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).set_Value(false);
+					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Value = false;
 				}
-				((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).get_ToggleSwitchElement().add_ValueChanged((EventHandler)method_0);
-				((RadElement)((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).get_ToggleSwitchElement()).set_Tag(((Control)(RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Tag);
+				((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).ToggleSwitchElement.ValueChanged += method_0;
+				((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).ToggleSwitchElement.Tag = ((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Tag;
 			}
 		}
 		finally
@@ -229,47 +222,47 @@ public class PrintSettings : UserControl
 				disposable.Dispose();
 			}
 		}
-		setting = iqueryable_0.Where((Setting s) => ((Control)(object)chkPrintChitClockOut).Tag.Equals(s.Key)).FirstOrDefault();
+		setting = iqueryable_0.Where((Setting s) => chkPrintChitClockOut.Tag.Equals(s.Key)).FirstOrDefault();
 		if (setting != null)
 		{
 			if (setting.Value.Contains("ON"))
 			{
-				chkPrintChitClockOut.set_Value(true);
+				chkPrintChitClockOut.Value = true;
 			}
 			else
 			{
-				chkPrintChitClockOut.set_Value(false);
+				chkPrintChitClockOut.Value = false;
 			}
-			chkPrintChitClockOut.get_ToggleSwitchElement().add_ValueChanged((EventHandler)method_0);
-			((RadElement)chkPrintChitClockOut.get_ToggleSwitchElement()).set_Tag(((Control)(object)chkPrintChitClockOut).Tag);
+			chkPrintChitClockOut.ToggleSwitchElement.ValueChanged += method_0;
+			chkPrintChitClockOut.ToggleSwitchElement.Tag = chkPrintChitClockOut.Tag;
 		}
-		setting = iqueryable_0.Where((Setting s) => ((Control)(object)chkPrintEoDClockOut).Tag.Equals(s.Key)).FirstOrDefault();
+		setting = iqueryable_0.Where((Setting s) => chkPrintEoDClockOut.Tag.Equals(s.Key)).FirstOrDefault();
 		if (setting != null)
 		{
 			if (setting.Value.Contains("ON"))
 			{
-				chkPrintEoDClockOut.set_Value(true);
+				chkPrintEoDClockOut.Value = true;
 			}
 			else
 			{
-				chkPrintEoDClockOut.set_Value(false);
+				chkPrintEoDClockOut.Value = false;
 			}
-			chkPrintEoDClockOut.get_ToggleSwitchElement().add_ValueChanged((EventHandler)method_0);
-			((RadElement)chkPrintEoDClockOut.get_ToggleSwitchElement()).set_Tag(((Control)(object)chkPrintEoDClockOut).Tag);
+			chkPrintEoDClockOut.ToggleSwitchElement.ValueChanged += method_0;
+			chkPrintEoDClockOut.ToggleSwitchElement.Tag = chkPrintEoDClockOut.Tag;
 		}
-		setting = iqueryable_0.Where((Setting s) => ((Control)(object)btnAutoPrintOrderTicket).Tag.Equals(s.Key)).FirstOrDefault();
+		setting = iqueryable_0.Where((Setting s) => btnAutoPrintOrderTicket.Tag.Equals(s.Key)).FirstOrDefault();
 		if (setting != null)
 		{
 			if (setting.Value.Contains("ON"))
 			{
-				btnAutoPrintOrderTicket.set_Value(true);
+				btnAutoPrintOrderTicket.Value = true;
 			}
 			else
 			{
-				btnAutoPrintOrderTicket.set_Value(false);
+				btnAutoPrintOrderTicket.Value = false;
 			}
-			btnAutoPrintOrderTicket.get_ToggleSwitchElement().add_ValueChanged((EventHandler)method_0);
-			((RadElement)btnAutoPrintOrderTicket.get_ToggleSwitchElement()).set_Tag(((Control)(object)btnAutoPrintOrderTicket).Tag);
+			btnAutoPrintOrderTicket.ToggleSwitchElement.ValueChanged += method_0;
+			btnAutoPrintOrderTicket.ToggleSwitchElement.Tag = btnAutoPrintOrderTicket.Tag;
 		}
 		string settingValueByKey = SettingsHelper.GetSettingValueByKey("hippos_time");
 		if (!string.IsNullOrEmpty(settingValueByKey))
@@ -286,16 +279,16 @@ public class PrintSettings : UserControl
 		if (iqueryable_0.Where((Setting a) => a.Key == "restaurant_mode").FirstOrDefault().Value == "Dine In")
 		{
 			pnlFullService.Visible = true;
-			setting = iqueryable_0.Where((Setting s) => ((Control)(object)chkOneChitPerTable).Tag.Equals(s.Key)).FirstOrDefault();
+			setting = iqueryable_0.Where((Setting s) => chkOneChitPerTable.Tag.Equals(s.Key)).FirstOrDefault();
 			if (setting != null)
 			{
 				if (setting.Value.Contains("ON"))
 				{
-					chkOneChitPerTable.set_Value(true);
+					chkOneChitPerTable.Value = true;
 				}
 				else
 				{
-					chkOneChitPerTable.set_Value(false);
+					chkOneChitPerTable.Value = false;
 				}
 			}
 		}
@@ -338,8 +331,8 @@ public class PrintSettings : UserControl
 			return;
 		}
 		_003C_003Ec__DisplayClass6_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass6_0();
-		CS_0024_003C_003E8__locals0.chkToggle = (RadToggleSwitchElement)((sender is RadToggleSwitchElement) ? sender : null);
-		Setting setting = iqueryable_0.Where((Setting s) => ((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag().Equals(s.Key)).FirstOrDefault();
+		CS_0024_003C_003E8__locals0.chkToggle = sender as RadToggleSwitchElement;
+		Setting setting = iqueryable_0.Where((Setting s) => CS_0024_003C_003E8__locals0.chkToggle.Tag.Equals(s.Key)).FirstOrDefault();
 		if (setting != null)
 		{
 			if (setting.Value.ToUpper().Equals("ON"))
@@ -352,7 +345,7 @@ public class PrintSettings : UserControl
 			}
 			setting.Synced = false;
 			Helper.SubmitChangesWithCatch(gclass6_0);
-			SettingsHelper.SetSettingValueByKey(((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag().ToString(), setting.Value);
+			SettingsHelper.SetSettingValueByKey(CS_0024_003C_003E8__locals0.chkToggle.Tag.ToString(), setting.Value);
 		}
 	}
 
@@ -407,10 +400,10 @@ public class PrintSettings : UserControl
 		{
 			return;
 		}
-		Setting setting = iqueryable_0.Where((Setting s) => ((Control)(object)chkOneChitPerTable).Tag.Equals(s.Key)).FirstOrDefault();
+		Setting setting = iqueryable_0.Where((Setting s) => chkOneChitPerTable.Tag.Equals(s.Key)).FirstOrDefault();
 		if (setting != null)
 		{
-			if (chkOneChitPerTable.get_Value())
+			if (chkOneChitPerTable.Value)
 			{
 				setting.Value = "ON";
 			}
@@ -420,7 +413,7 @@ public class PrintSettings : UserControl
 			}
 			setting.Synced = false;
 			gclass6_0.SubmitChanges();
-			SettingsHelper.SetSettingValueByKey(((Control)(object)chkOneChitPerTable).Tag.ToString(), setting.Value);
+			SettingsHelper.SetSettingValueByKey(chkOneChitPerTable.Tag.ToString(), setting.Value);
 		}
 	}
 
@@ -443,78 +436,6 @@ public class PrintSettings : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_007f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0089: Expected O, but got Unknown
-		//IL_00ab: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00b5: Expected O, but got Unknown
-		//IL_00ed: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f7: Expected O, but got Unknown
-		//IL_0124: Unknown result type (might be due to invalid IL or missing references)
-		//IL_012e: Expected O, but got Unknown
-		//IL_017c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0186: Expected O, but got Unknown
-		//IL_01be: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01c8: Expected O, but got Unknown
-		//IL_01df: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01e9: Expected O, but got Unknown
-		//IL_022c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0236: Expected O, but got Unknown
-		//IL_0653: Unknown result type (might be due to invalid IL or missing references)
-		//IL_066b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0682: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06a3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06d0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06fd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_072a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_086e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0886: Unknown result type (might be due to invalid IL or missing references)
-		//IL_089d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08be: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08eb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0918: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0945: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b35: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b4d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b64: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b85: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0bb2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0bdf: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c0c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e21: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e39: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e50: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e71: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e9e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ecb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ef8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_114b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1163: Unknown result type (might be due to invalid IL or missing references)
-		//IL_117a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_119b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11c8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_11f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1222: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_140d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1424: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1445: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1472: Unknown result type (might be due to invalid IL or missing references)
-		//IL_149f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14cc: Unknown result type (might be due to invalid IL or missing references)
-		//IL_162c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1644: Unknown result type (might be due to invalid IL or missing references)
-		//IL_165b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_167c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_16a9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_16d6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1703: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1996: Unknown result type (might be due to invalid IL or missing references)
-		//IL_19ae: Unknown result type (might be due to invalid IL or missing references)
-		//IL_19c5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_19e6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1a13: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1a40: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1a6d: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager componentResourceManager = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.AdminPanel.Settings.PrintSettings));
 		this.lblDefaultPrinter = new System.Windows.Forms.Label();
 		this.label6 = new System.Windows.Forms.Label();
@@ -526,22 +447,22 @@ public class PrintSettings : UserControl
 		this.label11 = new System.Windows.Forms.Label();
 		this.pictureBox6 = new System.Windows.Forms.PictureBox();
 		this.label12 = new System.Windows.Forms.Label();
-		this.chkAutoPrintOnCashout = new RadToggleSwitch();
+		this.chkAutoPrintOnCashout = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label9 = new System.Windows.Forms.Label();
 		this.pictureBox7 = new System.Windows.Forms.PictureBox();
 		this.label13 = new System.Windows.Forms.Label();
-		this.chkPrintCancelled = new RadToggleSwitch();
+		this.chkPrintCancelled = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label14 = new System.Windows.Forms.Label();
 		this.pictureBox8 = new System.Windows.Forms.PictureBox();
 		this.label15 = new System.Windows.Forms.Label();
 		this.label16 = new System.Windows.Forms.Label();
 		this.lblChangePrintStationSetting = new System.Windows.Forms.Label();
-		this.chkPrintChitClockOut = new RadToggleSwitch();
+		this.chkPrintChitClockOut = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.lblPrintClockout2 = new System.Windows.Forms.Label();
 		this.pictureBox1 = new System.Windows.Forms.PictureBox();
 		this.lblPrintClockout = new System.Windows.Forms.Label();
 		this.pnlTimeAttendance = new System.Windows.Forms.Panel();
-		this.chkAutoPrintMerchant = new RadToggleSwitch();
+		this.chkAutoPrintMerchant = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.lblPrintMerchantDesc = new System.Windows.Forms.Label();
 		this.pictureBox2 = new System.Windows.Forms.PictureBox();
 		this.lblPrintMerchant = new System.Windows.Forms.Label();
@@ -549,23 +470,23 @@ public class PrintSettings : UserControl
 		this.label2 = new System.Windows.Forms.Label();
 		this.pictureBox5 = new System.Windows.Forms.PictureBox();
 		this.label3 = new System.Windows.Forms.Label();
-		this.btnAutoPrintOrderTicket = new RadToggleSwitch();
+		this.btnAutoPrintOrderTicket = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.lblOrderTicketDesc = new System.Windows.Forms.Label();
 		this.lblOrderTicketTitle = new System.Windows.Forms.Label();
 		this.lblManageTickets = new System.Windows.Forms.Label();
 		this.pictureBox10 = new System.Windows.Forms.PictureBox();
 		this.label1 = new System.Windows.Forms.Label();
-		this.chkOrderTickets = new RadToggleSwitch();
+		this.chkOrderTickets = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label4 = new System.Windows.Forms.Label();
 		this.pnlOrderTicket = new System.Windows.Forms.Panel();
-		this.chkOneChitPerTable = new RadToggleSwitch();
+		this.chkOneChitPerTable = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label10 = new System.Windows.Forms.Label();
 		this.pictureBox9 = new System.Windows.Forms.PictureBox();
 		this.label17 = new System.Windows.Forms.Label();
 		this.ddlChitPrintServer = new Class19();
 		this.pnlFullService = new System.Windows.Forms.Panel();
 		this.pictureBox11 = new System.Windows.Forms.PictureBox();
-		this.chkPrintEoDClockOut = new RadToggleSwitch();
+		this.chkPrintEoDClockOut = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label18 = new System.Windows.Forms.Label();
 		this.label19 = new System.Windows.Forms.Label();
 		((System.ComponentModel.ISupportInitialize)this.pictureBox3).BeginInit();
@@ -633,18 +554,18 @@ public class PrintSettings : UserControl
 		this.label12.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label12.Name = "label12";
 		componentResourceManager.ApplyResources(this.chkAutoPrintOnCashout, "chkAutoPrintOnCashout");
-		((System.Windows.Forms.Control)(object)this.chkAutoPrintOnCashout).Name = "chkAutoPrintOnCashout";
-		((System.Windows.Forms.Control)(object)this.chkAutoPrintOnCashout).Tag = "auto_print_receipt";
-		this.chkAutoPrintOnCashout.set_ThumbTickness(27);
-		this.chkAutoPrintOnCashout.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkAutoPrintOnCashout.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkAutoPrintOnCashout).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkAutoPrintOnCashout).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkAutoPrintOnCashout).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkAutoPrintOnCashout).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkAutoPrintOnCashout).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkAutoPrintOnCashout).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkAutoPrintOnCashout).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkAutoPrintOnCashout.Name = "chkAutoPrintOnCashout";
+		this.chkAutoPrintOnCashout.Tag = "auto_print_receipt";
+		this.chkAutoPrintOnCashout.ThumbTickness = 27;
+		this.chkAutoPrintOnCashout.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkAutoPrintOnCashout.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkAutoPrintOnCashout.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkAutoPrintOnCashout.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkAutoPrintOnCashout.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAutoPrintOnCashout.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAutoPrintOnCashout.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAutoPrintOnCashout.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAutoPrintOnCashout.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this.label9, "label9");
 		this.label9.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label9.Name = "label9";
@@ -658,18 +579,18 @@ public class PrintSettings : UserControl
 		this.label13.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label13.Name = "label13";
 		componentResourceManager.ApplyResources(this.chkPrintCancelled, "chkPrintCancelled");
-		((System.Windows.Forms.Control)(object)this.chkPrintCancelled).Name = "chkPrintCancelled";
-		((System.Windows.Forms.Control)(object)this.chkPrintCancelled).Tag = "print_chit_change_cancel";
-		this.chkPrintCancelled.set_ThumbTickness(27);
-		this.chkPrintCancelled.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkPrintCancelled.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkPrintCancelled).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkPrintCancelled).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkPrintCancelled).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPrintCancelled).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPrintCancelled).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPrintCancelled).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkPrintCancelled).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkPrintCancelled.Name = "chkPrintCancelled";
+		this.chkPrintCancelled.Tag = "print_chit_change_cancel";
+		this.chkPrintCancelled.ThumbTickness = 27;
+		this.chkPrintCancelled.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkPrintCancelled.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPrintCancelled.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPrintCancelled.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPrintCancelled.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintCancelled.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintCancelled.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintCancelled.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintCancelled.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this.label14, "label14");
 		this.label14.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label14.Name = "label14";
@@ -691,19 +612,19 @@ public class PrintSettings : UserControl
 		this.lblChangePrintStationSetting.Name = "lblChangePrintStationSetting";
 		this.lblChangePrintStationSetting.Click += new System.EventHandler(lblChangePrintStationSetting_Click);
 		componentResourceManager.ApplyResources(this.chkPrintChitClockOut, "chkPrintChitClockOut");
-		((System.Windows.Forms.Control)(object)this.chkPrintChitClockOut).Name = "chkPrintChitClockOut";
-		((System.Windows.Forms.Control)(object)this.chkPrintChitClockOut).Tag = "print_clock_out";
-		this.chkPrintChitClockOut.set_ThumbTickness(27);
-		this.chkPrintChitClockOut.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkPrintChitClockOut.set_Value(false);
-		this.chkPrintChitClockOut.add_ValueChanged(new System.EventHandler(chkPrintChitClockOut_ValueChanged));
-		((RadToggleSwitchElement)((RadControl)this.chkPrintChitClockOut).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkPrintChitClockOut).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkPrintChitClockOut).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPrintChitClockOut).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPrintChitClockOut).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPrintChitClockOut).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkPrintChitClockOut).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkPrintChitClockOut.Name = "chkPrintChitClockOut";
+		this.chkPrintChitClockOut.Tag = "print_clock_out";
+		this.chkPrintChitClockOut.ThumbTickness = 27;
+		this.chkPrintChitClockOut.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkPrintChitClockOut.Value = false;
+		this.chkPrintChitClockOut.ValueChanged += new System.EventHandler(chkPrintChitClockOut_ValueChanged);
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPrintChitClockOut.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPrintChitClockOut.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPrintChitClockOut.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintChitClockOut.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintChitClockOut.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintChitClockOut.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintChitClockOut.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this.lblPrintClockout2, "lblPrintClockout2");
 		this.lblPrintClockout2.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.lblPrintClockout2.Name = "lblPrintClockout2";
@@ -717,28 +638,28 @@ public class PrintSettings : UserControl
 		this.lblPrintClockout.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.lblPrintClockout.Name = "lblPrintClockout";
 		this.pnlTimeAttendance.Controls.Add(this.pictureBox11);
-		this.pnlTimeAttendance.Controls.Add((System.Windows.Forms.Control)(object)this.chkPrintEoDClockOut);
+		this.pnlTimeAttendance.Controls.Add(this.chkPrintEoDClockOut);
 		this.pnlTimeAttendance.Controls.Add(this.label18);
 		this.pnlTimeAttendance.Controls.Add(this.label19);
 		this.pnlTimeAttendance.Controls.Add(this.pictureBox1);
-		this.pnlTimeAttendance.Controls.Add((System.Windows.Forms.Control)(object)this.chkPrintChitClockOut);
+		this.pnlTimeAttendance.Controls.Add(this.chkPrintChitClockOut);
 		this.pnlTimeAttendance.Controls.Add(this.lblPrintClockout);
 		this.pnlTimeAttendance.Controls.Add(this.lblPrintClockout2);
 		componentResourceManager.ApplyResources(this.pnlTimeAttendance, "pnlTimeAttendance");
 		this.pnlTimeAttendance.Name = "pnlTimeAttendance";
 		componentResourceManager.ApplyResources(this.chkAutoPrintMerchant, "chkAutoPrintMerchant");
-		((System.Windows.Forms.Control)(object)this.chkAutoPrintMerchant).Name = "chkAutoPrintMerchant";
-		((System.Windows.Forms.Control)(object)this.chkAutoPrintMerchant).Tag = "print_merchant_copy";
-		this.chkAutoPrintMerchant.set_ThumbTickness(27);
-		this.chkAutoPrintMerchant.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkAutoPrintMerchant.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkAutoPrintMerchant).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkAutoPrintMerchant).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkAutoPrintMerchant).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkAutoPrintMerchant).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkAutoPrintMerchant).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkAutoPrintMerchant).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkAutoPrintMerchant).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkAutoPrintMerchant.Name = "chkAutoPrintMerchant";
+		this.chkAutoPrintMerchant.Tag = "print_merchant_copy";
+		this.chkAutoPrintMerchant.ThumbTickness = 27;
+		this.chkAutoPrintMerchant.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkAutoPrintMerchant.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkAutoPrintMerchant.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkAutoPrintMerchant.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkAutoPrintMerchant.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAutoPrintMerchant.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAutoPrintMerchant.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAutoPrintMerchant.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAutoPrintMerchant.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this.lblPrintMerchantDesc, "lblPrintMerchantDesc");
 		this.lblPrintMerchantDesc.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.lblPrintMerchantDesc.Name = "lblPrintMerchantDesc";
@@ -768,18 +689,18 @@ public class PrintSettings : UserControl
 		this.label3.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label3.Name = "label3";
 		componentResourceManager.ApplyResources(this.btnAutoPrintOrderTicket, "btnAutoPrintOrderTicket");
-		((System.Windows.Forms.Control)(object)this.btnAutoPrintOrderTicket).Name = "btnAutoPrintOrderTicket";
-		((System.Windows.Forms.Control)(object)this.btnAutoPrintOrderTicket).Tag = "print_orderticket";
-		this.btnAutoPrintOrderTicket.set_ThumbTickness(27);
-		this.btnAutoPrintOrderTicket.set_ToggleStateMode((ToggleStateMode)1);
-		this.btnAutoPrintOrderTicket.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.btnAutoPrintOrderTicket).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.btnAutoPrintOrderTicket).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.btnAutoPrintOrderTicket).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.btnAutoPrintOrderTicket).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.btnAutoPrintOrderTicket).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.btnAutoPrintOrderTicket).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.btnAutoPrintOrderTicket).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.btnAutoPrintOrderTicket.Name = "btnAutoPrintOrderTicket";
+		this.btnAutoPrintOrderTicket.Tag = "print_orderticket";
+		this.btnAutoPrintOrderTicket.ThumbTickness = 27;
+		this.btnAutoPrintOrderTicket.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.btnAutoPrintOrderTicket.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.btnAutoPrintOrderTicket.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.btnAutoPrintOrderTicket.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.btnAutoPrintOrderTicket.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.btnAutoPrintOrderTicket.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.btnAutoPrintOrderTicket.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.btnAutoPrintOrderTicket.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.btnAutoPrintOrderTicket.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this.lblOrderTicketDesc, "lblOrderTicketDesc");
 		this.lblOrderTicketDesc.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.lblOrderTicketDesc.Name = "lblOrderTicketDesc";
@@ -801,18 +722,18 @@ public class PrintSettings : UserControl
 		this.label1.Name = "label1";
 		this.label1.Tag = "";
 		componentResourceManager.ApplyResources(this.chkOrderTickets, "chkOrderTickets");
-		((System.Windows.Forms.Control)(object)this.chkOrderTickets).Name = "chkOrderTickets";
-		((System.Windows.Forms.Control)(object)this.chkOrderTickets).Tag = "use_order_ticket";
-		this.chkOrderTickets.set_ThumbTickness(27);
-		this.chkOrderTickets.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkOrderTickets.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkOrderTickets).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkOrderTickets).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkOrderTickets).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkOrderTickets).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkOrderTickets).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkOrderTickets).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkOrderTickets).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkOrderTickets.Name = "chkOrderTickets";
+		this.chkOrderTickets.Tag = "use_order_ticket";
+		this.chkOrderTickets.ThumbTickness = 27;
+		this.chkOrderTickets.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkOrderTickets.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkOrderTickets.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkOrderTickets.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkOrderTickets.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkOrderTickets.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkOrderTickets.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkOrderTickets.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkOrderTickets.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label4.BackColor = System.Drawing.Color.Transparent;
 		this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label4, "label4");
@@ -821,23 +742,23 @@ public class PrintSettings : UserControl
 		this.pnlOrderTicket.Controls.Add(this.lblOrderTicketTitle);
 		this.pnlOrderTicket.Controls.Add(this.lblManageTickets);
 		this.pnlOrderTicket.Controls.Add(this.lblOrderTicketDesc);
-		this.pnlOrderTicket.Controls.Add((System.Windows.Forms.Control)(object)this.btnAutoPrintOrderTicket);
+		this.pnlOrderTicket.Controls.Add(this.btnAutoPrintOrderTicket);
 		componentResourceManager.ApplyResources(this.pnlOrderTicket, "pnlOrderTicket");
 		this.pnlOrderTicket.Name = "pnlOrderTicket";
 		componentResourceManager.ApplyResources(this.chkOneChitPerTable, "chkOneChitPerTable");
-		((System.Windows.Forms.Control)(object)this.chkOneChitPerTable).Name = "chkOneChitPerTable";
-		((System.Windows.Forms.Control)(object)this.chkOneChitPerTable).Tag = "group_chits_per_table";
-		this.chkOneChitPerTable.set_ThumbTickness(27);
-		this.chkOneChitPerTable.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkOneChitPerTable.set_Value(false);
-		this.chkOneChitPerTable.add_ValueChanged(new System.EventHandler(chkOneChitPerTable_ValueChanged));
-		((RadToggleSwitchElement)((RadControl)this.chkOneChitPerTable).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkOneChitPerTable).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkOneChitPerTable).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkOneChitPerTable).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkOneChitPerTable).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkOneChitPerTable).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkOneChitPerTable).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkOneChitPerTable.Name = "chkOneChitPerTable";
+		this.chkOneChitPerTable.Tag = "group_chits_per_table";
+		this.chkOneChitPerTable.ThumbTickness = 27;
+		this.chkOneChitPerTable.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkOneChitPerTable.Value = false;
+		this.chkOneChitPerTable.ValueChanged += new System.EventHandler(chkOneChitPerTable_ValueChanged);
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkOneChitPerTable.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkOneChitPerTable.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkOneChitPerTable.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkOneChitPerTable.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkOneChitPerTable.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkOneChitPerTable.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkOneChitPerTable.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this.label10, "label10");
 		this.label10.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40);
 		this.label10.Name = "label10";
@@ -859,7 +780,7 @@ public class PrintSettings : UserControl
 		this.ddlChitPrintServer.Name = "ddlChitPrintServer";
 		this.ddlChitPrintServer.Tag = "chit_print_server";
 		this.ddlChitPrintServer.SelectedIndexChanged += new System.EventHandler(ddlChitPrintServer_SelectedIndexChanged);
-		this.pnlFullService.Controls.Add((System.Windows.Forms.Control)(object)this.chkOneChitPerTable);
+		this.pnlFullService.Controls.Add(this.chkOneChitPerTable);
 		this.pnlFullService.Controls.Add(this.label17);
 		this.pnlFullService.Controls.Add(this.pictureBox9);
 		this.pnlFullService.Controls.Add(this.label10);
@@ -869,19 +790,19 @@ public class PrintSettings : UserControl
 		this.pictureBox11.Name = "pictureBox11";
 		this.pictureBox11.TabStop = false;
 		componentResourceManager.ApplyResources(this.chkPrintEoDClockOut, "chkPrintEoDClockOut");
-		((System.Windows.Forms.Control)(object)this.chkPrintEoDClockOut).Name = "chkPrintEoDClockOut";
-		((System.Windows.Forms.Control)(object)this.chkPrintEoDClockOut).Tag = "print_eod_clock_out";
-		this.chkPrintEoDClockOut.set_ThumbTickness(27);
-		this.chkPrintEoDClockOut.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkPrintEoDClockOut.set_Value(false);
-		this.chkPrintEoDClockOut.add_ValueChanged(new System.EventHandler(chkPrintEoDClockOut_ValueChanged));
-		((RadToggleSwitchElement)((RadControl)this.chkPrintEoDClockOut).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkPrintEoDClockOut).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkPrintEoDClockOut).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPrintEoDClockOut).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPrintEoDClockOut).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPrintEoDClockOut).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkPrintEoDClockOut).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkPrintEoDClockOut.Name = "chkPrintEoDClockOut";
+		this.chkPrintEoDClockOut.Tag = "print_eod_clock_out";
+		this.chkPrintEoDClockOut.ThumbTickness = 27;
+		this.chkPrintEoDClockOut.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkPrintEoDClockOut.Value = false;
+		this.chkPrintEoDClockOut.ValueChanged += new System.EventHandler(chkPrintEoDClockOut_ValueChanged);
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPrintEoDClockOut.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPrintEoDClockOut.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPrintEoDClockOut.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintEoDClockOut.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintEoDClockOut.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintEoDClockOut.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPrintEoDClockOut.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label18.BackColor = System.Drawing.Color.Transparent;
 		this.label18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label18, "label18");
@@ -895,20 +816,20 @@ public class PrintSettings : UserControl
 		base.Controls.Add(this.pnlFullService);
 		base.Controls.Add(this.pictureBox10);
 		base.Controls.Add(this.label1);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkOrderTickets);
+		base.Controls.Add(this.chkOrderTickets);
 		base.Controls.Add(this.label4);
 		base.Controls.Add(this.lblConfigureDayEndClosingSettings);
 		base.Controls.Add(this.label2);
 		base.Controls.Add(this.pictureBox5);
 		base.Controls.Add(this.label3);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkAutoPrintMerchant);
+		base.Controls.Add(this.chkAutoPrintMerchant);
 		base.Controls.Add(this.lblPrintMerchantDesc);
 		base.Controls.Add(this.pictureBox2);
 		base.Controls.Add(this.lblPrintMerchant);
 		base.Controls.Add(this.pnlTimeAttendance);
 		base.Controls.Add(this.lblChangePrintStationSetting);
 		base.Controls.Add(this.label16);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkPrintCancelled);
+		base.Controls.Add(this.chkPrintCancelled);
 		base.Controls.Add(this.label14);
 		base.Controls.Add(this.pictureBox8);
 		base.Controls.Add(this.label15);
@@ -916,7 +837,7 @@ public class PrintSettings : UserControl
 		base.Controls.Add(this.label9);
 		base.Controls.Add(this.pictureBox7);
 		base.Controls.Add(this.label13);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkAutoPrintOnCashout);
+		base.Controls.Add(this.chkAutoPrintOnCashout);
 		base.Controls.Add(this.label11);
 		base.Controls.Add(this.pictureBox6);
 		base.Controls.Add(this.label12);

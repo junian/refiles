@@ -172,8 +172,8 @@ public class GoogleMethods
 				obj.Method = "GET";
 				using StreamReader streamReader = new StreamReader(((HttpWebResponse)obj.GetResponse()).GetResponseStream());
 				_003C_003Ec__DisplayClass4_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass4_0();
-				string text2 = streamReader.ReadToEnd();
-				CS_0024_003C_003E8__locals0.response = JsonConvert.DeserializeObject<GoogleObjects.TimeZoneModel>(text2);
+				string value = streamReader.ReadToEnd();
+				CS_0024_003C_003E8__locals0.response = JsonConvert.DeserializeObject<GoogleObjects.TimeZoneModel>(value);
 				if (!string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.response.timeZoneName))
 				{
 					TimeZoneInfo timeZoneInfo = (from x in TimeZoneInfo.GetSystemTimeZones()

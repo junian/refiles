@@ -37,10 +37,6 @@ public static class MonerisCore
 
 	public static string FormatTransactionString(string transactiontype, int totalamount, int taxamount, string ordernumber, string clerkid, string merchantid)
 	{
-		//IL_0116: Unknown result type (might be due to invalid IL or missing references)
-		//IL_011b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0122: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0137: Expected O, but got Unknown
 		if (transactiontype == PaymentTerminalTransactionTypes.sale)
 		{
 			transactiontype = IngenicoTransactionTypes.purchase;
@@ -62,7 +58,7 @@ public static class MonerisCore
 		{
 			return "";
 		}
-		MonerisCoreObjects.RequestObjects.Request obj = new MonerisCoreObjects.RequestObjects.Request
+		return FirstData.addStringLength(JsonConvert.SerializeObject(new MonerisCoreObjects.RequestObjects.Request
 		{
 			action = transactiontype,
 			apiVersion = "1.0",
@@ -82,11 +78,11 @@ public static class MonerisCore
 					preTaxAmount = totalamount - taxamount
 				}
 			}
-		};
-		JsonSerializerSettings val = new JsonSerializerSettings();
-		val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-		val.set_MaxDepth((int?)2000);
-		return FirstData.addStringLength(JsonConvert.SerializeObject((object)obj, (Formatting)1, val));
+		}, Formatting.Indented, new JsonSerializerSettings
+		{
+			ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+			MaxDepth = 2000
+		}));
 	}
 
 	private static PaymentTransactionObject smethod_0(string string_0, string string_1, int int_0, string string_2, bool bool_0)

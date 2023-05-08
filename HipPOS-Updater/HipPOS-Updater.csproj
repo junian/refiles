@@ -24,7 +24,11 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="CrashGrab" />
-    <Reference Include="Newtonsoft.Json" />
+    <Reference Include="CrashGrab">
+      <HintPath>..\Hippos-bin\CrashGrab.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Hippos-bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

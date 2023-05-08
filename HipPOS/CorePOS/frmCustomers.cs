@@ -15,7 +15,6 @@ using CorePOS.CommonForms;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -169,8 +168,8 @@ public class frmCustomers : frmMasterForm
 		string_1 = _searchCriteria;
 		if (Thread.CurrentThread.CurrentCulture.Name.Equals("fr-CA"))
 		{
-			chkIsActive.set_OffText("NON");
-			chkIsActive.set_OnText("OUI");
+			chkIsActive.OffText = "NON";
+			chkIsActive.OnText = "OUI";
 		}
 		if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isCurrentlyTrainingMode"]))
 		{
@@ -231,13 +230,13 @@ public class frmCustomers : frmMasterForm
 			Order order = new GClass6().Orders.Where((Order o) => o.OrderNumber == string_0).FirstOrDefault();
 			if (order != null && order.OrderType != OrderTypes.DineIn)
 			{
-				((Control)(object)txtSearchBox).Text = order.Customer + " " + order.CustomerInfoName;
+				txtSearchBox.Text = order.Customer + " " + order.CustomerInfoName;
 				method_4();
 			}
 		}
 		else if (!string.IsNullOrEmpty(string_1))
 		{
-			((Control)(object)txtSearchBox).Text = string_1;
+			txtSearchBox.Text = string_1;
 			method_4();
 		}
 		if (int_0 <= 0)
@@ -272,11 +271,11 @@ public class frmCustomers : frmMasterForm
 		List<string> list = new List<string>();
 		if (!btnSave.Text.Contains(Resources.SEND))
 		{
-			if (((Control)(object)txtName).Text == string.Empty)
+			if (txtName.Text == string.Empty)
 			{
 				list.Add("Name");
 			}
-			if (((Control)(object)txtCell).Text == string.Empty)
+			if (txtCell.Text == string.Empty)
 			{
 				list.Add("Cellphone");
 			}
@@ -287,57 +286,57 @@ public class frmCustomers : frmMasterForm
 			return false;
 		}
 		Regex regex = new Regex("^\\d{10}$");
-		if (!string.IsNullOrEmpty(((Control)(object)txtCell).Text) && !regex.Match(((Control)(object)txtCell).Text).Success)
+		if (!string.IsNullOrEmpty(txtCell.Text) && !regex.Match(txtCell.Text).Success)
 		{
 			new frmMessageBox(Resources.Cell_phone_number_is_not_in_co).ShowDialog(this);
 			base.DialogResult = DialogResult.None;
 			return false;
 		}
-		if (!string.IsNullOrEmpty(((Control)(object)txtHomePhone).Text) && !regex.Match(((Control)(object)txtHomePhone).Text).Success)
+		if (!string.IsNullOrEmpty(txtHomePhone.Text) && !regex.Match(txtHomePhone.Text).Success)
 		{
 			new frmMessageBox(Resources.Home_phone_number_is_not_in_co).ShowDialog(this);
 			base.DialogResult = DialogResult.None;
 			return false;
 		}
-		if (!string.IsNullOrEmpty(((Control)(object)txtEmail).Text) && !Regex.IsMatch(((Control)(object)txtEmail).Text, "\\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\\Z", RegexOptions.IgnoreCase))
+		if (!string.IsNullOrEmpty(txtEmail.Text) && !Regex.IsMatch(txtEmail.Text, "\\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\\Z", RegexOptions.IgnoreCase))
 		{
 			new frmMessageBox(Resources.E_mail_address_is_not_in_corre).ShowDialog(this);
 			base.DialogResult = DialogResult.None;
 			return false;
 		}
-		if (btnSave.Text.Contains(Resources.SEND) && !string.IsNullOrEmpty(string_0) && string.IsNullOrEmpty(((Control)(object)txtEmail).Text.Trim()))
+		if (btnSave.Text.Contains(Resources.SEND) && !string.IsNullOrEmpty(string_0) && string.IsNullOrEmpty(txtEmail.Text.Trim()))
 		{
 			new frmMessageBox(Resources.E_mail_address_is_required).ShowDialog(this);
 			base.DialogResult = DialogResult.None;
 			return false;
 		}
 		GClass6 gClass = new GClass6();
-		Customer customer = gClass.Customers.Where((Customer b) => b.MemberNumber == ((Control)(object)txtMemberNumber).Text.Trim() && b.CustomerID != int_0).FirstOrDefault();
-		if (customer != null && ((Control)(object)txtMemberNumber).Text.Trim() != "")
+		Customer customer = gClass.Customers.Where((Customer b) => b.MemberNumber == txtMemberNumber.Text.Trim() && b.CustomerID != int_0).FirstOrDefault();
+		if (customer != null && txtMemberNumber.Text.Trim() != "")
 		{
 			new frmMessageBox(Resources.Customer + customer.CustomerName + Resources._already_has_the_same_Member_N, Resources.Customer_Duplicate, CustomMessageBoxButtons.Ok).Show();
 			base.DialogResult = DialogResult.None;
 			return false;
 		}
-		string text = ((Control)(object)txtHomePhone).Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
+		string text = txtHomePhone.Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
 			.Trim();
 		CS_0024_003C_003E8__locals0.queryHomePhone = ((text == "" || text == null) ? "XXXXXXXXXXX" : text);
-		string text2 = ((Control)(object)txtCell).Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
+		string text2 = txtCell.Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
 			.Trim();
 		CS_0024_003C_003E8__locals0.queryCellPhone = ((text2 == "" || text2 == null) ? "XXXXXXXXXXX0" : text2);
-		string text3 = ((Control)(object)txtEmail).Text;
+		string text3 = txtEmail.Text;
 		CS_0024_003C_003E8__locals0.queryCustomerEmail = ((text3 == "" || text3 == null) ? "XXXXXXXXXXXXX" : text3);
-		Customer customer2 = gClass.Customers.Where((Customer a) => ((a.CustomerHome == CS_0024_003C_003E8__locals0.queryHomePhone || a.CustomerCell == CS_0024_003C_003E8__locals0.queryCellPhone || a.CustomerEmail == CS_0024_003C_003E8__locals0.queryCustomerEmail) && a.CustomerID != int_0) || (a.LoyaltyCardNo != null && a.LoyaltyCardNo != string.Empty && a.LoyaltyCardNo == ((Control)(object)txtLoyaltyCardNo).Text.Trim() && a.CustomerID != int_0)).FirstOrDefault();
+		Customer customer2 = gClass.Customers.Where((Customer a) => ((a.CustomerHome == CS_0024_003C_003E8__locals0.queryHomePhone || a.CustomerCell == CS_0024_003C_003E8__locals0.queryCellPhone || a.CustomerEmail == CS_0024_003C_003E8__locals0.queryCustomerEmail) && a.CustomerID != int_0) || (a.LoyaltyCardNo != null && a.LoyaltyCardNo != string.Empty && a.LoyaltyCardNo == txtLoyaltyCardNo.Text.Trim() && a.CustomerID != int_0)).FirstOrDefault();
 		if (customer2 != null)
 		{
 			new NotificationLabel(this, "Another customer (" + customer2.CustomerName + ")" + Resources._already_has_the_same_home_pho, NotificationTypes.Notification).Show();
 			return false;
 		}
-		string text4 = ((Control)(object)txtHomePhone).Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
+		string text4 = txtHomePhone.Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
 			.Trim();
-		string text5 = ((Control)(object)txtCell).Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
+		string text5 = txtCell.Text.Replace("-", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty)
 			.Trim();
-		string text6 = ((Control)(object)txtMemberNumber).Text.Trim();
+		string text6 = txtMemberNumber.Text.Trim();
 		Customer customer3;
 		if (int_0 == 0)
 		{
@@ -348,7 +347,7 @@ public class frmCustomers : frmMasterForm
 		else
 		{
 			customer3 = gClass.Customers.Where((Customer a) => a.CustomerID == int_0).FirstOrDefault();
-			if (customer3.CustomerName != ((Control)(object)txtName).Text.Trim() && (customer3.CustomerHome != text4 || customer3.CustomerCell != text5))
+			if (customer3.CustomerName != txtName.Text.Trim() && (customer3.CustomerHome != text4 || customer3.CustomerCell != text5))
 			{
 				if (!string.IsNullOrEmpty(customer3.MemberNumber) && customer3.MemberNumber == text6)
 				{
@@ -361,30 +360,30 @@ public class frmCustomers : frmMasterForm
 			}
 		}
 		customer3.MemberNumber = text6;
-		customer3.CustomerName = ((Control)(object)txtName).Text.Trim();
+		customer3.CustomerName = txtName.Text.Trim();
 		customer3.CustomerCell = text5;
 		customer3.CustomerHome = text4;
-		customer3.CustomerEmail = ((Control)(object)txtEmail).Text;
+		customer3.CustomerEmail = txtEmail.Text;
 		customer3.Comments = txtComments.Text;
-		customer3.Active = chkIsActive.get_Value();
+		customer3.Active = chkIsActive.Value;
 		customer3.LastModified = DateTime.Now;
-		customer3.LoyaltyCardNo = ((Control)(object)txtLoyaltyCardNo).Text.Trim();
+		customer3.LoyaltyCardNo = txtLoyaltyCardNo.Text.Trim();
 		customer3.EmployeeID = (((int)CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"] == 0) ? 1 : ((int)CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"]));
-		if (!string.IsNullOrEmpty(((Control)(object)txtAddress).Text) && customer3.Address != ((Control)(object)txtAddress).Text)
+		if (!string.IsNullOrEmpty(txtAddress.Text) && customer3.Address != txtAddress.Text)
 		{
-			TravelInfo totalDistanceFromDeliveryAddress = GoogleMethods.GetTotalDistanceFromDeliveryAddress(((Control)(object)txtAddress).Text);
+			TravelInfo totalDistanceFromDeliveryAddress = GoogleMethods.GetTotalDistanceFromDeliveryAddress(txtAddress.Text);
 			if (totalDistanceFromDeliveryAddress.Distance > 0m && totalDistanceFromDeliveryAddress.TravelTime > 0)
 			{
 				customer3.DeliveryTravelDistanceKM = totalDistanceFromDeliveryAddress.Distance;
 				customer3.DeliveryTravelTimeMinutes = totalDistanceFromDeliveryAddress.TravelTime;
 			}
 		}
-		else if (string.IsNullOrEmpty(((Control)(object)txtAddress).Text))
+		else if (string.IsNullOrEmpty(txtAddress.Text))
 		{
 			customer3.DeliveryTravelDistanceKM = null;
 			customer3.DeliveryTravelTimeMinutes = 0;
 		}
-		customer3.Address = ((Control)(object)txtAddress).Text.Trim();
+		customer3.Address = txtAddress.Text.Trim();
 		if (string.IsNullOrEmpty(string_0))
 		{
 			customer3.Synced = false;
@@ -398,7 +397,7 @@ public class frmCustomers : frmMasterForm
 			if (queryable.Count() > 0)
 			{
 				CompanySetup companySetup = gClass.CompanySetups.FirstOrDefault();
-				string item = Resources.Hi + ((Control)(object)txtName).Text + Resources._br_br_Thank_you_for_shopping_ + companySetup.Name + Resources._As_you_have_requested_attache;
+				string item = Resources.Hi + txtName.Text + Resources._br_br_Thank_you_for_shopping_ + companySetup.Name + Resources._As_you_have_requested_attache;
 				foreach (Order item2 in queryable)
 				{
 					item2.CustomerID = int_0;
@@ -415,11 +414,11 @@ public class frmCustomers : frmMasterForm
 						return false;
 					}
 				}
-				if (!string.IsNullOrEmpty(((Control)(object)txtEmail).Text) && btnSave.Text.Contains(Resources.SAVE_SEND))
+				if (!string.IsNullOrEmpty(txtEmail.Text) && btnSave.Text.Contains(Resources.SAVE_SEND))
 				{
 					List<string> list2 = new List<string>();
 					list2.Add(string_0);
-					list2.Add(((Control)(object)txtEmail).Text);
+					list2.Add(txtEmail.Text);
 					list2.Add(item);
 					frmLoading frmLoading = new frmLoading("SENDING EMAIL...", "sendEmail", list2);
 					frmLoading.ShowDialog(this);
@@ -444,7 +443,7 @@ public class frmCustomers : frmMasterForm
 		{
 			new NotificationLabel(this, Resources.Customer_info_saved, NotificationTypes.Success).Show();
 		}
-		((Control)(object)txtSearchBox).Text = customer3.CustomerName;
+		txtSearchBox.Text = customer3.CustomerName;
 		if (int_0 <= 0)
 		{
 			btnOrderEntry.Enabled = false;
@@ -481,9 +480,9 @@ public class frmCustomers : frmMasterForm
 	private void method_4()
 	{
 		lstItems.Items.Clear();
-		string[] array = ((Control)(object)txtSearchBox).Text.Trim().Split(' ');
+		string[] array = txtSearchBox.Text.Trim().Split(' ');
 		List<Customer> list = new List<Customer>();
-		if (((Control)(object)txtSearchBox).Text == Resources.Enter_Search_Criteria_Here || ((Control)(object)txtSearchBox).Text == "")
+		if (txtSearchBox.Text == Resources.Enter_Search_Criteria_Here || txtSearchBox.Text == "")
 		{
 			return;
 		}
@@ -574,8 +573,8 @@ public class frmCustomers : frmMasterForm
 			Order order = gClass2.Orders.Where((Order o) => o.OrderNumber == string_0).FirstOrDefault();
 			if (order != null && order.OrderType != OrderTypes.DineIn)
 			{
-				((Control)(object)txtName).Text = order.CustomerInfoName;
-				((Control)(object)txtCell).Text = order.Customer;
+				txtName.Text = order.CustomerInfoName;
+				txtCell.Text = order.Customer;
 			}
 		}
 	}
@@ -627,45 +626,45 @@ public class frmCustomers : frmMasterForm
 
 	private void method_6(Customer customer_0)
 	{
-		((Control)(object)txtMemberNumber).Text = customer_0.MemberNumber;
-		((Control)(object)txtCell).Text = customer_0.CustomerCell;
-		((Control)(object)txtEmail).Text = customer_0.CustomerEmail;
-		((Control)(object)txtHomePhone).Text = customer_0.CustomerHome;
-		((Control)(object)txtName).Text = customer_0.CustomerName;
+		txtMemberNumber.Text = customer_0.MemberNumber;
+		txtCell.Text = customer_0.CustomerCell;
+		txtEmail.Text = customer_0.CustomerEmail;
+		txtHomePhone.Text = customer_0.CustomerHome;
+		txtName.Text = customer_0.CustomerName;
 		txtComments.Text = customer_0.Comments;
-		chkIsActive.set_Value(customer_0.Active);
-		((Control)(object)txtAddress).Text = customer_0.Address;
-		((Control)(object)txtLoyaltyCardNo).Text = customer_0.LoyaltyCardNo;
+		chkIsActive.Value = customer_0.Active;
+		txtAddress.Text = customer_0.Address;
+		txtLoyaltyCardNo.Text = customer_0.LoyaltyCardNo;
 		btnCancel.Enabled = true;
 	}
 
 	private void method_7()
 	{
-		((Control)(object)txtMemberNumber).Text = string.Empty;
-		((Control)(object)txtCell).Text = string.Empty;
-		((Control)(object)txtEmail).Text = string.Empty;
-		((Control)(object)txtHomePhone).Text = string.Empty;
-		((Control)(object)txtName).Text = string.Empty;
+		txtMemberNumber.Text = string.Empty;
+		txtCell.Text = string.Empty;
+		txtEmail.Text = string.Empty;
+		txtHomePhone.Text = string.Empty;
+		txtName.Text = string.Empty;
 		txtComments.Text = string.Empty;
-		((Control)(object)txtAddress).Text = string.Empty;
-		((Control)(object)txtLoyaltyCardNo).Text = string.Empty;
+		txtAddress.Text = string.Empty;
+		txtLoyaltyCardNo.Text = string.Empty;
 	}
 
 	private void txtSearchBox_Enter(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSearchBox).Text == Resources.Enter_Search_Criteria_Here)
+		if (txtSearchBox.Text == Resources.Enter_Search_Criteria_Here)
 		{
-			((Control)(object)txtSearchBox).ForeColor = HelperMethods.GetColor("Black");
-			((Control)(object)txtSearchBox).Text = string.Empty;
+			txtSearchBox.ForeColor = HelperMethods.GetColor("Black");
+			txtSearchBox.Text = string.Empty;
 		}
 	}
 
 	private void txtSearchBox_Leave(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSearchBox).Text == string.Empty)
+		if (txtSearchBox.Text == string.Empty)
 		{
-			((Control)(object)txtSearchBox).ForeColor = HelperMethods.GetColor("Gray");
-			((Control)(object)txtSearchBox).Text = Resources.Enter_Search_Criteria_Here;
+			txtSearchBox.ForeColor = HelperMethods.GetColor("Gray");
+			txtSearchBox.Text = Resources.Enter_Search_Criteria_Here;
 		}
 	}
 
@@ -680,7 +679,7 @@ public class frmCustomers : frmMasterForm
 
 	private void txtSearchBox_TextChanged(object sender, EventArgs e)
 	{
-		if (((Control)(object)txtSearchBox).Text == "")
+		if (txtSearchBox.Text == "")
 		{
 			btnSearch.Enabled = false;
 		}
@@ -693,10 +692,10 @@ public class frmCustomers : frmMasterForm
 	private void btnShowKeyboard_MemberNumber_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Member_No, 0, 128, ((Control)(object)txtMemberNumber).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Member_No, 0, 128, txtMemberNumber.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtMemberNumber).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtMemberNumber.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -704,10 +703,10 @@ public class frmCustomers : frmMasterForm
 	private void btnShowKeyboard_Name_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Name0, 0, 50, ((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Name0, 0, 50, txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -715,10 +714,10 @@ public class frmCustomers : frmMasterForm
 	private void btnShowKeyboard_Cell_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Cellphone_No, 0, 10, ((Control)(object)txtCell).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Cellphone_No, 0, 10, txtCell.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtCell).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtCell.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -726,10 +725,10 @@ public class frmCustomers : frmMasterForm
 	private void btnShowKeyboard_HomePhone_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Home_Phone_No, 0, 10, ((Control)(object)txtHomePhone).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Home_Phone_No, 0, 10, txtHomePhone.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtHomePhone).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtHomePhone.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -737,10 +736,10 @@ public class frmCustomers : frmMasterForm
 	private void btnShowKeyboard_Email_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Email, 1, 128, ((Control)(object)txtEmail).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Email, 1, 128, txtEmail.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtEmail).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtEmail.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -748,10 +747,10 @@ public class frmCustomers : frmMasterForm
 	private void btnShowKeyboard_SearchBox_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Search0, 0, 50, ((Control)(object)txtSearchBox).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Search0, 0, 50, txtSearchBox.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtSearchBox).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtSearchBox.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			method_4();
 		}
 		base.DialogResult = DialogResult.None;
@@ -895,10 +894,10 @@ public class frmCustomers : frmMasterForm
 	private void btnShowKeyboard_LoyaltyCardNo_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Loyalty Card #", 0, 30, ((Control)(object)txtLoyaltyCardNo).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Loyalty Card #", 0, 30, txtLoyaltyCardNo.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtLoyaltyCardNo).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtLoyaltyCardNo.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -1014,10 +1013,10 @@ public class frmCustomers : frmMasterForm
 	private void btnShowKeyboard_Address_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Address, 0, 255, ((Control)(object)txtAddress).Text, multiline: true);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_Address, 0, 255, txtAddress.Text, multiline: true);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtAddress).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtAddress.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -1045,10 +1044,10 @@ public class frmCustomers : frmMasterForm
 		}
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.OrderEntry();
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.ItemSelector();
-		string text = ((Control)(object)txtCell).Text;
+		string text = txtCell.Text;
 		if (text == string.Empty)
 		{
-			text = ((Control)(object)txtHomePhone).Text;
+			text = txtHomePhone.Text;
 		}
 		string pickUp = OrderTypes.PickUp;
 		string[] itemList = new string[4]
@@ -1064,7 +1063,7 @@ public class frmCustomers : frmMasterForm
 			pickUp = MemoryLoadedObjects.ItemSelector.SingleSelectedItem;
 			if (pickUp == OrderTypes.PickUp || pickUp == OrderTypes.Delivery)
 			{
-				if (string.IsNullOrEmpty(((Control)(object)txtName).Text.Trim()))
+				if (string.IsNullOrEmpty(txtName.Text.Trim()))
 				{
 					new NotificationLabel(this, "Please add a name.", NotificationTypes.Warning);
 					base.DialogResult = DialogResult.None;
@@ -1079,13 +1078,13 @@ public class frmCustomers : frmMasterForm
 			}
 			if (pickUp == OrderTypes.DineIn && SettingsHelper.GetSettingValueByKey("restaurant_mode") == "Dine In")
 			{
-				frmTableChange frmTableChange2 = new frmTableChange("Select Table", 1, text, pickUp, ((Control)(object)txtName).Text, showBtnToGo: false);
+				frmTableChange frmTableChange2 = new frmTableChange("Select Table", 1, text, pickUp, txtName.Text, showBtnToGo: false);
 				if (frmTableChange2.ShowDialog(this) == DialogResult.OK)
 				{
 					text = "Table " + frmTableChange2.OrderTable;
 				}
 			}
-			MemoryLoadedObjects.OrderEntry.LoadFormData(null, text, pickUp, 1, int_0, ((Control)(object)txtName).Text, ((Control)(object)txtAddress).Text, resetComboId: true, 1);
+			MemoryLoadedObjects.OrderEntry.LoadFormData(null, text, pickUp, 1, int_0, txtName.Text, txtAddress.Text, resetComboId: true, 1);
 			MemoryLoadedObjects.OrderEntry.Show();
 		}
 		else
@@ -1242,45 +1241,6 @@ public class frmCustomers : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0075: Unknown result type (might be due to invalid IL or missing references)
-		//IL_007f: Expected O, but got Unknown
-		//IL_0096: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00a0: Expected O, but got Unknown
-		//IL_011a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0124: Expected O, but got Unknown
-		//IL_0130: Unknown result type (might be due to invalid IL or missing references)
-		//IL_013a: Expected O, but got Unknown
-		//IL_013b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0145: Expected O, but got Unknown
-		//IL_0146: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0150: Expected O, but got Unknown
-		//IL_0151: Unknown result type (might be due to invalid IL or missing references)
-		//IL_015b: Expected O, but got Unknown
-		//IL_015c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0166: Expected O, but got Unknown
-		//IL_0167: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0171: Expected O, but got Unknown
-		//IL_0c67: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c88: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e66: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e87: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14a8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14c9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_155b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_157c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_160e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_162f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_16c1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_16e2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1774: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1795: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1807: Unknown result type (might be due to invalid IL or missing references)
-		//IL_181f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1840: Unknown result type (might be due to invalid IL or missing references)
-		//IL_186d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_189a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_18c7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_18ee: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmCustomers));
 		lblWIndowTitle = new Label();
 		pnlMain = new Panel();
@@ -1363,10 +1323,10 @@ public class frmCustomers : frmMasterForm
 		pnlMain.Controls.Add(btnOrderEntry);
 		pnlMain.Controls.Add(btnCheckBalance);
 		pnlMain.Controls.Add(lblTrainingMode);
-		pnlMain.Controls.Add((Control)(object)txtLoyaltyCardNo);
+		pnlMain.Controls.Add(txtLoyaltyCardNo);
 		pnlMain.Controls.Add(btnShowKeyboard_LoyaltyCardNo);
 		pnlMain.Controls.Add(label5);
-		pnlMain.Controls.Add((Control)(object)txtAddress);
+		pnlMain.Controls.Add(txtAddress);
 		pnlMain.Controls.Add(btnShowKeyboard_Address);
 		pnlMain.Controls.Add(label4);
 		pnlMain.Controls.Add(btnPreview);
@@ -1374,14 +1334,14 @@ public class frmCustomers : frmMasterForm
 		pnlMain.Controls.Add(lstOrder);
 		pnlMain.Controls.Add(label2);
 		pnlMain.Controls.Add(label1);
-		pnlMain.Controls.Add((Control)(object)txtSearchBox);
+		pnlMain.Controls.Add(txtSearchBox);
 		pnlMain.Controls.Add(btnShowKeyboard_SearchBox);
-		pnlMain.Controls.Add((Control)(object)txtEmail);
-		pnlMain.Controls.Add((Control)(object)txtHomePhone);
-		pnlMain.Controls.Add((Control)(object)txtCell);
-		pnlMain.Controls.Add((Control)(object)txtName);
-		pnlMain.Controls.Add((Control)(object)txtMemberNumber);
-		pnlMain.Controls.Add((Control)(object)chkIsActive);
+		pnlMain.Controls.Add(txtEmail);
+		pnlMain.Controls.Add(txtHomePhone);
+		pnlMain.Controls.Add(txtCell);
+		pnlMain.Controls.Add(txtName);
+		pnlMain.Controls.Add(txtMemberNumber);
+		pnlMain.Controls.Add(chkIsActive);
 		pnlMain.Controls.Add(lblSearchForMembers);
 		pnlMain.Controls.Add(btnSearch);
 		pnlMain.Controls.Add(btnShowKeyboard_Email);
@@ -1465,13 +1425,13 @@ public class frmCustomers : frmMasterForm
 		lblTrainingMode.ForeColor = Color.White;
 		lblTrainingMode.Name = "lblTrainingMode";
 		componentResourceManager.ApplyResources(txtLoyaltyCardNo, "txtLoyaltyCardNo");
-		((Control)(object)txtLoyaltyCardNo).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtLoyaltyCardNo).Name = "txtLoyaltyCardNo";
-		((RadElement)((RadControl)txtLoyaltyCardNo).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtLoyaltyCardNo).TextChanged += txtLoyaltyCardNo_TextChanged;
-		((Control)(object)txtLoyaltyCardNo).Click += txtComments_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtLoyaltyCardNo).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtLoyaltyCardNo).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtLoyaltyCardNo.ForeColor = Color.FromArgb(40, 40, 40);
+		txtLoyaltyCardNo.Name = "txtLoyaltyCardNo";
+		txtLoyaltyCardNo.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtLoyaltyCardNo.TextChanged += txtLoyaltyCardNo_TextChanged;
+		txtLoyaltyCardNo.Click += txtComments_Click;
+		((RadTextBoxControlElement)txtLoyaltyCardNo.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtLoyaltyCardNo.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(btnShowKeyboard_LoyaltyCardNo, "btnShowKeyboard_LoyaltyCardNo");
 		btnShowKeyboard_LoyaltyCardNo.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_LoyaltyCardNo.DialogResult = DialogResult.OK;
@@ -1489,14 +1449,14 @@ public class frmCustomers : frmMasterForm
 		label5.Tag = "5,5";
 		label5.Click += label5_Click;
 		componentResourceManager.ApplyResources(txtAddress, "txtAddress");
-		((Control)(object)txtAddress).ForeColor = Color.FromArgb(40, 40, 40);
-		txtAddress.set_Multiline(true);
-		((Control)(object)txtAddress).Name = "txtAddress";
-		((RadElement)((RadControl)txtAddress).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtAddress).TextChanged += txtAddress_TextChanged;
-		((Control)(object)txtAddress).Click += txtComments_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtAddress).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtAddress).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtAddress.ForeColor = Color.FromArgb(40, 40, 40);
+		txtAddress.Multiline = true;
+		txtAddress.Name = "txtAddress";
+		txtAddress.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtAddress.TextChanged += txtAddress_TextChanged;
+		txtAddress.Click += txtComments_Click;
+		((RadTextBoxControlElement)txtAddress.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtAddress.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(btnShowKeyboard_Address, "btnShowKeyboard_Address");
 		btnShowKeyboard_Address.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Address.DialogResult = DialogResult.OK;
@@ -1556,14 +1516,14 @@ public class frmCustomers : frmMasterForm
 		label1.ForeColor = Color.White;
 		label1.Name = "label1";
 		label1.Tag = "5,5";
-		((Control)(object)txtSearchBox).BackColor = Color.White;
+		txtSearchBox.BackColor = Color.White;
 		componentResourceManager.ApplyResources(txtSearchBox, "txtSearchBox");
-		((Control)(object)txtSearchBox).ForeColor = Color.Black;
-		((Control)(object)txtSearchBox).Name = "txtSearchBox";
-		((Control)(object)txtSearchBox).TextChanged += txtSearchBox_TextChanged;
-		((Control)(object)txtSearchBox).Click += txtComments_Click;
-		((Control)(object)txtSearchBox).Enter += txtSearchBox_Enter;
-		((Control)(object)txtSearchBox).Leave += txtSearchBox_Leave;
+		txtSearchBox.ForeColor = Color.Black;
+		txtSearchBox.Name = "txtSearchBox";
+		txtSearchBox.TextChanged += txtSearchBox_TextChanged;
+		txtSearchBox.Click += txtComments_Click;
+		txtSearchBox.Enter += txtSearchBox_Enter;
+		txtSearchBox.Leave += txtSearchBox_Leave;
 		btnShowKeyboard_SearchBox.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_SearchBox.DialogResult = DialogResult.OK;
 		btnShowKeyboard_SearchBox.FlatAppearance.BorderColor = Color.Black;
@@ -1575,52 +1535,52 @@ public class frmCustomers : frmMasterForm
 		btnShowKeyboard_SearchBox.UseVisualStyleBackColor = false;
 		btnShowKeyboard_SearchBox.Click += btnShowKeyboard_SearchBox_Click;
 		componentResourceManager.ApplyResources(txtEmail, "txtEmail");
-		((Control)(object)txtEmail).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtEmail).Name = "txtEmail";
-		((RadElement)((RadControl)txtEmail).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtEmail).Click += txtComments_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtEmail).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtEmail).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtEmail.ForeColor = Color.FromArgb(40, 40, 40);
+		txtEmail.Name = "txtEmail";
+		txtEmail.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtEmail.Click += txtComments_Click;
+		((RadTextBoxControlElement)txtEmail.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtEmail.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtHomePhone, "txtHomePhone");
-		((Control)(object)txtHomePhone).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtHomePhone).Name = "txtHomePhone";
-		((RadElement)((RadControl)txtHomePhone).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtHomePhone).Click += txtComments_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtHomePhone).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtHomePhone).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtHomePhone.ForeColor = Color.FromArgb(40, 40, 40);
+		txtHomePhone.Name = "txtHomePhone";
+		txtHomePhone.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtHomePhone.Click += txtComments_Click;
+		((RadTextBoxControlElement)txtHomePhone.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtHomePhone.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtCell, "txtCell");
-		((Control)(object)txtCell).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCell).Name = "txtCell";
-		((RadElement)((RadControl)txtCell).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtCell).Click += txtComments_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCell).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCell).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCell.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCell.Name = "txtCell";
+		txtCell.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtCell.Click += txtComments_Click;
+		((RadTextBoxControlElement)txtCell.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtCell.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtName, "txtName");
-		((Control)(object)txtName).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtName).Click += txtComments_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.ForeColor = Color.FromArgb(40, 40, 40);
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtName.Click += txtComments_Click;
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(txtMemberNumber, "txtMemberNumber");
-		((Control)(object)txtMemberNumber).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtMemberNumber).Name = "txtMemberNumber";
-		((RadElement)((RadControl)txtMemberNumber).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtMemberNumber).Click += txtComments_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtMemberNumber).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtMemberNumber).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtMemberNumber.ForeColor = Color.FromArgb(40, 40, 40);
+		txtMemberNumber.Name = "txtMemberNumber";
+		txtMemberNumber.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtMemberNumber.Click += txtComments_Click;
+		((RadTextBoxControlElement)txtMemberNumber.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtMemberNumber.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(chkIsActive, "chkIsActive");
-		((Control)(object)chkIsActive).Name = "chkIsActive";
-		chkIsActive.set_OffText("NO");
-		chkIsActive.set_OnText("YES");
-		chkIsActive.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)chkIsActive).GetChildAt(0)).set_ThumbOffset(52);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkIsActive).GetChildAt(0)).set_BorderWidth(1f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkIsActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkIsActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkIsActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkIsActive).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkIsActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkIsActive.Name = "chkIsActive";
+		chkIsActive.OffText = "NO";
+		chkIsActive.OnText = "YES";
+		chkIsActive.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)chkIsActive.GetChildAt(0)).ThumbOffset = 52;
+		((RadToggleSwitchElement)chkIsActive.GetChildAt(0)).BorderWidth = 1f;
+		((ToggleSwitchPartElement)chkIsActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkIsActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkIsActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkIsActive.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkIsActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		lblSearchForMembers.BackColor = Color.FromArgb(147, 101, 184);
 		componentResourceManager.ApplyResources(lblSearchForMembers, "lblSearchForMembers");
 		lblSearchForMembers.ForeColor = Color.White;

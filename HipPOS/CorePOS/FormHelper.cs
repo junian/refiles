@@ -98,36 +98,36 @@ public class FormHelper
 		{
 			itemIdentifier = "MainItem";
 		}
-		view.set_ForeColor(Color.Black);
+		view.ForeColor = Color.Black;
 		if (itemIdentifier == "MainItem")
 		{
-			view.set_Font(new Font("Microsoft Sans Serif", fontSize, FontStyle.Bold));
+			view.Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Bold);
 			return;
 		}
 		_003C_003Ec__DisplayClass6_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass6_0();
 		decimal num = 1m;
-		CS_0024_003C_003E8__locals0.comboID = Convert.ToInt16(view.get_SubItems().get_Item(5).ToString());
+		CS_0024_003C_003E8__locals0.comboID = Convert.ToInt16(view.SubItems[5].ToString());
 		if (CS_0024_003C_003E8__locals0.comboID > 0)
 		{
-			ListViewDataItem val = ((IEnumerable<ListViewDataItem>)rlv.get_Items()).Where((ListViewDataItem a) => a.get_SubItems().get_Item(5).ToString() == CS_0024_003C_003E8__locals0.comboID.ToString()).FirstOrDefault();
-			num = ((val == null) ? 1m : ((val.get_Item(0).ToString() == "") ? 1m : MathHelper.FractionToDecimal(val.get_Item(0).ToString())));
+			ListViewDataItem listViewDataItem = rlv.Items.Where((ListViewDataItem a) => a.SubItems[5].ToString() == CS_0024_003C_003E8__locals0.comboID.ToString()).FirstOrDefault();
+			num = ((listViewDataItem == null) ? 1m : ((listViewDataItem[0].ToString() == "") ? 1m : MathHelper.FractionToDecimal(listViewDataItem[0].ToString())));
 		}
-		string fraction = ((view.get_Item(0).ToString() == "") ? "1" : view.get_Item(0).ToString());
-		if (view.get_Item(3).ToString() == "0.00" && view.get_Item(0).ToString() == "1" && num >= MathHelper.FractionToDecimal(fraction))
+		string fraction = ((view[0].ToString() == "") ? "1" : view[0].ToString());
+		if (view[3].ToString() == "0.00" && view[0].ToString() == "1" && num >= MathHelper.FractionToDecimal(fraction))
 		{
-			view.set_Item(0, (object)"");
-			view.set_Item(2, (object)"");
-			view.set_Item(3, (object)"");
+			view[0] = "";
+			view[2] = "";
+			view[3] = "";
 		}
-		else if (view.get_Item(3).ToString() == "0.00")
+		else if (view[3].ToString() == "0.00")
 		{
-			view.set_Item(2, (object)"");
-			view.set_Item(3, (object)"");
+			view[2] = "";
+			view[3] = "";
 		}
-		view.set_Font(new Font("Microsoft Sans Serif", fontSize - 1f, FontStyle.Regular));
+		view.Font = new Font("Microsoft Sans Serif", fontSize - 1f, FontStyle.Regular);
 		if (itemIdentifier == "OptionItem")
 		{
-			view.set_ForeColor(Color.DarkRed);
+			view.ForeColor = Color.DarkRed;
 		}
 	}
 
@@ -177,7 +177,7 @@ public class FormHelper
 
 	public bool addItemsToRadList(RadListView lstItems, string orderNumber, frmOrderEntry frm = null, float fontSize = 10f)
 	{
-		lstItems.get_Items().Clear();
+		lstItems.Items.Clear();
 		if (string.IsNullOrEmpty(orderNumber))
 		{
 			return false;
@@ -212,7 +212,7 @@ public class FormHelper
 					{
 						num++;
 					}
-					subAddItemsToListTelerik(lstItems, CS_0024_003C_003E8__locals0.order.Qty.ToString(), "1", CS_0024_003C_003E8__locals0.order.ItemName + ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.order.Options)) ? (" => " + CS_0024_003C_003E8__locals0.order.Options) : string.Empty), CS_0024_003C_003E8__locals0.order.ItemSellPrice.ToString("0.00"), CS_0024_003C_003E8__locals0.order.ItemID, CS_0024_003C_003E8__locals0.order.ComboID, num, orderId, CS_0024_003C_003E8__locals0.order.Void, instructions, batchId, CS_0024_003C_003E8__locals0.order.ItemSellPrice, CS_0024_003C_003E8__locals0.order.OrderOnHoldTime, frm, CS_0024_003C_003E8__locals0.order.ItemOptionId.HasValue ? CS_0024_003C_003E8__locals0.order.ItemOptionId.Value : 0, fontSize, CS_0024_003C_003E8__locals0.order.ItemIdentifier, lstItems.get_Items().get_Count(), 0, CS_0024_003C_003E8__locals0.order.Discount, CS_0024_003C_003E8__locals0.order.DiscountDesc, CS_0024_003C_003E8__locals0.order.OverridePrice);
+					subAddItemsToListTelerik(lstItems, CS_0024_003C_003E8__locals0.order.Qty.ToString(), "1", CS_0024_003C_003E8__locals0.order.ItemName + ((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.order.Options)) ? (" => " + CS_0024_003C_003E8__locals0.order.Options) : string.Empty), CS_0024_003C_003E8__locals0.order.ItemSellPrice.ToString("0.00"), CS_0024_003C_003E8__locals0.order.ItemID, CS_0024_003C_003E8__locals0.order.ComboID, num, orderId, CS_0024_003C_003E8__locals0.order.Void, instructions, batchId, CS_0024_003C_003E8__locals0.order.ItemSellPrice, CS_0024_003C_003E8__locals0.order.OrderOnHoldTime, frm, CS_0024_003C_003E8__locals0.order.ItemOptionId.HasValue ? CS_0024_003C_003E8__locals0.order.ItemOptionId.Value : 0, fontSize, CS_0024_003C_003E8__locals0.order.ItemIdentifier, lstItems.Items.Count, 0, CS_0024_003C_003E8__locals0.order.Discount, CS_0024_003C_003E8__locals0.order.DiscountDesc, CS_0024_003C_003E8__locals0.order.OverridePrice);
 					continue;
 				}
 				return result;
@@ -414,8 +414,6 @@ public class FormHelper
 
 	public bool subAddItemsToListTelerik(RadListView list, string mainItemQty, string optionItemQty, string itemname, string itemprice, int itemID, int comboID, int optionComboId, string orderId, bool Void, string instructions, int batchId, decimal originalPrice, int orderOnHold, frmOrderEntry frm, int itemOptionId, float fontSize = 10f, string itemIdentifier = "MainItem", int index = -1, int promoId = 0, decimal discount = 0m, string discountDesc = null, decimal? overridePrice = null, ListViewItem fromListViewItem = null)
 	{
-		//IL_0641: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0648: Expected O, but got Unknown
 		decimal num = MathHelper.FractionToDecimal(mainItemQty);
 		decimal num2 = MathHelper.FractionToDecimal(optionItemQty);
 		decimal num3 = num * num2;
@@ -425,19 +423,17 @@ public class FormHelper
 		if (orderId.Contains("|"))
 		{
 			string text = orderId.Split('|')[1];
-			foreach (ListViewDataItem item in list.get_Items())
+			foreach (ListViewDataItem item in list.Items)
 			{
-				if (item.get_SubItems().get_Item(6).ToString()
-					.Contains("|"))
+				if (item.SubItems[6].ToString().Contains("|"))
 				{
-					if (!(item.get_SubItems().get_Item(6).ToString()
-						.Split('|')[1] == text) && !(item.get_SubItems().get_Item(6).ToString() == text))
+					if (!(item.SubItems[6].ToString().Split('|')[1] == text) && !(item.SubItems[6].ToString() == text))
 					{
 						continue;
 					}
-					if (!item.get_Font().Strikeout)
+					if (!item.Font.Strikeout)
 					{
-						num3 += MathHelper.FractionToDecimal(item.get_SubItems().get_Item(0).ToString());
+						num3 += MathHelper.FractionToDecimal(item.SubItems[0].ToString());
 						if (num3 == 0.9999m)
 						{
 							num3 = 1m;
@@ -450,18 +446,17 @@ public class FormHelper
 						{
 							array[0] = MathHelper.RemoveTrailingZeros(num3.ToString());
 						}
-						item.get_SubItems().set_Item(0, (object)array[0]);
+						item.SubItems[0] = array[0];
 						num4 = Convert.ToDecimal(itemprice) * num3;
-						item.get_SubItems().set_Item(3, (object)num4.ToString("0.00"));
+						item.SubItems[3] = num4.ToString("0.00");
 						ChangeOrderEntryLVCellByIdentifier(list, item, fontSize, itemIdentifier);
 						return true;
 					}
 					num5 = comboID + 1;
 				}
-				else if (item.get_SubItems().get_Item(6).ToString()
-					.Contains("|") || !(item.get_SubItems().get_Item(6).ToString() != text))
+				else if (item.SubItems[6].ToString().Contains("|") || !(item.SubItems[6].ToString() != text))
 				{
-					num3 += MathHelper.FractionToDecimal(item.get_SubItems().get_Item(0).ToString());
+					num3 += MathHelper.FractionToDecimal(item.SubItems[0].ToString());
 					if (num3 == 0.9999m)
 					{
 						num3 = 1m;
@@ -474,9 +469,9 @@ public class FormHelper
 					{
 						array[0] = MathHelper.RemoveTrailingZeros(num3.ToString());
 					}
-					item.get_SubItems().set_Item(0, (object)array[0]);
+					item.SubItems[0] = array[0];
 					num4 = Convert.ToDecimal(itemprice) * num3;
-					item.get_SubItems().set_Item(3, (object)num4.ToString("0.00"));
+					item.SubItems[3] = num4.ToString("0.00");
 					ChangeOrderEntryLVCellByIdentifier(list, item, fontSize, itemIdentifier);
 					return true;
 				}
@@ -484,23 +479,21 @@ public class FormHelper
 		}
 		else
 		{
-			foreach (ListViewDataItem item2 in list.get_Items())
+			foreach (ListViewDataItem item2 in list.Items)
 			{
-				string text2 = item2.get_SubItems().get_Item(6).ToString();
-				if (item2.get_SubItems().get_Item(6).ToString()
-					.Contains(orderId) && item2.get_Font() != null)
+				string text2 = item2.SubItems[6].ToString();
+				if (item2.SubItems[6].ToString().Contains(orderId) && item2.Font != null)
 				{
-					_ = item2.get_Font().Strikeout;
+					_ = item2.Font.Strikeout;
 				}
-				if (!string.IsNullOrEmpty(orderId) && item2.get_SubItems().get_Item(6).ToString()
-					.Contains(orderId) && fromListViewItem != null)
+				if (!string.IsNullOrEmpty(orderId) && item2.SubItems[6].ToString().Contains(orderId) && fromListViewItem != null)
 				{
 					if (MathHelper.FractionToDecimal(fromListViewItem.SubItems[0].Text) == num3)
 					{
-						item2.get_SubItems().set_Item(6, (object)orderId);
+						item2.SubItems[6] = orderId;
 						fromListViewItem.SubItems[6].Text = text2;
 					}
-					num3 += MathHelper.FractionToDecimal(item2.get_SubItems().get_Item(0).ToString());
+					num3 += MathHelper.FractionToDecimal(item2.SubItems[0].ToString());
 					if (num3 == 0.9999m)
 					{
 						num3 = 1m;
@@ -513,9 +506,9 @@ public class FormHelper
 					{
 						array[0] = MathHelper.RemoveTrailingZeros(num3.ToString());
 					}
-					item2.get_SubItems().set_Item(0, (object)array[0]);
+					item2.SubItems[0] = array[0];
 					num4 = Convert.ToDecimal(itemprice) * num3;
-					item2.get_SubItems().set_Item(3, (object)num4.ToString("0.00"));
+					item2.SubItems[3] = num4.ToString("0.00");
 					ChangeOrderEntryLVCellByIdentifier(list, item2, fontSize, itemIdentifier);
 					return true;
 				}
@@ -571,22 +564,21 @@ public class FormHelper
 		array[19] = DateTime.Now.ToString();
 		array[20] = (overridePrice.HasValue ? overridePrice.Value.ToString() : "");
 		array[21] = false.ToString();
-		ListViewDataItem val = new ListViewDataItem("", array);
+		ListViewDataItem listViewDataItem = new ListViewDataItem("", array);
 		if (MemoryLoadedObjects.OptionScreen != null && MemoryLoadedObjects.OptionScreen.courseGroup != null && SettingsHelper.GetSettingValueByKey("course_selection") == "ON")
 		{
-			val.set_Group(MemoryLoadedObjects.OptionScreen.courseGroup);
+			listViewDataItem.Group = MemoryLoadedObjects.OptionScreen.courseGroup;
 		}
 		if (index == -1)
 		{
-			index = list.get_Items().get_Count() - 1;
+			index = list.Items.Count - 1;
 		}
-		list.get_Items().Insert(index, val);
-		ChangeOrderEntryLVCellByIdentifier(list, list.get_Items().get_Item(index), fontSize, itemIdentifier);
+		list.Items.Insert(index, listViewDataItem);
+		ChangeOrderEntryLVCellByIdentifier(list, list.Items[index], fontSize, itemIdentifier);
 		if (Void)
 		{
-			list.get_Items().get_Item(index).set_ForeColor(Color.Red);
-			list.get_Items().get_Item(index).set_Font(new Font(list.get_Items().get_Item(index - 1).get_Font(), list.get_Items().get_Item(index - 1).get_Font()
-				.Style | FontStyle.Strikeout));
+			list.Items[index].ForeColor = Color.Red;
+			list.Items[index].Font = new Font(list.Items[index - 1].Font, list.Items[index - 1].Font.Style | FontStyle.Strikeout);
 		}
 		return true;
 	}
@@ -608,69 +600,63 @@ public class FormHelper
 
 	public void subAddItemsToStationListTelerik(RadListView rv, string time, string orderNumber, string orderType, string customer, string qty, string itemCourse, bool Void, string item, string orderid, Color rowColor, Color fontColor, float fontSize = 10f)
 	{
-		//IL_0066: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006d: Expected O, but got Unknown
-		Font font = new Font(((Control)(object)rv).Font.FontFamily, fontSize, FontStyle.Bold);
+		Font font = new Font(rv.Font.FontFamily, fontSize, FontStyle.Bold);
 		Color foreColor = fontColor;
 		if (Void)
 		{
 			foreColor = Color.Red;
 			font = new Font(font, font.Style | FontStyle.Strikeout);
 		}
-		ListViewDataItem val = new ListViewDataItem("", new string[8] { time, orderNumber, orderType, customer, qty, itemCourse, item, orderid });
-		val.set_Font(font);
-		val.set_BackColor(rowColor);
-		val.set_ForeColor(foreColor);
-		rv.get_Items().Add(val);
+		ListViewDataItem listViewDataItem = new ListViewDataItem("", new string[8] { time, orderNumber, orderType, customer, qty, itemCourse, item, orderid });
+		listViewDataItem.Font = font;
+		listViewDataItem.BackColor = rowColor;
+		listViewDataItem.ForeColor = foreColor;
+		rv.Items.Add(listViewDataItem);
 	}
 
 	public void subAddItemsToStationChitTelerik(RadListView rv, string time, string qty, string item, bool Void, string itemIdentifier = "MainItem", float fontSize = 12f)
 	{
-		//IL_0046: Unknown result type (might be due to invalid IL or missing references)
-		//IL_004d: Expected O, but got Unknown
 		if (string.IsNullOrEmpty(itemIdentifier))
 		{
 			itemIdentifier = "MainItem";
 		}
-		Font font = new Font(((Control)(object)rv).Font.FontFamily, fontSize, FontStyle.Regular);
+		Font font = new Font(rv.Font.FontFamily, fontSize, FontStyle.Regular);
 		Color black = Color.Black;
 		Color white = Color.White;
-		ListViewDataItem val = new ListViewDataItem("", new string[2] { qty, item });
-		val.set_BackColor(white);
-		val.set_ForeColor(black);
+		ListViewDataItem listViewDataItem = new ListViewDataItem("", new string[2] { qty, item });
+		listViewDataItem.BackColor = white;
+		listViewDataItem.ForeColor = black;
 		if (itemIdentifier == "MainItem")
 		{
-			val.set_Font(new Font("Microsoft Sans Serif", fontSize, FontStyle.Bold));
+			listViewDataItem.Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Bold);
 		}
 		else
 		{
-			val.set_Item(0, (val.get_SubItems().get_Item(0).ToString() == "1") ? "" : val.get_SubItems().get_Item(0));
-			val.set_Font(new Font("Microsoft Sans Serif", fontSize - 1f, FontStyle.Regular));
+			listViewDataItem[0] = ((listViewDataItem.SubItems[0].ToString() == "1") ? "" : listViewDataItem.SubItems[0]);
+			listViewDataItem.Font = new Font("Microsoft Sans Serif", fontSize - 1f, FontStyle.Regular);
 			if (itemIdentifier == "OptionItem")
 			{
-				val.set_ForeColor(Color.DarkRed);
+				listViewDataItem.ForeColor = Color.DarkRed;
 			}
 		}
 		if (Void)
 		{
-			val.set_ForeColor(Color.Red);
-			val.set_Font(new Font(font, font.Style | FontStyle.Strikeout));
+			listViewDataItem.ForeColor = Color.Red;
+			listViewDataItem.Font = new Font(font, font.Style | FontStyle.Strikeout);
 		}
-		rv.get_Items().Add(val);
+		rv.Items.Add(listViewDataItem);
 	}
 
 	public void subAddItemsToTakeoutChitTelerik(RadListView rv, string time, string qty, string item, string price, short comboId, bool Void, string itemIdentifier = "MainItem", float fontSize = 12f)
 	{
-		//IL_005a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0061: Expected O, but got Unknown
 		if (string.IsNullOrEmpty(itemIdentifier))
 		{
 			itemIdentifier = "MainItem";
 		}
-		Font font = new Font(((Control)(object)rv).Font.FontFamily, fontSize, FontStyle.Regular);
+		Font font = new Font(rv.Font.FontFamily, fontSize, FontStyle.Regular);
 		Color black = Color.Black;
 		Color white = Color.White;
-		ListViewDataItem val = new ListViewDataItem("", new string[6]
+		ListViewDataItem listViewDataItem = new ListViewDataItem("", new string[6]
 		{
 			qty,
 			item,
@@ -679,11 +665,11 @@ public class FormHelper
 			null,
 			comboId.ToString()
 		});
-		val.set_Font(font);
-		val.set_BackColor(white);
-		val.set_ForeColor(black);
-		ChangeOrderEntryLVCellByIdentifier(rv, val, fontSize, itemIdentifier);
-		rv.get_Items().Add(val);
+		listViewDataItem.Font = font;
+		listViewDataItem.BackColor = white;
+		listViewDataItem.ForeColor = black;
+		ChangeOrderEntryLVCellByIdentifier(rv, listViewDataItem, fontSize, itemIdentifier);
+		rv.Items.Add(listViewDataItem);
 	}
 
 	public void addReservationsToList(ListView lstReservations, DateTime? date = null)
@@ -735,11 +721,11 @@ public class FormHelper
 
 	public void validateNumberOnlyTextBox(RadTextBoxControl txtbox)
 	{
-		if (Regex.IsMatch(((Control)(object)txtbox).Text, "[^0-9]"))
+		if (Regex.IsMatch(txtbox.Text, "[^0-9]"))
 		{
 			MessageBox.Show(Resources.Please_enter_only_numbers);
-			((Control)(object)txtbox).Text = ((Control)(object)txtbox).Text.Remove(((Control)(object)txtbox).Text.Length - 1);
-			txtbox.set_SelectionStart(((Control)(object)txtbox).Text.Length);
+			txtbox.Text = txtbox.Text.Remove(txtbox.Text.Length - 1);
+			txtbox.SelectionStart = txtbox.Text.Length;
 		}
 	}
 

@@ -12,7 +12,6 @@ using CorePOS.Business.Objects;
 using CorePOS.Data;
 using CorePOS.Data.Properties;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -256,9 +255,9 @@ public class frmAdminViewOrders : frmMasterForm
 		lstVoidOrders.Items.Clear();
 		if (string_2 == Class22.string_0)
 		{
-			((Control)(object)txtSearchInfo).Text = "";
+			txtSearchInfo.Text = "";
 		}
-		CS_0024_003C_003E8__locals0.search = ((Control)(object)txtSearchInfo).Text.Trim();
+		CS_0024_003C_003E8__locals0.search = txtSearchInfo.Text.Trim();
 		if (string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.search) && string_2 == Class22.string_1)
 		{
 			string_2 = Class22.string_0;
@@ -974,7 +973,7 @@ public class frmAdminViewOrders : frmMasterForm
 		if (lstOrders.SelectedItems.Count != 0)
 		{
 			new frmRefund(lstOrders.SelectedItems[0].Text).ShowDialog(this);
-			if (!string.IsNullOrEmpty(((Control)(object)txtSearchInfo).Text))
+			if (!string.IsNullOrEmpty(txtSearchInfo.Text))
 			{
 				method_3(Class22.string_1);
 			}
@@ -992,10 +991,10 @@ public class frmAdminViewOrders : frmMasterForm
 	private void method_6(string string_2, RadTextBoxControl radTextBoxControl_0)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(string_2, 0, 128, ((Control)(object)radTextBoxControl_0).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(string_2, 0, 128, radTextBoxControl_0.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)radTextBoxControl_0).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			radTextBoxControl_0.Text = MemoryLoadedObjects.Keyboard.textEntered;
 			method_3(Class22.string_1);
 		}
 		base.DialogResult = DialogResult.None;
@@ -1445,7 +1444,7 @@ public class frmAdminViewOrders : frmMasterForm
 	private void ddlEmployees_SelectedIndexChanged(object sender, EventArgs e)
 	{
 		int_0 = Convert.ToInt32(ddlEmployees.SelectedValue);
-		if (!string.IsNullOrEmpty(((Control)(object)txtSearchInfo).Text))
+		if (!string.IsNullOrEmpty(txtSearchInfo.Text))
 		{
 			method_3(Class22.string_1);
 		}
@@ -1534,10 +1533,6 @@ public class frmAdminViewOrders : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_00ee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f8: Expected O, but got Unknown
-		//IL_1092: Unknown result type (might be due to invalid IL or missing references)
-		//IL_10b3: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAdminViewOrders));
 		pnlMain = new Panel();
 		btnChangeEmpCashout = new Button();
@@ -1650,7 +1645,7 @@ public class frmAdminViewOrders : frmMasterForm
 		pnlMain.Controls.Add(lblTraining);
 		pnlMain.Controls.Add(btnDuplicate);
 		pnlMain.Controls.Add(label3);
-		pnlMain.Controls.Add((Control)(object)txtSearchInfo);
+		pnlMain.Controls.Add(txtSearchInfo);
 		pnlMain.Controls.Add(btnShowKeyboard_SearchInfo);
 		pnlMain.Controls.Add(label1);
 		pnlMain.Controls.Add(btnRefundOrder);
@@ -1803,14 +1798,14 @@ public class frmAdminViewOrders : frmMasterForm
 		label3.ForeColor = Color.White;
 		label3.Name = "label3";
 		componentResourceManager.ApplyResources(txtSearchInfo, "txtSearchInfo");
-		((Control)(object)txtSearchInfo).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtSearchInfo).Name = "txtSearchInfo";
-		((RadElement)((RadControl)txtSearchInfo).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtSearchInfo).TextChanged += txtSearchInfo_TextChanged;
-		((Control)(object)txtSearchInfo).Click += txtSearchInfo_Click;
-		((Control)(object)txtSearchInfo).KeyUp += txtSearchInfo_KeyUp;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtSearchInfo).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtSearchInfo).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtSearchInfo.ForeColor = Color.FromArgb(40, 40, 40);
+		txtSearchInfo.Name = "txtSearchInfo";
+		txtSearchInfo.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtSearchInfo.TextChanged += txtSearchInfo_TextChanged;
+		txtSearchInfo.Click += txtSearchInfo_Click;
+		txtSearchInfo.KeyUp += txtSearchInfo_KeyUp;
+		((RadTextBoxControlElement)txtSearchInfo.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtSearchInfo.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_SearchInfo.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_SearchInfo.DialogResult = DialogResult.OK;
 		btnShowKeyboard_SearchInfo.FlatAppearance.BorderColor = Color.Black;

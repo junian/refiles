@@ -28,22 +28,21 @@ public static class HelperMethods
 		public IgnoreContractResolver(string objectToIgnore)
 		{
 			Class2.oOsq41PzvTVMr();
-			((DefaultContractResolver)this)._002Ector();
+			base._002Ector();
 			string_0 = objectToIgnore;
 		}
 
 		protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
 		{
-			//IL_0002: Unknown result type (might be due to invalid IL or missing references)
-			return (from jsonProperty_0 in ((DefaultContractResolver)this).CreateProperties(type, memberSerialization)
-				where jsonProperty_0.get_PropertyName() != string_0
+			return (from jsonProperty_0 in base.CreateProperties(type, memberSerialization)
+				where jsonProperty_0.PropertyName != string_0
 				select jsonProperty_0).ToList();
 		}
 
 		[CompilerGenerated]
 		private bool method_0(JsonProperty jsonProperty_0)
 		{
-			return jsonProperty_0.get_PropertyName() != string_0;
+			return jsonProperty_0.PropertyName != string_0;
 		}
 	}
 

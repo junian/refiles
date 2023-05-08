@@ -153,10 +153,10 @@ public class frmAddEditMaterials : frmMasterForm
 		if (!bool_0)
 		{
 			Dictionary<string, string> groups = AdminMethods.getGroups(string_0);
-			((RadDropDownList)comboGroup).set_DisplayMember("Value");
-			((RadDropDownList)comboGroup).set_ValueMember("Key");
-			((RadDropDownList)comboGroup).set_DataSource((object)new BindingSource(groups, null));
-			((RadDropDownList)comboGroup).set_SelectedIndex(0);
+			comboGroup.DisplayMember = "Value";
+			comboGroup.ValueMember = "Key";
+			comboGroup.DataSource = new BindingSource(groups, null);
+			comboGroup.SelectedIndex = 0;
 		}
 		else
 		{
@@ -172,20 +172,20 @@ public class frmAddEditMaterials : frmMasterForm
 		}
 		btnShowItemAuditLogs.Visible = false;
 		btnCopy.Visible = false;
-		if (chkAutoResetInv.get_Value())
+		if (chkAutoResetInv.Value)
 		{
 			Label label = lblResetQty;
-			RadTextBoxControl obj = txtResetQty;
+			RadTextBoxControl radTextBoxControl = txtResetQty;
 			btnShowKeyboard_ResetQty.Visible = true;
-			((Control)(object)obj).Visible = true;
+			radTextBoxControl.Visible = true;
 			label.Visible = true;
 		}
 		else
 		{
 			Label label2 = lblResetQty;
-			RadTextBoxControl obj2 = txtResetQty;
+			RadTextBoxControl radTextBoxControl2 = txtResetQty;
 			btnShowKeyboard_ResetQty.Visible = false;
-			((Control)(object)obj2).Visible = false;
+			radTextBoxControl2.Visible = false;
 			label2.Visible = false;
 		}
 	}
@@ -198,9 +198,9 @@ public class frmAddEditMaterials : frmMasterForm
 		{
 			dictionary.Add(uOM.UOMID.ToString(), uOM.Name);
 		}
-		((RadDropDownList)ddlUOM).set_DisplayMember("Value");
-		((RadDropDownList)ddlUOM).set_ValueMember("Key");
-		((RadDropDownList)ddlUOM).set_DataSource((object)new BindingSource(dictionary, null));
+		ddlUOM.DisplayMember = "Value";
+		ddlUOM.ValueMember = "Key";
+		ddlUOM.DataSource = new BindingSource(dictionary, null);
 	}
 
 	private void method_5(object sender, KeyPressEventArgs e)
@@ -220,7 +220,7 @@ public class frmAddEditMaterials : frmMasterForm
 		}
 		else if (method_9())
 		{
-			((RadDropDownList)comboGroup).set_SelectedIndex(0);
+			comboGroup.SelectedIndex = 0;
 			method_17();
 		}
 		else
@@ -237,9 +237,9 @@ public class frmAddEditMaterials : frmMasterForm
 		_003C_003Ec__DisplayClass13_.search = bool_1;
 		_003C_003Ec__DisplayClass13_.selectItem = Resources._Select_An_Item_To_Edit;
 		Dictionary<string, string> dataSource = await Task.Run(() => _003C_003Ec__DisplayClass13_._003C_003E4__this.method_7(_003C_003Ec__DisplayClass13_.items, _003C_003Ec__DisplayClass13_.search, _003C_003Ec__DisplayClass13_.selectItem));
-		((RadDropDownList)comboItems).set_DisplayMember("Value");
-		((RadDropDownList)comboItems).set_ValueMember("Key");
-		((RadDropDownList)comboItems).set_DataSource((object)new BindingSource(dataSource, null));
+		comboItems.DisplayMember = "Value";
+		comboItems.ValueMember = "Key";
+		comboItems.DataSource = new BindingSource(dataSource, null);
 	}
 
 	private Dictionary<string, string> method_7(Dictionary<string, string> dictionary_0, bool bool_1, string string_2)
@@ -258,7 +258,7 @@ public class frmAddEditMaterials : frmMasterForm
 
 	private void method_8()
 	{
-		KeyValuePair<string, string> keyValuePair = (KeyValuePair<string, string>)((RadDropDownList)comboGroup).get_SelectedItem().get_DataBoundItem();
+		KeyValuePair<string, string> keyValuePair = (KeyValuePair<string, string>)comboGroup.SelectedItem.DataBoundItem;
 		List<Item> list = ((!(keyValuePair.Key == "0")) ? AdminMethods.getItemsFromGroup(Convert.ToInt16(keyValuePair.Key)) : AdminMethods.getAllItems(string_0));
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
 		foreach (Item item in list)
@@ -274,7 +274,7 @@ public class frmAddEditMaterials : frmMasterForm
 		{
 			return false;
 		}
-		if (((RadDropDownList)comboItems).get_SelectedItem() != null && ((KeyValuePair<string, string>)((RadDropDownList)comboItems).get_SelectedItem().get_DataBoundItem()).Key == "0")
+		if (comboItems.SelectedItem != null && ((KeyValuePair<string, string>)comboItems.SelectedItem.DataBoundItem).Key == "0")
 		{
 			return true;
 		}
@@ -296,15 +296,15 @@ public class frmAddEditMaterials : frmMasterForm
 		if (method_9())
 		{
 			List<string> list = new List<string>();
-			if (((Control)(object)txtName).Text.Replace(" ", "") == string.Empty)
+			if (txtName.Text.Replace(" ", "") == string.Empty)
 			{
 				list.Add("Name");
 			}
-			if (((Control)(object)txtItemCost).Text.Replace(" ", "") == string.Empty)
+			if (txtItemCost.Text.Replace(" ", "") == string.Empty)
 			{
 				list.Add("Cost");
 			}
-			if (((Control)(object)txtInventoryQTY).Text.Replace(" ", "") == string.Empty)
+			if (txtInventoryQTY.Text.Replace(" ", "") == string.Empty)
 			{
 				list.Add("Inventory Count");
 			}
@@ -329,23 +329,23 @@ public class frmAddEditMaterials : frmMasterForm
 			}
 			do
 			{
-				((Control)(object)txtName).Text = ((Control)(object)txtName).Text.Replace("&&", "&");
+				txtName.Text = txtName.Text.Replace("&&", "&");
 			}
-			while (((Control)(object)txtName).Text.Contains("&&"));
-			((Control)(object)txtName).Text.Trim();
-			if (((Control)(object)txtItemCost).Text.Trim() == string.Empty)
+			while (txtName.Text.Contains("&&"));
+			txtName.Text.Trim();
+			if (txtItemCost.Text.Trim() == string.Empty)
 			{
-				((Control)(object)txtItemCost).Text = "0";
+				txtItemCost.Text = "0";
 			}
 			try
 			{
-				if (AdminMethods.itemNameExistCheck(((Control)(object)txtName).Text.Trim()))
+				if (AdminMethods.itemNameExistCheck(txtName.Text.Trim()))
 				{
 					new frmMessageBox(Resources.Item_name_already_exists_Pleas).ShowDialog(this);
 					return;
 				}
-				AdminMethods.addNewItem(string.Empty, ((Control)(object)txtName).Text.Trim(), Convert.ToDecimal(((Control)(object)txtItemCost).Text), 0m, 0m, onsale: false, null, null, null, null, string.Empty, 1, 9, string.Empty, 0, "150,166,166", chkActive.get_Value(), Convert.ToDecimal(((Control)(object)txtInventoryQTY).Text), chkDisableIfSoldOut.get_Value(), Convert.ToInt16(((RadDropDownList)ddlUOM).get_SelectedValue()), trackInventory: true, string_0, ((Control)(object)txtDescription).Text, ((Control)(object)txtNotes).Text, "Uncategorized", -1, 0, chkTrackExpiry.get_Value(), ApplySaleComboOption: false, chkAutoResetInv.get_Value(), Convert.ToDecimal(((Control)(object)txtResetQty).Text), RedemptionLoyalty: true, UseSmartBarcode: false, AutoPromptOption: true, 1m, TaxesIncluded: false, -1m, 0m);
-				Item item = gClass.Items.Where((Item tblItems) => tblItems.ItemName == ((Control)(object)txtName).Text).FirstOrDefault();
+				AdminMethods.addNewItem(string.Empty, txtName.Text.Trim(), Convert.ToDecimal(txtItemCost.Text), 0m, 0m, onsale: false, null, null, null, null, string.Empty, 1, 9, string.Empty, 0, "150,166,166", chkActive.Value, Convert.ToDecimal(txtInventoryQTY.Text), chkDisableIfSoldOut.Value, Convert.ToInt16(ddlUOM.SelectedValue), trackInventory: true, string_0, txtDescription.Text, txtNotes.Text, "Uncategorized", -1, 0, chkTrackExpiry.Value, ApplySaleComboOption: false, chkAutoResetInv.Value, Convert.ToDecimal(txtResetQty.Text), RedemptionLoyalty: true, UseSmartBarcode: false, AutoPromptOption: true, 1m, TaxesIncluded: false, -1m, 0m);
+				Item item = gClass.Items.Where((Item tblItems) => tblItems.ItemName == txtName.Text).FirstOrDefault();
 				if (list_2 != null)
 				{
 					AdminMethods.UpdateItemCustomField(item.ItemID, list_2);
@@ -354,9 +354,9 @@ public class frmAddEditMaterials : frmMasterForm
 				{
 					AdminMethods.UpdateMaterialsInItems(list_4, item.ItemID);
 				}
-				if (chkTrackExpiry.get_Value() && Convert.ToDecimal(((Control)(object)txtInventoryQTY).Text) > 0m)
+				if (chkTrackExpiry.Value && Convert.ToDecimal(txtInventoryQTY.Text) > 0m)
 				{
-					new frmAddInventoryBatches(item.ItemID, Convert.ToDecimal(((Control)(object)txtInventoryQTY).Text)).ShowDialog(this);
+					new frmAddInventoryBatches(item.ItemID, Convert.ToDecimal(txtInventoryQTY.Text)).ShowDialog(this);
 				}
 				new NotificationLabel(this, Resources.The_record_has_been_updated, NotificationTypes.Success).Show();
 			}
@@ -369,15 +369,15 @@ public class frmAddEditMaterials : frmMasterForm
 		else
 		{
 			List<string> list2 = new List<string>();
-			if (((Control)(object)txtName).Text == string.Empty)
+			if (txtName.Text == string.Empty)
 			{
 				list2.Add("Name");
 			}
-			if (((Control)(object)txtItemCost).Text == string.Empty)
+			if (txtItemCost.Text == string.Empty)
 			{
 				list2.Add("Cost");
 			}
-			if (((Control)(object)txtInventoryQTY).Text == string.Empty)
+			if (txtInventoryQTY.Text == string.Empty)
 			{
 				list2.Add("Inventory Count");
 			}
@@ -402,21 +402,21 @@ public class frmAddEditMaterials : frmMasterForm
 			}
 			do
 			{
-				((Control)(object)txtName).Text = ((Control)(object)txtName).Text.Replace("&&", "&");
+				txtName.Text = txtName.Text.Replace("&&", "&");
 			}
-			while (((Control)(object)txtName).Text.Contains("&&"));
-			((Control)(object)txtName).Text.Trim();
+			while (txtName.Text.Contains("&&"));
+			txtName.Text.Trim();
 			if (int_0 == -1)
 			{
 				return;
 			}
-			if (((Control)(object)txtItemCost).Text.Trim() == string.Empty)
+			if (txtItemCost.Text.Trim() == string.Empty)
 			{
-				((Control)(object)txtItemCost).Text = "0";
+				txtItemCost.Text = "0";
 			}
 			try
 			{
-				if (AdminMethods.itemNameExistCheck(((Control)(object)txtName).Text.Trim(), int_0))
+				if (AdminMethods.itemNameExistCheck(txtName.Text.Trim(), int_0))
 				{
 					new frmMessageBox(string_1 + Resources._name_already_exists_Please_en).ShowDialog(this);
 					return;
@@ -424,7 +424,7 @@ public class frmAddEditMaterials : frmMasterForm
 				Item item2 = gClass.Items.Where((Item i) => i.ItemID == int_0).FirstOrDefault();
 				gClass.Refresh(RefreshMode.OverwriteCurrentValues, item2);
 				string inventoryUpdateReason = Resources.Update_Item;
-				decimal num = Convert.ToDecimal(((Control)(object)txtInventoryQTY).Text);
+				decimal num = Convert.ToDecimal(txtInventoryQTY.Text);
 				decimal inventoryCount = item2.InventoryCount;
 				if (num != inventoryCount)
 				{
@@ -435,7 +435,7 @@ public class frmAddEditMaterials : frmMasterForm
 						inventoryUpdateReason = MemoryLoadedObjects.Keyboard.textEntered;
 					}
 				}
-				AdminMethods.updateItem(int_0, string.Empty, ((Control)(object)txtName).Text.Trim(), Convert.ToDecimal(((Control)(object)txtItemCost).Text), 0m, 0m, onsale: false, null, null, null, null, string.Empty, 1, 9, string.Empty, 0, "150,166,166", chkActive.get_Value(), num, chkDisableIfSoldOut.get_Value(), Convert.ToInt16(((RadDropDownList)ddlUOM).get_SelectedValue()), trackInventory: true, string_0, ((Control)(object)txtDescription).Text, ((Control)(object)txtNotes).Text, "Uncategorized", -1, 0, chkTrackExpiry.get_Value(), ApplySaleComboOption: false, 0, chkAutoResetInv.get_Value(), Convert.ToDecimal(((Control)(object)txtResetQty).Text), RedemptionLoyalty: true, UseSmartBarcode: false, AutoPromptOption: true, 1m, TaxesIncluded: false, -1m, 0m, inventoryUpdateReason);
+				AdminMethods.updateItem(int_0, string.Empty, txtName.Text.Trim(), Convert.ToDecimal(txtItemCost.Text), 0m, 0m, onsale: false, null, null, null, null, string.Empty, 1, 9, string.Empty, 0, "150,166,166", chkActive.Value, num, chkDisableIfSoldOut.Value, Convert.ToInt16(ddlUOM.SelectedValue), trackInventory: true, string_0, txtDescription.Text, txtNotes.Text, "Uncategorized", -1, 0, chkTrackExpiry.Value, ApplySaleComboOption: false, 0, chkAutoResetInv.Value, Convert.ToDecimal(txtResetQty.Text), RedemptionLoyalty: true, UseSmartBarcode: false, AutoPromptOption: true, 1m, TaxesIncluded: false, -1m, 0m, inventoryUpdateReason);
 				new NotificationLabel(this, Resources.The_record_has_been_updated, NotificationTypes.Success).Show();
 				if (list_2 != null)
 				{
@@ -448,15 +448,15 @@ public class frmAddEditMaterials : frmMasterForm
 				if (!bool_0)
 				{
 					int_0 = -1;
-					string selectedValue = ((RadDropDownList)comboItems).get_SelectedValue().ToString();
-					((RadDropDownList)comboItems).set_SelectedValue((object)selectedValue);
+					string selectedValue = comboItems.SelectedValue.ToString();
+					comboItems.SelectedValue = selectedValue;
 					method_11();
 				}
-				if (chkTrackExpiry.get_Value() && num > inventoryCount)
+				if (chkTrackExpiry.Value && num > inventoryCount)
 				{
 					new frmAddInventoryBatches(int_0, num - inventoryCount).ShowDialog(this);
 				}
-				if (chkTrackExpiry.get_Value() && num < inventoryCount)
+				if (chkTrackExpiry.Value && num < inventoryCount)
 				{
 					new frmReduceInventoryBatch(int_0, inventoryCount - num).Show(this);
 				}
@@ -482,9 +482,9 @@ public class frmAddEditMaterials : frmMasterForm
 	private void method_11(bool bool_1 = false)
 	{
 		string_1 = "Item";
-		if (!bool_1 && ((RadDropDownList)comboItems).get_SelectedIndex() > -1)
+		if (!bool_1 && comboItems.SelectedIndex > -1)
 		{
-			int_0 = int.Parse(((KeyValuePair<string, string>)((RadDropDownList)comboItems).get_SelectedItem().get_DataBoundItem()).Key);
+			int_0 = int.Parse(((KeyValuePair<string, string>)comboItems.SelectedItem.DataBoundItem).Key);
 		}
 		if (int_0 <= 0)
 		{
@@ -510,23 +510,23 @@ public class frmAddEditMaterials : frmMasterForm
 		GClass6 gClass = new GClass6();
 		try
 		{
-			((Control)(object)txtName).Text = item_0.ItemName;
-			((Control)(object)txtItemCost).Text = item_0.ItemCost.ToString();
-			chkActive.set_Value(item_0.Active);
-			((Control)(object)txtInventoryQTY).Text = ((item_0.InventoryCount % 1m == 0m) ? MathHelper.RemoveTrailingZeros(item_0.InventoryCount.ToString()) : item_0.InventoryCount.ToString());
+			txtName.Text = item_0.ItemName;
+			txtItemCost.Text = item_0.ItemCost.ToString();
+			chkActive.Value = item_0.Active;
+			txtInventoryQTY.Text = ((item_0.InventoryCount % 1m == 0m) ? MathHelper.RemoveTrailingZeros(item_0.InventoryCount.ToString()) : item_0.InventoryCount.ToString());
 			if (item_0.UOMID == 1 || item_0.UOMID == 5 || item_0.UOMID == 6)
 			{
-				((Control)(object)txtInventoryQTY).Text = Math.Round(item_0.InventoryCount, 0).ToString();
+				txtInventoryQTY.Text = Math.Round(item_0.InventoryCount, 0).ToString();
 			}
-			((RadDropDownList)ddlUOM).set_SelectedValue((object)item_0.UOMID.ToString());
+			ddlUOM.SelectedValue = item_0.UOMID.ToString();
 			list_2 = null;
 			btnSave.Enabled = true;
-			((Control)(object)txtDescription).Text = item_0.Description;
-			((Control)(object)txtNotes).Text = item_0.Notes;
-			chkTrackExpiry.set_Value(item_0.TrackExpiryDate);
-			chkAutoResetInv.set_Value(item_0.AutoResetQty);
-			((Control)(object)txtResetQty).Text = item_0.ResetQty.ToString("0.00");
-			chkDisableIfSoldOut.set_Value(item_0.DisableSoldOutItems);
+			txtDescription.Text = item_0.Description;
+			txtNotes.Text = item_0.Notes;
+			chkTrackExpiry.Value = item_0.TrackExpiryDate;
+			chkAutoResetInv.Value = item_0.AutoResetQty;
+			txtResetQty.Text = item_0.ResetQty.ToString("0.00");
+			chkDisableIfSoldOut.Value = item_0.DisableSoldOutItems;
 			List<ItemsInItem> list = gClass.ItemsInItems.Where((ItemsInItem tblItemsInItems) => tblItemsInItems.ParentItemID == (int?)int_0).ToList();
 			if (list.Count != 0)
 			{
@@ -566,16 +566,16 @@ public class frmAddEditMaterials : frmMasterForm
 		{
 			Console.WriteLine(ex.Message);
 			int_0 = 0;
-			((Control)(object)txtName).Text = string.Empty;
-			((Control)(object)txtItemCost).Text = "0";
-			chkActive.set_Value(false);
-			chkDisableIfSoldOut.set_Value(false);
-			((Control)(object)txtInventoryQTY).Text = string.Empty;
-			((RadDropDownList)ddlUOM).set_SelectedValue((object)string.Empty);
+			txtName.Text = string.Empty;
+			txtItemCost.Text = "0";
+			chkActive.Value = false;
+			chkDisableIfSoldOut.Value = false;
+			txtInventoryQTY.Text = string.Empty;
+			ddlUOM.SelectedValue = string.Empty;
 			list_2 = null;
 			btnSave.Enabled = false;
-			chkAutoResetInv.set_Value(false);
-			((Control)(object)txtResetQty).Text = "0";
+			chkAutoResetInv.Value = false;
+			txtResetQty.Text = "0";
 		}
 	}
 
@@ -583,7 +583,7 @@ public class frmAddEditMaterials : frmMasterForm
 	{
 		if (!bool_0)
 		{
-			KeyValuePair<string, string> keyValuePair = (KeyValuePair<string, string>)((RadDropDownList)comboGroup).get_SelectedItem().get_DataBoundItem();
+			KeyValuePair<string, string> keyValuePair = (KeyValuePair<string, string>)comboGroup.SelectedItem.DataBoundItem;
 			if (!(keyValuePair.Key == "0") && !(keyValuePair.Key == "-1"))
 			{
 				method_8();
@@ -603,22 +603,22 @@ public class frmAddEditMaterials : frmMasterForm
 			return;
 		}
 		decimal result = default(decimal);
-		if (!decimal.TryParse(((Control)(object)txtInventoryQTY).Text.Trim(), out result))
+		if (!decimal.TryParse(txtInventoryQTY.Text.Trim(), out result))
 		{
-			new frmMessageBox("\"" + ((Control)(object)txtInventoryQTY).Text + Resources._is_not_a_valid_value_for_Inve, Resources.Invalid_Quantity_Entered).ShowDialog(this);
+			new frmMessageBox("\"" + txtInventoryQTY.Text + Resources._is_not_a_valid_value_for_Inve, Resources.Invalid_Quantity_Entered).ShowDialog(this);
 			Item oneItem = AdminMethods.getOneItem(int_0);
 			if (oneItem != null)
 			{
-				((Control)(object)txtInventoryQTY).Text = oneItem.InventoryCount.ToString("0.00");
+				txtInventoryQTY.Text = oneItem.InventoryCount.ToString("0.00");
 			}
 		}
 		try
 		{
-			decimal.TryParse(((Control)(object)txtInventoryQTY).Text.Trim(), out result);
+			decimal.TryParse(txtInventoryQTY.Text.Trim(), out result);
 			if (result >= 999999m)
 			{
 				new frmMessageBox(Resources.Inventory_limit_reached_Please, Resources.Invalid_Quantity_Entered).ShowDialog(this);
-				((Control)(object)txtInventoryQTY).Text = ((Control)(object)txtInventoryQTY).Text.Substring(0, 6);
+				txtInventoryQTY.Text = txtInventoryQTY.Text.Substring(0, 6);
 			}
 		}
 		catch
@@ -629,10 +629,10 @@ public class frmAddEditMaterials : frmMasterForm
 	private void btnShowKeyboard_Name_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + Resources.Ingredient_Name, 0, 256, ((Control)(object)txtName).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + Resources.Ingredient_Name, 0, 256, txtName.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtName).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtName.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -640,10 +640,10 @@ public class frmAddEditMaterials : frmMasterForm
 	private void btnShowKeyboard_InventoryQTY_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Inventory_Count, 2, 6, ((Control)(object)txtInventoryQTY).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_Inventory_Count, 2, 6, txtInventoryQTY.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtInventoryQTY).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtInventoryQTY.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -651,10 +651,10 @@ public class frmAddEditMaterials : frmMasterForm
 	private void btnShowKeyboard_ItemCost_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter + string_1 + Resources._Cost_Price, 4, 8, ((Control)(object)txtItemCost).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter + string_1 + Resources._Cost_Price, 4, 8, txtItemCost.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtItemCost).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtItemCost.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 		base.ParentForm.TopMost = true;
@@ -745,7 +745,7 @@ public class frmAddEditMaterials : frmMasterForm
 	private void btnCopy_Click(object sender, EventArgs e)
 	{
 		int_0 = -2;
-		((Control)(object)txtName).Focus();
+		txtName.Focus();
 		string_1 = "New Item";
 		txtName_Click(txtName, e);
 	}
@@ -753,28 +753,28 @@ public class frmAddEditMaterials : frmMasterForm
 	private void btnShowKeyboard_Description_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + string_1 + Resources._Description1, 0, 256, ((Control)(object)txtDescription).Text, multiline: true);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + string_1 + Resources._Description1, 0, 256, txtDescription.Text, multiline: true);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtDescription).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtDescription.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
 
 	private void method_17()
 	{
-		((Control)(object)txtName).Text = string.Empty;
-		((Control)(object)txtDescription).Text = string.Empty;
-		((Control)(object)txtNotes).Text = string.Empty;
-		chkActive.set_Value(true);
-		((Control)(object)txtItemCost).Text = "0";
-		((Control)(object)txtInventoryQTY).Text = "0";
-		chkAutoResetInv.set_Value(false);
-		chkDisableIfSoldOut.set_Value(false);
-		((Control)(object)txtResetQty).Text = "0";
-		if (((RadDropDownList)ddlUOM).get_Items().get_Count() > 0)
+		txtName.Text = string.Empty;
+		txtDescription.Text = string.Empty;
+		txtNotes.Text = string.Empty;
+		chkActive.Value = true;
+		txtItemCost.Text = "0";
+		txtInventoryQTY.Text = "0";
+		chkAutoResetInv.Value = false;
+		chkDisableIfSoldOut.Value = false;
+		txtResetQty.Text = "0";
+		if (ddlUOM.Items.Count > 0)
 		{
-			((RadDropDownList)ddlUOM).set_SelectedIndex(0);
+			ddlUOM.SelectedIndex = 0;
 		}
 		btnShowItemAuditLogs.Visible = false;
 		Button button = btnCopy;
@@ -786,9 +786,9 @@ public class frmAddEditMaterials : frmMasterForm
 
 	private void btnNew_Click(object sender, EventArgs e)
 	{
-		if (((Control)(object)comboGroup).Visible)
+		if (comboGroup.Visible)
 		{
-			((RadDropDownList)comboGroup).set_SelectedIndex(0);
+			comboGroup.SelectedIndex = 0;
 		}
 		method_6(AdminMethods.getAllItemsDictionary(string_0));
 		string_1 = "New Item";
@@ -798,10 +798,10 @@ public class frmAddEditMaterials : frmMasterForm
 	private void btnShowKeyboard_Notes_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + string_1 + Resources._Note, 0, 256, ((Control)(object)txtNotes).Text, multiline: true);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter + string_1 + Resources._Note, 0, 256, txtNotes.Text, multiline: true);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtNotes).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtNotes.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -809,7 +809,7 @@ public class frmAddEditMaterials : frmMasterForm
 	private void btnUOMConversion_Click(object sender, EventArgs e)
 	{
 		method_10(bool_1: false);
-		new frmUOMConversions(int_0, ((Control)(object)txtName).Text, ((RadDropDownList)ddlUOM).get_SelectedValue().ToString(), ((Control)(object)ddlUOM).Text).ShowDialog(this);
+		new frmUOMConversions(int_0, txtName.Text, ddlUOM.SelectedValue.ToString(), ddlUOM.Text).ShowDialog(this);
 	}
 
 	private void btnDelete_Click(object sender, EventArgs e)
@@ -835,27 +835,27 @@ public class frmAddEditMaterials : frmMasterForm
 
 	private void chkAutoResetInv_ValueChanged(object sender, EventArgs e)
 	{
-		if (chkAutoResetInv.get_Value())
+		if (chkAutoResetInv.Value)
 		{
 			Label label = lblResetQty;
-			RadTextBoxControl obj = txtResetQty;
+			RadTextBoxControl radTextBoxControl = txtResetQty;
 			btnShowKeyboard_ResetQty.Visible = true;
-			((Control)(object)obj).Visible = true;
+			radTextBoxControl.Visible = true;
 			label.Visible = true;
 		}
 		else
 		{
 			Label label2 = lblResetQty;
-			RadTextBoxControl obj2 = txtResetQty;
+			RadTextBoxControl radTextBoxControl2 = txtResetQty;
 			btnShowKeyboard_ResetQty.Visible = false;
-			((Control)(object)obj2).Visible = false;
+			radTextBoxControl2.Visible = false;
 			label2.Visible = false;
 		}
 	}
 
 	private void comboItems_SelectedIndexChanged(object sender, PositionChangedEventArgs e)
 	{
-		if (((Control)(object)comboItems).Visible)
+		if (comboItems.Visible)
 		{
 			method_11();
 		}
@@ -863,9 +863,9 @@ public class frmAddEditMaterials : frmMasterForm
 
 	private void comboGroup_SelectedIndexChanged(object sender, PositionChangedEventArgs e)
 	{
-		if (((Control)(object)comboGroup).Visible)
+		if (comboGroup.Visible)
 		{
-			KeyValuePair<string, string> keyValuePair = (KeyValuePair<string, string>)((RadDropDownList)comboGroup).get_SelectedItem().get_DataBoundItem();
+			KeyValuePair<string, string> keyValuePair = (KeyValuePair<string, string>)comboGroup.SelectedItem.DataBoundItem;
 			if (!(keyValuePair.Key == "0") && !(keyValuePair.Key == "-1"))
 			{
 				method_8();
@@ -880,10 +880,10 @@ public class frmAddEditMaterials : frmMasterForm
 	private void txtResetQty_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter Reset Qty", 2, 6, ((Control)(object)txtResetQty).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter Reset Qty", 2, 6, txtResetQty.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtResetQty).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtResetQty.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -899,74 +899,6 @@ public class frmAddEditMaterials : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0027: Expected O, but got Unknown
-		//IL_0033: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003d: Expected O, but got Unknown
-		//IL_005f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0069: Expected O, but got Unknown
-		//IL_008b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0095: Expected O, but got Unknown
-		//IL_00c2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00cc: Expected O, but got Unknown
-		//IL_00ee: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00f8: Expected O, but got Unknown
-		//IL_00f9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0103: Expected O, but got Unknown
-		//IL_0104: Unknown result type (might be due to invalid IL or missing references)
-		//IL_010e: Expected O, but got Unknown
-		//IL_010f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0119: Expected O, but got Unknown
-		//IL_01f6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0200: Expected O, but got Unknown
-		//IL_0659: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0671: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0689: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06aa: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06d7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0704: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0731: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0758: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0894: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08b5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a3c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a54: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a6b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a8c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ab9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ae6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b13: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b3a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d58: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d79: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1055: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1076: Unknown result type (might be due to invalid IL or missing references)
-		//IL_12b6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_12d7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1386: Unknown result type (might be due to invalid IL or missing references)
-		//IL_13a7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1429: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1441: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1459: Unknown result type (might be due to invalid IL or missing references)
-		//IL_147a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14a7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14d4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1501: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1528: Unknown result type (might be due to invalid IL or missing references)
-		//IL_15a6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_15c7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1c17: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1c21: Expected O, but got Unknown
-		//IL_1c97: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1ca1: Expected O, but got Unknown
-		//IL_1f0c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1f24: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1f3b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1f5c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1f89: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1fb6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1fe3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_200a: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmAddEditMaterials));
 		pnlItemInfo = new Panel();
 		chkAutoResetInv = new RadToggleSwitch();
@@ -1031,31 +963,31 @@ public class frmAddEditMaterials : frmMasterForm
 		((ISupportInitialize)chkDisableIfSoldOut).BeginInit();
 		SuspendLayout();
 		componentResourceManager.ApplyResources(pnlItemInfo, "pnlItemInfo");
-		pnlItemInfo.Controls.Add((Control)(object)chkDisableIfSoldOut);
+		pnlItemInfo.Controls.Add(chkDisableIfSoldOut);
 		pnlItemInfo.Controls.Add(lblInvDisable);
-		pnlItemInfo.Controls.Add((Control)(object)chkAutoResetInv);
+		pnlItemInfo.Controls.Add(chkAutoResetInv);
 		pnlItemInfo.Controls.Add(btnShowKeyboard_ResetQty);
-		pnlItemInfo.Controls.Add((Control)(object)txtResetQty);
+		pnlItemInfo.Controls.Add(txtResetQty);
 		pnlItemInfo.Controls.Add(lblResetQty);
 		pnlItemInfo.Controls.Add(label29);
-		pnlItemInfo.Controls.Add((Control)(object)ddlUOM);
-		pnlItemInfo.Controls.Add((Control)(object)chkTrackExpiry);
+		pnlItemInfo.Controls.Add(ddlUOM);
+		pnlItemInfo.Controls.Add(chkTrackExpiry);
 		pnlItemInfo.Controls.Add(label26);
 		pnlItemInfo.Controls.Add(btnDelete);
 		pnlItemInfo.Controls.Add(btnUOMConversion);
-		pnlItemInfo.Controls.Add((Control)(object)txtNotes);
+		pnlItemInfo.Controls.Add(txtNotes);
 		pnlItemInfo.Controls.Add(label14);
 		pnlItemInfo.Controls.Add(btnShowKeyboard_Notes);
 		pnlItemInfo.Controls.Add(btnNew);
 		pnlItemInfo.Controls.Add(btnCopy);
-		pnlItemInfo.Controls.Add((Control)(object)txtDescription);
+		pnlItemInfo.Controls.Add(txtDescription);
 		pnlItemInfo.Controls.Add(btnShowKeyboard_Description);
 		pnlItemInfo.Controls.Add(label25);
 		pnlItemInfo.Controls.Add(btnCancel);
-		pnlItemInfo.Controls.Add((Control)(object)txtInventoryQTY);
-		pnlItemInfo.Controls.Add((Control)(object)txtItemCost);
-		pnlItemInfo.Controls.Add((Control)(object)chkActive);
-		pnlItemInfo.Controls.Add((Control)(object)txtName);
+		pnlItemInfo.Controls.Add(txtInventoryQTY);
+		pnlItemInfo.Controls.Add(txtItemCost);
+		pnlItemInfo.Controls.Add(chkActive);
+		pnlItemInfo.Controls.Add(txtName);
 		pnlItemInfo.Controls.Add(btnShowItemAuditLogs);
 		pnlItemInfo.Controls.Add(label1);
 		pnlItemInfo.Controls.Add(label11);
@@ -1068,20 +1000,20 @@ public class frmAddEditMaterials : frmMasterForm
 		pnlItemInfo.Controls.Add(btnShowKeyboard_Name);
 		pnlItemInfo.Name = "pnlItemInfo";
 		componentResourceManager.ApplyResources(chkAutoResetInv, "chkAutoResetInv");
-		((Control)(object)chkAutoResetInv).Name = "chkAutoResetInv";
-		chkAutoResetInv.set_OffText("NO");
-		chkAutoResetInv.set_OnText("YES");
-		((Control)(object)chkAutoResetInv).Tag = "product";
-		chkAutoResetInv.set_ToggleStateMode((ToggleStateMode)1);
-		chkAutoResetInv.add_ValueChanged((EventHandler)chkAutoResetInv_ValueChanged);
-		((RadToggleSwitchElement)((RadControl)chkAutoResetInv).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkAutoResetInv).GetChildAt(0)).set_ThumbOffset(52);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkAutoResetInv).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkAutoResetInv).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkAutoResetInv).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkAutoResetInv).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkAutoResetInv).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text1"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkAutoResetInv).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkAutoResetInv.Name = "chkAutoResetInv";
+		chkAutoResetInv.OffText = "NO";
+		chkAutoResetInv.OnText = "YES";
+		chkAutoResetInv.Tag = "product";
+		chkAutoResetInv.ToggleStateMode = ToggleStateMode.Click;
+		chkAutoResetInv.ValueChanged += chkAutoResetInv_ValueChanged;
+		((RadToggleSwitchElement)chkAutoResetInv.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkAutoResetInv.GetChildAt(0)).ThumbOffset = 52;
+		((RadToggleSwitchElement)chkAutoResetInv.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkAutoResetInv.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkAutoResetInv.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkAutoResetInv.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkAutoResetInv.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text1");
+		((ToggleSwitchPartElement)chkAutoResetInv.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		btnShowKeyboard_ResetQty.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_ResetQty.DialogResult = DialogResult.OK;
 		btnShowKeyboard_ResetQty.FlatAppearance.BorderColor = Color.Black;
@@ -1092,13 +1024,13 @@ public class frmAddEditMaterials : frmMasterForm
 		btnShowKeyboard_ResetQty.UseVisualStyleBackColor = false;
 		btnShowKeyboard_ResetQty.Click += txtResetQty_Click;
 		componentResourceManager.ApplyResources(txtResetQty, "txtResetQty");
-		((Control)(object)txtResetQty).Name = "txtResetQty";
-		((RadElement)((RadControl)txtResetQty).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtResetQty).Tag = "product";
-		txtResetQty.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtResetQty).Click += txtResetQty_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtResetQty).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtResetQty).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtResetQty.Name = "txtResetQty";
+		txtResetQty.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtResetQty.Tag = "product";
+		txtResetQty.TextAlign = HorizontalAlignment.Center;
+		txtResetQty.Click += txtResetQty_Click;
+		((RadTextBoxControlElement)txtResetQty.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtResetQty.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		lblResetQty.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(lblResetQty, "lblResetQty");
 		lblResetQty.ForeColor = Color.White;
@@ -1108,26 +1040,26 @@ public class frmAddEditMaterials : frmMasterForm
 		label29.ForeColor = Color.White;
 		label29.Name = "label29";
 		componentResourceManager.ApplyResources(ddlUOM, "ddlUOM");
-		((Control)(object)ddlUOM).BackColor = Color.White;
-		((RadDropDownList)ddlUOM).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)ddlUOM).set_EnableKineticScrolling(true);
-		((Control)(object)ddlUOM).Name = "ddlUOM";
-		((RadControl)ddlUOM).set_ThemeName("Windows8");
+		ddlUOM.BackColor = Color.White;
+		ddlUOM.DropDownStyle = RadDropDownStyle.DropDownList;
+		ddlUOM.EnableKineticScrolling = true;
+		ddlUOM.Name = "ddlUOM";
+		ddlUOM.ThemeName = "Windows8";
 		componentResourceManager.ApplyResources(chkTrackExpiry, "chkTrackExpiry");
-		((Control)(object)chkTrackExpiry).Name = "chkTrackExpiry";
-		chkTrackExpiry.set_OffText("NO");
-		chkTrackExpiry.set_OnText("YES");
-		((Control)(object)chkTrackExpiry).Tag = "product";
-		chkTrackExpiry.set_ToggleStateMode((ToggleStateMode)1);
-		chkTrackExpiry.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkTrackExpiry).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkTrackExpiry).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkTrackExpiry).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTrackExpiry).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTrackExpiry).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkTrackExpiry).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkTrackExpiry).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text2"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkTrackExpiry).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkTrackExpiry.Name = "chkTrackExpiry";
+		chkTrackExpiry.OffText = "NO";
+		chkTrackExpiry.OnText = "YES";
+		chkTrackExpiry.Tag = "product";
+		chkTrackExpiry.ToggleStateMode = ToggleStateMode.Click;
+		chkTrackExpiry.Value = false;
+		((RadToggleSwitchElement)chkTrackExpiry.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkTrackExpiry.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkTrackExpiry.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkTrackExpiry.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkTrackExpiry.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTrackExpiry.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkTrackExpiry.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text2");
+		((ToggleSwitchPartElement)chkTrackExpiry.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		label26.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label26, "label26");
 		label26.ForeColor = Color.White;
@@ -1151,11 +1083,11 @@ public class frmAddEditMaterials : frmMasterForm
 		btnUOMConversion.UseVisualStyleBackColor = false;
 		btnUOMConversion.Click += btnUOMConversion_Click;
 		componentResourceManager.ApplyResources(txtNotes, "txtNotes");
-		((Control)(object)txtNotes).Name = "txtNotes";
-		((RadElement)((RadControl)txtNotes).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtNotes).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtNotes).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtNotes).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtNotes.Name = "txtNotes";
+		txtNotes.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtNotes.Click += txtName_Click;
+		((RadTextBoxControlElement)txtNotes.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtNotes.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		label14.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(label14, "label14");
 		label14.ForeColor = Color.White;
@@ -1188,13 +1120,13 @@ public class frmAddEditMaterials : frmMasterForm
 		btnCopy.UseVisualStyleBackColor = false;
 		btnCopy.Click += btnCopy_Click;
 		componentResourceManager.ApplyResources(txtDescription, "txtDescription");
-		((Control)(object)txtDescription).ForeColor = Color.FromArgb(40, 40, 40);
-		txtDescription.set_Multiline(true);
-		((Control)(object)txtDescription).Name = "txtDescription";
-		((RadElement)((RadControl)txtDescription).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtDescription).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtDescription).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtDescription).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtDescription.ForeColor = Color.FromArgb(40, 40, 40);
+		txtDescription.Multiline = true;
+		txtDescription.Name = "txtDescription";
+		txtDescription.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtDescription.Click += txtName_Click;
+		((RadTextBoxControlElement)txtDescription.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtDescription.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Description.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Description.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Description.FlatAppearance.BorderColor = Color.Black;
@@ -1218,43 +1150,43 @@ public class frmAddEditMaterials : frmMasterForm
 		btnCancel.UseVisualStyleBackColor = false;
 		btnCancel.Click += btnCancel_Click;
 		componentResourceManager.ApplyResources(txtInventoryQTY, "txtInventoryQTY");
-		((Control)(object)txtInventoryQTY).Name = "txtInventoryQTY";
-		((RadElement)((RadControl)txtInventoryQTY).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtInventoryQTY).Tag = "product";
-		txtInventoryQTY.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtInventoryQTY).Click += txtName_Click;
-		((Control)(object)txtInventoryQTY).KeyPress += txtInventoryQTY_KeyPress;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtInventoryQTY).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtInventoryQTY).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtInventoryQTY.Name = "txtInventoryQTY";
+		txtInventoryQTY.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtInventoryQTY.Tag = "product";
+		txtInventoryQTY.TextAlign = HorizontalAlignment.Center;
+		txtInventoryQTY.Click += txtName_Click;
+		txtInventoryQTY.KeyPress += txtInventoryQTY_KeyPress;
+		((RadTextBoxControlElement)txtInventoryQTY.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtInventoryQTY.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		componentResourceManager.ApplyResources(txtItemCost, "txtItemCost");
-		((Control)(object)txtItemCost).Name = "txtItemCost";
-		((RadElement)((RadControl)txtItemCost).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtItemCost).Tag = "";
-		txtItemCost.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)txtItemCost).Click += txtName_Click;
-		((Control)(object)txtItemCost).KeyPress += txtItemCost_KeyPress;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtItemCost).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtItemCost).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		txtItemCost.Name = "txtItemCost";
+		txtItemCost.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtItemCost.Tag = "";
+		txtItemCost.TextAlign = HorizontalAlignment.Center;
+		txtItemCost.Click += txtName_Click;
+		txtItemCost.KeyPress += txtItemCost_KeyPress;
+		((RadTextBoxControlElement)txtItemCost.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtItemCost.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		componentResourceManager.ApplyResources(chkActive, "chkActive");
-		((Control)(object)chkActive).Name = "chkActive";
-		chkActive.set_OffText("NO");
-		chkActive.set_OnText("YES");
-		((Control)(object)chkActive).Tag = "";
-		chkActive.set_ToggleStateMode((ToggleStateMode)1);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_ThumbOffset(68);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkActive).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text3"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkActive).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkActive.Name = "chkActive";
+		chkActive.OffText = "NO";
+		chkActive.OnText = "YES";
+		chkActive.Tag = "";
+		chkActive.ToggleStateMode = ToggleStateMode.Click;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).ThumbOffset = 68;
+		((RadToggleSwitchElement)chkActive.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text3");
+		((ToggleSwitchPartElement)chkActive.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(txtName, "txtName");
-		((Control)(object)txtName).Name = "txtName";
-		((RadElement)((RadControl)txtName).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtName).Click += txtName_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtName.Name = "txtName";
+		txtName.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtName.Click += txtName_Click;
+		((RadTextBoxControlElement)txtName.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtName.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowItemAuditLogs.BackColor = Color.FromArgb(50, 119, 155);
 		btnShowItemAuditLogs.FlatAppearance.BorderSize = 0;
 		componentResourceManager.ApplyResources(btnShowItemAuditLogs, "btnShowItemAuditLogs");
@@ -1324,8 +1256,8 @@ public class frmAddEditMaterials : frmMasterForm
 		lblSubTitle.ForeColor = Color.White;
 		lblSubTitle.Name = "lblSubTitle";
 		pnlGroups.BackColor = Color.Transparent;
-		pnlGroups.Controls.Add((Control)(object)comboItems);
-		pnlGroups.Controls.Add((Control)(object)comboGroup);
+		pnlGroups.Controls.Add(comboItems);
+		pnlGroups.Controls.Add(comboGroup);
 		pnlGroups.Controls.Add(label7);
 		pnlGroups.Controls.Add(btnSearch);
 		pnlGroups.Controls.Add(label9);
@@ -1334,21 +1266,21 @@ public class frmAddEditMaterials : frmMasterForm
 		componentResourceManager.ApplyResources(pnlGroups, "pnlGroups");
 		pnlGroups.Name = "pnlGroups";
 		componentResourceManager.ApplyResources(comboItems, "comboItems");
-		((Control)(object)comboItems).BackColor = Color.White;
-		((RadDropDownList)comboItems).set_DefaultItemsCountInDropDown(10);
-		((RadDropDownList)comboItems).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)comboItems).set_EnableKineticScrolling(true);
-		((Control)(object)comboItems).Name = "comboItems";
-		((RadControl)comboItems).set_ThemeName("Windows8");
-		((RadDropDownList)comboItems).add_SelectedIndexChanged(new PositionChangedEventHandler(comboItems_SelectedIndexChanged));
+		comboItems.BackColor = Color.White;
+		comboItems.DefaultItemsCountInDropDown = 10;
+		comboItems.DropDownStyle = RadDropDownStyle.DropDownList;
+		comboItems.EnableKineticScrolling = true;
+		comboItems.Name = "comboItems";
+		comboItems.ThemeName = "Windows8";
+		comboItems.SelectedIndexChanged += comboItems_SelectedIndexChanged;
 		componentResourceManager.ApplyResources(comboGroup, "comboGroup");
-		((Control)(object)comboGroup).BackColor = Color.White;
-		((RadDropDownList)comboGroup).set_DropDownStyle((RadDropDownStyle)2);
-		((RadDropDownList)comboGroup).set_EnableKineticScrolling(true);
-		((Control)(object)comboGroup).ForeColor = SystemColors.WindowText;
-		((Control)(object)comboGroup).Name = "comboGroup";
-		((RadControl)comboGroup).set_ThemeName("Windows8");
-		((RadDropDownList)comboGroup).add_SelectedIndexChanged(new PositionChangedEventHandler(comboGroup_SelectedIndexChanged));
+		comboGroup.BackColor = Color.White;
+		comboGroup.DropDownStyle = RadDropDownStyle.DropDownList;
+		comboGroup.EnableKineticScrolling = true;
+		comboGroup.ForeColor = SystemColors.WindowText;
+		comboGroup.Name = "comboGroup";
+		comboGroup.ThemeName = "Windows8";
+		comboGroup.SelectedIndexChanged += comboGroup_SelectedIndexChanged;
 		label7.BackColor = Color.FromArgb(64, 64, 64);
 		componentResourceManager.ApplyResources(label7, "label7");
 		label7.ForeColor = Color.White;
@@ -1377,20 +1309,20 @@ public class frmAddEditMaterials : frmMasterForm
 		lblTitleBar.ForeColor = Color.White;
 		lblTitleBar.Name = "lblTitleBar";
 		componentResourceManager.ApplyResources(chkDisableIfSoldOut, "chkDisableIfSoldOut");
-		((Control)(object)chkDisableIfSoldOut).Name = "chkDisableIfSoldOut";
-		chkDisableIfSoldOut.set_OffText("NO");
-		chkDisableIfSoldOut.set_OnText("YES");
-		((Control)(object)chkDisableIfSoldOut).Tag = "product";
-		chkDisableIfSoldOut.set_ToggleStateMode((ToggleStateMode)1);
-		chkDisableIfSoldOut.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkDisableIfSoldOut).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkDisableIfSoldOut).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkDisableIfSoldOut).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDisableIfSoldOut).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDisableIfSoldOut).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkDisableIfSoldOut).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkDisableIfSoldOut).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkDisableIfSoldOut).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkDisableIfSoldOut.Name = "chkDisableIfSoldOut";
+		chkDisableIfSoldOut.OffText = "NO";
+		chkDisableIfSoldOut.OnText = "YES";
+		chkDisableIfSoldOut.Tag = "product";
+		chkDisableIfSoldOut.ToggleStateMode = ToggleStateMode.Click;
+		chkDisableIfSoldOut.Value = false;
+		((RadToggleSwitchElement)chkDisableIfSoldOut.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkDisableIfSoldOut.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkDisableIfSoldOut.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkDisableIfSoldOut.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkDisableIfSoldOut.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDisableIfSoldOut.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkDisableIfSoldOut.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkDisableIfSoldOut.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		lblInvDisable.BackColor = Color.FromArgb(132, 146, 146);
 		componentResourceManager.ApplyResources(lblInvDisable, "lblInvDisable");
 		lblInvDisable.ForeColor = Color.White;

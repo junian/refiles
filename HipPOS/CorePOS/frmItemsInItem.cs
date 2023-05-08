@@ -12,7 +12,6 @@ using CorePOS.Business.Methods;
 using CorePOS.Business.Objects;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -171,8 +170,8 @@ public class frmItemsInItem : frmMasterForm
 	{
 		_003C_003Ec__DisplayClass20_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass20_0();
 		CS_0024_003C_003E8__locals0.itemName = comboListOfItems.SelectedItem.ToString();
-		string text = (chkUseItemSettings.get_Value() ? "YES" : "NO");
-		string text2 = ((Control)(object)itemToAddQuantity).Text;
+		string text = (chkUseItemSettings.Value ? "YES" : "NO");
+		string text2 = itemToAddQuantity.Text;
 		if (text2 == "0")
 		{
 			new frmMessageBox(Resources.Quantity_must_be_greater_then_).ShowDialog(this);
@@ -386,7 +385,7 @@ public class frmItemsInItem : frmMasterForm
 	private void btnShowKeyboard_itemToAddQuantity_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_a_quantity, 3, 3, ((Control)(object)itemToAddQuantity).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_a_quantity, 3, 3, itemToAddQuantity.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
 			if (MemoryLoadedObjects.Numpad.numberEntered == 0m)
@@ -395,7 +394,7 @@ public class frmItemsInItem : frmMasterForm
 			}
 			else
 			{
-				((Control)(object)itemToAddQuantity).Text = MemoryLoadedObjects.Numpad.valueEntered;
+				itemToAddQuantity.Text = MemoryLoadedObjects.Numpad.valueEntered;
 			}
 		}
 		base.DialogResult = DialogResult.None;
@@ -404,7 +403,7 @@ public class frmItemsInItem : frmMasterForm
 	private void btnAddGroupToPackage_Click(object sender, EventArgs e)
 	{
 		string text = ComboListOfGroups.SelectedItem.ToString();
-		string text2 = ((Control)(object)groupToAddQuantity).Text;
+		string text2 = groupToAddQuantity.Text;
 		if (text2 == "0")
 		{
 			new frmMessageBox(Resources.Quantity_must_be_greater_then_).ShowDialog(this);
@@ -419,7 +418,7 @@ public class frmItemsInItem : frmMasterForm
 	private void btnShowKeyboard_groupToAddQuantity_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_a_quantity, 3, 3, ((Control)(object)groupToAddQuantity).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_a_quantity, 3, 3, groupToAddQuantity.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
 			if (MemoryLoadedObjects.Numpad.numberEntered == 0m)
@@ -428,7 +427,7 @@ public class frmItemsInItem : frmMasterForm
 			}
 			else
 			{
-				((Control)(object)groupToAddQuantity).Text = MemoryLoadedObjects.Numpad.valueEntered;
+				groupToAddQuantity.Text = MemoryLoadedObjects.Numpad.valueEntered;
 			}
 		}
 		base.DialogResult = DialogResult.None;
@@ -449,24 +448,6 @@ public class frmItemsInItem : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_00e3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ed: Expected O, but got Unknown
-		//IL_0130: Unknown result type (might be due to invalid IL or missing references)
-		//IL_013a: Expected O, but got Unknown
-		//IL_015c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0166: Expected O, but got Unknown
-		//IL_09a7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_09c8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0bf5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0c16: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e1d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e35: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e4c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e6d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0e9a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ec7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ef4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f1b: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmItemsInItem));
 		lowerLabelAddItem = new Label();
 		labelQty = new Label();
@@ -615,13 +596,13 @@ public class frmItemsInItem : frmMasterForm
 		btnShowKeyboard_itemToAddQuantity.UseVisualStyleBackColor = false;
 		btnShowKeyboard_itemToAddQuantity.Click += btnShowKeyboard_itemToAddQuantity_Click;
 		componentResourceManager.ApplyResources(itemToAddQuantity, "itemToAddQuantity");
-		((Control)(object)itemToAddQuantity).Name = "itemToAddQuantity";
-		((RadElement)((RadControl)itemToAddQuantity).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)itemToAddQuantity).Tag = "product";
-		itemToAddQuantity.set_TextAlign(HorizontalAlignment.Center);
-		((Control)(object)itemToAddQuantity).Click += itemToAddQuantity_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)itemToAddQuantity).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)itemToAddQuantity).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		itemToAddQuantity.Name = "itemToAddQuantity";
+		itemToAddQuantity.RootElement.PositionOffset = new SizeF(0f, 0f);
+		itemToAddQuantity.Tag = "product";
+		itemToAddQuantity.TextAlign = HorizontalAlignment.Center;
+		itemToAddQuantity.Click += itemToAddQuantity_Click;
+		((RadTextBoxControlElement)itemToAddQuantity.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)itemToAddQuantity.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		groupsAddedToPackage.BackColor = Color.White;
 		groupsAddedToPackage.BorderStyle = BorderStyle.None;
 		groupsAddedToPackage.Columns.AddRange(new ColumnHeader[2] { columnHeader_2, columnHeader_3 });
@@ -650,12 +631,12 @@ public class frmItemsInItem : frmMasterForm
 		label3.ForeColor = Color.White;
 		label3.Name = "label3";
 		componentResourceManager.ApplyResources(groupToAddQuantity, "groupToAddQuantity");
-		((Control)(object)groupToAddQuantity).Name = "groupToAddQuantity";
-		((RadElement)((RadControl)groupToAddQuantity).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)groupToAddQuantity).Tag = "product";
-		groupToAddQuantity.set_TextAlign(HorizontalAlignment.Center);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)groupToAddQuantity).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)groupToAddQuantity).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(0f, 5f));
+		groupToAddQuantity.Name = "groupToAddQuantity";
+		groupToAddQuantity.RootElement.PositionOffset = new SizeF(0f, 0f);
+		groupToAddQuantity.Tag = "product";
+		groupToAddQuantity.TextAlign = HorizontalAlignment.Center;
+		((RadTextBoxControlElement)groupToAddQuantity.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)groupToAddQuantity.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(0f, 5f);
 		btnShowKeyboard_groupToAddQuantity.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_groupToAddQuantity.DialogResult = DialogResult.OK;
 		btnShowKeyboard_groupToAddQuantity.FlatAppearance.BorderColor = Color.Black;
@@ -679,33 +660,33 @@ public class frmItemsInItem : frmMasterForm
 		label4.ForeColor = Color.White;
 		label4.Name = "label4";
 		componentResourceManager.ApplyResources(chkUseItemSettings, "chkUseItemSettings");
-		((Control)(object)chkUseItemSettings).Name = "chkUseItemSettings";
-		chkUseItemSettings.set_OffText("NO");
-		chkUseItemSettings.set_OnText("YES");
-		((Control)(object)chkUseItemSettings).Tag = "product";
-		chkUseItemSettings.set_ToggleStateMode((ToggleStateMode)1);
-		chkUseItemSettings.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)chkUseItemSettings).GetChildAt(0)).set_ThumbTickness(20);
-		((RadToggleSwitchElement)((RadControl)chkUseItemSettings).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)chkUseItemSettings).GetChildAt(0)).set_BorderWidth(0.9999998f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkUseItemSettings).GetChildAt(0).GetChildAt(0)).set_BackColor2(Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkUseItemSettings).GetChildAt(0).GetChildAt(0)).set_BackColor3(Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)chkUseItemSettings).GetChildAt(0).GetChildAt(0)).set_BackColor4(Color.FromArgb(242, 182, 51));
-		((RadItem)(ToggleSwitchPartElement)((RadControl)chkUseItemSettings).GetChildAt(0).GetChildAt(0)).set_Text(componentResourceManager.GetString("resource.Text"));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)chkUseItemSettings).GetChildAt(0).GetChildAt(0)).set_BackColor(Color.FromArgb(247, 192, 82));
+		chkUseItemSettings.Name = "chkUseItemSettings";
+		chkUseItemSettings.OffText = "NO";
+		chkUseItemSettings.OnText = "YES";
+		chkUseItemSettings.Tag = "product";
+		chkUseItemSettings.ToggleStateMode = ToggleStateMode.Click;
+		chkUseItemSettings.Value = false;
+		((RadToggleSwitchElement)chkUseItemSettings.GetChildAt(0)).ThumbTickness = 20;
+		((RadToggleSwitchElement)chkUseItemSettings.GetChildAt(0)).ThumbOffset = 0;
+		((RadToggleSwitchElement)chkUseItemSettings.GetChildAt(0)).BorderWidth = 0.9999998f;
+		((ToggleSwitchPartElement)chkUseItemSettings.GetChildAt(0).GetChildAt(0)).BackColor2 = Color.FromArgb(247, 192, 82);
+		((ToggleSwitchPartElement)chkUseItemSettings.GetChildAt(0).GetChildAt(0)).BackColor3 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkUseItemSettings.GetChildAt(0).GetChildAt(0)).BackColor4 = Color.FromArgb(242, 182, 51);
+		((ToggleSwitchPartElement)chkUseItemSettings.GetChildAt(0).GetChildAt(0)).Text = componentResourceManager.GetString("resource.Text");
+		((ToggleSwitchPartElement)chkUseItemSettings.GetChildAt(0).GetChildAt(0)).BackColor = Color.FromArgb(247, 192, 82);
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;
 		BackColor = Color.FromArgb(35, 39, 56);
-		base.Controls.Add((Control)(object)chkUseItemSettings);
+		base.Controls.Add(chkUseItemSettings);
 		base.Controls.Add(label4);
 		base.Controls.Add(btnAddGroupToPackage);
 		base.Controls.Add(btnShowKeyboard_groupToAddQuantity);
-		base.Controls.Add((Control)(object)groupToAddQuantity);
+		base.Controls.Add(groupToAddQuantity);
 		base.Controls.Add(label3);
 		base.Controls.Add(ComboListOfGroups);
 		base.Controls.Add(label2);
 		base.Controls.Add(groupsAddedToPackage);
-		base.Controls.Add((Control)(object)itemToAddQuantity);
+		base.Controls.Add(itemToAddQuantity);
 		base.Controls.Add(btnShowKeyboard_itemToAddQuantity);
 		base.Controls.Add(btnClearAll);
 		base.Controls.Add(lblSuggestedPrice);

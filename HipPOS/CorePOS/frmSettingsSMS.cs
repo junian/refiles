@@ -6,7 +6,6 @@ using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -60,9 +59,9 @@ public class frmSettingsSMS : frmMasterForm
 	private void frmSettingsSMS_Load(object sender, EventArgs e)
 	{
 		list_2 = gclass6_0.Settings.Where((Setting s) => s.Key.Contains("sms")).ToList();
-		((Control)(object)radTextBoxControl_0).Text = list_2.Where((Setting s) => s.Key == "sms_token").FirstOrDefault().Value;
-		((Control)(object)txtServer).Text = list_2.Where((Setting s) => s.Key == "sms_server").FirstOrDefault().Value;
-		((Control)(object)txtCountryCode).Text = list_2.Where((Setting s) => s.Key == "sms_country_code").FirstOrDefault().Value;
+		radTextBoxControl_0.Text = list_2.Where((Setting s) => s.Key == "sms_token").FirstOrDefault().Value;
+		txtServer.Text = list_2.Where((Setting s) => s.Key == "sms_server").FirstOrDefault().Value;
+		txtCountryCode.Text = list_2.Where((Setting s) => s.Key == "sms_country_code").FirstOrDefault().Value;
 	}
 
 	private void btnCancel_Click(object sender, EventArgs e)
@@ -74,10 +73,10 @@ public class frmSettingsSMS : frmMasterForm
 	private void btnShowKeyboard_Server_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMS_Server_Address, 1, 128, ((Control)(object)txtServer).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMS_Server_Address, 1, 128, txtServer.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtServer).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			txtServer.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -85,10 +84,10 @@ public class frmSettingsSMS : frmMasterForm
 	private void btnShowKeyboard_API_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMS_Server_API_Key, 1, 128, ((Control)(object)radTextBoxControl_0).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData(Resources.Enter_SMS_Server_API_Key, 1, 128, radTextBoxControl_0.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)radTextBoxControl_0).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			radTextBoxControl_0.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 		base.DialogResult = DialogResult.None;
 	}
@@ -96,19 +95,19 @@ public class frmSettingsSMS : frmMasterForm
 	private void btnShowKeyboard_CountryCode_Click(object sender, EventArgs e)
 	{
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_SMS_Country_Code, 0, 5, ((Control)(object)txtCountryCode).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(Resources.Enter_SMS_Country_Code, 0, 5, txtCountryCode.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)txtCountryCode).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			txtCountryCode.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 		base.DialogResult = DialogResult.None;
 	}
 
 	private void btnSave_Click(object sender, EventArgs e)
 	{
-		list_2.Where((Setting s) => s.Key == "sms_token").FirstOrDefault().Value = ((Control)(object)radTextBoxControl_0).Text.Trim();
-		list_2.Where((Setting s) => s.Key == "sms_server").FirstOrDefault().Value = ((Control)(object)txtServer).Text.Trim();
-		list_2.Where((Setting s) => s.Key == "sms_country_code").FirstOrDefault().Value = ((Control)(object)txtCountryCode).Text.Trim();
+		list_2.Where((Setting s) => s.Key == "sms_token").FirstOrDefault().Value = radTextBoxControl_0.Text.Trim();
+		list_2.Where((Setting s) => s.Key == "sms_server").FirstOrDefault().Value = txtServer.Text.Trim();
+		list_2.Where((Setting s) => s.Key == "sms_country_code").FirstOrDefault().Value = txtCountryCode.Text.Trim();
 		Helper.SubmitChangesWithCatch(gclass6_0);
 	}
 
@@ -128,18 +127,6 @@ public class frmSettingsSMS : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0032: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_0053: Unknown result type (might be due to invalid IL or missing references)
-		//IL_005d: Expected O, but got Unknown
-		//IL_0095: Unknown result type (might be due to invalid IL or missing references)
-		//IL_009f: Expected O, but got Unknown
-		//IL_026c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_028d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03fa: Unknown result type (might be due to invalid IL or missing references)
-		//IL_041b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06be: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06df: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmSettingsSMS));
 		btnSendTest = new Button();
 		label4 = new Label();
@@ -177,11 +164,11 @@ public class frmSettingsSMS : frmMasterForm
 		label10.ForeColor = Color.White;
 		label10.Name = "label10";
 		componentResourceManager.ApplyResources(txtCountryCode, "txtCountryCode");
-		((Control)(object)txtCountryCode).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtCountryCode).Name = "txtCountryCode";
-		((RadElement)((RadControl)txtCountryCode).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtCountryCode).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtCountryCode).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtCountryCode.ForeColor = Color.FromArgb(40, 40, 40);
+		txtCountryCode.Name = "txtCountryCode";
+		txtCountryCode.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtCountryCode.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtCountryCode.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_CountryCode.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_CountryCode.DialogResult = DialogResult.OK;
 		btnShowKeyboard_CountryCode.FlatAppearance.BorderColor = Color.Black;
@@ -196,11 +183,11 @@ public class frmSettingsSMS : frmMasterForm
 		label3.ForeColor = Color.White;
 		label3.Name = "label3";
 		componentResourceManager.ApplyResources(txtServer, "txtServer");
-		((Control)(object)txtServer).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtServer).Name = "txtServer";
-		((RadElement)((RadControl)txtServer).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtServer).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtServer).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtServer.ForeColor = Color.FromArgb(40, 40, 40);
+		txtServer.Name = "txtServer";
+		txtServer.RootElement.PositionOffset = new SizeF(0f, 0f);
+		((RadTextBoxControlElement)txtServer.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtServer.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_Server.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_Server.DialogResult = DialogResult.OK;
 		btnShowKeyboard_Server.FlatAppearance.BorderColor = Color.Black;
@@ -234,10 +221,10 @@ public class frmSettingsSMS : frmMasterForm
 		label9.ForeColor = Color.White;
 		label9.Name = "label9";
 		componentResourceManager.ApplyResources(radTextBoxControl_0, "txtAPIKey");
-		((Control)(object)radTextBoxControl_0).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)radTextBoxControl_0).Name = "txtAPIKey";
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)radTextBoxControl_0).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)radTextBoxControl_0).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		radTextBoxControl_0.ForeColor = Color.FromArgb(40, 40, 40);
+		radTextBoxControl_0.Name = "txtAPIKey";
+		((RadTextBoxControlElement)radTextBoxControl_0.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)radTextBoxControl_0.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		btnShowKeyboard_API.BackColor = Color.FromArgb(77, 174, 225);
 		btnShowKeyboard_API.DialogResult = DialogResult.OK;
 		btnShowKeyboard_API.FlatAppearance.BorderColor = Color.Black;
@@ -254,16 +241,16 @@ public class frmSettingsSMS : frmMasterForm
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;
 		BackColor = Color.FromArgb(35, 39, 56);
-		base.Controls.Add((Control)(object)radTextBoxControl_0);
+		base.Controls.Add(radTextBoxControl_0);
 		base.Controls.Add(btnShowKeyboard_API);
 		base.Controls.Add(label5);
 		base.Controls.Add(btnSendTest);
 		base.Controls.Add(label4);
 		base.Controls.Add(label10);
-		base.Controls.Add((Control)(object)txtCountryCode);
+		base.Controls.Add(txtCountryCode);
 		base.Controls.Add(btnShowKeyboard_CountryCode);
 		base.Controls.Add(label3);
-		base.Controls.Add((Control)(object)txtServer);
+		base.Controls.Add(txtServer);
 		base.Controls.Add(btnShowKeyboard_Server);
 		base.Controls.Add(label1);
 		base.Controls.Add(btnCancel);

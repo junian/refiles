@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -71,20 +70,20 @@ public class DeliveryFeeCalculationItemControl : UserControl
 		base._002Ector();
 		InitializeComponent();
 		form_0 = mainForm;
-		((Control)(object)txtFrom).Text = From;
-		((Control)(object)txtTo).Text = To;
-		((Control)(object)txtChargePerKM).Text = ChangePerKM;
+		txtFrom.Text = From;
+		txtTo.Text = To;
+		txtChargePerKM.Text = ChangePerKM;
 		method_0();
-		((Control)(object)txtFrom).TextChanged += txtChargePerKM_TextChanged;
-		((Control)(object)txtTo).TextChanged += txtChargePerKM_TextChanged;
-		((Control)(object)txtChargePerKM).TextChanged += txtChargePerKM_TextChanged;
+		txtFrom.TextChanged += txtChargePerKM_TextChanged;
+		txtTo.TextChanged += txtChargePerKM_TextChanged;
+		txtChargePerKM.TextChanged += txtChargePerKM_TextChanged;
 	}
 
 	private void method_0()
 	{
-		ToValue = ((Control)(object)txtTo).Text.ToDecimalWithCleanUp();
-		FromValue = ((Control)(object)txtFrom).Text.ToDecimalWithCleanUp();
-		ChangePerKMValue = ((Control)(object)txtChargePerKM).Text.ToDecimalWithCleanUp();
+		ToValue = txtTo.Text.ToDecimalWithCleanUp();
+		FromValue = txtFrom.Text.ToDecimalWithCleanUp();
+		ChangePerKMValue = txtChargePerKM.Text.ToDecimalWithCleanUp();
 	}
 
 	private void btnRemove_Click(object sender, EventArgs e)
@@ -94,11 +93,11 @@ public class DeliveryFeeCalculationItemControl : UserControl
 
 	private void txtChargePerKM_TextChanged(object sender, EventArgs e)
 	{
-		RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
-		if (((Control)(object)val).Name == ((Control)(object)txtTo).Name || ((Control)(object)val).Name == ((Control)(object)txtFrom).Name)
+		RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
+		if (radTextBoxControl.Name == txtTo.Name || radTextBoxControl.Name == txtFrom.Name)
 		{
-			decimal num = ((Control)(object)txtFrom).Text.ToDecimalWithCleanUp();
-			decimal num2 = ((Control)(object)txtTo).Text.ToDecimalWithCleanUp();
+			decimal num = txtFrom.Text.ToDecimalWithCleanUp();
+			decimal num2 = txtTo.Text.ToDecimalWithCleanUp();
 			if (num > num2)
 			{
 				new NotificationLabel(form_0, "From Value cannot be greater than To Value", NotificationTypes.Warning).Show();
@@ -113,29 +112,29 @@ public class DeliveryFeeCalculationItemControl : UserControl
 
 	public decimal CalculateChange(decimal sampleDistance)
 	{
-		decimal num = Math.Round(((Control)(object)txtFrom).Text.ToDecimalWithCleanUp());
-		decimal num2 = Math.Round(((Control)(object)txtTo).Text.ToDecimalWithCleanUp());
-		decimal num3 = ((Control)(object)txtChargePerKM).Text.ToDecimalWithCleanUp();
+		decimal num = Math.Round(txtFrom.Text.ToDecimalWithCleanUp());
+		decimal num2 = Math.Round(txtTo.Text.ToDecimalWithCleanUp());
+		decimal num3 = txtChargePerKM.Text.ToDecimalWithCleanUp();
 		decimal num4 = ((sampleDistance > num2) ? ((num2 - num) * num3) : ((sampleDistance - num) * num3));
 		num4 = ((num4 < 0m) ? 0m : num4);
-		((Control)(object)txtSample).Text = num4.ToString();
+		txtSample.Text = num4.ToString();
 		method_0();
 		return num4;
 	}
 
 	private void txtChargePerKM_Click(object sender, EventArgs e)
 	{
-		RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
+		RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
 		int decimalspaces = 0;
-		if (((Control)(object)val).Name == ((Control)(object)txtChargePerKM).Name)
+		if (radTextBoxControl.Name == txtChargePerKM.Name)
 		{
 			decimalspaces = 2;
 		}
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Enter " + ((Control)(object)val).Tag.ToString(), decimalspaces, 8, ((Control)(object)val).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Enter " + radTextBoxControl.Tag.ToString(), decimalspaces, 8, radTextBoxControl.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)val).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			radTextBoxControl.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
@@ -150,27 +149,11 @@ public class DeliveryFeeCalculationItemControl : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_0011: Unknown result type (might be due to invalid IL or missing references)
-		//IL_001b: Expected O, but got Unknown
-		//IL_001c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0026: Expected O, but got Unknown
-		//IL_0027: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0031: Expected O, but got Unknown
-		//IL_0032: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_0117: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0138: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01e4: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0205: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02b1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02d2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0363: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0384: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager componentResourceManager = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.DeliveryFeeCalculationItemControl));
-		this.txtFrom = new RadTextBoxControl();
-		this.txtTo = new RadTextBoxControl();
-		this.txtChargePerKM = new RadTextBoxControl();
-		this.txtSample = new RadTextBoxControl();
+		this.txtFrom = new Telerik.WinControls.UI.RadTextBoxControl();
+		this.txtTo = new Telerik.WinControls.UI.RadTextBoxControl();
+		this.txtChargePerKM = new Telerik.WinControls.UI.RadTextBoxControl();
+		this.txtSample = new Telerik.WinControls.UI.RadTextBoxControl();
 		this.btnRemove = new System.Windows.Forms.PictureBox();
 		((System.ComponentModel.ISupportInitialize)this.txtFrom).BeginInit();
 		((System.ComponentModel.ISupportInitialize)this.txtTo).BeginInit();
@@ -178,41 +161,41 @@ public class DeliveryFeeCalculationItemControl : UserControl
 		((System.ComponentModel.ISupportInitialize)this.txtSample).BeginInit();
 		((System.ComponentModel.ISupportInitialize)this.btnRemove).BeginInit();
 		base.SuspendLayout();
-		((System.Windows.Forms.Control)(object)this.txtFrom).BackColor = System.Drawing.Color.White;
+		this.txtFrom.BackColor = System.Drawing.Color.White;
 		componentResourceManager.ApplyResources(this.txtFrom, "txtFrom");
-		((System.Windows.Forms.Control)(object)this.txtFrom).ForeColor = System.Drawing.SystemColors.ControlText;
-		((System.Windows.Forms.Control)(object)this.txtFrom).Name = "txtFrom";
-		((RadElement)((RadControl)this.txtFrom).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((System.Windows.Forms.Control)(object)this.txtFrom).Tag = "From Value";
-		((System.Windows.Forms.Control)(object)this.txtFrom).Click += new System.EventHandler(txtChargePerKM_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtFrom).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtFrom).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
-		((System.Windows.Forms.Control)(object)this.txtTo).BackColor = System.Drawing.Color.White;
+		this.txtFrom.ForeColor = System.Drawing.SystemColors.ControlText;
+		this.txtFrom.Name = "txtFrom";
+		this.txtFrom.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtFrom.Tag = "From Value";
+		this.txtFrom.Click += new System.EventHandler(txtChargePerKM_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtFrom.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtFrom.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
+		this.txtTo.BackColor = System.Drawing.Color.White;
 		componentResourceManager.ApplyResources(this.txtTo, "txtTo");
-		((System.Windows.Forms.Control)(object)this.txtTo).ForeColor = System.Drawing.SystemColors.ControlText;
-		((System.Windows.Forms.Control)(object)this.txtTo).Name = "txtTo";
-		((RadElement)((RadControl)this.txtTo).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((System.Windows.Forms.Control)(object)this.txtTo).Tag = "To Value";
-		((System.Windows.Forms.Control)(object)this.txtTo).Click += new System.EventHandler(txtChargePerKM_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtTo).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtTo).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
-		((System.Windows.Forms.Control)(object)this.txtChargePerKM).BackColor = System.Drawing.Color.White;
+		this.txtTo.ForeColor = System.Drawing.SystemColors.ControlText;
+		this.txtTo.Name = "txtTo";
+		this.txtTo.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtTo.Tag = "To Value";
+		this.txtTo.Click += new System.EventHandler(txtChargePerKM_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtTo.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtTo.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
+		this.txtChargePerKM.BackColor = System.Drawing.Color.White;
 		componentResourceManager.ApplyResources(this.txtChargePerKM, "txtChargePerKM");
-		((System.Windows.Forms.Control)(object)this.txtChargePerKM).ForeColor = System.Drawing.SystemColors.ControlText;
-		((System.Windows.Forms.Control)(object)this.txtChargePerKM).Name = "txtChargePerKM";
-		((RadElement)((RadControl)this.txtChargePerKM).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((System.Windows.Forms.Control)(object)this.txtChargePerKM).Tag = "Charge per KM";
-		((System.Windows.Forms.Control)(object)this.txtChargePerKM).Click += new System.EventHandler(txtChargePerKM_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtChargePerKM).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtChargePerKM).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
-		((System.Windows.Forms.Control)(object)this.txtSample).BackColor = System.Drawing.Color.Silver;
+		this.txtChargePerKM.ForeColor = System.Drawing.SystemColors.ControlText;
+		this.txtChargePerKM.Name = "txtChargePerKM";
+		this.txtChargePerKM.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtChargePerKM.Tag = "Charge per KM";
+		this.txtChargePerKM.Click += new System.EventHandler(txtChargePerKM_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtChargePerKM.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtChargePerKM.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
+		this.txtSample.BackColor = System.Drawing.Color.Silver;
 		componentResourceManager.ApplyResources(this.txtSample, "txtSample");
-		((System.Windows.Forms.Control)(object)this.txtSample).ForeColor = System.Drawing.SystemColors.ControlText;
-		this.txtSample.set_IsReadOnly(true);
-		((System.Windows.Forms.Control)(object)this.txtSample).Name = "txtSample";
-		((RadElement)((RadControl)this.txtSample).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtSample).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtSample).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtSample.ForeColor = System.Drawing.SystemColors.ControlText;
+		this.txtSample.IsReadOnly = true;
+		this.txtSample.Name = "txtSample";
+		this.txtSample.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtSample.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtSample.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		this.btnRemove.BackColor = System.Drawing.Color.Transparent;
 		componentResourceManager.ApplyResources(this.btnRemove, "btnRemove");
 		this.btnRemove.Name = "btnRemove";
@@ -221,10 +204,10 @@ public class DeliveryFeeCalculationItemControl : UserControl
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 		this.BackColor = System.Drawing.Color.FromArgb(35, 39, 56);
 		base.Controls.Add(this.btnRemove);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtSample);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtChargePerKM);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtTo);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtFrom);
+		base.Controls.Add(this.txtSample);
+		base.Controls.Add(this.txtChargePerKM);
+		base.Controls.Add(this.txtTo);
+		base.Controls.Add(this.txtFrom);
 		componentResourceManager.ApplyResources(this, "$this");
 		base.Name = "DeliveryFeeCalculationItemControl";
 		((System.ComponentModel.ISupportInitialize)this.txtFrom).EndInit();

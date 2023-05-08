@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -8,7 +7,6 @@ using System.Drawing.Text;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
-using com.clover.remotepay.sdk;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
 using CorePOS.Business.Methods.PaymentProcessors;
@@ -142,22 +140,6 @@ public class frmWaitingPaymentTerminal : frmMasterForm
 
 	public void LoadForm()
 	{
-		//IL_016c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0171: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0239: Unknown result type (might be due to invalid IL or missing references)
-		//IL_023e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0245: Unknown result type (might be due to invalid IL or missing references)
-		//IL_025a: Expected O, but got Unknown
-		//IL_0450: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0455: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0529: Unknown result type (might be due to invalid IL or missing references)
-		//IL_052e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0535: Unknown result type (might be due to invalid IL or missing references)
-		//IL_054a: Expected O, but got Unknown
-		//IL_06b3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06b8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06bf: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06d4: Expected O, but got Unknown
 		try
 		{
 			if (string_0 == PaymentProviderNames.FirstData)
@@ -207,50 +189,44 @@ public class frmWaitingPaymentTerminal : frmMasterForm
 							{
 								Thread.Sleep(500);
 							}
-							ResponseCode result;
-							if (MemoryLoadedObjects.Clover.listener.saleResponse != null)
+							if (MemoryLoadedObjects.Clover.listener.saleResponse != null && MemoryLoadedObjects.Clover.listener.saleResponse.Result.ToString() == "ERROR")
 							{
-								result = ((BaseResponse)MemoryLoadedObjects.Clover.listener.saleResponse).get_Result();
-								if (((object)(ResponseCode)(ref result)).ToString() == "ERROR")
+								int_1 = 0;
+								MemoryLoadedObjects.Clover.resetListener();
+								MemoryLoadedObjects.Clover.connector = null;
+								_ = MemoryLoadedObjects.Clover.connector;
+								while (!MemoryLoadedObjects.Clover.listener.deviceReady)
 								{
-									int_1 = 0;
-									MemoryLoadedObjects.Clover.resetListener();
-									MemoryLoadedObjects.Clover.connector = null;
-									_ = MemoryLoadedObjects.Clover.connector;
-									while (!MemoryLoadedObjects.Clover.listener.deviceReady)
-									{
-										Thread.Sleep(500);
-									}
-									int_1 = 0;
-									while (!MemoryLoadedObjects.Clover.listener.deviceConnected)
-									{
-										Thread.Sleep(500);
-									}
-									int_1 = 0;
-									FirstData.SendToClover(MemoryLoadedObjects.Clover.connector, string_2, int_0, request_0, string_4);
-									while (!MemoryLoadedObjects.Clover.listener.saleDone)
-									{
-										Thread.Sleep(500);
-									}
+									Thread.Sleep(500);
+								}
+								int_1 = 0;
+								while (!MemoryLoadedObjects.Clover.listener.deviceConnected)
+								{
+									Thread.Sleep(500);
+								}
+								int_1 = 0;
+								FirstData.SendToClover(MemoryLoadedObjects.Clover.connector, string_2, int_0, request_0, string_4);
+								while (!MemoryLoadedObjects.Clover.listener.saleDone)
+								{
+									Thread.Sleep(500);
 								}
 							}
 							if (MemoryLoadedObjects.Clover.listener.saleResponse != null)
 							{
-								PaymentTransactionObject paymentTransactionObject2 = paymentTransactionObject;
-								SaleResponse saleResponse = MemoryLoadedObjects.Clover.listener.saleResponse;
-								JsonSerializerSettings val = new JsonSerializerSettings();
-								val.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-								val.set_MaxDepth((int?)2000);
-								paymentTransactionObject2.rawdata = JsonConvert.SerializeObject((object)saleResponse, (Formatting)1, val);
+								paymentTransactionObject.rawdata = JsonConvert.SerializeObject(MemoryLoadedObjects.Clover.listener.saleResponse, Formatting.Indented, new JsonSerializerSettings
+								{
+									ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+									MaxDepth = 2000
+								});
 								PaymentHelper.RecordPaymentTransactionLog(PaymentProviderNames.FirstData, PaymentTerminalModels.Clover.Flex, string_2, int_0, paymentTransactionObject.rawdata, "response", request_0.OrderNumber, string_4);
 								int_1 = 0;
 								if (MemoryLoadedObjects.Clover.listener.success)
 								{
-									if (((PaymentResponse)MemoryLoadedObjects.Clover.listener.saleResponse).get_Payment() != null)
+									if (MemoryLoadedObjects.Clover.listener.saleResponse.Payment != null)
 									{
-										paymentTransactionObject.approvalcode = ((PaymentResponse)MemoryLoadedObjects.Clover.listener.saleResponse).get_Payment().get_cardTransaction().get_authCode();
-										paymentTransactionObject.cardaccount = ((PaymentResponse)MemoryLoadedObjects.Clover.listener.saleResponse).get_Payment().get_cardTransaction().get_last4();
-										paymentTransactionObject.totalamount = (((PaymentResponse)MemoryLoadedObjects.Clover.listener.saleResponse).get_Payment().get_amount() + ((PaymentResponse)MemoryLoadedObjects.Clover.listener.saleResponse).get_Payment().get_tipAmount()).ToString();
+										paymentTransactionObject.approvalcode = MemoryLoadedObjects.Clover.listener.saleResponse.Payment.cardTransaction.authCode;
+										paymentTransactionObject.cardaccount = MemoryLoadedObjects.Clover.listener.saleResponse.Payment.cardTransaction.last4;
+										paymentTransactionObject.totalamount = (MemoryLoadedObjects.Clover.listener.saleResponse.Payment.amount + MemoryLoadedObjects.Clover.listener.saleResponse.Payment.tipAmount).ToString();
 										paymentTransactionObject.responsecode = (MemoryLoadedObjects.Clover.listener.success ? "00" : "51");
 										string text = FirstData.FormatCloverReceipt(request_0.RequestType, paymentTransactionObject.rawdata, request_0.OrderNumber);
 										paymentTransactionObject.customerreceipt = text.Replace("###RECEIPT_RECIPIENT###", "<span style='text-align:center; font-size: 16pt; font-weight:bold;'>CUSTOMER COPY</span>");
@@ -270,9 +246,7 @@ public class frmWaitingPaymentTerminal : frmMasterForm
 									paymentTransactionObject.approvalcode = null;
 									paymentTransactionObject.cardaccount = null;
 									paymentTransactionObject.invoicenumber = request_0.OrderNumber;
-									PaymentTransactionObject paymentTransactionObject3 = paymentTransactionObject;
-									result = ((BaseResponse)MemoryLoadedObjects.Clover.listener.saleResponse).get_Result();
-									paymentTransactionObject3.responsecode = ((((object)(ResponseCode)(ref result)).ToString() == "CANCEL") ? "555" : "51");
+									paymentTransactionObject.responsecode = ((MemoryLoadedObjects.Clover.listener.saleResponse.Result.ToString() == "CANCEL") ? "555" : "51");
 									paymentTransactionObject.totalamount = "0";
 									paymentTransactionObject.transaction_type = request_0.RequestType;
 									MemoryLoadedObjects.Clover.listener.saleDone = false;
@@ -288,17 +262,16 @@ public class frmWaitingPaymentTerminal : frmMasterForm
 							int_1 = 0;
 							if (MemoryLoadedObjects.Clover.listener.success && MemoryLoadedObjects.Clover.listener.refundResponse != null)
 							{
-								((BaseResponse)MemoryLoadedObjects.Clover.listener.refundResponse).set_Message(request_0.OrderNumber);
-								PaymentTransactionObject paymentTransactionObject4 = paymentTransactionObject;
-								RefundPaymentResponse refundResponse = MemoryLoadedObjects.Clover.listener.refundResponse;
-								JsonSerializerSettings val2 = new JsonSerializerSettings();
-								val2.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-								val2.set_MaxDepth((int?)2000);
-								paymentTransactionObject4.rawdata = JsonConvert.SerializeObject((object)refundResponse, (Formatting)1, val2);
+								MemoryLoadedObjects.Clover.listener.refundResponse.Message = request_0.OrderNumber;
+								paymentTransactionObject.rawdata = JsonConvert.SerializeObject(MemoryLoadedObjects.Clover.listener.refundResponse, Formatting.Indented, new JsonSerializerSettings
+								{
+									ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+									MaxDepth = 2000
+								});
 								PaymentHelper.RecordPaymentTransactionLog(PaymentProviderNames.FirstData, PaymentTerminalModels.Clover.Flex, string_2, int_0, paymentTransactionObject.rawdata, "response", request_0.OrderNumber, string_4);
 								paymentTransactionObject.invoicenumber = request_0.OrderNumber;
 								paymentTransactionObject.responsecode = (MemoryLoadedObjects.Clover.listener.success ? "00" : "51");
-								paymentTransactionObject.totalamount = MemoryLoadedObjects.Clover.listener.refundResponse.get_Refund().get_amount().ToString();
+								paymentTransactionObject.totalamount = MemoryLoadedObjects.Clover.listener.refundResponse.Refund.amount.ToString();
 								paymentTransactionObject.transaction_type = request_0.RequestType;
 								string text2 = FirstData.FormatCloverReceipt(request_0.RequestType, paymentTransactionObject.rawdata, request_0.OrderNumber);
 								paymentTransactionObject.customerreceipt = text2.Replace("###RECEIPT_RECIPIENT###", "<span style='text-align:center; font-size: 12pt; font-weight:bold;'>CUSTOMER COPY</span>");
@@ -315,12 +288,11 @@ public class frmWaitingPaymentTerminal : frmMasterForm
 							int_1 = 0;
 							if (MemoryLoadedObjects.Clover.listener.success && MemoryLoadedObjects.Clover.listener.closeoutResponse != null)
 							{
-								PaymentTransactionObject paymentTransactionObject5 = paymentTransactionObject;
-								CloseoutResponse closeoutResponse = MemoryLoadedObjects.Clover.listener.closeoutResponse;
-								JsonSerializerSettings val3 = new JsonSerializerSettings();
-								val3.set_ReferenceLoopHandling((ReferenceLoopHandling)1);
-								val3.set_MaxDepth((int?)2000);
-								paymentTransactionObject5.rawdata = JsonConvert.SerializeObject((object)closeoutResponse, (Formatting)1, val3);
+								paymentTransactionObject.rawdata = JsonConvert.SerializeObject(MemoryLoadedObjects.Clover.listener.closeoutResponse, Formatting.Indented, new JsonSerializerSettings
+								{
+									ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+									MaxDepth = 2000
+								});
 								PaymentHelper.RecordPaymentTransactionLog(PaymentProviderNames.FirstData, PaymentTerminalModels.Clover.Flex, string_2, int_0, paymentTransactionObject.rawdata, "response", request_0.OrderNumber, string_4);
 								paymentTransactionObject.invoicenumber = request_0.OrderNumber;
 								paymentTransactionObject.responsecode = (MemoryLoadedObjects.Clover.listener.success ? "00" : "51");
@@ -432,19 +404,6 @@ public class frmWaitingPaymentTerminal : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_001c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0026: Expected O, but got Unknown
-		//IL_0027: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0031: Expected O, but got Unknown
-		//IL_004e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0058: Expected O, but got Unknown
-		//IL_0059: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0063: Expected O, but got Unknown
-		//IL_0064: Unknown result type (might be due to invalid IL or missing references)
-		//IL_006e: Expected O, but got Unknown
-		//IL_00f1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_010f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0132: Unknown result type (might be due to invalid IL or missing references)
 		icontainer_1 = new Container();
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmWaitingPaymentTerminal));
 		radWaitingBar1 = new RadWaitingBar();
@@ -459,43 +418,43 @@ public class frmWaitingPaymentTerminal : frmMasterForm
 		panel1.SuspendLayout();
 		SuspendLayout();
 		componentResourceManager.ApplyResources(radWaitingBar1, "radWaitingBar1");
-		((Control)(object)radWaitingBar1).Name = "radWaitingBar1";
-		((Collection<BaseWaitingBarIndicatorElement>)(object)radWaitingBar1.get_WaitingIndicators()).Add((BaseWaitingBarIndicatorElement)(object)lineRingWaitingBarIndicatorElement1);
-		radWaitingBar1.set_WaitingSpeed(50);
-		radWaitingBar1.set_WaitingStyle((WaitingBarStyles)5);
-		((RadWaitingBarElement)((RadControl)radWaitingBar1).GetChildAt(0)).set_WaitingSpeed(50);
-		((WaitingBarContentElement)((RadControl)radWaitingBar1).GetChildAt(0).GetChildAt(0)).set_WaitingStyle((WaitingBarStyles)5);
-		((WaitingBarSeparatorElement)((RadControl)radWaitingBar1).GetChildAt(0).GetChildAt(0).GetChildAt(0)).set_Dash(false);
+		radWaitingBar1.Name = "radWaitingBar1";
+		radWaitingBar1.WaitingIndicators.Add(lineRingWaitingBarIndicatorElement1);
+		radWaitingBar1.WaitingSpeed = 50;
+		radWaitingBar1.WaitingStyle = WaitingBarStyles.LineRing;
+		((RadWaitingBarElement)radWaitingBar1.GetChildAt(0)).WaitingSpeed = 50;
+		((WaitingBarContentElement)radWaitingBar1.GetChildAt(0).GetChildAt(0)).WaitingStyle = WaitingBarStyles.LineRing;
+		((WaitingBarSeparatorElement)radWaitingBar1.GetChildAt(0).GetChildAt(0).GetChildAt(0)).Dash = false;
 		componentResourceManager.ApplyResources(lineRingWaitingBarIndicatorElement1, "lineRingWaitingBarIndicatorElement1");
-		((RadElement)lineRingWaitingBarIndicatorElement1).set_AutoSize(false);
-		((RadElement)lineRingWaitingBarIndicatorElement1).set_AutoSizeMode((RadAutoSizeMode)1);
-		((RadElement)lineRingWaitingBarIndicatorElement1).set_Bounds(new Rectangle(0, 0, 350, 120));
-		((VisualElement)lineRingWaitingBarIndicatorElement1).set_DefaultSize(new Size(0, 0));
-		((LightVisualElement)lineRingWaitingBarIndicatorElement1).set_DisabledTextRenderingHint(TextRenderingHint.SystemDefault);
-		((LightVisualElement)lineRingWaitingBarIndicatorElement1).set_DrawImage(true);
-		((BaseWaitingBarIndicatorElement)lineRingWaitingBarIndicatorElement1).set_ElementColor(Color.FromArgb(252, 193, 0));
-		((BaseWaitingBarIndicatorElement)lineRingWaitingBarIndicatorElement1).set_ElementColor2(Color.FromArgb(251, 211, 64));
-		((BaseRingWaitingBarIndicatorElement)lineRingWaitingBarIndicatorElement1).set_ElementColor3(Color.FromArgb(252, 239, 175));
-		((BaseWaitingBarIndicatorElement)lineRingWaitingBarIndicatorElement1).set_ElementCount(12);
-		((VisualElement)lineRingWaitingBarIndicatorElement1).set_Font(new Font("Segoe UI", 12f));
-		((VisualElement)lineRingWaitingBarIndicatorElement1).set_ForeColor(Color.White);
-		((BaseRingWaitingBarIndicatorElement)lineRingWaitingBarIndicatorElement1).set_InnerRadius(15);
-		lineRingWaitingBarIndicatorElement1.set_LineThickness(3.0);
-		((RadElement)lineRingWaitingBarIndicatorElement1).set_Name("lineRingWaitingBarIndicatorElement1");
-		((UIItemBase)lineRingWaitingBarIndicatorElement1).set_NumberOfColors(10);
-		((VisualElement)lineRingWaitingBarIndicatorElement1).set_Opacity(1.0);
-		((BaseRingWaitingBarIndicatorElement)lineRingWaitingBarIndicatorElement1).set_Radius(30);
-		((BaseRingWaitingBarIndicatorElement)lineRingWaitingBarIndicatorElement1).set_RotationDirection((RotationDirection)0);
-		((RadElement)lineRingWaitingBarIndicatorElement1).set_ScaleTransform(new SizeF(1f, 1f));
-		((RadElement)lineRingWaitingBarIndicatorElement1).set_Shape((ElementShape)null);
-		((RadElement)lineRingWaitingBarIndicatorElement1).set_ShouldPaint(true);
-		((VisualElement)lineRingWaitingBarIndicatorElement1).set_SmoothingMode(SmoothingMode.HighSpeed);
-		((LightVisualElement)lineRingWaitingBarIndicatorElement1).set_TextAlignment(ContentAlignment.BottomCenter);
-		((LightVisualElement)lineRingWaitingBarIndicatorElement1).set_TextImageRelation(TextImageRelation.ImageBeforeText);
-		((LightVisualElement)lineRingWaitingBarIndicatorElement1).set_TextRenderingHint(TextRenderingHint.SystemDefault);
-		((RadElement)lineRingWaitingBarIndicatorElement1).set_UseCompatibleTextRendering(false);
+		lineRingWaitingBarIndicatorElement1.AutoSize = false;
+		lineRingWaitingBarIndicatorElement1.AutoSizeMode = RadAutoSizeMode.WrapAroundChildren;
+		lineRingWaitingBarIndicatorElement1.Bounds = new Rectangle(0, 0, 350, 120);
+		lineRingWaitingBarIndicatorElement1.DefaultSize = new Size(0, 0);
+		lineRingWaitingBarIndicatorElement1.DisabledTextRenderingHint = TextRenderingHint.SystemDefault;
+		lineRingWaitingBarIndicatorElement1.DrawImage = true;
+		lineRingWaitingBarIndicatorElement1.ElementColor = Color.FromArgb(252, 193, 0);
+		lineRingWaitingBarIndicatorElement1.ElementColor2 = Color.FromArgb(251, 211, 64);
+		lineRingWaitingBarIndicatorElement1.ElementColor3 = Color.FromArgb(252, 239, 175);
+		lineRingWaitingBarIndicatorElement1.ElementCount = 12;
+		lineRingWaitingBarIndicatorElement1.Font = new Font("Segoe UI", 12f);
+		lineRingWaitingBarIndicatorElement1.ForeColor = Color.White;
+		lineRingWaitingBarIndicatorElement1.InnerRadius = 15;
+		lineRingWaitingBarIndicatorElement1.LineThickness = 3.0;
+		lineRingWaitingBarIndicatorElement1.Name = "lineRingWaitingBarIndicatorElement1";
+		lineRingWaitingBarIndicatorElement1.NumberOfColors = 10;
+		lineRingWaitingBarIndicatorElement1.Opacity = 1.0;
+		lineRingWaitingBarIndicatorElement1.Radius = 30;
+		lineRingWaitingBarIndicatorElement1.RotationDirection = RotationDirection.Clockwise;
+		lineRingWaitingBarIndicatorElement1.ScaleTransform = new SizeF(1f, 1f);
+		lineRingWaitingBarIndicatorElement1.Shape = null;
+		lineRingWaitingBarIndicatorElement1.ShouldPaint = true;
+		lineRingWaitingBarIndicatorElement1.SmoothingMode = SmoothingMode.HighSpeed;
+		lineRingWaitingBarIndicatorElement1.TextAlignment = ContentAlignment.BottomCenter;
+		lineRingWaitingBarIndicatorElement1.TextImageRelation = TextImageRelation.ImageBeforeText;
+		lineRingWaitingBarIndicatorElement1.TextRenderingHint = TextRenderingHint.SystemDefault;
+		lineRingWaitingBarIndicatorElement1.UseCompatibleTextRendering = false;
 		panel1.BorderStyle = BorderStyle.FixedSingle;
-		panel1.Controls.Add((Control)(object)radWaitingBar1);
+		panel1.Controls.Add(radWaitingBar1);
 		componentResourceManager.ApplyResources(panel1, "panel1");
 		panel1.Name = "panel1";
 		timer_0.Enabled = true;

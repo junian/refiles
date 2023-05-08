@@ -8,7 +8,6 @@ using CorePOS.AdminPanel.Settings.OrderEntry;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS.AdminPanel.Settings;
@@ -117,14 +116,6 @@ public class OrderEntrySettings : UserControl
 
 	public OrderEntrySettings()
 	{
-		//IL_0295: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02a5: Expected O, but got Unknown
-		//IL_02c3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02d7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_02e9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_030b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_031c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0326: Expected O, but got Unknown
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
 		bool_0 = true;
@@ -177,19 +168,19 @@ public class OrderEntrySettings : UserControl
 				}
 				if (CS_0024_003C_003E8__locals0.ctrl.Name.Contains("txt"))
 				{
-					((Control)(RadTextBoxControl)CS_0024_003C_003E8__locals0.ctrl).Text = setting.Value;
+					((RadTextBoxControl)CS_0024_003C_003E8__locals0.ctrl).Text = setting.Value;
 					continue;
 				}
 				if (setting.Value.Contains("ON"))
 				{
-					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).set_Value(true);
+					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Value = true;
 				}
 				else
 				{
-					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).set_Value(false);
+					((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Value = false;
 				}
-				((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).get_ToggleSwitchElement().add_ValueChanged((EventHandler)method_1);
-				((RadElement)((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).get_ToggleSwitchElement()).set_Tag(((Control)(RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Tag);
+				((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).ToggleSwitchElement.ValueChanged += method_1;
+				((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).ToggleSwitchElement.Tag = ((RadToggleSwitch)CS_0024_003C_003E8__locals0.ctrl).Tag;
 			}
 		}
 		bool_0 = false;
@@ -215,8 +206,8 @@ public class OrderEntrySettings : UserControl
 			return;
 		}
 		_003C_003Ec__DisplayClass7_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass7_0();
-		CS_0024_003C_003E8__locals0.chkToggle = (RadToggleSwitchElement)((sender is RadToggleSwitchElement) ? sender : null);
-		Setting setting = iqueryable_0.Where((Setting s) => ((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag().Equals(s.Key)).FirstOrDefault();
+		CS_0024_003C_003E8__locals0.chkToggle = sender as RadToggleSwitchElement;
+		Setting setting = iqueryable_0.Where((Setting s) => CS_0024_003C_003E8__locals0.chkToggle.Tag.Equals(s.Key)).FirstOrDefault();
 		if (setting == null)
 		{
 			return;
@@ -231,12 +222,12 @@ public class OrderEntrySettings : UserControl
 		}
 		setting.Synced = false;
 		Helper.SubmitChangesWithCatch(gclass6_0);
-		SettingsHelper.SetSettingValueByKey(((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag().ToString(), setting.Value);
-		if (!(((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag().ToString() == ((Control)(object)chkSecondScreen).Tag.ToString()) && !(((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag().ToString() == ((Control)(object)chkAddSoloOptionMain).Tag.ToString()))
+		SettingsHelper.SetSettingValueByKey(CS_0024_003C_003E8__locals0.chkToggle.Tag.ToString(), setting.Value);
+		if (!(CS_0024_003C_003E8__locals0.chkToggle.Tag.ToString() == chkSecondScreen.Tag.ToString()) && !(CS_0024_003C_003E8__locals0.chkToggle.Tag.ToString() == chkAddSoloOptionMain.Tag.ToString()))
 		{
 			return;
 		}
-		if (((RadElement)CS_0024_003C_003E8__locals0.chkToggle).get_Tag().ToString() == ((Control)(object)chkAddSoloOptionMain).Tag.ToString())
+		if (CS_0024_003C_003E8__locals0.chkToggle.Tag.ToString() == chkAddSoloOptionMain.Tag.ToString())
 		{
 			foreach (Terminal item in gclass6_0.Terminals.Where((Terminal x) => x.LastCheckedIn > DateTime.Now.AddMonths(-1) && x.SystemName != Environment.MachineName).ToList())
 			{
@@ -253,23 +244,23 @@ public class OrderEntrySettings : UserControl
 
 	private void method_2(object sender, EventArgs e)
 	{
-		RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
+		RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Kitchen Tip %", 2, 6, ((Control)(object)val).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Kitchen Tip %", 2, 6, radTextBoxControl.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)val).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			radTextBoxControl.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
 	private void method_3(object sender, EventArgs e)
 	{
-		RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
+		RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData("Breakage Tip %", 2, 6, ((Control)(object)val).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData("Breakage Tip %", 2, 6, radTextBoxControl.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)val).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+			radTextBoxControl.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 		}
 	}
 
@@ -302,112 +293,31 @@ public class OrderEntrySettings : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_0032: Unknown result type (might be due to invalid IL or missing references)
-		//IL_003c: Expected O, but got Unknown
-		//IL_005e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0068: Expected O, but got Unknown
-		//IL_007f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0089: Expected O, but got Unknown
-		//IL_00b6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00c0: Expected O, but got Unknown
-		//IL_00e2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_00ec: Expected O, but got Unknown
-		//IL_010e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0118: Expected O, but got Unknown
-		//IL_0171: Unknown result type (might be due to invalid IL or missing references)
-		//IL_017b: Expected O, but got Unknown
-		//IL_019d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01a7: Expected O, but got Unknown
-		//IL_01f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01ff: Expected O, but got Unknown
-		//IL_0448: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0460: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0477: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0498: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04c5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_04f2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_051f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0663: Unknown result type (might be due to invalid IL or missing references)
-		//IL_067b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0692: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06b3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_06e0: Unknown result type (might be due to invalid IL or missing references)
-		//IL_070d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_073a: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0851: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0869: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0880: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08a1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08ce: Unknown result type (might be due to invalid IL or missing references)
-		//IL_08fb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0928: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0a99: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ab1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ac8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ae9: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b16: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b43: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0b70: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ccb: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ce3: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0cfa: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d1b: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d48: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0d75: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0da2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0ee6: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0efe: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f15: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f36: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f63: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0f90: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0fbd: Unknown result type (might be due to invalid IL or missing references)
-		//IL_125d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1275: Unknown result type (might be due to invalid IL or missing references)
-		//IL_128c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_12ad: Unknown result type (might be due to invalid IL or missing references)
-		//IL_12da: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1307: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1334: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1478: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1490: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14a7: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14c8: Unknown result type (might be due to invalid IL or missing references)
-		//IL_14f5: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1522: Unknown result type (might be due to invalid IL or missing references)
-		//IL_154f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_17a2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_17ba: Unknown result type (might be due to invalid IL or missing references)
-		//IL_17d1: Unknown result type (might be due to invalid IL or missing references)
-		//IL_17f2: Unknown result type (might be due to invalid IL or missing references)
-		//IL_181f: Unknown result type (might be due to invalid IL or missing references)
-		//IL_184c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_1879: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager componentResourceManager = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.AdminPanel.Settings.OrderEntrySettings));
 		this.lblAddImageSecondScreen = new System.Windows.Forms.Label();
 		this.label_secondScreen_desc = new System.Windows.Forms.Label();
 		this.pictureBox12 = new System.Windows.Forms.PictureBox();
-		this.chkSecondScreen = new RadToggleSwitch();
+		this.chkSecondScreen = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label_secondScreen_title = new System.Windows.Forms.Label();
 		this.label_nowserving_desc = new System.Windows.Forms.Label();
 		this.pictureBox10 = new System.Windows.Forms.PictureBox();
-		this.chkNowServingKitchen = new RadToggleSwitch();
+		this.chkNowServingKitchen = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label_nowserving_title = new System.Windows.Forms.Label();
 		this.label_stackoptions_desc = new System.Windows.Forms.Label();
-		this.chkStackOptions = new RadToggleSwitch();
+		this.chkStackOptions = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label_stackoptions_title = new System.Windows.Forms.Label();
 		this.pictureBox17 = new System.Windows.Forms.PictureBox();
 		this.pictureBox18 = new System.Windows.Forms.PictureBox();
 		this.label_promptoption_desc = new System.Windows.Forms.Label();
-		this.chkPromptChildOptions = new RadToggleSwitch();
+		this.chkPromptChildOptions = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label_promptoption_title = new System.Windows.Forms.Label();
 		this.pictureBox19 = new System.Windows.Forms.PictureBox();
 		this.label_addsolooptionprice_ = new System.Windows.Forms.Label();
-		this.chkAddSoloOptionMain = new RadToggleSwitch();
+		this.chkAddSoloOptionMain = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label_addsolooptionprice_title = new System.Windows.Forms.Label();
 		this.pictureBox22 = new System.Windows.Forms.PictureBox();
 		this.label_showitemprices_desc = new System.Windows.Forms.Label();
-		this.chkShowItemPrice = new RadToggleSwitch();
+		this.chkShowItemPrice = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label_showitemprices_title = new System.Windows.Forms.Label();
 		this.label6 = new System.Windows.Forms.Label();
 		this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -416,11 +326,11 @@ public class OrderEntrySettings : UserControl
 		this.lblTipSharing = new System.Windows.Forms.Label();
 		this.pictureBox3 = new System.Windows.Forms.PictureBox();
 		this.label4 = new System.Windows.Forms.Label();
-		this.chkShowInstructions = new RadToggleSwitch();
+		this.chkShowInstructions = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label5 = new System.Windows.Forms.Label();
 		this.pictureBox2 = new System.Windows.Forms.PictureBox();
 		this.label1 = new System.Windows.Forms.Label();
-		this.chkComboPotential = new RadToggleSwitch();
+		this.chkComboPotential = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label3 = new System.Windows.Forms.Label();
 		this.pictureBox7 = new System.Windows.Forms.PictureBox();
 		this.label9 = new System.Windows.Forms.Label();
@@ -428,7 +338,7 @@ public class OrderEntrySettings : UserControl
 		this.label11 = new System.Windows.Forms.Label();
 		this.pictureBox1 = new System.Windows.Forms.PictureBox();
 		this.label2 = new System.Windows.Forms.Label();
-		this.chkCustomDiscount = new RadToggleSwitch();
+		this.chkCustomDiscount = new Telerik.WinControls.UI.RadToggleSwitch();
 		this.label7 = new System.Windows.Forms.Label();
 		((System.ComponentModel.ISupportInitialize)this.pictureBox12).BeginInit();
 		((System.ComponentModel.ISupportInitialize)this.chkSecondScreen).BeginInit();
@@ -464,20 +374,20 @@ public class OrderEntrySettings : UserControl
 		this.pictureBox12.Name = "pictureBox12";
 		this.pictureBox12.TabStop = false;
 		componentResourceManager.ApplyResources(this.chkSecondScreen, "chkSecondScreen");
-		((System.Windows.Forms.Control)(object)this.chkSecondScreen).Name = "chkSecondScreen";
-		((System.Windows.Forms.Control)(object)this.chkSecondScreen).Tag = "second_screen";
-		this.chkSecondScreen.set_ThumbTickness(27);
-		this.chkSecondScreen.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkSecondScreen.set_Value(false);
-		this.chkSecondScreen.add_ValueChanged(new System.EventHandler(chkSecondScreen_ValueChanged));
-		((System.Windows.Forms.Control)(object)this.chkSecondScreen).Click += new System.EventHandler(chkSecondScreen_Click);
-		((RadToggleSwitchElement)((RadControl)this.chkSecondScreen).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkSecondScreen).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkSecondScreen).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkSecondScreen).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkSecondScreen).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkSecondScreen).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkSecondScreen).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkSecondScreen.Name = "chkSecondScreen";
+		this.chkSecondScreen.Tag = "second_screen";
+		this.chkSecondScreen.ThumbTickness = 27;
+		this.chkSecondScreen.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkSecondScreen.Value = false;
+		this.chkSecondScreen.ValueChanged += new System.EventHandler(chkSecondScreen_ValueChanged);
+		this.chkSecondScreen.Click += new System.EventHandler(chkSecondScreen_Click);
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkSecondScreen.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkSecondScreen.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkSecondScreen.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkSecondScreen.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkSecondScreen.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkSecondScreen.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkSecondScreen.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label_secondScreen_title.BackColor = System.Drawing.Color.Transparent;
 		this.label_secondScreen_title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label_secondScreen_title, "label_secondScreen_title");
@@ -491,18 +401,18 @@ public class OrderEntrySettings : UserControl
 		this.pictureBox10.Name = "pictureBox10";
 		this.pictureBox10.TabStop = false;
 		componentResourceManager.ApplyResources(this.chkNowServingKitchen, "chkNowServingKitchen");
-		((System.Windows.Forms.Control)(object)this.chkNowServingKitchen).Name = "chkNowServingKitchen";
-		((System.Windows.Forms.Control)(object)this.chkNowServingKitchen).Tag = "now_serving_screen";
-		this.chkNowServingKitchen.set_ThumbTickness(27);
-		this.chkNowServingKitchen.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkNowServingKitchen.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkNowServingKitchen).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkNowServingKitchen).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkNowServingKitchen).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkNowServingKitchen).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkNowServingKitchen).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkNowServingKitchen).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkNowServingKitchen).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkNowServingKitchen.Name = "chkNowServingKitchen";
+		this.chkNowServingKitchen.Tag = "now_serving_screen";
+		this.chkNowServingKitchen.ThumbTickness = 27;
+		this.chkNowServingKitchen.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkNowServingKitchen.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkNowServingKitchen.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkNowServingKitchen.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkNowServingKitchen.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkNowServingKitchen.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkNowServingKitchen.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkNowServingKitchen.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkNowServingKitchen.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label_nowserving_title.BackColor = System.Drawing.Color.Transparent;
 		this.label_nowserving_title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label_nowserving_title, "label_nowserving_title");
@@ -513,18 +423,18 @@ public class OrderEntrySettings : UserControl
 		this.label_stackoptions_desc.Name = "label_stackoptions_desc";
 		this.label_stackoptions_desc.Tag = "";
 		componentResourceManager.ApplyResources(this.chkStackOptions, "chkStackOptions");
-		((System.Windows.Forms.Control)(object)this.chkStackOptions).Name = "chkStackOptions";
-		((System.Windows.Forms.Control)(object)this.chkStackOptions).Tag = "stack_options";
-		this.chkStackOptions.set_ThumbTickness(27);
-		this.chkStackOptions.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkStackOptions.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkStackOptions).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkStackOptions).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkStackOptions).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkStackOptions).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkStackOptions).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkStackOptions).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkStackOptions).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkStackOptions.Name = "chkStackOptions";
+		this.chkStackOptions.Tag = "stack_options";
+		this.chkStackOptions.ThumbTickness = 27;
+		this.chkStackOptions.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkStackOptions.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkStackOptions.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkStackOptions.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkStackOptions.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkStackOptions.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkStackOptions.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkStackOptions.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkStackOptions.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label_stackoptions_title.BackColor = System.Drawing.Color.Transparent;
 		this.label_stackoptions_title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label_stackoptions_title, "label_stackoptions_title");
@@ -541,18 +451,18 @@ public class OrderEntrySettings : UserControl
 		this.label_promptoption_desc.Name = "label_promptoption_desc";
 		this.label_promptoption_desc.Tag = "";
 		componentResourceManager.ApplyResources(this.chkPromptChildOptions, "chkPromptChildOptions");
-		((System.Windows.Forms.Control)(object)this.chkPromptChildOptions).Name = "chkPromptChildOptions";
-		((System.Windows.Forms.Control)(object)this.chkPromptChildOptions).Tag = "prompt_option_child_item";
-		this.chkPromptChildOptions.set_ThumbTickness(27);
-		this.chkPromptChildOptions.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkPromptChildOptions.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkPromptChildOptions).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkPromptChildOptions).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkPromptChildOptions).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPromptChildOptions).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPromptChildOptions).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkPromptChildOptions).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkPromptChildOptions).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkPromptChildOptions.Name = "chkPromptChildOptions";
+		this.chkPromptChildOptions.Tag = "prompt_option_child_item";
+		this.chkPromptChildOptions.ThumbTickness = 27;
+		this.chkPromptChildOptions.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkPromptChildOptions.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPromptChildOptions.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPromptChildOptions.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkPromptChildOptions.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPromptChildOptions.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPromptChildOptions.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPromptChildOptions.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkPromptChildOptions.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label_promptoption_title.BackColor = System.Drawing.Color.Transparent;
 		this.label_promptoption_title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label_promptoption_title, "label_promptoption_title");
@@ -566,19 +476,19 @@ public class OrderEntrySettings : UserControl
 		this.label_addsolooptionprice_.Name = "label_addsolooptionprice_";
 		this.label_addsolooptionprice_.Tag = "";
 		componentResourceManager.ApplyResources(this.chkAddSoloOptionMain, "chkAddSoloOptionMain");
-		((System.Windows.Forms.Control)(object)this.chkAddSoloOptionMain).Name = "chkAddSoloOptionMain";
-		((System.Windows.Forms.Control)(object)this.chkAddSoloOptionMain).Tag = "add_solo_option_main";
-		this.chkAddSoloOptionMain.set_ThumbTickness(27);
-		this.chkAddSoloOptionMain.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkAddSoloOptionMain.set_Value(false);
-		this.chkAddSoloOptionMain.add_ValueChanged(new System.EventHandler(chkAddSoloOptionMain_ValueChanged));
-		((RadToggleSwitchElement)((RadControl)this.chkAddSoloOptionMain).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkAddSoloOptionMain).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkAddSoloOptionMain).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkAddSoloOptionMain).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkAddSoloOptionMain).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkAddSoloOptionMain).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkAddSoloOptionMain).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkAddSoloOptionMain.Name = "chkAddSoloOptionMain";
+		this.chkAddSoloOptionMain.Tag = "add_solo_option_main";
+		this.chkAddSoloOptionMain.ThumbTickness = 27;
+		this.chkAddSoloOptionMain.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkAddSoloOptionMain.Value = false;
+		this.chkAddSoloOptionMain.ValueChanged += new System.EventHandler(chkAddSoloOptionMain_ValueChanged);
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkAddSoloOptionMain.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkAddSoloOptionMain.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkAddSoloOptionMain.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAddSoloOptionMain.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAddSoloOptionMain.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAddSoloOptionMain.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkAddSoloOptionMain.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label_addsolooptionprice_title.BackColor = System.Drawing.Color.Transparent;
 		this.label_addsolooptionprice_title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label_addsolooptionprice_title, "label_addsolooptionprice_title");
@@ -592,18 +502,18 @@ public class OrderEntrySettings : UserControl
 		this.label_showitemprices_desc.Name = "label_showitemprices_desc";
 		this.label_showitemprices_desc.Tag = "";
 		componentResourceManager.ApplyResources(this.chkShowItemPrice, "chkShowItemPrice");
-		((System.Windows.Forms.Control)(object)this.chkShowItemPrice).Name = "chkShowItemPrice";
-		((System.Windows.Forms.Control)(object)this.chkShowItemPrice).Tag = "item_button_price";
-		this.chkShowItemPrice.set_ThumbTickness(27);
-		this.chkShowItemPrice.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkShowItemPrice.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkShowItemPrice).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkShowItemPrice).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkShowItemPrice).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkShowItemPrice).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkShowItemPrice).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkShowItemPrice).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkShowItemPrice).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkShowItemPrice.Name = "chkShowItemPrice";
+		this.chkShowItemPrice.Tag = "item_button_price";
+		this.chkShowItemPrice.ThumbTickness = 27;
+		this.chkShowItemPrice.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkShowItemPrice.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkShowItemPrice.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkShowItemPrice.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkShowItemPrice.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkShowItemPrice.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkShowItemPrice.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkShowItemPrice.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkShowItemPrice.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label_showitemprices_title.BackColor = System.Drawing.Color.Transparent;
 		this.label_showitemprices_title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label_showitemprices_title, "label_showitemprices_title");
@@ -637,18 +547,18 @@ public class OrderEntrySettings : UserControl
 		this.label4.Name = "label4";
 		this.label4.Tag = "";
 		componentResourceManager.ApplyResources(this.chkShowInstructions, "chkShowInstructions");
-		((System.Windows.Forms.Control)(object)this.chkShowInstructions).Name = "chkShowInstructions";
-		((System.Windows.Forms.Control)(object)this.chkShowInstructions).Tag = "show_instruction_oe";
-		this.chkShowInstructions.set_ThumbTickness(27);
-		this.chkShowInstructions.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkShowInstructions.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkShowInstructions).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkShowInstructions).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkShowInstructions).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkShowInstructions).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkShowInstructions).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkShowInstructions).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkShowInstructions).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkShowInstructions.Name = "chkShowInstructions";
+		this.chkShowInstructions.Tag = "show_instruction_oe";
+		this.chkShowInstructions.ThumbTickness = 27;
+		this.chkShowInstructions.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkShowInstructions.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkShowInstructions.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkShowInstructions.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkShowInstructions.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkShowInstructions.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkShowInstructions.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkShowInstructions.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkShowInstructions.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label5.BackColor = System.Drawing.Color.Transparent;
 		this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label5, "label5");
@@ -662,18 +572,18 @@ public class OrderEntrySettings : UserControl
 		this.label1.Name = "label1";
 		this.label1.Tag = "";
 		componentResourceManager.ApplyResources(this.chkComboPotential, "chkComboPotential");
-		((System.Windows.Forms.Control)(object)this.chkComboPotential).Name = "chkComboPotential";
-		((System.Windows.Forms.Control)(object)this.chkComboPotential).Tag = "use_combo_potential";
-		this.chkComboPotential.set_ThumbTickness(27);
-		this.chkComboPotential.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkComboPotential.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkComboPotential).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkComboPotential).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkComboPotential).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkComboPotential).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkComboPotential).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkComboPotential).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkComboPotential).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkComboPotential.Name = "chkComboPotential";
+		this.chkComboPotential.Tag = "use_combo_potential";
+		this.chkComboPotential.ThumbTickness = 27;
+		this.chkComboPotential.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkComboPotential.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkComboPotential.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkComboPotential.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkComboPotential.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkComboPotential.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkComboPotential.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkComboPotential.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkComboPotential.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label3.BackColor = System.Drawing.Color.Transparent;
 		this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label3, "label3");
@@ -703,18 +613,18 @@ public class OrderEntrySettings : UserControl
 		this.label2.Name = "label2";
 		this.label2.Tag = "";
 		componentResourceManager.ApplyResources(this.chkCustomDiscount, "chkCustomDiscount");
-		((System.Windows.Forms.Control)(object)this.chkCustomDiscount).Name = "chkCustomDiscount";
-		((System.Windows.Forms.Control)(object)this.chkCustomDiscount).Tag = "enable_custom_discount";
-		this.chkCustomDiscount.set_ThumbTickness(27);
-		this.chkCustomDiscount.set_ToggleStateMode((ToggleStateMode)1);
-		this.chkCustomDiscount.set_Value(false);
-		((RadToggleSwitchElement)((RadControl)this.chkCustomDiscount).GetChildAt(0)).set_ThumbTickness(27);
-		((RadToggleSwitchElement)((RadControl)this.chkCustomDiscount).GetChildAt(0)).set_ThumbOffset(0);
-		((UIItemBase)(RadToggleSwitchElement)((RadControl)this.chkCustomDiscount).GetChildAt(0)).set_BorderWidth(1.333333f);
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkCustomDiscount).GetChildAt(0).GetChildAt(0)).set_BackColor2(System.Drawing.Color.FromArgb(247, 192, 82));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkCustomDiscount).GetChildAt(0).GetChildAt(0)).set_BackColor3(System.Drawing.Color.FromArgb(242, 182, 51));
-		((UIItemBase)(ToggleSwitchPartElement)((RadControl)this.chkCustomDiscount).GetChildAt(0).GetChildAt(0)).set_BackColor4(System.Drawing.Color.FromArgb(242, 182, 51));
-		((VisualElement)(ToggleSwitchPartElement)((RadControl)this.chkCustomDiscount).GetChildAt(0).GetChildAt(0)).set_BackColor(System.Drawing.Color.FromArgb(247, 192, 82));
+		this.chkCustomDiscount.Name = "chkCustomDiscount";
+		this.chkCustomDiscount.Tag = "enable_custom_discount";
+		this.chkCustomDiscount.ThumbTickness = 27;
+		this.chkCustomDiscount.ToggleStateMode = Telerik.WinControls.UI.ToggleStateMode.Click;
+		this.chkCustomDiscount.Value = false;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkCustomDiscount.GetChildAt(0)).ThumbTickness = 27;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkCustomDiscount.GetChildAt(0)).ThumbOffset = 0;
+		((Telerik.WinControls.UI.RadToggleSwitchElement)this.chkCustomDiscount.GetChildAt(0)).BorderWidth = 1.333333f;
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkCustomDiscount.GetChildAt(0).GetChildAt(0)).BackColor2 = System.Drawing.Color.FromArgb(247, 192, 82);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkCustomDiscount.GetChildAt(0).GetChildAt(0)).BackColor3 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkCustomDiscount.GetChildAt(0).GetChildAt(0)).BackColor4 = System.Drawing.Color.FromArgb(242, 182, 51);
+		((Telerik.WinControls.UI.ToggleSwitchPartElement)this.chkCustomDiscount.GetChildAt(0).GetChildAt(0)).BackColor = System.Drawing.Color.FromArgb(247, 192, 82);
 		this.label7.BackColor = System.Drawing.Color.Transparent;
 		this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 		componentResourceManager.ApplyResources(this.label7, "label7");
@@ -723,18 +633,18 @@ public class OrderEntrySettings : UserControl
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 		base.Controls.Add(this.pictureBox1);
 		base.Controls.Add(this.label2);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkCustomDiscount);
+		base.Controls.Add(this.chkCustomDiscount);
 		base.Controls.Add(this.label7);
 		base.Controls.Add(this.pictureBox7);
 		base.Controls.Add(this.label9);
 		base.Controls.Add(this.label10);
 		base.Controls.Add(this.pictureBox2);
 		base.Controls.Add(this.label1);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkComboPotential);
+		base.Controls.Add(this.chkComboPotential);
 		base.Controls.Add(this.label3);
 		base.Controls.Add(this.pictureBox3);
 		base.Controls.Add(this.label4);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkShowInstructions);
+		base.Controls.Add(this.chkShowInstructions);
 		base.Controls.Add(this.label5);
 		base.Controls.Add(this.lblTipSharing);
 		base.Controls.Add(this.pictureBox6);
@@ -743,28 +653,28 @@ public class OrderEntrySettings : UserControl
 		base.Controls.Add(this.label6);
 		base.Controls.Add(this.pictureBox22);
 		base.Controls.Add(this.label_showitemprices_desc);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkShowItemPrice);
+		base.Controls.Add(this.chkShowItemPrice);
 		base.Controls.Add(this.label_showitemprices_title);
 		base.Controls.Add(this.pictureBox19);
 		base.Controls.Add(this.label_addsolooptionprice_);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkAddSoloOptionMain);
+		base.Controls.Add(this.chkAddSoloOptionMain);
 		base.Controls.Add(this.label_addsolooptionprice_title);
 		base.Controls.Add(this.pictureBox18);
 		base.Controls.Add(this.label_promptoption_desc);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkPromptChildOptions);
+		base.Controls.Add(this.chkPromptChildOptions);
 		base.Controls.Add(this.label_promptoption_title);
 		base.Controls.Add(this.pictureBox17);
 		base.Controls.Add(this.label_stackoptions_desc);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkStackOptions);
+		base.Controls.Add(this.chkStackOptions);
 		base.Controls.Add(this.label_stackoptions_title);
 		base.Controls.Add(this.label_nowserving_desc);
 		base.Controls.Add(this.pictureBox10);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkNowServingKitchen);
+		base.Controls.Add(this.chkNowServingKitchen);
 		base.Controls.Add(this.label_nowserving_title);
 		base.Controls.Add(this.lblAddImageSecondScreen);
 		base.Controls.Add(this.label_secondScreen_desc);
 		base.Controls.Add(this.pictureBox12);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.chkSecondScreen);
+		base.Controls.Add(this.chkSecondScreen);
 		base.Controls.Add(this.label_secondScreen_title);
 		base.Controls.Add(this.label11);
 		base.Name = "OrderEntrySettings";

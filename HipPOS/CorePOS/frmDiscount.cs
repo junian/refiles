@@ -8,7 +8,6 @@ using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
 using CorePOS.Properties;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -115,7 +114,7 @@ public class frmDiscount : frmMasterForm
 		GClass6 gClass = new GClass6();
 		Button button = (Button)sender;
 		decimal result = -1m;
-		if (((Control)(object)txtInput).Text != string.Empty && decimal.TryParse(((Control)(object)txtInput).Text, out result))
+		if (txtInput.Text != string.Empty && decimal.TryParse(txtInput.Text, out result))
 		{
 			if (button.Name == "btnPercent")
 			{
@@ -186,12 +185,12 @@ public class frmDiscount : frmMasterForm
 	{
 		string title = ((string_2 == DiscountTypes.Item) ? "Enter Item Discount" : Resources.Enter_Order_Discount);
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Numpad();
-		MemoryLoadedObjects.Numpad.LoadFormData(title, 2, 6, ((Control)(object)txtInput).Text);
+		MemoryLoadedObjects.Numpad.LoadFormData(title, 2, 6, txtInput.Text);
 		if (MemoryLoadedObjects.Numpad.ShowDialog(this) == DialogResult.OK)
 		{
 			if (MemoryLoadedObjects.Numpad.numberEntered > 0m)
 			{
-				((Control)(object)txtInput).Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
+				txtInput.Text = MemoryLoadedObjects.Numpad.numberEntered.ToString();
 			}
 			else
 			{
@@ -227,10 +226,6 @@ public class frmDiscount : frmMasterForm
 
 	private void InitializeComponent_1()
 	{
-		//IL_0048: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0052: Expected O, but got Unknown
-		//IL_03af: Unknown result type (might be due to invalid IL or missing references)
-		//IL_03d0: Unknown result type (might be due to invalid IL or missing references)
 		ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmDiscount));
 		btnShowKeyboard_Input = new Button();
 		btnCancel = new Button();
@@ -281,16 +276,16 @@ public class frmDiscount : frmMasterForm
 		btnPercent.UseVisualStyleBackColor = false;
 		btnPercent.Click += btnPercent_Click;
 		componentResourceManager.ApplyResources(txtInput, "txtInput");
-		((Control)(object)txtInput).ForeColor = Color.FromArgb(40, 40, 40);
-		((Control)(object)txtInput).Name = "txtInput";
-		((RadElement)((RadControl)txtInput).get_RootElement()).set_PositionOffset(new SizeF(0f, 0f));
-		((Control)(object)txtInput).Click += txtInput_Click;
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)txtInput).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)txtInput).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new SizeF(5f, 5f));
+		txtInput.ForeColor = Color.FromArgb(40, 40, 40);
+		txtInput.Name = "txtInput";
+		txtInput.RootElement.PositionOffset = new SizeF(0f, 0f);
+		txtInput.Click += txtInput_Click;
+		((RadTextBoxControlElement)txtInput.GetChildAt(0)).BorderWidth = 0f;
+		((TextBoxViewElement)txtInput.GetChildAt(0).GetChildAt(0)).PositionOffset = new SizeF(5f, 5f);
 		componentResourceManager.ApplyResources(this, "$this");
 		base.AutoScaleMode = AutoScaleMode.Font;
 		BackColor = Color.FromArgb(35, 39, 56);
-		base.Controls.Add((Control)(object)txtInput);
+		base.Controls.Add(txtInput);
 		base.Controls.Add(btnShowKeyboard_Input);
 		base.Controls.Add(btnCancel);
 		base.Controls.Add(Label1);

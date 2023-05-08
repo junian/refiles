@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using CorePOS.Data;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace CorePOS;
@@ -43,8 +42,8 @@ public class KioskSettingsItemControl : UserControl
 		gclass6_0 = context;
 		if (terminal != null)
 		{
-			((Control)(object)txtDeviceName).Text = terminal.SystemName;
-			((Control)(object)txtProductKey).Text = terminal.ProductKey;
+			txtDeviceName.Text = terminal.SystemName;
+			txtProductKey.Text = terminal.ProductKey;
 			lblDefaultPrinter.Text = terminal.DefaultPrinter;
 			lblIP.Text = terminal.PaymentTerminalAddress;
 		}
@@ -57,12 +56,12 @@ public class KioskSettingsItemControl : UserControl
 
 	private void txtProductKey_Click(object sender, EventArgs e)
 	{
-		RadTextBoxControl val = (RadTextBoxControl)((sender is RadTextBoxControl) ? sender : null);
+		RadTextBoxControl radTextBoxControl = sender as RadTextBoxControl;
 		MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.Keyboard();
-		MemoryLoadedObjects.Keyboard.LoadFormData("Enter " + ((Control)(object)val).Tag.ToString(), 0, 50, ((Control)(object)val).Text);
+		MemoryLoadedObjects.Keyboard.LoadFormData("Enter " + radTextBoxControl.Tag.ToString(), 0, 50, radTextBoxControl.Text);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			((Control)(object)val).Text = MemoryLoadedObjects.Keyboard.textEntered;
+			radTextBoxControl.Text = MemoryLoadedObjects.Keyboard.textEntered;
 		}
 	}
 
@@ -80,7 +79,7 @@ public class KioskSettingsItemControl : UserControl
 	{
 		if (terminal_0 == null)
 		{
-			terminal_0 = gclass6_0.Terminals.Where((Terminal x) => x.SystemName.ToUpper() == ((Control)(object)txtDeviceName).Text.ToUpper()).FirstOrDefault();
+			terminal_0 = gclass6_0.Terminals.Where((Terminal x) => x.SystemName.ToUpper() == txtDeviceName.Text.ToUpper()).FirstOrDefault();
 			if (terminal_0 == null)
 			{
 				terminal_0 = new Terminal();
@@ -93,8 +92,8 @@ public class KioskSettingsItemControl : UserControl
 				gclass6_0.Terminals.InsertOnSubmit(terminal_0);
 			}
 		}
-		terminal_0.SystemName = ((Control)(object)txtDeviceName).Text.ToUpper();
-		terminal_0.ProductKey = ((Control)(object)txtProductKey).Text.ToUpper();
+		terminal_0.SystemName = txtDeviceName.Text.ToUpper();
+		terminal_0.ProductKey = txtProductKey.Text.ToUpper();
 		terminal_0.DefaultPrinter = lblDefaultPrinter.Text;
 		terminal_0.Status = "active";
 		terminal_0.OperatingMode = "Kiosk";
@@ -129,17 +128,9 @@ public class KioskSettingsItemControl : UserControl
 
 	private void InitializeComponent()
 	{
-		//IL_0011: Unknown result type (might be due to invalid IL or missing references)
-		//IL_001b: Expected O, but got Unknown
-		//IL_001c: Unknown result type (might be due to invalid IL or missing references)
-		//IL_0026: Expected O, but got Unknown
-		//IL_012d: Unknown result type (might be due to invalid IL or missing references)
-		//IL_014e: Unknown result type (might be due to invalid IL or missing references)
-		//IL_01fa: Unknown result type (might be due to invalid IL or missing references)
-		//IL_021b: Unknown result type (might be due to invalid IL or missing references)
 		System.ComponentModel.ComponentResourceManager componentResourceManager = new System.ComponentModel.ComponentResourceManager(typeof(CorePOS.KioskSettingsItemControl));
-		this.txtDeviceName = new RadTextBoxControl();
-		this.txtProductKey = new RadTextBoxControl();
+		this.txtDeviceName = new Telerik.WinControls.UI.RadTextBoxControl();
+		this.txtProductKey = new Telerik.WinControls.UI.RadTextBoxControl();
 		this.btnRemove = new System.Windows.Forms.PictureBox();
 		this.lblIP = new System.Windows.Forms.Label();
 		this.lblDefaultPrinter = new System.Windows.Forms.Label();
@@ -151,24 +142,24 @@ public class KioskSettingsItemControl : UserControl
 		((System.ComponentModel.ISupportInitialize)this.imgSetupPrinter).BeginInit();
 		((System.ComponentModel.ISupportInitialize)this.imgSetupPayment).BeginInit();
 		base.SuspendLayout();
-		((System.Windows.Forms.Control)(object)this.txtDeviceName).BackColor = System.Drawing.Color.White;
+		this.txtDeviceName.BackColor = System.Drawing.Color.White;
 		componentResourceManager.ApplyResources(this.txtDeviceName, "txtDeviceName");
-		((System.Windows.Forms.Control)(object)this.txtDeviceName).ForeColor = System.Drawing.SystemColors.ControlText;
-		((System.Windows.Forms.Control)(object)this.txtDeviceName).Name = "txtDeviceName";
-		((RadElement)((RadControl)this.txtDeviceName).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((System.Windows.Forms.Control)(object)this.txtDeviceName).Tag = "Device Name";
-		((System.Windows.Forms.Control)(object)this.txtDeviceName).Click += new System.EventHandler(txtProductKey_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtDeviceName).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtDeviceName).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
-		((System.Windows.Forms.Control)(object)this.txtProductKey).BackColor = System.Drawing.Color.White;
+		this.txtDeviceName.ForeColor = System.Drawing.SystemColors.ControlText;
+		this.txtDeviceName.Name = "txtDeviceName";
+		this.txtDeviceName.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtDeviceName.Tag = "Device Name";
+		this.txtDeviceName.Click += new System.EventHandler(txtProductKey_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtDeviceName.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtDeviceName.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
+		this.txtProductKey.BackColor = System.Drawing.Color.White;
 		componentResourceManager.ApplyResources(this.txtProductKey, "txtProductKey");
-		((System.Windows.Forms.Control)(object)this.txtProductKey).ForeColor = System.Drawing.SystemColors.ControlText;
-		((System.Windows.Forms.Control)(object)this.txtProductKey).Name = "txtProductKey";
-		((RadElement)((RadControl)this.txtProductKey).get_RootElement()).set_PositionOffset(new System.Drawing.SizeF(0f, 0f));
-		((System.Windows.Forms.Control)(object)this.txtProductKey).Tag = "Product Key";
-		((System.Windows.Forms.Control)(object)this.txtProductKey).Click += new System.EventHandler(txtProductKey_Click);
-		((UIItemBase)(RadTextBoxControlElement)((RadControl)this.txtProductKey).GetChildAt(0)).set_BorderWidth(0f);
-		((RadElement)(TextBoxViewElement)((RadControl)this.txtProductKey).GetChildAt(0).GetChildAt(0)).set_PositionOffset(new System.Drawing.SizeF(5f, 5f));
+		this.txtProductKey.ForeColor = System.Drawing.SystemColors.ControlText;
+		this.txtProductKey.Name = "txtProductKey";
+		this.txtProductKey.RootElement.PositionOffset = new System.Drawing.SizeF(0f, 0f);
+		this.txtProductKey.Tag = "Product Key";
+		this.txtProductKey.Click += new System.EventHandler(txtProductKey_Click);
+		((Telerik.WinControls.UI.RadTextBoxControlElement)this.txtProductKey.GetChildAt(0)).BorderWidth = 0f;
+		((Telerik.WinControls.UI.TextBoxViewElement)this.txtProductKey.GetChildAt(0).GetChildAt(0)).PositionOffset = new System.Drawing.SizeF(5f, 5f);
 		this.btnRemove.BackColor = System.Drawing.Color.Transparent;
 		componentResourceManager.ApplyResources(this.btnRemove, "btnRemove");
 		this.btnRemove.Name = "btnRemove";
@@ -197,8 +188,8 @@ public class KioskSettingsItemControl : UserControl
 		base.Controls.Add(this.lblDefaultPrinter);
 		base.Controls.Add(this.lblIP);
 		base.Controls.Add(this.btnRemove);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtProductKey);
-		base.Controls.Add((System.Windows.Forms.Control)(object)this.txtDeviceName);
+		base.Controls.Add(this.txtProductKey);
+		base.Controls.Add(this.txtDeviceName);
 		componentResourceManager.ApplyResources(this, "$this");
 		base.Name = "KioskSettingsItemControl";
 		base.Load += new System.EventHandler(KioskSettingsItemControl_Load);
