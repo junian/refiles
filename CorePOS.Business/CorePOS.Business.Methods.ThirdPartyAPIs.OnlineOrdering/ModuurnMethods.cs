@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Serialization;
 using CorePOS.Business.Enums;
@@ -14,6 +15,164 @@ namespace CorePOS.Business.Methods.ThirdPartyAPIs.OnlineOrdering;
 
 public static class ModuurnMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public OnlineOrderSyncQueue queue;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CQueueOrders_003Eb__1(OnlineOrderSyncQueue x)
+		{
+			return x.RawData == queue.RawData;
+		}
+
+		internal bool _003CQueueOrders_003Eb__2(OnlineOrderSyncQueue x)
+		{
+			return x.RawData == queue.RawData;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_1
+	{
+		public ModuurnXMLObjects.Item mItem;
+
+		public _003C_003Ec__DisplayClass2_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessOrderQueues_003Eb__3(Item x)
+		{
+			return x.Barcode == mItem.Id.Trim();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_2
+	{
+		public ModuurnXMLObjects.Option option;
+
+		public _003C_003Ec__DisplayClass2_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessOrderQueues_003Eb__4(Item x)
+		{
+			return x.Barcode == option.Id;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_3
+	{
+		public ModuurnXMLObjects.Subitem subitem;
+
+		public _003C_003Ec__DisplayClass2_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessOrderQueues_003Eb__5(Item x)
+		{
+			return x.Barcode == subitem.Id.Trim();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_4
+	{
+		public ModuurnXMLObjects.Item mItem;
+
+		public _003C_003Ec__DisplayClass2_4()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessOrderQueues_003Eb__8(Item x)
+		{
+			return x.Barcode == mItem.Id.Trim();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_5
+	{
+		public string[] Ids;
+
+		public _003C_003Ec__DisplayClass2_5()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessOrderQueues_003Eb__6(Item x)
+		{
+			return x.Barcode == Ids[0].Trim();
+		}
+
+		internal bool _003CProcessOrderQueues_003Eb__7(Item x)
+		{
+			return x.Barcode == Ids[1].Trim();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_6
+	{
+		public ModuurnXMLObjects.Option mOption;
+
+		public _003C_003Ec__DisplayClass2_6()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessOrderQueues_003Eb__11(Item x)
+		{
+			return x.Barcode == mOption.Id.Trim();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_7
+	{
+		public ModuurnXMLObjects.Subitem subitem;
+
+		public _003C_003Ec__DisplayClass2_7()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessOrderQueues_003Eb__10(Item x)
+		{
+			return x.Barcode == subitem.Id.Trim();
+		}
+	}
+
 	public static bool GetOrders(string Url, string apiKey)
 	{
 		if (!string.IsNullOrEmpty(Url) && !string.IsNullOrEmpty(apiKey))

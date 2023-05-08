@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Objects;
 using CorePOS.Data;
@@ -9,6 +10,188 @@ namespace CorePOS.Business.Methods;
 
 public static class GuestMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public string OrderNumber;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public string tableName;
+
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public string OrderNumber;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public List<Order> orders;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CsetGuestPerBill_003Eb__2(Layout l)
+		{
+			return l.TableName == orders.FirstOrDefault().Customer.Replace("Table", string.Empty).Trim();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_1
+	{
+		public string ordernum;
+
+		public Func<Order, bool> _003C_003E9__3;
+
+		public _003C_003Ec__DisplayClass12_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CsetGuestPerBill_003Eb__3(Order x)
+		{
+			return x.OrderNumber == ordernum;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public string OrderNumber;
+
+		public _003C_003Ec__DisplayClass13_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public int? employeeId;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public static void AssignEmployeeTable(string tableName, int? EmployeeId)
 	{
 		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();
@@ -111,7 +294,8 @@ public static class GuestMethods
 				select o into a
 				group a by a.OrderNumber into a
 				select a.FirstOrDefault()).ToList();
-			int num2 = (layout.CurrentGuests = ((source.Count() <= 1) ? 1 : source.Sum((OrderResult a) => a.GuestCount)));
+			int currentGuests = ((source.Count() <= 1) ? 1 : source.Sum((OrderResult a) => a.GuestCount));
+			layout.CurrentGuests = currentGuests;
 			Helper.SubmitChangesWithCatch(gClass);
 		}
 	}
@@ -266,7 +450,7 @@ public static class GuestMethods
 		string result = "";
 		if (SettingsHelper.GetSettingValueByKey("show_employee_table") == "ON" && (tableStatus == TableStatus.Seated || tableStatus == TableStatus.Ordered) && CS_0024_003C_003E8__locals0.employeeId.HasValue)
 		{
-			Employee employee = new GClass6().Employees.Where((Employee a) => a.EmployeeID == CS_0024_003C_003E8__locals0.employeeId.Value).FirstOrDefault();
+			Employee employee = new GClass6().Employees.Where((Employee a) => a.EmployeeID == ((int?)CS_0024_003C_003E8__locals0.employeeId).Value).FirstOrDefault();
 			if (employee != null)
 			{
 				string obj = ((employee.FirstName.Length >= 5) ? employee.FirstName.Substring(0, 5) : employee.FirstName);

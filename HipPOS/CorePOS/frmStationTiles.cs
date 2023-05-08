@@ -22,6 +22,308 @@ namespace CorePOS;
 
 public class frmStationTiles : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public frmStationTiles _003C_003E4__this;
+
+		public OrderChit selectedList;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CMakeOrder_003Eb__2(Order o)
+		{
+			if (o.StationID != null && o.StationID.Contains(_003C_003E4__this.short_0.ToString()))
+			{
+				return !o.DateFilled.HasValue;
+			}
+			return false;
+		}
+
+		internal bool _003CMakeOrder_003Eb__3(Order o)
+		{
+			if (o.StationID != null && o.StationID.Contains(_003C_003E4__this.short_0.ToString()))
+			{
+				return o.DateFilled.HasValue;
+			}
+			return false;
+		}
+
+		internal bool _003CMakeOrder_003Eb__7(OrderChit x)
+		{
+			return x.Name == selectedList.Name;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_1
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass17_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public OrderChit chit;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnClearCancelled_Click_003Eb__0(Order x)
+		{
+			return chit.OrderNumber.Contains(x.OrderNumber);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass25_0
+	{
+		public frmStationTiles _003C_003E4__this;
+
+		public bool isNotify;
+
+		public bool isItemsCancelled;
+
+		public bool isItemModified;
+
+		public _003C_003Ec__DisplayClass25_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CupdateList_003Eb__0()
+		{
+			_003C_003E4__this.method_6(_003C_003E4__this.txtSearchInfo.Text, _003C_003E4__this.cqvEnKpyg0, ref isNotify, ref isItemsCancelled, ref isItemModified);
+		}
+
+		internal void _003CupdateList_003Eb__2()
+		{
+			try
+			{
+				Thread.Sleep(2000);
+				_003C_003E4__this.Invoke((MethodInvoker)delegate
+				{
+					_003C_003E4__this.verticalScrollControl1.EnableDisableButtonsByScrollPanel();
+				});
+			}
+			catch (Exception)
+			{
+			}
+		}
+
+		internal void _003CupdateList_003Eb__3()
+		{
+			_003C_003E4__this.verticalScrollControl1.EnableDisableButtonsByScrollPanel();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public frmStationTiles _003C_003E4__this;
+
+		public string query;
+
+		public FlowLayoutPanel pnl;
+
+		public Func<Order, bool> _003C_003E9__12;
+
+		public Func<Order, bool> _003C_003E9__13;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRunUpdateList_003Eb__12(Order x)
+		{
+			return x.OrderType.ToUpper().Contains(_003C_003E4__this.string_1);
+		}
+
+		internal bool _003CRunUpdateList_003Eb__13(Order x)
+		{
+			if ((x.Customer == null || !x.Customer.ToLower().Contains(query)) && (x.CustomerInfo == null || !x.CustomerInfo.ToLower().Contains(query)) && (x.CustomerInfoName == null || !x.CustomerInfoName.ToLower().Contains(query)) && !x.OrderNumber.ToLower().Contains(query))
+			{
+				if (x.OrderTicketNumber != null)
+				{
+					return x.OrderTicketNumber.ToLower().Contains(query);
+				}
+				return false;
+			}
+			return true;
+		}
+
+		internal void _003CRunUpdateList_003Eb__8()
+		{
+			new NotificationLabel(_003C_003E4__this, Resources.NEW_ORDER_S_HAVE_BEEN_RECEIVED, NotificationTypes.Notification).Show();
+		}
+
+		internal void _003CRunUpdateList_003Eb__9()
+		{
+			new NotificationLabel(_003C_003E4__this, "Item(s) have been cancelled.", NotificationTypes.Notification).Show();
+		}
+
+		internal void _003CRunUpdateList_003Eb__10()
+		{
+			new NotificationLabel(_003C_003E4__this, "Item(s) have been modified.", NotificationTypes.Notification).Show();
+		}
+
+		internal void _003CRunUpdateList_003Eb__0()
+		{
+			Button btnCancel = _003C_003E4__this.BtnCancel;
+			Button btnScreenRefresh = _003C_003E4__this.btnScreenRefresh;
+			_003C_003E4__this.btnChangeView.Enabled = true;
+			btnScreenRefresh.Enabled = true;
+			btnCancel.Enabled = true;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_1
+	{
+		public List<string> existingOrderNumbers;
+
+		public _003C_003Ec__DisplayClass26_0 CS_0024_003C_003E8__locals1;
+
+		public Func<OrderTableNameAndNumber, bool> _003C_003E9__21;
+
+		public _003C_003Ec__DisplayClass26_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRunUpdateList_003Eb__21(OrderTableNameAndNumber a)
+		{
+			return !existingOrderNumbers.Contains(a.OrderNumber);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_2
+	{
+		public OrderChit ochit;
+
+		public _003C_003Ec__DisplayClass26_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRunUpdateList_003Eb__11(Order x)
+		{
+			if (ochit.OrderNumber.Contains(x.OrderNumber))
+			{
+				if (x.OrderOnHoldTime != 0)
+				{
+					if (x.OrderOnHoldTime != 0)
+					{
+						return x.DateCreated.Value < DateTime.Now.AddMinutes(-x.OrderOnHoldTime);
+					}
+					return false;
+				}
+				return true;
+			}
+			return false;
+		}
+
+		internal void _003CRunUpdateList_003Eb__19()
+		{
+			ochit.Refresh();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_3
+	{
+		public OrderTableNameAndNumber orderSelected;
+
+		public _003C_003Ec__DisplayClass26_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass26_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRunUpdateList_003Eb__22(OrderChit x)
+		{
+			return x.OrderNumber.Contains(orderSelected.OrderNumber);
+		}
+
+		internal bool _003CRunUpdateList_003Eb__23(OrderChit x)
+		{
+			return x.TableName == orderSelected.TableName;
+		}
+
+		internal bool _003CRunUpdateList_003Eb__24(OrderChit x)
+		{
+			return x.TableName == orderSelected.TableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_4
+	{
+		public OrderChit chit;
+
+		public _003C_003Ec__DisplayClass26_3 CS_0024_003C_003E8__locals3;
+
+		public _003C_003Ec__DisplayClass26_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRunUpdateList_003Eb__25()
+		{
+			CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.pnl.Controls.Add(chit);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_0
+	{
+		public frmStationTiles _003C_003E4__this;
+
+		public frmButtonSelector stationsList;
+
+		public _003C_003Ec__DisplayClass33_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnChangeStation_Click_003Eb__0(Station a)
+		{
+			if (a.StationID != _003C_003E4__this.short_0 && (a.SystemDefinedID != 2 || !a.SystemDefinedID.HasValue))
+			{
+				return a.SendToStation;
+			}
+			return false;
+		}
+
+		internal bool _003CbtnChangeStation_Click_003Eb__4(Station x)
+		{
+			return x.StationID == Convert.ToInt32(stationsList.SelectedValue);
+		}
+	}
+
 	private short short_0;
 
 	private bool bool_0;
@@ -157,7 +459,9 @@ public class frmStationTiles : frmMasterForm
 			return;
 		}
 		float_0 = station.DisplayFontSize.Value;
-		int num3 = (lblTitle.Width = (pnlMain.Width = base.Size.Width));
+		Label label = lblTitle;
+		int num2 = (pnlMain.Width = base.Size.Width);
+		label.Width = num2;
 		pnlMain.Height = base.Size.Height - 40;
 		int_1 = int_0;
 		lblCounter.Text = int_1.ToString();
@@ -963,7 +1267,8 @@ public class frmStationTiles : frmMasterForm
 		Color color4 = (button5.BackColor = color2);
 		Color color6 = (button4.BackColor = color4);
 		Color color8 = (button3.BackColor = color6);
-		Color color11 = (button.BackColor = (button2.BackColor = color8));
+		Color backColor = (button2.BackColor = color8);
+		button.BackColor = backColor;
 		button_1.BackColor = Color.FromArgb(214, 142, 81);
 		method_5();
 	}

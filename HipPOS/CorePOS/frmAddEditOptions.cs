@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CorePOS.AdminPanel;
@@ -18,6 +19,203 @@ namespace CorePOS;
 
 public class frmAddEditOptions : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public frmAddEditOptions _003C_003E4__this;
+
+		public Dictionary<string, string> items;
+
+		public bool search;
+
+		public string selectItem;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal Dictionary<string, string> _003CpopulateAllItems_003Eb__0()
+		{
+			return _003C_003E4__this.method_6(items, search, selectItem);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public frmAddEditOptions _003C_003E4__this;
+
+		public Dictionary<string, string> items;
+
+		public bool search;
+
+		public string selectItem;
+
+		public _003C_003Ec__DisplayClass13_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal Dictionary<string, string> _003CpopulateItemOptionControls_003Eb__0()
+		{
+			return _003C_003E4__this.method_6(items, search, selectItem);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_0
+	{
+		public int selectedItemID;
+
+		public frmAddEditOptions _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass15_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CpopulateItems_003Eb__4(usp_ItemOptionsResult x)
+		{
+			if (x.ItemID == selectedItemID)
+			{
+				return !x.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CpopulateItems_003Eb__0(Item tblItems)
+		{
+			if ((tblItems.ItemClassification == ItemClassifications.Product || tblItems.ItemClassification == ItemClassifications.Option) && !tblItems.isDeleted && tblItems.Active)
+			{
+				return tblItems.ItemID != selectedItemID;
+			}
+			return false;
+		}
+
+		internal bool _003CpopulateItems_003Eb__2(usp_ItemOptionsResult x)
+		{
+			if (x.ItemID == selectedItemID && x.Tab.ToUpper() == _003C_003E4__this.string_0.ToUpper() && !x.ToBeDeleted && x.GroupID != 0)
+			{
+				return x.GroupID == Convert.ToInt16(((KeyValuePair<string, string>)_003C_003E4__this.ddlOptionGroups.SelectedItem).Key);
+			}
+			return false;
+		}
+
+		internal bool _003CpopulateItems_003Eb__3(usp_ItemOptionsResult x)
+		{
+			if (x.Preselect && x.ItemID == selectedItemID && x.Tab.ToUpper() == _003C_003E4__this.string_0.ToUpper() && !x.ToBeDeleted && x.GroupID != 0)
+			{
+				return x.GroupID == Convert.ToInt16(((KeyValuePair<string, string>)_003C_003E4__this.ddlOptionGroups.SelectedItem).Key);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_1
+	{
+		public List<int> existingOptionItemIDs;
+
+		public _003C_003Ec__DisplayClass15_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_2
+	{
+		public List<int> associatedItemIDs;
+
+		public _003C_003Ec__DisplayClass15_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CpopulateItems_003Eb__8(Item x)
+		{
+			return !associatedItemIDs.Contains(x.ItemID);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass21_0
+	{
+		public int selectedItemID;
+
+		public frmAddEditOptions _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass21_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass36_0
+	{
+		public int selectedItemID;
+
+		public frmAddEditOptions _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass36_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnEditSortOrder_Click_003Eb__0(usp_ItemOptionsResult a)
+		{
+			if (a.ItemID == selectedItemID && a.Tab.ToUpper() == _003C_003E4__this.string_0.ToUpper())
+			{
+				return !a.ToBeDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass40_0
+	{
+		public int selectedItemID;
+
+		public frmAddEditOptions _003C_003E4__this;
+
+		public int selectedGroupId;
+
+		public List<short> groupIds;
+
+		public GForm0 frmSelect;
+
+		public _003C_003Ec__DisplayClass40_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003Cbutton1_Click_003Eb__1(usp_ItemOptionsResult x)
+		{
+			if (x.ItemID == selectedItemID && x.Tab.ToUpper() == _003C_003E4__this.string_0.ToUpper() && !x.ToBeDeleted && x.GroupID != 0 && x.GroupID != selectedGroupId)
+			{
+				return x.GroupDependency != selectedGroupId;
+			}
+			return false;
+		}
+
+		internal void _003Cbutton1_Click_003Eb__10(ItemsWithOption a)
+		{
+			a.GroupDependency = Convert.ToInt16(frmSelect.SelectedDependentGroup);
+			a.OptionDependency = string.Join(",", frmSelect.chklistValue);
+		}
+	}
+
 	private bool bool_0;
 
 	private string string_0;
@@ -730,7 +928,9 @@ public class frmAddEditOptions : frmMasterForm
 
 	private void method_11()
 	{
-		string text2 = (txtOptionQty.Text = (txtPrice.Text = string.Empty));
+		RadTextBoxControl radTextBoxControl = txtOptionQty;
+		string text = (txtPrice.Text = string.Empty);
+		radTextBoxControl.Text = text;
 	}
 
 	private void btnMoveCopy_Click(object sender, EventArgs e)

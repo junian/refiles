@@ -16,6 +16,65 @@ namespace CorePOS;
 
 public class frmEditLayoutTableEdit : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public string SectionSelected;
+
+		public frmEditLayoutTableEdit _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnSave_Click_003Eb__2(Layout l)
+		{
+			return l.TableName == _003C_003E4__this.string_0;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_1
+	{
+		public Layout tableToEdit;
+
+		public _003C_003Ec__DisplayClass16_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnSave_Click_003Eb__3(OccupiedTable a)
+		{
+			return a.TableName == tableToEdit.TableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public string TableName;
+
+		public int TableID;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CvalidateTableName_003Eb__0(Layout l)
+		{
+			if (l.TableName.ToUpper() == TableName.ToUpper())
+			{
+				return l.TableID != TableID;
+			}
+			return false;
+		}
+	}
+
 	private bool bool_0;
 
 	private string string_0;

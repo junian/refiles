@@ -16,6 +16,64 @@ namespace CorePOS;
 
 public class frmMaterialsInItem : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public MaterialsInItem materialInItem;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public ListViewItem materialAdded;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CrecalculateCost_003Eb__0(Item m)
+		{
+			return m.ItemName == materialAdded.SubItems[0].Text.ToString();
+		}
+
+		internal bool _003CrecalculateCost_003Eb__1(UOM u)
+		{
+			return u.Name == materialAdded.SubItems[2].Text;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public ListViewItem materialAdded;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public MaterialsInItem materialInItem;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private int int_0;

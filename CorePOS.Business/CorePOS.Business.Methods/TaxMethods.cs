@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using CorePOS.Business.Enums;
 using CorePOS.Data;
@@ -9,6 +10,25 @@ namespace CorePOS.Business.Methods;
 
 public static class TaxMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public Item item;
+
+		public Func<Item, bool> _003C_003E9__7;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetTaxList_003Eb__7(Item a)
+		{
+			return a.ItemID == item.ItemID;
+		}
+	}
+
 	public static List<Tax> GetTaxList(Item item, List<Item> items)
 	{
 		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();

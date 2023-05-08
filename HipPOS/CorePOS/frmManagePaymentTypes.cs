@@ -13,6 +13,30 @@ namespace CorePOS;
 
 public class frmManagePaymentTypes : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public int selectedPaymentTypeId;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public int selectedPaymentTypeId;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private bool bool_0;
 
 	private IContainer icontainer_1;

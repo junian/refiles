@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using CorePOS.Business;
 using CorePOS.Business.Enums;
@@ -13,6 +14,489 @@ namespace CorePOS;
 
 public class PromotionMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public int itemID;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetPromoSaleItemById_003Eb__0(Promotion a)
+		{
+			if (a.GetDiscountUOM == "@" && a.String_0 == itemID.ToString() && a.GetQtyString == "IT" && IsPromotionTime(a, DateTime.Now))
+			{
+				return !a.IsDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public DateTime OrderDateCreated;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CIsPromotionTime_003Eb__0(string a)
+		{
+			return a.Contains(OrderDateCreated.DayOfWeek.ToString().ToUpper());
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public Item itemToAdd;
+
+		public string orderType;
+
+		public DateTime OrderDateCreated;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetPromotion_003Eb__7(Promotion a)
+		{
+			if ((a.String_0.Split(',').Contains(itemToAdd.ItemID.ToString()) || a.String_0 == "-1") && a.GetQtyString == "IT" && a.OrderTypes.Contains(orderType))
+			{
+				return IsPromotionTime(a, OrderDateCreated);
+			}
+			return false;
+		}
+
+		internal bool _003CGetPromotion_003Eb__8(Promotion a)
+		{
+			if ((a.String_0.Split(',').Contains(itemToAdd.ItemID.ToString()) || a.String_0 == "-1") && a.OrderTypes.Contains(orderType))
+			{
+				return IsPromotionTime(a, DateTime.Now);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_1
+	{
+		public List<ItemPriceOEIndex> itemsWithQty;
+
+		public Promotion prom;
+
+		public _003C_003Ec__DisplayClass4_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass4_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetPromotion_003Eb__1(Promotion a)
+		{
+			if ((a.String_0.Split(',').Intersect(itemsWithQty.Select((ItemPriceOEIndex b) => b.ItemId.ToString()).ToList()).Any() || a.String_0 == "-1") && a.String_1 != null && a.GetQtyString != "IT" && a.String_1.Split(',').Contains(CS_0024_003C_003E8__locals1.itemToAdd.ItemID.ToString()) && a.OrderTypes.Contains(CS_0024_003C_003E8__locals1.orderType))
+			{
+				return IsPromotionTime(a, CS_0024_003C_003E8__locals1.OrderDateCreated);
+			}
+			return false;
+		}
+
+		internal bool _003CGetPromotion_003Eb__2(Promotion a)
+		{
+			if ((a.String_0.Split(',').Intersect(itemsWithQty.Select((ItemPriceOEIndex b) => b.ItemId.ToString()).ToList()).Any() || a.String_0 == "-1") && a.String_1 != null && a.GetQtyString != "IT" && (a.String_1.Split(',').Contains(CS_0024_003C_003E8__locals1.itemToAdd.ItemID.ToString()) || a.String_1 == "-1") && a.OrderTypes.Contains(CS_0024_003C_003E8__locals1.orderType))
+			{
+				return IsPromotionTime(a, DateTime.Now);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_2
+	{
+		public ListViewDataItem a;
+
+		public _003C_003Ec__DisplayClass4_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetPromotion_003Eb__3(Item b)
+		{
+			return b.ItemID.ToString() == a.SubItems[4].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_3
+	{
+		public Promotion promBuy;
+
+		public _003C_003Ec__DisplayClass4_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass4_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetPromotion_003Eb__9(ItemPriceOEIndex a)
+		{
+			if (a.PromoId == CS_0024_003C_003E8__locals2.prom.PromoId && (CS_0024_003C_003E8__locals2.prom.String_1.Split(',').Contains(a.ItemId.ToString()) || CS_0024_003C_003E8__locals2.prom.String_1 == "-1"))
+			{
+				return IsPromotionTime(promBuy, a.DateCreated);
+			}
+			return false;
+		}
+
+		internal bool _003CGetPromotion_003Eb__11(ItemPriceOEIndex a)
+		{
+			if (!promBuy.String_1.Split(',').Contains(a.ItemId.ToString()))
+			{
+				return promBuy.String_1 == "-1";
+			}
+			return true;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_4
+	{
+		public ItemPriceOEIndex lowestPricedExistingItem;
+
+		public _003C_003Ec__DisplayClass4_3 CS_0024_003C_003E8__locals3;
+
+		public _003C_003Ec__DisplayClass4_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetPromotion_003Eb__10(Promotion a)
+		{
+			if ((a.String_0.Split(',').Contains(lowestPricedExistingItem.ItemId.ToString()) || a.String_0 == "-1") && a.OrderTypes.Contains(CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.orderType))
+			{
+				return IsPromotionTime(a, CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.OrderDateCreated);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public DateTime OrderDateCreated;
+
+		public string orderType;
+
+		public List<ItemPriceOEIndex> itemsWithQty;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdatePromotion_003Eb__1(Promotion a)
+		{
+			if ((IsPromotionTime(a, OrderDateCreated) || IsPromotionTime(a, DateTime.Now)) && a.OrderTypes.Contains(orderType))
+			{
+				if (!a.String_0.Split(',').Intersect(itemsWithQty.Select((ItemPriceOEIndex b) => b.ItemId.ToString())).Any())
+				{
+					if (!string.IsNullOrEmpty(a.String_1))
+					{
+						return a.String_1.Split(',').Intersect(itemsWithQty.Select((ItemPriceOEIndex b) => b.ItemId.ToString())).Any();
+					}
+					return false;
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_1
+	{
+		public ListViewDataItem a;
+
+		public _003C_003Ec__DisplayClass5_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdatePromotion_003Eb__3(Item b)
+		{
+			return b.ItemID.ToString() == a.SubItems[4].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_2
+	{
+		public ListViewDataItem lvdi;
+
+		public _003C_003Ec__DisplayClass5_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdatePromotion_003Eb__7(Item a)
+		{
+			return a.ItemID.ToString() == lvdi.SubItems[4].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_3
+	{
+		public int highestpriceIndex;
+
+		public List<int> buyQtyIndexes;
+
+		public Func<ItemPriceOEIndex, bool> _003C_003E9__13;
+
+		public _003C_003Ec__DisplayClass5_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdatePromotion_003Eb__13(ItemPriceOEIndex a)
+		{
+			if (a.isInGetQty && a.Index != highestpriceIndex)
+			{
+				return !buyQtyIndexes.Contains(a.Index);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_4
+	{
+		public ListViewDataItem lvdi;
+
+		public _003C_003Ec__DisplayClass5_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdatePromotion_003Eb__15(Item a)
+		{
+			return a.ItemID.ToString() == lvdi.SubItems[4].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public string orderType;
+
+		public DateTime OrderDateCreated;
+
+		public CustomListViewTelerik radListItems;
+
+		public Func<ListViewDataItem, int> _003C_003E9__8;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal int _003CRecalculatePromotion_003Eb__8(ListViewDataItem a)
+		{
+			return radListItems.Items.IndexOf(a);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_1
+	{
+		public int promotionId;
+
+		public Promotion prom;
+
+		public _003C_003Ec__DisplayClass6_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass6_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__2(Promotion a)
+		{
+			if (a.PromoId == promotionId)
+			{
+				return a.String_0 != "-1";
+			}
+			return false;
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__3(Promotion a)
+		{
+			if (a.PromoId == promotionId && a.String_0 == "-1" && a.OrderTypes.Contains(CS_0024_003C_003E8__locals1.orderType))
+			{
+				return IsPromotionTime(a, CS_0024_003C_003E8__locals1.OrderDateCreated);
+			}
+			return false;
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__4(ListViewDataItem a)
+		{
+			if (a.SubItems[18].ToString() == prom.PromoId.ToString() && !a.Font.Strikeout && a.SubItems[16].ToString() == "MainItem")
+			{
+				return a.SubItems[21].ToString() == "False";
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_2
+	{
+		public ListViewDataItem lvdi;
+
+		public _003C_003Ec__DisplayClass6_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__5(Item a)
+		{
+			return a.ItemID.ToString() == lvdi.SubItems[4].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_3
+	{
+		public ListViewDataItem lvdi;
+
+		public _003C_003Ec__DisplayClass6_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__9(Item a)
+		{
+			return a.ItemID.ToString() == lvdi.SubItems[4].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_4
+	{
+		public ItemPriceOEIndex indexToChange;
+
+		public _003C_003Ec__DisplayClass6_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__12(Item a)
+		{
+			return a.ItemID == indexToChange.ItemId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_5
+	{
+		public int prevComboId;
+
+		public Func<ListViewDataItem, bool> _003C_003E9__14;
+
+		public Func<ListViewDataItem, bool> _003C_003E9__16;
+
+		public _003C_003Ec__DisplayClass6_5()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__14(ListViewDataItem a)
+		{
+			return a.SubItems[5].ToString() == prevComboId.ToString();
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__16(ListViewDataItem a)
+		{
+			return a.SubItems[5].ToString() == prevComboId.ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_6
+	{
+		public int lastComboId;
+
+		public Func<ListViewDataItem, bool> _003C_003E9__15;
+
+		public _003C_003Ec__DisplayClass6_6()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__15(ListViewDataItem a)
+		{
+			return a.SubItems[5].ToString() == lastComboId.ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_7
+	{
+		public ListViewDataItem lvdi;
+
+		public _003C_003Ec__DisplayClass6_7()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__17(Item a)
+		{
+			return a.ItemID.ToString() == lvdi.SubItems[4].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_8
+	{
+		public ListViewDataItem lvdi;
+
+		public _003C_003Ec__DisplayClass6_8()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculatePromotion_003Eb__19(Item a)
+		{
+			return a.ItemID.ToString() == lvdi.SubItems[4].ToString();
+		}
+	}
+
 	public static Promotion GetPromoSaleItemById(int itemID)
 	{
 		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();

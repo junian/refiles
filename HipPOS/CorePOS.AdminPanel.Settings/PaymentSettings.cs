@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.AdminPanel.Settings.Payment;
 using CorePOS.Business.Enums;
@@ -17,6 +18,42 @@ namespace CorePOS.AdminPanel.Settings;
 
 public class PaymentSettings : UserControl
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public Control ctrl;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public RadToggleSwitchElement chkToggle;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public Label lbl;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private IQueryable<Setting> iqueryable_0;
@@ -446,7 +483,8 @@ public class PaymentSettings : UserControl
 		MemoryLoadedObjects.Keyboard.LoadFormData("Enter Access Token", 0, 128, setting.Value);
 		if (MemoryLoadedObjects.Keyboard.ShowDialog(this) == DialogResult.OK)
 		{
-			string text2 = (setting.Value = (label_access_token.Text = MemoryLoadedObjects.Keyboard.textEntered));
+			string value = (label_access_token.Text = MemoryLoadedObjects.Keyboard.textEntered);
+			setting.Value = value;
 			Helper.SubmitChangesWithCatch(gclass6_0);
 			SettingsHelper.SetSettingValueByKey(CS_0024_003C_003E8__locals0.lbl.Tag.ToString(), label_access_token.Text);
 			if (new frmMessageBox(Resources.Hippos_needs_to_be_restarted_f, Resources.Settings_changed, CustomMessageBoxButtons.YesNo).ShowDialog(this) == DialogResult.Yes)

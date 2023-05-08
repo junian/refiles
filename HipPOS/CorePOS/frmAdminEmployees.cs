@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
@@ -19,6 +20,46 @@ namespace CorePOS;
 
 public class frmAdminEmployees : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public frmAdminEmployees _003C_003E4__this;
+
+		public User user;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_1
+	{
+		public Role adminRole;
+
+		public _003C_003Ec__DisplayClass6_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public bool isActive;
+
+		public frmAdminEmployees _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private int int_0;
 
 	private GClass6 gclass6_0;
@@ -340,7 +381,8 @@ public class frmAdminEmployees : frmMasterForm
 		string text = (txtPIN.Text = string.Empty);
 		string text3 = (radTextBoxControl4.Text = text);
 		string text5 = (radTextBoxControl3.Text = text3);
-		string text8 = (radTextBoxControl.Text = (radTextBoxControl2.Text = text5));
+		string text7 = (radTextBoxControl2.Text = text5);
+		radTextBoxControl.Text = text7;
 	}
 
 	private void lstEmployees_SelectedIndexChanged(object sender, EventArgs e)

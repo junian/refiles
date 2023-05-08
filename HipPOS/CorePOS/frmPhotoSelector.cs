@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Data;
 using CorePOS.Properties;
@@ -11,6 +12,20 @@ namespace CorePOS;
 
 public class frmPhotoSelector : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public OpenFileDialog openSelectedImage;
+
+		public frmPhotoSelector _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private string string_0;
 
 	private IContainer icontainer_1;

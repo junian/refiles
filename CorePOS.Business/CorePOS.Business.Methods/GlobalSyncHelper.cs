@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Timers;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Objects;
@@ -13,6 +14,18 @@ namespace CorePOS.Business.Methods;
 
 public class GlobalSyncHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass41_0
+	{
+		public string day;
+
+		public _003C_003Ec__DisplayClass41_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	private string string_0;
 
 	private string string_1;

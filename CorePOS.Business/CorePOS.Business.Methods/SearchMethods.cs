@@ -1,11 +1,73 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Data;
 
 namespace CorePOS.Business.Methods;
 
 public static class SearchMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public string keyword;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CFindItems_003Eb__10(Item t)
+		{
+			if (t.TrackInventory && (t.ItemName.ToLower().Contains(keyword) || (t.Barcode != null && t.Barcode.Contains(keyword))))
+			{
+				return !t.isDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_1
+	{
+		public string trimmedKeyword;
+
+		public _003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass0_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_2
+	{
+		public string upcBarcode;
+
+		public _003C_003Ec__DisplayClass0_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_3
+	{
+		public List<int> itemIDs;
+
+		public _003C_003Ec__DisplayClass0_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass0_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public static List<Item> FindItems(string[] keywords, bool isTrackInventory = true)
 	{
 		List<Item> list = new List<Item>();

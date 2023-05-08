@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -12,6 +13,145 @@ namespace CorePOS;
 
 public static class AuthMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public string formName;
+
+		public string ControlName;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CEmployeeAuthenticateControlDifferentForm_003Eb__0(SecurityObject a)
+		{
+			if (a.FormName == formName && a.ControlName == ControlName)
+			{
+				return a.isAllowed;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public string FormName;
+
+		public string ControlName;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CIsPinRequired_003Eb__0(SecurityObject a)
+		{
+			if (a.FormName == FormName && a.ControlName == ControlName)
+			{
+				return a.isAllowed;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public string FormName;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CisFormAuthenticationRequired_003Eb__0(SecurityObject a)
+		{
+			return a.FormName == FormName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public string FormName;
+
+		public short RoleID;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CControlsToLock_003Eb__0(SecurityObject a)
+		{
+			if (a.FormName == FormName && a.ControlName != null && a.RoleID == RoleID)
+			{
+				return !a.isAllowed;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public string FormName;
+
+		public string ControlName;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CisUserAuthenticated_003Eb__0(SecurityObject a)
+		{
+			if (a.FormName == FormName)
+			{
+				return a.ControlName == ControlName;
+			}
+			return false;
+		}
+
+		internal bool _003CisUserAuthenticated_003Eb__3(SecurityObject a)
+		{
+			if (a.FormName == FormName && a.ControlName == ControlName)
+			{
+				return a.isAllowed;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_1
+	{
+		public Employee emp;
+
+		public _003C_003Ec__DisplayClass8_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CisUserAuthenticated_003Eb__1(SecurityObject x)
+		{
+			if (x.RoleID == emp.Users.FirstOrDefault().RoleID)
+			{
+				return x.isAllowed;
+			}
+			return false;
+		}
+	}
+
 	public static Employee EmployeeLoginFormControl(Form form, string ControlName)
 	{
 		if (Application.OpenForms.OfType<frmNumpad>().FirstOrDefault() != null)

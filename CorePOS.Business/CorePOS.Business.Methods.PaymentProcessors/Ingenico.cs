@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using CorePOS.Business.Enums;
@@ -13,6 +14,18 @@ namespace CorePOS.Business.Methods.PaymentProcessors;
 
 public static class Ingenico
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public string ip;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public static List<PaymentTransactionObject> SendToTerminal(string provider, string model, string ip, int port, string request, bool parseObject, string orderNumber, string paymentMethod)
 	{
 		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();
@@ -227,7 +240,8 @@ public static class Ingenico
 		try
 		{
 			stream = new TcpClient(string_1, int_0).GetStream();
-			int num4 = (stream.ReadTimeout = (stream.WriteTimeout = num * 1000));
+			int readTimeout = (stream.WriteTimeout = num * 1000);
+			stream.ReadTimeout = readTimeout;
 			stream.Write(bytes, 0, bytes.Length);
 			CorePOS.Data.Properties.Settings.Default["isPaymentTerminalConnected"] = true;
 		}
@@ -245,45 +259,45 @@ public static class Ingenico
 			CorePOS.Data.Properties.Settings.Default["isPaymentTerminalConnected"] = false;
 			return list;
 		}
-		int num5 = 0;
-		int num6 = 0;
+		int num3 = 0;
+		int num4 = 0;
 		int count = 8;
 		string empty = string.Empty;
 		string empty2 = string.Empty;
 		bool flag = false;
-		int num7 = 0;
+		int num5 = 0;
 		byte[] array = new byte[1024];
-		int num8 = 0;
+		int num6 = 0;
 		if (string_2 == "20\u001c0071")
 		{
-			num8 = 1;
+			num6 = 1;
 		}
 		while (!flag)
 		{
 			CorePOS.Data.Properties.Settings.Default["isPaymentTerminalConnected"] = true;
 			try
 			{
-				num6 = stream.Read(array, num7, 1024);
+				num4 = stream.Read(array, num5, 1024);
 			}
 			catch
 			{
-				num6 = 0;
+				num4 = 0;
 			}
-			if (num6 != 0)
+			if (num4 != 0)
 			{
-				num5 += num6;
+				num3 += num4;
 				empty2 = Encoding.ASCII.GetString(array).Replace("\u0011", string.Empty);
 				empty2 = empty2.Replace("\0", string.Empty).Replace("\u001c", "^");
 				if (string.IsNullOrEmpty(empty2))
 				{
 					continue;
 				}
-				if (empty2.Substring(0, 3) == "990" && num8 == 0)
+				if (empty2.Substring(0, 3) == "990" && num6 == 0)
 				{
 					empty = empty2;
 					if (string.IsNullOrEmpty(empty))
 					{
-						empty = Encoding.ASCII.GetString(array, (num7 - 3 >= 0) ? (num7 - 3) : 0, count);
+						empty = Encoding.ASCII.GetString(array, (num5 - 3 >= 0) ? (num5 - 3) : 0, count);
 					}
 					paymentTransactionObject = mapObject(string_0, empty, bool_0);
 					list.Add(paymentTransactionObject);

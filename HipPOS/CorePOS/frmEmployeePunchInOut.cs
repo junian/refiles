@@ -21,6 +21,102 @@ namespace CorePOS;
 
 public class frmEmployeePunchInOut : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public frmEmployeePunchInOut _003C_003E4__this;
+
+		public int monthSelected;
+
+		public int yearSelected;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public HipposClockInOutRequestObject ckInData;
+
+		public frmEmployeePunchInOut _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass24_0
+	{
+		public DateTime startDate;
+
+		public DateTime endDate;
+
+		public FolderBrowserDialog fbd;
+
+		public frmEmployeePunchInOut _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass24_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnExport_Click_003Eb__0()
+		{
+			string separator = ",";
+			string text = "EmployeePunchInOuts-" + startDate.ToString("MM-dd-yyyy") + "_to_" + endDate.ToString("MM-dd-yyyy") + ".csv";
+			string path = fbd.SelectedPath + "\\" + text;
+			List<EmployeeClockInOutQueue> list = new GClass6().EmployeeClockInOutQueues.Where((EmployeeClockInOutQueue a) => a.Timestamp != null && Convert.ToDateTime(a.Timestamp) >= ((DateTime)startDate).Date && Convert.ToDateTime(a.Timestamp) <= ((DateTime)endDate).Date.AddDays(1.0)).ToList();
+			_003C_003E4__this.int_2 = list.Count;
+			if (list.Count == 0)
+			{
+				_003C_003E4__this.int_2 = 1;
+				_003C_003E4__this.bool_0 = true;
+				_003C_003E4__this.string_2 = "No Data to Export.";
+				return;
+			}
+			try
+			{
+				using TextWriter textWriter = File.CreateText(path);
+				string[] value = new string[3] { "Employee", "Time", "Action" };
+				textWriter.WriteLine(string.Join(separator, value));
+				_003C_003E4__this.int_1 = 1;
+				foreach (EmployeeClockInOutQueue item in (from a in list
+					orderby a.EmployeeId, a.Id
+					select a).ToList())
+				{
+					string text2 = ((item.Action == "hippos-clockin") ? "TIME IN" : "TIME OUT");
+					if (item.Employee != null)
+					{
+						string[] value2 = new string[3]
+						{
+							item.Employee.FirstName + " " + item.Employee.LastName,
+							item.Timestamp,
+							text2
+						};
+						textWriter.WriteLine(string.Join(separator, value2));
+						_003C_003E4__this.int_1++;
+					}
+				}
+				_003C_003E4__this.string_2 = "Successfully Exported.";
+				textWriter.Close();
+				textWriter.Dispose();
+			}
+			catch (Exception ex)
+			{
+				_003C_003E4__this.string_2 = ex.Message;
+				_003C_003E4__this.bool_0 = true;
+			}
+		}
+	}
+
 	private string string_0;
 
 	private Employee employee_0;
@@ -406,7 +502,7 @@ public class frmEmployeePunchInOut : frmMasterForm
 			string separator = ",";
 			string text = "EmployeePunchInOuts-" + CS_0024_003C_003E8__locals0.startDate.ToString("MM-dd-yyyy") + "_to_" + CS_0024_003C_003E8__locals0.endDate.ToString("MM-dd-yyyy") + ".csv";
 			string path = CS_0024_003C_003E8__locals0.fbd.SelectedPath + "\\" + text;
-			List<EmployeeClockInOutQueue> list = new GClass6().EmployeeClockInOutQueues.Where((EmployeeClockInOutQueue a) => a.Timestamp != null && Convert.ToDateTime(a.Timestamp) >= CS_0024_003C_003E8__locals0.startDate.Date && Convert.ToDateTime(a.Timestamp) <= CS_0024_003C_003E8__locals0.endDate.Date.AddDays(1.0)).ToList();
+			List<EmployeeClockInOutQueue> list = new GClass6().EmployeeClockInOutQueues.Where((EmployeeClockInOutQueue a) => a.Timestamp != null && Convert.ToDateTime(a.Timestamp) >= ((DateTime)CS_0024_003C_003E8__locals0.startDate).Date && Convert.ToDateTime(a.Timestamp) <= ((DateTime)CS_0024_003C_003E8__locals0.endDate).Date.AddDays(1.0)).ToList();
 			CS_0024_003C_003E8__locals0._003C_003E4__this.int_2 = list.Count;
 			if (list.Count == 0)
 			{

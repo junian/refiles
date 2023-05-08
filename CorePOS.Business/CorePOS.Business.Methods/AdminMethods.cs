@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Objects;
 using CorePOS.Business.Properties;
@@ -10,6 +11,412 @@ namespace CorePOS.Business.Methods;
 
 public class AdminMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public string classification;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public string groupClassification;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_1
+	{
+		public Group group;
+
+		public _003C_003Ec__DisplayClass1_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass1_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CgetGroups_003Eb__1(Group g)
+		{
+			if (g.ParentGroupID == group.GroupID)
+			{
+				return g.GroupClassification == CS_0024_003C_003E8__locals1.groupClassification;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_2
+	{
+		public Group childGroup;
+
+		public _003C_003Ec__DisplayClass1_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass1_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CgetGroups_003Eb__2(Group g)
+		{
+			if (g.ParentGroupID == childGroup.GroupID)
+			{
+				return g.GroupClassification == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.groupClassification;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_3
+	{
+		public Group gChildGroup;
+
+		public _003C_003Ec__DisplayClass1_2 CS_0024_003C_003E8__locals3;
+
+		public _003C_003Ec__DisplayClass1_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CgetGroups_003Eb__3(Group g)
+		{
+			if (g.ParentGroupID == gChildGroup.GroupID)
+			{
+				return g.GroupClassification == CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.groupClassification;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_4
+	{
+		public Group ggChildGroup;
+
+		public _003C_003Ec__DisplayClass1_3 CS_0024_003C_003E8__locals4;
+
+		public _003C_003Ec__DisplayClass1_4()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CgetGroups_003Eb__4(Group g)
+		{
+			if (g.ParentGroupID == ggChildGroup.GroupID)
+			{
+				return g.GroupClassification == CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.groupClassification;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_1
+	{
+		public Option opt;
+
+		public _003C_003Ec__DisplayClass12_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_2
+	{
+		public ItemsInGroup ig;
+
+		public _003C_003Ec__DisplayClass12_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass12_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public int ParentItemId;
+
+		public _003C_003Ec__DisplayClass13_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_1
+	{
+		public GroupsInItemsField groupAdded;
+
+		public _003C_003Ec__DisplayClass13_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public int ParentItemId;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_1
+	{
+		public ItemsInItemsField itemAdded;
+
+		public _003C_003Ec__DisplayClass14_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass15_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public int ItemID;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_1
+	{
+		public CustomFieldValueDisplay cfvd;
+
+		public _003C_003Ec__DisplayClass16_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public int ItemId;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_0
+	{
+		public int ItemId;
+
+		public _003C_003Ec__DisplayClass18_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public int ItemID;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass22_0
+	{
+		public string itemName;
+
+		public int? itemID;
+
+		public _003C_003Ec__DisplayClass22_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_0
+	{
+		public int? itemID;
+
+		public string upc;
+
+		public string itemName;
+
+		public _003C_003Ec__DisplayClass23_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass24_0
+	{
+		public string groupName;
+
+		public short? groupID;
+
+		public string groupClassification;
+
+		public _003C_003Ec__DisplayClass24_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass25_0
+	{
+		public int ItemID;
+
+		public _003C_003Ec__DisplayClass25_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public short GroupId;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_0
+	{
+		public short UOMID;
+
+		public _003C_003Ec__DisplayClass33_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass34_0
+	{
+		public Guid guidOrderId;
+
+		public Order order;
+
+		public _003C_003Ec__DisplayClass34_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass35_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass35_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass36_0
+	{
+		public int ParentGroupID;
+
+		public _003C_003Ec__DisplayClass36_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass37_0
+	{
+		public int groupId;
+
+		public _003C_003Ec__DisplayClass37_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public static List<Group> GetAllGroup(string classification)
 	{
 		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();

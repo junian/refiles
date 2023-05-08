@@ -1,11 +1,58 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Data;
 
 namespace CorePOS.Business.Methods;
 
 public static class DataStorageHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public short ParentGroupID;
+
+		public string itemClassification;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetChildGroups_003Eb__0(Group g)
+		{
+			if (g.ParentGroupID == ParentGroupID && g.GroupClassification == itemClassification)
+			{
+				return !g.Archived;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public string Classification;
+
+		public string GroupName;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetGroup_003Eb__0(Group a)
+		{
+			if (a.GroupClassification == Classification && !a.Archived)
+			{
+				return a.GroupName == GroupName;
+			}
+			return false;
+		}
+	}
+
 	public static List<Item> ItemList;
 
 	public static List<Group> GroupList;

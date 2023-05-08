@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using CorePOS.Business.Objects;
 using CorePOS.Business.Objects.ThirdPartyAPIs.Other;
 using CorePOS.Data;
@@ -13,6 +14,31 @@ namespace CorePOS.Business.Methods;
 
 public class GoogleMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public GoogleObjects.TimeZoneModel response;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetLocationTimeZone_003Eb__0(TimeZoneInfo x)
+		{
+			if (x.BaseUtcOffset.TotalSeconds == (double)response.rawOffset)
+			{
+				if (!(x.DaylightName == response.timeZoneName))
+				{
+					return x.Id == response.timeZoneName;
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
 	private static string string_0;
 
 	public static TravelInfo GetTotalDistanceFromDeliveryAddress(string deliveryAddress)

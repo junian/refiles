@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
@@ -19,6 +20,41 @@ namespace CorePOS;
 
 public class frmAddEditMaterials : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public frmAddEditMaterials _003C_003E4__this;
+
+		public Dictionary<string, string> items;
+
+		public bool search;
+
+		public string selectItem;
+
+		public _003C_003Ec__DisplayClass13_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal Dictionary<string, string> _003CpopulateAllItems_003Eb__0()
+		{
+			return _003C_003E4__this.method_7(items, search, selectItem);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass21_0
+	{
+		public ItemsInItem itemChild;
+
+		public _003C_003Ec__DisplayClass21_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private int int_0;
 
 	private string string_0;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Business.Enums;
 using CorePOS.Data;
 
@@ -7,6 +8,41 @@ namespace CorePOS.Business.Methods;
 
 public static class SecurityHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public ModulesAndFeature module;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_1
+	{
+		public short roleID;
+
+		public _003C_003Ec__DisplayClass2_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass2_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CCheckAndCreateSecurityMatrix_003Eb__0(SecurityMatrix a)
+		{
+			if (a.ModuleID == CS_0024_003C_003E8__locals1.module.Id)
+			{
+				return a.RoleID == roleID;
+			}
+			return false;
+		}
+	}
+
 	public static List<SecurityObject> SecuritySettings;
 
 	public static void LoadSecuritySettings()

@@ -18,6 +18,89 @@ namespace CorePOS;
 
 public class frmEditLayout : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public Terminal terminal;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadDefaultLayout_003Eb__0(string a)
+		{
+			return a == terminal.DefaultLayoutSectionName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass41_0
+	{
+		public Control control;
+
+		public _003C_003Ec__DisplayClass41_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnRemoveTable_Click_003Eb__0(OccupiedTable a)
+		{
+			return a.TableName == control.Name.Replace("\n", string.Empty);
+		}
+
+		internal bool _003CbtnRemoveTable_Click_003Eb__1(Layout l)
+		{
+			return l.TableName == control.Name.Replace("\n", string.Empty);
+		}
+
+		internal bool _003CbtnRemoveTable_Click_003Eb__3(Layout l)
+		{
+			return l.TableName == control.Name.Replace("\n", string.Empty);
+		}
+
+		internal bool _003CbtnRemoveTable_Click_003Eb__4(Layout l)
+		{
+			return l.TableName == control.Name.Replace("\n", string.Empty);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass58_0
+	{
+		public TransparentLabel btn;
+
+		public _003C_003Ec__DisplayClass58_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003Ctable_MouseUp_003Eb__0(Layout l)
+		{
+			return l.TableName == btn.Name.Replace("\n", string.Empty);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass58_1
+	{
+		public Button btn;
+
+		public _003C_003Ec__DisplayClass58_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003Ctable_MouseUp_003Eb__1(Layout l)
+		{
+			return l.TableName == btn.Name.Replace("\n", string.Empty);
+		}
+	}
+
 	private Control control_0;
 
 	private Point point_0;

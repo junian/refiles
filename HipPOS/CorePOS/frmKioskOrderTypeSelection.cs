@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
@@ -14,6 +15,65 @@ namespace CorePOS;
 
 public class frmKioskOrderTypeSelection : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public GClass6 context;
+
+		public System.Windows.Forms.Timer timer;
+
+		public frmKioskOrderTypeSelection _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CfrmKioskOrderTypeSelection_Load_003Eb__0()
+		{
+			MemoryLoadedObjects.ListOfPatronItemControlObject = new List<PatronItemControl>();
+			foreach (Item item2 in context.Items.Where((Item a) => a.Active == true && a.isDeleted == false))
+			{
+				PatronItemControl item = new PatronItemControl(item2)
+				{
+					Name = item2.ItemID.ToString()
+				};
+				MemoryLoadedObjects.ListOfPatronItemControlObject.Add(item);
+			}
+		}
+
+		internal void _003CfrmKioskOrderTypeSelection_Load_003Eb__1(object sender, MouseEventArgs e)
+		{
+			timer.Start();
+		}
+
+		internal void _003CfrmKioskOrderTypeSelection_Load_003Eb__2(object sender, MouseEventArgs e)
+		{
+			timer.Stop();
+		}
+
+		internal void _003CfrmKioskOrderTypeSelection_Load_003Eb__3(object sender, EventArgs e)
+		{
+			timer.Stop();
+		}
+
+		internal void _003CfrmKioskOrderTypeSelection_Load_003Eb__4(object sender, EventArgs e)
+		{
+			timer.Stop();
+			List<string> roles = new List<string>
+			{
+				Roles.admin,
+				Roles.manager
+			};
+			if (AuthMethods.ValidatePin(_003C_003E4__this, roles))
+			{
+				_003C_003E4__this.Close();
+				_003C_003E4__this.frmPatron_0.Dispose();
+			}
+		}
+	}
+
 	private frmPatron frmPatron_0;
 
 	private IContainer icontainer_1;

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Objects;
 using CorePOS.Business.Properties;
@@ -12,6 +13,18 @@ namespace CorePOS.Business.Methods;
 
 public class ETimeCardMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public HipposClockInOutRequestObject data;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public static StatusCodeResponseLocation GetLocationData(object token)
 	{
 		try

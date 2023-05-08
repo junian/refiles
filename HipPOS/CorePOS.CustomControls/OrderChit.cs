@@ -18,6 +18,547 @@ namespace CorePOS.CustomControls;
 public class OrderChit : UserControl
 {
 	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_0
+	{
+		public OrderChit _003C_003E4__this;
+
+		public List<Order> orderList;
+
+		public _003C_003Ec__DisplayClass106_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRefreshOrders_003Eb__5()
+		{
+			_003C_003E4__this.customListViewTelerik_0.Dispose();
+			_003C_003E4__this.Dispose();
+		}
+
+		internal void _003CRefreshOrders_003Eb__10()
+		{
+			_003C_003E4__this.transparentLabel_1.Text = Resources.Total + ": " + $"{_003C_003E4__this.TotalTotal:C}";
+			Panel panel = _003C_003E4__this.Controls.OfType<Panel>().FirstOrDefault();
+			if (panel != null)
+			{
+				panel.Width = _003C_003E4__this.Width;
+			}
+			_003C_003E4__this.customListViewTelerik_0.Items.Clear();
+			_003C_003E4__this.customListViewTelerik_0.ItemSize = new Size(0, (int)(_003C_003E4__this.FontSize * 2.75f));
+		}
+
+		internal bool _003CRefreshOrders_003Eb__13(Order x)
+		{
+			if (x.StationID != null && x.StationID.Contains(_003C_003E4__this.StationID.ToString()))
+			{
+				if (x.StationMade != null)
+				{
+					return !x.StationMade.Contains(_003C_003E4__this.StationID.ToString());
+				}
+				return true;
+			}
+			return false;
+		}
+
+		internal void _003CRefreshOrders_003Eb__14()
+		{
+			_003C_003E4__this.customListViewTelerik_0.Dispose();
+			_003C_003E4__this.Dispose();
+		}
+
+		internal void _003CRefreshOrders_003Eb__28()
+		{
+			_003C_003E4__this.customListViewTelerik_0.Dispose();
+			_003C_003E4__this.Dispose();
+		}
+
+		internal void _003CRefreshOrders_003Eb__16()
+		{
+			_003C_003E4__this.Height = _003C_003E4__this.customListViewTelerik_0.Height + 35;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_1
+	{
+		public FormHelper formsHelper;
+
+		public int listHeight;
+
+		public int row;
+
+		public List<string> mainItemShowed;
+
+		public Order firstOrder;
+
+		public _003C_003Ec__DisplayClass106_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass106_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRefreshOrders_003Eb__15()
+		{
+			TransparentLabel transparentLabel_ = CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_0;
+			Size size2 = (CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Size = new Size(CS_0024_003C_003E8__locals1._003C_003E4__this.Width, listHeight));
+			transparentLabel_.Size = size2;
+			if (CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items.Count > 0)
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.SelectedIndex = 0;
+			}
+			CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.SelectedItems.Clear();
+			if (firstOrder.OrderType == OrderTypes.Catering)
+			{
+				List<ProcessorPaymentType> paymentTypes = PaymentTypeMethods.GetPaymentTypes(firstOrder.PaymentMethods);
+				decimal num = paymentTypes.Sum((ProcessorPaymentType a) => a.Amount);
+				decimal num2 = CS_0024_003C_003E8__locals1._003C_003E4__this.TotalTotal - paymentTypes.Sum((ProcessorPaymentType a) => a.Amount);
+				CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_2.Text = "DEPOSIT/Paid: $" + num + "\nBALANCE: $" + num2.ToString("0.00");
+				CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_2.Location = new Point(0, CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Bottom - CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_2.Size.Height);
+			}
+		}
+
+		internal void _003CRefreshOrders_003Eb__17()
+		{
+			if (CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 == ScreenType.dine_in && CS_0024_003C_003E8__locals1.orderList.Count > 0)
+			{
+				Label label_ = CS_0024_003C_003E8__locals1._003C_003E4__this.label_1;
+				Color backColor = (CS_0024_003C_003E8__locals1._003C_003E4__this.label_2.BackColor = ColorHelper.smethod_0(Convert.ToInt16(CS_0024_003C_003E8__locals1.orderList.FirstOrDefault().SeatNum)));
+				label_.BackColor = backColor;
+			}
+			else
+			{
+				Label label_2 = CS_0024_003C_003E8__locals1._003C_003E4__this.label_1;
+				Color backColor = (CS_0024_003C_003E8__locals1._003C_003E4__this.label_2.BackColor = ColorHelper.getOrderTypeColor(CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType));
+				label_2.BackColor = backColor;
+			}
+			if (CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType == OrderTypes.DeliveryOnline)
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.Text = Resources.Delivery_Online.ToUpper();
+			}
+			else if (CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType == OrderTypes.PickUpOnline)
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.Text = Resources.Pick_Up_Online.ToUpper();
+			}
+			else if (CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType == OrderTypes.PickUpCurbsideOnline)
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.Text = "Pick-Up Curbside Online".ToUpper();
+			}
+			else if (CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType == OrderTypes.DineIn)
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.Text = Resources.Dine_In.ToUpper();
+			}
+			else if (CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType == OrderTypes.DineInOnline)
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.Text = "Dine In Online".ToUpper();
+			}
+			else
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.Text = CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType.ToUpper();
+			}
+			if (CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 == ScreenType.dine_in)
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.Text = "";
+			}
+			if (firstOrder.Paid)
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.Text = "*PAID* " + CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.Text;
+			}
+			if (SettingsHelper.GetSettingValueByKey("group_chits_per_table") == "ON" && CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType == OrderTypes.DineIn && SettingsHelper.GetSettingValueByKey("restaurant_mode") == "Dine In")
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_2.Text = "";
+			}
+			if (CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 == ScreenType.dine_in)
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.label_2.Text = "";
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_2
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass106_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass106_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRefreshOrders_003Eb__21(Order a)
+		{
+			if (a.ComboID > 0 && a.ComboID == order.ComboID && a.ItemIdentifier == "MainItem")
+			{
+				if (a.StationID != null && !a.StationID.Contains(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.StationID.ToString()))
+				{
+					return true;
+				}
+				return a.StationID == null;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_3
+	{
+		public string col1;
+
+		public string col2;
+
+		public _003C_003Ec__DisplayClass106_2 CS_0024_003C_003E8__locals3;
+
+		public _003C_003Ec__DisplayClass106_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRefreshOrders_003Eb__20()
+		{
+			try
+			{
+				CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.formsHelper.subAddItemsToStationChitTelerik(CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0, "", col1, col2, CS_0024_003C_003E8__locals3.order.Void, CS_0024_003C_003E8__locals3.order.ItemIdentifier, CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize);
+				CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight = CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight + CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items[CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row].ActualSize.Height;
+			}
+			catch
+			{
+			}
+			int row = CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row;
+			CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row = row + 1;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_4
+	{
+		public Order mainItemOrder;
+
+		public _003C_003Ec__DisplayClass106_3 CS_0024_003C_003E8__locals4;
+
+		public _003C_003Ec__DisplayClass106_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_5
+	{
+		public string c1;
+
+		public string c2;
+
+		public _003C_003Ec__DisplayClass106_4 CS_0024_003C_003E8__locals5;
+
+		public _003C_003Ec__DisplayClass106_5()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRefreshOrders_003Eb__24()
+		{
+			try
+			{
+				CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.formsHelper.subAddItemsToStationChitTelerik(CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0, "", c1, c2, CS_0024_003C_003E8__locals5.mainItemOrder.Void, CS_0024_003C_003E8__locals5.mainItemOrder.ItemIdentifier, CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize);
+				CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight = CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.listHeight + CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items[CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row].ActualSize.Height;
+				CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.mainItemShowed.Add(CS_0024_003C_003E8__locals5.mainItemOrder.OrderId.ToString());
+			}
+			catch
+			{
+			}
+			int row = CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row;
+			CS_0024_003C_003E8__locals5.CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals2.row = row + 1;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_6
+	{
+		public string col1;
+
+		public string col2;
+
+		public string col3;
+
+		public _003C_003Ec__DisplayClass106_2 CS_0024_003C_003E8__locals6;
+
+		public _003C_003Ec__DisplayClass106_6()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRefreshOrders_003Eb__25()
+		{
+			try
+			{
+				if (!CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.formsHelper.IsDisposed)
+				{
+					CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.formsHelper.subAddItemsToTakeoutChitTelerik(CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0, "", col1, col2, col3, CS_0024_003C_003E8__locals6.order.ComboID, CS_0024_003C_003E8__locals6.order.Void, CS_0024_003C_003E8__locals6.order.ItemIdentifier, CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.FontSize);
+				}
+				if (!CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.IsDisposed)
+				{
+					CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.listHeight = CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.listHeight + CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items[CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.row].ActualSize.Height;
+				}
+			}
+			catch
+			{
+			}
+			int row = CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.row;
+			CS_0024_003C_003E8__locals6.CS_0024_003C_003E8__locals2.row = row + 1;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_7
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass106_1 CS_0024_003C_003E8__locals7;
+
+		public _003C_003Ec__DisplayClass106_7()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRefreshOrders_003Eb__29()
+		{
+			if (order.CustomerNotified && !CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.bool_5)
+			{
+				CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.CustomerInfoName = CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.CustomerInfoName + "**NOTIFIED**";
+			}
+			string text = "";
+			if (!string.IsNullOrEmpty(CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.CustomerInfoName) && !CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType.ToUpper().Contains(Resources.Online.ToUpper()))
+			{
+				text = "CUST : " + CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.CustomerInfoName + ", " + CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.Customer;
+			}
+			else
+			{
+				text = "CUST : ";
+				if (!string.IsNullOrEmpty(CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.Customer))
+				{
+					text += CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.Customer;
+				}
+			}
+			if (!string.IsNullOrEmpty(order.OrderNotes))
+			{
+				text = text + "\nNOTES: " + order.OrderNotes;
+			}
+			if (CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 == ScreenType.dine_in)
+			{
+				CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.label_0.Text = Resources.SEAT + order.SeatNum;
+			}
+			else
+			{
+				string text2 = (string.IsNullOrEmpty(CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.EmployeeName) ? "" : CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.EmployeeName.ToUpper());
+				text2 = ((text2.Length > 16) ? (text2.Substring(0, 15) + "...") : text2);
+				if (order.OrderType != OrderTypes.DineIn && order.OrderType != OrderTypes.ToGo)
+				{
+					if (order.FulfillmentAt.HasValue || order.OrderOnHoldTime > 0)
+					{
+						DateTime dateTime = (order.FulfillmentAt.HasValue ? order.FulfillmentAt.Value : order.DateCreated.Value.AddMinutes(order.OrderOnHoldTime));
+						if (dateTime < DateTime.Now)
+						{
+							CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.string_7 = "";
+						}
+						else
+						{
+							string text3 = (order.OrderType.Contains("Delivery") ? "DELIVER " : "PICKUP ");
+							if (Screen.PrimaryScreen.Bounds.Width <= 1280)
+							{
+								text3 = "";
+							}
+							CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.string_7 = "**" + text3 + ((dateTime.Date == DateTime.Now.Date) ? ("TODAY @ " + dateTime.ToString("hh:mm tt")) : ("ON " + dateTime.ToString("ddd, MMM dd @ hh:mm tt"))) + "**";
+						}
+					}
+					if (!string.IsNullOrEmpty(CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.string_7))
+					{
+						CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.label_0.Text = text.ToUpper() + "\n" + CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.string_7;
+					}
+					else
+					{
+						CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.label_0.Text = text.ToUpper() + "\nSRVR : " + text2;
+					}
+				}
+				else
+				{
+					CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.label_0.Text = text.ToUpper() + "\nSRVR : " + text2;
+				}
+			}
+			CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.dateTime_0 = order.DateCreated.Value;
+			CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.OnlineOrderStatus = order.FlagID;
+			if ((order.OrderType == OrderTypes.DeliveryOnline || order.OrderType == OrderTypes.PickUpOnline || order.OrderType == OrderTypes.PickUpCurbsideOnline || order.OrderType == OrderTypes.DineInOnline) && !CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.bool_5)
+			{
+				if (CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.OnlineOrderStatus == 1)
+				{
+					CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.timer_0.Enabled = true;
+					CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transLabelMessage = "Confirm Online Order";
+				}
+				else
+				{
+					string[] array = CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.ClickLabel.Tag.ToString().Split('|');
+					array[0] = order.FlagID.ToString();
+					CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.ClickLabel.Tag = string.Join("|", array);
+				}
+			}
+			CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.Height = CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Height + 35 + CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.label_0.Height;
+			if (CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 != ScreenType.station)
+			{
+				CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Location = new Point(CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Right - CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Size.Width - 10, CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Top - CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Size.Height + 3);
+			}
+			else
+			{
+				CS_0024_003C_003E8__locals7.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_1.Visible = false;
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass109_0
+	{
+		public string orderNumber;
+
+		public OrderChit _003C_003E4__this;
+
+		public Label headerlabel;
+
+		public Label lblOrderNum;
+
+		public Label lblCustomer;
+
+		public Label lblTimer;
+
+		public CustomListViewTelerik listView;
+
+		public TransparentLabel lblTotal;
+
+		public TransparentLabel tlbl;
+
+		public _003C_003Ec__DisplayClass109_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CAddBills_003Eb__6(Order x)
+		{
+			if (x.OrderNumber == orderNumber)
+			{
+				if (x.OrderOnHoldTime != 0 && x.OrderOnHoldTime != -1 && (x.OrderOnHoldTime == 0 || !(x.DateCreated.Value < DateTime.Now.AddMinutes(-x.OrderOnHoldTime))))
+				{
+					if (x.OrderOnHoldTime != 0)
+					{
+						if (!(x.OrderType == OrderTypes.DeliveryOnline) && !(x.OrderType == OrderTypes.PickUpOnline) && !(x.OrderType == OrderTypes.PickUpCurbsideOnline))
+						{
+							return x.OrderType == OrderTypes.DineInOnline;
+						}
+						return true;
+					}
+					return false;
+				}
+				return true;
+			}
+			return false;
+		}
+
+		internal bool _003CAddBills_003Eb__7(Order x)
+		{
+			if (_003C_003E4__this.OrderNumber.Contains(x.OrderNumber))
+			{
+				if (x.OrderOnHoldTime != 0 && x.OrderOnHoldTime != -1 && (x.OrderOnHoldTime == 0 || !(x.DateCreated.Value < DateTime.Now.AddMinutes(-x.OrderOnHoldTime))))
+				{
+					if (x.OrderOnHoldTime != 0)
+					{
+						if (!(x.OrderType == OrderTypes.DeliveryOnline) && !(x.OrderType == OrderTypes.PickUpOnline) && !(x.OrderType == OrderTypes.PickUpCurbsideOnline))
+						{
+							return x.OrderType == OrderTypes.DineInOnline;
+						}
+						return true;
+					}
+					return false;
+				}
+				return true;
+			}
+			return false;
+		}
+
+		internal void _003CAddBills_003Eb__0()
+		{
+			_003C_003E4__this.Controls.Add(headerlabel);
+			headerlabel.BringToFront();
+			_003C_003E4__this.label_1 = headerlabel;
+		}
+
+		internal void _003CAddBills_003Eb__1()
+		{
+			_003C_003E4__this.Controls.Add(lblOrderNum);
+			lblOrderNum.BringToFront();
+			_003C_003E4__this.label_2 = lblOrderNum;
+		}
+
+		internal void _003CAddBills_003Eb__2()
+		{
+			_003C_003E4__this.Controls.Add(lblCustomer);
+			lblCustomer.BringToFront();
+			_003C_003E4__this.Controls.Add(lblTimer);
+			lblTimer.BringToFront();
+			_003C_003E4__this.label_0 = lblCustomer;
+			_003C_003E4__this.label_3 = lblTimer;
+		}
+
+		internal void _003CAddBills_003Eb__3()
+		{
+			_003C_003E4__this.Controls.Add(listView);
+			listView.BringToFront();
+			_003C_003E4__this.customListViewTelerik_0 = listView;
+		}
+
+		internal void _003CAddBills_003Eb__4()
+		{
+			_003C_003E4__this.Controls.Add(lblTotal);
+			lblTotal.BringToFront();
+			_003C_003E4__this.transparentLabel_1 = lblTotal;
+		}
+
+		internal void _003CAddBills_003Eb__5()
+		{
+			_003C_003E4__this.Controls.Add(tlbl);
+			tlbl.BringToFront();
+			_003C_003E4__this.transparentLabel_0 = tlbl;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass109_1
+	{
+		public TransparentLabel lblCateringInfo;
+
+		public _003C_003Ec__DisplayClass109_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass109_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CAddBills_003Eb__8()
+		{
+			CS_0024_003C_003E8__locals1._003C_003E4__this.Controls.Add(lblCateringInfo);
+			lblCateringInfo.BringToFront();
+			CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_2 = lblCateringInfo;
+		}
+	}
+
+	[CompilerGenerated]
 	private List<string> list_0;
 
 	[CompilerGenerated]
@@ -716,7 +1257,9 @@ public class OrderChit : UserControl
 				}
 				Invoke((MethodInvoker)delegate
 				{
-					Size size3 = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_0.Size = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Size = new Size(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.Width, CS_0024_003C_003E8__locals4.listHeight)));
+					TransparentLabel transparentLabel = CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.transparentLabel_0;
+					Size size2 = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Size = new Size(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.Width, CS_0024_003C_003E8__locals4.listHeight));
+					transparentLabel.Size = size2;
 					if (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.Items.Count > 0)
 					{
 						CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.customListViewTelerik_0.SelectedIndex = 0;
@@ -872,13 +1415,17 @@ public class OrderChit : UserControl
 				}
 				Invoke((MethodInvoker)delegate
 				{
-					if (!(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 == ScreenType.dine_in) || CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1.orderList.Count <= 0)
+					if (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 == ScreenType.dine_in && CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1.orderList.Count > 0)
 					{
-						Color color2 = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.BackColor = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.label_2.BackColor = ColorHelper.getOrderTypeColor(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType)));
+						Label label = CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.label_1;
+						Color backColor = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.label_2.BackColor = ColorHelper.smethod_0(Convert.ToInt16(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1.orderList.FirstOrDefault().SeatNum)));
+						label.BackColor = backColor;
 					}
 					else
 					{
-						Color color2 = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.label_1.BackColor = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.label_2.BackColor = ColorHelper.smethod_0(Convert.ToInt16(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1.orderList.FirstOrDefault().SeatNum))));
+						Label label2 = CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.label_1;
+						Color backColor = (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.label_2.BackColor = ColorHelper.getOrderTypeColor(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType));
+						label2.BackColor = backColor;
 					}
 					if (CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals1._003C_003E4__this.OrderType == OrderTypes.DeliveryOnline)
 					{
@@ -1027,13 +1574,17 @@ public class OrderChit : UserControl
 		CS_0024_003C_003E8__locals0.headerlabel.TextAlign = ContentAlignment.MiddleLeft;
 		CS_0024_003C_003E8__locals0.headerlabel.Font = new Font("Arial", HeaderLabelFontSize, FontStyle.Bold);
 		CS_0024_003C_003E8__locals0.headerlabel.Padding = new Padding(10, 0, 0, 0);
-		if (!(string_8 == ScreenType.dine_in))
+		if (string_8 == ScreenType.dine_in)
 		{
-			Color color2 = (CS_0024_003C_003E8__locals0.headerlabel.BackColor = (CS_0024_003C_003E8__locals0.lblOrderNum.BackColor = ColorHelper.getOrderTypeColor(OrderType)));
+			Label headerlabel = CS_0024_003C_003E8__locals0.headerlabel;
+			Color backColor = (CS_0024_003C_003E8__locals0.lblOrderNum.BackColor = ColorHelper.smethod_0(Convert.ToInt16(order.SeatNum)));
+			headerlabel.BackColor = backColor;
 		}
 		else
 		{
-			Color color2 = (CS_0024_003C_003E8__locals0.headerlabel.BackColor = (CS_0024_003C_003E8__locals0.lblOrderNum.BackColor = ColorHelper.smethod_0(Convert.ToInt16(order.SeatNum))));
+			Label headerlabel2 = CS_0024_003C_003E8__locals0.headerlabel;
+			Color backColor = (CS_0024_003C_003E8__locals0.lblOrderNum.BackColor = ColorHelper.getOrderTypeColor(OrderType));
+			headerlabel2.BackColor = backColor;
 		}
 		if (OrderType == OrderTypes.DeliveryOnline)
 		{
@@ -1232,7 +1783,9 @@ public class OrderChit : UserControl
 		CS_0024_003C_003E8__locals0.tlbl.Opacity = 0;
 		CS_0024_003C_003E8__locals0.tlbl.Font = new Font("Arial", 25f, FontStyle.Bold);
 		CS_0024_003C_003E8__locals0.tlbl.Size = customListViewTelerik_0.Size;
-		Point point2 = (CS_0024_003C_003E8__locals0.tlbl.Location = (ClickLabel.Location = customListViewTelerik_0.Location));
+		TransparentLabel tlbl = CS_0024_003C_003E8__locals0.tlbl;
+		Point location2 = (ClickLabel.Location = customListViewTelerik_0.Location);
+		tlbl.Location = location2;
 		Invoke((MethodInvoker)delegate
 		{
 			CS_0024_003C_003E8__locals0._003C_003E4__this.Controls.Add(CS_0024_003C_003E8__locals0.tlbl);

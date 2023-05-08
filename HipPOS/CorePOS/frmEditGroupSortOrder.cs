@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Data;
@@ -12,6 +13,46 @@ namespace CorePOS;
 
 public class frmEditGroupSortOrder : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public List<short> parentGroupIds;
+
+		public string classification;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public int parentGroupId;
+
+		public string groupClassification;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public short groupId;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private IContainer icontainer_1;
 
 	internal ListView lstGroups;

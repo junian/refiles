@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
@@ -14,6 +15,56 @@ namespace CorePOS;
 
 public class frmHiddenTools : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_1
+	{
+		public Item item;
+
+		public Func<Item, bool> _003C_003E9__5;
+
+		public Func<Item, bool> _003C_003E9__6;
+
+		public _003C_003Ec__DisplayClass1_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnAddOrders_Click_003Eb__5(Item i)
+		{
+			return i.ItemID == item.ItemID;
+		}
+
+		internal bool _003CbtnAddOrders_Click_003Eb__6(Item i)
+		{
+			return i.ItemID == item.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_2
+	{
+		public int rID;
+
+		public _003C_003Ec__DisplayClass1_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private IContainer icontainer_1;
 
 	private Button btnAddOrders;

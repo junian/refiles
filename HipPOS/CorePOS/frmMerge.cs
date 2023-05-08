@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -15,6 +16,23 @@ namespace CorePOS;
 
 public class frmMerge : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public List<Guid> sharedOrderIDs;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadFormProcedure_003Eb__4(Order o)
+		{
+			return !sharedOrderIDs.Contains(o.OrderId);
+		}
+	}
+
 	private short short_0;
 
 	private short short_1;

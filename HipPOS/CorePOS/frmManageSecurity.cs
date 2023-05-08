@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
@@ -14,6 +15,60 @@ namespace CorePOS;
 
 public class frmManageSecurity : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public ModulesAndFeature module;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetSecurityMatrix_003Eb__3(SecurityMatrix a)
+		{
+			return a.ModuleID == module.Id;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_1
+	{
+		public Role role;
+
+		public _003C_003Ec__DisplayClass6_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass6_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetSecurityMatrix_003Eb__4(SecurityMatrix a)
+		{
+			if (a.ModuleID == CS_0024_003C_003E8__locals1.module.Id)
+			{
+				return a.RoleID == role.RoleID;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public int moduleId;
+
+		public short roleId;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private List<Role> list_2;
 
 	private bool bool_0;
@@ -75,7 +130,8 @@ public class frmManageSecurity : frmMasterForm
 			Label label2 = new Label();
 			label2.Name = "lbl" + item.RoleName;
 			int num = ((item.RoleID == 6) ? 10 : 0);
-			Size size2 = (label2.Size = new Size(int_1 + num, pnlRoles.Height));
+			Size size = new Size(int_1 + num, pnlRoles.Height);
+			label2.Size = size;
 			label2.Margin = new Padding(0, 1, 1, 0);
 			label2.Padding = new Padding(0, 0, 0, 0);
 			label2.Text = Resources.ResourceManager.GetString(item.RoleName.Replace(" ", "_"));

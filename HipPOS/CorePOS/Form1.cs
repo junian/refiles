@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Telerik.WinControls.Themes;
 using Telerik.WinControls.UI;
@@ -11,6 +12,27 @@ namespace CorePOS;
 
 public class Form1 : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public int caretIndex;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CradAutoCompleteBox1_KeyPress_003Eb__0(TextBlockElement x)
+		{
+			if (caretIndex >= x.Offset)
+			{
+				return caretIndex <= x.Offset + x.Length;
+			}
+			return false;
+		}
+	}
+
 	private List<string> list_2;
 
 	private List<string> list_3;

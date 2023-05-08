@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
@@ -15,6 +16,77 @@ namespace CorePOS;
 
 public class frmAppointments : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public DateTime calMonth;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_1
+	{
+		public int x;
+
+		public _003C_003Ec__DisplayClass10_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass10_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public DateTime prevSelectedDate;
+
+		public _003C_003Ec__DisplayClass13_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public DateTime sched;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcreateSchedule_003Eb__1(Appointment a)
+		{
+			return a.StartDateTime == sched;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_0
+	{
+		public DateTime start;
+
+		public DateTime end;
+
+		public frmAppointments _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass18_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private DateTime dateTime_0;
 
 	private DateTime dateTime_1;
@@ -220,7 +292,7 @@ public class frmAppointments : frmMasterForm
 			{
 				break;
 			}
-			List<Appointment> list = new GClass6().Appointments.Where((Appointment a) => a.StartDateTime.Date == CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1.calMonth.AddDays(CS_0024_003C_003E8__locals0.x).Date && a.isCancelled == false).ToList();
+			List<Appointment> list = new GClass6().Appointments.Where((Appointment a) => a.StartDateTime.Date == ((DateTime)CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1.calMonth).AddDays(CS_0024_003C_003E8__locals0.x).Date && a.isCancelled == false).ToList();
 			Button value2 = method_5(color_0: (CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1.calMonth.AddDays(CS_0024_003C_003E8__locals0.x).Month != dateTime_2.Month) ? ((list.Count == 0) ? Color.FromArgb(150, 166, 166) : Color.FromArgb(35, 158, 105)) : ((CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1.calMonth.AddDays(CS_0024_003C_003E8__locals0.x).Date == DateTime.Now.Date) ? HelperMethods.GetColor(HelperMethods.ButtonColors()["Light-Blue"]) : ((list.Count == 0) ? Color.FromArgb(190, 195, 199) : HelperMethods.GetColor(HelperMethods.ButtonColors()["Green"]))), string_0: CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1.calMonth.AddDays(CS_0024_003C_003E8__locals0.x).Day.ToString(), string_1: CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1.calMonth.AddDays(CS_0024_003C_003E8__locals0.x).Date.ToString(), eventHandler_0: method_6, bool_2: bool_);
 			if (CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1.calMonth.AddDays(CS_0024_003C_003E8__locals0.x).Date == DateTime.Now.Date)
 			{
@@ -320,7 +392,8 @@ public class frmAppointments : frmMasterForm
 			Button button4 = btnMove;
 			Button button5 = btnCancel;
 			Color color2 = (btnCopy.BackColor = HelperMethods.GetColor("Gray"));
-			Color color5 = (button4.BackColor = (button5.BackColor = color2));
+			Color backColor = (button5.BackColor = color2);
+			button4.BackColor = backColor;
 			method_9();
 		}
 	}
@@ -344,7 +417,7 @@ public class frmAppointments : frmMasterForm
 			return;
 		}
 		lstItems.Items.Clear();
-		List<Appointment> source = new GClass6().Appointments.Where((Appointment a) => a.StartDateTime.Date == dateTime_1.Date && a.isCancelled == false && a.EmployeeID == Convert.ToInt32(ddlEmployees.SelectedValue)).ToList();
+		List<Appointment> source = new GClass6().Appointments.Where((Appointment a) => a.StartDateTime.Date == ((DateTime)dateTime_1).Date && a.isCancelled == false && a.EmployeeID == Convert.ToInt32(ddlEmployees.SelectedValue)).ToList();
 		Color color = HelperMethods.GetColor(HelperMethods.ButtonColors()["Green"]);
 		_003C_003Ec__DisplayClass16_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass16_0();
 		CS_0024_003C_003E8__locals0.sched = dateTime_1.AddHours(8.0);
@@ -567,7 +640,8 @@ public class frmAppointments : frmMasterForm
 				Button button3 = btnMove;
 				Button button4 = btnCancel;
 				Color color2 = (btnCopy.BackColor = HelperMethods.GetColor("Gray"));
-				Color color5 = (button3.BackColor = (button4.BackColor = color2));
+				Color backColor = (button4.BackColor = color2);
+				button3.BackColor = backColor;
 				method_9();
 				ddlStartTime.SelectedValue = lstItems.SelectedItems[0].SubItems[0].Text;
 				if (lstItems.SelectedItems[0].Index == lstItems.Items.Count - 1)

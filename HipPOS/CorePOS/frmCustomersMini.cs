@@ -23,6 +23,211 @@ namespace CorePOS;
 
 public class frmCustomersMini : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass36_0
+	{
+		public string queryCellPhone;
+
+		public string queryCustomerEmail;
+
+		public frmCustomersMini _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass36_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_0
+	{
+		public GlobalOrderHistoryObjects.Response response;
+
+		public List<int> custIDs;
+
+		public _003C_003Ec__DisplayClass39_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsearchCustomer_003Eb__9(Customer x)
+		{
+			if (x.CustomerCell != null && x.CustomerCell == response.customer_info.customer_cell)
+			{
+				return true;
+			}
+			if (x.CustomerHome != null)
+			{
+				return x.CustomerHome == response.customer_info.customer_home;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_1
+	{
+		public Customer customer;
+
+		public _003C_003Ec__DisplayClass39_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsearchCustomer_003Eb__11(GlobalOrderHistoryObjects.CustomerInfo a)
+		{
+			return a.customer_id == customer.CustomerID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_2
+	{
+		public Order x;
+
+		public _003C_003Ec__DisplayClass39_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsearchCustomer_003Eb__17(Guid a)
+		{
+			return a == x.OrderId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_3
+	{
+		public List<int> custIDs;
+
+		public _003C_003Ec__DisplayClass39_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_4
+	{
+		public List<Guid> sharedOrderIDs;
+
+		public _003C_003Ec__DisplayClass39_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal GlobalOrderHistoryObjects.Order _003CsearchCustomer_003Eb__23(Order x)
+		{
+			_003C_003Ec__DisplayClass39_5 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass39_5
+			{
+				x = x
+			};
+			return new GlobalOrderHistoryObjects.Order
+			{
+				combo_id = CS_0024_003C_003E8__locals0.x.ComboID,
+				customer_phone = CS_0024_003C_003E8__locals0.x.CustomerInfoPhone,
+				date_created = (CS_0024_003C_003E8__locals0.x.LastDateModified.HasValue ? CS_0024_003C_003E8__locals0.x.LastDateModified.Value : CS_0024_003C_003E8__locals0.x.DateCreated.Value),
+				date_paid = CS_0024_003C_003E8__locals0.x.DatePaid.Value,
+				item_barcode = CS_0024_003C_003E8__locals0.x.ItemBarcode,
+				item_id = CS_0024_003C_003E8__locals0.x.ItemID,
+				item_identifier = (byte)((CS_0024_003C_003E8__locals0.x.ItemIdentifier == "MainItem") ? 1 : ((CS_0024_003C_003E8__locals0.x.ItemIdentifier == "ChildItem") ? 2 : 3)),
+				item_identifier_string = CS_0024_003C_003E8__locals0.x.ItemIdentifier,
+				item_instruction = CS_0024_003C_003E8__locals0.x.Instructions,
+				item_name = CS_0024_003C_003E8__locals0.x.ItemName,
+				item_qty = CS_0024_003C_003E8__locals0.x.Qty * (decimal)((sharedOrderIDs.Count <= 0) ? 1 : (sharedOrderIDs.Where((Guid a) => a == CS_0024_003C_003E8__locals0.x.OrderId).Count() + 1)),
+				option_group_name = CS_0024_003C_003E8__locals0.x.ItemOptionId.ToString(),
+				option_tab = "###",
+				order_number = CS_0024_003C_003E8__locals0.x.OrderNumber
+			};
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_5
+	{
+		public Order x;
+
+		public _003C_003Ec__DisplayClass39_5()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsearchCustomer_003Eb__26(Guid a)
+		{
+			return a == x.OrderId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass49_0
+	{
+		public Customer cus;
+
+		public _003C_003Ec__DisplayClass49_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003ClstCustomers_SelectedIndexChanged_003Eb__1(GlobalOrderHistoryObjects.Order x)
+		{
+			if (!(x.customer_phone == cus.CustomerHome))
+			{
+				return x.customer_phone == cus.CustomerCell;
+			}
+			return true;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass51_0
+	{
+		public string selected_order;
+
+		public frmCustomersMini _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass51_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__0(GlobalOrderHistoryObjects.Order o)
+		{
+			return o.order_number == selected_order;
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__3(GlobalOrderHistoryObjects.CustomerInfo x)
+		{
+			return x.customer_id == _003C_003E4__this.int_0;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass51_1
+	{
+		public int iwoID;
+
+		public _003C_003Ec__DisplayClass51_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__5(usp_ItemOptionsResult y)
+		{
+			return y.ItemWithOptionID == iwoID;
+		}
+	}
+
 	private int int_0;
 
 	private string string_0;

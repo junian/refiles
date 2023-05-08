@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business;
 using CorePOS.Business.Enums;
@@ -14,6 +15,112 @@ namespace CorePOS;
 
 public class frmAdminViewItemsAndGroups : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public string key;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public short gId;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public int itemId;
+
+		public Item item;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_1
+	{
+		public string groupId;
+
+		public Group group;
+
+		public _003C_003Ec__DisplayClass12_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass12_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public int itemId;
+
+		public Item item;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_1
+	{
+		public Option opt;
+
+		public _003C_003Ec__DisplayClass14_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_2
+	{
+		public ItemsInGroup ig;
+
+		public _003C_003Ec__DisplayClass14_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass14_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private IContainer icontainer_1;
 
 	private Label lblItems;

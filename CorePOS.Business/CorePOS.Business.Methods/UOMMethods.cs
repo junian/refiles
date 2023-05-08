@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Business.Properties;
 using CorePOS.Data;
 using UnitsNet;
@@ -10,6 +11,60 @@ namespace CorePOS.Business.Methods;
 
 public class UOMMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public int itemID;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public List<string> removedUnits;
+
+		public List<string> existingBaseUnits;
+
+		public Func<string, bool> _003C_003E9__4;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetAllUOMs_003Eb__2(string a)
+		{
+			return !removedUnits.Contains(a);
+		}
+
+		internal bool _003CGetAllUOMs_003Eb__4(string a)
+		{
+			return !existingBaseUnits.Contains(a);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public int itemID;
+
+		public int int_0;
+
+		public int toUOMID;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public List<UOM> GetUOMs(int itemId = 0)
 	{
 		return new DataManager().method_1(itemId);

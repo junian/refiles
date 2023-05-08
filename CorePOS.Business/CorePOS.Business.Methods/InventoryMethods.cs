@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Business.Enums;
 using CorePOS.Data;
 
@@ -9,6 +10,149 @@ namespace CorePOS.Business.Methods;
 
 public class InventoryMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public Order ord;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public Order ord;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_1
+	{
+		public MaterialsInItem materialInItem;
+
+		public _003C_003Ec__DisplayClass8_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_2
+	{
+		public Item material;
+
+		public _003C_003Ec__DisplayClass8_1 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass8_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public Order ord;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public Order ord;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_1
+	{
+		public MaterialsInItem materialInItem;
+
+		public _003C_003Ec__DisplayClass10_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_2
+	{
+		public Item material;
+
+		public _003C_003Ec__DisplayClass10_1 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass10_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public int? batchId;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public int itemID;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CReconcileInventoryAuditLogs_003Eb__2(InventoryAudit x)
+		{
+			return x.ItemID == itemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_1
+	{
+		public InventoryAudit first_unreconciled_log;
+
+		public _003C_003Ec__DisplayClass12_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass12_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	public GClass6 DataContext

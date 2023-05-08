@@ -333,7 +333,8 @@ public class frmSettingsPaymentProcessor : frmMasterForm
 			RadTextBoxControl radTextBoxControl3 = txtServer;
 			string text = (txtSerialNumber.Text = string.Empty);
 			string text3 = (radTextBoxControl3.Text = text);
-			string text6 = (radTextBoxControl.Text = (radTextBoxControl2.Text = text3));
+			string text5 = (radTextBoxControl2.Text = text3);
+			radTextBoxControl.Text = text5;
 		}
 		else if (ddlProcessor.Text == "First Data")
 		{

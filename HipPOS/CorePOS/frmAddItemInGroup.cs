@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -13,6 +14,63 @@ namespace CorePOS;
 
 public class frmAddItemInGroup : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public frmAddItemInGroup _003C_003E4__this;
+
+		public Class17 chk;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_1
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass6_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass6_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_1
+	{
+		public Class17 chk;
+
+		public _003C_003Ec__DisplayClass14_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003ClistViewGroup_MouseClick_003Eb__1(ItemsInGroup x)
+		{
+			return x.GroupID == short.Parse(chk.Text);
+		}
+	}
+
 	private List<Item> list_2;
 
 	private string string_0;

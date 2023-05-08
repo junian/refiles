@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
@@ -18,6 +19,42 @@ namespace CorePOS.AdminPanel.Settings;
 
 public class PrintSettings : UserControl
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public Control ctrl;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public int employeeId;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public RadToggleSwitchElement chkToggle;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private IQueryable<Setting> iqueryable_0;

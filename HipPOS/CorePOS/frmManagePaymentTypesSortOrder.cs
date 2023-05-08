@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Data;
 using CorePOS.Properties;
@@ -12,6 +13,18 @@ namespace CorePOS;
 
 public class frmManagePaymentTypesSortOrder : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public Button btn;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private bool bool_0;
 
 	private int int_0;

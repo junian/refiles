@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business;
@@ -16,6 +17,35 @@ namespace CorePOS;
 
 public class frmWaitingList : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public Appointment waitingList;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPopulateWaitingList_003Eb__5(Layout x)
+		{
+			return x.AppointmentID == waitingList.AppointmentID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass27_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass27_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private int int_0;
 
 	private int? nullable_0;

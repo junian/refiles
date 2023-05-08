@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
+using CorePOS.Business.Objects;
 using Telerik.WinControls;
 using Telerik.WinControls.UI.Data;
 
@@ -13,6 +15,33 @@ namespace CorePOS.CommonForms;
 
 public class frmFont : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public FontStyleObject fontSetting;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CfrmFont_Load_003Eb__0(KeyValuePair<string, int> x)
+		{
+			return x.Value == Convert.ToInt32(fontSetting.Style);
+		}
+
+		internal bool _003CfrmFont_Load_003Eb__1(KeyValuePair<object, string> x)
+		{
+			return x.Value == fontSetting.Color;
+		}
+
+		internal bool _003CfrmFont_Load_003Eb__2(KeyValuePair<string, string> x)
+		{
+			return x.Value == fontSetting.Size.ToString();
+		}
+	}
+
 	private string string_0;
 
 	private IContainer icontainer_1;

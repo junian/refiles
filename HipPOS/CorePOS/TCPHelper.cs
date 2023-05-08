@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Security;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -22,6 +23,80 @@ namespace CorePOS;
 
 public class TCPHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public string ordernumber;
+
+		public string table;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessBillPayment_003Eb__0(Order x)
+		{
+			if (x.OrderNumber == ordernumber)
+			{
+				return !x.Paid;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public PATT_Posera.Request.POSRequest req;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetTables_003Eb__1(Layout x)
+		{
+			return x.TableName == req.POSDefaultInfo.table;
+		}
+
+		internal bool _003CGetTables_003Eb__2(Layout x)
+		{
+			return x.TableID.ToString() == req.POSDefaultInfo.table;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_1
+	{
+		public Employee emp;
+
+		public _003C_003Ec__DisplayClass4_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetTables_003Eb__4(OrderTotal x)
+		{
+			return x.ServedByUserID == emp.EmployeeID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_2
+	{
+		public OrderTotal bill;
+
+		public _003C_003Ec__DisplayClass4_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	public void ProcessClient(TcpClient client, X509Certificate serverCertificate)
 	{
 		try

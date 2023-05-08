@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business;
 using CorePOS.Business.Enums;
@@ -18,6 +19,69 @@ namespace CorePOS;
 
 public class frmReport : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public int empID;
+
+		public int cashierID;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadReport_003Eb__3(Employee e)
+		{
+			return e.EmployeeID == empID;
+		}
+
+		internal bool _003CLoadReport_003Eb__4(Employee e)
+		{
+			return e.EmployeeID == cashierID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_1
+	{
+		public Employee emp;
+
+		public _003C_003Ec__DisplayClass12_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadReport_003Eb__28(Order a)
+		{
+			return a.UserServed == emp.EmployeeID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_2
+	{
+		public string empName;
+
+		public _003C_003Ec__DisplayClass12_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal DeliveryCommissionObject _003CLoadReport_003Eb__30(IGrouping<string, Order> a)
+		{
+			return new DeliveryCommissionObject
+			{
+				OrderNumber = a.Key,
+				EmployeeName = empName,
+				SubTotal = a.Sum((Order x) => x.SubTotal)
+			};
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private string string_0;

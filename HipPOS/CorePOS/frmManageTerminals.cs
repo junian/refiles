@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.CommonForms;
@@ -12,6 +13,42 @@ namespace CorePOS;
 
 public class frmManageTerminals : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public int terminalId;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public int terminalId;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public int terminalId;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private IContainer icontainer_1;
 
 	private Label lblHeaderTitle;
@@ -126,7 +163,8 @@ public class frmManageTerminals : frmMasterForm
 		frmChecklistSelector frmChecklistSelector = new frmChecklistSelector("SET DEFAULT ORDER TYPES", dictionary, defaultOrderTypes, 1);
 		if (frmChecklistSelector.ShowDialog() == DialogResult.OK)
 		{
-			defaultOrderTypes = (terminal.DefaultOrderTypes = frmChecklistSelector.returnValue);
+			defaultOrderTypes = frmChecklistSelector.returnValue;
+			terminal.DefaultOrderTypes = defaultOrderTypes;
 			Helper.SubmitChangesWithCatch(gClass);
 			if (terminal.SystemName == Environment.MachineName)
 			{

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
@@ -15,6 +16,18 @@ namespace CorePOS;
 
 public class frmPayFinish : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public IQueryable<Order> orders;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private string string_0;
 
 	private decimal decimal_0;

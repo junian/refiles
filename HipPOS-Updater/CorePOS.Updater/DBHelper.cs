@@ -29,7 +29,8 @@ public class DBHelper
 				text = StringCipher.Decrypt(text, "DigitalCraftHipPOS");
 				text = text.Replace("{%APPLICATION_PATH%}\\", AppDomain.CurrentDomain.BaseDirectory);
 			}
-			text = (string_0 = ((!isTraining) ? text.Replace("{%MODE%}", string.Empty) : text.Replace("{%MODE%}", "-Training")));
+			text = ((!isTraining) ? text.Replace("{%MODE%}", string.Empty) : text.Replace("{%MODE%}", "-Training"));
+			string_0 = text;
 		}
 		return string_0;
 	}

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
@@ -34,6 +35,728 @@ public class frmAdminSettings : frmMasterForm
 		{
 			Class26.Ggkj0JxzN9YmC();
 			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public string itemId;
+
+		public string eName;
+
+		public frmAdminSettings _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCheckRowsITEMS_003Eb__2(Item a)
+		{
+			return a.ItemName.ToLower() == eName.ToLower();
+		}
+
+		internal int _003CCheckRowsITEMS_003Eb__3()
+		{
+			return _003C_003E4__this.method_11(bool_3: true);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_1
+	{
+		public string eUOM;
+
+		public _003C_003Ec__DisplayClass19_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass24_0
+	{
+		public string itemType;
+
+		public string taxRule;
+
+		public string eUOM;
+
+		public string eName;
+
+		public string itemId;
+
+		public string eBarcode;
+
+		public Func<ItemType, bool> _003C_003E9__2;
+
+		public Func<TaxRule, bool> _003C_003E9__3;
+
+		public _003C_003Ec__DisplayClass24_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CImportCSVItems_003Eb__2(ItemType a)
+		{
+			return a.ItemTypeName.ToUpper() == itemType.ToUpper();
+		}
+
+		internal bool _003CImportCSVItems_003Eb__3(TaxRule a)
+		{
+			return a.RuleName.ToUpper() == taxRule.ToUpper();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass31_0
+	{
+		public frmAdminSettings _003C_003E4__this;
+
+		public OpenFileDialog openCsv;
+
+		public _003C_003Ec__DisplayClass31_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnImportCsv_Click_003Eb__2()
+		{
+			_003C_003E4__this.method_6(openCsv, new int[1] { ItemCSVHeader.RestaurantHeader.Length }, _003C_003E4__this.method_9, _003C_003E4__this.method_5);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_0
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass33_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CItemExport_003Eb__2(KeyValuePair<string, string> a)
+		{
+			return a.Value == item.ItemColor;
+		}
+
+		internal bool _003CItemExport_003Eb__3(KeyValuePair<string, string> a)
+		{
+			return a.Value == item.ItemColor;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_1
+	{
+		public int parentGroupId;
+
+		public _003C_003Ec__DisplayClass33_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass34_0
+	{
+		public frmAdminSettings _003C_003E4__this;
+
+		public FolderBrowserDialog fbd;
+
+		public _003C_003Ec__DisplayClass34_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnExportCsv_Click_003Eb__0()
+		{
+			_003C_003E4__this.method_13(_003C_003E4__this.method_14, fbd.SelectedPath, "HipposExportedItems.csv");
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass35_0
+	{
+		public Item item;
+
+		public string eParentGroup;
+
+		public List<short> GroupIdToNotDelete;
+
+		public Func<CorePOS.Data.Group, bool> _003C_003E9__4;
+
+		public Func<CorePOS.Data.Group, bool> _003C_003E9__5;
+
+		public _003C_003Ec__DisplayClass35_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CEditItemToGroup_003Eb__4(CorePOS.Data.Group s)
+		{
+			return s.GroupName == eParentGroup;
+		}
+
+		internal bool _003CEditItemToGroup_003Eb__5(CorePOS.Data.Group s)
+		{
+			return s.GroupName == eParentGroup;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass35_1
+	{
+		public string eGroup;
+
+		public _003C_003Ec__DisplayClass35_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass35_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CEditItemToGroup_003Eb__1(CorePOS.Data.Group s)
+		{
+			return s.GroupName == eGroup;
+		}
+
+		internal bool _003CEditItemToGroup_003Eb__3(CorePOS.Data.Group s)
+		{
+			return s.GroupName == eGroup;
+		}
+
+		internal bool _003CEditItemToGroup_003Eb__6(CorePOS.Data.Group s)
+		{
+			return s.GroupName == eGroup;
+		}
+
+		internal bool _003CEditItemToGroup_003Eb__7(CorePOS.Data.Group s)
+		{
+			return s.GroupName == eGroup;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass35_2
+	{
+		public CorePOS.Data.Group group;
+
+		public _003C_003Ec__DisplayClass35_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass35_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass48_0
+	{
+		public frmAdminSettings _003C_003E4__this;
+
+		public OpenFileDialog openCsv;
+
+		public _003C_003Ec__DisplayClass48_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnImportMember_Click_003Eb__0()
+		{
+			_003C_003E4__this.method_6(openCsv, new int[1] { 7 }, _003C_003E4__this.method_20, _003C_003E4__this.method_19);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass50_0
+	{
+		public string[] values;
+
+		public frmAdminSettings _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass50_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal int _003CCheckRowMEMBERS_003Eb__1()
+		{
+			return _003C_003E4__this.method_11();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass51_0
+	{
+		public string memName;
+
+		public string memId;
+
+		public _003C_003Ec__DisplayClass51_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass53_0
+	{
+		public frmAdminSettings _003C_003E4__this;
+
+		public FolderBrowserDialog fbd;
+
+		public _003C_003Ec__DisplayClass53_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnExportMember_Click_003Eb__0()
+		{
+			_003C_003E4__this.method_13(_003C_003E4__this.method_21, fbd.SelectedPath, "HipposExportedMembers.csv");
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass55_0
+	{
+		public frmAdminSettings _003C_003E4__this;
+
+		public OpenFileDialog openCsv;
+
+		public _003C_003Ec__DisplayClass55_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnImportItemOptions_Click_003Eb__0()
+		{
+			_003C_003E4__this.method_6(openCsv, new int[1] { 19 }, _003C_003E4__this.method_23, _003C_003E4__this.method_22);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass56_0
+	{
+		public string[] values;
+
+		public _003C_003Ec__DisplayClass56_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCheckRowITEMOPTIONS_003Eb__0(Item a)
+		{
+			if (a.ItemName.ToUpper().Replace("\"", string.Empty) == values[0].ToUpper().Replace("\"", string.Empty))
+			{
+				return !a.isDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CCheckRowITEMOPTIONS_003Eb__1(Item a)
+		{
+			if (a.ItemName.ToUpper().Replace("\"", string.Empty) == values[1].ToUpper().Replace("\"", string.Empty))
+			{
+				return !a.isDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass57_0
+	{
+		public string MainItem;
+
+		public string OptionItem;
+
+		public string GroupName;
+
+		public string GroupDependencyName;
+
+		public Item mItem;
+
+		public short GroupDependencyId;
+
+		public Item oItem;
+
+		public string tab;
+
+		public short groupId;
+
+		public _003C_003Ec__DisplayClass57_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__3(Item a)
+		{
+			if (a.ItemName.ToUpper().Replace("\"", string.Empty) == MainItem.ToUpper().Replace("\"", string.Empty))
+			{
+				return !a.isDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__4(Item a)
+		{
+			if (a.ItemName.ToUpper().Replace("\"", string.Empty) == OptionItem.ToUpper().Replace("\"", string.Empty))
+			{
+				return !a.isDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__5(CorePOS.Data.Group a)
+		{
+			if (a.GroupName.Replace("\"", string.Empty) == GroupName.Replace("\"", string.Empty) && !a.Archived)
+			{
+				return a.GroupClassification == ItemClassifications.Option;
+			}
+			return false;
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__6(CorePOS.Data.Group a)
+		{
+			if (a.GroupName == GroupName && !a.Archived)
+			{
+				return a.GroupClassification == ItemClassifications.Option;
+			}
+			return false;
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__7(CorePOS.Data.Group a)
+		{
+			if (a.GroupName.Replace("\"", string.Empty) == GroupDependencyName.Replace("\"", string.Empty) && !a.Archived)
+			{
+				return a.GroupClassification == ItemClassifications.Option;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass57_1
+	{
+		public string optionName;
+
+		public _003C_003Ec__DisplayClass57_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass57_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__8(Option a)
+		{
+			return a.Item.ItemName.ToUpper() == optionName.Replace("\"", string.Empty).Trim().ToUpper();
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__9(Option a)
+		{
+			return a.Item.ItemName.ToUpper() == optionName.Replace("\"", string.Empty).Trim().ToUpper();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass57_2
+	{
+		public List<int> optionIds;
+
+		public _003C_003Ec__DisplayClass57_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass57_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__11(ItemsWithOption a)
+		{
+			if (a.ItemID == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.mItem.ItemID && a.GroupID == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.GroupDependencyId && optionIds.Contains(a.OptionID.Value))
+			{
+				return !a.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__12(ItemsWithOption a)
+		{
+			if (a.ItemID == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.mItem.ItemID && optionIds.Contains(a.OptionID.Value))
+			{
+				return !a.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__13(ItemsWithOption a)
+		{
+			if (a.ItemID == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.mItem.ItemID)
+			{
+				return optionIds.Contains(a.OptionID.Value);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass57_3
+	{
+		public Option opt;
+
+		public _003C_003Ec__DisplayClass57_0 CS_0024_003C_003E8__locals3;
+
+		public _003C_003Ec__DisplayClass57_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__16(ItemsWithOption a)
+		{
+			if (a.ItemID == CS_0024_003C_003E8__locals3.mItem.ItemID && a.OptionID == opt.OptionID && a.Tab.ToUpper() == CS_0024_003C_003E8__locals3.tab.ToUpper() && !a.ToBeDeleted)
+			{
+				return a.GroupID == CS_0024_003C_003E8__locals3.groupId;
+			}
+			return false;
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__17(ItemsWithOption a)
+		{
+			if (a.ItemID == CS_0024_003C_003E8__locals3.mItem.ItemID && a.OptionID == opt.OptionID && a.Tab.ToUpper() == CS_0024_003C_003E8__locals3.tab.ToUpper())
+			{
+				return a.GroupID == CS_0024_003C_003E8__locals3.groupId;
+			}
+			return false;
+		}
+
+		internal bool _003CImportCSVItemOptions_003Eb__18(ItemsWithOption a)
+		{
+			if (a.ItemID == CS_0024_003C_003E8__locals3.mItem.ItemID && a.OptionID == opt.OptionID && a.Tab.ToUpper() == CS_0024_003C_003E8__locals3.tab.ToUpper())
+			{
+				return a.GroupID == CS_0024_003C_003E8__locals3.groupId;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass58_0
+	{
+		public int OptionItemId;
+
+		public string tab;
+
+		public _003C_003Ec__DisplayClass58_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass59_0
+	{
+		public ItemsWithOption itemsWithOption;
+
+		public _003C_003Ec__DisplayClass59_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CItemOptionsExport_003Eb__3(Item a)
+		{
+			if (a.ItemID == itemsWithOption.ItemID)
+			{
+				return !a.isDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CItemOptionsExport_003Eb__4(Option a)
+		{
+			return a.OptionID == itemsWithOption.OptionID;
+		}
+
+		internal bool _003CItemOptionsExport_003Eb__6(CorePOS.Data.Group a)
+		{
+			if (a.GroupID == itemsWithOption.GroupID)
+			{
+				return !a.Archived;
+			}
+			return false;
+		}
+
+		internal bool _003CItemOptionsExport_003Eb__8(CorePOS.Data.Group a)
+		{
+			if (a.GroupID == itemsWithOption.GroupDependency)
+			{
+				return !a.Archived;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass59_1
+	{
+		public Option opt;
+
+		public _003C_003Ec__DisplayClass59_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CItemOptionsExport_003Eb__5(Item a)
+		{
+			if (a.ItemID == opt.ItemID)
+			{
+				return !a.isDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass59_2
+	{
+		public string string_0;
+
+		public _003C_003Ec__DisplayClass59_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CItemOptionsExport_003Eb__7(KeyValuePair<string, string> x)
+		{
+			return x.Value.Replace(" ", string.Empty) == string_0.Replace(" ", string.Empty);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass59_3
+	{
+		public List<int> itemsWithOptionIdDependency;
+
+		public _003C_003Ec__DisplayClass59_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CItemOptionsExport_003Eb__10(ItemsWithOption a)
+		{
+			return itemsWithOptionIdDependency.Contains(a.ItemWithOptionID);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass59_4
+	{
+		public ItemsWithOption iwo;
+
+		public _003C_003Ec__DisplayClass59_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CItemOptionsExport_003Eb__11(Option a)
+		{
+			return a.OptionID == iwo.OptionID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass60_0
+	{
+		public frmAdminSettings _003C_003E4__this;
+
+		public FolderBrowserDialog fbd;
+
+		public _003C_003Ec__DisplayClass60_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnExportItemOptions_Click_003Eb__0()
+		{
+			_003C_003E4__this.method_13(_003C_003E4__this.method_25, fbd.SelectedPath, "HipposExportedItemOptions.csv");
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass61_0
+	{
+		public frmAdminSettings _003C_003E4__this;
+
+		public OpenFileDialog openCsv;
+
+		public _003C_003Ec__DisplayClass61_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnInstructionImport_Click_003Eb__0()
+		{
+			_003C_003E4__this.method_6(openCsv, new int[1] { 3 }, _003C_003E4__this.method_27, _003C_003E4__this.method_26);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass63_0
+	{
+		public string id;
+
+		public _003C_003Ec__DisplayClass63_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass65_0
+	{
+		public frmAdminSettings _003C_003E4__this;
+
+		public FolderBrowserDialog fbd;
+
+		public _003C_003Ec__DisplayClass65_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnInstructionExport_Click_003Eb__0()
+		{
+			_003C_003E4__this.method_13(_003C_003E4__this.method_28, fbd.SelectedPath, "HipposExportedInstructions.csv");
 		}
 	}
 
@@ -287,12 +1010,11 @@ public class frmAdminSettings : frmMasterForm
 		int num = ItemCSVHeader.RestaurantHeader.Length;
 		CS_0024_003C_003E8__locals0.eName = "";
 		CS_0024_003C_003E8__locals0.itemId = "";
-		_003C_003Ec__DisplayClass19_1 CS_0024_003C_003E8__locals1;
 		for (int i = 0; i < num; i++)
 		{
 			string text = restaurantHeader[i];
 			string text2 = string_4[i];
-			CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass19_1();
+			_003C_003Ec__DisplayClass19_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass19_1();
 			switch (text)
 			{
 			case "Name":

@@ -16,6 +16,18 @@ namespace CorePOS;
 public class frmSelectDateSingle : frmMasterForm
 {
 	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass31_0
+	{
+		public string dateofweek;
+
+		public _003C_003Ec__DisplayClass31_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
 	private DateTime dateTime_0;
 
 	[CompilerGenerated]

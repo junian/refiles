@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -13,6 +14,59 @@ namespace CorePOS;
 
 public static class GraphicHelpers
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public string sectionName;
+
+		public Func<Layout, bool> _003C_003E9__0;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDrawEditLayout_003Eb__0(Layout l)
+		{
+			return l.Section == sectionName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public string sectionName;
+
+		public Func<Layout, bool> _003C_003E9__0;
+
+		public Func<Layout, bool> _003C_003E9__1;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDrawLayout_003Eb__0(Layout l)
+		{
+			if (l.Rotation == 'A')
+			{
+				return l.Section == sectionName;
+			}
+			return false;
+		}
+
+		internal bool _003CDrawLayout_003Eb__1(Layout l)
+		{
+			if (l.Rotation == 'O')
+			{
+				return l.Section == sectionName;
+			}
+			return false;
+		}
+	}
+
 	public static void FillRotatedRectangleWithText(Graphics g, Brush b, int angle, int x, int y, int xSize, int ySize, string text, Font textFont, Color textColor, StringFormat format)
 	{
 		int num = Math.Max(xSize, ySize);

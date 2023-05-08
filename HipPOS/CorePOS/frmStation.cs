@@ -23,6 +23,160 @@ namespace CorePOS;
 
 public class frmStation : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public Order order;
+
+		public frmStation _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnItemMade_Click_003Eb__1(Order o)
+		{
+			if (o.ComboID == order.ComboID && o.OrderNumber == order.OrderNumber)
+			{
+				if (o.OrderOnHoldTime != 0 && o.OrderOnHoldTime != -1)
+				{
+					if (o.OrderOnHoldTime != 0)
+					{
+						return o.DateCreated.Value < DateTime.Now.AddMinutes(-o.OrderOnHoldTime);
+					}
+					return false;
+				}
+				return true;
+			}
+			return false;
+		}
+
+		internal bool _003CbtnItemMade_Click_003Eb__0(Order o)
+		{
+			if (!o.DateFilled.HasValue && o.StationID.Contains(_003C_003E4__this.short_0.ToString()))
+			{
+				return o.ItemID > 0;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public frmStation _003C_003E4__this;
+
+		public string query;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRunUpdateList_003Eb__1(Order x)
+		{
+			return x.OrderType.ToUpper().Contains(_003C_003E4__this.string_3);
+		}
+
+		internal bool _003CRunUpdateList_003Eb__2(Order x)
+		{
+			if ((x.Customer == null || !x.Customer.ToLower().Contains(query)) && (x.CustomerInfo == null || !x.CustomerInfo.ToLower().Contains(query)) && (x.CustomerInfoName == null || !x.CustomerInfoName.ToLower().Contains(query)) && !x.OrderNumber.ToLower().Contains(query))
+			{
+				if (x.OrderTicketNumber != null)
+				{
+					return x.OrderTicketNumber.ToLower().Contains(query);
+				}
+				return false;
+			}
+			return true;
+		}
+
+		internal void _003CRunUpdateList_003Eb__7()
+		{
+			_003C_003E4__this.btnClearCancelled.Enabled = true;
+		}
+
+		internal void _003CRunUpdateList_003Eb__8()
+		{
+			_003C_003E4__this.btnClearCancelled.Enabled = false;
+		}
+
+		internal void _003CRunUpdateList_003Eb__9()
+		{
+			_003C_003E4__this.btnClearCancelled.Enabled = false;
+		}
+
+		internal bool _003CRunUpdateList_003Eb__14(Order x)
+		{
+			return x.OrderType.ToUpper().Contains(_003C_003E4__this.string_3);
+		}
+
+		internal bool _003CRunUpdateList_003Eb__15(Order x)
+		{
+			if ((x.Customer == null || !x.Customer.ToLower().Contains(query)) && (x.CustomerInfo == null || !x.CustomerInfo.ToLower().Contains(query)) && (x.CustomerInfoName == null || !x.CustomerInfoName.ToLower().Contains(query)) && !x.OrderNumber.ToLower().Contains(query))
+			{
+				if (x.OrderTicketNumber != null)
+				{
+					return x.OrderTicketNumber.ToLower().Contains(query);
+				}
+				return false;
+			}
+			return true;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_1
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass19_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public frmStation _003C_003E4__this;
+
+		public RadListView rv;
+
+		public bool isNotify;
+
+		public bool isItemsCancelled;
+
+		public bool isItemModified;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CupdateList_003Eb__1()
+		{
+			_003C_003E4__this.method_3(_003C_003E4__this.txtSearchInfo.Text.Trim(), rv, ref isNotify, ref isItemsCancelled, ref isItemModified);
+		}
+	}
+
 	private FormHelper formHelper_0;
 
 	private short short_0;
@@ -181,12 +335,16 @@ public class frmStation : frmMasterForm
 			return;
 		}
 		float_0 = station.DisplayFontSize.Value;
-		int num3 = (lblTitle.Width = (pnlMain.Width = base.Size.Width));
+		Label label = lblTitle;
+		int num2 = (pnlMain.Width = base.Size.Width);
+		label.Width = num2;
 		pnlMain.Height = base.Size.Height - 40;
 		int_1 = int_0;
 		lblCounter.Text = int_1.ToString();
 		btnScreenRefresh.Location = new Point(base.Size.Width - btnScreenRefresh.Width, 0);
-		num3 = (btnScreenRefresh.Height = (btnChangeStation.Height = lblTitle.Height + lblDescription.Height + 2));
+		Button button = btnScreenRefresh;
+		num2 = (btnChangeStation.Height = lblTitle.Height + lblDescription.Height + 2);
+		button.Height = num2;
 		btnChangeStation.Location = new Point(btnScreenRefresh.Left - btnChangeStation.Width, 0);
 		lblCounter.Location = new Point(btnScreenRefresh.Left + 5, btnScreenRefresh.Top + 15);
 		method_5();
@@ -390,7 +548,7 @@ public class frmStation : frmMasterForm
 		else if (CS_0024_003C_003E8__locals0.order.ComboID != 0)
 		{
 			GClass6 gClass = new GClass6();
-			IQueryable<Order> queryable = gClass.Orders.Where((Order a) => a.DateFilled.HasValue && a.StationID.Contains(short_0.ToString()) && a.ComboID == CS_0024_003C_003E8__locals0.order.ComboID && a.OrderNumber == CS_0024_003C_003E8__locals0.order.OrderNumber);
+			IQueryable<Order> queryable = gClass.Orders.Where((Order a) => a.DateFilled.HasValue && a.StationID.Contains(((short)short_0).ToString()) && a.ComboID == CS_0024_003C_003E8__locals0.order.ComboID && a.OrderNumber == CS_0024_003C_003E8__locals0.order.OrderNumber);
 			flag = true;
 			foreach (Order item2 in queryable)
 			{
@@ -667,7 +825,7 @@ public class frmStation : frmMasterForm
 			}
 			radListView_0.Items.Clear();
 			List<Order> list2 = ((!bool_1) ? (from x in gClass.Orders
-				where x.DateFilled.HasValue == false && x.StationID.Contains(short_0.ToString()) && x.ShareItemID == null && x.ItemID != -100 && x.DateCreated.Value.Date >= DateTime.Now.AddDays(-1.0).Date && x.ItemName != ConstantItems.Delivery_Fee && !x.PaymentMethods.Contains("KIOSK") && (x.OrderOnHoldTime == 0 || x.OrderOnHoldTime == -1 || (x.OrderOnHoldTime != 0 && x.DateCreated.Value < DateTime.Now.AddMinutes(-x.OrderOnHoldTime)))
+				where x.DateFilled.HasValue == false && x.StationID.Contains(((short)short_0).ToString()) && x.ShareItemID == null && x.ItemID != -100 && x.DateCreated.Value.Date >= DateTime.Now.AddDays(-1.0).Date && x.ItemName != ConstantItems.Delivery_Fee && !x.PaymentMethods.Contains("KIOSK") && (x.OrderOnHoldTime == 0 || x.OrderOnHoldTime == -1 || (x.OrderOnHoldTime != 0 && x.DateCreated.Value < DateTime.Now.AddMinutes(-x.OrderOnHoldTime)))
 				select x into a
 				orderby a.DateCreated
 				select a).ToList() : (from x in gClass.Orders
@@ -1189,7 +1347,8 @@ public class frmStation : frmMasterForm
 		Color color4 = (button5.BackColor = color2);
 		Color color6 = (button4.BackColor = color4);
 		Color color8 = (button3.BackColor = color6);
-		Color color11 = (button.BackColor = (button2.BackColor = color8));
+		Color backColor = (button2.BackColor = color8);
+		button.BackColor = backColor;
 		button_1.BackColor = Color.FromArgb(214, 142, 81);
 		method_4();
 	}

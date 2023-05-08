@@ -1,11 +1,123 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Data;
 
 namespace CorePOS;
 
 public class UserMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public string role;
+
+		public short username;
+
+		public string password;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetNumberOfUsers_003Eb__0(User u)
+		{
+			if (u.Active && u.Role.RoleName.ToLower() == role.ToLower() && u.EmployeeID == username && u.PIN == password)
+			{
+				return u.Employee.isActive;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public string role;
+
+		public string password;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetNumberOfUsers_003Eb__0(User u)
+		{
+			if (u.Active && u.Role.RoleName.ToLower() == role.ToLower() && u.PIN == password)
+			{
+				return u.Employee.isActive;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public string password;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetEmployeeByPIN_003Eb__0(User u)
+		{
+			if (u.Active && u.PIN == password)
+			{
+				return u.Employee.isActive;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public int id;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetEmployeeByID_003Eb__0(User u)
+		{
+			if (u.Employee != null && u.Employee.isActive)
+			{
+				return u.EmployeeID == id;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public int id;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetEmployeeRole_003Eb__0(User u)
+		{
+			if (u.Active)
+			{
+				return u.EmployeeID == id;
+			}
+			return false;
+		}
+	}
+
 	public static bool AuthenticateUser(short userID, string password, string role)
 	{
 		return smethod_0(userID, password, role) == 1;

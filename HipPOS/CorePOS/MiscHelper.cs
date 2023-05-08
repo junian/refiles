@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business;
@@ -20,6 +21,285 @@ namespace CorePOS;
 
 public static class MiscHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public int EmpID;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public Item item;
+
+		public Func<ListViewDataItem, bool> _003C_003E9__1;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCheckItemDisableSOldOut_003Eb__1(ListViewDataItem a)
+		{
+			return a[1].ToString().ToUpper() == item.ItemName.ToUpper();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_1
+	{
+		public MaterialsInItem matInItem;
+
+		public _003C_003Ec__DisplayClass9_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCheckItemDisableSOldOut_003Eb__2(Item a)
+		{
+			return a.ItemID == matInItem.ItemMaterialID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_2
+	{
+		public Item material;
+
+		public _003C_003Ec__DisplayClass9_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_3
+	{
+		public ListViewDataItem rvi;
+
+		public _003C_003Ec__DisplayClass9_2 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass9_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCheckItemDisableSOldOut_003Eb__3(Item a)
+		{
+			return a.ItemID.ToString() == rvi.SubItems[4].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_4
+	{
+		public Item otherItem;
+
+		public _003C_003Ec__DisplayClass9_3 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass9_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public string orderNumber;
+
+		public bool suppressAlreadySentNotification;
+
+		public Form frm;
+
+		public string orderType;
+
+		public string cellphone;
+
+		public int tries;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CNotifyCustomer_003Eb__0()
+		{
+			try
+			{
+				if (!orderNumber.Contains("SKIP") && !orderNumber.Contains("UBER"))
+				{
+					orderType = orderType.ToUpper();
+					if (!orderType.Contains(OrderTypes.PickUp.ToUpper()) && !orderType.Contains(OrderTypes.PickUpOnline.ToUpper()))
+					{
+						if (!suppressAlreadySentNotification)
+						{
+							frm.Invoke((Action)delegate
+							{
+								new NotificationLabel(frm, "Please choose a Pick-Up/Pick-Up-Online orders.", NotificationTypes.Notification);
+							});
+						}
+					}
+					else if (SettingsHelper.GetSettingValueByKey("sms") == "Enabled")
+					{
+						if (cellphone.Length >= 10 && cellphone.Substring(0, 4) != "1234" && cellphone.Substring(0, 1) != "0")
+						{
+							GClass6 gClass = new GClass6();
+							List<Order> list = gClass.Orders.Where((Order x) => x.OrderNumber == orderNumber && x.Void == false && x.CustomerNotified == false).ToList();
+							if (list.Any())
+							{
+								string source = list.FirstOrDefault().Source;
+								if (!string.IsNullOrEmpty(source) && !source.Contains("Hippos") && !source.Contains("Moduurn"))
+								{
+									foreach (Order item in list)
+									{
+										item.CustomerNotified = true;
+									}
+									Helper.SubmitChangesWithCatch(gClass);
+									return;
+								}
+								string token = SyncMethods.GetToken();
+								string message = SettingsHelper.GetSettingValueByKey("sms_message_order_ready").Replace("<company_name>", CompanyHelper.CompanyDataSetup.Name).Replace("<company_phone>", CompanyHelper.CompanyDataSetup.Phone);
+								foreach (Order item2 in list)
+								{
+									item2.CustomerNotified = true;
+								}
+								Helper.SubmitChangesWithCatch(gClass);
+								if (NotificationMethods.SendSMS(token, cellphone, message))
+								{
+									foreach (Order item3 in list)
+									{
+										item3.CustomerNotified = true;
+									}
+									Helper.SubmitChangesWithCatch(gClass);
+									frm.Invoke((Action)delegate
+									{
+										new NotificationLabel(frm, Resources.Text_message_notification_sent, NotificationTypes.Success).Show();
+										MakeOrderIsModified(frm, orderNumber);
+									});
+								}
+								else
+								{
+									frm.Invoke((Action)delegate
+									{
+										new NotificationLabel(frm, Resources.Could_not_send_text_message_no + cellphone, NotificationTypes.Warning).Show();
+									});
+								}
+							}
+							else if (!suppressAlreadySentNotification)
+							{
+								frm.Invoke((Action)delegate
+								{
+									new NotificationLabel(frm, "Customer has already been notified.", NotificationTypes.Notification).Show();
+								});
+							}
+						}
+						else if (!suppressAlreadySentNotification && cellphone.Length >= 8)
+						{
+							frm.Invoke((Action)delegate
+							{
+								new NotificationLabel(frm, "Invalid phone number, not enough digits.", NotificationTypes.Warning).Show();
+							});
+						}
+					}
+					else if (!suppressAlreadySentNotification)
+					{
+						frm.Invoke((Action)delegate
+						{
+							new NotificationLabel(frm, "You do not have an SMS add-on subscription.  Please contact Hippos to enable the service.", NotificationTypes.Notification).Show();
+						});
+					}
+				}
+				else if (!suppressAlreadySentNotification)
+				{
+					frm.Invoke((Action)delegate
+					{
+						new NotificationLabel(frm, "Skip/Uber customers cannot be notified.", NotificationTypes.Notification).Show();
+					});
+				}
+			}
+			catch (Exception ex)
+			{
+				LogHelper.WriteLog(ex.Message + " " + ex.StackTrace, LogTypes.error_log);
+				tries++;
+				if (tries <= 3)
+				{
+					NotifyCustomer(frm, orderNumber, cellphone, orderType, suppressAlreadySentNotification, tries);
+				}
+			}
+		}
+
+		internal void _003CNotifyCustomer_003Eb__1()
+		{
+			new NotificationLabel(frm, "Skip/Uber customers cannot be notified.", NotificationTypes.Notification).Show();
+		}
+
+		internal void _003CNotifyCustomer_003Eb__7()
+		{
+			new NotificationLabel(frm, Resources.Text_message_notification_sent, NotificationTypes.Success).Show();
+			MakeOrderIsModified(frm, orderNumber);
+		}
+
+		internal void _003CNotifyCustomer_003Eb__8()
+		{
+			new NotificationLabel(frm, Resources.Could_not_send_text_message_no + cellphone, NotificationTypes.Warning).Show();
+		}
+
+		internal void _003CNotifyCustomer_003Eb__6()
+		{
+			new NotificationLabel(frm, "Customer has already been notified.", NotificationTypes.Notification).Show();
+		}
+
+		internal void _003CNotifyCustomer_003Eb__2()
+		{
+			new NotificationLabel(frm, "Invalid phone number, not enough digits.", NotificationTypes.Warning).Show();
+		}
+
+		internal void _003CNotifyCustomer_003Eb__3()
+		{
+			new NotificationLabel(frm, "You do not have an SMS add-on subscription.  Please contact Hippos to enable the service.", NotificationTypes.Notification).Show();
+		}
+
+		internal void _003CNotifyCustomer_003Eb__4()
+		{
+			new NotificationLabel(frm, "Please choose a Pick-Up/Pick-Up-Online orders.", NotificationTypes.Notification);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CMakeOrderIsModified_003Eb__0(OrderResult a)
+		{
+			return a.OrderNumber == orderNumber;
+		}
+
+		internal bool _003CMakeOrderIsModified_003Eb__1(OrderResult a)
+		{
+			return a.OrderNumber == orderNumber;
+		}
+	}
+
 	public static void openKeyboard()
 	{
 		if (!Convert.ToBoolean(CorePOS.Properties.Settings.Default["KeyboardConnected"]))

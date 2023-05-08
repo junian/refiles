@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -13,6 +14,81 @@ namespace CorePOS;
 
 public class frmEditOptionSortOrder : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public frmEditOptionSortOrder _003C_003E4__this;
+
+		public List<string> listOfRelatedGroups;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CfrmEditOptionSortOrder_Load_003Eb__0(usp_ItemOptionsResult a)
+		{
+			if (a.ItemID == _003C_003E4__this.int_0 && a.Tab.ToUpper() == _003C_003E4__this.string_1.ToUpper())
+			{
+				return !a.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CfrmEditOptionSortOrder_Load_003Eb__2(KeyValuePair<string, string> a)
+		{
+			return listOfRelatedGroups.Contains(a.Key);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public int itemsWithOptionID;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public frmEditOptionSortOrder _003C_003E4__this;
+
+		public KeyValuePair<string, string> temp;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CddlOptionGroups_SelectedIndexChanged_003Eb__0(usp_ItemOptionsResult a)
+		{
+			if (a.ItemID == _003C_003E4__this.int_0 && !a.ToBeDeleted && a.Tab.ToUpper() == _003C_003E4__this.string_1.ToUpper())
+			{
+				return a.GroupID == Convert.ToInt16(temp.Key);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_1
+	{
+		public usp_ItemOptionsResult iwo;
+
+		public _003C_003Ec__DisplayClass11_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private int int_0;
 
 	private string string_0;

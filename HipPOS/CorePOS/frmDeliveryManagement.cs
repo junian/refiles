@@ -18,6 +18,156 @@ namespace CorePOS;
 
 public class frmDeliveryManagement : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public string ordernumberSelected;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadFormProcedure_003Eb__12(ListViewDataItem a)
+		{
+			return a[3].ToString() == ordernumberSelected;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_1
+	{
+		public OrderResult orderResult;
+
+		public _003C_003Ec__DisplayClass14_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadFormProcedure_003Eb__11(Employee a)
+		{
+			return a.EmployeeID == orderResult.UserServed;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public int employeeId;
+
+		public Action<Order> _003C_003E9__2;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CbtnAssignDriver_Click_003Eb__2(Order a)
+		{
+			a.UserServed = (short)employeeId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_1
+	{
+		public string ordnum;
+
+		public _003C_003Ec__DisplayClass17_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_2
+	{
+		public string ordnum;
+
+		public _003C_003Ec__DisplayClass17_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public string ordnum;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass29_0
+	{
+		public int employeeId;
+
+		public Action<Order> _003C_003E9__1;
+
+		public _003C_003Ec__DisplayClass29_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CPickupOrder_003Eb__1(Order a)
+		{
+			a.DepartureTime = DateTime.Now;
+			a.UserServed = (short)employeeId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass29_1
+	{
+		public string ordnum;
+
+		public _003C_003Ec__DisplayClass29_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass31_0
+	{
+		public frmTimePicker timeSelected;
+
+		public _003C_003Ec__DisplayClass31_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRecordDelivery_003Eb__1(Order a)
+		{
+			a.DeliveryTime = timeSelected.Time;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass31_1
+	{
+		public string ordnum;
+
+		public _003C_003Ec__DisplayClass31_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private bool jhpjWnjvei;
 
 	private int int_0;

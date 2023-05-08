@@ -14,6 +14,40 @@ public static class SettingsHelper
 {
 	public static class OnlineOrderSettings
 	{
+		[CompilerGenerated]
+		private sealed class _003C_003Ec__DisplayClass0_0
+		{
+			public string provider;
+
+			public _003C_003Ec__DisplayClass0_0()
+			{
+				Class2.oOsq41PzvTVMr();
+				base._002Ector();
+			}
+
+			internal bool _003CGet_003Eb__1(OnlineOrderSettingObject a)
+			{
+				return a.Provider == provider;
+			}
+		}
+
+		[CompilerGenerated]
+		private sealed class _003C_003Ec__DisplayClass2_0
+		{
+			public string Provider;
+
+			public _003C_003Ec__DisplayClass2_0()
+			{
+				Class2.oOsq41PzvTVMr();
+				base._002Ector();
+			}
+
+			internal bool _003CSave_003Eb__1(OnlineOrderSettingObject x)
+			{
+				return x.Provider == Provider;
+			}
+		}
+
 		public static OnlineOrderSettingObject Get(string provider)
 		{
 			_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();
@@ -125,6 +159,242 @@ public static class SettingsHelper
 					ListOfFeeCalculation = list
 				});
 			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public string key;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSetSettingValueByKey_003Eb__0(SettingsObject a)
+		{
+			return a.Key == key;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_0
+	{
+		public string settingKeyJSON;
+
+		public _003C_003Ec__DisplayClass15_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSetSettingsFontStyleValues_003Eb__0(SettingsObject a)
+		{
+			return a.Key == settingKeyJSON;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public string settingKeyJSON;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetSettingFontStyleValues_003Eb__0(SettingsObject a)
+		{
+			return a.Key == settingKeyJSON;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public string settingKeyJSON;
+
+		public string processorName;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetCardProcessorSettingActiveOnly_003Eb__0(SettingsObject a)
+		{
+			return a.Key == settingKeyJSON;
+		}
+
+		internal bool _003CGetCardProcessorSettingActiveOnly_003Eb__1(CardProcessorObject a)
+		{
+			if (a.Processor == processorName)
+			{
+				return a.isActive;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_0
+	{
+		public string settingKeyJSON;
+
+		public string processorName;
+
+		public _003C_003Ec__DisplayClass18_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSetCardProcessorSetting_003Eb__0(SettingsObject a)
+		{
+			return a.Key == settingKeyJSON;
+		}
+
+		internal bool _003CSetCardProcessorSetting_003Eb__1(CardProcessorObject a)
+		{
+			return a.Processor == processorName;
+		}
+
+		internal bool _003CSetCardProcessorSetting_003Eb__2(SettingsObject a)
+		{
+			return a.Key == settingKeyJSON;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public string settingKeyJSON;
+
+		public string processorName;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetCardProcessorSetting_003Eb__0(SettingsObject a)
+		{
+			return a.Key == settingKeyJSON;
+		}
+
+		internal bool _003CGetCardProcessorSetting_003Eb__1(CardProcessorObject a)
+		{
+			return a.Processor == processorName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public string key;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetSettingValueByKey_003Eb__0(SettingsObject a)
+		{
+			return a.Key == key;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass21_0
+	{
+		public string key;
+
+		public _003C_003Ec__DisplayClass21_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetSettingByKey_003Eb__0(SettingsObject a)
+		{
+			return a.Key == key;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_0
+	{
+		public string NoStationId;
+
+		public _003C_003Ec__DisplayClass23_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_1
+	{
+		public string AllStationId;
+
+		public List<short> allStationIds;
+
+		public _003C_003Ec__DisplayClass23_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal void _003CStationsSettingsUpdatedLatest_003Eb__26(Item a)
+		{
+			a.StationID = string.Join(",", allStationIds);
+		}
+
+		internal void _003CStationsSettingsUpdatedLatest_003Eb__28(Order a)
+		{
+			a.StationID = string.Join(",", allStationIds);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public string cardType;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetTransactionFeeSetting_003Eb__1(CardTransactionFeeObject a)
+		{
+			return a.CardType == cardType;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass27_0
+	{
+		public string cardType;
+
+		public _003C_003Ec__DisplayClass27_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSetTransactionFeeSetting_003Eb__1(CardTransactionFeeObject a)
+		{
+			return a.CardType == cardType;
 		}
 	}
 

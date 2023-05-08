@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Printing;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -25,6 +26,618 @@ namespace CorePOS;
 
 public class PrintHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public int empID;
+
+		public int cashierID;
+
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintReceipt_003Eb__3(Employee e)
+		{
+			return e.EmployeeID == empID;
+		}
+
+		internal bool _003CPrintReceipt_003Eb__4(Employee e)
+		{
+			return e.EmployeeID == cashierID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public List<ReceiptPrintInfo> tempVar;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintReceiptCheck_003Eb__0(ReceiptPrintInfo a)
+		{
+			return tempVar.Contains(a);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public string rlang;
+
+		public string refundNumber;
+
+		public PrintHelper _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CGenerateRefundReceipt_003Eb__0()
+		{
+			CultureInfo cultureInfo = new CultureInfo(rlang);
+			Thread.CurrentThread.CurrentCulture = cultureInfo;
+			Thread.CurrentThread.CurrentUICulture = cultureInfo;
+			LocalReport localReport = new LocalReport();
+			GClass6 gClass = new GClass6();
+			localReport.DataSources.Clear();
+			localReport.ReportEmbeddedResource = "CorePOS.Reports.RefundReceipt.rdlc";
+			List<Order> refundOrderToPrintReceipt = ReceiptMethods.GetRefundOrderToPrintReceipt(refundNumber);
+			ReportDataSource reportDataSource = new ReportDataSource("ReceiptDS", refundOrderToPrintReceipt);
+			localReport.SetParameters(new ReportParameter("prmRefundNumber", refundNumber));
+			localReport.DataSources.Add(reportDataSource);
+			reportDataSource.Value = refundOrderToPrintReceipt;
+			localReport.DataSources.Add(_003C_003E4__this.reportDataSource_0);
+			_003C_003E4__this.reportDataSource_0.Value = _003C_003E4__this.companies;
+			localReport.DataSources.Add(_003C_003E4__this.reportDataSource_1);
+			_003C_003E4__this.reportDataSource_1.Value = _003C_003E4__this.list_0;
+			List<RefundDS> refundDS = ReceiptMethods.GetRefundDS(refundNumber);
+			ReportDataSource reportDataSource2 = new ReportDataSource("RefundsDS", refundDS);
+			localReport.DataSources.Add(reportDataSource2);
+			reportDataSource2.Value = refundDS;
+			bool flag = false;
+			List<ReceiptOrder> list = ReceiptMethods.GetOrderToPrintReceipt(refundOrderToPrintReceipt.First().OrderNumber).ToList();
+			if (list.All((ReceiptOrder a) => a.Void) && list.Count == refundOrderToPrintReceipt.Count)
+			{
+				flag = true;
+			}
+			string text = refundDS.FirstOrDefault().RefundPaymentMethod.ToUpper();
+			localReport.SetParameters(new ReportParameter("prmTipAmount", ((!(text != Resources.CASH0) || !(text != "GIFT CERTIFICATE") || !(text != "COUPON") || !(text != "STORE CREDIT") || !flag) ? 0m : refundDS.FirstOrDefault().TipAmount).ToString("0.00;(0.00)")));
+			if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isCurrentlyTrainingMode"]))
+			{
+				localReport.SetParameters(new ReportParameter("prmTrainingMode", Resources._TRAINING_MODE));
+			}
+			string settingValueByKey = SettingsHelper.GetSettingValueByKey("receipt_footer_message");
+			localReport.SetParameters(new ReportParameter("prmFooterMessage", string.IsNullOrEmpty(settingValueByKey) ? " " : settingValueByKey));
+			string text2 = string.Empty;
+			List<TransactionReceipt> list2 = (from x in gClass.TransactionReceipts
+				where x.RefundNumber == refundNumber && x.MerchantReceipt.Contains("APPROVED")
+				select x into y
+				orderby y.DateCreated descending
+				select y).ToList();
+			short num = 0;
+			bool flag2 = false;
+			foreach (TransactionReceipt item in list2)
+			{
+				num = (short)(num + 1);
+				if (num <= 2 && item.CustomerReceipt.Contains("VOID"))
+				{
+					flag2 = true;
+				}
+				text2 += item.CustomerReceipt;
+			}
+			text2 = text2.Replace("\u001a", " ").Replace("\u001b\u0017", "  ").Replace("\u001b\u0017\u001b\u001a", "    ")
+				.Replace("\u001b", "  ");
+			localReport.SetParameters(new ReportParameter("prmPaymentCardTransactionData", text2));
+			localReport.SetParameters(new ReportParameter("prmRefundPaymentType", (flag2 ? "Void" : "Refund Payment") + " Method: " + text));
+			localReport.SetParameters(new ReportParameter("prmLanguage_RefundReceipt", Resources.REFUND_RECEIPT));
+			localReport.SetParameters(new ReportParameter("prmLanguage_RefundNumber", Resources.REFUND_NUMBER));
+			localReport.SetParameters(new ReportParameter("prmLanguage_Date", Resources._Date));
+			localReport.SetParameters(new ReportParameter("prmLanguage_QTY", Resources.QTY));
+			localReport.SetParameters(new ReportParameter("prmLanguage_ITEMS", Resources.ITEMS0));
+			localReport.SetParameters(new ReportParameter("prmLanguage_PRICE", Resources.PRICE0));
+			localReport.SetParameters(new ReportParameter("prmLanguage_Subtotal", Resources.Subtotal));
+			localReport.SetParameters(new ReportParameter("prmLanguage_Tax", Resources.Tax));
+			localReport.SetParameters(new ReportParameter("prmLanguage_RefundTotal", flag2 ? "Void Total" : Resources.Refund_Total));
+			localReport.SetParameters(new ReportParameter("prmLanguage_PoweredBy", Resources.Powered_by_Hippos_Software));
+			_003C_003E4__this.method_2(localReport);
+			_003C_003E4__this.method_5(SettingsHelper.GetSettingValueByKey("receipt_size"), -1, bool_1: true);
+			localReport.Dispose();
+			GC.Collect();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public DateTime endDate;
+
+		public DateTime startDate;
+
+		public int EmployeeId;
+
+		public int TerminalId;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGenerateDayEndTotalsHTML_003Eb__20(Terminal a)
+		{
+			return a.TerminalID == TerminalId;
+		}
+
+		internal bool _003CGenerateDayEndTotalsHTML_003Eb__21(Employee a)
+		{
+			return a.EmployeeID == EmployeeId;
+		}
+
+		internal bool _003CGenerateDayEndTotalsHTML_003Eb__109(Order a)
+		{
+			if (a.UserCashout.HasValue)
+			{
+				return a.UserCashout.Value == EmployeeId;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_1
+	{
+		public OrderTipObject tipOrder;
+
+		public _003C_003Ec__DisplayClass19_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGenerateDayEndTotalsHTML_003Eb__9(Order a)
+		{
+			return a.OrderNumber == tipOrder.OrderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_2
+	{
+		public List<Order> voidedOrdersByOrderNum;
+
+		public _003C_003Ec__DisplayClass19_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal usp_ClosingTotalsResult _003CGenerateDayEndTotalsHTML_003Eb__75(IGrouping<string, Order> x)
+		{
+			_003C_003Ec__DisplayClass19_3 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass19_3
+			{
+				x = x
+			};
+			return new usp_ClosingTotalsResult
+			{
+				Name = CS_0024_003C_003E8__locals0.x.FirstOrDefault().VoidReason,
+				Qty = voidedOrdersByOrderNum.Where((Order a) => a.VoidReason == CS_0024_003C_003E8__locals0.x.Key).Count(),
+				Total = CS_0024_003C_003E8__locals0.x.Sum((Order z) => z.SubTotal)
+			};
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_3
+	{
+		public IGrouping<string, Order> x;
+
+		public _003C_003Ec__DisplayClass19_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGenerateDayEndTotalsHTML_003Eb__76(Order a)
+		{
+			return a.VoidReason == x.Key;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_4
+	{
+		public List<Employee> employees;
+
+		public _003C_003Ec__DisplayClass19_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal DayEndTipObject _003CGenerateDayEndTotalsHTML_003Eb__111(IGrouping<short?, OrderTipObject> a)
+		{
+			_003C_003Ec__DisplayClass19_5 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass19_5
+			{
+				a = a
+			};
+			return new DayEndTipObject
+			{
+				Name = ((CS_0024_003C_003E8__locals0.a.Key.HasValue && CS_0024_003C_003E8__locals0.a.Key.Value > 0 && employees.Where((Employee e) => e.EmployeeID == CS_0024_003C_003E8__locals0.a.Key.Value).FirstOrDefault() != null) ? (employees.Where((Employee e) => e.EmployeeID == CS_0024_003C_003E8__locals0.a.Key.Value).First().FirstName + " " + employees.Where((Employee e) => e.EmployeeID == CS_0024_003C_003E8__locals0.a.Key.Value).First().LastName) : (CS_0024_003C_003E8__locals0.a.FirstOrDefault().OrderType.ToUpper().Contains("ONLINE") ? "Online Sales" : "Patron")),
+				TotalOrders = (from z in CS_0024_003C_003E8__locals0.a
+					group z by z.OrderNumber).Count(),
+				TotalSales = CS_0024_003C_003E8__locals0.a.Sum((OrderTipObject b) => b.Totals),
+				TotalTip = CS_0024_003C_003E8__locals0.a.Sum((OrderTipObject b) => b.TipAmount),
+				RefundedTip = CS_0024_003C_003E8__locals0.a.Where((OrderTipObject b) => b.IsEntireOrderRefunded).Sum((OrderTipObject b) => b.TipAmount),
+				TotalStationTips = CS_0024_003C_003E8__locals0.a.Sum((OrderTipObject b) => b.StationTips.Sum((StationTipObject c) => c.TipAmount))
+			};
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_5
+	{
+		public IGrouping<short?, OrderTipObject> a;
+
+		public _003C_003Ec__DisplayClass19_5()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGenerateDayEndTotalsHTML_003Eb__113(Employee e)
+		{
+			return e.EmployeeID == a.Key.Value;
+		}
+
+		internal bool _003CGenerateDayEndTotalsHTML_003Eb__114(Employee e)
+		{
+			return e.EmployeeID == a.Key.Value;
+		}
+
+		internal bool _003CGenerateDayEndTotalsHTML_003Eb__115(Employee e)
+		{
+			return e.EmployeeID == a.Key.Value;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public DateTime endDate;
+
+		public DateTime startDate;
+
+		public int EmployeeId;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_1
+	{
+		public Employee emp;
+
+		public _003C_003Ec__DisplayClass20_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal DeliveryCommissionObject _003CPrintDeliveryCommission_003Eb__5(IGrouping<string, Order> a)
+		{
+			return new DeliveryCommissionObject
+			{
+				OrderNumber = a.Key,
+				EmployeeName = emp.FirstName + " " + emp.LastName,
+				SubTotal = a.Sum((Order x) => x.SubTotal)
+			};
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass22_0
+	{
+		public DateTime startDate;
+
+		public DateTime endDate;
+
+		public int EmployeeId;
+
+		public int TerminalId;
+
+		public PrintHelper _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass22_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CGenerateDayEndTotals_003Eb__0()
+		{
+			try
+			{
+				LocalReport localReport = new LocalReport();
+				localReport.DataSources.Clear();
+				localReport.DataSources.Clear();
+				localReport.ReportEmbeddedResource = "CorePOS.Reports.Blank.rdlc";
+				DayEndTotalsObject dayEndTotalsObject = new PrintHelper().GenerateDayEndTotalsHTML(startDate, endDate, EmployeeId, TerminalId);
+				localReport.SetParameters(new ReportParameter("prmFontSize", "12"));
+				localReport.SetParameters(new ReportParameter("prmTextString", dayEndTotalsObject.DayEndHtml));
+				localReport.SetParameters(new ReportParameter("prmFontFamily", "Courier New"));
+				_003C_003E4__this.method_2(localReport);
+				_003C_003E4__this.method_5(SettingsHelper.GetSettingValueByKey("receipt_size"), -1, bool_1: true);
+				localReport.Dispose();
+				GC.Collect();
+			}
+			catch (Exception)
+			{
+				_003C_003Ec__DisplayClass22_1 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass22_1();
+				CS_0024_003C_003E8__locals0.splashForm = Application.OpenForms.OfType<frmSplash>().FirstOrDefault();
+				CS_0024_003C_003E8__locals0.splashForm.Invoke((Action)delegate
+				{
+					new NotificationLabel(CS_0024_003C_003E8__locals0.splashForm, "Error printing chit. Please check printer settings.", NotificationTypes.Warning).Show();
+				});
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass22_1
+	{
+		public frmSplash splashForm;
+
+		public _003C_003Ec__DisplayClass22_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CGenerateDayEndTotals_003Eb__1()
+		{
+			new NotificationLabel(splashForm, "Error printing chit. Please check printer settings.", NotificationTypes.Warning).Show();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public PrintHelper _003C_003E4__this;
+
+		public bool calculateHasMorePages;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CPrint_003Eb__0()
+		{
+			Thread.CurrentThread.IsBackground = true;
+			CheckPCPrintQueueStatus(_003C_003E4__this.string_0);
+		}
+
+		internal void _003CPrint_003Eb__1(object sender, PrintPageEventArgs e)
+		{
+			_003C_003E4__this.method_3(sender, e, calculateHasMorePages);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_0
+	{
+		public Station station;
+
+		public PrintHelper _003C_003E4__this;
+
+		public bool isHTML;
+
+		public string message;
+
+		public int FontSize;
+
+		public string fontFamily;
+
+		public bool isBold;
+
+		public _003C_003Ec__DisplayClass30_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CPrintString_003Eb__0()
+		{
+			_003C_003Ec__DisplayClass30_1 _003C_003Ec__DisplayClass30_ = new _003C_003Ec__DisplayClass30_1
+			{
+				CS_0024_003C_003E8__locals1 = this,
+				p = new PrintDocument()
+			};
+			new StationMethods();
+			_003C_003Ec__DisplayClass30_.p.PrintController = new StandardPrintController();
+			string text = SettingsHelper.GetSettingValueByKey("receipt_size");
+			if (station != null)
+			{
+				if (station.EnablePrint)
+				{
+					_003C_003Ec__DisplayClass30_.p.PrinterSettings.PrinterName = station.PrinterName;
+					text = station.PaperSize.Trim();
+				}
+				else
+				{
+					_003C_003Ec__DisplayClass30_.p.PrinterSettings.PrinterName = _003C_003E4__this.string_0;
+				}
+			}
+			else
+			{
+				_003C_003Ec__DisplayClass30_.p.PrinterSettings.PrinterName = _003C_003E4__this.string_0;
+			}
+			if (!text.Contains("mm"))
+			{
+				text += "mm";
+			}
+			if (isHTML)
+			{
+				LocalReport localReport = new LocalReport();
+				localReport.DataSources.Clear();
+				int int_ = 297;
+				if (station != null && station.ChitFormat != 1 && station.ChitFormat != 3 && station.ChitFormat != 5)
+				{
+					if (station != null && station.ChitFormat == 6)
+					{
+						string[] array = message.Split(new string[1] { "%DATA_BREAK%" }, StringSplitOptions.None);
+						string value = array[0];
+						string value2 = array[1];
+						message = array[2];
+						localReport.ReportEmbeddedResource = "CorePOS.Reports.BlankChit6.rdlc";
+						localReport.SetParameters(new ReportParameter("prmOrderNumber", value));
+						localReport.SetParameters(new ReportParameter("prmTableNumber", value2));
+						int_ = 3276;
+					}
+					else if (station != null && station.ChitFormat == 2)
+					{
+						localReport.ReportEmbeddedResource = "CorePOS.Reports.BlankLabel.rdlc";
+						int_ = 32;
+					}
+					else if (station != null && station.ChitFormat == 4)
+					{
+						string[] array2 = message.Split(new string[1] { "%DATA_BREAK%" }, StringSplitOptions.None);
+						string value3 = array2[0];
+						string value4 = array2[1];
+						string value5 = array2[2];
+						string value6 = array2[3];
+						string value7 = array2[4];
+						string value8 = array2[5];
+						string value9 = array2[6];
+						message = array2[7];
+						localReport.ReportEmbeddedResource = "CorePOS.Reports.LargeLabelChit.rdlc";
+						localReport.SetParameters(new ReportParameter("prmCustomerInfo", value9));
+						localReport.SetParameters(new ReportParameter("prmOrderType", value3));
+						localReport.SetParameters(new ReportParameter("prmChitNumber", value4));
+						localReport.SetParameters(new ReportParameter("prmOrderTicket", value5));
+						localReport.SetParameters(new ReportParameter("prmOrderDates", value6));
+						localReport.SetParameters(new ReportParameter("prmOrderTotals", value7));
+						localReport.SetParameters(new ReportParameter("prmOrderStatus", value8));
+						localReport.SetParameters(new ReportParameter("prmCustomerInfo", value9));
+						int_ = 40;
+					}
+				}
+				else
+				{
+					localReport.ReportEmbeddedResource = "CorePOS.Reports.Blank.rdlc";
+					int_ = 3276;
+				}
+				localReport.SetParameters(new ReportParameter("prmFontSize", FontSize.ToString()));
+				localReport.SetParameters(new ReportParameter("prmTextString", message));
+				localReport.SetParameters(new ReportParameter("prmFontFamily", fontFamily));
+				_003C_003E4__this.method_2(localReport, "EMF", int_, text);
+				try
+				{
+					_003C_003E4__this.method_5(text, int_);
+				}
+				catch
+				{
+					string text2 = ((!string.IsNullOrEmpty(MemoryLoadedObjects.this_terminal.DefaultPrinter)) ? MemoryLoadedObjects.this_terminal.DefaultPrinter : SettingsHelper.GetSettingValueByKey("printer_default"));
+					if (_003C_003E4__this.string_0 == text2)
+					{
+						if (_003C_003E4__this.method_7())
+						{
+							_003C_003E4__this.PrintString(message, FontSize, station);
+						}
+					}
+					else
+					{
+						_003C_003E4__this.string_0 = text2;
+						_003C_003E4__this.method_5(text, int_);
+					}
+				}
+				_003C_003Ec__DisplayClass30_.p.PrintController = null;
+				_003C_003Ec__DisplayClass30_.p.Dispose();
+				GC.Collect();
+				return;
+			}
+			_003C_003Ec__DisplayClass30_2 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass30_2();
+			CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2 = _003C_003Ec__DisplayClass30_;
+			CS_0024_003C_003E8__locals0.style = (isBold ? FontStyle.Bold : FontStyle.Regular);
+			CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.p.PrintPage += delegate(object sender, PrintPageEventArgs e)
+			{
+				e.Graphics.DrawString(CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.message, new Font(CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.fontFamily, CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.FontSize, CS_0024_003C_003E8__locals0.style), new SolidBrush(Color.Black), new RectangleF(0f, 0f, CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.p.DefaultPageSettings.PrintableArea.Width, CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.p.DefaultPageSettings.PrintableArea.Height));
+			};
+			try
+			{
+				CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.p.Print();
+			}
+			catch
+			{
+				string text3 = ((!string.IsNullOrEmpty(MemoryLoadedObjects.this_terminal.DefaultPrinter)) ? MemoryLoadedObjects.this_terminal.DefaultPrinter : SettingsHelper.GetSettingValueByKey("printer_default"));
+				if (_003C_003E4__this.string_0 == text3)
+				{
+					if (_003C_003E4__this.method_7())
+					{
+						_003C_003E4__this.PrintString(message, FontSize, station);
+					}
+				}
+				else
+				{
+					_003C_003E4__this.PrintString(message, FontSize);
+				}
+			}
+			CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.p.PrintController = null;
+			CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2.p.Dispose();
+			GC.Collect();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_1
+	{
+		public PrintDocument p;
+
+		public _003C_003Ec__DisplayClass30_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass30_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_2
+	{
+		public FontStyle style;
+
+		public _003C_003Ec__DisplayClass30_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass30_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CPrintString_003Eb__1(object sender, PrintPageEventArgs e)
+		{
+			e.Graphics.DrawString(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.message, new Font(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.fontFamily, CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.FontSize, style), new SolidBrush(Color.Black), new RectangleF(0f, 0f, CS_0024_003C_003E8__locals2.p.DefaultPageSettings.PrintableArea.Width, CS_0024_003C_003E8__locals2.p.DefaultPageSettings.PrintableArea.Height));
+		}
+	}
+
 	public List<CompanySetup> companies;
 
 	private ReportDataSource reportDataSource_0;
@@ -1137,7 +1750,7 @@ public class PrintHelper
 					Name = a.Key,
 					Total = a.Sum((Payout b) => b.Amount)
 				}).ToList();
-			List<Payout> list6 = gClass.Payouts.Where((Payout a) => (a.Reason == PayoutTypes.OpeningBalance || a.Reason == PayoutTypes.ClosingBalance) && a.DateCreated >= CS_0024_003C_003E8__locals0.startDate.AddHours(-2.0) && a.DateCreated <= CS_0024_003C_003E8__locals0.endDate.Date.AddDays(1.0)).ToList();
+			List<Payout> list6 = gClass.Payouts.Where((Payout a) => (a.Reason == PayoutTypes.OpeningBalance || a.Reason == PayoutTypes.ClosingBalance) && a.DateCreated >= ((DateTime)CS_0024_003C_003E8__locals0.startDate).AddHours(-2.0) && a.DateCreated <= ((DateTime)CS_0024_003C_003E8__locals0.endDate).Date.AddDays(1.0)).ToList();
 			if (list6 != null && list6.Count > 0)
 			{
 				usp_ClosingTotalsResult usp_ClosingTotalsResult3 = (from a in list6
@@ -1520,7 +2133,6 @@ public class PrintHelper
 		_003C_003Ec__DisplayClass22_.EmployeeId = EmployeeId;
 		_003C_003Ec__DisplayClass22_.TerminalId = TerminalId;
 		_003C_003Ec__DisplayClass22_._003C_003E4__this = this;
-		_003C_003Ec__DisplayClass22_1 CS_0024_003C_003E8__locals0;
 		new Thread((ThreadStart)delegate
 		{
 			try
@@ -1540,7 +2152,7 @@ public class PrintHelper
 			}
 			catch (Exception)
 			{
-				CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass22_1();
+				_003C_003Ec__DisplayClass22_1 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass22_1();
 				CS_0024_003C_003E8__locals0.splashForm = Application.OpenForms.OfType<frmSplash>().FirstOrDefault();
 				CS_0024_003C_003E8__locals0.splashForm.Invoke((Action)delegate
 				{
@@ -1595,8 +2207,8 @@ public class PrintHelper
 			num = 50f;
 			break;
 		}
-		int width = (int)((double)num / 25.399970155035071 * 100.0);
-		int_2 = (int)((double)int_2 / 25.399970155035071 * 100.0);
+		int width = (int)((double)num / 25.39997015503507 * 100.0);
+		int_2 = (int)((double)int_2 / 25.39997015503507 * 100.0);
 		return new PaperSize("Custom", width, int_2);
 	}
 
@@ -1642,7 +2254,9 @@ public class PrintHelper
 			printDocument.DefaultPageSettings.Margins.Top = 0;
 			printDocument.DefaultPageSettings.Margins.Left = 0;
 			printDocument.DefaultPageSettings.Margins.Right = 0;
-			PaperSize paperSize4 = (printDocument.PrinterSettings.DefaultPageSettings.PaperSize = (printDocument.DefaultPageSettings.PaperSize = paperSize));
+			PageSettings defaultPageSettings = printDocument.PrinterSettings.DefaultPageSettings;
+			PaperSize paperSize3 = (printDocument.DefaultPageSettings.PaperSize = paperSize);
+			defaultPageSettings.PaperSize = paperSize3;
 			printDocument.PrinterSettings.DefaultPageSettings.Margins = printDocument.DefaultPageSettings.Margins;
 			printDocument.DefaultPageSettings.PrinterResolution = new PrinterResolution
 			{

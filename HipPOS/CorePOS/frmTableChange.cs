@@ -18,6 +18,86 @@ namespace CorePOS;
 
 public class frmTableChange : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public Layout layout;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadAllTables_003Eb__1(OccupiedTable a)
+		{
+			return a.TableName == layout.TableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass30_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CclearReservationOnTable_003Eb__0(TableModel l)
+		{
+			return l.TableName == tableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass32_0
+	{
+		public TableModel occupiedTable;
+
+		public _003C_003Ec__DisplayClass32_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CTimer1_Tick_003Eb__1(OccupiedTable t)
+		{
+			return t.TableName == occupiedTable.TableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass32_1
+	{
+		public OccupiedTable occupiedTablesResult;
+
+		public _003C_003Ec__DisplayClass32_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_0
+	{
+		public Layout layout;
+
+		public _003C_003Ec__DisplayClass33_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsubTableClick_003Eb__2(OccupiedTable a)
+		{
+			return a.TableName == layout.TableName;
+		}
+	}
+
 	private string string_0;
 
 	private string string_1;

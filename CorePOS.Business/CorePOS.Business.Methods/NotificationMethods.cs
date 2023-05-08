@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Objects;
@@ -18,6 +19,100 @@ namespace CorePOS.Business.Methods;
 
 public class NotificationMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public Exception error;
+
+		public string version;
+
+		public string systemInfo;
+
+		public bool isSilent;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal void _003CsendCrash_003Eb__0()
+		{
+			try
+			{
+				CompanySetup companySetup = new GClass6().CompanySetups.FirstOrDefault();
+				string text = string.Empty;
+				if (companySetup != null)
+				{
+					text = companySetup.Name;
+				}
+				Crash granular = new Crash
+				{
+					InnerException = ((error.InnerException == null) ? string.Empty : error.InnerException.Message),
+					Source = ((error.Source != null) ? error.Source : string.Empty),
+					StackTrace = ((error.StackTrace != null) ? error.StackTrace.Replace("\\", "/") : string.Empty),
+					TargetSite = ((error.TargetSite != null) ? error.TargetSite.Name : string.Empty)
+				};
+				if (error == null)
+				{
+					throw new Exception("Error Exception was NULL");
+				}
+				string path = AppDomain.CurrentDomain.BaseDirectory + "\\DebugMode.txt";
+				AddCrash.AddCrashFunction("rmEUNuAw0tEBRYQLnPcC", string.IsNullOrEmpty(text) ? BrandingTerms.SoftwareName : (BrandingTerms.SoftwareName + " - " + text), string.IsNullOrEmpty(version) ? CorePOS.Data.Properties.Settings.Default["AppVersion"].ToString() : version, systemInfo, File.Exists(path) ? ("[*** DEBUG MODE ***] " + error.Message.Replace("\\", "/")) : ((isSilent ? "[***SILENT LOG***] " : string.Empty) + error.Message.Replace("\\", "/")), granular);
+			}
+			catch (Exception ex)
+			{
+				sendError_old(ex.Message + "\r[TRACE:]" + ex.StackTrace);
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public string error;
+
+		public string version;
+
+		public string systemInfo;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal void _003CsendCrashStringOnly_003Eb__0()
+		{
+			try
+			{
+				CompanySetup companySetup = new GClass6().CompanySetups.FirstOrDefault();
+				string text = string.Empty;
+				if (companySetup != null)
+				{
+					text = companySetup.Name;
+				}
+				Crash granular = new Crash
+				{
+					InnerException = error,
+					Source = error,
+					StackTrace = "",
+					TargetSite = ""
+				};
+				if (error == null)
+				{
+					throw new Exception("Error Exception was NULL");
+				}
+				string path = AppDomain.CurrentDomain.BaseDirectory + "\\DebugMode.txt";
+				AddCrash.AddCrashFunction("rmEUNuAw0tEBRYQLnPcC", string.IsNullOrEmpty(text) ? BrandingTerms.SoftwareName : (BrandingTerms.SoftwareName + " - " + text), string.IsNullOrEmpty(version) ? CorePOS.Data.Properties.Settings.Default["AppVersion"].ToString() : version, systemInfo, File.Exists(path) ? ("[*** DEBUG MODE ***] " + error) : error, granular);
+			}
+			catch (Exception ex)
+			{
+				sendError_old(ex.Message + "\r[TRACE:]" + ex.StackTrace);
+			}
+		}
+	}
+
 	public static bool SendSMS(string token, string recipient_number, string message)
 	{
 		try
@@ -183,7 +278,8 @@ public class NotificationMethods
 			if (string_4 != null && string_4 != string.Empty && string_3 != null && string_3 != string.Empty)
 			{
 				MailMessage mailMessage = new MailMessage();
-				MailAddress mailAddress2 = (mailMessage.From = new MailAddress(string_3));
+				MailAddress from = new MailAddress(string_3);
+				mailMessage.From = from;
 				if (list_0 != null)
 				{
 					foreach (string item4 in list_0)

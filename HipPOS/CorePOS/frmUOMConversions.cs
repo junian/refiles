@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Data;
 using CorePOS.Properties;
@@ -12,6 +13,18 @@ namespace CorePOS;
 
 public class frmUOMConversions : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public int convToRemove;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private List<int> list_2;
 
 	private int int_0;

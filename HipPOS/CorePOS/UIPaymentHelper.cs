@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -15,6 +16,44 @@ namespace CorePOS;
 
 public static class UIPaymentHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public Terminal station;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_1
+	{
+		public TransactionReceipt treceipt;
+
+		public _003C_003Ec__DisplayClass2_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass2_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	public static short EmpID;
 
 	public static bool ProcessFirstData(Form sender, Terminal station, string transactiontype, int total_due, string orderNumber, string paymentMethod, string refundNumber, out List<PaymentTransactionObject> trans_objects, bool showForm = true)

@@ -1,11 +1,36 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Data;
 
 namespace CorePOS.Business.Methods;
 
 public class EmployeeMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public int employeeID;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public string PIN;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public static Dictionary<string, string> getEmployees()
 	{
 		IQueryable<Employee> queryable = new DataManager().DataContext.Employees.Where((Employee e) => e.isActive == true);

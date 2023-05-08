@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using com.clover.remotepay.sdk;
@@ -16,6 +17,44 @@ namespace CorePOS.Business.Methods.PaymentProcessors;
 
 public static class FirstData
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public string ip;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public CloverTransactionObject.Request request;
+
+		public string ip;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public RefundPaymentResponse refund;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public static PaymentTransactionObject SendToTerminal(string model, string ip, int port, string request, bool parseObject, string orderNumber, string paymentMethod)
 	{
 		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();
@@ -146,7 +185,8 @@ public static class FirstData
 		try
 		{
 			stream = new TcpClient(string_0, int_0).GetStream();
-			int num4 = (stream.ReadTimeout = (stream.WriteTimeout = num * 1000));
+			int readTimeout = (stream.WriteTimeout = num * 1000);
+			stream.ReadTimeout = readTimeout;
 			stream.Write(bytes, 0, bytes.Length);
 			CorePOS.Data.Properties.Settings.Default["isPaymentTerminalConnected"] = true;
 		}
@@ -163,12 +203,12 @@ public static class FirstData
 			CorePOS.Data.Properties.Settings.Default["isPaymentTerminalConnected"] = false;
 			return paymentTransactionObject;
 		}
-		int num5 = 0;
-		int num6 = 0;
-		int num7 = 8;
+		int num3 = 0;
+		int num4 = 0;
+		int num5 = 8;
 		string text = string.Empty;
 		bool flag = false;
-		int num8 = 0;
+		int num6 = 0;
 		byte[] array = new byte[9999];
 		while (!flag)
 		{
@@ -177,46 +217,46 @@ public static class FirstData
 			{
 				try
 				{
-					num6 = stream.Read(array, num8, num7);
+					num4 = stream.Read(array, num6, num5);
 					now = DateTime.Now;
 				}
 				catch
 				{
 				}
-				if (num6 != 0)
+				if (num4 != 0)
 				{
-					if (num7 == 8)
+					if (num5 == 8)
 					{
-						text = Encoding.ASCII.GetString(array, num8, num6);
+						text = Encoding.ASCII.GetString(array, num6, num4);
 						if (!text.Contains("00003ACK") && !text.Contains("00003NAK"))
 						{
-							if (num7 == 8)
+							if (num5 == 8)
 							{
 								try
 								{
-									num7 = Convert.ToInt32(text.Substring(0, 5));
+									num5 = Convert.ToInt32(text.Substring(0, 5));
 									now = DateTime.Now;
 								}
 								catch
 								{
 									array = new byte[8];
-									num8 = 0;
+									num6 = 0;
 									flag = true;
 									break;
 								}
-								num8 += num6;
-								num5 += num6;
+								num6 += num4;
+								num3 += num4;
 							}
 						}
 						else
 						{
-							num8 += num6;
+							num6 += num4;
 							now = DateTime.Now;
 						}
 						continue;
 					}
-					num5 += num6;
-					text = Encoding.ASCII.GetString(array, (num8 - 3 >= 0) ? (num8 - 3) : 0, num7);
+					num3 += num4;
+					text = Encoding.ASCII.GetString(array, (num6 - 3 >= 0) ? (num6 - 3) : 0, num5);
 					stream.WriteByte(PaymentHelper.HexStringToByteArray("06")[0]);
 					flag = true;
 					break;
@@ -229,7 +269,7 @@ public static class FirstData
 		}
 		if (string.IsNullOrEmpty(text))
 		{
-			text = Encoding.ASCII.GetString(array, (num8 - 3 >= 0) ? (num8 - 3) : 0, num7);
+			text = Encoding.ASCII.GetString(array, (num6 - 3 >= 0) ? (num6 - 3) : 0, num5);
 		}
 		paymentTransactionObject.rawdata = text;
 		Dictionary<string, string> source = MapTransactionString(text);

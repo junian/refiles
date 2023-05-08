@@ -11,6 +11,7 @@ using System.Linq;
 using System.Management;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -33,6 +34,192 @@ namespace CorePOS;
 
 public class frmLoader : Form
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public List<Option> optionsDeleted;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass43_0
+	{
+		public List<string> orderNumberToCheck;
+
+		public _003C_003Ec__DisplayClass43_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass43_1
+	{
+		public ChitPrintQueue queue;
+
+		public _003C_003Ec__DisplayClass43_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessChitPrintQueue_003Eb__7(Station a)
+		{
+			return a.StationID == queue.StationID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass43_2
+	{
+		public Station station;
+
+		public _003C_003Ec__DisplayClass43_1 CS_0024_003C_003E8__locals1;
+
+		public Func<Order, bool> _003C_003E9__8;
+
+		public _003C_003Ec__DisplayClass43_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessChitPrintQueue_003Eb__8(Order x)
+		{
+			if (x.StationID != null && x.StationID != "" && x.StationID.Contains(station.StationID.ToString()))
+			{
+				return CS_0024_003C_003E8__locals1.queue.OrderNumber.Contains(x.OrderNumber);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass49_0
+	{
+		public frmLoader _003C_003E4__this;
+
+		public X509Certificate serverCertificate;
+
+		public _003C_003Ec__DisplayClass49_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRunServer_003Eb__0()
+		{
+			while (Application.OpenForms.Count > 0)
+			{
+				TcpClient tcpClient = new TcpClient();
+				try
+				{
+					tcpClient = _003C_003E4__this.listener.AcceptTcpClient();
+					new TCPHelper().ProcessClient(tcpClient, serverCertificate);
+				}
+				catch
+				{
+					tcpClient.Close();
+				}
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass53_0
+	{
+		public List<string> orderNums;
+
+		public List<ChitPrintInfo> tempVar;
+
+		public _003C_003Ec__DisplayClass53_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CChitPrintTimer_Tick_003Eb__1(ChitPrintInfo a)
+		{
+			return tempVar.Contains(a);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass53_1
+	{
+		public ChitPrintInfo chitToPrint;
+
+		public _003C_003Ec__DisplayClass53_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CChitPrintTimer_Tick_003Eb__2(Order a)
+		{
+			return chitToPrint.orderIds.Contains(a.OrderId);
+		}
+
+		internal bool _003CChitPrintTimer_Tick_003Eb__3(Order a)
+		{
+			if (!(a.OrderNumber == chitToPrint.OrderNumber))
+			{
+				return chitToPrint.RelatedOrderNumbers.Contains(a.OrderNumber);
+			}
+			return true;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass54_0
+	{
+		public int thresholdTimeInMinutes;
+
+		public List<string> chitsToPrint;
+
+		public int terminalID;
+
+		public _003C_003Ec__DisplayClass54_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CChitPrintSelfCheck_Tick_003Eb__3(Order x)
+		{
+			if (!chitsToPrint.Contains(x.OrderNumber) && (x.OrderOnHoldTime == 0 || x.OrderOnHoldTime == -1 || (x.OrderOnHoldTime != 0 && x.DateCreated.Value <= DateTime.Now.AddMinutes(-x.OrderOnHoldTime))) && ((x.OrderType != OrderTypes.PickUpOnline && x.OrderType != OrderTypes.DeliveryOnline && x.DateCreated.Value <= DateTime.Now.AddMinutes(-2.0)) || ((x.OrderType == OrderTypes.PickUpOnline || x.OrderType == OrderTypes.DeliveryOnline) && x.LastSynced.HasValue && x.LastSynced.Value <= DateTime.Now.AddMinutes(-4.0))) && x.Qty >= 1m && !x.ShareItemID.HasValue && (x.FlagID == 0 || x.FlagID != 5) && x.StationID != null && x.StationID != string.Empty && (x.StationPrinted == null || x.StationPrinted == string.Empty) && x.CreatedByTerminalID.HasValue)
+			{
+				return x.CreatedByTerminalID == terminalID;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass54_1
+	{
+		public Order order;
+
+		public Func<Order, bool> _003C_003E9__5;
+
+		public _003C_003Ec__DisplayClass54_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CChitPrintSelfCheck_Tick_003Eb__5(Order x)
+		{
+			return x.OrderNumber == order.OrderNumber;
+		}
+	}
+
 	private int int_0;
 
 	private int int_1;

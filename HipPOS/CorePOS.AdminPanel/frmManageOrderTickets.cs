@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -15,6 +16,42 @@ namespace CorePOS.AdminPanel;
 
 public class frmManageOrderTickets : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public short genKeyId;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_1
+	{
+		public string orderType;
+
+		public _003C_003Ec__DisplayClass6_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public short genKeyId;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private Dictionary<string, string> dictionary_0;
 
 	private IContainer icontainer_1;
@@ -59,7 +96,8 @@ public class frmManageOrderTickets : frmMasterForm
 
 	private void frmManageOrderTickets_Load(object sender, EventArgs e)
 	{
-		Dictionary<string, string> dictionary = (dictionary_0 = OrderTypesDictionary.OrderTypes.ToDictionary((KeyValuePair<string, string> a) => a.Key, (KeyValuePair<string, string> a) => a.Value));
+		Dictionary<string, string> dictionary = OrderTypesDictionary.OrderTypes.ToDictionary((KeyValuePair<string, string> a) => a.Key, (KeyValuePair<string, string> a) => a.Value);
+		dictionary_0 = dictionary;
 		method_3();
 		method_4();
 	}

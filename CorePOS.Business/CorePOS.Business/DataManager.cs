@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Linq;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -15,6 +16,466 @@ namespace CorePOS.Business;
 
 public class DataManager
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public string groupClassification;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public string itemClassification;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public short ParentGroupID;
+
+		public string itemClassification;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public string GroupName;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public short GroupID;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public int ItemID;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public int itemID;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_0
+	{
+		public string itemClassification;
+
+		public string query;
+
+		public _003C_003Ec__DisplayClass15_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CgetAllItems_003Eb__2(Item i)
+		{
+			if (i.ItemName.Contains(query) && i.ItemClassification == itemClassification)
+			{
+				return !i.isDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public DataManager _003C_003E4__this;
+
+		public string itemClassification;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public string itemClassification;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_0
+	{
+		public string orderNumber;
+
+		public List<Guid> orderIDs;
+
+		public List<int> itemIDs;
+
+		public _003C_003Ec__DisplayClass18_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_1
+	{
+		public string address;
+
+		public _003C_003Ec__DisplayClass18_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_2
+	{
+		public Item orig_item;
+
+		public _003C_003Ec__DisplayClass18_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSaveOneOrder_003Eb__10(ItemsInGroup a)
+		{
+			return a.ItemID == orig_item.ItemID;
+		}
+
+		internal bool _003CSaveOneOrder_003Eb__11(ItemsInGroup a)
+		{
+			return a.ItemID == orig_item.ItemID;
+		}
+
+		internal bool _003CSaveOneOrder_003Eb__13(ItemCourse a)
+		{
+			return a.Name == orig_item.ItemCourse;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_3
+	{
+		public string orderID;
+
+		public _003C_003Ec__DisplayClass18_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSaveOneOrder_003Eb__12(Order o)
+		{
+			return o.OrderId == new Guid(orderID);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public string customer;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_1
+	{
+		public string oNum;
+
+		public _003C_003Ec__DisplayClass19_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CRecheckGuestCountSplittedBill_003Eb__2(Order o)
+		{
+			return o.OrderNumber == oNum;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_2
+	{
+		public int splittedGuestCount;
+
+		public _003C_003Ec__DisplayClass19_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal void _003CRecheckGuestCountSplittedBill_003Eb__3(Order a)
+		{
+			a.GuestCount = splittedGuestCount;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public int ComboItemId;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_1
+	{
+		public ItemsInItem childItem;
+
+		public _003C_003Ec__DisplayClass20_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass22_0
+	{
+		public int itemTypeID;
+
+		public int taxruleID;
+
+		public short uom_id;
+
+		public _003C_003Ec__DisplayClass22_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass25_0
+	{
+		public int itemTypeID;
+
+		public int taxruleID;
+
+		public short uom_id;
+
+		public _003C_003Ec__DisplayClass25_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public short groupID;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass29_0
+	{
+		public int itemID;
+
+		public _003C_003Ec__DisplayClass29_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass32_0
+	{
+		public short itemID;
+
+		public short groupID;
+
+		public _003C_003Ec__DisplayClass32_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass37_0
+	{
+		public string KeyName;
+
+		public _003C_003Ec__DisplayClass37_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass38_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass38_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_0
+	{
+		public Guid OrderID;
+
+		public _003C_003Ec__DisplayClass39_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass41_0
+	{
+		public long appointmentID;
+
+		public _003C_003Ec__DisplayClass41_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass43_0
+	{
+		public DateTime? date;
+
+		public _003C_003Ec__DisplayClass43_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass45_0
+	{
+		public long id;
+
+		public _003C_003Ec__DisplayClass45_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass54_0
+	{
+		public string question;
+
+		public _003C_003Ec__DisplayClass54_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass56_0
+	{
+		public string question;
+
+		public _003C_003Ec__DisplayClass56_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass59_0
+	{
+		public DateTime OrderDateCreated;
+
+		public _003C_003Ec__DisplayClass59_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CIsPromotionTime_003Eb__0(string a)
+		{
+			return a.Contains(OrderDateCreated.DayOfWeek.ToString().ToUpper());
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	public GClass6 DataContext
@@ -331,15 +792,19 @@ public class DataManager
 					order.Notified = true;
 					order2.PrintedInKitchen = true;
 					order.DateFilled = DateTime.Now;
-					string text4 = (order.StationMade = (order.StationPrinted = CS_0024_003C_003E8__locals2.orig_item.StationID));
+					Order order3 = order;
+					string stationMade = (order.StationPrinted = CS_0024_003C_003E8__locals2.orig_item.StationID);
+					order3.StationMade = stationMade;
 				}
 				else
 				{
-					Order order3 = order;
+					Order order4 = order;
 					order.Notified = false;
-					order3.PrintedInKitchen = false;
+					order4.PrintedInKitchen = false;
 				}
-				short? num8 = (order.UserCreated = (order.UserServed = ((EmployeeCreated == 0) ? Convert.ToInt16(CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"].ToString()) : EmployeeCreated)));
+				Order order5 = order;
+				short? userCreated = (order.UserServed = ((EmployeeCreated == 0) ? Convert.ToInt16(CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"].ToString()) : EmployeeCreated));
+				order5.UserCreated = userCreated;
 				if (SettingsHelper.GetSettingValueByKey("delivery_management") == "ON" && order.OrderType == OrderTypes.Delivery && MemoryLoadedData.IsDeliveryManagement)
 				{
 					order.UserServed = null;
@@ -356,7 +821,9 @@ public class DataManager
 			}
 			if (flag4)
 			{
-				DateTime? dateTime3 = (order.DateCreated = (order.LastDateModified = DateTime.Now.AddMilliseconds(num2 * 100)));
+				Order order6 = order;
+				DateTime? dateCreated = (order.LastDateModified = DateTime.Now.AddMilliseconds(num2 * 100));
+				order6.DateCreated = dateCreated;
 			}
 			if (!string.IsNullOrEmpty(order.OrderTicketNumber))
 			{
@@ -417,13 +884,13 @@ public class DataManager
 			order.ItemSellPrice = item.ItemPrice;
 			order.TenderAmount = TenderCash;
 			order.TenderChange = TenderChange;
-			int num9 = Convert.ToInt32(item.StationID);
-			int num10 = 0;
+			int num7 = Convert.ToInt32(item.StationID);
+			int num8 = 0;
 			if (SettingsHelper.GetSettingValueByKey("fulfillment_threshold") == "ON" && (orderType == OrderTypes.Delivery || orderType == OrderTypes.PickUp))
 			{
-				num10 = (int)(Convert.ToDecimal(SettingsHelper.GetSettingValueByKey("fulfillment_threshold_time")) * 60m);
+				num8 = (int)(Convert.ToDecimal(SettingsHelper.GetSettingValueByKey("fulfillment_threshold_time")) * 60m);
 			}
-			if (num9 == 0 && orderType == OrderTypes.DineIn)
+			if (num7 == 0 && orderType == OrderTypes.DineIn)
 			{
 				if (order.ItemOptionId.HasValue && order.ItemOptionId.Value != 0)
 				{
@@ -438,14 +905,14 @@ public class DataManager
 					}
 					else
 					{
-						order.OrderOnHoldTime = num9;
+						order.OrderOnHoldTime = num7;
 					}
 					orderOnHoldTime = order.OrderOnHoldTime;
 				}
 			}
 			else
 			{
-				order.OrderOnHoldTime = num9;
+				order.OrderOnHoldTime = num7;
 			}
 			if (order.OrderOnHoldTime != 0 && order.OrderOnHoldTime != -1)
 			{
@@ -470,8 +937,8 @@ public class DataManager
 				}
 				else
 				{
-					int num11 = order.OrderOnHoldTime - num10;
-					order.OrderOnHoldTime = ((num10 != 0 && num11 >= 0) ? num11 : 0);
+					int num9 = order.OrderOnHoldTime - num8;
+					order.OrderOnHoldTime = ((num8 != 0 && num9 >= 0) ? num9 : 0);
 				}
 			}
 			order.ItemIdentifier = item.ItemClassification;
@@ -615,9 +1082,9 @@ public class DataManager
 				Promotion promotion = gClass.Promotions.Where((Promotion a) => a.GetDiscountUOM == "@" && a.String_0 == CS_0024_003C_003E8__locals2.orig_item.ItemID.ToString() && a.GetQtyString == "IT" && a.IsDeleted == false).FirstOrDefault();
 				if (promotion != null && method_3(promotion, DateTime.Now))
 				{
-					decimal num12 = Convert.ToDecimal(100);
-					decimal num13 = ((CS_0024_003C_003E8__locals2.orig_item.ItemPrice > 0m) ? Math.Round(num12 - promotion.GetDiscountAmount.Value / CS_0024_003C_003E8__locals2.orig_item.ItemPrice * num12) : Convert.ToDecimal(0));
-					discountReasonItem = "Sale: " + num13 + "% Off";
+					decimal num10 = Convert.ToDecimal(100);
+					decimal num11 = ((CS_0024_003C_003E8__locals2.orig_item.ItemPrice > 0m) ? Math.Round(num10 - promotion.GetDiscountAmount.Value / CS_0024_003C_003E8__locals2.orig_item.ItemPrice * num10) : Convert.ToDecimal(0));
+					discountReasonItem = "Sale: " + num11 + "% Off";
 					discountOnSaleItem = promotion.GetDiscountAmount.Value;
 				}
 			}
@@ -754,22 +1221,22 @@ public class DataManager
 		if (SettingsHelper.GetSettingValueByKey("coin_system") == "ON" && manager.DataContext.Orders.Where((Order x) => x.OrderNumber == CS_0024_003C_003E8__locals0.orderNumber && x.ItemName == "Cash Rounding Difference").FirstOrDefault() == null && paymentMethod.Contains("CASH="))
 		{
 			List<ProcessorPaymentType> paymentTypes = PaymentTypeMethods.GetPaymentTypes(paymentMethod);
-			decimal num14 = paymentTypes.Where((ProcessorPaymentType a) => a.PaymentTypeName == "CASH").Sum((ProcessorPaymentType a) => a.Amount);
-			if (num14 >= num - 0.05m)
+			decimal num12 = paymentTypes.Where((ProcessorPaymentType a) => a.PaymentTypeName == "CASH").Sum((ProcessorPaymentType a) => a.Amount);
+			if (num12 >= num - 0.05m)
 			{
-				decimal num15 = OrderMethods.GetCoinSystemRoundedValue(num14) - num14;
+				decimal num13 = OrderMethods.GetCoinSystemRoundedValue(num12) - num12;
 				bool flag5 = false;
-				if (TenderChange > 0m && num14 != num && num15 == 0m)
+				if (TenderChange > 0m && num12 != num && num13 == 0m)
 				{
-					num14 = num + num5;
-					num15 = OrderMethods.GetCoinSystemRoundedValue(num14) - num14;
+					num12 = num + num5;
+					num13 = OrderMethods.GetCoinSystemRoundedValue(num12) - num12;
 					flag5 = true;
 				}
-				if (num15 != 0m)
+				if (num13 != 0m)
 				{
 					if (!flag5)
 					{
-						paymentTypes.Where((ProcessorPaymentType a) => a.PaymentTypeName == "CASH").Last().Amount += num15;
+						paymentTypes.Where((ProcessorPaymentType a) => a.PaymentTypeName == "CASH").Last().Amount += num13;
 						paymentMethod = "";
 						foreach (ProcessorPaymentType item2 in paymentTypes)
 						{
@@ -796,7 +1263,7 @@ public class DataManager
 						CustomerInfoName = customerInfoName,
 						CustomerInfoPhone = CustomerInfoPhone,
 						PaymentMethods = paymentMethod.Replace(',', '.'),
-						ItemCost = num15,
+						ItemCost = num13,
 						Notified = true,
 						Qty = 1m,
 						UserCreated = ((EmployeeCreated == 0) ? Convert.ToInt16(CorePOS.Data.Properties.Settings.Default["LoggedInEmployeeID"].ToString()) : EmployeeCreated),
@@ -804,11 +1271,11 @@ public class DataManager
 						StationID = "",
 						TerminalID = terminalId,
 						OrderNumber = CS_0024_003C_003E8__locals0.orderNumber,
-						ItemPrice = num15,
-						ItemSellPrice = num15,
+						ItemPrice = num13,
+						ItemSellPrice = num13,
 						TaxTotal = 0m,
-						SubTotal = num15,
-						Total = num15,
+						SubTotal = num13,
+						Total = num13,
 						SeatNum = "1",
 						ComboID = 0,
 						Paid = true,
@@ -1417,7 +1884,7 @@ public class DataManager
 		if (CS_0024_003C_003E8__locals0.date.HasValue)
 		{
 			return (from r in gclass6_0.Appointments
-				where r.StartDateTime.Date == CS_0024_003C_003E8__locals0.date.Value.Date && r.isCancelled == false && r.AppointmentType == AppointmentTypes.reservation
+				where r.StartDateTime.Date == ((DateTime?)CS_0024_003C_003E8__locals0.date).Value.Date && r.isCancelled == false && r.AppointmentType == AppointmentTypes.reservation
 				orderby r.StartDateTime
 				select r).ToList();
 		}
@@ -1460,7 +1927,9 @@ public class DataManager
 			return;
 		}
 		appointment.EmployeeID = employeeID;
-		DateTime dateTime3 = (appointment.StartDateTime = (appointment.EndDateTime = date));
+		Appointment appointment2 = appointment;
+		DateTime startDateTime = (appointment.EndDateTime = date);
+		appointment2.StartDateTime = startDateTime;
 		appointment.CustomerName = name;
 		appointment.CustomerCell = phone;
 		appointment.NumOfPeople = numOfPeople;

@@ -15,17 +15,39 @@ public static class CompanyHelper
 	{
 		GClass6 gClass = new GClass6();
 		CompanySetup companySetup = gClass.CompanySetups.FirstOrDefault();
-		string text2 = (CompanyData.Address1 = (CompanyDataSetup.Address1 = companySetup.Address1));
-		text2 = (CompanyData.BusinessName = (CompanyDataSetup.BusinessName = companySetup.BusinessName));
-		int num2 = (CompanyData.Capacity = (CompanyDataSetup.Capacity = companySetup.Capacity));
-		text2 = (CompanyData.City = (CompanyDataSetup.City = companySetup.City));
-		text2 = (CompanyData.Country = (CompanyDataSetup.Country = companySetup.Country));
-		text2 = (CompanyData.Fax = (CompanyDataSetup.Fax = companySetup.Fax));
-		text2 = (CompanyData.Name = (CompanyDataSetup.Name = companySetup.Name));
-		text2 = (CompanyData.Phone = (CompanyDataSetup.Phone = companySetup.Phone));
-		text2 = (CompanyData.StateProv = (CompanyDataSetup.StateProv = companySetup.StateProv));
-		text2 = (CompanyData.String_0 = (CompanyDataSetup.String_0 = companySetup.String_0));
-		text2 = (CompanyData.ZIP = (CompanyDataSetup.ZIP = companySetup.ZIP));
+		CompanyObject companyData = CompanyData;
+		string address2 = (CompanyDataSetup.Address1 = companySetup.Address1);
+		companyData.Address1 = address2;
+		CompanyObject companyData2 = CompanyData;
+		address2 = (CompanyDataSetup.BusinessName = companySetup.BusinessName);
+		companyData2.BusinessName = address2;
+		CompanyObject companyData3 = CompanyData;
+		int capacity2 = (CompanyDataSetup.Capacity = companySetup.Capacity);
+		companyData3.Capacity = capacity2;
+		CompanyObject companyData4 = CompanyData;
+		address2 = (CompanyDataSetup.City = companySetup.City);
+		companyData4.City = address2;
+		CompanyObject companyData5 = CompanyData;
+		address2 = (CompanyDataSetup.Country = companySetup.Country);
+		companyData5.Country = address2;
+		CompanyObject companyData6 = CompanyData;
+		address2 = (CompanyDataSetup.Fax = companySetup.Fax);
+		companyData6.Fax = address2;
+		CompanyObject companyData7 = CompanyData;
+		address2 = (CompanyDataSetup.Name = companySetup.Name);
+		companyData7.Name = address2;
+		CompanyObject companyData8 = CompanyData;
+		address2 = (CompanyDataSetup.Phone = companySetup.Phone);
+		companyData8.Phone = address2;
+		CompanyObject companyData9 = CompanyData;
+		address2 = (CompanyDataSetup.StateProv = companySetup.StateProv);
+		companyData9.StateProv = address2;
+		CompanyObject companyData10 = CompanyData;
+		address2 = (CompanyDataSetup.String_0 = companySetup.String_0);
+		companyData10.String_0 = address2;
+		CompanyObject companyData11 = CompanyData;
+		address2 = (CompanyDataSetup.ZIP = companySetup.ZIP);
+		companyData11.ZIP = address2;
 		if (string.IsNullOrEmpty(companySetup.Long) || string.IsNullOrEmpty(companySetup.Lat))
 		{
 			GoogleObjects.LatLongModel latLongModel = GoogleMethods.ConvertAddressToLatLong(companySetup.Address1 + "+" + companySetup.City + "+" + companySetup.StateProv + "+" + companySetup.Country);
@@ -59,7 +81,9 @@ public static class CompanyHelper
 		CompanyData.ListOfBusinessHours = list;
 		if (SettingsHelper.GetSettingValueByKey("print_tax_no") == "OFF")
 		{
-			text2 = (CompanyData.String_0 = (CompanyDataSetup.String_0 = ""));
+			CompanyObject companyData12 = CompanyData;
+			address2 = (CompanyDataSetup.String_0 = "");
+			companyData12.String_0 = address2;
 		}
 	}
 

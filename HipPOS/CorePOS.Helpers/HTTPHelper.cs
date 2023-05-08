@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using CorePOS.Business;
@@ -23,6 +24,574 @@ namespace CorePOS.Helpers;
 
 public class HTTPHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public HttpListener listener;
+
+		public HTTPHelper _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CTCPListener_003Eb__2()
+		{
+			while (true)
+			{
+				try
+				{
+					HttpListenerContext context = listener.GetContext();
+					_003C_003E4__this.method_1(context);
+				}
+				catch
+				{
+					break;
+				}
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public Layout layout;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetLayout_003Eb__2(OccupiedTable a)
+		{
+			return a.TableName == layout.TableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public Employee emp;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetStaffTables_003Eb__2(OccupiedTable x)
+		{
+			return x.EmployeeID == emp.EmployeeID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_1
+	{
+		public Layout layout;
+
+		public _003C_003Ec__DisplayClass10_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetStaffTables_003Eb__4(OccupiedTable a)
+		{
+			return a.TableName == layout.TableName;
+		}
+
+		internal bool _003CGetStaffTables_003Eb__5(OccupiedTable a)
+		{
+			return a.TableName == layout.TableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public short groupId;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__0;
+
+		public _003C_003Ec__DisplayClass13_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetItems_003Eb__0(ItemsInGroup x)
+		{
+			if (x.Item.ItemClassification == ItemClassifications.Product && x.Item.Active)
+			{
+				return x.GroupID.Value == groupId;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_1
+	{
+		public ItemsInGroup iig;
+
+		public _003C_003Ec__DisplayClass13_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetItems_003Eb__2(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == iig.ItemID)
+			{
+				return !i.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CGetItems_003Eb__3(ItemsInItem a)
+		{
+			return a.ParentItemID == iig.ItemID;
+		}
+
+		internal bool _003CGetItems_003Eb__5(GroupsInItem a)
+		{
+			return a.ItemID == iig.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_2
+	{
+		public ItemsInItem a;
+
+		public _003C_003Ec__DisplayClass13_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetItems_003Eb__7(Item b)
+		{
+			return b.ItemID == a.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_0
+	{
+		public int itemID;
+
+		public List<string> tabs;
+
+		public List<Reason> reasons;
+
+		public HTTPHelper _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass15_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetOptions_003Eb__0(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == itemID)
+			{
+				return !i.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CGetOptions_003Eb__2(Reason x)
+		{
+			return tabs.Contains(x.Value.ToUpper());
+		}
+
+		internal bool _003CGetOptions_003Eb__6(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == itemID)
+			{
+				return !i.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal OptionObject _003CGetOptions_003Eb__9(usp_ItemOptionsResult a)
+		{
+			_003C_003Ec__DisplayClass15_1 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass15_1
+			{
+				a = a
+			};
+			return new OptionObject
+			{
+				ItemWithOptionID = CS_0024_003C_003E8__locals0.a.ItemWithOptionID,
+				ItemID = CS_0024_003C_003E8__locals0.a.ItemID,
+				Option_ItemID = CS_0024_003C_003E8__locals0.a.Option_ItemID,
+				ItemName = CS_0024_003C_003E8__locals0.a.ItemName,
+				SortOrder = CS_0024_003C_003E8__locals0.a.SortOrder,
+				OptionSortOrder = CS_0024_003C_003E8__locals0.a.OptionSortOrder,
+				SpecialPrice = CS_0024_003C_003E8__locals0.a.SpecialPrice,
+				AllowAdditional = CS_0024_003C_003E8__locals0.a.AllowAdditional,
+				MaxGroupOptions = CS_0024_003C_003E8__locals0.a.MaxGroupOptions,
+				MinGroupOptions = CS_0024_003C_003E8__locals0.a.MinGroupOptions,
+				Color = CS_0024_003C_003E8__locals0.a.Color,
+				Preselect = CS_0024_003C_003E8__locals0.a.Preselect,
+				ToBeDeleted = CS_0024_003C_003E8__locals0.a.ToBeDeleted,
+				GroupID = CS_0024_003C_003E8__locals0.a.GroupID,
+				GroupDependency = CS_0024_003C_003E8__locals0.a.GroupDependency,
+				OptionDependency = CS_0024_003C_003E8__locals0.a.OptionDependency,
+				Qty = CS_0024_003C_003E8__locals0.a.Qty,
+				Tab = CS_0024_003C_003E8__locals0.a.Tab,
+				TabSortOrder = (short)((!string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.a.Tab) && reasons.Where((Reason b) => b.Value == CS_0024_003C_003E8__locals0.a.Tab).FirstOrDefault() != null) ? reasons.Where((Reason b) => b.Value == CS_0024_003C_003E8__locals0.a.Tab).FirstOrDefault().SortOrder : 0),
+				GroupName = ((CS_0024_003C_003E8__locals0.a.GroupID <= 0 || _003C_003E4__this.list_0.Where((Group b) => b.GroupID == CS_0024_003C_003E8__locals0.a.GroupID).FirstOrDefault() == null) ? "** No Option Group **" : _003C_003E4__this.list_0.Where((Group b) => b.GroupID == CS_0024_003C_003E8__locals0.a.GroupID).FirstOrDefault().GroupName),
+				GroupSortOrder = (short)((CS_0024_003C_003E8__locals0.a.GroupID > 0 && _003C_003E4__this.list_0.Where((Group b) => b.GroupID == CS_0024_003C_003E8__locals0.a.GroupID).FirstOrDefault() != null) ? _003C_003E4__this.list_0.Where((Group b) => b.GroupID == CS_0024_003C_003E8__locals0.a.GroupID).FirstOrDefault().SortOrder : 0)
+			};
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_1
+	{
+		public usp_ItemOptionsResult a;
+
+		public _003C_003Ec__DisplayClass15_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetOptions_003Eb__10(Reason b)
+		{
+			return b.Value == a.Tab;
+		}
+
+		internal bool _003CGetOptions_003Eb__11(Reason b)
+		{
+			return b.Value == a.Tab;
+		}
+
+		internal bool _003CGetOptions_003Eb__12(Group b)
+		{
+			return b.GroupID == a.GroupID;
+		}
+
+		internal bool _003CGetOptions_003Eb__13(Group b)
+		{
+			return b.GroupID == a.GroupID;
+		}
+
+		internal bool _003CGetOptions_003Eb__14(Group b)
+		{
+			return b.GroupID == a.GroupID;
+		}
+
+		internal bool _003CGetOptions_003Eb__15(Group b)
+		{
+			return b.GroupID == a.GroupID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public List<int> intList;
+
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_1
+	{
+		public OrderedItem orItem;
+
+		public _003C_003Ec__DisplayClass17_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CSaveOrders_003Eb__5(Item x)
+		{
+			return x.ItemID.Equals(orItem.itemID);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_2
+	{
+		public Item itemFromDB;
+
+		public _003C_003Ec__DisplayClass17_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CSaveOrders_003Eb__6(ItemsInGroup x)
+		{
+			return x.ItemID.Value == itemFromDB.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_3
+	{
+		public string stationId;
+
+		public _003C_003Ec__DisplayClass17_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CSaveOrders_003Eb__7(Station a)
+		{
+			return a.StationID == Convert.ToInt32(stationId);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_0
+	{
+		public List<int> intList;
+
+		public _003C_003Ec__DisplayClass18_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCalculateOrderTax_003Eb__1(Item x)
+		{
+			return intList.Contains(x.ItemID);
+		}
+
+		internal bool _003CCalculateOrderTax_003Eb__2(ItemsInGroup x)
+		{
+			return intList.Contains(x.ItemID.Value);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_1
+	{
+		public OrderedItem orItem;
+
+		public _003C_003Ec__DisplayClass18_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCalculateOrderTax_003Eb__4(Item x)
+		{
+			return x.ItemID.Equals(orItem.itemID);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_2
+	{
+		public Item itemFromDB;
+
+		public _003C_003Ec__DisplayClass18_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCalculateOrderTax_003Eb__5(ItemsInGroup x)
+		{
+			return x.ItemID.Value == itemFromDB.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public List<int> intList;
+
+		public int selectedTag;
+
+		public Func<Item, bool> _003C_003E9__6;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculateItemsAndTotals_003Eb__1(Item x)
+		{
+			return intList.Contains(x.ItemID);
+		}
+
+		internal bool _003CRecalculateItemsAndTotals_003Eb__6(Item x)
+		{
+			return x.ItemID == selectedTag;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_1
+	{
+		public int itemID;
+
+		public _003C_003Ec__DisplayClass19_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculateItemsAndTotals_003Eb__5(Item x)
+		{
+			return x.ItemID.Equals(itemID);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_2
+	{
+		public Item taxIncludedItems;
+
+		public _003C_003Ec__DisplayClass19_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculateItemsAndTotals_003Eb__8(Item x)
+		{
+			return x.ItemID == taxIncludedItems.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass22_0
+	{
+		public string tablename;
+
+		public _003C_003Ec__DisplayClass22_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_0
+	{
+		public APIRequestObj data;
+
+		public _003C_003Ec__DisplayClass23_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetOrders_003Eb__6(Order x)
+		{
+			return x.Customer.ToUpper() == data.orderHeader.customer;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass29_0
+	{
+		public string param;
+
+		public _003C_003Ec__DisplayClass29_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetReasons_003Eb__0(Reason x)
+		{
+			return x.ReasonType == param;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_0
+	{
+		public string param2;
+
+		public _003C_003Ec__DisplayClass30_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintReceipt_003Eb__0(Terminal x)
+		{
+			return x.SystemName == param2.ToUpper();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass31_0
+	{
+		public string param2;
+
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass31_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CSendToPaymentTerminal_003Eb__0(Terminal x)
+		{
+			return x.SystemName == param2.ToUpper();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass34_0
+	{
+		public string ordernumber;
+
+		public _003C_003Ec__DisplayClass34_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessBillPayment_003Eb__0(Order x)
+		{
+			if (x.OrderNumber == ordernumber && !x.Paid)
+			{
+				return !x.Void;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass34_1
+	{
+		public string table;
+
+		public _003C_003Ec__DisplayClass34_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private List<Group> list_0;
@@ -751,7 +1320,8 @@ public class HTTPHelper
 				item.TaxRule = CS_0024_003C_003E8__locals2.itemFromDB.TaxRule;
 				item.TaxRuleID = CS_0024_003C_003E8__locals2.itemFromDB.TaxRuleID;
 				string text3 = (CS_0024_003C_003E8__locals1.orItem.itemName.Contains(" => INSTR: ") ? CS_0024_003C_003E8__locals1.orItem.itemName.ToString().Substring(CS_0024_003C_003E8__locals1.orItem.itemName.ToString().IndexOf(" => INSTR: ")) : "");
-				string text5 = (item.ItemName = ((!string.IsNullOrEmpty(text3)) ? CS_0024_003C_003E8__locals1.orItem.itemName.ToString().Replace(text3, "") : CS_0024_003C_003E8__locals1.orItem.itemName.ToString()));
+				string itemName = ((!string.IsNullOrEmpty(text3)) ? CS_0024_003C_003E8__locals1.orItem.itemName.ToString().Replace(text3, "") : CS_0024_003C_003E8__locals1.orItem.itemName.ToString());
+				item.ItemName = itemName;
 				item.ItemCost = CS_0024_003C_003E8__locals2.itemFromDB.ItemPrice;
 				decimal num = ((CS_0024_003C_003E8__locals1.orItem.itemQty > 0m) ? (CS_0024_003C_003E8__locals1.orItem.itemPrice / CS_0024_003C_003E8__locals1.orItem.itemQty) : CS_0024_003C_003E8__locals1.orItem.itemPrice);
 				item.ItemPrice = Convert.ToDecimal(num.ToString(), Thread.CurrentThread.CurrentCulture);
@@ -1481,7 +2051,8 @@ public class HTTPHelper
 				MaxDepth = 2000
 			});
 			string text = FirstData.FormatCloverReceipt("sale", paymentTransactionObject.rawdata, apirequestObj_0.orderHeader.orderNumber);
-			string text4 = (paymentTransactionObject.customerreceipt = (paymentTransactionObject.merchantreceipt = text));
+			string customerreceipt = (paymentTransactionObject.merchantreceipt = text);
+			paymentTransactionObject.customerreceipt = customerreceipt;
 			PaymentHelper.RecordPaymentTransactionLog(PaymentProviderNames.FirstData, PaymentTerminalModels.Clover.Flex, httpListenerContext_0.Request.RemoteEndPoint.Address.ToString(), httpListenerContext_0.Request.RemoteEndPoint.Port, "request made on clover app", "request", apirequestObj_0.orderHeader.orderNumber, "");
 			PaymentHelper.RecordPaymentTransactionLog(PaymentProviderNames.FirstData, PaymentTerminalModels.Clover.Flex, httpListenerContext_0.Request.RemoteEndPoint.Address.ToString(), httpListenerContext_0.Request.RemoteEndPoint.Port, paymentTransactionObject.rawdata, "response", apirequestObj_0.orderHeader.orderNumber, "");
 			UIPaymentHelper.RecordPaymentTransaction(paymentTransactionObject, apirequestObj_0.orderHeader.orderNumber, null);

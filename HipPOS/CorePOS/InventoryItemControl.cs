@@ -291,7 +291,9 @@ public class InventoryItemControl : UserControl
 		}
 		gclass6_0.Refresh(RefreshMode.OverwriteCurrentValues, item_0);
 		method_0();
-		string text2 = (txtQtyChange.Text = (txtQtyNew.Text = string.Empty));
+		RadTextBoxControl radTextBoxControl = txtQtyChange;
+		string text = (txtQtyNew.Text = string.Empty);
+		radTextBoxControl.Text = text;
 	}
 
 	private void method_1(object sender, EventArgs e)
@@ -386,7 +388,9 @@ public class InventoryItemControl : UserControl
 			else
 			{
 				new frmMessageBox(Resources.You_cannot_change_the_inventor, Resources.Invalid_Quantity_Entered).ShowDialog(this);
-				string text2 = (txtQtyNew.Text = (txtQtyChange.Text = string.Empty));
+				RadTextBoxControl radTextBoxControl = txtQtyNew;
+				string text = (txtQtyChange.Text = string.Empty);
+				radTextBoxControl.Text = text;
 			}
 			isSaveNeeded = true;
 		}

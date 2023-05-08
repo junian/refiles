@@ -15,6 +15,119 @@ namespace CorePOS;
 public class frmSelectDateOnSale : frmMasterForm
 {
 	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_0
+	{
+		public string dayShortString;
+
+		public _003C_003Ec__DisplayClass39_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CfrmSelectDateOnSale_Load_003Eb__0(RadToggleSwitch a)
+		{
+			return a.Name.ToUpper().Contains(dayShortString);
+		}
+
+		internal bool _003CfrmSelectDateOnSale_Load_003Eb__1(DateTimePicker a)
+		{
+			if (a.Name.ToUpper().Contains(dayShortString))
+			{
+				return a.Name.Contains("from");
+			}
+			return false;
+		}
+
+		internal bool _003CfrmSelectDateOnSale_Load_003Eb__2(DateTimePicker a)
+		{
+			if (a.Name.ToUpper().Contains(dayShortString))
+			{
+				return a.Name.Contains("to");
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass44_0
+	{
+		public string shortenedDayString;
+
+		public _003C_003Ec__DisplayClass44_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CGetDaySaleListString_003Eb__0(DateTimePicker a)
+		{
+			if (a.Name.Contains(shortenedDayString))
+			{
+				return a.Name.Contains("from");
+			}
+			return false;
+		}
+
+		internal bool _003CGetDaySaleListString_003Eb__1(DateTimePicker a)
+		{
+			if (a.Name.Contains(shortenedDayString))
+			{
+				return a.Name.Contains("to");
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass60_0
+	{
+		public string dayString;
+
+		public _003C_003Ec__DisplayClass60_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003Ccopy_button_003Eb__0(DateTimePicker a)
+		{
+			if (a.Name.Contains(dayString))
+			{
+				return a.Name.Contains("from");
+			}
+			return false;
+		}
+
+		internal bool _003Ccopy_button_003Eb__1(DateTimePicker a)
+		{
+			if (a.Name.Contains(dayString))
+			{
+				return a.Name.Contains("to");
+			}
+			return false;
+		}
+
+		internal bool _003Ccopy_button_003Eb__4(DateTimePicker a)
+		{
+			if (a.Name.Contains(dayString))
+			{
+				return a.Name.Contains("from");
+			}
+			return false;
+		}
+
+		internal bool _003Ccopy_button_003Eb__5(DateTimePicker a)
+		{
+			if (a.Name.Contains(dayString))
+			{
+				return a.Name.Contains("to");
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
 	private DateTime? nullable_0;
 
 	[CompilerGenerated]

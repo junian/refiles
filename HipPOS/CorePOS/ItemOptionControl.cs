@@ -18,6 +18,54 @@ namespace CorePOS;
 public class ItemOptionControl : UserControl
 {
 	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_0
+	{
+		public ItemOptionControl _003C_003E4__this;
+
+		public Option opt;
+
+		public string Tab;
+
+		public short groupID;
+
+		public _003C_003Ec__DisplayClass39_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass40_0
+	{
+		public ItemOptionControl _003C_003E4__this;
+
+		public List<Option> opt;
+
+		public string Tab;
+
+		public _003C_003Ec__DisplayClass40_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass41_0
+	{
+		public List<Option> opt;
+
+		public ItemOptionControl _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass41_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
 	private bool bool_0;
 
 	[CompilerGenerated]

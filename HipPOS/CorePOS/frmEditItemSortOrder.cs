@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -13,6 +14,32 @@ namespace CorePOS;
 
 public class frmEditItemSortOrder : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public short groupID;
+
+		public int itemID;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public KeyValuePair<string, string> temp;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private bool bool_0;
 
 	private bool bool_1;
@@ -136,7 +163,7 @@ public class frmEditItemSortOrder : frmMasterForm
 		_003C_003Ec__DisplayClass8_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass8_0();
 		CS_0024_003C_003E8__locals0.temp = (KeyValuePair<string, string>)ddlGroups.SelectedItem;
 		List<SortListItem> list = (from x in new GClass6().ItemsInGroups
-			where x.GroupID.Value == Convert.ToInt16(CS_0024_003C_003E8__locals0.temp.Key) && x.Item.Active == true && x.Item.isDeleted == false
+			where x.GroupID.Value == Convert.ToInt16(((KeyValuePair<string, string>)CS_0024_003C_003E8__locals0.temp).Key) && x.Item.Active == true && x.Item.isDeleted == false
 			select x into z
 			select new SortListItem
 			{

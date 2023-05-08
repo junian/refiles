@@ -79,10 +79,12 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 			ddlOnlineOrderProviders.SelectedValue = onlineOrderSettingObject.Provider;
 			if (onlineOrderSettingObject.Provider == OnlineOrderProviders.Hippos)
 			{
-				string text2 = (txtUrl.Text = (txtApiKey.Text = string.Empty));
 				RadTextBoxControl radTextBoxControl = txtUrl;
+				string text = (txtApiKey.Text = string.Empty);
+				radTextBoxControl.Text = text;
+				RadTextBoxControl radTextBoxControl2 = txtUrl;
 				txtApiKey.Enabled = false;
-				radTextBoxControl.Enabled = false;
+				radTextBoxControl2.Enabled = false;
 				ddlInterval.SelectedValue = onlineOrderSettingObject.PollInterval.ToString();
 				chkActive.Value = onlineOrderSettingObject.isActive;
 			}
@@ -130,12 +132,14 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 
 	private void ddlOnlineOrderProviders_SelectedIndexChanged(object sender, EventArgs e)
 	{
-		string text2 = (txtUrl.Text = (txtApiKey.Text = string.Empty));
+		RadTextBoxControl radTextBoxControl = txtUrl;
+		string text = (txtApiKey.Text = string.Empty);
+		radTextBoxControl.Text = text;
 		if (ddlOnlineOrderProviders.SelectedValue.ToString() == OnlineOrderProviders.Hippos)
 		{
-			RadTextBoxControl radTextBoxControl = txtUrl;
+			RadTextBoxControl radTextBoxControl2 = txtUrl;
 			txtApiKey.Enabled = false;
-			radTextBoxControl.Enabled = false;
+			radTextBoxControl2.Enabled = false;
 			Class19 @class = ddlInterval;
 			RadToggleSwitch radToggleSwitch = chkActive;
 			btnSave.Enabled = true;
@@ -144,15 +148,15 @@ public class frmOnlineOrderSyncSettings : frmMasterForm
 		}
 		else
 		{
-			RadTextBoxControl radTextBoxControl2 = txtUrl;
-			RadTextBoxControl radTextBoxControl3 = txtApiKey;
+			RadTextBoxControl radTextBoxControl3 = txtUrl;
+			RadTextBoxControl radTextBoxControl4 = txtApiKey;
 			Class19 class2 = ddlInterval;
 			RadToggleSwitch radToggleSwitch2 = chkActive;
 			btnSave.Enabled = true;
 			radToggleSwitch2.Enabled = true;
 			class2.Enabled = true;
+			radTextBoxControl4.Enabled = true;
 			radTextBoxControl3.Enabled = true;
-			radTextBoxControl2.Enabled = true;
 		}
 		OnlineOrderSettingObject onlineOrderSettingObject = SettingsHelper.OnlineOrderSettings.Get(ddlOnlineOrderProviders.SelectedValue.ToString());
 		if (onlineOrderSettingObject != null)

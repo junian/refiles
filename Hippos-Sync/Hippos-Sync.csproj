@@ -7,7 +7,7 @@
     <Prefer32Bit>True</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <LangVersion>Preview</LangVersion>
+    <LangVersion>11.0</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>

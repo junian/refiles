@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,70 @@ namespace CorePOS;
 
 public class frmAddEditItems : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass28_0
+	{
+		public frmAddEditItems _003C_003E4__this;
+
+		public Dictionary<string, string> items;
+
+		public bool search;
+
+		public string selectItem;
+
+		public _003C_003Ec__DisplayClass28_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal Dictionary<string, string> _003CpopulateAllItems_003Eb__0()
+		{
+			return _003C_003E4__this.method_5(items, search, selectItem);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_0
+	{
+		public Item currentNewItem;
+
+		public _003C_003Ec__DisplayClass33_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass36_0
+	{
+		public MaterialsInItem mat;
+
+		public _003C_003Ec__DisplayClass36_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CrecalculateIngredientCost_003Eb__2(Item x)
+		{
+			return x.ItemID == mat.ItemMaterialID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass84_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass84_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private int int_0;
 
 	private string string_0;
@@ -1174,7 +1239,7 @@ public class frmAddEditItems : frmMasterForm
 
 	private void btnChangeDateAndPercentOff_Click(object sender, EventArgs e)
 	{
-		Promotion promotion = new GClass6().Promotions.Where((Promotion i) => i.String_0 == int_0.ToString() && i.GetDiscountUOM == "@").FirstOrDefault();
+		Promotion promotion = new GClass6().Promotions.Where((Promotion i) => i.String_0 == ((int)int_0).ToString() && i.GetDiscountUOM == "@").FirstOrDefault();
 		DateTime? itemStartDate = null;
 		DateTime? itemEndDate = null;
 		string_3 = "";
@@ -1564,7 +1629,7 @@ public class frmAddEditItems : frmMasterForm
 		_003C_003Ec__DisplayClass84_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass84_0();
 		CS_0024_003C_003E8__locals0.itemId = int_1;
 		GClass6 gClass = new GClass6();
-		Promotion promotion = gClass.Promotions.Where((Promotion i) => i.String_0 == CS_0024_003C_003E8__locals0.itemId.ToString() && i.GetDiscountUOM == "@").FirstOrDefault();
+		Promotion promotion = gClass.Promotions.Where((Promotion i) => i.String_0 == ((int)CS_0024_003C_003E8__locals0.itemId).ToString() && i.GetDiscountUOM == "@").FirstOrDefault();
 		if (promotion != null)
 		{
 			promotion.GetDiscountAmount = decimal_2;

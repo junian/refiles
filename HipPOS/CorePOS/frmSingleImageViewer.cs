@@ -34,7 +34,8 @@ public class frmSingleImageViewer : frmMasterForm
 		{
 			Bitmap image = new Bitmap(Image.FromStream(stream), new Size(size.Width, size.Height));
 			imageContainer.Image = image;
-			Size size4 = (base.Size = (imageContainer.Size = new Size(size.Width, size.Height)));
+			Size size3 = (imageContainer.Size = new Size(size.Width, size.Height));
+			base.Size = size3;
 		}
 		CenterToScreen();
 	}

@@ -197,7 +197,7 @@ public class PatronItemControl : UserControl
 		byte[] base64BytesImage = ((itemImage == null || string.IsNullOrEmpty(itemImage.ImageAsText) || !(itemImage.ImageAsText != "NoImage")) ? MemoryLoadedObjects.blankImageByte : ((!string.IsNullOrEmpty(itemImage.ImageAsTextHighRes)) ? Convert.FromBase64String(itemImage.ImageAsTextHighRes) : Convert.FromBase64String(itemImage.ImageAsText)));
 		Size size = new Size((int)((double)base.Parent.Parent.Width * 0.6), (int)((double)base.Parent.Parent.Height * 0.6));
 		float num = size.Width / size.Height;
-		float num2 = 1.33333337f;
+		float num2 = 1.3333334f;
 		Size value = new Size(1, 1);
 		if (num < num2)
 		{

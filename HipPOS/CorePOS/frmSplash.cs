@@ -31,6 +31,239 @@ namespace CorePOS;
 
 public class frmSplash : Form
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_0
+	{
+		public ServiceController ctl;
+
+		public frmSplash _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass23_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRunSyncService_003Eb__1()
+		{
+			while (_003C_003E4__this.int_0 <= 2 && ctl.Status != ServiceControllerStatus.Running)
+			{
+				try
+				{
+					ctl.Start(new string[0]);
+					Thread.Sleep(2000);
+					ctl.Refresh();
+					if (ctl.Status == ServiceControllerStatus.Running)
+					{
+						if (_003C_003E4__this.bool_5)
+						{
+							NotificationMethods.sendCrashStringOnly(AppSettings.AppVersion, Environment.OSVersion.VersionString, "SYNC SERVICE RESTART SUCCESSFULLY");
+						}
+						_003C_003E4__this.int_0 = -1;
+						_003C_003E4__this.bool_5 = false;
+						break;
+					}
+					_003C_003E4__this.int_0++;
+					continue;
+				}
+				catch
+				{
+				}
+				break;
+			}
+			ctl.Refresh();
+			if (_003C_003E4__this.int_0 > 2 && ctl.Status != ServiceControllerStatus.Running)
+			{
+				NotificationMethods.sendCrashStringOnly(AppSettings.AppVersion, Environment.OSVersion.VersionString, "SYNC SERVICE START FAILED: Sync service failed to start after 3 attemptes. Hippos will attemp again in a few minutes.");
+				_003C_003E4__this.int_0 = -1;
+				_003C_003E4__this.bool_5 = true;
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass29_0
+	{
+		public object sender;
+
+		public _003C_003Ec__DisplayClass29_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_0
+	{
+		public int dayEndEmpId;
+
+		public DateTime start;
+
+		public DateTime end;
+
+		public List<string> onlineOrderNumbers;
+
+		public List<Order> all_onlineOrders;
+
+		public GClass6 context;
+
+		public _003C_003Ec__DisplayClass33_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnDayClosing_Click_003Eb__5(Order x)
+		{
+			if (!x.Paid && x.UserServed == (short)dayEndEmpId)
+			{
+				return x.DateCreated.Value > DateTime.Now.AddDays(-1.0);
+			}
+			return false;
+		}
+
+		internal void _003CbtnDayClosing_Click_003Eb__16()
+		{
+			using List<string>.Enumerator enumerator = onlineOrderNumbers.GetEnumerator();
+			while (enumerator.MoveNext())
+			{
+				_003C_003Ec__DisplayClass33_2 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass33_2
+				{
+					onlineOrderNumber = enumerator.Current
+				};
+				List<Order> list = all_onlineOrders.Where((Order x) => x.OrderNumber == CS_0024_003C_003E8__locals0.onlineOrderNumber).ToList();
+				if (SyncMethods.UpdateOrderStatusInOrdering(CS_0024_003C_003E8__locals0.onlineOrderNumber, "Completed", string.Empty, string.Empty, list.FirstOrDefault().Source).code != 200)
+				{
+					continue;
+				}
+				foreach (Order item in list)
+				{
+					item.DateCleared = DateTime.Now;
+				}
+				context.SubmitChanges();
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_1
+	{
+		public int empId;
+
+		public _003C_003Ec__DisplayClass33_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_2
+	{
+		public string onlineOrderNumber;
+
+		public _003C_003Ec__DisplayClass33_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnDayClosing_Click_003Eb__17(Order x)
+		{
+			return x.OrderNumber == onlineOrderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass68_0
+	{
+		public List<Guid> orderIDs;
+
+		public _003C_003Ec__DisplayClass68_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass68_1
+	{
+		public List<string> onlineOrderCustomerPhoneNumbers;
+
+		public _003C_003Ec__DisplayClass68_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass68_2
+	{
+		public OrderPostDataModel orderRes;
+
+		public _003C_003Ec__DisplayClass68_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessHipposOnlineOrderingOrders_003Eb__9(Order a)
+		{
+			return a.OrderId.ToString() == orderRes.customer_order_id;
+		}
+
+		internal bool _003CProcessHipposOnlineOrderingOrders_003Eb__10(Item a)
+		{
+			return a.ItemID == orderRes.item_id;
+		}
+
+		internal bool _003CProcessHipposOnlineOrderingOrders_003Eb__11(Customer x)
+		{
+			if (!(x.CustomerCell == orderRes.customer_phone))
+			{
+				return x.CustomerHome == orderRes.customer_phone;
+			}
+			return true;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass68_3
+	{
+		public Order newOrder;
+
+		public _003C_003Ec__DisplayClass68_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessHipposOnlineOrderingOrders_003Eb__12(OnlineOrderSourceObject a)
+		{
+			return a.OrderNumber == newOrder.OrderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass68_4
+	{
+		public OrderPostDataModel opdm;
+
+		public _003C_003Ec__DisplayClass68_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CProcessHipposOnlineOrderingOrders_003Eb__17(OrderPostDataModel a)
+		{
+			return a.order_number == opdm.order_number;
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private string string_0;

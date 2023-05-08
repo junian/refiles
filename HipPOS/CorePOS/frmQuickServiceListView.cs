@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -16,6 +17,50 @@ namespace CorePOS;
 
 public class frmQuickServiceListView : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CradListOrders_Click_003Eb__1(OrderResult a)
+		{
+			return a.OrderNumber == orderNumber;
+		}
+
+		internal bool _003CradListOrders_Click_003Eb__2(OrderResult a)
+		{
+			return a.OrderNumber == orderNumber;
+		}
+
+		internal bool _003CradListOrders_Click_003Eb__3(OrderResult a)
+		{
+			return a.OrderNumber == orderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass53_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass53_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdateQuickServiceTileViewOrder_003Eb__0(OrderResult a)
+		{
+			return a.OrderNumber == orderNumber;
+		}
+	}
+
 	private bool bool_0;
 
 	private List<OrderResult> list_2;
@@ -673,7 +718,8 @@ public class frmQuickServiceListView : frmMasterForm
 		Color color4 = (button5.BackColor = color2);
 		Color color6 = (button4.BackColor = color4);
 		Color color8 = (button3.BackColor = color6);
-		Color color11 = (button.BackColor = (button2.BackColor = color8));
+		Color backColor = (button2.BackColor = color8);
+		button.BackColor = backColor;
 		button_0.BackColor = Color.FromArgb(214, 142, 81);
 		method_4();
 	}

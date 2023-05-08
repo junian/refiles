@@ -8,7 +8,7 @@
     <Prefer32Bit>True</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <LangVersion>Preview</LangVersion>
+    <LangVersion>11.0</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
@@ -31,20 +31,20 @@
     <None Remove="CorePOS.Reports.Receipt.rdlc" />
     <None Remove="CorePOS.Reports.SalesReport.rdlc" />
     <None Remove="CorePOS.Reports.LargeLabelChit.rdlc" />
-    <EmbeddedResource Include="Hippos.exe.licenses" />
-    <EmbeddedResource Include="CorePOS.RebuildIndexScript.txt" />
-    <EmbeddedResource Include="CorePOS.ring-bell.wav" />
-    <EmbeddedResource Include="CorePOS.Reports.BlankChit6.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.DeliveryCommissions.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.BlankLabel.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.Blank.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.DayEndClosing.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.DeliveryDrivers.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.AppointmentList.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.RefundReceipt.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.Receipt.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.SalesReport.rdlc" />
-    <EmbeddedResource Include="CorePOS.Reports.LargeLabelChit.rdlc" />
+    <EmbeddedResource Include="Hippos.exe.licenses" LogicalName="Hippos.exe.licenses" />
+    <EmbeddedResource Include="CorePOS.RebuildIndexScript.txt" LogicalName="CorePOS.RebuildIndexScript.txt" />
+    <EmbeddedResource Include="CorePOS.ring-bell.wav" LogicalName="CorePOS.ring-bell.wav" />
+    <EmbeddedResource Include="CorePOS.Reports.BlankChit6.rdlc" LogicalName="CorePOS.Reports.BlankChit6.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.DeliveryCommissions.rdlc" LogicalName="CorePOS.Reports.DeliveryCommissions.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.BlankLabel.rdlc" LogicalName="CorePOS.Reports.BlankLabel.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.Blank.rdlc" LogicalName="CorePOS.Reports.Blank.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.DayEndClosing.rdlc" LogicalName="CorePOS.Reports.DayEndClosing.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.DeliveryDrivers.rdlc" LogicalName="CorePOS.Reports.DeliveryDrivers.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.AppointmentList.rdlc" LogicalName="CorePOS.Reports.AppointmentList.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.RefundReceipt.rdlc" LogicalName="CorePOS.Reports.RefundReceipt.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.Receipt.rdlc" LogicalName="CorePOS.Reports.Receipt.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.SalesReport.rdlc" LogicalName="CorePOS.Reports.SalesReport.rdlc" />
+    <EmbeddedResource Include="CorePOS.Reports.LargeLabelChit.rdlc" LogicalName="CorePOS.Reports.LargeLabelChit.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CorePOS.Business">

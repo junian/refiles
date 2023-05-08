@@ -13,6 +13,29 @@ namespace CorePOS.CommonForms;
 public class GForm0 : frmMasterForm
 {
 	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public int groupId;
+
+		public GForm0 _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadOptionsFromGroup_003Eb__0(usp_ItemOptionsResult x)
+		{
+			if (x.ItemID == _003C_003E4__this.int_1 && x.Tab.ToUpper() == _003C_003E4__this.string_4.ToUpper() && !x.ToBeDeleted)
+			{
+				return x.GroupID == groupId;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
 	private string string_0;
 
 	[CompilerGenerated]

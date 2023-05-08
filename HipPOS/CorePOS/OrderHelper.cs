@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Linq;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business;
@@ -17,6 +18,1240 @@ namespace CorePOS;
 
 public class OrderHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public PrintToStationOrderObject order;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public int numOfItems;
+
+		public OrderHelper _003C_003E4__this;
+
+		public string orderNumber;
+
+		public string orderType;
+
+		public string customerInfoName;
+
+		public string customer;
+
+		public string employeeName;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003COrderPrintMadeCheck_003Eb__0()
+		{
+			try
+			{
+				_003C_003Ec__DisplayClass1_1 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass1_1();
+				MemoryLoadedData.isChitPrinting = true;
+				MemoryLoadedObjects.chitPrintSelfCheck_running = true;
+				if (numOfItems < 3)
+				{
+					numOfItems = 3;
+				}
+				if (numOfItems * 100 < 5000)
+				{
+					Thread.Sleep(numOfItems * 100);
+				}
+				else
+				{
+					Thread.Sleep(5000);
+				}
+				GClass6 gClass = new GClass6();
+				bool flag = false;
+				CS_0024_003C_003E8__locals0.listOfStationIdWithAutoPrint = new List<string>();
+				foreach (Station all_station in MemoryLoadedObjects.all_stations)
+				{
+					if (!all_station.SendToStation && all_station.AutoPrint)
+					{
+						flag = true;
+						_ = all_station.PrinterName;
+						CS_0024_003C_003E8__locals0.listOfStationIdWithAutoPrint.Add(all_station.StationID.ToString());
+					}
+					if (all_station.EnablePrint)
+					{
+						bool isOrderMade = ((!all_station.SendToStation) ? true : false);
+						_003C_003E4__this.PrintToStation(orderNumber, orderType, (string.IsNullOrEmpty(customerInfoName) ? string.Empty : (customerInfoName + " - ")) + customer, all_station.StationID, employeeName, isOrderMade, reprint: false, printOnlyOne: false, customer);
+					}
+					else if (!all_station.EnablePrint && !all_station.SendToStation)
+					{
+						_003C_003E4__this.OrderMade(orderNumber, all_station.StationID);
+					}
+				}
+				if (flag)
+				{
+					List<Order> list = gClass.Orders.Where((Order a) => a.OrderNumber == orderNumber).ToList();
+					if (list.Where((Order a) => a.DateFilled.HasValue || a.OrderType == OrderTypes.DineIn).Count() == 0 && list.Where((Order a) => !a.Void && a.StationID != null && a.StationID.Split(',').Intersect(CS_0024_003C_003E8__locals0.listOfStationIdWithAutoPrint).Any() && (a.StationPrinted == null || !a.StationPrinted.Split(',').Intersect(CS_0024_003C_003E8__locals0.listOfStationIdWithAutoPrint).Any())).Count() > 0)
+					{
+						_003C_003Ec__DisplayClass1_2 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass1_2();
+						List<string> list2 = (from a in list
+							where !a.Void && a.StationID != null && a.StationID.Split(',').Intersect(CS_0024_003C_003E8__locals0.listOfStationIdWithAutoPrint).Any()
+							select a.StationID).ToList();
+						List<string> list3 = new List<string>();
+						foreach (string item2 in list2)
+						{
+							string[] array = item2.Split(',');
+							foreach (string item in array)
+							{
+								if (!list3.Contains(item))
+								{
+									list3.Add(item);
+								}
+							}
+						}
+						CS_0024_003C_003E8__locals1.stationOrdersWithAutoPrint = CS_0024_003C_003E8__locals0.listOfStationIdWithAutoPrint.Intersect(list3).ToList();
+						foreach (Station item3 in MemoryLoadedObjects.all_stations.Where((Station x) => CS_0024_003C_003E8__locals1.stationOrdersWithAutoPrint.Contains(x.StationID.ToString())).ToList())
+						{
+							if (!item3.OrderTypes.Split(',').Contains(orderType))
+							{
+								continue;
+							}
+							PrintHelper.GenerateReceipt(orderNumber, printPaymentTransaction: false, 1, null, tipFlag: false, email: false, item3.PrinterName);
+							foreach (Order item4 in list)
+							{
+								item4.StationPrinted += ((item4.StationPrinted == null) ? item3.StationID.ToString() : ("," + item3.StationID));
+							}
+						}
+						Helper.SubmitChangesWithCatch(gClass);
+					}
+				}
+				_003C_003E4__this.ChangePrintedInKitchenAndOrderStationMade(orderNumber, orderType);
+				MemoryLoadedObjects.chitPrintSelfCheck_running = false;
+				MemoryLoadedData.isChitPrinting = false;
+			}
+			catch (Exception ex)
+			{
+				MemoryLoadedData.isChitPrinting = false;
+				MemoryLoadedObjects.chitPrintSelfCheck_running = false;
+				SyncMethods.WriteToSyncLog("OrderPrintMadeCheck Error: Error printing chit " + orderNumber + ", Chit Print self check will catch this print. " + ex.Message + "\n" + ex.StackTrace, "OnlineOrderSync_");
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_1
+	{
+		public List<string> listOfStationIdWithAutoPrint;
+
+		public _003C_003Ec__DisplayClass1_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003COrderPrintMadeCheck_003Eb__3(Order a)
+		{
+			if (!a.Void && a.StationID != null && a.StationID.Split(',').Intersect(listOfStationIdWithAutoPrint).Any())
+			{
+				if (a.StationPrinted != null)
+				{
+					return !a.StationPrinted.Split(',').Intersect(listOfStationIdWithAutoPrint).Any();
+				}
+				return true;
+			}
+			return false;
+		}
+
+		internal bool _003COrderPrintMadeCheck_003Eb__4(Order a)
+		{
+			if (!a.Void && a.StationID != null)
+			{
+				return a.StationID.Split(',').Intersect(listOfStationIdWithAutoPrint).Any();
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_2
+	{
+		public List<string> stationOrdersWithAutoPrint;
+
+		public Func<Station, bool> _003C_003E9__6;
+
+		public _003C_003Ec__DisplayClass1_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003COrderPrintMadeCheck_003Eb__6(Station x)
+		{
+			return stationOrdersWithAutoPrint.Contains(x.StationID.ToString());
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public int numOfItems;
+
+		public OrderHelper _003C_003E4__this;
+
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003COrderMadeCheck_003Eb__0()
+		{
+			if (numOfItems < 3)
+			{
+				numOfItems = 3;
+			}
+			if (numOfItems * 100 < 5000)
+			{
+				Thread.Sleep(numOfItems * 100);
+			}
+			else
+			{
+				Thread.Sleep(5000);
+			}
+			new GClass6();
+			foreach (Station item in MemoryLoadedObjects.all_stations.Where((Station a) => a.SystemDefinedID != 1).ToList())
+			{
+				if (!item.EnablePrint && !item.SendToStation)
+				{
+					_003C_003E4__this.OrderMade(orderNumber, item.StationID);
+				}
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public int station;
+
+		public string orderType;
+
+		public string TableName;
+
+		public string orderNumber;
+
+		public bool reprint;
+
+		public OrderHelper _003C_003E4__this;
+
+		public Func<Order, bool> _003C_003E9__56;
+
+		public Func<Order, PrintToStationOrderObject> _003C_003E9__60;
+
+		public Func<PrintToStationOrderObject, bool> _003C_003E9__62;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintToStation_003Eb__0(Station a)
+		{
+			if (a.StationID == station && a.EnablePrint)
+			{
+				return a.OrderTypes.Split(',').Contains(orderType);
+			}
+			return false;
+		}
+
+		internal bool _003CPrintToStation_003Eb__2(Order a)
+		{
+			if (a.StationPrinted != null)
+			{
+				if (a.StationPrinted != null)
+				{
+					return !a.StationPrinted.Split(',').Contains(station.ToString());
+				}
+				return false;
+			}
+			return true;
+		}
+
+		internal bool _003CPrintToStation_003Eb__8(Order o)
+		{
+			return o.StationID.Split(',').Contains(station.ToString());
+		}
+
+		internal PrintToStationOrderObject _003CPrintToStation_003Eb__9(Order a)
+		{
+			return _003C_003E4__this.PutOrderToPrintToStationObject(a);
+		}
+
+		internal bool _003CPrintToStation_003Eb__56(Order a)
+		{
+			if (a.StationPrinted != null)
+			{
+				if (a.StationPrinted != null)
+				{
+					return !a.StationPrinted.Split(',').Contains(station.ToString());
+				}
+				return false;
+			}
+			return true;
+		}
+
+		internal PrintToStationOrderObject _003CPrintToStation_003Eb__60(Order a)
+		{
+			return _003C_003E4__this.PutOrderToPrintToStationObject(a);
+		}
+
+		internal bool _003CPrintToStation_003Eb__62(PrintToStationOrderObject o)
+		{
+			return o.StationID.Split(',').Contains(station.ToString());
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_1
+	{
+		public int thresholdTimeInMinutes;
+
+		public string printCancelledItems;
+
+		public List<Guid> orderIDs;
+
+		public _003C_003Ec__DisplayClass3_0 CS_0024_003C_003E8__locals1;
+
+		public Func<PrintToStationOrderObject, bool> _003C_003E9__65;
+
+		public _003C_003Ec__DisplayClass3_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintToStation_003Eb__7(Order o)
+		{
+			if (o.StationID != null && o.StationID != string.Empty && o.ItemID != -999 && (thresholdTimeInMinutes == 0 || !o.FulfillmentAt.HasValue || o.FulfillmentAt <= DateTime.Now.AddMinutes(thresholdTimeInMinutes)))
+			{
+				if (!CS_0024_003C_003E8__locals1.reprint && o.OrderOnHoldTime != 0 && o.OrderOnHoldTime != -1 && (o.OrderOnHoldTime == 0 || !(o.DateCreated.Value <= DateTime.Now.AddMinutes(-o.OrderOnHoldTime))))
+				{
+					if (!(o.OrderType == OrderTypes.DeliveryOnline) && !(o.OrderType == OrderTypes.PickUpOnline) && !(o.OrderType == OrderTypes.Delivery) && !(o.OrderType == OrderTypes.PickUp))
+					{
+						return o.OrderType == OrderTypes.Catering;
+					}
+					return true;
+				}
+				return true;
+			}
+			return false;
+		}
+
+		internal bool _003CPrintToStation_003Eb__65(PrintToStationOrderObject a)
+		{
+			if (a.StationPrinted != null && a.StationPrinted.Split(',').Contains(CS_0024_003C_003E8__locals1.station.ToString()))
+			{
+				return true;
+			}
+			if (printCancelledItems == "ON" && a.Void && a.PrintedInKitchen)
+			{
+				if (a.StationPrinted != null)
+				{
+					if (a.StationPrinted != null)
+					{
+						return !a.StationPrinted.Split(',').Contains(CS_0024_003C_003E8__locals1.station.ToString());
+					}
+					return false;
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_2
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass3_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_3
+	{
+		public PrintToStationOrderObject tempOrder;
+
+		public _003C_003Ec__DisplayClass3_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintToStation_003Eb__33(PrintToStationOrderObject a)
+		{
+			if (a.ItemID == tempOrder.ItemID && a.ComboID == tempOrder.ComboID && a.ShareItemID == tempOrder.OrderId)
+			{
+				return a.StationPrinted == tempOrder.StationPrinted;
+			}
+			return false;
+		}
+
+		internal bool _003CPrintToStation_003Eb__36(PrintToStationOrderObject a)
+		{
+			if (a != tempOrder && a.ItemID == tempOrder.ItemID && a.ComboID == tempOrder.ComboID && a.OrderNumber == tempOrder.OrderNumber && a.StationPrinted == tempOrder.StationPrinted)
+			{
+				return !a.ShareItemID.HasValue;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_4
+	{
+		public string itemCourse;
+
+		public _003C_003Ec__DisplayClass3_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintToStation_003Eb__45(PrintToStationOrderObject a)
+		{
+			if (a.ItemCourse == itemCourse)
+			{
+				return a.ItemIdentifier == "MainItem";
+			}
+			return false;
+		}
+
+		internal bool _003CPrintToStation_003Eb__47(PrintToStationOrderObject a)
+		{
+			if (a.ItemCourse == itemCourse)
+			{
+				return a.ItemIdentifier == "MainItem";
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_5
+	{
+		public short comboId;
+
+		public _003C_003Ec__DisplayClass3_4 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass3_5()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintToStation_003Eb__50(PrintToStationOrderObject a)
+		{
+			if (a.ComboID == comboId)
+			{
+				return a.ItemCourse == CS_0024_003C_003E8__locals2.itemCourse;
+			}
+			return false;
+		}
+
+		internal bool _003CPrintToStation_003Eb__52(PrintToStationOrderObject a)
+		{
+			return a.ComboID == comboId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_6
+	{
+		public PrintToStationOrderObject orderItem;
+
+		public _003C_003Ec__DisplayClass3_1 CS_0024_003C_003E8__locals3;
+
+		public Func<PrintToStationOrderObject, bool> _003C_003E9__77;
+
+		public _003C_003Ec__DisplayClass3_6()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintToStation_003Eb__59(Order o)
+		{
+			if (o.ComboID == orderItem.ComboID && o.StationID != null && o.StationID != string.Empty && o.ItemID > 0 && (CS_0024_003C_003E8__locals3.thresholdTimeInMinutes == 0 || !o.FulfillmentAt.HasValue || o.FulfillmentAt.Value <= DateTime.Now.AddMinutes(CS_0024_003C_003E8__locals3.thresholdTimeInMinutes)))
+			{
+				if (!CS_0024_003C_003E8__locals3.CS_0024_003C_003E8__locals1.reprint && o.OrderOnHoldTime != 0 && o.OrderOnHoldTime != -1 && (o.OrderOnHoldTime == 0 || !(o.DateCreated.Value.AddMinutes(o.OrderOnHoldTime) <= DateTime.Now)))
+				{
+					if (!(o.OrderType == OrderTypes.DeliveryOnline) && !(o.OrderType == OrderTypes.PickUpOnline) && !(o.OrderType == OrderTypes.PickUpCurbsideOnline) && !(o.OrderType == OrderTypes.DineInOnline) && !(o.OrderType == OrderTypes.Delivery))
+					{
+						return o.OrderType == OrderTypes.PickUp;
+					}
+					return true;
+				}
+				return true;
+			}
+			return false;
+		}
+
+		internal bool _003CPrintToStation_003Eb__71(PrintToStationOrderObject a)
+		{
+			return a.OrderNumber == orderItem.OrderNumber;
+		}
+
+		internal bool _003CPrintToStation_003Eb__77(PrintToStationOrderObject x)
+		{
+			return x.ItemID != orderItem.ItemID;
+		}
+
+		internal bool _003CPrintToStation_003Eb__83(Guid a)
+		{
+			return a != orderItem.OrderId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_7
+	{
+		public PrintToStationOrderObject tempOrder;
+
+		public _003C_003Ec__DisplayClass3_7()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintToStation_003Eb__72(PrintToStationOrderObject a)
+		{
+			if (a.ItemID == tempOrder.ItemID && a.ComboID == tempOrder.ComboID && a.StationPrinted == tempOrder.StationPrinted)
+			{
+				Guid? shareItemID = a.ShareItemID;
+				Guid orderId = tempOrder.OrderId;
+				if (!shareItemID.HasValue)
+				{
+					return false;
+				}
+				if (!shareItemID.HasValue)
+				{
+					return true;
+				}
+				return shareItemID.GetValueOrDefault() == orderId;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_8
+	{
+		public PrintToStationOrderObject ord;
+
+		public _003C_003Ec__DisplayClass3_8()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintToStation_003Eb__76(Order a)
+		{
+			return a.OrderId == ord.OrderId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_9
+	{
+		public Order orderToChange;
+
+		public _003C_003Ec__DisplayClass3_9()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPrintToStation_003Eb__82(Station a)
+		{
+			if (orderToChange.StationID.Split(',').Contains(a.StationID.ToString()))
+			{
+				return a.SendToStation;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_10
+	{
+		public string stationToMade;
+
+		public _003C_003Ec__DisplayClass3_10()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CPrintToStation_003Eb__85(Order a)
+		{
+			a.StationMade = stationToMade;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_11
+	{
+		public List<Guid> orderToChangeListUnder;
+
+		public _003C_003Ec__DisplayClass3_11()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public int station;
+
+		public Func<Order, bool> _003C_003E9__0;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003COrderMade_003Eb__0(Order o)
+		{
+			if (o.StationID.Contains(station.ToString()))
+			{
+				return !o.DateFilled.HasValue;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_1
+	{
+		public Order orderItem;
+
+		public Func<Order, bool> _003C_003E9__2;
+
+		public _003C_003Ec__DisplayClass8_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003COrderMade_003Eb__2(Order o)
+		{
+			if (o.ComboID == orderItem.ComboID && o.OrderNumber == orderItem.OrderNumber)
+			{
+				return !o.DateFilled.HasValue;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public string _OrderNumber;
+
+		public OrderHelper _003C_003E4__this;
+
+		public Form frm;
+
+		public int tries;
+
+		public string orderType;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRecordBatchId_003Eb__0()
+		{
+			try
+			{
+				GClass6 gClass = new GClass6();
+				List<Order> list = null;
+				if (_OrderNumber != null)
+				{
+					list = gClass.Orders.Where((Order o) => o.OrderNumber == _OrderNumber && o.Paid == true && o.Void == false && o.DateCleared == null && (o.OrderType == OrderTypes.DeliveryOnline || o.OrderType == OrderTypes.PickUpOnline || o.OrderType == OrderTypes.PickUpCurbsideOnline || o.OrderType == OrderTypes.DineInOnline)).ToList();
+				}
+				if (list.Count() <= 0)
+				{
+					return;
+				}
+				int num = 0;
+				using (List<Order>.Enumerator enumerator = list.GetEnumerator())
+				{
+					while (enumerator.MoveNext())
+					{
+						_003C_003Ec__DisplayClass9_1 _003C_003Ec__DisplayClass9_ = new _003C_003Ec__DisplayClass9_1
+						{
+							order = enumerator.Current
+						};
+						Item item = gClass.Items.Where((Item a) => a.ItemID == _003C_003Ec__DisplayClass9_.order.ItemID).FirstOrDefault();
+						if (item != null && item.TrackExpiryDate && (!_003C_003Ec__DisplayClass9_.order.InventoryBatchId.HasValue || (_003C_003Ec__DisplayClass9_.order.InventoryBatchId.HasValue && _003C_003Ec__DisplayClass9_.order.InventoryBatchId.Value == 0)))
+						{
+							int value = _003C_003E4__this.CheckAndSelectBatchId(item.ItemID);
+							_003C_003Ec__DisplayClass9_.order.InventoryBatchId = value;
+							num++;
+						}
+					}
+				}
+				if (num > 0)
+				{
+					Helper.SubmitChangesWithCatch(gClass);
+				}
+				if (frm != null)
+				{
+					frm.Invoke((Action)delegate
+					{
+						MiscHelper.MakeOrderIsModified(frm, _OrderNumber);
+					});
+				}
+			}
+			catch (Exception ex)
+			{
+				LogHelper.WriteLog(ex.Message + " " + ex.StackTrace, LogTypes.error_log);
+				tries++;
+				if (tries <= 3)
+				{
+					_003C_003E4__this.RecordBatchId(_OrderNumber, orderType, frm, tries);
+				}
+			}
+		}
+
+		internal void _003CRecordBatchId_003Eb__2()
+		{
+			MiscHelper.MakeOrderIsModified(frm, _OrderNumber);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_1
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass9_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public string _OrderNumber;
+
+		public string orderType;
+
+		public Form frm;
+
+		public int tries;
+
+		public OrderHelper _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CClearOrder_003Eb__0()
+		{
+			try
+			{
+				GClass6 gClass = new GClass6();
+				if (_OrderNumber == null)
+				{
+					return;
+				}
+				List<Order> list = gClass.Orders.Where((Order o) => o.OrderNumber == _OrderNumber && o.Paid == true && o.Void == false && o.DateCleared == null).ToList();
+				string text = null;
+				foreach (Order item in list)
+				{
+					item.Synced = false;
+					item.DateCleared = DateTime.Now;
+					if (text == null)
+					{
+						text = item.Source;
+					}
+				}
+				Helper.SubmitChangesWithCatch(gClass);
+				if (orderType == OrderTypes.DeliveryOnline || orderType == OrderTypes.PickUpOnline || orderType == OrderTypes.PickUpCurbsideOnline || orderType == OrderTypes.DineInOnline)
+				{
+					_ = SyncMethods.UpdateOrderStatusInOrdering(_OrderNumber, "Completed", string.Empty, string.Empty, text).code;
+				}
+				if (frm != null)
+				{
+					frm.Invoke((Action)delegate
+					{
+						MiscHelper.MakeOrderIsModified(frm, _OrderNumber);
+					});
+				}
+			}
+			catch (Exception ex)
+			{
+				LogHelper.WriteLog(ex.Message + " " + ex.StackTrace, LogTypes.error_log);
+				tries++;
+				if (tries <= 3)
+				{
+					_003C_003E4__this.ClearOrder(_OrderNumber, orderType, frm, tries);
+				}
+			}
+		}
+
+		internal void _003CClearOrder_003Eb__2()
+		{
+			MiscHelper.MakeOrderIsModified(frm, _OrderNumber);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public int itemId;
+
+		public Item item;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass13_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public int batchId;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public string dayOfWeek;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_0
+	{
+		public List<GlobalOrderHistoryObjects.Order> orderToIterate;
+
+		public List<Item> items;
+
+		public int mainItemId;
+
+		public int childMainItemId;
+
+		public _003C_003Ec__DisplayClass18_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__7(Item x)
+		{
+			if (!orderToIterate.Select((GlobalOrderHistoryObjects.Order y) => y.item_barcode).Contains(x.Barcode))
+			{
+				return orderToIterate.Select((GlobalOrderHistoryObjects.Order y) => y.item_id).Contains(x.ItemID);
+			}
+			return true;
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__8(ItemsInGroup x)
+		{
+			return items.Select((Item y) => y.ItemID).Contains(x.ItemID.Value);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_1
+	{
+		public short toCorrectComboId;
+
+		public Func<GlobalOrderHistoryObjects.Order, bool> _003C_003E9__11;
+
+		public _003C_003Ec__DisplayClass18_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__11(GlobalOrderHistoryObjects.Order a)
+		{
+			return a.combo_id == toCorrectComboId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_2
+	{
+		public GlobalOrderHistoryObjects.Order order;
+
+		public _003C_003Ec__DisplayClass18_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass18_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__18(Item x)
+		{
+			return x.Barcode == order.item_barcode;
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__19(Item x)
+		{
+			if (x.Barcode == order.item_barcode)
+			{
+				return x.ItemID == order.item_id;
+			}
+			return false;
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__20(Item x)
+		{
+			return x.Barcode == order.item_barcode;
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__16(Item x)
+		{
+			return x.ItemID == order.item_id;
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__23(usp_ItemOptionsResult a)
+		{
+			if (a.GroupName == order.option_group_name)
+			{
+				return a.Tab.ToUpper() == order.option_tab.ToUpper().Trim();
+			}
+			return false;
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__24(usp_ItemOptionsResult a)
+		{
+			return a.Tab.ToUpper() == order.option_tab.ToUpper().Trim();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__25(usp_ItemOptionsResult a)
+		{
+			return a.Tab.ToUpper() == order.option_tab.ToUpper().Trim();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_3
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass18_2 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass18_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__17(ItemsInGroup x)
+		{
+			return x.ItemID == item.ItemID;
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__21(usp_ItemOptionsResult a)
+		{
+			if (a.ItemID == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.mainItemId && a.Option_ItemID == item.ItemID)
+			{
+				return !a.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__22(usp_ItemOptionsResult a)
+		{
+			if (a.ItemID == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.childMainItemId && a.Option_ItemID == item.ItemID)
+			{
+				return !a.ToBeDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_4
+	{
+		public usp_ItemOptionsResult optionData;
+
+		public _003C_003Ec__DisplayClass18_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__26(Reason a)
+		{
+			return a.Value.ToUpper() == optionData.Tab.ToUpper();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_5
+	{
+		public global::_003C_003Ef__AnonymousType10<global::_003C_003Ef__AnonymousType9<string, string>, int?> dataGroup;
+
+		public _003C_003Ec__DisplayClass18_5()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__29(usp_ItemOptionsResult a)
+		{
+			if (a.ItemWithOptionID == dataGroup.ItemOptionId)
+			{
+				return !a.ToBeDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_6
+	{
+		public usp_ItemOptionsResult optionData;
+
+		public _003C_003Ec__DisplayClass18_6()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__30(usp_ItemOptionsResult x)
+		{
+			if (x.Tab.ToUpper() == optionData.Tab.ToUpper() && x.GroupID == optionData.GroupID)
+			{
+				return x.ItemID == optionData.ItemID;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_7
+	{
+		public List<int> itemWithOptionIDs;
+
+		public Func<Order, bool> _003C_003E9__32;
+
+		public _003C_003Ec__DisplayClass18_7()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__32(Order a)
+		{
+			if (a.ItemSellPrice > 0m)
+			{
+				return itemWithOptionIDs.Contains(a.ItemOptionId.Value);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_8
+	{
+		public Order o;
+
+		public _003C_003Ec__DisplayClass18_8()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__34(Order a)
+		{
+			return a.OrderId == o.OrderId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_9
+	{
+		public GroupsInItem groupInItem;
+
+		public _003C_003Ec__DisplayClass18_9()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_10
+	{
+		public global::_003C_003Ef__AnonymousType10<global::_003C_003Ef__AnonymousType9<string, string>, int?> dataGroup;
+
+		public _003C_003Ec__DisplayClass18_10()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__41(usp_ItemOptionsResult a)
+		{
+			if (a.ItemWithOptionID == dataGroup.ItemOptionId)
+			{
+				return !a.ToBeDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_11
+	{
+		public usp_ItemOptionsResult optionData;
+
+		public _003C_003Ec__DisplayClass18_11()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__42(usp_ItemOptionsResult x)
+		{
+			if (x.Tab.ToUpper() == optionData.Tab.ToUpper() && x.GroupID == optionData.GroupID)
+			{
+				return x.ItemID == optionData.ItemID;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_12
+	{
+		public List<int> itemWithOptionIDs;
+
+		public _003C_003Ec__DisplayClass18_12()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__44(Order a)
+		{
+			if (a.ItemSellPrice > 0m)
+			{
+				return itemWithOptionIDs.Contains(a.ItemOptionId.Value);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_13
+	{
+		public Order o;
+
+		public _003C_003Ec__DisplayClass18_13()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDuplicateOrder_003Eb__46(Order a)
+		{
+			return a.OrderId == o.OrderId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public string customer;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass21_0
+	{
+		public string sync_station;
+
+		public _003C_003Ec__DisplayClass21_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	public List<string> PrintAllHoldItemsPastTimeIndex()
 	{
 		GClass6 gClass = new GClass6();
@@ -68,13 +1303,11 @@ public class OrderHelper
 		_003C_003Ec__DisplayClass1_.customerInfoName = customerInfoName;
 		_003C_003Ec__DisplayClass1_.customer = customer;
 		_003C_003Ec__DisplayClass1_.employeeName = employeeName;
-		_003C_003Ec__DisplayClass1_1 CS_0024_003C_003E8__locals0;
-		_003C_003Ec__DisplayClass1_2 CS_0024_003C_003E8__locals1;
 		new Thread((ThreadStart)delegate
 		{
 			try
 			{
-				CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass1_1();
+				_003C_003Ec__DisplayClass1_1 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass1_1();
 				MemoryLoadedData.isChitPrinting = true;
 				MemoryLoadedObjects.chitPrintSelfCheck_running = true;
 				if (_003C_003Ec__DisplayClass1_.numOfItems < 3)
@@ -115,7 +1348,7 @@ public class OrderHelper
 					List<Order> list = gClass.Orders.Where((Order a) => a.OrderNumber == _003C_003Ec__DisplayClass1_.orderNumber).ToList();
 					if (list.Where((Order a) => a.DateFilled.HasValue || a.OrderType == OrderTypes.DineIn).Count() == 0 && list.Where((Order a) => !a.Void && a.StationID != null && a.StationID.Split(',').Intersect(CS_0024_003C_003E8__locals0.listOfStationIdWithAutoPrint).Any() && (a.StationPrinted == null || !a.StationPrinted.Split(',').Intersect(CS_0024_003C_003E8__locals0.listOfStationIdWithAutoPrint).Any())).Count() > 0)
 					{
-						CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass1_2();
+						_003C_003Ec__DisplayClass1_2 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass1_2();
 						List<string> list2 = (from a in list
 							where !a.Void && a.StationID != null && a.StationID.Split(',').Intersect(CS_0024_003C_003E8__locals0.listOfStationIdWithAutoPrint).Any()
 							select a.StationID).ToList();

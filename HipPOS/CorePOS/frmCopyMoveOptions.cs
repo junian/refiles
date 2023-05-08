@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -12,6 +13,138 @@ namespace CorePOS;
 
 public class frmCopyMoveOptions : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass8_0
+	{
+		public int leftItemID;
+
+		public int rightItemID;
+
+		public List<string> selectedGroupsAndTabsByList;
+
+		public _003C_003Ec__DisplayClass8_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnMoveCopyClick_003Eb__3(ItemsWithOption a)
+		{
+			return selectedGroupsAndTabsByList.Contains(a.GroupID + "-" + a.Tab);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public int leftItemID;
+
+		public List<string> selectedGroupsAndTabsByList;
+
+		public int rightItemID;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcopyOptions_003Eb__1(ItemsWithOption a)
+		{
+			return selectedGroupsAndTabsByList.Contains(a.GroupID + "-" + a.Tab);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_1
+	{
+		public ItemsWithOption iol;
+
+		public _003C_003Ec__DisplayClass9_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass9_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public int itemID;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_1
+	{
+		public string itemOptionID;
+
+		public _003C_003Ec__DisplayClass10_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass10_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_2
+	{
+		public ItemsWithOption iwo;
+
+		public _003C_003Ec__DisplayClass10_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass10_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public int leftItemID;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public int leftItemID;
+
+		public _003C_003Ec__DisplayClass13_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_1
+	{
+		public IGrouping<global::_003C_003Ef__AnonymousType0<short, string>, ItemsWithOption> a;
+
+		public _003C_003Ec__DisplayClass13_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private IContainer dZjntFigOj;
 
 	private Label label9;

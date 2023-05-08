@@ -12,6 +12,23 @@ namespace CorePOS;
 
 public class TransparentLabel : Label
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass21_0
+	{
+		public Bitmap bmp;
+
+		public _003C_003Ec__DisplayClass21_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003COnPaint_003Eb__3(Control c)
+		{
+			c.DrawToBitmap(bmp, c.Bounds);
+		}
+	}
+
 	public int angle;
 
 	public int xSize;

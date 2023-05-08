@@ -244,7 +244,8 @@ public class frmItemSelector : frmMasterForm
 			Button button = btnRefreshData;
 			Button button2 = btnSelect;
 			int num8 = (btnCancel.Width = num6);
-			int num11 = (button.Width = (button2.Width = num8));
+			int num10 = (button2.Width = num8);
+			button.Width = num10;
 			btnRefreshData.Visible = true;
 			btnRefreshData.Location = new Point(btnRefreshData.Location.X, btnSelect.Location.Y);
 			btnSelect.Location = new Point(btnRefreshData.Location.X + num6 + 1, btnSelect.Location.Y);

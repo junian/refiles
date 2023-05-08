@@ -77,7 +77,8 @@ public class PersistentNotification : Label
 		if (SettingsHelper.GetSettingValueByKey("online_order_notification_all") == "ON" && CompanyHelper.CheckIfCompanyHasUnconfirmedOnlineOrder())
 		{
 			Rectangle bounds = AppSettings.MainScreen.Bounds;
-			string text2 = (Text = "ONLINE ORDERS RECEIVED");
+			string text = "ONLINE ORDERS RECEIVED";
+			Text = text;
 			base.Location = new Point(bounds.Width / 2 - base.Width / 2, 20);
 			base.Visible = true;
 			BringToFront();

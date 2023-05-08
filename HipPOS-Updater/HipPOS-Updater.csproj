@@ -8,7 +8,7 @@
     <Prefer32Bit>True</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <LangVersion>Preview</LangVersion>
+    <LangVersion>11.0</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
@@ -18,7 +18,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Hippos-Updater.exe.licenses" />
-    <EmbeddedResource Include="Hippos-Updater.exe.licenses" />
+    <EmbeddedResource Include="Hippos-Updater.exe.licenses" LogicalName="Hippos-Updater.exe.licenses" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ServiceProcess" />

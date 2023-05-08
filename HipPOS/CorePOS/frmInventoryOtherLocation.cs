@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using CorePOS.Business.Objects;
@@ -11,6 +12,18 @@ namespace CorePOS;
 
 public class frmInventoryOtherLocation : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public int ItemId;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private IContainer icontainer_1;
 
 	private Label label9;

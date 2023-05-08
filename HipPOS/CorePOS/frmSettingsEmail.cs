@@ -251,7 +251,8 @@ public class frmSettingsEmail : frmMasterForm
 		RadTextBoxControl radTextBoxControl3 = txtPassword;
 		string text = (txtPort.Text = string.Empty);
 		string text3 = (radTextBoxControl3.Text = text);
-		string text6 = (radTextBoxControl.Text = (radTextBoxControl2.Text = text3));
+		string text5 = (radTextBoxControl2.Text = text3);
+		radTextBoxControl.Text = text5;
 	}
 
 	protected override void Dispose(bool disposing)

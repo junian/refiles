@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business;
@@ -21,6 +22,140 @@ namespace CorePOS;
 
 public class frmRefund : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public frmRefund _003C_003E4__this;
+
+		public IQueryable<Order> orders;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_1
+	{
+		public ListViewItem item;
+
+		public _003C_003Ec__DisplayClass11_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_2
+	{
+		public TransactionReceipt treceipt;
+
+		public _003C_003Ec__DisplayClass11_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass11_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public string refundNumber;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_1
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass12_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CSearchForOrder_003Eb__2(Item i)
+		{
+			return i.ItemID == order.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass22_0
+	{
+		public ListViewItem eachItem;
+
+		public _003C_003Ec__DisplayClass22_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass22_1
+	{
+		public ListViewItem eachItem;
+
+		public _003C_003Ec__DisplayClass22_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CMovePackage_003Eb__1(Item i)
+		{
+			return i.ItemName == eachItem.SubItems[1].Text;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_0
+	{
+		public ListViewItem view;
+
+		public _003C_003Ec__DisplayClass23_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_1
+	{
+		public ListViewItem eachItem;
+
+		public _003C_003Ec__DisplayClass23_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private DataManager dataManager_0;

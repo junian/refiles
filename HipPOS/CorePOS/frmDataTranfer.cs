@@ -61,7 +61,8 @@ public class frmDataTranfer : frmMasterForm
 				num = text.IndexOf(";");
 				if (num != -1)
 				{
-					text = (string_0 = text.Substring(0, num));
+					text = text.Substring(0, num);
+					string_0 = text;
 				}
 			}
 			else

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Timers;
 using CorePOS.Business.Enums;
@@ -22,6 +23,1049 @@ namespace CorePOS.Business.Methods;
 
 public class SyncMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass61_0
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass61_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass64_0
+	{
+		public OrderResponseModel res;
+
+		public _003C_003Ec__DisplayClass64_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass67_0
+	{
+		public OnlineOrderSettingObject ooSetting;
+
+		public _003C_003Ec__DisplayClass67_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSyncOnlineOrders_003Eb__0(KeyValuePair<string, DateTime> x)
+		{
+			return x.Key == ooSetting.Provider;
+		}
+
+		internal bool _003CSyncOnlineOrders_003Eb__1(KeyValuePair<string, DateTime> x)
+		{
+			return x.Key == ooSetting.Provider;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass68_0
+	{
+		public OnlineOrderQueuePostDataModel queue;
+
+		public _003C_003Ec__DisplayClass68_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass69_0
+	{
+		public Refund refund;
+
+		public _003C_003Ec__DisplayClass69_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass69_1
+	{
+		public Refund r;
+
+		public _003C_003Ec__DisplayClass69_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass70_0
+	{
+		public RefundPostDataModel refundRes;
+
+		public _003C_003Ec__DisplayClass70_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass71_0
+	{
+		public int ItemId;
+
+		public _003C_003Ec__DisplayClass71_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass71_1
+	{
+		public ItemInGroupData eachGroupData;
+
+		public _003C_003Ec__DisplayClass71_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass71_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass72_0
+	{
+		public int CloudSyncItemId;
+
+		public _003C_003Ec__DisplayClass72_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass73_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass73_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass73_1
+	{
+		public string SupplierName;
+
+		public Supplier sup;
+
+		public _003C_003Ec__DisplayClass73_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass73_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass74_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass74_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass74_1
+	{
+		public string CustomFieldName;
+
+		public _003C_003Ec__DisplayClass74_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdateItemCustomField_003Eb__2(ItemCustomFieldValue a)
+		{
+			return a.CustomField.Value == CustomFieldName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass75_0
+	{
+		public int itemId;
+
+		public List<MaterialInItemData> MaterialData;
+
+		public _003C_003Ec__DisplayClass75_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass75_1
+	{
+		public MaterialInItemData matData;
+
+		public _003C_003Ec__DisplayClass75_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdateMaterialsInItem_003Eb__4(Item a)
+		{
+			return a.ItemName.ToUpper() == matData.MaterialName.ToUpper();
+		}
+
+		internal bool _003CUpdateMaterialsInItem_003Eb__6(UOM a)
+		{
+			return a.Name.ToUpper() == matData.UOM.ToUpper();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass75_2
+	{
+		public Item materialItem;
+
+		public _003C_003Ec__DisplayClass75_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdateMaterialsInItem_003Eb__5(MaterialsInItem a)
+		{
+			return a.ItemMaterialID == materialItem.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass76_0
+	{
+		public List<long> ListOfCloudsyncIdsToConfirm;
+
+		public _003C_003Ec__DisplayClass76_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass76_1
+	{
+		public ItemsPostDataModel itemRes;
+
+		public _003C_003Ec__DisplayClass76_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass76_2
+	{
+		public Item existingItem;
+
+		public _003C_003Ec__DisplayClass76_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSyncItemFromCloudSync_003Eb__6(CheckInventoryCountItemModel a)
+		{
+			return a.ItemID == existingItem.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass76_3
+	{
+		public ItemsPostDataModel itemRes;
+
+		public _003C_003Ec__DisplayClass76_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass76_4
+	{
+		public List<long> cloudItemIDs;
+
+		public _003C_003Ec__DisplayClass76_4()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass77_0
+	{
+		public List<int> cloudsyncIdsToSync;
+
+		public _003C_003Ec__DisplayClass77_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass77_1
+	{
+		public GroupsPostDataModel groupRes;
+
+		public _003C_003Ec__DisplayClass77_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass77_2
+	{
+		public Group existingItem;
+
+		public _003C_003Ec__DisplayClass77_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass77_3
+	{
+		public GroupsPostDataModel groupRes;
+
+		public _003C_003Ec__DisplayClass77_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass77_4
+	{
+		public Ids group;
+
+		public _003C_003Ec__DisplayClass77_4()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass79_0
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass79_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSyncItems_003Eb__7(CheckInventoryCountItemModel a)
+		{
+			return a.ItemID == item.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass80_0
+	{
+		public ImageItemsPostModel iImage;
+
+		public _003C_003Ec__DisplayClass80_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass81_0
+	{
+		public InventoryAuditsResponseModel response;
+
+		public System.Timers.Timer InventorySyncTimer;
+
+		public _003C_003Ec__DisplayClass81_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal void _003CSyncInventoryAudits_003Eb__2()
+		{
+			try
+			{
+				new InventoryMethods().ReconcileInventoryAuditLogs();
+			}
+			catch (Exception errorResponse)
+			{
+				FailSync("CloudSync Failed: Failed on reconcile inventory audit logs.", InventorySyncTimer, errorResponse);
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass81_1
+	{
+		public List<long> existing_cs_ids;
+
+		public List<int> existing_pos_ids;
+
+		public List<long> cloudIDs;
+
+		public Func<InventoryAuditsPostDataModel, bool> _003C_003E9__11;
+
+		public _003C_003Ec__DisplayClass81_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSyncInventoryAudits_003Eb__11(InventoryAuditsPostDataModel x)
+		{
+			if (!existing_cs_ids.Contains(x.CloudSyncAuditId))
+			{
+				return !existing_pos_ids.Contains(x.InventoryAuditId);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass81_2
+	{
+		public List<long> cloud_ids;
+
+		public List<int> pos_ids;
+
+		public _003C_003Ec__DisplayClass81_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass81_3
+	{
+		public InventoryAuditsPostDataModel log;
+
+		public _003C_003Ec__DisplayClass81_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSyncInventoryAudits_003Eb__12(Item i)
+		{
+			return i.ItemID == log.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass81_4
+	{
+		public List<int> itemsInItemToSyncParentIds;
+
+		public _003C_003Ec__DisplayClass81_4()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass81_5
+	{
+		public InventoryAuditsPostDataModel log;
+
+		public _003C_003Ec__DisplayClass81_5()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass81_6
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass81_6()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass82_0
+	{
+		public List<Ids> ids;
+
+		public _003C_003Ec__DisplayClass82_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass82_1
+	{
+		public InventoryBatchPostDataModel bl;
+
+		public _003C_003Ec__DisplayClass82_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass83_0
+	{
+		public CheckInventoryCountItemModel invItem;
+
+		public _003C_003Ec__DisplayClass83_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass83_1
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass83_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass85_0
+	{
+		public TaxRulePostDataModel taxRes;
+
+		public _003C_003Ec__DisplayClass85_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass85_1
+	{
+		public List<int> posIds;
+
+		public _003C_003Ec__DisplayClass85_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass85_2
+	{
+		public TaxPostDataModel taxRes;
+
+		public _003C_003Ec__DisplayClass85_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass85_3
+	{
+		public List<int> posIds;
+
+		public _003C_003Ec__DisplayClass85_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass85_4
+	{
+		public TaxRuleOperationPostDataModel taxRes;
+
+		public _003C_003Ec__DisplayClass85_4()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass85_5
+	{
+		public List<int> posIds;
+
+		public _003C_003Ec__DisplayClass85_5()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass87_0
+	{
+		public SupplierPostDataModel supRes;
+
+		public _003C_003Ec__DisplayClass87_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass90_0
+	{
+		public ReasonsDataModel idmRes;
+
+		public _003C_003Ec__DisplayClass90_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass90_1
+	{
+		public Reason reasonToDelete;
+
+		public _003C_003Ec__DisplayClass90_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass92_0
+	{
+		public OptionsDataModel optionRes;
+
+		public _003C_003Ec__DisplayClass92_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSyncOptionsFromCloudsync_003Eb__0(Option i)
+		{
+			return i.OptionID == optionRes.OptionID;
+		}
+
+		internal bool _003CSyncOptionsFromCloudsync_003Eb__1(Item a)
+		{
+			return a.ItemID == optionRes.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass92_1
+	{
+		public List<int> posIds;
+
+		public _003C_003Ec__DisplayClass92_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass94_0
+	{
+		public ItemsWithOptionDataModel iwoRes;
+
+		public _003C_003Ec__DisplayClass94_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass94_1
+	{
+		public ItemsWithOption existingIwo;
+
+		public _003C_003Ec__DisplayClass94_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass94_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass94_2
+	{
+		public List<int> posIds;
+
+		public _003C_003Ec__DisplayClass94_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass96_0
+	{
+		public List<Ids> idsToConfirm;
+
+		public _003C_003Ec__DisplayClass96_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass96_1
+	{
+		public InstructionsDataModel idmRes;
+
+		public _003C_003Ec__DisplayClass96_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass96_2
+	{
+		public List<int> posIds;
+
+		public _003C_003Ec__DisplayClass96_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass97_0
+	{
+		public List<long> idsToConfirm;
+
+		public _003C_003Ec__DisplayClass97_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass97_1
+	{
+		public DiscountCodeDataModelStore dcRes;
+
+		public _003C_003Ec__DisplayClass97_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass98_0
+	{
+		public List<Ids> reservationIds;
+
+		public _003C_003Ec__DisplayClass98_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass98_1
+	{
+		public AppointmentPostModel rsrv;
+
+		public _003C_003Ec__DisplayClass98_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass100_0
+	{
+		public List<MemberIdResponse> idsToConfirm;
+
+		public _003C_003Ec__DisplayClass100_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass100_1
+	{
+		public CustomersPostDataModel cp;
+
+		public _003C_003Ec__DisplayClass100_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSyncMembersFromCloudsync_003Eb__4(Employee a)
+		{
+			return a.EmployeeID == cp.EmployeeID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass104_0
+	{
+		public SettingPostDataModel dataModel;
+
+		public _003C_003Ec__DisplayClass104_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass104_1
+	{
+		public List<string> keysToConfirm;
+
+		public _003C_003Ec__DisplayClass104_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_0
+	{
+		public CustomFieldPostDataModel cfRes;
+
+		public _003C_003Ec__DisplayClass106_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass106_1
+	{
+		public Ids cfId;
+
+		public _003C_003Ec__DisplayClass106_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass110_0
+	{
+		public LocationSecondScreenImagesPostDataModel locImage;
+
+		public _003C_003Ec__DisplayClass110_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass110_1
+	{
+		public int imageId;
+
+		public _003C_003Ec__DisplayClass110_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass118_0
+	{
+		public HipposClockInOutListPostObject response;
+
+		public _003C_003Ec__DisplayClass118_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass118_1
+	{
+		public HipposClockInOutRequestObject clockInOut;
+
+		public _003C_003Ec__DisplayClass118_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSyncEmployeeClockInOutFromHipposTime_003Eb__4(EmployeeClockInOutQueue a)
+		{
+			return a.Id == clockInOut.id;
+		}
+
+		internal bool _003CSyncEmployeeClockInOutFromHipposTime_003Eb__5(Employee a)
+		{
+			return a.Users.First().PIN == clockInOut.employee_pin;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass120_0
+	{
+		public PromotionPostDataModel model;
+
+		public _003C_003Ec__DisplayClass120_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass120_1
+	{
+		public string promoCode;
+
+		public _003C_003Ec__DisplayClass120_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass123_0
+	{
+		public DateTime StartDate;
+
+		public DateTime EndDate;
+
+		public _003C_003Ec__DisplayClass123_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass127_0
+	{
+		public string Message;
+
+		public string file_prefix;
+
+		public _003C_003Ec__DisplayClass127_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal void _003CWriteToSyncLog_003Eb__0()
+		{
+			try
+			{
+				string path = AppDomain.CurrentDomain.BaseDirectory + "\\logs\\synclogs";
+				Message = "[" + DateTime.Now.ToLongTimeString() + "] " + Message;
+				if (!Directory.Exists(path))
+				{
+					Directory.CreateDirectory(path);
+				}
+				string path2 = AppDomain.CurrentDomain.BaseDirectory + "\\logs\\synclogs\\" + file_prefix + DateTime.Now.Date.ToShortDateString().Replace('/', '_') + ".txt";
+				if (!File.Exists(path2))
+				{
+					using (StreamWriter streamWriter = File.CreateText(path2))
+					{
+						streamWriter.WriteLine(Message);
+						streamWriter.Close();
+						return;
+					}
+				}
+				using StreamWriter streamWriter2 = File.AppendText(path2);
+				streamWriter2.WriteLine(Message);
+			}
+			catch (Exception)
+			{
+			}
+		}
+	}
+
 	public static List<Group> groups_to_sync;
 
 	public static List<Item> items_to_sync;
@@ -3691,7 +4735,7 @@ public class SyncMethods
 		if (appointments_to_sync.Count > 0)
 		{
 			List<AppointmentPostModel> list = new List<AppointmentPostModel>();
-			list = (appointmentPostData.ListOfAppointment = appointments_to_sync.Select((Appointment a) => new AppointmentPostModel
+			list = appointments_to_sync.Select((Appointment a) => new AppointmentPostModel
 			{
 				AppointmentID = a.AppointmentID,
 				EmployeeID = a.EmployeeID,
@@ -3713,7 +4757,8 @@ public class SyncMethods
 				AppointmentType = a.AppointmentType,
 				DateUpdated = a.DateUpdated,
 				IsCleared = a.IsCleared
-			}).ToList());
+			}).ToList();
+			appointmentPostData.ListOfAppointment = list;
 			WriteToSyncLog("CloudSync: Reservations Syncing...");
 		}
 		AppointmentResponseModel appointmentResponseModel = JsonConvert.DeserializeObject<AppointmentResponseModel>(SyncTaskWithResponseData(appointmentPostData, "/api/Reservation/SyncReservations"));
@@ -4047,7 +5092,7 @@ public class SyncMethods
 		if (employees_to_sync.Count > 0)
 		{
 			List<EmployeesPostModel> list = new List<EmployeesPostModel>();
-			list = (employeesPostData.ListOfEmployees = employees_to_sync.Select((Employee a) => new EmployeesPostModel
+			list = employees_to_sync.Select((Employee a) => new EmployeesPostModel
 			{
 				EmployeeID = a.EmployeeID,
 				FirstName = a.FirstName,
@@ -4057,7 +5102,8 @@ public class SyncMethods
 				Phone2 = a.Phone2,
 				SIN = a.SIN,
 				IsActive = a.isActive
-			}).ToList());
+			}).ToList();
+			employeesPostData.ListOfEmployees = list;
 			WriteToSyncLog("CloudSync: Employees Syncing...");
 		}
 		string text = SyncTask(employeesPostData, "/api/employee/SyncEmployees");

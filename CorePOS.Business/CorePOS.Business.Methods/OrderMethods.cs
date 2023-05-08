@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Objects;
@@ -11,6 +12,643 @@ namespace CorePOS.Business.Methods;
 
 public class OrderMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public string orderType;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public Guid orderID;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public Guid orderID;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public OpenOrder o;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_0
+	{
+		public int daterangefilter;
+
+		public _003C_003Ec__DisplayClass15_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public string orderType;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003COpenOrders_003Eb__0(Order x)
+		{
+			return x.OrderType == orderType;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass17_0
+	{
+		public string orderType;
+
+		public string orderNumber;
+
+		public string customer;
+
+		public _003C_003Ec__DisplayClass17_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_0
+	{
+		public string tableName;
+
+		public string ordernumber;
+
+		public _003C_003Ec__DisplayClass18_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003COpenDineInBills_003Eb__2(Order x)
+		{
+			DateTime? dateCreated = x.DateCreated;
+			DateTime dateTime = DateTime.Now.AddDays(-1.0);
+			if (dateCreated.HasValue && dateCreated.GetValueOrDefault() >= dateTime && x.Customer.Contains("Table") && !x.Paid)
+			{
+				return x.Customer == tableName;
+			}
+			return false;
+		}
+
+		internal bool _003COpenDineInBills_003Eb__3(Order x)
+		{
+			return x.OrderNumber == ordernumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_1
+	{
+		public string tmp_orderNumber;
+
+		public _003C_003Ec__DisplayClass18_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003COpenDineInBills_003Eb__5(Order x)
+		{
+			return x.OrderNumber == tmp_orderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_2
+	{
+		public List<Order> tmp_Orders;
+
+		public _003C_003Ec__DisplayClass18_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal OrderTotal _003COpenDineInBills_003Eb__6(Order o)
+		{
+			_003C_003Ec__DisplayClass18_3 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass18_3
+			{
+				o = o
+			};
+			return new OrderTotal
+			{
+				OrderNumber = CS_0024_003C_003E8__locals0.o.OrderNumber,
+				Tax = tmp_Orders.Where((Order x) => x.OrderNumber == CS_0024_003C_003E8__locals0.o.OrderNumber).Sum((Order y) => y.TaxTotal),
+				Sub = tmp_Orders.Where((Order x) => x.OrderNumber == CS_0024_003C_003E8__locals0.o.OrderNumber).Sum((Order y) => y.SubTotal),
+				TenderedAmount = CS_0024_003C_003E8__locals0.o.TenderAmount,
+				UserCreatedID = (CS_0024_003C_003E8__locals0.o.UserCreated.HasValue ? CS_0024_003C_003E8__locals0.o.UserCreated.Value : 0),
+				ServedByUserID = (CS_0024_003C_003E8__locals0.o.UserServed.HasValue ? CS_0024_003C_003E8__locals0.o.UserServed.Value : 0),
+				Customer = ((CS_0024_003C_003E8__locals0.o.OrderType == OrderTypes.DineIn) ? CS_0024_003C_003E8__locals0.o.Customer : "TAKE-OUTS"),
+				CustomerInfo = ((CS_0024_003C_003E8__locals0.o.OrderType == OrderTypes.DineIn) ? CS_0024_003C_003E8__locals0.o.Customer.Replace("Table ", string.Empty) : "0")
+			};
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass18_3
+	{
+		public Order o;
+
+		public _003C_003Ec__DisplayClass18_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003COpenDineInBills_003Eb__7(Order x)
+		{
+			return x.OrderNumber == o.OrderNumber;
+		}
+
+		internal bool _003COpenDineInBills_003Eb__9(Order x)
+		{
+			return x.OrderNumber == o.OrderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public short stationID;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public int numberOfMinuteForMadeOrderClear;
+
+		public List<string> made_orders;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CFilledCompleteOrders_003Eb__3(Order x)
+		{
+			return made_orders.Contains(x.OrderNumber);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_1
+	{
+		public string ordernumber;
+
+		public _003C_003Ec__DisplayClass20_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CFilledCompleteOrders_003Eb__4(Order x)
+		{
+			if (x.OrderNumber == ordernumber)
+			{
+				return !x.Void;
+			}
+			return false;
+		}
+
+		internal bool _003CFilledCompleteOrders_003Eb__5(Order x)
+		{
+			if (x.OrderNumber == ordernumber && !x.Void)
+			{
+				return x.DateFilled.HasValue;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass21_0
+	{
+		public short stationID;
+
+		public _003C_003Ec__DisplayClass21_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass22_0
+	{
+		public string query;
+
+		public string orderType;
+
+		public short stationID;
+
+		public _003C_003Ec__DisplayClass22_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CUnfilledOrderNumbers_003Eb__6(Order x)
+		{
+			return x.OrderType.ToUpper().Contains(orderType);
+		}
+
+		internal bool _003CUnfilledOrderNumbers_003Eb__9(Order a)
+		{
+			if (a.StationID != null && a.StationID.Contains(stationID.ToString()))
+			{
+				if (a.StationMade != null)
+				{
+					return !a.StationMade.Contains(stationID.ToString());
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_0
+	{
+		public short stationID;
+
+		public _003C_003Ec__DisplayClass23_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass24_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass24_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass25_0
+	{
+		public int daysDDL;
+
+		public string ordernumber;
+
+		public _003C_003Ec__DisplayClass25_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public string TableName;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass27_0
+	{
+		public Guid SharedOrderId;
+
+		public _003C_003Ec__DisplayClass27_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass28_0
+	{
+		public DateTime workingDay;
+
+		public _003C_003Ec__DisplayClass28_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass29_0
+	{
+		public string day;
+
+		public _003C_003Ec__DisplayClass29_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass32_0
+	{
+		public string orderNumber;
+
+		public Guid Id;
+
+		public _003C_003Ec__DisplayClass32_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_0
+	{
+		public Guid Id;
+
+		public _003C_003Ec__DisplayClass33_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass34_0
+	{
+		public Guid Id;
+
+		public _003C_003Ec__DisplayClass34_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass36_0
+	{
+		public DateTime start;
+
+		public _003C_003Ec__DisplayClass36_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass37_0
+	{
+		public string startIndex;
+
+		public _003C_003Ec__DisplayClass37_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass38_0
+	{
+		public string orderType;
+
+		public string customer;
+
+		public _003C_003Ec__DisplayClass38_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetMultipleBills_003Eb__0(Order o)
+		{
+			if (!o.OrderType.Equals(orderType) && !o.OrderType.Equals(OrderTypes.ToGo) && !o.OrderType.Equals(OrderTypes.Delivery) && !o.OrderType.Equals(OrderTypes.DeliveryOnline) && !o.OrderType.Equals(OrderTypes.PickUpOnline) && !o.OrderType.Equals(OrderTypes.PickUp))
+			{
+				return o.OrderType.Equals(OrderTypes.Catering);
+			}
+			return true;
+		}
+
+		internal bool _003CGetMultipleBills_003Eb__10(Order o)
+		{
+			if ((o.Customer == customer || (customer != null && o.Customer == customer.ToUpper())) && o.OrderType == orderType)
+			{
+				return o.DateCreated.Value > DateTime.Now.AddDays(-14.0);
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_0
+	{
+		public string query;
+
+		public string orderType;
+
+		public _003C_003Ec__DisplayClass39_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSearchOpenOrders_003Eb__0(Order x)
+		{
+			if ((x.Customer == null || !x.Customer.ToLower().Contains(query)) && (x.CustomerInfo == null || !x.CustomerInfo.ToLower().Contains(query)) && (x.CustomerInfoName == null || !x.CustomerInfoName.ToLower().Contains(query)) && !x.OrderNumber.ToLower().Contains(query))
+			{
+				if (x.OrderTicketNumber != null)
+				{
+					return x.OrderTicketNumber.ToLower().Contains(query);
+				}
+				return false;
+			}
+			return true;
+		}
+
+		internal bool _003CSearchOpenOrders_003Eb__5(Order o)
+		{
+			return o.OrderType.ToUpper().Contains(orderType);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass40_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass40_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CSaveTotals_003Eb__0(Order o)
+		{
+			return o.OrderNumber == orderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass40_1
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass40_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass41_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass41_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass43_0
+	{
+		public string TipName;
+
+		public _003C_003Ec__DisplayClass43_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass45_0
+	{
+		public DateTime lastSafeDropClearingDate;
+
+		public _003C_003Ec__DisplayClass45_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass46_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass46_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass48_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass48_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass49_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass49_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass50_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass50_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass53_0
+	{
+		public string OrderNumber;
+
+		public _003C_003Ec__DisplayClass53_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	protected GClass6 _dataContext;
 
 	public OrderMethods(GClass6 dataContext = null)
@@ -127,7 +765,9 @@ public class OrderMethods
 			dataManager.DataContext.GenKeys.InsertOnSubmit(genKey);
 			Helper.SubmitChangesWithCatch(dataManager.DataContext);
 		}
-		genKey.LastKey++;
+		GenKey genKey2 = genKey;
+		long lastKey = genKey2.LastKey + 1L;
+		genKey2.LastKey = lastKey;
 		string result = genKey.Prefix.Trim() + $"{genKey.LastKey:000000}";
 		GenKeyMethods.updateGenKey(genKey.KeyName, genKey.LastKey);
 		return result;
@@ -466,7 +1106,7 @@ public class OrderMethods
 				select a).Take(take).ToList();
 		}
 		return (from o in _dataContext.Orders
-			where o.DateFilled.HasValue && o.StationID.Contains(CS_0024_003C_003E8__locals0.stationID.ToString()) && o.DateFilled.Value >= DateTime.Now.AddHours(-12.0).Date && o.ItemID != -999
+			where o.DateFilled.HasValue && o.StationID.Contains(((short)CS_0024_003C_003E8__locals0.stationID).ToString()) && o.DateFilled.Value >= DateTime.Now.AddHours(-12.0).Date && o.ItemID != -999
 			select o into a
 			orderby a.DateCreated descending
 			select a).Take(take).ToList();
@@ -512,7 +1152,7 @@ public class OrderMethods
 				select o).ToList();
 		}
 		return (from o in _dataContext.Orders
-			where !o.DateFilled.HasValue && o.StationID.Contains(CS_0024_003C_003E8__locals0.stationID.ToString()) && (o.StationMade == null || !o.StationMade.Contains(CS_0024_003C_003E8__locals0.stationID.ToString())) && o.ShareItemID == null && o.DateCreated.Value.Date >= DateTime.Now.AddDays(-1.0).Date && o.ItemID != -999 && !o.PaymentMethods.Contains("KIOSK")
+			where !o.DateFilled.HasValue && o.StationID.Contains(((short)CS_0024_003C_003E8__locals0.stationID).ToString()) && (o.StationMade == null || !o.StationMade.Contains(((short)CS_0024_003C_003E8__locals0.stationID).ToString())) && o.ShareItemID == null && o.DateCreated.Value.Date >= DateTime.Now.AddDays(-1.0).Date && o.ItemID != -999 && !o.PaymentMethods.Contains("KIOSK")
 			orderby o.DateCreated, o.OrderNumber
 			select o).ToList();
 	}
@@ -560,7 +1200,7 @@ public class OrderMethods
 	{
 		_003C_003Ec__DisplayClass23_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass23_0();
 		CS_0024_003C_003E8__locals0.stationID = stationID;
-		return _dataContext.Orders.Where((Order o) => o.DateCreated > DateTime.Now.AddMonths(-1) && o.DateFilled == null && o.StationID.Contains(CS_0024_003C_003E8__locals0.stationID.ToString()) && (o.StationMade == null || !o.StationMade.Contains(CS_0024_003C_003E8__locals0.stationID.ToString())) && o.Void == true && o.ShareItemID == null && o.ItemID != -999).ToList();
+		return _dataContext.Orders.Where((Order o) => o.DateCreated > DateTime.Now.AddMonths(-1) && o.DateFilled == null && o.StationID.Contains(((short)CS_0024_003C_003E8__locals0.stationID).ToString()) && (o.StationMade == null || !o.StationMade.Contains(((short)CS_0024_003C_003E8__locals0.stationID).ToString())) && o.Void == true && o.ShareItemID == null && o.ItemID != -999).ToList();
 	}
 
 	public List<Order> Orders(string orderNumber)
@@ -613,7 +1253,7 @@ public class OrderMethods
 		DataManager dataManager = new DataManager();
 		CS_0024_003C_003E8__locals0.workingDay = getWorkingDay();
 		return (from o in dataManager.DataContext.Orders
-			where o.Paid == true && o.Void == false && ((DateTime)o.DatePaid).Date >= CS_0024_003C_003E8__locals0.workingDay.Date
+			where o.Paid == true && o.Void == false && ((DateTime)o.DatePaid).Date >= ((DateTime)CS_0024_003C_003E8__locals0.workingDay).Date
 			orderby o.OrderNumber descending
 			select new OrderResult
 			{

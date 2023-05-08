@@ -20,6 +20,241 @@ namespace CorePOS;
 
 public class frmLayout : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass33_0
+	{
+		public Func<Control, bool> isMatch;
+
+		public List<Control> matches;
+
+		public Action<Control> filter;
+
+		public _003C_003Ec__DisplayClass33_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CFilterControls_003Eb__0(Control c)
+		{
+			if (isMatch(c))
+			{
+				matches.Add(c);
+			}
+			foreach (Control control in c.Controls)
+			{
+				filter(control);
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass36_0
+	{
+		public Terminal terminal;
+
+		public _003C_003Ec__DisplayClass36_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CSetButtonLeftRight_003Eb__0(string a)
+		{
+			return a == terminal.DefaultLayoutSectionName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass41_0
+	{
+		public Layout layout;
+
+		public _003C_003Ec__DisplayClass41_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadAllTables_003Eb__1(OccupiedTable a)
+		{
+			return a.TableName.Trim() == layout.TableName.Trim();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass49_0
+	{
+		public TableModel occupiedTable;
+
+		public _003C_003Ec__DisplayClass49_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CTimer1_Tick_003Eb__5(OccupiedTable t)
+		{
+			return t.TableName == occupiedTable.TableName;
+		}
+
+		internal bool _003CTimer1_Tick_003Eb__6(Layout l)
+		{
+			return l.TableName == occupiedTable.TableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass49_1
+	{
+		public OccupiedTable occupiedTablesResult;
+
+		public Layout layout;
+
+		public _003C_003Ec__DisplayClass49_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CTimer1_Tick_003Eb__7(Order o)
+		{
+			if (o.Customer == "Table " + occupiedTablesResult.TableName)
+			{
+				return !o.ItemMadeNotified;
+			}
+			return false;
+		}
+
+		internal bool _003CTimer1_Tick_003Eb__10(Appointment x)
+		{
+			return x.AppointmentID == layout.AppointmentID.Value;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass49_2
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass49_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CTimer1_Tick_003Eb__11(TableModel l)
+		{
+			return l.TableName == tableName;
+		}
+
+		internal bool _003CTimer1_Tick_003Eb__12(Layout a)
+		{
+			return a.TableName == tableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass50_0
+	{
+		public string customer;
+
+		public string _OrderNumber;
+
+		public _003C_003Ec__DisplayClass50_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass51_0
+	{
+		public string customer;
+
+		public _003C_003Ec__DisplayClass51_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CClearOccupiedTable_003Eb__0(TableModel l)
+		{
+			return l.TableName == customer.Replace("Table", string.Empty).Trim();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass52_0
+	{
+		public TableModel table;
+
+		public _003C_003Ec__DisplayClass52_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass63_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass63_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass63_1
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass63_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass65_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass65_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CclearReservationOnTable_003Eb__0(TableModel l)
+		{
+			return l.TableName == tableName;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass70_0
+	{
+		public string tblName;
+
+		public _003C_003Ec__DisplayClass70_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CReCalControlLocation_003Eb__2(KeyValuePair<string, Point> x)
+		{
+			return x.Key == tblName;
+		}
+	}
+
 	private static int int_0;
 
 	private string[] string_0;
@@ -1713,7 +1948,8 @@ public class frmLayout : frmMasterForm
 					int num5 = Convert.ToInt32((double)item.Size.Height * num);
 					text = text + num2 + "," + num3 + "," + num4 + "," + num5 + ";";
 				}
-				text = (string)(item.Tag = text.Substring(0, text.Length - 1));
+				text = text.Substring(0, text.Length - 1);
+				item.Tag = text;
 			}
 		}
 	}

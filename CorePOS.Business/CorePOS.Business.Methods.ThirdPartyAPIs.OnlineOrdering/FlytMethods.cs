@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Objects;
 using CorePOS.Business.Objects.ThirdPartyAPIs.OnlineOrdering;
@@ -11,6 +12,61 @@ namespace CorePOS.Business.Methods.ThirdPartyAPIs.OnlineOrdering;
 
 public class FlytMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public OnlineOrderSyncQueue orderQueue;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_1
+	{
+		public List<string> itemPLUs;
+
+		public List<int> list_0;
+
+		public _003C_003Ec__DisplayClass0_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public FlytOrderModel.Item dataOrder;
+
+		public Item dataItem;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CAddFlytOrderItem_003Eb__1(Item x)
+		{
+			return x.Barcode == dataOrder.plu;
+		}
+
+		internal bool _003CAddFlytOrderItem_003Eb__2(Item a)
+		{
+			return a.ItemName.ToUpper() == dataOrder.name.ToUpper();
+		}
+
+		internal bool _003CAddFlytOrderItem_003Eb__4(ItemsInGroup x)
+		{
+			return x.ItemID == dataItem.ItemID;
+		}
+	}
+
 	public static List<OrderHeader> ProcessFlytOrders()
 	{
 		List<OrderHeader> list = new List<OrderHeader>();
@@ -20,11 +76,9 @@ public class FlytMethods
 		MemoryLoadedData.LastThirdPartyIds.AddRange(list2.Select((OnlineOrderSyncQueue a) => a.Id).ToList());
 		MemoryLoadedData.LastThirdPartyIds = MemoryLoadedData.LastThirdPartyIds.OrderByDescending((int a) => a).Take(10).ToList();
 		using List<OnlineOrderSyncQueue>.Enumerator enumerator = list2.GetEnumerator();
-		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals1;
-		_003C_003Ec__DisplayClass0_1 CS_0024_003C_003E8__locals0;
 		while (enumerator.MoveNext())
 		{
-			CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass0_0();
+			_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass0_0();
 			CS_0024_003C_003E8__locals1.orderQueue = enumerator.Current;
 			FlytOrderModel.FlytOrder flytOrder = JsonConvert.DeserializeObject<FlytOrderModel.FlytOrder>(CS_0024_003C_003E8__locals1.orderQueue.RawData);
 			SyncMethods.WriteToSyncLog("Order START Process Flyt: " + flytOrder.third_party_order_reference, "OnlineOrderSync_");
@@ -36,7 +90,7 @@ public class FlytMethods
 				{
 					continue;
 				}
-				CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_1();
+				_003C_003Ec__DisplayClass0_1 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_1();
 				string third_party_order_reference = flytOrder.third_party_order_reference;
 				string customerName = "SKIP#:" + third_party_order_reference.Substring(third_party_order_reference.Length - 4);
 				string customerPhone = null;

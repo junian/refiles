@@ -19,6 +19,44 @@ namespace CorePOS;
 
 public class frmSplitBill : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass48_0
+	{
+		public string listid;
+
+		public _003C_003Ec__DisplayClass48_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass63_0
+	{
+		public Item itemFromDB;
+
+		public _003C_003Ec__DisplayClass63_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass72_0
+	{
+		public decimal qty;
+
+		public string itemName;
+
+		public _003C_003Ec__DisplayClass72_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private short short_0;
 
 	private short short_1;
@@ -837,7 +875,8 @@ public class frmSplitBill : frmMasterForm
 				decimal discountFromDiscountDescription2 = OrderHelper.GetDiscountFromDiscountDescription(item2.SubItems[15].Text, DiscountTypes.Promo);
 				string discountDesc = OrderHelper.UpdateDiscountFromDiscountDescription(item2.SubItems[15].Text, DiscountTypes.Promo, discountFromDiscountDescription2);
 				discountDesc = OrderHelper.UpdateDiscountFromDiscountDescription(discountDesc, DiscountTypes.Item, 0m);
-				discountDesc = (item.Barcode = OrderHelper.UpdateDiscountFromDiscountDescription(discountDesc, DiscountTypes.Order, 0m));
+				discountDesc = OrderHelper.UpdateDiscountFromDiscountDescription(discountDesc, DiscountTypes.Order, 0m);
+				item.Barcode = discountDesc;
 			}
 			if (!item2.Font.Strikeout)
 			{

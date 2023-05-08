@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Objects;
 using CorePOS.Business.Objects.ThirdPartyAPIs.OnlineOrdering;
@@ -11,6 +12,114 @@ namespace CorePOS.Business.Methods.ThirdPartyAPIs.OnlineOrdering;
 
 public class DeliverectMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public OnlineOrderSyncQueue orderQueue;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_1
+	{
+		public DeliverectOrderData data;
+
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass0_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_2
+	{
+		public List<string> itemPLUs;
+
+		public List<int> list_0;
+
+		public _003C_003Ec__DisplayClass0_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public DeliverectOrderItem dataOrder;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal void _003CGetDeliverectSubTotal_003Eb__0(DeliverectOrderItem a)
+		{
+			a.quantity = dataOrder.quantity;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public DeliverectOrderItem dataFromDeliverect;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CAddDeliverectOrderItem_003Eb__0(Item x)
+		{
+			return x.Barcode == dataFromDeliverect.plu;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_1
+	{
+		public Item dataItem;
+
+		public _003C_003Ec__DisplayClass3_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CAddDeliverectOrderItem_003Eb__1(ItemsInGroup x)
+		{
+			return x.ItemID == dataItem.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public DeliverectOrderItem dataItem;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal void _003CAddItems_003Eb__0(DeliverectOrderItem a)
+		{
+			a.quantity = dataItem.quantity;
+		}
+	}
+
 	public static List<OrderHeader> ProcessDeliverect()
 	{
 		GClass6 gClass = new GClass6();
@@ -20,20 +129,17 @@ public class DeliverectMethods
 		MemoryLoadedData.LastThirdPartyIds.AddRange(list2.Select((OnlineOrderSyncQueue a) => a.Id).ToList());
 		MemoryLoadedData.LastThirdPartyIds = MemoryLoadedData.LastThirdPartyIds.OrderByDescending((int a) => a).Take(10).ToList();
 		using List<OnlineOrderSyncQueue>.Enumerator enumerator = list2.GetEnumerator();
-		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0;
-		_003C_003Ec__DisplayClass0_1 CS_0024_003C_003E8__locals1;
-		_003C_003Ec__DisplayClass0_2 CS_0024_003C_003E8__locals2;
 		while (enumerator.MoveNext())
 		{
-			CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();
+			_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();
 			CS_0024_003C_003E8__locals0.orderQueue = enumerator.Current;
-			CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass0_1();
+			_003C_003Ec__DisplayClass0_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass0_1();
 			CS_0024_003C_003E8__locals1.data = JsonConvert.DeserializeObject<DeliverectOrderData>(CS_0024_003C_003E8__locals0.orderQueue.RawData);
 			SyncMethods.WriteToSyncLog("Order START Process Deliverect: " + CS_0024_003C_003E8__locals1.data.channelOrderId, "OnlineOrderSync_");
 			CS_0024_003C_003E8__locals1.orderNumber = CS_0024_003C_003E8__locals1.data.channelOrderDisplayId;
 			try
 			{
-				CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass0_2();
+				_003C_003Ec__DisplayClass0_2 CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass0_2();
 				short short_ = 1;
 				if (!gClass.OnlineOrderSyncQueues.Where((OnlineOrderSyncQueue a) => a.DateProcessed.HasValue && a.DateProcessed.Value > DateTime.Now.AddMinutes(-10.0) && a.Comment == CS_0024_003C_003E8__locals0.orderQueue.Comment).Any())
 				{

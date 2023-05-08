@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using CorePOS.Business.Objects;
 
@@ -8,6 +9,70 @@ namespace CorePOS.Business.Methods;
 
 public static class LogHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public string logname;
+
+		public string message;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal void _003CWriteLog_003Eb__0()
+		{
+			try
+			{
+				string text = logname.ToLower();
+				string text2 = AppDomain.CurrentDomain.BaseDirectory + "logs\\";
+				if (text == LogTypes.print_log)
+				{
+					text2 = AppDomain.CurrentDomain.BaseDirectory + "logs\\printlogs\\";
+				}
+				else if (text == LogTypes.call_log)
+				{
+					text2 = AppDomain.CurrentDomain.BaseDirectory + "logs\\calllogs\\";
+				}
+				else if (text == LogTypes.error_log)
+				{
+					text2 = AppDomain.CurrentDomain.BaseDirectory + "logs\\errorlogs\\";
+				}
+				else if (text == LogTypes.sync_log)
+				{
+					text2 = AppDomain.CurrentDomain.BaseDirectory + "logs\\synclogs\\";
+				}
+				else if (text == LogTypes.tcp_log)
+				{
+					text2 = AppDomain.CurrentDomain.BaseDirectory + "logs\\tcplogs\\";
+				}
+				if (!Directory.Exists(text2))
+				{
+					Directory.CreateDirectory(text2);
+				}
+				message = "[" + DateTime.Now.ToLongTimeString() + "] " + message;
+				string path = text2 + logname + "_" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
+				if (!File.Exists(path))
+				{
+					using (StreamWriter streamWriter = File.CreateText(path))
+					{
+						streamWriter.WriteLine(message);
+						streamWriter.Close();
+						return;
+					}
+				}
+				using StreamWriter streamWriter2 = File.AppendText(path);
+				streamWriter2.WriteLine(message);
+				streamWriter2.Close();
+			}
+			catch (Exception)
+			{
+			}
+		}
+	}
+
 	public static void WriteLog(string message, string logname)
 	{
 		_003C_003Ec__DisplayClass0_0 _003C_003Ec__DisplayClass0_ = new _003C_003Ec__DisplayClass0_0();

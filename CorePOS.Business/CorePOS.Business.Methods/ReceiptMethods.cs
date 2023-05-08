@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 using CorePOS.Business.Enums;
@@ -12,24 +13,244 @@ namespace CorePOS.Business.Methods;
 
 public class ReceiptMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_1
+	{
+		public string displayInstructionSetting;
+
+		public string displayOptionSetting;
+
+		public _003C_003Ec__DisplayClass0_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal ReceiptOrder _003CGetOrderToPrintReceipt_003Eb__9(Order ro)
+		{
+			return new ReceiptOrder
+			{
+				ComboID = ro.ComboID,
+				Customer = ro.Customer,
+				CustomerID = ro.CustomerID,
+				CustomerInfo = ro.CustomerInfo,
+				CustomerInfoName = ro.CustomerInfoName,
+				DateCreated = ro.DateCreated,
+				DatePaid = ro.DatePaid,
+				DateRefunded = ro.DateRefunded,
+				Discount = ro.Discount,
+				DiscountDesc = ro.DiscountDesc,
+				DiscountReason = ro.DiscountReason,
+				GroupName = ro.GroupName,
+				Instructions = ((displayInstructionSetting == "ON") ? ro.Instructions : ""),
+				IsDiscount = ro.IsDiscount,
+				ItemID = ro.ItemID,
+				ItemCost = ro.ItemCost,
+				ItemName = ro.ItemName,
+				ItemPrice = ro.ItemPrice,
+				ItemSellPrice = ro.ItemSellPrice,
+				Options = ((displayOptionSetting == "ON") ? ro.Options : ""),
+				OrderId = ro.OrderId,
+				OrderNumber = ro.OrderNumber,
+				OrderTicketNumber = ro.OrderTicketNumber,
+				OrderType = ro.OrderType,
+				Paid = ro.Paid,
+				PaymentMethods = ro.PaymentMethods,
+				Qty = ro.Qty,
+				Refunds = ro.Refunds,
+				SubTotal = ro.SubTotal,
+				TaxChangeReason = ro.TaxChangeReason,
+				TaxDesc = ro.TaxDesc,
+				TaxTotal = ro.TaxTotal,
+				TenderAmount = ro.TenderAmount,
+				TenderChange = ro.TenderChange,
+				TipAmount = ro.TipAmount,
+				TipRecorded = ro.TipRecorded,
+				Total = ro.Total,
+				UserCreated = ro.UserCreated,
+				UserServed = ro.UserServed,
+				UserCashout = ro.UserCashout,
+				Void = ro.Void,
+				DiscountReasonItem = ro.DiscountReasonItem,
+				OrderDiscountWithoutOnSale = ((!(ro.Discount > 0m) || !(ro.DiscountReason != "") || !(ro.DiscountReasonItem != "")) ? 0m : (ro.Discount - ro.DiscountOnSaleItem))
+			};
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_2
+	{
+		public List<int> allItemIds;
+
+		public _003C_003Ec__DisplayClass0_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_3
+	{
+		public ReceiptOrder order;
+
+		public _003C_003Ec__DisplayClass0_3()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetOrderToPrintReceipt_003Eb__14(ItemsInItem x)
+		{
+			return x.ParentItemID == order.ItemID;
+		}
+
+		internal bool _003CGetOrderToPrintReceipt_003Eb__15(Item x)
+		{
+			return x.ItemID == order.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public string refundNumber;
+
+		public List<Guid> refunds;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public string refundNumber;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public DateTime end;
+
+		public DateTime start;
+
+		public int EmployeeId;
+
+		public int TerminalId;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CParseDayEndTotals_003Eb__3(Order a)
+		{
+			return a.TerminalID == TerminalId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_1
+	{
+		public _003C_003Ef__AnonymousType11<string, decimal, DateTime?, DateTime?, string, decimal, string, string> order;
+
+		public _003C_003Ec__DisplayClass5_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CParseDayEndTotals_003Eb__10(Order a)
+		{
+			return a.OrderNumber == order.OrderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass6_0
+	{
+		public DateTime end;
+
+		public DateTime start;
+
+		public int EmployeeId;
+
+		public int TerminalId;
+
+		public _003C_003Ec__DisplayClass6_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CParseDayEndTaxTotals_003Eb__1(Order a)
+		{
+			if (a.UserCashout.HasValue)
+			{
+				return a.UserCashout.Value == EmployeeId;
+			}
+			return false;
+		}
+
+		internal bool _003CParseDayEndTaxTotals_003Eb__3(Order a)
+		{
+			return a.TerminalID == TerminalId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public string orderNumber;
+
+		public string refundNumber;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public static List<ReceiptOrder> GetOrderToPrintReceipt(string orderNumber)
 	{
 		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();
 		CS_0024_003C_003E8__locals0.orderNumber = orderNumber;
 		int num = 3;
 		bool flag = false;
-		_003C_003Ec__DisplayClass0_1 CS_0024_003C_003E8__locals2;
-		_003C_003Ec__DisplayClass0_2 CS_0024_003C_003E8__locals3;
 		while (num > 0 && !flag)
 		{
 			try
 			{
-				CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass0_1();
+				_003C_003Ec__DisplayClass0_1 CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass0_1();
 				CS_0024_003C_003E8__locals2.displayOptionSetting = SettingsHelper.GetSettingValueByKey("display_option");
 				CS_0024_003C_003E8__locals2.displayInstructionSetting = SettingsHelper.GetSettingValueByKey("display_instruction");
 				string settingValueByKey = SettingsHelper.GetSettingValueByKey("receipt_display_child_items");
 				using GClass6 gClass = new GClass6();
-				CS_0024_003C_003E8__locals3 = new _003C_003Ec__DisplayClass0_2();
+				_003C_003Ec__DisplayClass0_2 CS_0024_003C_003E8__locals3 = new _003C_003Ec__DisplayClass0_2();
 				gClass.ExecuteCommand("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED");
 				List<Order> list = (from o in gClass.Orders
 					where o.OrderNumber == CS_0024_003C_003E8__locals0.orderNumber && (o.Void == false || (o.Void == true && o.DateRefunded.HasValue) || (o.Void == true && o.DatePaid.HasValue))

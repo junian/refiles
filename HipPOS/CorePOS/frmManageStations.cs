@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
@@ -15,6 +16,18 @@ namespace CorePOS;
 
 public class frmManageStations : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public int selectedStationId;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private string string_0;
 
 	private string string_1;
@@ -210,7 +223,7 @@ public class frmManageStations : frmMasterForm
 			return;
 		}
 		num = Convert.ToInt32(frmDDLSelector2.SelectedValue);
-		List<Item> list = gClass.Items.Where((Item a) => a.StationID.Contains(CS_0024_003C_003E8__locals0.selectedStationId.ToString())).ToList();
+		List<Item> list = gClass.Items.Where((Item a) => a.StationID.Contains(((int)CS_0024_003C_003E8__locals0.selectedStationId).ToString())).ToList();
 		if (list.Count > 0)
 		{
 			foreach (Item item in list)

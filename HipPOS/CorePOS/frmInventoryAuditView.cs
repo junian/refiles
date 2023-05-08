@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Data;
 using CorePOS.Properties;
@@ -11,6 +12,34 @@ namespace CorePOS;
 
 public class frmInventoryAuditView : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public DateTime dFrom;
+
+		public DateTime dTo;
+
+		public frmInventoryAuditView _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_1
+	{
+		public InventoryAudit audit;
+
+		public _003C_003Ec__DisplayClass5_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private int int_0;
 
 	private string string_0;

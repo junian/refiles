@@ -15,6 +15,59 @@ namespace CorePOS.AdminPanel.Settings;
 
 public class StyleSettings : UserControl
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public Setting setting;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_1
+	{
+		public Control ctrl;
+
+		public _003C_003Ec__DisplayClass3_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass3_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003C_002Ector_003Eb__0(Setting s)
+		{
+			return ctrl.Tag.Equals(s.Key);
+		}
+
+		internal void _003C_002Ector_003Eb__1()
+		{
+			ctrl.Text = CS_0024_003C_003E8__locals1.setting.Value;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public RadToggleSwitchElement chkToggle;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CTelerikToggle_ValueChanged_003Eb__0(Setting s)
+		{
+			return chkToggle.Tag.Equals(s.Key);
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private List<Setting> list_0;

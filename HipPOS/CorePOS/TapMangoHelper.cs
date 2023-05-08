@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
@@ -13,6 +14,52 @@ namespace CorePOS;
 
 public static class TapMangoHelper
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public decimal subtotalAmount;
+
+		public string pt;
+
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_1
+	{
+		public int customerId;
+
+		public _003C_003Ec__DisplayClass3_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass3_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CProcessTapMangoLoyalty_003Eb__2()
+		{
+			TapMangoMethods.ProcessPayment(customerId, CS_0024_003C_003E8__locals1.subtotalAmount, CS_0024_003C_003E8__locals1.pt);
+			GClass6 gClass = new GClass6();
+			GiftCardTransactionLog entity = new GiftCardTransactionLog
+			{
+				OrderNumber = CS_0024_003C_003E8__locals1.orderNumber,
+				DateCreated = DateTime.Now,
+				Type = "reponse",
+				Data = customerId.ToString(),
+				ProcessorName = "TapMango".ToUpper() + " LOYALTY CARD EARNED"
+			};
+			gClass.GiftCardTransactionLogs.InsertOnSubmit(entity);
+			Helper.SubmitChangesWithCatch(gClass);
+		}
+	}
+
 	public static decimal DiscountAmount;
 
 	public static long CustomerId;

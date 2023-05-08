@@ -16,6 +16,103 @@ namespace CorePOS;
 public class frmMasterForm : Form
 {
 	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public Control ctrl;
+
+		public frmMasterForm _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRefreshLockedControls_003Eb__5(LockedControl x)
+		{
+			return x.Name == ctrl.Name;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_1
+	{
+		public LockedControl locked;
+
+		public _003C_003Ec__DisplayClass12_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass12_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRefreshLockedControls_003Eb__7(SecurityMatrix x)
+		{
+			if (x.ModuleID == locked.ModuleId)
+			{
+				return x.IsAllow;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_2
+	{
+		public Delegate click;
+
+		public _003C_003Ec__DisplayClass12_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass12_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRefreshLockedControls_003Eb__6(object sender, EventArgs e)
+		{
+			List<string> list = new List<string>();
+			list = (from x in MemoryLoadedObjects.all_securityMatrixes
+				where x.ModuleID == CS_0024_003C_003E8__locals2.locked.ModuleId && x.IsAllow
+				select x into y
+				select y.Role.RoleName).ToList();
+			if (AuthMethods.ValidatePin(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this, list))
+			{
+				CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.ctrl.Invoke(click);
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public Func<Control, bool> isMatch;
+
+		public List<Control> matches;
+
+		public Action<Control> filter;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CFilterControls_003Eb__0(Control c)
+		{
+			if (isMatch(c))
+			{
+				matches.Add(c);
+			}
+			foreach (Control control in c.Controls)
+			{
+				filter(control);
+			}
+		}
+	}
+
+	[CompilerGenerated]
 	private static List<LockedControl> list_0;
 
 	[CompilerGenerated]

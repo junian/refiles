@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -16,6 +17,72 @@ namespace CorePOS;
 
 public class frmAdminReports : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_0
+	{
+		public DateTime start;
+
+		public DateTime end;
+
+		public _003C_003Ec__DisplayClass7_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass7_1
+	{
+		public DateTime openingTime;
+
+		public DateTime closingTime;
+
+		public _003C_003Ec__DisplayClass7_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public KeyValuePair<string, string> item;
+
+		public _003C_003Ec__DisplayClass13_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_1
+	{
+		public string groupname;
+
+		public Group parentGroup;
+
+		public List<string> groupNames;
+
+		public _003C_003Ec__DisplayClass13_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadOrders_003Eb__1(Group a)
+		{
+			return a.GroupName.ToUpper() == groupname.ToUpper();
+		}
+
+		internal bool _003CLoadOrders_003Eb__3(Group a)
+		{
+			return a.ParentGroupID == parentGroup.GroupID;
+		}
+	}
+
 	private GClass6 TokFvWgrMaE;
 
 	private frmReport frmReport_0;
@@ -227,12 +294,12 @@ public class frmAdminReports : frmMasterForm
 			if (iqueryable_0 == null)
 			{
 				return (from o in TokFvWgrMaE.Orders
-					where o.DatePaid.Value.Date >= CS_0024_003C_003E8__locals0.start.Date && o.DatePaid.Value.Date <= CS_0024_003C_003E8__locals0.end.Date && o.Paid == true && o.Void == false && o.DateRefunded == null
+					where o.DatePaid.Value.Date >= ((DateTime)CS_0024_003C_003E8__locals0.start).Date && o.DatePaid.Value.Date <= ((DateTime)CS_0024_003C_003E8__locals0.end).Date && o.Paid == true && o.Void == false && o.DateRefunded == null
 					orderby o.DatePaid
 					select o).ToList();
 			}
 			return (from o in iqueryable_0
-				where o.DatePaid.Value.Date >= CS_0024_003C_003E8__locals0.start.Date && o.DatePaid.Value.Date <= CS_0024_003C_003E8__locals0.end.Date && o.Paid == true && o.Void == false && o.DateRefunded == null
+				where o.DatePaid.Value.Date >= ((DateTime)CS_0024_003C_003E8__locals0.start).Date && o.DatePaid.Value.Date <= ((DateTime)CS_0024_003C_003E8__locals0.end).Date && o.Paid == true && o.Void == false && o.DateRefunded == null
 				orderby o.DatePaid
 				select o).ToList();
 		case 4:
@@ -511,7 +578,7 @@ public class frmAdminReports : frmMasterForm
 				_003C_003Ec__DisplayClass13_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass13_0();
 				CS_0024_003C_003E8__locals0.item = (KeyValuePair<string, string>)listItems.SelectedItem;
 				listGroup.SelectedIndex = 0;
-				IQueryable<Order> iqueryable_2 = TokFvWgrMaE.Orders.Where((Order i) => i.ItemID == Convert.ToInt32(CS_0024_003C_003E8__locals0.item.Key) && i.SubTotal > 0m);
+				IQueryable<Order> iqueryable_2 = TokFvWgrMaE.Orders.Where((Order i) => i.ItemID == Convert.ToInt32(((KeyValuePair<string, string>)CS_0024_003C_003E8__locals0.item).Key) && i.SubTotal > 0m);
 				int int_2 = Convert.ToInt32(ddlFilters.SelectedValue.ToString().Split(',')[0].ToString().Replace("[", string.Empty));
 				List<ChartTotal> list_2 = method_5(method_4(int_2, iqueryable_2));
 				method_6(list_2, Resources.Report_of_item + CS_0024_003C_003E8__locals0.item.Value);

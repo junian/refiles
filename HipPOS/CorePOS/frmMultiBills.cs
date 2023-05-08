@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
@@ -18,6 +19,330 @@ namespace CorePOS;
 
 public class frmMultiBills : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_0
+	{
+		public OrderResult existingBill;
+
+		public _003C_003Ec__DisplayClass23_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadFormProcedure_003Eb__8(OrderResult a)
+		{
+			return a.OrderNumber == existingBill.OrderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass23_1
+	{
+		public OrderResult orderResult;
+
+		public _003C_003Ec__DisplayClass23_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadFormProcedure_003Eb__9(OrderResult a)
+		{
+			return a.OrderNumber == orderResult.OrderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass26_0
+	{
+		public frmMultiBills _003C_003E4__this;
+
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass26_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CRemoveBill_003Eb__0()
+		{
+			try
+			{
+				Thread.Sleep(2000);
+				_003C_003E4__this.Invoke((MethodInvoker)delegate
+				{
+					_003C_003E4__this.method_7(orderNumber);
+				});
+			}
+			catch
+			{
+			}
+		}
+
+		internal void _003CRemoveBill_003Eb__1()
+		{
+			_003C_003E4__this.method_7(orderNumber);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass29_0
+	{
+		public bool TipRecorded;
+
+		public string orderNumber;
+
+		public decimal TipAmount;
+
+		public bool isPaid;
+
+		public OrderChit chit;
+
+		public frmMultiBills _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass29_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CAddTipLabel_003Eb__0()
+		{
+			Thread.Sleep(500);
+			try
+			{
+				if ((!TipRecorded && (!orderNumber.Contains("WEB") || !(TipAmount > 0m))) || !isPaid || chit == null)
+				{
+					return;
+				}
+				_003C_003Ec__DisplayClass29_1 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass29_1();
+				CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1 = this;
+				CS_0024_003C_003E8__locals0.lblTip = new TransparentLabel();
+				CS_0024_003C_003E8__locals0.lblTip.Size = new Size(chit.Size.Width / 2, 35);
+				int num = chit.Location.Y + chit.Size.Height - CS_0024_003C_003E8__locals0.lblTip.Size.Height - 10;
+				int y = ((chit.Size.Width / 2 > chit.Size.Height) ? (num + 130) : num);
+				CS_0024_003C_003E8__locals0.lblTip.Location = new Point(chit.Location.X, y);
+				CS_0024_003C_003E8__locals0.lblTip.Text = Resources.Tip_Amount0 + TipAmount.ToString("$0.00");
+				CS_0024_003C_003E8__locals0.lblTip.TextAlign = ContentAlignment.BottomLeft;
+				CS_0024_003C_003E8__locals0.lblTip.ForeColor = Color.Black;
+				CS_0024_003C_003E8__locals0.lblTip.BackColor = Color.Transparent;
+				CS_0024_003C_003E8__locals0.lblTip.Font = new Font("Arial", 11f, FontStyle.Regular);
+				CS_0024_003C_003E8__locals0.lblTip.Name = "lblTip" + orderNumber;
+				CS_0024_003C_003E8__locals0.lblTip.Opacity = 80;
+				_003C_003E4__this.Invoke((MethodInvoker)delegate
+				{
+					if (CS_0024_003C_003E8__locals0.lblTip != null && !CS_0024_003C_003E8__locals0.lblTip.IsDisposed)
+					{
+						SizeF sizeF = CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1._003C_003E4__this.CreateGraphics().MeasureString(Resources.Tip_Amount0 + CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1.TipAmount.ToString("$0.00"), CS_0024_003C_003E8__locals0.lblTip.Font);
+						if (sizeF.Width > (float)CS_0024_003C_003E8__locals0.lblTip.Size.Width)
+						{
+							CS_0024_003C_003E8__locals0.lblTip.Size = new Size(Convert.ToInt16(sizeF.Width), 35);
+						}
+						CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1._003C_003E4__this.BillsPanel.Controls.Add(CS_0024_003C_003E8__locals0.lblTip);
+						CS_0024_003C_003E8__locals0.lblTip.BringToFront();
+						if ((OrderChit)CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1._003C_003E4__this.BillsPanel.Controls.Find("chit" + CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1.orderNumber, searchAllChildren: false).FirstOrDefault() == null && CS_0024_003C_003E8__locals0.lblTip != null && !CS_0024_003C_003E8__locals0.lblTip.IsDisposed)
+						{
+							CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals1._003C_003E4__this.BillsPanel.Controls.Remove(CS_0024_003C_003E8__locals0.lblTip);
+							CS_0024_003C_003E8__locals0.lblTip.Dispose();
+						}
+					}
+				});
+			}
+			catch (Exception ex)
+			{
+				LogHelper.WriteLog("Add Tip Label ERROR: " + ex.Message + "\n" + ex.StackTrace, LogTypes.error_log);
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass29_1
+	{
+		public TransparentLabel lblTip;
+
+		public _003C_003Ec__DisplayClass29_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass29_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CAddTipLabel_003Eb__1()
+		{
+			if (lblTip != null && !lblTip.IsDisposed)
+			{
+				SizeF sizeF = CS_0024_003C_003E8__locals1._003C_003E4__this.CreateGraphics().MeasureString(Resources.Tip_Amount0 + CS_0024_003C_003E8__locals1.TipAmount.ToString("$0.00"), lblTip.Font);
+				if (sizeF.Width > (float)lblTip.Size.Width)
+				{
+					lblTip.Size = new Size(Convert.ToInt16(sizeF.Width), 35);
+				}
+				CS_0024_003C_003E8__locals1._003C_003E4__this.BillsPanel.Controls.Add(lblTip);
+				lblTip.BringToFront();
+				if ((OrderChit)CS_0024_003C_003E8__locals1._003C_003E4__this.BillsPanel.Controls.Find("chit" + CS_0024_003C_003E8__locals1.orderNumber, searchAllChildren: false).FirstOrDefault() == null && lblTip != null && !lblTip.IsDisposed)
+				{
+					CS_0024_003C_003E8__locals1._003C_003E4__this.BillsPanel.Controls.Remove(lblTip);
+					lblTip.Dispose();
+				}
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_0
+	{
+		public Control lv;
+
+		public _003C_003Ec__DisplayClass30_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsubBillsClick_003Eb__0(OrderResult a)
+		{
+			return a.OrderNumber == lv.Name;
+		}
+
+		internal bool _003CsubBillsClick_003Eb__1(OrderResult a)
+		{
+			return a.OrderNumber == lv.Name;
+		}
+
+		internal bool _003CsubBillsClick_003Eb__4(OrderResult a)
+		{
+			return a.OrderNumber == lv.Name;
+		}
+
+		internal bool _003CsubBillsClick_003Eb__5(OrderResult a)
+		{
+			return a.OrderNumber == lv.Name;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_1
+	{
+		public string oNum;
+
+		public _003C_003Ec__DisplayClass30_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsubBillsClick_003Eb__2(OrderResult a)
+		{
+			return a.OrderNumber == oNum;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_2
+	{
+		public string OrdNum;
+
+		public _003C_003Ec__DisplayClass30_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsubBillsClick_003Eb__3(OrderResult a)
+		{
+			return a.OrderNumber == OrdNum;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_3
+	{
+		public string oNum;
+
+		public _003C_003Ec__DisplayClass30_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsubBillsClick_003Eb__6(OrderResult a)
+		{
+			return a.OrderNumber == oNum;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass34_0
+	{
+		public OrderResult orderResult;
+
+		public _003C_003Ec__DisplayClass34_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass36_0
+	{
+		public Button btn;
+
+		public _003C_003Ec__DisplayClass36_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003Cbutton_EnabledChanged_003Eb__0(LockedControl x)
+		{
+			return x.Name.Contains(btn.Name);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass38_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass38_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass38_1
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass38_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass39_0
+	{
+		public OrderChit orderchit;
+
+		public _003C_003Ec__DisplayClass39_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003Ctimer1_Tick_003Eb__3(Order o)
+		{
+			return o.OrderNumber == orderchit.OrderNumber.First();
+		}
+	}
+
 	private short short_0;
 
 	private short short_1;
@@ -1142,7 +1467,8 @@ public class frmMultiBills : frmMasterForm
 		Color color2 = (btnOTFilter_Catering.BackColor = Color.FromArgb(176, 124, 219));
 		Color color4 = (button4.BackColor = color2);
 		Color color6 = (button3.BackColor = color4);
-		Color color9 = (button.BackColor = (button2.BackColor = color6));
+		Color backColor = (button2.BackColor = color6);
+		button.BackColor = backColor;
 		button_0.BackColor = Color.FromArgb(214, 142, 81);
 		LoadFormProcedure();
 	}

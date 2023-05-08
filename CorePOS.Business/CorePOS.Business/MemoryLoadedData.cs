@@ -1,11 +1,39 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using CorePOS.Data;
 
 namespace CorePOS.Business;
 
 public static class MemoryLoadedData
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass9_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass9_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdateMemoryItemInventory_003Eb__0(ItemsInGroup a)
+		{
+			return a.ItemID == itemId;
+		}
+
+		internal bool _003CUpdateMemoryItemInventory_003Eb__2(Item a)
+		{
+			return a.ItemID == itemId;
+		}
+
+		internal bool _003CUpdateMemoryItemInventory_003Eb__3(Item a)
+		{
+			return a.ItemID == itemId;
+		}
+	}
+
 	public static string OnlineOrderErrorMessage;
 
 	public static List<int> LastThirdPartyIds;

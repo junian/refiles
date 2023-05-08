@@ -15,6 +15,20 @@ namespace CorePOS;
 
 public class UOMConversionBodyControl : UserControl
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public short BaseUnitId;
+
+		public UOMConversionBodyControl _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private int int_0;
 
 	private short short_0;
@@ -262,7 +276,9 @@ public class UOMConversionBodyControl : UserControl
 			else
 			{
 				txtFactor.Enabled = true;
-				string text4 = (txtSample.Text = (txtFactor.Text = string.Empty));
+				RadTextBoxControl radTextBoxControl = txtSample;
+				string text3 = (txtFactor.Text = string.Empty);
+				radTextBoxControl.Text = text3;
 			}
 			frmUOMConversions_0.triggerCalculations();
 		}

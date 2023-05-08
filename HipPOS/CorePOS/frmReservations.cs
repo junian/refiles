@@ -5,6 +5,7 @@ using System.Data.Linq;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business;
@@ -19,6 +20,93 @@ namespace CorePOS;
 
 public class frmReservations : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass14_0
+	{
+		public string dayOfWeek;
+
+		public Func<BusinessHour, bool> _003C_003E9__0;
+
+		public Func<BusinessHour, bool> _003C_003E9__2;
+
+		public _003C_003Ec__DisplayClass14_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnSave_Click_003Eb__0(BusinessHour s)
+		{
+			return s.DayOfTheWeek == dayOfWeek;
+		}
+
+		internal bool _003CbtnSave_Click_003Eb__2(BusinessHour s)
+		{
+			return s.DayOfTheWeek == dayOfWeek;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public DateTime firstOfMonth;
+
+		public DateTime calMonth;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_1
+	{
+		public int x;
+
+		public _003C_003Ec__DisplayClass19_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass19_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCreateCalendar_003Eb__1(Appointment a)
+		{
+			if (a.StartDateTime.Date == CS_0024_003C_003E8__locals1.calMonth.AddDays(x).Date && !a.isCancelled)
+			{
+				return a.AppointmentType == AppointmentTypes.reservation;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass30_0
+	{
+		public DateTime prevSelectedDate;
+
+		public _003C_003Ec__DisplayClass30_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass43_0
+	{
+		public string tableName;
+
+		public _003C_003Ec__DisplayClass43_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private DataManager dataManager_0;
 
 	private FormHelper formHelper_0;
@@ -310,18 +398,19 @@ public class frmReservations : frmMasterForm
 				RadTextBoxControl radTextBoxControl = txtName;
 				RadTextBoxControl radTextBoxControl2 = txtNumOfPeople;
 				string text = (txtPhone.Text = string.Empty);
-				string text4 = (radTextBoxControl.Text = (radTextBoxControl2.Text = text));
+				string text3 = (radTextBoxControl2.Text = text);
+				radTextBoxControl.Text = text3;
 				method_6(dateTime_0);
 				return;
 			}
-			string text5 = "";
+			string text4 = "";
 			foreach (BusinessHour item2 in list_2.Where((BusinessHour s) => s.DayOfTheWeek == CS_0024_003C_003E8__locals0.dayOfWeek).ToList())
 			{
 				DateTime dateTime2 = Convert.ToDateTime(item2.LatestOpeningTime);
 				DateTime dateTime3 = Convert.ToDateTime(item2.LatestClosingTime);
-				text5 = text5 + " [" + dateTime2.ToString("hh:mm:ss tt") + " - " + dateTime3.ToString("hh:mm:ss tt") + "]";
+				text4 = text4 + " [" + dateTime2.ToString("hh:mm:ss tt") + " - " + dateTime3.ToString("hh:mm:ss tt") + "]";
 			}
-			new frmMessageBox(Resources.Hours_of_Operation_is_from + text5 + Resources._on + CS_0024_003C_003E8__locals0.dayOfWeek + "s.").ShowDialog(this);
+			new frmMessageBox(Resources.Hours_of_Operation_is_from + text4 + Resources._on + CS_0024_003C_003E8__locals0.dayOfWeek + "s.").ShowDialog(this);
 		}
 		else
 		{
@@ -383,7 +472,7 @@ public class frmReservations : frmMasterForm
 		{
 			bool_ = false;
 		}
-		List<Appointment> source = gclass6_0.Appointments.Where((Appointment a) => a.StartDateTime.Month == CS_0024_003C_003E8__locals0.firstOfMonth.Month && a.isCancelled == false && a.AppointmentType == AppointmentTypes.reservation).ToList();
+		List<Appointment> source = gclass6_0.Appointments.Where((Appointment a) => a.StartDateTime.Month == ((DateTime)CS_0024_003C_003E8__locals0.firstOfMonth).Month && a.isCancelled == false && a.AppointmentType == AppointmentTypes.reservation).ToList();
 		_003C_003Ec__DisplayClass19_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass19_1();
 		CS_0024_003C_003E8__locals1.CS_0024_003C_003E8__locals1 = CS_0024_003C_003E8__locals0;
 		CS_0024_003C_003E8__locals1.x = 0;
@@ -618,7 +707,8 @@ public class frmReservations : frmMasterForm
 			DateTime dateTime = DateTime.Parse(button.Tag.ToString());
 			Appointment appointment = gclass6_0.Appointments.Where((Appointment x) => (long)x.AppointmentID == long_0 && x.AppointmentType == AppointmentTypes.reservation).FirstOrDefault();
 			DateTime dateTime2 = Convert.ToDateTime(dateTime.ToShortDateString() + " " + appointment.StartDateTime.ToString("hh:mm tt"));
-			DateTime dateTime5 = (appointment.StartDateTime = (appointment.EndDateTime = dateTime2));
+			DateTime startDateTime = (appointment.EndDateTime = dateTime2);
+			appointment.StartDateTime = startDateTime;
 			appointment.NextNotifyDateTime = dateTime2.AddHours(-2.0);
 			appointment.Synced = false;
 			try

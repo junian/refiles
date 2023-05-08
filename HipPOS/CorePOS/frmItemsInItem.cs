@@ -18,6 +18,58 @@ namespace CorePOS;
 
 public class frmItemsInItem : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public string itemName;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass21_0
+	{
+		public ListViewItem eachItem;
+
+		public _003C_003Ec__DisplayClass21_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass22_0
+	{
+		public List<int> itemIDs;
+
+		public frmItemsInItem _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass22_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CfrmItemsInItem_Load_003Eb__1(Item i)
+		{
+			return !itemIDs.Contains(i.ItemID);
+		}
+
+		internal bool _003CfrmItemsInItem_Load_003Eb__2(Item a)
+		{
+			if (a.ItemName != _003C_003E4__this.CoBmEuurJF)
+			{
+				return a.Active;
+			}
+			return false;
+		}
+	}
+
 	private decimal decimal_0;
 
 	private GClass6 gclass6_0;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Properties;
 using Telerik.WinControls.UI;
@@ -14,6 +15,56 @@ public static class ControlHelpers
 	{
 		Up = -1,
 		Down = 1
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public string name;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003Ctxt_click_003Eb__0(Button c)
+		{
+			return c.Name.Contains(name);
+		}
+
+		internal bool _003Ctxt_click_003Eb__1(Button c)
+		{
+			return c.Name.Contains(name);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public Func<Control, bool> isMatch;
+
+		public List<Control> matches;
+
+		public Action<Control> filter;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CFilterControls_003Eb__0(Control c)
+		{
+			if (isMatch(c))
+			{
+				matches.Add(c);
+			}
+			foreach (Control control in c.Controls)
+			{
+				filter(control);
+			}
+		}
 	}
 
 	public static int ControlWidthFixer(Control ParentControl, double BootstrapColumnInt)

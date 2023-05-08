@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Enums;
 using CorePOS.Business.Methods;
@@ -16,6 +17,42 @@ namespace CorePOS.AdminPanel.Settings;
 
 public class ReceiptSettings : UserControl
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass3_0
+	{
+		public Control ctrl;
+
+		public _003C_003Ec__DisplayClass3_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public RadToggleSwitchElement chkToggle;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public Label lbl;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private IQueryable<Setting> iqueryable_0;
@@ -294,7 +331,8 @@ public class ReceiptSettings : UserControl
 			frmChecklistSelector frmChecklistSelector = new frmChecklistSelector("SET ORDER TYPES TO PRINT IN RECEIPT", orderTypes, value, 1);
 			if (frmChecklistSelector.ShowDialog() == DialogResult.OK)
 			{
-				value = (setting.Value = frmChecklistSelector.returnValue);
+				value = frmChecklistSelector.returnValue;
+				setting.Value = value;
 				Helper.SubmitChangesWithCatch(gclass6_0);
 				SettingsHelper.SetSettingValueByKey("order_type_receipt", setting.Value);
 				new NotificationLabel(base.ParentForm, "Order Types Successfully Saved.", NotificationTypes.Success).Show();

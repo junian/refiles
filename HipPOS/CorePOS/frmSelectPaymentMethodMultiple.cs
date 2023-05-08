@@ -15,6 +15,23 @@ namespace CorePOS;
 
 public class frmSelectPaymentMethodMultiple : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass27_0
+	{
+		public string selectedId;
+
+		public _003C_003Ec__DisplayClass27_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnRemove_Click_003Eb__0(ProcessorPaymentTypeWithId u)
+		{
+			return u.Id == selectedId;
+		}
+	}
+
 	private decimal decimal_0;
 
 	private decimal decimal_1;

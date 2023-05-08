@@ -102,7 +102,8 @@ public class frmDateSelector : frmMasterForm
 
 	private void method_4(object sender, EventArgs e)
 	{
-		DateTime dateTime = (returnDate = DateTime.Parse(((Button)sender).Tag.ToString()).Date);
+		DateTime date = DateTime.Parse(((Button)sender).Tag.ToString()).Date;
+		returnDate = date;
 		base.DialogResult = DialogResult.OK;
 		Close();
 	}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
@@ -21,6 +22,150 @@ namespace CorePOS;
 
 public class frmCustomers : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public frmCustomers _003C_003E4__this;
+
+		public string queryHomePhone;
+
+		public string queryCellPhone;
+
+		public string queryCustomerEmail;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass16_0
+	{
+		public string keyword;
+
+		public _003C_003Ec__DisplayClass16_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass35_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass35_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass46_0
+	{
+		public string oldOrderNumber;
+
+		public List<Order> orders;
+
+		public Func<usp_ItemOptionsResult, bool> _003C_003E9__7;
+
+		public _003C_003Ec__DisplayClass46_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__7(usp_ItemOptionsResult x)
+		{
+			return orders.Select((Order y) => y.ItemOptionId.Value).Contains(x.ItemWithOptionID);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass46_1
+	{
+		public List<Guid> orderListIDs;
+
+		public int billCount;
+
+		public List<usp_ItemOptionsResult> iwos;
+
+		public _003C_003Ec__DisplayClass46_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__5(Guid a)
+		{
+			return orderListIDs.FirstOrDefault() == a;
+		}
+
+		internal GlobalOrderHistoryObjects.Order _003CbtnDuplicate_Click_003Eb__8(Order x)
+		{
+			_003C_003Ec__DisplayClass46_2 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass46_2
+			{
+				x = x
+			};
+			return new GlobalOrderHistoryObjects.Order
+			{
+				combo_id = CS_0024_003C_003E8__locals0.x.ComboID,
+				customer_phone = (string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.x.CustomerInfoPhone) ? CS_0024_003C_003E8__locals0.x.Customer : CS_0024_003C_003E8__locals0.x.CustomerInfoPhone),
+				date_paid = CS_0024_003C_003E8__locals0.x.LastDateModified.Value,
+				item_barcode = (string.IsNullOrEmpty(CS_0024_003C_003E8__locals0.x.ItemBarcode) ? MemoryLoadedData.all_items.Where((Item y) => y.ItemID == CS_0024_003C_003E8__locals0.x.ItemID).FirstOrDefault().Barcode : CS_0024_003C_003E8__locals0.x.ItemBarcode),
+				item_id = CS_0024_003C_003E8__locals0.x.ItemID,
+				item_identifier_string = CS_0024_003C_003E8__locals0.x.ItemIdentifier,
+				item_instruction = CS_0024_003C_003E8__locals0.x.Instructions,
+				item_name = CS_0024_003C_003E8__locals0.x.ItemName,
+				item_qty = CS_0024_003C_003E8__locals0.x.Qty * (decimal)billCount,
+				option_group_name = ((!CS_0024_003C_003E8__locals0.x.ItemOptionId.HasValue || CS_0024_003C_003E8__locals0.x.ItemOptionId.Value <= 0) ? null : ((iwos.Where((usp_ItemOptionsResult y) => y.ItemWithOptionID == CS_0024_003C_003E8__locals0.x.ItemOptionId.Value).FirstOrDefault() != null) ? iwos.Where((usp_ItemOptionsResult y) => y.ItemWithOptionID == CS_0024_003C_003E8__locals0.x.ItemOptionId.Value).FirstOrDefault().GroupName : null)),
+				option_tab = ((!CS_0024_003C_003E8__locals0.x.ItemOptionId.HasValue || CS_0024_003C_003E8__locals0.x.ItemOptionId.Value <= 0) ? null : ((iwos.Where((usp_ItemOptionsResult y) => y.ItemWithOptionID == CS_0024_003C_003E8__locals0.x.ItemOptionId.Value).FirstOrDefault() != null) ? iwos.Where((usp_ItemOptionsResult y) => y.ItemWithOptionID == CS_0024_003C_003E8__locals0.x.ItemOptionId.Value).FirstOrDefault().Tab : null)),
+				order_number = CS_0024_003C_003E8__locals0.x.OrderNumber
+			};
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass46_2
+	{
+		public Order x;
+
+		public _003C_003Ec__DisplayClass46_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__11(Item y)
+		{
+			return y.ItemID == x.ItemID;
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__12(usp_ItemOptionsResult y)
+		{
+			return y.ItemWithOptionID == x.ItemOptionId.Value;
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__13(usp_ItemOptionsResult y)
+		{
+			return y.ItemWithOptionID == x.ItemOptionId.Value;
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__14(usp_ItemOptionsResult y)
+		{
+			return y.ItemWithOptionID == x.ItemOptionId.Value;
+		}
+
+		internal bool _003CbtnDuplicate_Click_003Eb__15(usp_ItemOptionsResult y)
+		{
+			return y.ItemWithOptionID == x.ItemOptionId.Value;
+		}
+	}
+
 	private int int_0;
 
 	private string string_0;

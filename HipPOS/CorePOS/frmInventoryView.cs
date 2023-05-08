@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using CorePOS.Business;
@@ -17,6 +18,126 @@ namespace CorePOS;
 
 public class frmInventoryView : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public string query;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_1
+	{
+		public short gID;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__4;
+
+		public _003C_003Ec__DisplayClass10_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CsearchInventory_003Eb__3(Item i)
+		{
+			if (i.ItemClassification == ItemClassifications.Product && !i.isDeleted)
+			{
+				return i.ItemsInGroups.Where((ItemsInGroup it) => it.GroupID == gID || it.Group.ParentGroupID == gID).Count() > 0;
+			}
+			return false;
+		}
+
+		internal bool _003CsearchInventory_003Eb__4(ItemsInGroup it)
+		{
+			if (it.GroupID != gID)
+			{
+				return it.Group.ParentGroupID == gID;
+			}
+			return true;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public short gID;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__7;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadInventoryItems_003Eb__4(Item t)
+		{
+			if (t.ItemClassification == ItemClassifications.Product && t.TrackInventory)
+			{
+				return t.ItemsInGroups.Where((ItemsInGroup it) => it.GroupID == gID || it.Group.ParentGroupID == gID).Count() > 0;
+			}
+			return false;
+		}
+
+		internal bool _003CLoadInventoryItems_003Eb__7(ItemsInGroup it)
+		{
+			if (it.GroupID != gID)
+			{
+				return it.Group.ParentGroupID == gID;
+			}
+			return true;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_0
+	{
+		public string query;
+
+		public _003C_003Ec__DisplayClass20_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass20_1
+	{
+		public short gID;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__4;
+
+		public _003C_003Ec__DisplayClass20_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CoutOfStockCB_CheckedChanged_003Eb__3(Item i)
+		{
+			if (i.ItemClassification == ItemClassifications.Product)
+			{
+				return i.ItemsInGroups.Where((ItemsInGroup it) => it.GroupID == gID || it.Group.ParentGroupID == gID).Count() > 0;
+			}
+			return false;
+		}
+
+		internal bool _003CoutOfStockCB_CheckedChanged_003Eb__4(ItemsInGroup it)
+		{
+			if (it.GroupID != gID)
+			{
+				return it.Group.ParentGroupID == gID;
+			}
+			return true;
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private string string_0;

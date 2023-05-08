@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using CorePOS.CustomControls;
@@ -14,6 +15,42 @@ namespace CorePOS;
 
 public class frmInstructions : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass11_0
+	{
+		public int itemComboId;
+
+		public _003C_003Ec__DisplayClass11_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CSpecialInstructionChecks_003Eb__0(ListViewDataItem a)
+		{
+			return a.SubItems[5].ToString() == itemComboId.ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass19_0
+	{
+		public int itemComboId;
+
+		public Func<ListViewDataItem, bool> _003C_003E9__0;
+
+		public _003C_003Ec__DisplayClass19_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnItemOnHold_Click_003Eb__0(ListViewDataItem a)
+		{
+			return a.SubItems[5].ToString() == itemComboId.ToString();
+		}
+	}
+
 	private short short_0;
 
 	private InstructionsMethods instructionsMethods_0;
@@ -131,7 +168,8 @@ public class frmInstructions : frmMasterForm
 		{
 			string_2 = HelperMethods.ButtonColors()["Gray"];
 		}
-		Color color2 = (label.BackColor = HelperMethods.GetColor(string_2));
+		Color color = HelperMethods.GetColor(string_2);
+		label.BackColor = color;
 		label.Tag = string_2;
 		int num = (int)Math.Floor(Convert.ToDecimal(Convert.ToDecimal(InstructionsPanel.Width - 5) / (decimal)int_0)) - 1;
 		int num2 = (int)Math.Floor(Convert.ToDecimal(Convert.ToDecimal(InstructionsPanel.Height) / (decimal)int_0)) - 3;

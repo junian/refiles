@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CorePOS.Business.Methods;
 using CorePOS.Data;
@@ -8,6 +9,30 @@ namespace CorePOS;
 
 public static class MailHelpers
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass0_0
+	{
+		public int AppointmentId;
+
+		public _003C_003Ec__DisplayClass0_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public int AppointmentId;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
 	public static void SendSmsViaAppointment(string type, int AppointmentId, string phoneNumber, string name)
 	{
 		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();

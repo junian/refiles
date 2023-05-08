@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using CorePOS.Business.Objects;
 using CorePOS.Data;
@@ -9,6 +10,42 @@ namespace CorePOS.Business.Methods;
 
 public static class PaymentTypeMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_0
+	{
+		public string[] temp;
+
+		public Func<ProcessorPaymentType, bool> _003C_003E9__3;
+
+		public _003C_003Ec__DisplayClass1_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetTaxTypes_003Eb__3(ProcessorPaymentType a)
+		{
+			return a.PaymentTypeName == temp[0];
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass1_1
+	{
+		public string paymentTypeName;
+
+		public _003C_003Ec__DisplayClass1_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+
+		internal bool _003CGetTaxTypes_003Eb__4(TaxPercentage a)
+		{
+			return a.TaxName.ToUpper().Trim() == paymentTypeName.ToUpper().Trim();
+		}
+	}
+
 	public static List<ProcessorPaymentType> GetPaymentTypes(string paymentMethods)
 	{
 		if (string.IsNullOrEmpty(paymentMethods))

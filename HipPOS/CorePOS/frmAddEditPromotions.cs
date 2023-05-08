@@ -20,6 +20,192 @@ namespace CorePOS;
 
 public class frmAddEditPromotions : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass4_0
+	{
+		public int promotion_id;
+
+		public _003C_003Ec__DisplayClass4_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass5_0
+	{
+		public string dayShortString;
+
+		public _003C_003Ec__DisplayClass5_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CfrmAddEditPromotions_Load_003Eb__0(RadToggleSwitch a)
+		{
+			return a.Name.ToUpper().Contains(dayShortString);
+		}
+
+		internal bool _003CfrmAddEditPromotions_Load_003Eb__1(DateTimePicker a)
+		{
+			if (a.Name.ToUpper().Contains(dayShortString))
+			{
+				return a.Name.Contains("from");
+			}
+			return false;
+		}
+
+		internal bool _003CfrmAddEditPromotions_Load_003Eb__2(DateTimePicker a)
+		{
+			if (a.Name.ToUpper().Contains(dayShortString))
+			{
+				return a.Name.Contains("to");
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass12_0
+	{
+		public string dayString;
+
+		public _003C_003Ec__DisplayClass12_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003Ccopy_button_003Eb__0(DateTimePicker a)
+		{
+			if (a.Name.Contains(dayString))
+			{
+				return a.Name.Contains("from");
+			}
+			return false;
+		}
+
+		internal bool _003Ccopy_button_003Eb__1(DateTimePicker a)
+		{
+			if (a.Name.Contains(dayString))
+			{
+				return a.Name.Contains("to");
+			}
+			return false;
+		}
+
+		internal bool _003Ccopy_button_003Eb__4(DateTimePicker a)
+		{
+			if (a.Name.Contains(dayString))
+			{
+				return a.Name.Contains("from");
+			}
+			return false;
+		}
+
+		internal bool _003Ccopy_button_003Eb__5(DateTimePicker a)
+		{
+			if (a.Name.Contains(dayString))
+			{
+				return a.Name.Contains("to");
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_0
+	{
+		public int promoId;
+
+		public frmAddEditPromotions _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass15_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnSave_Click_003Eb__0(Promotion a)
+		{
+			if (a.PromoId != promoId)
+			{
+				if (!(a.PromoName.ToUpper() == _003C_003E4__this.txtPromoName.Text.ToUpper()))
+				{
+					return a.PromoCode.ToUpper() == _003C_003E4__this.txtPromoCode.Text.ToUpper();
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass15_1
+	{
+		public string shortenedDayString;
+
+		public _003C_003Ec__DisplayClass15_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnSave_Click_003Eb__1(DateTimePicker a)
+		{
+			if (a.Name.Contains(shortenedDayString))
+			{
+				return a.Name.Contains("from");
+			}
+			return false;
+		}
+
+		internal bool _003CbtnSave_Click_003Eb__2(DateTimePicker a)
+		{
+			if (a.Name.Contains(shortenedDayString))
+			{
+				return a.Name.Contains("to");
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass24_0
+	{
+		public string getItem;
+
+		public _003C_003Ec__DisplayClass24_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCheckDiscountAmount_003Eb__0(Item a)
+		{
+			return a.ItemID.ToString() == getItem;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass24_1
+	{
+		public string buyItem;
+
+		public _003C_003Ec__DisplayClass24_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCheckDiscountAmount_003Eb__1(Item a)
+		{
+			return a.ItemID.ToString() == buyItem;
+		}
+	}
+
 	private GClass6 gclass6_0;
 
 	private List<string> list_2;

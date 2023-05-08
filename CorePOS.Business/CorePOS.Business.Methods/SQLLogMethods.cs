@@ -3,6 +3,7 @@ using System.Data.Linq;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using CorePOS.Business.Objects;
 using CorePOS.Data;
@@ -12,6 +13,42 @@ namespace CorePOS.Business.Methods;
 
 public class SQLLogMethods
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_0
+	{
+		public Order objOrder;
+
+		public _003C_003Ec__DisplayClass2_0()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_1
+	{
+		public Item objItem;
+
+		public _003C_003Ec__DisplayClass2_1()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass2_2
+	{
+		public OnlineOrderSyncQueue objQueue;
+
+		public _003C_003Ec__DisplayClass2_2()
+		{
+			Class2.oOsq41PzvTVMr();
+			base._002Ector();
+		}
+	}
+
 	public static void SubmitChangesWithCatch(GClass6 context)
 	{
 		int num = 3;
@@ -102,9 +139,6 @@ public class SQLLogMethods
 		int num2 = 0;
 		int num3 = 0;
 		FileInfo[] array = files;
-		_003C_003Ec__DisplayClass2_0 CS_0024_003C_003E8__locals0;
-		_003C_003Ec__DisplayClass2_1 CS_0024_003C_003E8__locals1;
-		_003C_003Ec__DisplayClass2_2 CS_0024_003C_003E8__locals2;
 		foreach (FileInfo fileInfo in array)
 		{
 			LinqChangeSet linqChangeSet = JsonConvert.DeserializeObject<LinqChangeSet>(File.ReadAllText(text + fileInfo.Name));
@@ -153,7 +187,7 @@ public class SQLLogMethods
 				{
 					if (text4.Contains("OrderId") && text4.Contains("PaymentMethod"))
 					{
-						CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass2_0();
+						_003C_003Ec__DisplayClass2_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass2_0();
 						CS_0024_003C_003E8__locals0.objOrder = JsonConvert.DeserializeObject<Order>(text4);
 						Order order2 = gClass.Orders.Where((Order x) => x.OrderId == CS_0024_003C_003E8__locals0.objOrder.OrderId).FirstOrDefault();
 						if (order2 != null)
@@ -164,7 +198,7 @@ public class SQLLogMethods
 					}
 					else if (!text4.Contains("OrderId") && !text4.Contains("PaymentMethod") && text4.Contains("ItemID"))
 					{
-						CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass2_1();
+						_003C_003Ec__DisplayClass2_1 CS_0024_003C_003E8__locals1 = new _003C_003Ec__DisplayClass2_1();
 						CS_0024_003C_003E8__locals1.objItem = JsonConvert.DeserializeObject<Item>(text4);
 						Item item2 = gClass.Items.Where((Item x) => x.ItemID == CS_0024_003C_003E8__locals1.objItem.ItemID).FirstOrDefault();
 						if (item2 != null)
@@ -175,7 +209,7 @@ public class SQLLogMethods
 					}
 					else if (!text4.Contains("OrderId") && !text4.Contains("PaymentMethod") && !text4.Contains("ItemID") && text4.Contains("Provider") && text4.Contains("RawData"))
 					{
-						CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass2_2();
+						_003C_003Ec__DisplayClass2_2 CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass2_2();
 						CS_0024_003C_003E8__locals2.objQueue = JsonConvert.DeserializeObject<OnlineOrderSyncQueue>(text4);
 						OnlineOrderSyncQueue onlineOrderSyncQueue2 = gClass.OnlineOrderSyncQueues.Where((OnlineOrderSyncQueue x) => x.Id == CS_0024_003C_003E8__locals2.objQueue.Id).FirstOrDefault();
 						if (onlineOrderSyncQueue2 != null)

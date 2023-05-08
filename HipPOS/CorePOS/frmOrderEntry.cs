@@ -24,6 +24,1361 @@ namespace CorePOS;
 
 public class frmOrderEntry : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass135_0
+	{
+		public string Id;
+
+		public frmOrderEntry _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass135_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass135_1
+	{
+		public System.Windows.Forms.Timer timer;
+
+		public _003C_003Ec__DisplayClass135_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass135_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CGenerateNewButton_003Eb__0(object sender, MouseEventArgs e)
+		{
+			timer.Start();
+		}
+
+		internal void _003CGenerateNewButton_003Eb__1(object sender, MouseEventArgs e)
+		{
+			timer.Stop();
+		}
+
+		internal void _003CGenerateNewButton_003Eb__2(object sender, EventArgs e)
+		{
+			timer.Stop();
+		}
+
+		internal void _003CGenerateNewButton_003Eb__3(object sender, EventArgs e)
+		{
+			timer.Stop();
+			if (!string.IsNullOrEmpty(CS_0024_003C_003E8__locals1.Id))
+			{
+				CS_0024_003C_003E8__locals1._003C_003E4__this.method_11(Convert.ToInt16(CS_0024_003C_003E8__locals1.Id));
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass136_0
+	{
+		public short Id;
+
+		public _003C_003Ec__DisplayClass136_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CshowItemInfo_003Eb__0(ItemImage m)
+		{
+			return m.ItemID == Id;
+		}
+
+		internal bool _003CshowItemInfo_003Eb__1(Item m)
+		{
+			return m.ItemID == Convert.ToInt16(Id);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass141_0
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass141_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnClear_Click_003Eb__3(Item i)
+		{
+			return i.ItemID == order.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass148_0
+	{
+		public frmOrderEntry _003C_003E4__this;
+
+		public CorePOS.Data.Group group;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__10;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__11;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__12;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__13;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__14;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__15;
+
+		public _003C_003Ec__DisplayClass148_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDisplayItems_003Eb__1(CorePOS.Data.Group a)
+		{
+			if (a.GroupClassification == ItemClassifications.Product && !a.Archived)
+			{
+				return a.GroupName.ToUpper() == _003C_003E4__this.string_2.ToUpper();
+			}
+			return false;
+		}
+
+		internal bool _003CDisplayItems_003Eb__2(ItemsInGroup a)
+		{
+			return a.GroupID == group.GroupID;
+		}
+
+		internal int _003CDisplayItems_003Eb__3(Item x)
+		{
+			if (x.ItemsInGroups.Where((ItemsInGroup y) => y.GroupID == group.GroupID).FirstOrDefault() == null)
+			{
+				return 0;
+			}
+			return x.ItemsInGroups.Where((ItemsInGroup y) => y.GroupID == group.GroupID).FirstOrDefault().SortOrder;
+		}
+
+		internal bool _003CDisplayItems_003Eb__10(ItemsInGroup y)
+		{
+			return y.GroupID == group.GroupID;
+		}
+
+		internal bool _003CDisplayItems_003Eb__11(ItemsInGroup y)
+		{
+			return y.GroupID == group.GroupID;
+		}
+
+		internal bool _003CDisplayItems_003Eb__8(Item a)
+		{
+			if (a.ItemsInGroups != null && a.ItemsInGroups.Count() > 0)
+			{
+				return a.ItemsInGroups.Where((ItemsInGroup x) => x.GroupID == group.GroupID).FirstOrDefault() != null;
+			}
+			return false;
+		}
+
+		internal bool _003CDisplayItems_003Eb__12(ItemsInGroup x)
+		{
+			return x.GroupID == group.GroupID;
+		}
+
+		internal short _003CDisplayItems_003Eb__9(Item a)
+		{
+			return a.ItemsInGroups.Where((ItemsInGroup x) => x.GroupID == group.GroupID).First().SortOrder;
+		}
+
+		internal bool _003CDisplayItems_003Eb__13(ItemsInGroup x)
+		{
+			return x.GroupID == group.GroupID;
+		}
+
+		internal bool _003CDisplayItems_003Eb__14(ItemsInGroup x)
+		{
+			return x.GroupID == group.GroupID;
+		}
+
+		internal bool _003CDisplayItems_003Eb__15(ItemsInGroup x)
+		{
+			return x.GroupID == group.GroupID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass148_1
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass148_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CDisplayItems_003Eb__16(ItemImage m)
+		{
+			return m.ItemID == item.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass152_0
+	{
+		public int selectedTag;
+
+		public Item item;
+
+		public frmOrderEntry _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass152_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CAddItem_003Eb__0(Item i)
+		{
+			return i.ItemID == selectedTag;
+		}
+
+		internal bool _003CAddItem_003Eb__5(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == item.ItemID && !i.ToBeDeleted && ((i.GroupID > 0 && i.OptionsGroupShowOrderEntry == true) || i.GroupID == 0))
+			{
+				if (i.GroupOrderTypes != null)
+				{
+					return i.GroupOrderTypes.Split(',').Contains(_003C_003E4__this.string_5);
+				}
+				return true;
+			}
+			return false;
+		}
+
+		internal bool _003CAddItem_003Eb__16(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == item.ItemID && !i.ToBeDeleted && ((i.GroupID > 0 && i.OptionsGroupShowOrderEntry == true) || i.GroupID == 0))
+			{
+				if (i.GroupOrderTypes != null)
+				{
+					return i.GroupOrderTypes.Split(',').Contains(_003C_003E4__this.string_5);
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass152_1
+	{
+		public ItemsInItem itemChild;
+
+		public _003C_003Ec__DisplayClass152_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass152_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CAddItem_003Eb__8(Item x)
+		{
+			return x.ItemID == itemChild.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass152_2
+	{
+		public Item itemChildDetails;
+
+		public _003C_003Ec__DisplayClass152_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass152_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CAddItem_003Eb__9(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == itemChildDetails.ItemID && !i.ToBeDeleted && ((i.GroupID > 0 && i.OptionsGroupShowOrderEntry == true) || i.GroupID == 0))
+			{
+				if (i.GroupOrderTypes != null)
+				{
+					return i.GroupOrderTypes.Split(',').Contains(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.string_5);
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass152_3
+	{
+		public frmGroupsInItemSelection frmSel;
+
+		public _003C_003Ec__DisplayClass152_0 CS_0024_003C_003E8__locals3;
+
+		public _003C_003Ec__DisplayClass152_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CAddItem_003Eb__12(Item a)
+		{
+			return a.ItemID == frmSel.returnItemId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass152_4
+	{
+		public Item itemInGroup;
+
+		public _003C_003Ec__DisplayClass152_3 CS_0024_003C_003E8__locals4;
+
+		public _003C_003Ec__DisplayClass152_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CAddItem_003Eb__13(usp_ItemOptionsResult a)
+		{
+			if (a.ItemID == itemInGroup.ItemID && !a.ToBeDeleted && ((a.GroupID > 0 && a.OptionsGroupShowOrderEntry == true) || a.GroupID == 0))
+			{
+				if (a.GroupOrderTypes != null)
+				{
+					return a.GroupOrderTypes.Split(',').Contains(CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3._003C_003E4__this.string_5);
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass152_5
+	{
+		public short groupId;
+
+		public _003C_003Ec__DisplayClass152_5()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CAddItem_003Eb__20(usp_ItemOptionsResult a)
+		{
+			if (a.MinGroupOptions == 1 && a.MaxGroupOptions == 1 && a.GroupID == groupId)
+			{
+				return a.Preselect;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_0
+	{
+		public PossibleCombo combo;
+
+		public frmOrderEntry _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass154_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__2(Item a)
+		{
+			if (a.ItemID == combo.ParentItemId && !a.isDeleted)
+			{
+				return a.Active;
+			}
+			return false;
+		}
+
+		internal bool _003CcheckCombo_003Eb__13(Item x)
+		{
+			return x.ItemID == combo.ParentItemId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_1
+	{
+		public List<GroupsInItem> comboGroups;
+
+		public _003C_003Ec__DisplayClass154_0 CS_0024_003C_003E8__locals1;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__23;
+
+		public _003C_003Ec__DisplayClass154_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__22(int a)
+		{
+			return (from x in MemoryLoadedObjects.all_itemsInGroups
+				where comboGroups.Select((GroupsInItem b) => b.GroupID).ToList().Contains(x.GroupID.Value)
+				select x into z
+				select z.ItemID).ToList().Contains(a);
+		}
+
+		internal bool _003CcheckCombo_003Eb__23(ItemsInGroup x)
+		{
+			return comboGroups.Select((GroupsInItem b) => b.GroupID).ToList().Contains(x.GroupID.Value);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_2
+	{
+		public ItemsInItem x;
+
+		public _003C_003Ec__DisplayClass154_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__8(int i)
+		{
+			return i.ToString() == x.ItemID.ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_3
+	{
+		public GroupsInItem cg;
+
+		public Func<ItemsInGroup, bool> _003C_003E9__11;
+
+		public _003C_003Ec__DisplayClass154_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__10(BillItemsWithCount b)
+		{
+			return (from a in MemoryLoadedObjects.all_itemsInGroups
+				where a.GroupID == cg.GroupID
+				select a.ItemID).ToList().Contains(b.ItemId);
+		}
+
+		internal bool _003CcheckCombo_003Eb__11(ItemsInGroup a)
+		{
+			return a.GroupID == cg.GroupID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_4
+	{
+		public Item comboItem;
+
+		public _003C_003Ec__DisplayClass154_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass154_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__14(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == comboItem.ItemID && !i.ToBeDeleted && ((i.GroupID > 0 && i.OptionsGroupShowOrderEntry == true) || i.GroupID == 0))
+			{
+				if (i.GroupOrderTypes != null)
+				{
+					return i.GroupOrderTypes.Split(',').Contains(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.string_5);
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_5
+	{
+		public ItemsInItem subItem;
+
+		public _003C_003Ec__DisplayClass154_5()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__17(ListViewDataItem x)
+		{
+			if (x.SubItems[4].ToString() == subItem.ItemID.ToString())
+			{
+				return Convert.ToBoolean(x.SubItems[12].ToString());
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_6
+	{
+		public ListViewDataItem mainGroupItem;
+
+		public _003C_003Ec__DisplayClass154_6()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__18(ListViewDataItem x)
+		{
+			return x.SubItems[5].ToString() == mainGroupItem.SubItems[5].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_7
+	{
+		public ListViewDataItem lvMain;
+
+		public _003C_003Ec__DisplayClass154_7()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__19(ListViewDataItem x)
+		{
+			return x.SubItems[5].ToString() == lvMain.SubItems[5].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_8
+	{
+		public ItemsInItem subItem;
+
+		public _003C_003Ec__DisplayClass154_8()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__20(PossibleCombo x)
+		{
+			if (x.ItemId == subItem.ItemID)
+			{
+				return x.ParentItemId == subItem.ParentItemID;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_9
+	{
+		public ItemsInItem itemChild;
+
+		public _003C_003Ec__DisplayClass154_9()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__21(Item x)
+		{
+			return x.ItemID == itemChild.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_10
+	{
+		public int itemChild;
+
+		public _003C_003Ec__DisplayClass154_4 CS_0024_003C_003E8__locals3;
+
+		public _003C_003Ec__DisplayClass154_10()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__26(ListViewDataItem x)
+		{
+			if (x.SubItems[4].ToString() == itemChild.ToString())
+			{
+				return Convert.ToBoolean(x.SubItems[12].ToString());
+			}
+			return false;
+		}
+
+		internal bool _003CcheckCombo_003Eb__29(Item x)
+		{
+			return x.ItemID == itemChild;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_11
+	{
+		public ListViewDataItem mainGroupItem;
+
+		public Item itemInGroup;
+
+		public _003C_003Ec__DisplayClass154_10 CS_0024_003C_003E8__locals4;
+
+		public _003C_003Ec__DisplayClass154_11()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__27(ListViewDataItem x)
+		{
+			return x.SubItems[5].ToString() == mainGroupItem.SubItems[5].ToString();
+		}
+
+		internal bool _003CcheckCombo_003Eb__28(ListViewDataItem x)
+		{
+			if (x.SubItems[4].ToString() != CS_0024_003C_003E8__locals4.itemChild.ToString())
+			{
+				return x.SubItems[5].ToString() == mainGroupItem.SubItems[5].ToString();
+			}
+			return false;
+		}
+
+		internal bool _003CcheckCombo_003Eb__30(PossibleCombo x)
+		{
+			if (x.ItemId == itemInGroup.ItemID)
+			{
+				return x.ParentItemId == CS_0024_003C_003E8__locals4.CS_0024_003C_003E8__locals3.comboItem.ItemID;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass154_12
+	{
+		public int itemOptionChildId;
+
+		public _003C_003Ec__DisplayClass154_12()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CcheckCombo_003Eb__31(Item x)
+		{
+			return x.ItemID == itemOptionChildId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass155_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass155_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CremoveFromComboPotential_003Eb__0(PossibleCombo x)
+		{
+			return x.ItemId == itemId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass156_0
+	{
+		public int childItemID;
+
+		public _003C_003Ec__DisplayClass156_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass156_1
+	{
+		public ItemsInItem itemChild;
+
+		public _003C_003Ec__DisplayClass156_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CaddPackageItems_003Eb__1(Item x)
+		{
+			return x.ItemID == itemChild.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass157_0
+	{
+		public int itemID;
+
+		public _003C_003Ec__DisplayClass157_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CAddItemToListView_003Eb__2(ItemsInGroup a)
+		{
+			return a.ItemID == itemID;
+		}
+
+		internal bool _003CAddItemToListView_003Eb__6(Item x)
+		{
+			return x.ItemID == itemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass157_1
+	{
+		public List<ItemsInGroup> itemInGroup;
+
+		public _003C_003Ec__DisplayClass157_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass159_0
+	{
+		public string comboID;
+
+		public _003C_003Ec__DisplayClass159_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnRemove_Click_003Eb__2(ListViewDataItem a)
+		{
+			if (a.SubItems[5].ToString() == comboID.ToString())
+			{
+				if (!a[1].ToString().Contains("ADD:"))
+				{
+					return !a[1].ToString().Contains("OPT: ");
+				}
+				return false;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass161_0
+	{
+		public frmGroupsInItemSelection frmSel;
+
+		public _003C_003Ec__DisplayClass161_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CCheckChangeGroupInItem_003Eb__0(Item a)
+		{
+			return a.ItemID == frmSel.returnItemId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass163_0
+	{
+		public int selectedTag;
+
+		public _003C_003Ec__DisplayClass163_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculateTaxAndSubtotal_003Eb__0(Item x)
+		{
+			return x.ItemID == selectedTag;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass163_1
+	{
+		public Item taxIncludedItems;
+
+		public _003C_003Ec__DisplayClass163_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRecalculateTaxAndSubtotal_003Eb__2(Item x)
+		{
+			return x.ItemID == taxIncludedItems.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass175_0
+	{
+		public string optionComboId;
+
+		public string comboId;
+
+		public int optionItemId;
+
+		public int mainItemId;
+
+		public string optionTab;
+
+		public _003C_003Ec__DisplayClass175_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CShowChangePrice_003Eb__0(ListViewDataItem a)
+		{
+			if (a.SubItems[11].ToString() == optionComboId && !a.Font.Strikeout && a.SubItems[5].ToString() == comboId)
+			{
+				if (!a[1].ToString().Contains("ADD:"))
+				{
+					return !a[1].ToString().Contains("OPT:");
+				}
+				return false;
+			}
+			return false;
+		}
+
+		internal bool _003CShowChangePrice_003Eb__1(usp_ItemOptionsResult x)
+		{
+			if (!x.ToBeDeleted && ((x.GroupID > 0 && x.OptionsGroupShowOrderEntry == true) || x.GroupID == 0) && x.Option_ItemID == optionItemId && x.ItemID == mainItemId)
+			{
+				return x.Tab.ToUpper() == optionTab.ToUpper();
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass182_0
+	{
+		public string searchText;
+
+		public _003C_003Ec__DisplayClass182_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass183_0
+	{
+		public List<Guid> orderListIDs;
+
+		public _003C_003Ec__DisplayClass183_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass183_1
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass183_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CloadOrder_003Eb__5(Item x)
+		{
+			return x.ItemID == order.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass186_0
+	{
+		public string orderNumber;
+
+		public frmOrderEntry _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass186_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CUpdateTableChange_003Eb__0(OrderResult a)
+		{
+			return a.OrderNumber == orderNumber;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass188_0
+	{
+		public string preCustomer;
+
+		public _003C_003Ec__DisplayClass188_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass189_0
+	{
+		public Item itemFromDB;
+
+		public Item sold_item;
+
+		public frmOrderEntry _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass189_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPutOrderToVariables_003Eb__2(ItemsInGroup x)
+		{
+			return x.ItemID.Value == itemFromDB.ItemID;
+		}
+
+		internal void _003CPutOrderToVariables_003Eb__8()
+		{
+			if (new frmMessageBox(Resources.Do_you_want_to_return_the_item + sold_item.ItemName + Resources._back_to_inventory, Resources.Return_Item_To_Inventory, CustomMessageBoxButtons.YesNo).ShowDialog(_003C_003E4__this) == DialogResult.Yes)
+			{
+				sold_item.DisableSoldOutItems = true;
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass189_1
+	{
+		public string[] refundReasons;
+
+		public _003C_003Ec__DisplayClass189_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass189_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CPutOrderToVariables_003Eb__5()
+		{
+			MemoryLoadedObjects.CheckAndLoadFormsIntoMemory.ItemSelector();
+			MemoryLoadedObjects.ItemSelector.LoadForm(refundReasons, _withCustom: true, "Select Void Reason for " + CS_0024_003C_003E8__locals1.sold_item.ItemName, _IsMultipleSelect: false, _autoClose: false, _sameReasonForAll: true);
+			if (MemoryLoadedObjects.ItemSelector.ShowDialog(CS_0024_003C_003E8__locals1._003C_003E4__this) == DialogResult.OK)
+			{
+				CS_0024_003C_003E8__locals1.sold_item.ItemColor = MemoryLoadedObjects.ItemSelector.SingleSelectedItem;
+				if (MemoryLoadedObjects.ItemSelector.SameForAllValue)
+				{
+					CS_0024_003C_003E8__locals1._003C_003E4__this.string_15 = CS_0024_003C_003E8__locals1.sold_item.ItemColor;
+				}
+			}
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass189_2
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass189_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPutOrderToVariables_003Eb__7(Item i)
+		{
+			return i.ItemID == order.ItemID;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass189_3
+	{
+		public Item batchItem;
+
+		public frmOrderEntry _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass189_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CPutOrderToVariables_003Eb__13()
+		{
+			new NotificationLabel(_003C_003E4__this, batchItem.ItemName + " has qty greater than the qty of it's Expiry Batch", NotificationTypes.Warning).Show();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass193_0
+	{
+		public int itemid;
+
+		public _003C_003Ec__DisplayClass193_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnChangeTable_Click_003Eb__0(Item a)
+		{
+			return a.ItemID == itemid;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass193_1
+	{
+		public string newOrderTable;
+
+		public _003C_003Ec__DisplayClass193_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass204_0
+	{
+		public int itemId;
+
+		public int selectedComboId;
+
+		public string orderId;
+
+		public Func<ListViewDataItem, bool> _003C_003E9__1;
+
+		public _003C_003Ec__DisplayClass204_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CchangeItemQty_003Eb__0(Item a)
+		{
+			return a.ItemID == itemId;
+		}
+
+		internal bool _003CchangeItemQty_003Eb__1(ListViewDataItem a)
+		{
+			return a.SubItems[5].ToString() == selectedComboId.ToString();
+		}
+
+		internal bool _003CchangeItemQty_003Eb__4(int x)
+		{
+			return x == itemId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass204_1
+	{
+		public ListViewDataItem invetoryItem;
+
+		public _003C_003Ec__DisplayClass204_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CchangeItemQty_003Eb__2(Item a)
+		{
+			return a.ItemID.ToString() == invetoryItem.SubItems[4].ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass205_0
+	{
+		public string orderId;
+
+		public _003C_003Ec__DisplayClass205_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass205_1
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass205_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass205_2
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass205_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass205_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass224_0
+	{
+		public int itemId;
+
+		public Item item;
+
+		public _003C_003Ec__DisplayClass224_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnFire_Click_003Eb__0(Item a)
+		{
+			return a.ItemID == itemId;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass224_1
+	{
+		public int itemComboId;
+
+		public Func<ListViewDataItem, bool> _003C_003E9__2;
+
+		public _003C_003Ec__DisplayClass224_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnFire_Click_003Eb__2(ListViewDataItem a)
+		{
+			return a.SubItems[5].ToString() == itemComboId.ToString();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass231_0
+	{
+		public string dayOfWeek;
+
+		public _003C_003Ec__DisplayClass231_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass234_0
+	{
+		public int itemID;
+
+		public int optionComboId;
+
+		public int comboId;
+
+		public _003C_003Ec__DisplayClass234_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnItemOptions_Click_003Eb__0(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == itemID && !i.ToBeDeleted)
+			{
+				if (i.GroupID > 0 && i.OptionsGroupShowOrderEntry == true)
+				{
+					return true;
+				}
+				return i.GroupID == 0;
+			}
+			return false;
+		}
+
+		internal bool _003CbtnItemOptions_Click_003Eb__3(usp_ItemOptionsResult x)
+		{
+			if (!x.ToBeDeleted && x.ItemID == itemID)
+			{
+				if (x.GroupID > 0 && x.OptionsGroupShowOrderEntry == true)
+				{
+					return true;
+				}
+				return x.GroupID == 0;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass234_1
+	{
+		public string itemName;
+
+		public _003C_003Ec__DisplayClass234_0 CS_0024_003C_003E8__locals1;
+
+		public Func<ListViewDataItem, bool> _003C_003E9__5;
+
+		public _003C_003Ec__DisplayClass234_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnItemOptions_Click_003Eb__5(ListViewDataItem a)
+		{
+			if (a[1].ToString() != itemName && a.SubItems[11].ToString() == CS_0024_003C_003E8__locals1.optionComboId.ToString() && !a.Font.Strikeout && a.SubItems[5].ToString() == CS_0024_003C_003E8__locals1.comboId.ToString())
+			{
+				if (!a[1].ToString().Contains("ADD:"))
+				{
+					return a[1].ToString().Contains("OPT: ");
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass234_2
+	{
+		public SelectedOptionObject selOption;
+
+		public _003C_003Ec__DisplayClass234_1 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass234_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnItemOptions_Click_003Eb__6(usp_ItemOptionsResult a)
+		{
+			if (a.ItemWithOptionID == selOption.item_option_id)
+			{
+				if (a.GroupID > 0 && a.OptionsGroupShowOrderEntry == true)
+				{
+					return true;
+				}
+				return a.GroupID == 0;
+			}
+			return false;
+		}
+
+		internal bool _003CbtnItemOptions_Click_003Eb__7(usp_ItemOptionsResult x)
+		{
+			if (!x.ToBeDeleted && ((x.GroupID > 0 && x.OptionsGroupShowOrderEntry == true) || x.GroupID == 0) && x.Option_ItemID == selOption.option_itemId && x.ItemID == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.itemID)
+			{
+				return x.Tab.ToUpper() == selOption.tag.ToUpper();
+			}
+			return false;
+		}
+
+		internal bool _003CbtnItemOptions_Click_003Eb__8(usp_ItemOptionsResult x)
+		{
+			if (!x.ToBeDeleted && ((x.GroupID > 0 && x.OptionsGroupShowOrderEntry == true) || x.GroupID == 0) && x.Option_ItemID == selOption.option_itemId)
+			{
+				return x.ItemID == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.itemID;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass235_0
+	{
+		public frmKeyboard keyboard;
+
+		public frmOrderEntry _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass235_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnSearchItems_Click_1_003Eb__0(Item i)
+		{
+			if (i.ItemName.ToLower().Contains(keyboard.textEntered.ToLower()) && i.Active && !i.isDeleted)
+			{
+				return i.ItemClassification == ItemClassifications.Product;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass242_0
+	{
+		public string bc;
+
+		public _003C_003Ec__DisplayClass242_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CtxtBarcodeSearch_KeyDown_003Eb__1(Item b)
+		{
+			if (b.UseSmartBarcode)
+			{
+				return bc == b.Barcode;
+			}
+			return false;
+		}
+	}
+
 	private static int int_0;
 
 	private DataManager dataManager_0;
@@ -533,7 +1888,8 @@ public class frmOrderEntry : frmMasterForm
 			Color color3 = (listViewDataItemGroup5.BackColor = color);
 			Color color5 = (listViewDataItemGroup4.BackColor = color3);
 			Color color7 = (listViewDataItemGroup3.BackColor = color5);
-			Color color10 = (listViewDataItemGroup.BackColor = (listViewDataItemGroup2.BackColor = color7));
+			Color backColor = (listViewDataItemGroup2.BackColor = color7);
+			listViewDataItemGroup.BackColor = backColor;
 			ListViewDataItemGroup listViewDataItemGroup6 = listViewDataItemGroup_1;
 			ListViewDataItemGroup listViewDataItemGroup7 = listViewDataItemGroup_2;
 			ListViewDataItemGroup listViewDataItemGroup8 = listViewDataItemGroup_3;
@@ -543,7 +1899,8 @@ public class frmOrderEntry : frmMasterForm
 			Font font4 = (listViewDataItemGroup10.Font = font2);
 			Font font6 = (listViewDataItemGroup9.Font = font4);
 			Font font8 = (listViewDataItemGroup8.Font = font6);
-			Font font11 = (listViewDataItemGroup6.Font = (listViewDataItemGroup7.Font = font8));
+			Font font10 = (listViewDataItemGroup7.Font = font8);
+			listViewDataItemGroup6.Font = font10;
 			ListViewDataItemGroup listViewDataItemGroup11 = listViewDataItemGroup_1;
 			ListViewDataItemGroup listViewDataItemGroup12 = listViewDataItemGroup_2;
 			ListViewDataItemGroup listViewDataItemGroup13 = listViewDataItemGroup_3;
@@ -1087,7 +2444,9 @@ public class frmOrderEntry : frmMasterForm
 			int_10 = radListItems.Height;
 		}
 		radListItems.Height = int_10 - (pnlChangeSeat.Visible ? pnlChangeSeat.Height : 0);
-		int num5 = (verticalScrollControl1.Height = (verticalScrollControl1.inputedHeight = int_10 - pnlQty.Height));
+		VerticalScrollControl verticalScrollControl = verticalScrollControl1;
+		int num4 = (verticalScrollControl1.inputedHeight = int_10 - pnlQty.Height);
+		verticalScrollControl.Height = num4;
 		verticalScrollControl1.RefreshSize();
 	}
 
@@ -1769,7 +3128,8 @@ public class frmOrderEntry : frmMasterForm
 						Order order = CS_0024_003C_003E8__locals0.order;
 						Order order2 = CS_0024_003C_003E8__locals0.order;
 						string text = (CS_0024_003C_003E8__locals0.order.StationPrinted = CS_0024_003C_003E8__locals0.order.StationID);
-						string text4 = (order.StationNotified = (order2.StationMade = text));
+						string stationNotified = (order2.StationMade = text);
+						order.StationNotified = stationNotified;
 					}
 				}
 			}
@@ -2095,14 +3455,16 @@ public class frmOrderEntry : frmMasterForm
 					button.Text = "";
 					button.TextAlign = ContentAlignment.BottomCenter;
 					ItemImage itemImage = MemoryLoadedObjects.all_itemimages.Where((ItemImage m) => m.ItemID == CS_0024_003C_003E8__locals1.item.ItemID).FirstOrDefault();
-					if (itemImage == null || itemImage.ImageAsText == null || !(itemImage.ImageAsText != "NoImage"))
+					if (itemImage != null && itemImage.ImageAsText != null && itemImage.ImageAsText != "NoImage")
 					{
-						Bitmap bitmap = (Bitmap)(button.BackgroundImage = new Bitmap(MemoryLoadedObjects.blankImage, new Size(button.Width, button.Height)));
+						using MemoryStream stream = new MemoryStream(Convert.FromBase64String(itemImage.ImageAsText));
+						Bitmap backgroundImage = new Bitmap(Image.FromStream(stream), new Size(button.Width, button.Height));
+						button.BackgroundImage = backgroundImage;
 					}
 					else
 					{
-						using MemoryStream stream = new MemoryStream(Convert.FromBase64String(itemImage.ImageAsText));
-						Bitmap bitmap2 = (Bitmap)(button.BackgroundImage = new Bitmap(Image.FromStream(stream), new Size(button.Width, button.Height)));
+						Bitmap backgroundImage2 = new Bitmap(MemoryLoadedObjects.blankImage, new Size(button.Width, button.Height));
+						button.BackgroundImage = backgroundImage2;
 					}
 					pnlItems.Controls.Add(button);
 					TransparentLabel transparentLabel = new TransparentLabel();
@@ -4564,7 +5926,8 @@ public class frmOrderEntry : frmMasterForm
 			decimal_2 = (decimal_3 = 0m);
 		}
 		short num6 = list_12.Max((Order o) => o.ComboID);
-		num6 = (short_4 = (short)(num6 + 1));
+		num6 = (short)(num6 + 1);
+		short_4 = num6;
 		lblOrderType.Text = (string_11 = (string_5 = order.OrderType));
 		if (string_5 == OrderTypes.DineIn)
 		{
@@ -5200,7 +6563,8 @@ public class frmOrderEntry : frmMasterForm
 			if (listViewDataItem != null && MathHelper.FractionToDecimal(listViewDataItem[0].ToString()) == 1m)
 			{
 				isSaved = false;
-				object obj3 = (listViewDataItem[2] = (listViewDataItem[3] = decimal_5.ToString("0.00")));
+				object value = (listViewDataItem[3] = decimal_5.ToString("0.00"));
+				listViewDataItem[2] = value;
 				RecalculateTaxAndSubtotal();
 			}
 		}
@@ -6373,7 +7737,8 @@ public class frmOrderEntry : frmMasterForm
 		int num11 = (button5.Height = num9);
 		int num13 = (button4.Height = num11);
 		int num15 = (button3.Height = num13);
-		int num18 = (button.Height = (button2.Height = num15));
+		int num17 = (button2.Height = num15);
+		button.Height = num17;
 	}
 
 	private void GglFeOneCle_Click(object sender, EventArgs e)

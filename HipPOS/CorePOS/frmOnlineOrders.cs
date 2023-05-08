@@ -16,6 +16,23 @@ namespace CorePOS;
 
 public class frmOnlineOrders : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass10_0
+	{
+		public string orderNumber;
+
+		public _003C_003Ec__DisplayClass10_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadOrders_003Eb__8(Order x)
+		{
+			return x.OrderNumber == orderNumber;
+		}
+	}
+
 	private List<Order> list_2;
 
 	private string string_0;

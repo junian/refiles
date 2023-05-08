@@ -21,6 +21,483 @@ namespace CorePOS;
 
 public class frmPatron : frmMasterForm
 {
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass51_0
+	{
+		public frmPatron _003C_003E4__this;
+
+		public object sender;
+
+		public _003C_003Ec__DisplayClass51_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CpnlItemScroll_MouseUp_003Eb__0()
+		{
+			_003C_003E4__this.bool_5 = true;
+			_003C_003Ec__DisplayClass51_2 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass51_2
+			{
+				CS_0024_003C_003E8__locals2 = this,
+				y = ((_003C_003E4__this.pnlItems.AutoScrollPosition.Y >= 0) ? _003C_003E4__this.pnlItems.AutoScrollPosition.Y : 0)
+			};
+			while (CS_0024_003C_003E8__locals0.y < 48)
+			{
+				if (CS_0024_003C_003E8__locals0.y > 48)
+				{
+					CS_0024_003C_003E8__locals0.y = 48;
+				}
+				_003C_003E4__this.Invoke((Action)delegate
+				{
+					CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2._003C_003E4__this.pnlItems.AutoScrollPosition = new Point(CS_0024_003C_003E8__locals0.CS_0024_003C_003E8__locals2._003C_003E4__this.pnlItems.AutoScrollPosition.X, CS_0024_003C_003E8__locals0.y);
+				});
+				Thread.Sleep(1);
+				CS_0024_003C_003E8__locals0.y += 4;
+			}
+			_003C_003E4__this.bool_5 = false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass51_1
+	{
+		public Point currAutoS;
+
+		public int scroll_counter;
+
+		public _003C_003Ec__DisplayClass51_0 CS_0024_003C_003E8__locals1;
+
+		public Action _003C_003E9__2;
+
+		public Action _003C_003E9__3;
+
+		public Action _003C_003E9__4;
+
+		public _003C_003Ec__DisplayClass51_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CpnlItemScroll_MouseUp_003Eb__1()
+		{
+			for (int i = 0; i < scroll_counter; i++)
+			{
+				if (currAutoS.Y != 0)
+				{
+					currAutoS.Y = Math.Abs(currAutoS.Y) + CS_0024_003C_003E8__locals1._003C_003E4__this.int_8;
+				}
+				if (CS_0024_003C_003E8__locals1.sender is RadListView)
+				{
+					CS_0024_003C_003E8__locals1._003C_003E4__this.Invoke((Action)delegate
+					{
+						CS_0024_003C_003E8__locals1._003C_003E4__this.radListItems.AutoScrollPosition = currAutoS;
+					});
+				}
+				else
+				{
+					CS_0024_003C_003E8__locals1._003C_003E4__this.Invoke((Action)delegate
+					{
+						CS_0024_003C_003E8__locals1._003C_003E4__this.pnlItems.AutoScrollPosition = currAutoS;
+					});
+				}
+				if (Math.Abs(currAutoS.Y) <= 0 || (CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 == "up" && Math.Abs(currAutoS.Y) >= CS_0024_003C_003E8__locals1._003C_003E4__this.int_7))
+				{
+					i = scroll_counter;
+				}
+				if (i >= (int)((double)(float)scroll_counter * 0.65) || (CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 == "down" && currAutoS.Y < 100))
+				{
+					if (CS_0024_003C_003E8__locals1._003C_003E4__this.int_8 < 1 && CS_0024_003C_003E8__locals1._003C_003E4__this.int_8 > -1)
+					{
+						i = scroll_counter;
+					}
+					else
+					{
+						CS_0024_003C_003E8__locals1._003C_003E4__this.int_8 = (int)((float)CS_0024_003C_003E8__locals1._003C_003E4__this.int_8 * 0.8f);
+					}
+				}
+				Thread.Sleep(1);
+			}
+			if (!(CS_0024_003C_003E8__locals1.sender is RadListView) && CS_0024_003C_003E8__locals1._003C_003E4__this.string_8 == "down" && Math.Abs(currAutoS.Y) < 48)
+			{
+				for (int j = ((Math.Abs(currAutoS.Y) >= 0) ? Math.Abs(currAutoS.Y) : 0); j < 48; j += 4)
+				{
+					if (j > 48)
+					{
+						j = 48;
+					}
+					currAutoS.Y = j;
+					CS_0024_003C_003E8__locals1._003C_003E4__this.Invoke((Action)delegate
+					{
+						CS_0024_003C_003E8__locals1._003C_003E4__this.pnlItems.AutoScrollPosition = currAutoS;
+					});
+					Thread.Sleep(1);
+				}
+			}
+			CS_0024_003C_003E8__locals1._003C_003E4__this.bool_5 = false;
+		}
+
+		internal void _003CpnlItemScroll_MouseUp_003Eb__2()
+		{
+			CS_0024_003C_003E8__locals1._003C_003E4__this.radListItems.AutoScrollPosition = currAutoS;
+		}
+
+		internal void _003CpnlItemScroll_MouseUp_003Eb__3()
+		{
+			CS_0024_003C_003E8__locals1._003C_003E4__this.pnlItems.AutoScrollPosition = currAutoS;
+		}
+
+		internal void _003CpnlItemScroll_MouseUp_003Eb__4()
+		{
+			CS_0024_003C_003E8__locals1._003C_003E4__this.pnlItems.AutoScrollPosition = currAutoS;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass51_2
+	{
+		public int y;
+
+		public _003C_003Ec__DisplayClass51_0 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass51_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal void _003CpnlItemScroll_MouseUp_003Eb__5()
+		{
+			CS_0024_003C_003E8__locals2._003C_003E4__this.pnlItems.AutoScrollPosition = new Point(CS_0024_003C_003E8__locals2._003C_003E4__this.pnlItems.AutoScrollPosition.X, y);
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass54_0
+	{
+		public string searchText;
+
+		public _003C_003Ec__DisplayClass54_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass55_0
+	{
+		public Order order;
+
+		public _003C_003Ec__DisplayClass55_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass57_0
+	{
+		public int selectedTag;
+
+		public _003C_003Ec__DisplayClass57_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass67_0
+	{
+		public Item item;
+
+		public _003C_003Ec__DisplayClass67_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPatronItemAddItem_Click_003Eb__4(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == item.ItemID)
+			{
+				return !i.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CPatronItemAddItem_Click_003Eb__13(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == item.ItemID)
+			{
+				return !i.ToBeDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass67_1
+	{
+		public MaterialsInItem matInItem;
+
+		public _003C_003Ec__DisplayClass67_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass67_2
+	{
+		public ItemsInItem itemChild;
+
+		public _003C_003Ec__DisplayClass67_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass67_3
+	{
+		public Item itemChildDetails;
+
+		public _003C_003Ec__DisplayClass67_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CPatronItemAddItem_Click_003Eb__8(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == itemChildDetails.ItemID)
+			{
+				return !i.ToBeDeleted;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass67_4
+	{
+		public frmGroupsInItemSelection frmSel;
+
+		public _003C_003Ec__DisplayClass67_4()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass69_0
+	{
+		public int childItemID;
+
+		public _003C_003Ec__DisplayClass69_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass69_1
+	{
+		public ItemsInItem itemChild;
+
+		public _003C_003Ec__DisplayClass69_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass71_0
+	{
+		public ListViewDataItem parentListItem;
+
+		public frmPatron _003C_003E4__this;
+
+		public _003C_003Ec__DisplayClass71_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass71_1
+	{
+		public string comboID;
+
+		public _003C_003Ec__DisplayClass71_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRemoveItemInListView_003Eb__0(ListViewDataItem a)
+		{
+			if (a.SubItems[5].ToString() == comboID.ToString())
+			{
+				if (!a[1].ToString().Contains("ADD:"))
+				{
+					return !a[1].ToString().Contains("OPT: ");
+				}
+				return false;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass71_2
+	{
+		public int z;
+
+		public _003C_003Ec__DisplayClass71_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass71_2()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass71_3
+	{
+		public string Tag;
+
+		public _003C_003Ec__DisplayClass71_2 CS_0024_003C_003E8__locals2;
+
+		public _003C_003Ec__DisplayClass71_3()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CRemoveItemInListView_003Eb__1(usp_ItemOptionsResult x)
+		{
+			if (!x.ToBeDeleted && x.ItemID.Value.ToString() == CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1.parentListItem.SubItems[4].ToString() && x.Option_ItemID == Convert.ToInt32(CS_0024_003C_003E8__locals2.CS_0024_003C_003E8__locals1._003C_003E4__this.radListItems.SelectedItems[CS_0024_003C_003E8__locals2.z].SubItems[4].ToString().Trim()))
+			{
+				return x.Tab.ToUpper() == Tag.ToUpper();
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass74_0
+	{
+		public int itemId;
+
+		public _003C_003Ec__DisplayClass74_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass76_0
+	{
+		public int itemID;
+
+		public int optionComboId;
+
+		public int comboId;
+
+		public _003C_003Ec__DisplayClass76_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnItemOptions_Click_003Eb__0(usp_ItemOptionsResult i)
+		{
+			if (i.ItemID == itemID)
+			{
+				return !i.ToBeDeleted;
+			}
+			return false;
+		}
+
+		internal bool _003CbtnItemOptions_Click_003Eb__3(ListViewDataItem a)
+		{
+			if (a.SubItems[11].ToString() == optionComboId.ToString() && !a.Font.Strikeout && a.SubItems[5].ToString() == comboId.ToString())
+			{
+				if (!a[1].ToString().Contains("ADD:"))
+				{
+					return a[1].ToString().Contains("OPT: ");
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass76_1
+	{
+		public SelectedOptionObject selOption;
+
+		public _003C_003Ec__DisplayClass76_0 CS_0024_003C_003E8__locals1;
+
+		public _003C_003Ec__DisplayClass76_1()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CbtnItemOptions_Click_003Eb__5(usp_ItemOptionsResult x)
+		{
+			if (!x.ToBeDeleted && x.Option_ItemID == selOption.option_itemId && x.ItemID == CS_0024_003C_003E8__locals1.itemID)
+			{
+				return x.Tab.ToUpper() == selOption.tag.ToUpper();
+			}
+			return false;
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass80_0
+	{
+		public Item itemFromDB;
+
+		public _003C_003Ec__DisplayClass80_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass83_0
+	{
+		public string itemToDisplay;
+
+		public _003C_003Ec__DisplayClass83_0()
+		{
+			Class26.Ggkj0JxzN9YmC();
+			base._002Ector();
+		}
+
+		internal bool _003CLoadItemsTimer_Tick_003Eb__1(PatronItemControl a)
+		{
+			return a.Name == itemToDisplay;
+		}
+	}
+
 	private string string_0;
 
 	private string string_1;
@@ -603,7 +1080,8 @@ public class frmPatron : frmMasterForm
 		}
 		radListItems.EndUpdate();
 		short num4 = iqueryable_0.Max((Order o) => o.ComboID);
-		num4 = (short_1 = (short)(num4 + 1));
+		num4 = (short)(num4 + 1);
+		short_1 = num4;
 		iqueryable_0.FirstOrDefault();
 		RecalculateTaxAndSubtotal();
 	}
