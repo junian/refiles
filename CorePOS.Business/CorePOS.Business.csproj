@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>CorePOS.Business</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net452</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>Preview</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="CorePOS.Data">
+      <HintPath>..\..\Hippos-de4dot\CorePOS.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="CloverConnector" />
+    <Reference Include="Newtonsoft.Json" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="CrashGrab" />
+    <Reference Include="Microsoft.WindowsAzure.Storage" />
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement" />
+    <Reference Include="UnitsNet" />
+    <Reference Include="CloverWindowsSDK" />
+  </ItemGroup>
+</Project>

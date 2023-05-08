@@ -1,0 +1,29 @@
+namespace CorePOS.Business.Objects.ThirdPartyAPIs.OnlineOrdering;
+
+public enum DeliverectChannels
+{
+	DELIVERECT = 1,
+	DELIVEROO,
+	FOODORA,
+	DELIVERY_HERO,
+	FOOD_PANDA,
+	GLOVO,
+	UBER_EATS,
+	TAKEAWAY_COM,
+	JUST_EAT,
+	SKIP_THE_DISHES,
+	FLYT,
+	DOORDASH,
+	RITUAL,
+	ZOMATO,
+	EATCH,
+	WOLT,
+	FLIPDISH,
+	POSTMATES,
+	GRAB,
+	TALABAT,
+	SHOPIFY,
+	WOOCOMMERCE,
+	GOOGLE,
+	JAHEZ
+}
