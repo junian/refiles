@@ -24,6 +24,6 @@ public class TipResponseModel : StatusCodeResponse
 	public TipResponseModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

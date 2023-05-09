@@ -259,7 +259,7 @@ public class ItemCustomFieldValue : INotifyPropertyChanging, INotifyPropertyChan
 	public ItemCustomFieldValue()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_CustomField = default(EntityRef<CustomField>);
 		_Item = default(EntityRef<Item>);
 	}

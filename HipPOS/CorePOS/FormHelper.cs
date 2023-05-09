@@ -26,7 +26,7 @@ public class FormHelper
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -38,7 +38,7 @@ public class FormHelper
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CChangeOrderEntryLVCellByIdentifier_003Eb__0(ListViewDataItem a)
@@ -55,7 +55,7 @@ public class FormHelper
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -67,7 +67,7 @@ public class FormHelper
 		public _003C_003Ec__DisplayClass15_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -851,6 +851,6 @@ public class FormHelper
 	public FormHelper()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

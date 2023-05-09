@@ -23,7 +23,7 @@ public class frmRefundFinish : frmMasterForm
 	public frmRefundFinish(decimal changeAmount, string refundNumber, string paymentMethod)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		lblChange.Text = Resources.res0 + changeAmount.ToString("0.00");

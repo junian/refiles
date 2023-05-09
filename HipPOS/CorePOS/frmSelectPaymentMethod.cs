@@ -43,7 +43,7 @@ public class frmSelectPaymentMethod : frmMasterForm
 	public frmSelectPaymentMethod(string _title = "Select Payment Method", bool showCancelButton = false, List<string> paymentMethodsFilter = null)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lblTitle.Text = _title;
 		if (!showCancelButton)

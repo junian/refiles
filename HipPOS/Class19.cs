@@ -8,7 +8,7 @@ internal class Class19 : ComboBox
 	public Class19()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		base.DrawMode = DrawMode.OwnerDrawVariable;
 		base.DrawItem += Class19_DrawItem;
 	}

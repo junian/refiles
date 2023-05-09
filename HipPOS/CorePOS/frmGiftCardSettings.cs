@@ -53,7 +53,7 @@ public class frmGiftCardSettings : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = "";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		string_0 = cardTypeJSON;
 		if (cardTypeJSON == "gift_card_json")

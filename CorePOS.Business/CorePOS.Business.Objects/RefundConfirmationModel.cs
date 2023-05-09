@@ -43,6 +43,6 @@ public class RefundConfirmationModel
 	public RefundConfirmationModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

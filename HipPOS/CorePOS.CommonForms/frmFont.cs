@@ -23,7 +23,7 @@ public class frmFont : frmMasterForm
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CfrmFont_Load_003Eb__0(KeyValuePair<string, int> x)
@@ -69,7 +69,7 @@ public class frmFont : frmMasterForm
 	public frmFont(string type)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		string_0 = type;
 	}

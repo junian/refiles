@@ -157,7 +157,7 @@ public static class SPInObjects
 			public Request()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 	}
@@ -332,7 +332,7 @@ public static class SPInObjects
 			public Response()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 	}

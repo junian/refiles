@@ -171,7 +171,7 @@ public class Role : INotifyPropertyChanging, INotifyPropertyChanged
 	public Role()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Users = new EntitySet<User>(method_0, method_1);
 		_SecurityMatrixes = new EntitySet<SecurityMatrix>(method_2, method_3);
 	}

@@ -31,7 +31,7 @@ public class ItemOptionControl : UserControl
 		public _003C_003Ec__DisplayClass39_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -47,7 +47,7 @@ public class ItemOptionControl : UserControl
 		public _003C_003Ec__DisplayClass40_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -61,7 +61,7 @@ public class ItemOptionControl : UserControl
 		public _003C_003Ec__DisplayClass41_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -227,7 +227,7 @@ public class ItemOptionControl : UserControl
 	public ItemOptionControl(int _id, int _selectedItemID, string _selectedTab, short _optionGroupID, GClass6 _context)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		int_1 = _id;
 		string_1 = _selectedTab;

@@ -59,7 +59,7 @@ public class frmCustomerInfo : frmMasterForm
 		string_3 = string.Empty;
 		string_4 = string.Empty;
 		string_5 = string.Empty;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		if (Thread.CurrentThread.CurrentCulture.Name.Equals("fr-CA"))

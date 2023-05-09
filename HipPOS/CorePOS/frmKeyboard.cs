@@ -253,7 +253,7 @@ public class frmKeyboard : frmMasterForm
 			'-'
 		};
 		CjwFlhkudbi = new TransparentLabel();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

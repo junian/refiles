@@ -28,7 +28,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass27_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadFormData_003Eb__0(OrderResult a)
@@ -45,7 +45,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass34_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadFormProcedure_003Eb__5(OrderResult a)
@@ -62,7 +62,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass34_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadFormProcedure_003Eb__6(OrderResult a)
@@ -81,7 +81,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass37_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRemoveBill_003Eb__0()
@@ -123,7 +123,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass40_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CAddPaidLabel_003Eb__0()
@@ -171,7 +171,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass40_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CAddPaidLabel_003Eb__1()
@@ -204,7 +204,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass41_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CAddTipLabel_003Eb__0()
@@ -251,7 +251,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass41_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CAddTipLabel_003Eb__1()
@@ -276,7 +276,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass42_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsubBillsClick_003Eb__0(OrderResult a)
@@ -303,7 +303,7 @@ public class frmQuickService : frmMasterForm
 		public _003C_003Ec__DisplayClass45_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003Cbutton_EnabledChanged_003Eb__0(LockedControl x)
@@ -451,7 +451,7 @@ public class frmQuickService : frmMasterForm
 		bool_6 = true;
 		int_5 = 12;
 		label_0 = new Label();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		btnConfirmOnlineOrders.Tag = btnConfirmOnlineOrders.BackColor;
 		VerticalScrollControl verticalScrollControl = verticalScrollControl1;

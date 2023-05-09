@@ -26,7 +26,7 @@ public static class TapMangoHelper
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -40,7 +40,7 @@ public static class TapMangoHelper
 		public _003C_003Ec__DisplayClass3_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CProcessTapMangoLoyalty_003Eb__2()

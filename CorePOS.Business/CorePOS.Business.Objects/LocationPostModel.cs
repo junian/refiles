@@ -24,6 +24,6 @@ public class LocationPostModel
 	public LocationPostModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

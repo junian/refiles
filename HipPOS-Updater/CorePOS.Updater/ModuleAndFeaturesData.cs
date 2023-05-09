@@ -58,7 +58,7 @@ public class ModuleAndFeaturesData
 	public ModuleAndFeaturesData(string ModuleName, string ControlName, string Description)
 	{
 		Class13.FLcy5UmzUUEfT();
-		base._002Ector();
+		// base._002Ector();
 		this.ModuleName = ModuleName;
 		this.ControlName = ControlName;
 		this.Description = Description;

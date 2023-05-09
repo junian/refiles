@@ -27,7 +27,7 @@ public class frmAdminReports : frmMasterForm
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -41,7 +41,7 @@ public class frmAdminReports : frmMasterForm
 		public _003C_003Ec__DisplayClass7_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -53,7 +53,7 @@ public class frmAdminReports : frmMasterForm
 		public _003C_003Ec__DisplayClass13_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -69,7 +69,7 @@ public class frmAdminReports : frmMasterForm
 		public _003C_003Ec__DisplayClass13_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadOrders_003Eb__1(Group a)
@@ -117,7 +117,7 @@ public class frmAdminReports : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		TokFvWgrMaE = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isCurrentlyTrainingMode"]))

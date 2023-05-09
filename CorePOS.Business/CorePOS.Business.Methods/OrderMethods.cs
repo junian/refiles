@@ -20,7 +20,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -32,7 +32,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -44,7 +44,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -56,7 +56,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -68,7 +68,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass15_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -80,7 +80,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003COpenOrders_003Eb__0(Order x)
@@ -101,7 +101,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass17_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -115,7 +115,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass18_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003COpenDineInBills_003Eb__2(Order x)
@@ -143,7 +143,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass18_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003COpenDineInBills_003Eb__5(Order x)
@@ -160,7 +160,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass18_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal OrderTotal _003COpenDineInBills_003Eb__6(Order o)
@@ -191,7 +191,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass18_3()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003COpenDineInBills_003Eb__7(Order x)
@@ -213,7 +213,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -227,7 +227,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass20_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilledCompleteOrders_003Eb__3(Order x)
@@ -244,7 +244,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass20_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilledCompleteOrders_003Eb__4(Order x)
@@ -274,7 +274,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass21_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -290,7 +290,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass22_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUnfilledOrderNumbers_003Eb__6(Order x)
@@ -320,7 +320,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass23_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -332,7 +332,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass24_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -346,7 +346,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass25_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -358,7 +358,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass26_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -370,7 +370,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass27_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -382,7 +382,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass28_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -394,7 +394,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass29_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -408,7 +408,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass32_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -420,7 +420,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass33_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -432,7 +432,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass34_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -444,7 +444,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass36_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -456,7 +456,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass37_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -470,7 +470,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass38_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetMultipleBills_003Eb__0(Order o)
@@ -502,7 +502,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass39_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSearchOpenOrders_003Eb__0(Order x)
@@ -532,7 +532,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass40_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSaveTotals_003Eb__0(Order o)
@@ -549,7 +549,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass40_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -561,7 +561,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass41_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -573,7 +573,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass43_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -585,7 +585,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass45_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -597,7 +597,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass46_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -609,7 +609,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass48_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -621,7 +621,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass49_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -633,7 +633,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass50_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -645,7 +645,7 @@ public class OrderMethods
 		public _003C_003Ec__DisplayClass53_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -654,7 +654,7 @@ public class OrderMethods
 	public OrderMethods(GClass6 dataContext = null)
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 		if (dataContext == null)
 		{
 			_dataContext = new GClass6();

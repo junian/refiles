@@ -47,7 +47,7 @@ public class CustomPager : UserControl
 		rowsPerPage = 20;
 		int_0 = 35;
 		int_1 = 50;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 	}
 

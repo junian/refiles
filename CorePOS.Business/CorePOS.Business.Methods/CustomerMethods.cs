@@ -14,7 +14,7 @@ public static class CustomerMethods
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -26,7 +26,7 @@ public static class CustomerMethods
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -38,7 +38,7 @@ public static class CustomerMethods
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 

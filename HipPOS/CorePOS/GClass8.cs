@@ -22,7 +22,7 @@ public class GClass8
 		public DOCINFOA()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -136,6 +136,6 @@ public class GClass8
 	public GClass8()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

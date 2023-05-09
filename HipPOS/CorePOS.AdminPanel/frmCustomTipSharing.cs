@@ -20,7 +20,7 @@ public class frmCustomTipSharing : frmMasterForm
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -32,7 +32,7 @@ public class frmCustomTipSharing : frmMasterForm
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -44,7 +44,7 @@ public class frmCustomTipSharing : frmMasterForm
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -87,7 +87,7 @@ public class frmCustomTipSharing : frmMasterForm
 	public frmCustomTipSharing()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

@@ -35,7 +35,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass36_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -49,7 +49,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass39_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsearchCustomer_003Eb__9(Customer x)
@@ -74,7 +74,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass39_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsearchCustomer_003Eb__11(GlobalOrderHistoryObjects.CustomerInfo a)
@@ -91,7 +91,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass39_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsearchCustomer_003Eb__17(Guid a)
@@ -108,7 +108,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass39_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -120,7 +120,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass39_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal GlobalOrderHistoryObjects.Order _003CsearchCustomer_003Eb__23(Order x)
@@ -157,7 +157,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass39_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsearchCustomer_003Eb__26(Guid a)
@@ -174,7 +174,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass49_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003ClstCustomers_SelectedIndexChanged_003Eb__1(GlobalOrderHistoryObjects.Order x)
@@ -197,7 +197,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass51_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDuplicate_Click_003Eb__0(GlobalOrderHistoryObjects.Order o)
@@ -219,7 +219,7 @@ public class frmCustomersMini : frmMasterForm
 		public _003C_003Ec__DisplayClass51_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDuplicate_Click_003Eb__5(usp_ItemOptionsResult y)
@@ -409,7 +409,7 @@ public class frmCustomersMini : frmMasterForm
 		list_3 = new List<GlobalOrderHistoryObjects.CustomerInfo>();
 		customerInfo_0 = new GlobalOrderHistoryObjects.CustomerInfo();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		_ = Thread.CurrentThread.CurrentCulture;

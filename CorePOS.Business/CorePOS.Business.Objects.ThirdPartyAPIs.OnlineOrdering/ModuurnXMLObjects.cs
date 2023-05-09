@@ -48,7 +48,7 @@ public class ModuurnXMLObjects
 		public Client_address_parts()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -202,7 +202,7 @@ public class ModuurnXMLObjects
 		public Subitem()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -374,7 +374,7 @@ public class ModuurnXMLObjects
 		public Option()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -672,7 +672,7 @@ public class ModuurnXMLObjects
 		public Item()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1402,7 +1402,7 @@ public class ModuurnXMLObjects
 		public Order()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1448,13 +1448,13 @@ public class ModuurnXMLObjects
 		public Root()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
 	public ModuurnXMLObjects()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

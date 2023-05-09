@@ -2054,7 +2054,7 @@ public class Order : INotifyPropertyChanging, INotifyPropertyChanged
 	public Order()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Refunds = new EntitySet<Refund>(method_0, method_1);
 		_Terminal = default(EntityRef<Terminal>);
 		_Terminal1 = default(EntityRef<Terminal>);

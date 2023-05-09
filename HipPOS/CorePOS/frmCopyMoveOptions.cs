@@ -25,7 +25,7 @@ public class frmCopyMoveOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnMoveCopyClick_003Eb__3(ItemsWithOption a)
@@ -46,7 +46,7 @@ public class frmCopyMoveOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcopyOptions_003Eb__1(ItemsWithOption a)
@@ -65,7 +65,7 @@ public class frmCopyMoveOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass9_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -77,7 +77,7 @@ public class frmCopyMoveOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -91,7 +91,7 @@ public class frmCopyMoveOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass10_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -105,7 +105,7 @@ public class frmCopyMoveOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass10_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -117,7 +117,7 @@ public class frmCopyMoveOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -129,7 +129,7 @@ public class frmCopyMoveOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass13_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -141,7 +141,7 @@ public class frmCopyMoveOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass13_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -200,7 +200,7 @@ public class frmCopyMoveOptions : frmMasterForm
 	public frmCopyMoveOptions()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

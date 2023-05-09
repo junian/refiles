@@ -33,7 +33,7 @@ public class NotificationMethods
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CsendCrash_003Eb__0()
@@ -79,7 +79,7 @@ public class NotificationMethods
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CsendCrashStringOnly_003Eb__0()
@@ -383,6 +383,6 @@ public class NotificationMethods
 	public NotificationMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

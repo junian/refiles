@@ -109,6 +109,6 @@ public class TapMangoLocation
 	public TapMangoLocation()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

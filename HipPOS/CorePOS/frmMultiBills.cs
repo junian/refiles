@@ -27,7 +27,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass23_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadFormProcedure_003Eb__8(OrderResult a)
@@ -44,7 +44,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass23_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadFormProcedure_003Eb__9(OrderResult a)
@@ -63,7 +63,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass26_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRemoveBill_003Eb__0()
@@ -105,7 +105,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass29_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CAddTipLabel_003Eb__0()
@@ -167,7 +167,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass29_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CAddTipLabel_003Eb__1()
@@ -198,7 +198,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass30_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsubBillsClick_003Eb__0(OrderResult a)
@@ -230,7 +230,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass30_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsubBillsClick_003Eb__2(OrderResult a)
@@ -247,7 +247,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass30_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsubBillsClick_003Eb__3(OrderResult a)
@@ -264,7 +264,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass30_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsubBillsClick_003Eb__6(OrderResult a)
@@ -281,7 +281,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass34_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -293,7 +293,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass36_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003Cbutton_EnabledChanged_003Eb__0(LockedControl x)
@@ -310,7 +310,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass38_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -322,7 +322,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass38_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -334,7 +334,7 @@ public class frmMultiBills : frmMasterForm
 		public _003C_003Ec__DisplayClass39_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003Ctimer1_Tick_003Eb__3(Order o)
@@ -462,7 +462,7 @@ public class frmMultiBills : frmMasterForm
 		int_0 = 1;
 		bool_1 = true;
 		string_2 = "ALL";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		btnConfirmOnlineOrders.Tag = btnConfirmOnlineOrders.BackColor;
 		new FormHelper().ResizeButtonFonts(this);

@@ -42,6 +42,6 @@ public class InventoryAuditsResponseModel : StatusCodeResponse
 	public InventoryAuditsResponseModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

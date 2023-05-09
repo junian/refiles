@@ -156,7 +156,7 @@ public class CustomField : INotifyPropertyChanging, INotifyPropertyChanged
 	public CustomField()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_ItemCustomFieldValues = new EntitySet<ItemCustomFieldValue>(method_0, method_1);
 	}
 

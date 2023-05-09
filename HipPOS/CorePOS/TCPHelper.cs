@@ -33,7 +33,7 @@ public class TCPHelper
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessBillPayment_003Eb__0(Order x)
@@ -54,7 +54,7 @@ public class TCPHelper
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetTables_003Eb__1(Layout x)
@@ -76,7 +76,7 @@ public class TCPHelper
 		public _003C_003Ec__DisplayClass4_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetTables_003Eb__4(OrderTotal x)
@@ -93,7 +93,7 @@ public class TCPHelper
 		public _003C_003Ec__DisplayClass4_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -520,6 +520,6 @@ public class TCPHelper
 	public TCPHelper()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

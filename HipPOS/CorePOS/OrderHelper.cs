@@ -26,7 +26,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003COrderPrintMadeCheck_003Eb__0()
@@ -151,7 +151,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass1_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003COrderPrintMadeCheck_003Eb__3(Order a)
@@ -187,7 +187,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass1_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003COrderPrintMadeCheck_003Eb__6(Station x)
@@ -208,7 +208,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003COrderMadeCheck_003Eb__0()
@@ -260,7 +260,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintToStation_003Eb__0(Station a)
@@ -335,7 +335,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintToStation_003Eb__7(Order o)
@@ -385,7 +385,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -397,7 +397,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintToStation_003Eb__33(PrintToStationOrderObject a)
@@ -427,7 +427,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintToStation_003Eb__45(PrintToStationOrderObject a)
@@ -459,7 +459,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintToStation_003Eb__50(PrintToStationOrderObject a)
@@ -489,7 +489,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_6()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintToStation_003Eb__59(Order o)
@@ -533,7 +533,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_7()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintToStation_003Eb__72(PrintToStationOrderObject a)
@@ -564,7 +564,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_8()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintToStation_003Eb__76(Order a)
@@ -581,7 +581,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_9()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintToStation_003Eb__82(Station a)
@@ -602,7 +602,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_10()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CPrintToStation_003Eb__85(Order a)
@@ -619,7 +619,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass3_11()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -631,7 +631,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -645,7 +645,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003COrderMade_003Eb__0(Order o)
@@ -668,7 +668,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass8_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003COrderMade_003Eb__2(Order o)
@@ -697,7 +697,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRecordBatchId_003Eb__0()
@@ -769,7 +769,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass9_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -789,7 +789,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CClearOrder_003Eb__0()
@@ -852,7 +852,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -864,7 +864,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass13_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -876,7 +876,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -888,7 +888,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass17_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -906,7 +906,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__7(Item x)
@@ -934,7 +934,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__11(GlobalOrderHistoryObjects.Order a)
@@ -953,7 +953,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__18(Item x)
@@ -1010,7 +1010,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__17(ItemsInGroup x)
@@ -1045,7 +1045,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__26(Reason a)
@@ -1062,7 +1062,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__29(usp_ItemOptionsResult a)
@@ -1083,7 +1083,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_6()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__30(usp_ItemOptionsResult x)
@@ -1106,7 +1106,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_7()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__32(Order a)
@@ -1127,7 +1127,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_8()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__34(Order a)
@@ -1144,7 +1144,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_9()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1156,7 +1156,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_10()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__41(usp_ItemOptionsResult a)
@@ -1177,7 +1177,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_11()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__42(usp_ItemOptionsResult x)
@@ -1198,7 +1198,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_12()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__44(Order a)
@@ -1219,7 +1219,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass18_13()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDuplicateOrder_003Eb__46(Order a)
@@ -1236,7 +1236,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass20_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1248,7 +1248,7 @@ public class OrderHelper
 		public _003C_003Ec__DisplayClass21_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -3568,6 +3568,6 @@ public class OrderHelper
 	public OrderHelper()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

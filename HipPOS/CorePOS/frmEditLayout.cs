@@ -26,7 +26,7 @@ public class frmEditLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass26_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadDefaultLayout_003Eb__0(string a)
@@ -43,7 +43,7 @@ public class frmEditLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass41_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnRemoveTable_Click_003Eb__0(OccupiedTable a)
@@ -75,7 +75,7 @@ public class frmEditLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass58_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003Ctable_MouseUp_003Eb__0(Layout l)
@@ -92,7 +92,7 @@ public class frmEditLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass58_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003Ctable_MouseUp_003Eb__1(Layout l)
@@ -225,7 +225,7 @@ public class frmEditLayout : frmMasterForm
 		int_0 = 1;
 		list_4 = new List<Layout>();
 		int_5 = 5;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		if (Thread.CurrentThread.CurrentCulture.Name.Equals("fr-CA"))

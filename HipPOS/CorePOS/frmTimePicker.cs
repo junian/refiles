@@ -73,7 +73,7 @@ public class frmTimePicker : frmMasterForm
 	public frmTimePicker(DateTime _Time, int _MinuteIncrement = 1)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		int_0 = _MinuteIncrement;
 		Time = _Time;

@@ -13,7 +13,7 @@ public class DebugSettings
 	public DebugSettings()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static DebugSettings()

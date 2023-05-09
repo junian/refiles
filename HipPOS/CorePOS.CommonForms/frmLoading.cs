@@ -31,7 +31,7 @@ public class frmLoading : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		list_2 = new List<string>();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		radWaitingBar1.StartWaiting();
 		lblMsg.Text = message;

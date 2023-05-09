@@ -24,7 +24,7 @@ public class frmEditOptionSortOrder : frmMasterForm
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CfrmEditOptionSortOrder_Load_003Eb__0(usp_ItemOptionsResult a)
@@ -50,7 +50,7 @@ public class frmEditOptionSortOrder : frmMasterForm
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -64,7 +64,7 @@ public class frmEditOptionSortOrder : frmMasterForm
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CddlOptionGroups_SelectedIndexChanged_003Eb__0(usp_ItemOptionsResult a)
@@ -85,7 +85,7 @@ public class frmEditOptionSortOrder : frmMasterForm
 		public _003C_003Ec__DisplayClass11_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -136,7 +136,7 @@ public class frmEditOptionSortOrder : frmMasterForm
 	public frmEditOptionSortOrder(int ItemId, string ItemName, string tab)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		string_0 = ItemName;
 		int_0 = ItemId;

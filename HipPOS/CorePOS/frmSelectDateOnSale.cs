@@ -22,7 +22,7 @@ public class frmSelectDateOnSale : frmMasterForm
 		public _003C_003Ec__DisplayClass39_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CfrmSelectDateOnSale_Load_003Eb__0(RadToggleSwitch a)
@@ -57,7 +57,7 @@ public class frmSelectDateOnSale : frmMasterForm
 		public _003C_003Ec__DisplayClass44_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetDaySaleListString_003Eb__0(DateTimePicker a)
@@ -87,7 +87,7 @@ public class frmSelectDateOnSale : frmMasterForm
 		public _003C_003Ec__DisplayClass60_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003Ccopy_button_003Eb__0(DateTimePicker a)
@@ -405,7 +405,7 @@ public class frmSelectDateOnSale : frmMasterForm
 	public frmSelectDateOnSale(DateTime? _itemStartDate = null, DateTime? _itemEndDate = null, string _daySaleList = null, decimal _itemPrice = 0m, decimal _salePrice = 0m)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		nullable_4 = (nullable_6 = _itemStartDate);

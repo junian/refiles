@@ -25,7 +25,7 @@ public class frmWaitingList : frmMasterForm
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPopulateWaitingList_003Eb__5(Layout x)
@@ -42,7 +42,7 @@ public class frmWaitingList : frmMasterForm
 		public _003C_003Ec__DisplayClass27_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -136,7 +136,7 @@ public class frmWaitingList : frmMasterForm
 	public frmWaitingList(int employeeID)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		int_0 = employeeID;
 	}

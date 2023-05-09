@@ -446,7 +446,7 @@ public class Group : INotifyPropertyChanging, INotifyPropertyChanged
 	public Group()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_ItemsInGroups = new EntitySet<ItemsInGroup>(method_0, method_1);
 		_GroupsInItems = new EntitySet<GroupsInItem>(method_2, method_3);
 		_GroupImages = new EntitySet<GroupImage>(method_4, method_5);

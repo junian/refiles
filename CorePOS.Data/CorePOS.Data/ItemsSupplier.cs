@@ -199,7 +199,7 @@ public class ItemsSupplier : INotifyPropertyChanging, INotifyPropertyChanged
 	public ItemsSupplier()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Supplier = default(EntityRef<Supplier>);
 		_Item = default(EntityRef<Item>);
 	}

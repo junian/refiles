@@ -34,7 +34,7 @@ public class frmAddEditMaterials : frmMasterForm
 		public _003C_003Ec__DisplayClass13_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal Dictionary<string, string> _003CpopulateAllItems_003Eb__0()
@@ -51,7 +51,7 @@ public class frmAddEditMaterials : frmMasterForm
 		public _003C_003Ec__DisplayClass21_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -167,7 +167,7 @@ public class frmAddEditMaterials : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		string_1 = "Item";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this, 2f);
 		int_0 = itemID;

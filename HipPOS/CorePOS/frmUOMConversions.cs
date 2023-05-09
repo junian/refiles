@@ -21,7 +21,7 @@ public class frmUOMConversions : frmMasterForm
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -67,7 +67,7 @@ public class frmUOMConversions : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		list_2 = new List<int>();
-		base._002Ector();
+		// base._002Ector();
 		int_0 = _itemID;
 		int_1 = Convert.ToInt32(_stockUOMID);
 		string_0 = _itemName;

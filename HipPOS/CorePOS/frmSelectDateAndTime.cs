@@ -67,7 +67,7 @@ public class frmSelectDateAndTime : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = "";
 		int_0 = 15;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		string settingValueByKey = SettingsHelper.GetSettingValueByKey("pickup_order_time_increment");
 		if (title.Contains("FULFILLMENT"))

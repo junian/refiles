@@ -23,7 +23,7 @@ public class frmManageSecurity : frmMasterForm
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetSecurityMatrix_003Eb__3(SecurityMatrix a)
@@ -42,7 +42,7 @@ public class frmManageSecurity : frmMasterForm
 		public _003C_003Ec__DisplayClass6_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetSecurityMatrix_003Eb__4(SecurityMatrix a)
@@ -65,7 +65,7 @@ public class frmManageSecurity : frmMasterForm
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -95,7 +95,7 @@ public class frmManageSecurity : frmMasterForm
 		list_2 = new List<Role>();
 		int_0 = 350;
 		int_1 = 90;
-		base._002Ector();
+		// base._002Ector();
 		GClass6 gClass = new GClass6();
 		list_2 = (from x in gClass.Roles
 			where x.RoleID != 4 && x.RoleID != 5

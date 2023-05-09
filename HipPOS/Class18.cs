@@ -32,7 +32,7 @@ internal class Class18 : TextBox
 	public Class18()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		method_1(TextBoxTypes.keyboard);
 		base.KeyPress += Class18_KeyPress;
 	}

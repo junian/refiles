@@ -63,7 +63,7 @@ public class frmButtonSelector : frmMasterForm
 	public frmButtonSelector(string title, Dictionary<string, string> select)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lblTitle.Text = title;
 		dictionary_0 = select;

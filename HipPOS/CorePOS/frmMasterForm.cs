@@ -25,7 +25,7 @@ public class frmMasterForm : Form
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRefreshLockedControls_003Eb__5(LockedControl x)
@@ -44,7 +44,7 @@ public class frmMasterForm : Form
 		public _003C_003Ec__DisplayClass12_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRefreshLockedControls_003Eb__7(SecurityMatrix x)
@@ -67,7 +67,7 @@ public class frmMasterForm : Form
 		public _003C_003Ec__DisplayClass12_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRefreshLockedControls_003Eb__6(object sender, EventArgs e)
@@ -96,7 +96,7 @@ public class frmMasterForm : Form
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CFilterControls_003Eb__0(Control c)
@@ -158,7 +158,7 @@ public class frmMasterForm : Form
 	{
 		Class26.Ggkj0JxzN9YmC();
 		darkenBg = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		PersistentNotification = new PersistentNotification();
 		base.Controls.Add(PersistentNotification);

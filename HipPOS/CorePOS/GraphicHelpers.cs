@@ -24,7 +24,7 @@ public static class GraphicHelpers
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDrawEditLayout_003Eb__0(Layout l)
@@ -45,7 +45,7 @@ public static class GraphicHelpers
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDrawLayout_003Eb__0(Layout l)

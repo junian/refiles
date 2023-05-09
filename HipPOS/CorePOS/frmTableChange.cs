@@ -26,7 +26,7 @@ public class frmTableChange : frmMasterForm
 		public _003C_003Ec__DisplayClass26_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadAllTables_003Eb__1(OccupiedTable a)
@@ -43,7 +43,7 @@ public class frmTableChange : frmMasterForm
 		public _003C_003Ec__DisplayClass30_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CclearReservationOnTable_003Eb__0(TableModel l)
@@ -60,7 +60,7 @@ public class frmTableChange : frmMasterForm
 		public _003C_003Ec__DisplayClass32_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CTimer1_Tick_003Eb__1(OccupiedTable t)
@@ -77,7 +77,7 @@ public class frmTableChange : frmMasterForm
 		public _003C_003Ec__DisplayClass32_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -89,7 +89,7 @@ public class frmTableChange : frmMasterForm
 		public _003C_003Ec__DisplayClass33_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsubTableClick_003Eb__2(OccupiedTable a)
@@ -266,7 +266,7 @@ public class frmTableChange : frmMasterForm
 		list_3 = new List<TableModel>();
 		list_4 = new List<string>();
 		frmMessageBox_0 = new frmMessageBox("");
-		base._002Ector();
+		// base._002Ector();
 		frmLoadingBar.ShowSplashScreen();
 		frmLoadingBar.SetPercentage(1);
 		InitializeComponent_1();

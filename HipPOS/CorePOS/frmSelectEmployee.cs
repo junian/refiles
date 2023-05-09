@@ -64,7 +64,7 @@ public class frmSelectEmployee : frmMasterForm
 	public frmSelectEmployee(bool showBtnClose = false, bool showNoEmployeeBtn = false, string Title = "Select Employee")
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		verticalScrollControl1.ConnectedPanel = pnlMain;
 		btnClose.Visible = showBtnClose;

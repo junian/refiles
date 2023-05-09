@@ -63,7 +63,7 @@ public class frmDeliveryFeeSettings : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		deliveryFeeCalculationHeaderControl_0 = new DeliveryFeeCalculationHeaderControl();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

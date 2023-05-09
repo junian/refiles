@@ -28,7 +28,7 @@ public class frmAddEditPromotions : frmMasterForm
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -40,7 +40,7 @@ public class frmAddEditPromotions : frmMasterForm
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CfrmAddEditPromotions_Load_003Eb__0(RadToggleSwitch a)
@@ -75,7 +75,7 @@ public class frmAddEditPromotions : frmMasterForm
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003Ccopy_button_003Eb__0(DateTimePicker a)
@@ -125,7 +125,7 @@ public class frmAddEditPromotions : frmMasterForm
 		public _003C_003Ec__DisplayClass15_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnSave_Click_003Eb__0(Promotion a)
@@ -150,7 +150,7 @@ public class frmAddEditPromotions : frmMasterForm
 		public _003C_003Ec__DisplayClass15_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnSave_Click_003Eb__1(DateTimePicker a)
@@ -180,7 +180,7 @@ public class frmAddEditPromotions : frmMasterForm
 		public _003C_003Ec__DisplayClass24_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCheckDiscountAmount_003Eb__0(Item a)
@@ -197,7 +197,7 @@ public class frmAddEditPromotions : frmMasterForm
 		public _003C_003Ec__DisplayClass24_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCheckDiscountAmount_003Eb__1(Item a)
@@ -414,7 +414,7 @@ public class frmAddEditPromotions : frmMasterForm
 		gclass6_0 = new GClass6();
 		_003C_003Ec__DisplayClass4_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass4_0();
 		CS_0024_003C_003E8__locals0.promotion_id = promotion_id;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		startDate.Value = DateTime.Now.Date;
 		endDate.Value = DateTime.Now.Date;

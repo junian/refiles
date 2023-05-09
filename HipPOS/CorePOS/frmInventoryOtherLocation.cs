@@ -20,7 +20,7 @@ public class frmInventoryOtherLocation : frmMasterForm
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -45,7 +45,7 @@ public class frmInventoryOtherLocation : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		_003C_003Ec__DisplayClass0_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass0_0();
 		CS_0024_003C_003E8__locals0.ItemId = ItemId;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		Item item = new GClass6().Items.Where((Item a) => a.ItemID == CS_0024_003C_003E8__locals0.ItemId).FirstOrDefault();
 		lblItemName.Text = item.ItemName;

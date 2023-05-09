@@ -47,7 +47,7 @@ internal sealed class Settings : ApplicationSettingsBase
 	public Settings()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	private void SettingChangingEventHandler(object sender, SettingChangingEventArgs e)

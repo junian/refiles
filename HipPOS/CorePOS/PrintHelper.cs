@@ -38,7 +38,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintReceipt_003Eb__3(Employee e)
@@ -60,7 +60,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintReceiptCheck_003Eb__0(ReceiptPrintInfo a)
@@ -81,7 +81,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass17_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CGenerateRefundReceipt_003Eb__0()
@@ -172,7 +172,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGenerateDayEndTotalsHTML_003Eb__20(Terminal a)
@@ -203,7 +203,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass19_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGenerateDayEndTotalsHTML_003Eb__9(Order a)
@@ -220,7 +220,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass19_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal usp_ClosingTotalsResult _003CGenerateDayEndTotalsHTML_003Eb__75(IGrouping<string, Order> x)
@@ -246,7 +246,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass19_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGenerateDayEndTotalsHTML_003Eb__76(Order a)
@@ -263,7 +263,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass19_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal DayEndTipObject _003CGenerateDayEndTotalsHTML_003Eb__111(IGrouping<short?, OrderTipObject> a)
@@ -293,7 +293,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass19_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGenerateDayEndTotalsHTML_003Eb__113(Employee e)
@@ -324,7 +324,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass20_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -336,7 +336,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass20_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal DeliveryCommissionObject _003CPrintDeliveryCommission_003Eb__5(IGrouping<string, Order> a)
@@ -366,7 +366,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass22_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CGenerateDayEndTotals_003Eb__0()
@@ -406,7 +406,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass22_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CGenerateDayEndTotals_003Eb__1()
@@ -425,7 +425,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass26_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CPrint_003Eb__0()
@@ -460,7 +460,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass30_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CPrintString_003Eb__0()
@@ -615,7 +615,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass30_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -629,7 +629,7 @@ public class PrintHelper
 		public _003C_003Ec__DisplayClass30_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CPrintString_003Eb__1(object sender, PrintPageEventArgs e)
@@ -669,7 +669,7 @@ public class PrintHelper
 		Class26.Ggkj0JxzN9YmC();
 		companies = new List<CompanySetup>();
 		list_0 = ReceiptMethods.GetTaxRate().ToList();
-		base._002Ector();
+		// base._002Ector();
 		reportDataSource_0 = new ReportDataSource("CompanyDS", companies);
 		reportDataSource_1 = new ReportDataSource("TaxDS", list_0);
 		companies.Add(CompanyHelper.CompanyDataSetup);

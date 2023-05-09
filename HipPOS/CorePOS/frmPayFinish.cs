@@ -24,7 +24,7 @@ public class frmPayFinish : frmMasterForm
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -66,7 +66,7 @@ public class frmPayFinish : frmMasterForm
 		decimal_1 = -1m;
 		IhwFuSuegrG = -1m;
 		string_1 = "";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		string_1 = paymentTypes;
 		new FormHelper().ResizeButtonFonts(this, 1.5f);

@@ -44,6 +44,6 @@ public class PrintToStationOrderObject : Order
 	public PrintToStationOrderObject()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

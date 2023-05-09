@@ -23,7 +23,7 @@ public class StyleSettings : UserControl
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -37,7 +37,7 @@ public class StyleSettings : UserControl
 		public _003C_003Ec__DisplayClass3_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003C_002Ector_003Eb__0(Setting s)
@@ -59,7 +59,7 @@ public class StyleSettings : UserControl
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CTelerikToggle_ValueChanged_003Eb__0(Setting s)
@@ -195,7 +195,7 @@ public class StyleSettings : UserControl
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
 		bool_0 = true;
-		base._002Ector();
+		// base._002Ector();
 		_003C_003Ec__DisplayClass3_0 cS_0024_003C_003E8__locals = new _003C_003Ec__DisplayClass3_0();
 		InitializeComponent();
 		new FormHelper().ResizeButtonFonts(this);

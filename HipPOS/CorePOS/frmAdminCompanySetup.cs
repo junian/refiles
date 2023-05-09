@@ -123,7 +123,7 @@ public class frmAdminCompanySetup : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = "";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this, 2f);
 	}

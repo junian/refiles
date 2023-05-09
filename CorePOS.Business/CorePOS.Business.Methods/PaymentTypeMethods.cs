@@ -20,7 +20,7 @@ public static class PaymentTypeMethods
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetTaxTypes_003Eb__3(ProcessorPaymentType a)
@@ -37,7 +37,7 @@ public static class PaymentTypeMethods
 		public _003C_003Ec__DisplayClass1_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetTaxTypes_003Eb__4(TaxPercentage a)

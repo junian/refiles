@@ -24,7 +24,7 @@ public class frmAppointments : frmMasterForm
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -38,7 +38,7 @@ public class frmAppointments : frmMasterForm
 		public _003C_003Ec__DisplayClass10_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class frmAppointments : frmMasterForm
 		public _003C_003Ec__DisplayClass13_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -62,7 +62,7 @@ public class frmAppointments : frmMasterForm
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcreateSchedule_003Eb__1(Appointment a)
@@ -83,7 +83,7 @@ public class frmAppointments : frmMasterForm
 		public _003C_003Ec__DisplayClass18_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -204,7 +204,7 @@ public class frmAppointments : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		dictionary_0 = new Dictionary<string, string>();
 		int_1 = -1;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		if (Screen.PrimaryScreen.Bounds.Height <= 800)

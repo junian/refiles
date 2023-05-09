@@ -15,7 +15,7 @@ public class StationMethods
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetStations_003Eb__0(Station s)
@@ -32,7 +32,7 @@ public class StationMethods
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -44,7 +44,7 @@ public class StationMethods
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetStationByPCName_003Eb__0(Station s)
@@ -61,7 +61,7 @@ public class StationMethods
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetStationByIP_003Eb__0(Station s)
@@ -78,7 +78,7 @@ public class StationMethods
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -90,7 +90,7 @@ public class StationMethods
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -230,6 +230,6 @@ public class StationMethods
 	public StationMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

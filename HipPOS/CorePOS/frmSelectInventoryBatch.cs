@@ -45,7 +45,7 @@ public class frmSelectInventoryBatch : frmMasterForm
 	public frmSelectInventoryBatch(int ItemId)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		int_0 = ItemId;
 		verticalScrollControl1.ConnectedPanel = pnlMain;

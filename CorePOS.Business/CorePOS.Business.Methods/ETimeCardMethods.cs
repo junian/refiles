@@ -21,7 +21,7 @@ public class ETimeCardMethods
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -354,6 +354,6 @@ public class ETimeCardMethods
 	public ETimeCardMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

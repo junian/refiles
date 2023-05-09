@@ -160,7 +160,7 @@ public class CustomTipSharing : INotifyPropertyChanging, INotifyPropertyChanged
 	public CustomTipSharing()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	protected virtual void SendPropertyChanging()

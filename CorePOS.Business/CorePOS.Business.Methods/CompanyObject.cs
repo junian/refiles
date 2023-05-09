@@ -212,6 +212,6 @@ public class CompanyObject
 	public CompanyObject()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -25,7 +25,7 @@ public class frmAddEditInstructions : frmMasterForm
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -78,7 +78,7 @@ public class frmAddEditInstructions : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		int_1 = 100;
 		bool_0 = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		string_0 = _type;

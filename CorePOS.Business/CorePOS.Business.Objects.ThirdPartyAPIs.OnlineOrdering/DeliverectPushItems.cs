@@ -78,6 +78,6 @@ public class DeliverectPushItems
 		Class2.oOsq41PzvTVMr();
 		list_0 = new List<DeliverectProducts>();
 		list_1 = new List<DeliverectCategories>();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -44,7 +44,7 @@ public class frmKioskPay : frmMasterForm
 	public frmKioskPay(string _orderNumber, decimal _orderTotal)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		string_0 = _orderNumber;
 		decimal_0 = _orderTotal;

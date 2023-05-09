@@ -34,7 +34,7 @@ public class frmAdminSettings : frmMasterForm
 		public ImportCSVTypes()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCheckRowsITEMS_003Eb__2(Item a)
@@ -72,7 +72,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass19_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -98,7 +98,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass24_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CImportCSVItems_003Eb__2(ItemType a)
@@ -122,7 +122,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass31_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnImportCsv_Click_003Eb__2()
@@ -139,7 +139,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass33_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CItemExport_003Eb__2(KeyValuePair<string, string> a)
@@ -161,7 +161,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass33_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -175,7 +175,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass34_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnExportCsv_Click_003Eb__0()
@@ -200,7 +200,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass35_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CEditItemToGroup_003Eb__4(CorePOS.Data.Group s)
@@ -224,7 +224,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass35_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CEditItemToGroup_003Eb__1(CorePOS.Data.Group s)
@@ -258,7 +258,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass35_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -272,7 +272,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass48_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnImportMember_Click_003Eb__0()
@@ -291,7 +291,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass50_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal int _003CCheckRowMEMBERS_003Eb__1()
@@ -310,7 +310,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass51_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -324,7 +324,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass53_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnExportMember_Click_003Eb__0()
@@ -343,7 +343,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass55_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnImportItemOptions_Click_003Eb__0()
@@ -360,7 +360,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass56_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCheckRowITEMOPTIONS_003Eb__0(Item a)
@@ -406,7 +406,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass57_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CImportCSVItemOptions_003Eb__3(Item a)
@@ -465,7 +465,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass57_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CImportCSVItemOptions_003Eb__8(Option a)
@@ -489,7 +489,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass57_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CImportCSVItemOptions_003Eb__11(ItemsWithOption a)
@@ -530,7 +530,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass57_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CImportCSVItemOptions_003Eb__16(ItemsWithOption a)
@@ -571,7 +571,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass58_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -583,7 +583,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass59_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CItemOptionsExport_003Eb__3(Item a)
@@ -627,7 +627,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass59_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CItemOptionsExport_003Eb__5(Item a)
@@ -648,7 +648,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass59_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CItemOptionsExport_003Eb__7(KeyValuePair<string, string> x)
@@ -665,7 +665,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass59_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CItemOptionsExport_003Eb__10(ItemsWithOption a)
@@ -682,7 +682,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass59_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CItemOptionsExport_003Eb__11(Option a)
@@ -701,7 +701,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass60_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnExportItemOptions_Click_003Eb__0()
@@ -720,7 +720,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass61_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnInstructionImport_Click_003Eb__0()
@@ -737,7 +737,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass63_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -751,7 +751,7 @@ public class frmAdminSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass65_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnInstructionExport_Click_003Eb__0()
@@ -861,7 +861,7 @@ public class frmAdminSettings : frmMasterForm
 		int_1 = 1;
 		string_3 = "Importing...";
 		list_4 = new List<string>();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this, 1.5f);
 		if (!Thread.CurrentThread.CurrentCulture.Name.Equals("en-US"))

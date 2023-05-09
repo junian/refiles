@@ -76,6 +76,6 @@ public class DeliverectStatusHistory
 	public DeliverectStatusHistory()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -55,7 +55,7 @@ public class frmGroupsInItemSelection : frmMasterForm
 		int_1 = 4;
 		short_0 = 1;
 		string_0 = "";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		short_1 = _GroupId;
 		string_0 = addedTitle;

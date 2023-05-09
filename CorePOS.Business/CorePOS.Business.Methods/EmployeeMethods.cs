@@ -15,7 +15,7 @@ public class EmployeeMethods
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -27,7 +27,7 @@ public class EmployeeMethods
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -69,6 +69,6 @@ public class EmployeeMethods
 	public EmployeeMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

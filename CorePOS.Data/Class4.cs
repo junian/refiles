@@ -21,7 +21,7 @@ internal class Class4
 	public Class4()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static Class4()

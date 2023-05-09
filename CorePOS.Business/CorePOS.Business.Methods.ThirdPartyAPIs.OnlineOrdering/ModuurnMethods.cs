@@ -23,7 +23,7 @@ public static class ModuurnMethods
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CQueueOrders_003Eb__1(OnlineOrderSyncQueue x)
@@ -45,7 +45,7 @@ public static class ModuurnMethods
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -57,7 +57,7 @@ public static class ModuurnMethods
 		public _003C_003Ec__DisplayClass2_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessOrderQueues_003Eb__3(Item x)
@@ -74,7 +74,7 @@ public static class ModuurnMethods
 		public _003C_003Ec__DisplayClass2_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessOrderQueues_003Eb__4(Item x)
@@ -91,7 +91,7 @@ public static class ModuurnMethods
 		public _003C_003Ec__DisplayClass2_3()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessOrderQueues_003Eb__5(Item x)
@@ -108,7 +108,7 @@ public static class ModuurnMethods
 		public _003C_003Ec__DisplayClass2_4()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessOrderQueues_003Eb__8(Item x)
@@ -125,7 +125,7 @@ public static class ModuurnMethods
 		public _003C_003Ec__DisplayClass2_5()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessOrderQueues_003Eb__6(Item x)
@@ -147,7 +147,7 @@ public static class ModuurnMethods
 		public _003C_003Ec__DisplayClass2_6()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessOrderQueues_003Eb__11(Item x)
@@ -164,7 +164,7 @@ public static class ModuurnMethods
 		public _003C_003Ec__DisplayClass2_7()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessOrderQueues_003Eb__10(Item x)

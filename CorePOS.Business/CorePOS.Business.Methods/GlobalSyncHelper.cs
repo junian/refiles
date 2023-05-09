@@ -22,7 +22,7 @@ public class GlobalSyncHelper
 		public _003C_003Ec__DisplayClass41_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -81,7 +81,7 @@ public class GlobalSyncHelper
 		timer_11 = new Timer();
 		timer_12 = new Timer();
 		timer_13 = new Timer();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	public void StartGlobalSync()

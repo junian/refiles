@@ -18,7 +18,7 @@ public class frmTemplate : frmMasterForm
 	public frmTemplate()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

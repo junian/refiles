@@ -61,7 +61,7 @@ public class frmAdmin : frmMasterForm
 	public frmAdmin(Control _lblTrainingModeSplashScreen = null)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this, 2.5f);
 		control_0 = _lblTrainingModeSplashScreen;

@@ -97,7 +97,7 @@ public static class MonerisCoreObjects
 			public Order()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -123,7 +123,7 @@ public static class MonerisCoreObjects
 			public Data()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -319,7 +319,7 @@ public static class MonerisCoreObjects
 			public Request()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 	}
@@ -433,7 +433,7 @@ public static class MonerisCoreObjects
 			public InitialResponse()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -512,7 +512,7 @@ public static class MonerisCoreObjects
 				public ErrorDetail()
 				{
 					Class2.oOsq41PzvTVMr();
-					base._002Ector();
+					// base._002Ector();
 				}
 			}
 
@@ -538,7 +538,7 @@ public static class MonerisCoreObjects
 				public Data()
 				{
 					Class2.oOsq41PzvTVMr();
-					base._002Ector();
+					// base._002Ector();
 				}
 			}
 
@@ -666,14 +666,14 @@ public static class MonerisCoreObjects
 				public Response()
 				{
 					Class2.oOsq41PzvTVMr();
-					base._002Ector();
+					// base._002Ector();
 				}
 			}
 
 			public ErrorResponse()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -801,7 +801,7 @@ public static class MonerisCoreObjects
 			public StatusResponse()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -880,7 +880,7 @@ public static class MonerisCoreObjects
 				public Card()
 				{
 					Class2.oOsq41PzvTVMr();
-					base._002Ector();
+					// base._002Ector();
 				}
 			}
 
@@ -957,7 +957,7 @@ public static class MonerisCoreObjects
 				public Payment()
 				{
 					Class2.oOsq41PzvTVMr();
-					base._002Ector();
+					// base._002Ector();
 				}
 			}
 
@@ -983,7 +983,7 @@ public static class MonerisCoreObjects
 				public Data()
 				{
 					Class2.oOsq41PzvTVMr();
-					base._002Ector();
+					// base._002Ector();
 				}
 			}
 
@@ -1111,14 +1111,14 @@ public static class MonerisCoreObjects
 				public Response()
 				{
 					Class2.oOsq41PzvTVMr();
-					base._002Ector();
+					// base._002Ector();
 				}
 			}
 
 			public FinalResponse()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 	}

@@ -216,7 +216,7 @@ public class Tax : INotifyPropertyChanging, INotifyPropertyChanged
 	public Tax()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_TaxRuleOperations = new EntitySet<TaxRuleOperation>(method_0, method_1);
 	}
 

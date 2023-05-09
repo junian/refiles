@@ -90,6 +90,6 @@ public class Helper
 	public Helper()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

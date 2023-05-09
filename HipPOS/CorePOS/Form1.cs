@@ -20,7 +20,7 @@ public class Form1 : frmMasterForm
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CradAutoCompleteBox1_KeyPress_003Eb__0(TextBlockElement x)
@@ -50,7 +50,7 @@ public class Form1 : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		list_2 = new List<string>();
 		list_3 = new List<string>();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		radAutoCompleteBox1.EnableTheming = true;
 		radAutoCompleteBox1.ThemeClassName = windows8Theme_0.ThemeName;

@@ -26,7 +26,7 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnSave_Click_003Eb__2(Layout l)
@@ -43,7 +43,7 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		public _003C_003Ec__DisplayClass16_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnSave_Click_003Eb__3(OccupiedTable a)
@@ -62,7 +62,7 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		public _003C_003Ec__DisplayClass17_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CvalidateTableName_003Eb__0(Layout l)
@@ -150,7 +150,7 @@ public class frmEditLayoutTableEdit : frmMasterForm
 		string_1 = "";
 		gclass6_0 = new GClass6();
 		list_2 = new List<Layout>();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		string_0 = _btnTable.Text;

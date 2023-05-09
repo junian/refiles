@@ -43,6 +43,6 @@ public class usp_OccupiedTablesResult
 	public usp_OccupiedTablesResult()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

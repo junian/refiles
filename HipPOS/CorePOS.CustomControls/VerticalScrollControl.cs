@@ -147,7 +147,7 @@ public class VerticalScrollControl : UserControl
 	{
 		Class26.Ggkj0JxzN9YmC();
 		int_2 = 120;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		base.Height = 407;
 		inputedHeight = 0;

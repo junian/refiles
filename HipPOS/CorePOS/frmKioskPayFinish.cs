@@ -20,7 +20,7 @@ public class frmKioskPayFinish : frmMasterForm
 	public frmKioskPayFinish(string orderNumber)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lblOrderNumber.Text = orderNumber;
 	}

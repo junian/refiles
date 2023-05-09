@@ -87,7 +87,7 @@ public class frmWaitingPaymentTerminal : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		ikrdNpekkf = 120;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		radWaitingBar1.StartWaiting();
 		string_0 = provider;
@@ -116,7 +116,7 @@ public class frmWaitingPaymentTerminal : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		ikrdNpekkf = 120;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		radWaitingBar1.StartWaiting();
 		request_0 = request;

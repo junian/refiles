@@ -58,6 +58,6 @@ public class OrderTableNameAndNumber
 	public OrderTableNameAndNumber()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

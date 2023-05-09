@@ -24,7 +24,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -36,7 +36,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -62,7 +62,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -74,7 +74,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -86,7 +86,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -98,7 +98,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -112,7 +112,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass15_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CgetAllItems_003Eb__2(Item i)
@@ -135,7 +135,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -147,7 +147,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass17_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -163,7 +163,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass18_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -175,7 +175,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass18_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -187,7 +187,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass18_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSaveOneOrder_003Eb__10(ItemsInGroup a)
@@ -214,7 +214,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass18_3()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSaveOneOrder_003Eb__12(Order o)
@@ -231,7 +231,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -243,7 +243,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass19_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecheckGuestCountSplittedBill_003Eb__2(Order o)
@@ -260,7 +260,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass19_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRecheckGuestCountSplittedBill_003Eb__3(Order a)
@@ -277,7 +277,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass20_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -289,7 +289,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass20_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -305,7 +305,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass22_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -321,7 +321,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass25_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -333,7 +333,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass26_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -345,7 +345,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass29_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -359,7 +359,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass32_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -371,7 +371,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass37_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -383,7 +383,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass38_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -395,7 +395,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass39_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -407,7 +407,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass41_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -419,7 +419,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass43_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -431,7 +431,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass45_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -443,7 +443,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass54_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -455,7 +455,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass56_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -467,7 +467,7 @@ public class DataManager
 		public _003C_003Ec__DisplayClass59_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CIsPromotionTime_003Eb__0(string a)
@@ -493,14 +493,14 @@ public class DataManager
 	public DataManager()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 		gclass6_0 = new GClass6();
 	}
 
 	public DataManager(GClass6 appDataContext)
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 		gclass6_0 = appDataContext;
 	}
 

@@ -24,6 +24,6 @@ public class GClass0
 	public GClass0()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

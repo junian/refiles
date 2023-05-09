@@ -22,7 +22,7 @@ public class frmSelectLanguage : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		LanguageSelected = "en-US";
-		base._002Ector();
+		// base._002Ector();
 		wiCoalqOlA();
 		string settingValueByKey = SettingsHelper.GetSettingValueByKey("primary_language");
 		string settingValueByKey2 = SettingsHelper.GetSettingValueByKey("secondary_language");

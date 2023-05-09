@@ -180,7 +180,7 @@ public class OrderTypeGenKey : INotifyPropertyChanging, INotifyPropertyChanged
 	public OrderTypeGenKey()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_GenKey = default(EntityRef<GenKey>);
 	}
 

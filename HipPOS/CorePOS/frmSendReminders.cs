@@ -51,7 +51,7 @@ public class frmSendReminders : frmMasterForm
 	public frmSendReminders(bool _isManual = false)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lblDateTime.Text = DateTime.Now.ToLongDateString() + " - " + DateTime.Now.ToShortTimeString();
 		bool_0 = _isManual;

@@ -25,6 +25,6 @@ public class GroupResponseModel : StatusCodeResponse
 	public GroupResponseModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

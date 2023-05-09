@@ -15,7 +15,7 @@ internal sealed class Settings : ApplicationSettingsBase
 	public Settings()
 	{
 		Class13.FLcy5UmzUUEfT();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static Settings()

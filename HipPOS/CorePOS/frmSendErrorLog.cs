@@ -24,7 +24,7 @@ public class frmSendErrorLog : frmMasterForm
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -43,7 +43,7 @@ public class frmSendErrorLog : frmMasterForm
 	public frmSendErrorLog(ThreadExceptionEventArgs e)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		Text = BrandingTerms.SoftwareName.ToUpper();
 		exception_0 = e.Exception;

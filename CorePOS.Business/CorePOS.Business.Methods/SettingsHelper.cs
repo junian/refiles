@@ -22,7 +22,7 @@ public static class SettingsHelper
 			public _003C_003Ec__DisplayClass0_0()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 
 			internal bool _003CGet_003Eb__1(OnlineOrderSettingObject a)
@@ -39,7 +39,7 @@ public static class SettingsHelper
 			public _003C_003Ec__DisplayClass2_0()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 
 			internal bool _003CSave_003Eb__1(OnlineOrderSettingObject x)
@@ -170,7 +170,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSetSettingValueByKey_003Eb__0(SettingsObject a)
@@ -187,7 +187,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass15_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSetSettingsFontStyleValues_003Eb__0(SettingsObject a)
@@ -204,7 +204,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetSettingFontStyleValues_003Eb__0(SettingsObject a)
@@ -223,7 +223,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass17_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetCardProcessorSettingActiveOnly_003Eb__0(SettingsObject a)
@@ -251,7 +251,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass18_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSetCardProcessorSetting_003Eb__0(SettingsObject a)
@@ -280,7 +280,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetCardProcessorSetting_003Eb__0(SettingsObject a)
@@ -302,7 +302,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass20_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetSettingValueByKey_003Eb__0(SettingsObject a)
@@ -319,7 +319,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass21_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetSettingByKey_003Eb__0(SettingsObject a)
@@ -336,7 +336,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass23_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -350,7 +350,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass23_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CStationsSettingsUpdatedLatest_003Eb__26(Item a)
@@ -372,7 +372,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass26_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetTransactionFeeSetting_003Eb__1(CardTransactionFeeObject a)
@@ -389,7 +389,7 @@ public static class SettingsHelper
 		public _003C_003Ec__DisplayClass27_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSetTransactionFeeSetting_003Eb__1(CardTransactionFeeObject a)

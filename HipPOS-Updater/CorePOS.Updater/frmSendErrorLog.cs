@@ -28,7 +28,7 @@ public class frmSendErrorLog : Form
 	public frmSendErrorLog(ThreadExceptionEventArgs e)
 	{
 		Class13.FLcy5UmzUUEfT();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		Text = "Hippos Restaurant";
 		exception_0 = e.Exception;
@@ -37,7 +37,7 @@ public class frmSendErrorLog : Form
 	public frmSendErrorLog(Exception e)
 	{
 		Class13.FLcy5UmzUUEfT();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		Text = "Hippos Restaurant";
 		exception_0 = e;

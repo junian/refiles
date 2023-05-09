@@ -318,7 +318,7 @@ public class GClass7 : INotifyPropertyChanging, INotifyPropertyChanged
 	public GClass7()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_UOM = default(EntityRef<UOM>);
 		_UOM1 = default(EntityRef<UOM>);
 		_Item = default(EntityRef<Item>);

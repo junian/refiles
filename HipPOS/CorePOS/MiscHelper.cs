@@ -29,7 +29,7 @@ public static class MiscHelper
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -43,7 +43,7 @@ public static class MiscHelper
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCheckItemDisableSOldOut_003Eb__1(ListViewDataItem a)
@@ -60,7 +60,7 @@ public static class MiscHelper
 		public _003C_003Ec__DisplayClass9_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCheckItemDisableSOldOut_003Eb__2(Item a)
@@ -77,7 +77,7 @@ public static class MiscHelper
 		public _003C_003Ec__DisplayClass9_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -91,7 +91,7 @@ public static class MiscHelper
 		public _003C_003Ec__DisplayClass9_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCheckItemDisableSOldOut_003Eb__3(Item a)
@@ -110,7 +110,7 @@ public static class MiscHelper
 		public _003C_003Ec__DisplayClass9_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -132,7 +132,7 @@ public static class MiscHelper
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CNotifyCustomer_003Eb__0()
@@ -286,7 +286,7 @@ public static class MiscHelper
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CMakeOrderIsModified_003Eb__0(OrderResult a)

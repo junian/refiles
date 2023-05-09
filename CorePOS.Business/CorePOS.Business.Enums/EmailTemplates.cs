@@ -8,6 +8,6 @@ public class EmailTemplates
 	{
 		Class2.oOsq41PzvTVMr();
 		Receipts = "";
-		base._002Ector();
+		// base._002Ector();
 	}
 }

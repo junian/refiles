@@ -17,7 +17,7 @@ public static class MailHelpers
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -29,7 +29,7 @@ public static class MailHelpers
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 

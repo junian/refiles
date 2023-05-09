@@ -20,7 +20,7 @@ public class FlytMethods
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -34,7 +34,7 @@ public class FlytMethods
 		public _003C_003Ec__DisplayClass0_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -48,7 +48,7 @@ public class FlytMethods
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddFlytOrderItem_003Eb__1(Item x)
@@ -337,6 +337,6 @@ public class FlytMethods
 	public FlytMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

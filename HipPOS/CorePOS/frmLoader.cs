@@ -42,7 +42,7 @@ public class frmLoader : Form
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -54,7 +54,7 @@ public class frmLoader : Form
 		public _003C_003Ec__DisplayClass43_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -66,7 +66,7 @@ public class frmLoader : Form
 		public _003C_003Ec__DisplayClass43_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessChitPrintQueue_003Eb__7(Station a)
@@ -87,7 +87,7 @@ public class frmLoader : Form
 		public _003C_003Ec__DisplayClass43_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessChitPrintQueue_003Eb__8(Order x)
@@ -110,7 +110,7 @@ public class frmLoader : Form
 		public _003C_003Ec__DisplayClass49_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRunServer_003Eb__0()
@@ -141,7 +141,7 @@ public class frmLoader : Form
 		public _003C_003Ec__DisplayClass53_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CChitPrintTimer_Tick_003Eb__1(ChitPrintInfo a)
@@ -158,7 +158,7 @@ public class frmLoader : Form
 		public _003C_003Ec__DisplayClass53_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CChitPrintTimer_Tick_003Eb__2(Order a)
@@ -188,7 +188,7 @@ public class frmLoader : Form
 		public _003C_003Ec__DisplayClass54_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CChitPrintSelfCheck_Tick_003Eb__3(Order x)
@@ -211,7 +211,7 @@ public class frmLoader : Form
 		public _003C_003Ec__DisplayClass54_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CChitPrintSelfCheck_Tick_003Eb__5(Order x)
@@ -281,7 +281,7 @@ public class frmLoader : Form
 	{
 		Class26.Ggkj0JxzN9YmC();
 		int_1 = 14;
-		base._002Ector();
+		// base._002Ector();
 		CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
 		Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
 		currentCulture = (currentCulture.Name.Contains("en-") ? new CultureInfo("en-US") : (currentCulture.Name.Contains("fr-") ? new CultureInfo("fr-CA") : ((!currentCulture.Name.Contains("es-US")) ? new CultureInfo("en-US") : new CultureInfo("es-US"))));

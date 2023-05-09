@@ -200,7 +200,7 @@ public class ItemsInItem : INotifyPropertyChanging, INotifyPropertyChanged
 	public ItemsInItem()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	protected virtual void SendPropertyChanging()

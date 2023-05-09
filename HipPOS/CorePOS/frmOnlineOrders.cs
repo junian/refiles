@@ -24,7 +24,7 @@ public class frmOnlineOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadOrders_003Eb__8(Order x)
@@ -106,7 +106,7 @@ public class frmOnlineOrders : frmMasterForm
 		string_2 = string.Empty;
 		string_3 = string.Empty;
 		int_0 = -1;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lvItems.CellFormatting += lvItems_CellFormatting;
 		string_0 = _orderNumber;

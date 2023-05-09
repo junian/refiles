@@ -36,7 +36,7 @@ public class frmCustomers : frmMasterForm
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -48,7 +48,7 @@ public class frmCustomers : frmMasterForm
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -60,7 +60,7 @@ public class frmCustomers : frmMasterForm
 		public _003C_003Ec__DisplayClass35_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -76,7 +76,7 @@ public class frmCustomers : frmMasterForm
 		public _003C_003Ec__DisplayClass46_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDuplicate_Click_003Eb__7(usp_ItemOptionsResult x)
@@ -97,7 +97,7 @@ public class frmCustomers : frmMasterForm
 		public _003C_003Ec__DisplayClass46_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDuplicate_Click_003Eb__5(Guid a)
@@ -137,7 +137,7 @@ public class frmCustomers : frmMasterForm
 		public _003C_003Ec__DisplayClass46_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDuplicate_Click_003Eb__11(Item y)
@@ -306,7 +306,7 @@ public class frmCustomers : frmMasterForm
 		gclass6_0 = new GClass6();
 		bool_0 = ((SettingsHelper.GetSettingValueByKey("gift_card_payment") == "ON") ? true : false);
 		bool_1 = ((SettingsHelper.GetSettingValueByKey("loyalty_card_payment") == "ON") ? true : false);
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		form_0 = _parentForm;

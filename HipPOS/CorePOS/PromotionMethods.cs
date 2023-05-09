@@ -22,7 +22,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetPromoSaleItemById_003Eb__0(Promotion a)
@@ -43,7 +43,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CIsPromotionTime_003Eb__0(string a)
@@ -64,7 +64,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetPromotion_003Eb__7(Promotion a)
@@ -98,7 +98,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass4_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetPromotion_003Eb__1(Promotion a)
@@ -128,7 +128,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass4_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetPromotion_003Eb__3(Item b)
@@ -147,7 +147,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass4_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetPromotion_003Eb__9(ItemPriceOEIndex a)
@@ -179,7 +179,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass4_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetPromotion_003Eb__10(Promotion a)
@@ -204,7 +204,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdatePromotion_003Eb__1(Promotion a)
@@ -233,7 +233,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass5_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdatePromotion_003Eb__3(Item b)
@@ -250,7 +250,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass5_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdatePromotion_003Eb__7(Item a)
@@ -271,7 +271,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass5_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdatePromotion_003Eb__13(ItemPriceOEIndex a)
@@ -292,7 +292,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass5_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdatePromotion_003Eb__15(Item a)
@@ -315,7 +315,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal int _003CRecalculatePromotion_003Eb__8(ListViewDataItem a)
@@ -336,7 +336,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass6_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculatePromotion_003Eb__2(Promotion a)
@@ -375,7 +375,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass6_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculatePromotion_003Eb__5(Item a)
@@ -392,7 +392,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass6_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculatePromotion_003Eb__9(Item a)
@@ -409,7 +409,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass6_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculatePromotion_003Eb__12(Item a)
@@ -430,7 +430,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass6_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculatePromotion_003Eb__14(ListViewDataItem a)
@@ -454,7 +454,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass6_6()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculatePromotion_003Eb__15(ListViewDataItem a)
@@ -471,7 +471,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass6_7()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculatePromotion_003Eb__17(Item a)
@@ -488,7 +488,7 @@ public class PromotionMethods
 		public _003C_003Ec__DisplayClass6_8()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculatePromotion_003Eb__19(Item a)
@@ -1580,6 +1580,6 @@ public class PromotionMethods
 	public PromotionMethods()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

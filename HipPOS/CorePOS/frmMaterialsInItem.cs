@@ -24,7 +24,7 @@ public class frmMaterialsInItem : frmMasterForm
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -36,7 +36,7 @@ public class frmMaterialsInItem : frmMasterForm
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CrecalculateCost_003Eb__0(Item m)
@@ -58,7 +58,7 @@ public class frmMaterialsInItem : frmMasterForm
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -70,7 +70,7 @@ public class frmMaterialsInItem : frmMasterForm
 		public _003C_003Ec__DisplayClass20_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -165,7 +165,7 @@ public class frmMaterialsInItem : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		int_0 = _itemId;

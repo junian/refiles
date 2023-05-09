@@ -30,7 +30,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilterOrders_003Eb__18(OrderPostDataModel o)
@@ -83,7 +83,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass7_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilterOrders_003Eb__7(Refund o)
@@ -104,7 +104,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass7_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilterOrders_003Eb__17(Employee a)
@@ -121,7 +121,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass7_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilterOrders_003Eb__31(Order a)
@@ -142,7 +142,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass7_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilterOrders_003Eb__44(Employee a)
@@ -164,7 +164,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass7_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilterOrders_003Eb__46(Order a)
@@ -185,7 +185,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass7_6()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilterOrders_003Eb__53(Order a)
@@ -206,7 +206,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass7_7()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -218,7 +218,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass7_8()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFilterOrders_003Eb__67(Employee a)
@@ -244,7 +244,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass24_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDuplicate_Click_003Eb__7(usp_ItemOptionsResult x)
@@ -265,7 +265,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass24_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDuplicate_Click_003Eb__5(Guid a)
@@ -305,7 +305,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass24_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDuplicate_Click_003Eb__11(Item y)
@@ -342,7 +342,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass33_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -354,7 +354,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass34_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -366,7 +366,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass35_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -380,7 +380,7 @@ public class frmAdminViewOrders : frmMasterForm
 		public _003C_003Ec__DisplayClass41_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -572,7 +572,7 @@ public class frmAdminViewOrders : frmMasterForm
 		string_0 = Class22.string_0;
 		string_1 = Roles.employee;
 		list_2 = new List<OrderPostDataModel>();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		customPager_0 = new CustomPager();
 		CustomPager customPager = customPager_0;

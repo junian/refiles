@@ -75,6 +75,6 @@ public class DeliverectCustomer
 	public DeliverectCustomer()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

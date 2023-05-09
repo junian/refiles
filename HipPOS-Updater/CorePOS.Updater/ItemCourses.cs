@@ -17,7 +17,7 @@ public class ItemCourses
 	public ItemCourses()
 	{
 		Class13.FLcy5UmzUUEfT();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static ItemCourses()

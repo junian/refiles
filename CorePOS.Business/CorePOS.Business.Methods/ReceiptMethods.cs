@@ -21,7 +21,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -35,7 +35,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass0_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal ReceiptOrder _003CGetOrderToPrintReceipt_003Eb__9(Order ro)
@@ -97,7 +97,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass0_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -109,7 +109,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass0_3()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetOrderToPrintReceipt_003Eb__14(ItemsInItem x)
@@ -133,7 +133,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -145,7 +145,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -163,7 +163,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CParseDayEndTotals_003Eb__3(Order a)
@@ -180,7 +180,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass5_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CParseDayEndTotals_003Eb__10(Order a)
@@ -203,7 +203,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CParseDayEndTaxTotals_003Eb__1(Order a)
@@ -231,7 +231,7 @@ public class ReceiptMethods
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -691,6 +691,6 @@ public class ReceiptMethods
 	public ReceiptMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

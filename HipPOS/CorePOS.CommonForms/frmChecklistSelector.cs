@@ -51,7 +51,7 @@ public class frmChecklistSelector : frmMasterForm
 	public frmChecklistSelector(string title, Dictionary<string, string> _OTList, string _existingOTList, int minSelection = 0)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		dictionary_0 = _OTList;
 		if (SettingsHelper.GetSettingValueByKey("production_mode") == "Disabled")

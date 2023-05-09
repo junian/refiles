@@ -42,7 +42,7 @@ public class frmSQLSettings : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		ErqFkjeTrUK = AppDomain.CurrentDomain.BaseDirectory + "\\connectionstring.txt";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		method_3();
 	}

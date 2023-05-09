@@ -24,7 +24,7 @@ public class frmUsefulTips : frmMasterForm
 	public frmUsefulTips()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new ScrollBarCustom(UsefulTipGridView, 40, UsefulTipGridView.Height);
 	}

@@ -21,7 +21,7 @@ internal class Class1
 	public Class1()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static Class1()

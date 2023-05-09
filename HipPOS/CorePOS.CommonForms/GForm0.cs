@@ -22,7 +22,7 @@ public class GForm0 : frmMasterForm
 		public _003C_003Ec__DisplayClass26_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadOptionsFromGroup_003Eb__0(usp_ItemOptionsResult x)
@@ -134,7 +134,7 @@ public class GForm0 : frmMasterForm
 	public GForm0(string title, string[] _existingOptList, Dictionary<string, string> group, int selectedGroupDependency, int selectedItem, string selectedTab)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lblTitle.Text = title;
 		ddlSelect.DataSource = new BindingSource(group, null);

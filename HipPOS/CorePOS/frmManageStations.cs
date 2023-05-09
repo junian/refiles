@@ -24,7 +24,7 @@ public class frmManageStations : frmMasterForm
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -111,7 +111,7 @@ public class frmManageStations : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = string.Empty;
 		string_1 = string.Join(",", OrderTypes.DineIn, OrderTypes.Delivery, OrderTypes.ToGo, OrderTypes.PickUp, OrderTypes.DeliveryOnline, OrderTypes.PickUpOnline);
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

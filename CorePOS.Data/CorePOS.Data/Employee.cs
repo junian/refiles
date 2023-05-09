@@ -386,7 +386,7 @@ public class Employee : INotifyPropertyChanging, INotifyPropertyChanged
 	public Employee()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Refunds = new EntitySet<Refund>(method_0, method_1);
 		_Users = new EntitySet<User>(method_2, method_3);
 		_Appointments = new EntitySet<Appointment>(method_4, method_5);

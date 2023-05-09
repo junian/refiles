@@ -122,7 +122,7 @@ public class frmMessageBox : frmMasterForm
 	public frmMessageBox(string Message, string Title = "", string Buttons = "Ok")
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lblMsg.Text = Message;
 		lblTitle.Text = (Text = ((Title == string.Empty) ? BrandingTerms.SoftwareName : Title).ToUpper());

@@ -26,7 +26,7 @@ public class frmItemsInItem : frmMasterForm
 		public _003C_003Ec__DisplayClass20_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -38,7 +38,7 @@ public class frmItemsInItem : frmMasterForm
 		public _003C_003Ec__DisplayClass21_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -52,7 +52,7 @@ public class frmItemsInItem : frmMasterForm
 		public _003C_003Ec__DisplayClass22_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CfrmItemsInItem_Load_003Eb__1(Item i)
@@ -203,7 +203,7 @@ public class frmItemsInItem : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		CoBmEuurJF = _itemName;
 		string_0 = _actionType;
 		list_2 = _itemsListInItem;

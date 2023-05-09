@@ -61,7 +61,7 @@ public class FlytOrderModel
 		public Driver()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -155,7 +155,7 @@ public class FlytOrderModel
 		public Item()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -198,7 +198,7 @@ public class FlytOrderModel
 		public Channel()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -241,7 +241,7 @@ public class FlytOrderModel
 		public ItemsInCart()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -284,7 +284,7 @@ public class FlytOrderModel
 		public Final()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -327,7 +327,7 @@ public class FlytOrderModel
 		public Price()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -370,7 +370,7 @@ public class FlytOrderModel
 		public Adjustment()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -430,7 +430,7 @@ public class FlytOrderModel
 		public Payment()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -507,7 +507,7 @@ public class FlytOrderModel
 		public Coordinates()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -669,7 +669,7 @@ public class FlytOrderModel
 		public Delivery()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -933,13 +933,13 @@ public class FlytOrderModel
 		public FlytOrder()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
 	public FlytOrderModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

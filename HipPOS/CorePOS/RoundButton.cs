@@ -55,7 +55,7 @@ public class RoundButton : Button
 		Class26.Ggkj0JxzN9YmC();
 		point_0 = new Point(0, 0);
 		color_0 = Color.FromKnownColor(KnownColor.ControlLight);
-		base._002Ector();
+		// base._002Ector();
 		method_0();
 		JguFaCsIhWu = new Pen(BackColor);
 		solidBrush_1 = new SolidBrush(BackColor);

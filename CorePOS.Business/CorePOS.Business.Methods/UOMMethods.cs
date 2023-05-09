@@ -19,7 +19,7 @@ public class UOMMethods
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -35,7 +35,7 @@ public class UOMMethods
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetAllUOMs_003Eb__2(string a)
@@ -61,7 +61,7 @@ public class UOMMethods
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -139,6 +139,6 @@ public class UOMMethods
 	public UOMMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

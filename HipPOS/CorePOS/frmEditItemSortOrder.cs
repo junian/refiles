@@ -24,7 +24,7 @@ public class frmEditItemSortOrder : frmMasterForm
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -36,7 +36,7 @@ public class frmEditItemSortOrder : frmMasterForm
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -83,7 +83,7 @@ public class frmEditItemSortOrder : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		bool_0 = true;
 		bool_1 = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

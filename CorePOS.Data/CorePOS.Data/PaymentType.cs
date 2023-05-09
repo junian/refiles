@@ -220,7 +220,7 @@ public class PaymentType : INotifyPropertyChanging, INotifyPropertyChanged
 	public PaymentType()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	protected virtual void SendPropertyChanging()

@@ -299,7 +299,7 @@ public class GroupsInItem : INotifyPropertyChanging, INotifyPropertyChanged
 	public GroupsInItem()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Group = default(EntityRef<Group>);
 		_Item = default(EntityRef<Item>);
 	}

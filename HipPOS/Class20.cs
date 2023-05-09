@@ -13,7 +13,7 @@ internal class Class20 : RadDropDownList
 	public Class20()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		method_3();
 		base.ListElement.ItemHeight = 28;
 		base.ListElement.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);

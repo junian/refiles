@@ -64,7 +64,7 @@ public class frmGiftCardPrompt : frmMasterForm
 	public frmGiftCardPrompt(string title = "", bool GCAndLoyalty = false, string closeButtonText = "CLOSE")
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		if (!string.IsNullOrEmpty(title))
 		{

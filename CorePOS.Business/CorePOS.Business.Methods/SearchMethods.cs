@@ -15,7 +15,7 @@ public static class SearchMethods
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CFindItems_003Eb__10(Item t)
@@ -38,7 +38,7 @@ public static class SearchMethods
 		public _003C_003Ec__DisplayClass0_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -50,7 +50,7 @@ public static class SearchMethods
 		public _003C_003Ec__DisplayClass0_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -64,7 +64,7 @@ public static class SearchMethods
 		public _003C_003Ec__DisplayClass0_3()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 

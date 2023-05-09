@@ -280,7 +280,7 @@ public class InventoryBatch : INotifyPropertyChanging, INotifyPropertyChanged
 	public InventoryBatch()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Item = default(EntityRef<Item>);
 	}
 

@@ -41,6 +41,6 @@ public class StatusCodeResponseLocation : StatusCodeResponse
 	public StatusCodeResponseLocation()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

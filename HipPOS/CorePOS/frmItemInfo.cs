@@ -79,7 +79,7 @@ public class frmItemInfo : frmMasterForm
 	public frmItemInfo(string name, byte[] bytesPic, string desc, string price, string notes, string salePrice = "")
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		base.Width = (int)((double)Screen.FromControl(this).Bounds.Width * 0.7);

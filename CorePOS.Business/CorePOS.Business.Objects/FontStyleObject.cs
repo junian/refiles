@@ -58,6 +58,6 @@ public class FontStyleObject
 	public FontStyleObject()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

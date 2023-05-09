@@ -45,7 +45,7 @@ public class GlobalOrderHistoryObjects
 		public Request()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -88,7 +88,7 @@ public class GlobalOrderHistoryObjects
 		public Response()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -216,7 +216,7 @@ public class GlobalOrderHistoryObjects
 		public CustomerInfo()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -480,13 +480,13 @@ public class GlobalOrderHistoryObjects
 		public Order()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
 	public GlobalOrderHistoryObjects()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

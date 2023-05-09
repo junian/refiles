@@ -92,7 +92,7 @@ public class InventoryItemControl : UserControl
 	{
 		Class26.Ggkj0JxzN9YmC();
 		bool_4 = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		item_0 = _item;
 		string_0 = _type;

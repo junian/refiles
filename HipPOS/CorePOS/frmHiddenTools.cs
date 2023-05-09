@@ -23,7 +23,7 @@ public class frmHiddenTools : frmMasterForm
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -39,7 +39,7 @@ public class frmHiddenTools : frmMasterForm
 		public _003C_003Ec__DisplayClass1_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnAddOrders_Click_003Eb__5(Item i)
@@ -61,7 +61,7 @@ public class frmHiddenTools : frmMasterForm
 		public _003C_003Ec__DisplayClass1_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -98,7 +98,7 @@ public class frmHiddenTools : frmMasterForm
 	public frmHiddenTools()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

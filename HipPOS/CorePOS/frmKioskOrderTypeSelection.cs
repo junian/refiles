@@ -27,7 +27,7 @@ public class frmKioskOrderTypeSelection : frmMasterForm
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CfrmKioskOrderTypeSelection_Load_003Eb__0()
@@ -89,7 +89,7 @@ public class frmKioskOrderTypeSelection : frmMasterForm
 	public frmKioskOrderTypeSelection()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		string settingValueByKey = SettingsHelper.GetSettingValueByKey("primary_language");
 		string settingValueByKey2 = SettingsHelper.GetSettingValueByKey("secondary_language");

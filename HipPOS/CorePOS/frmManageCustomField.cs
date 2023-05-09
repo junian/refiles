@@ -21,7 +21,7 @@ public class frmManageCustomField : frmMasterForm
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class frmManageCustomField : frmMasterForm
 	public frmManageCustomField()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

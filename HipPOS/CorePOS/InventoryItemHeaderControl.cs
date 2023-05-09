@@ -28,7 +28,7 @@ public class InventoryItemHeaderControl : UserControl
 	public InventoryItemHeaderControl(FlowLayoutPanel _PanelItems)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		base.Width = _PanelItems.Width - 20;
 		lblGroupName.Width = ControlHelpers.ControlWidthFixer(_PanelItems, 2.0);

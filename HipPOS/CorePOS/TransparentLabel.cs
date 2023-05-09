@@ -20,7 +20,7 @@ public class TransparentLabel : Label
 		public _003C_003Ec__DisplayClass21_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003COnPaint_003Eb__3(Control c)
@@ -135,7 +135,7 @@ public class TransparentLabel : Label
 		ySize = 30;
 		flagType = 1;
 		int_0 = 30;
-		base._002Ector();
+		// base._002Ector();
 		IfwFaLobtLR();
 		string text = "Flat";
 		transparentBackColor = Color.White;
@@ -189,7 +189,7 @@ public class TransparentLabel : Label
 		ySize = 30;
 		flagType = 1;
 		int_0 = 30;
-		base._002Ector();
+		// base._002Ector();
 		IfwFaLobtLR();
 		transparentBackColor = Color.White;
 		int_1 = 255;

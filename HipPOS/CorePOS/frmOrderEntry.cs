@@ -34,7 +34,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass135_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -48,7 +48,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass135_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CGenerateNewButton_003Eb__0(object sender, MouseEventArgs e)
@@ -84,7 +84,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass136_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CshowItemInfo_003Eb__0(ItemImage m)
@@ -106,7 +106,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass141_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnClear_Click_003Eb__3(Item i)
@@ -137,7 +137,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass148_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDisplayItems_003Eb__1(CorePOS.Data.Group a)
@@ -216,7 +216,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass148_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDisplayItems_003Eb__16(ItemImage m)
@@ -237,7 +237,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass152_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddItem_003Eb__0(Item i)
@@ -282,7 +282,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass152_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddItem_003Eb__8(Item x)
@@ -301,7 +301,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass152_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddItem_003Eb__9(usp_ItemOptionsResult i)
@@ -328,7 +328,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass152_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddItem_003Eb__12(Item a)
@@ -347,7 +347,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass152_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddItem_003Eb__13(usp_ItemOptionsResult a)
@@ -372,7 +372,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass152_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddItem_003Eb__20(usp_ItemOptionsResult a)
@@ -395,7 +395,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__2(Item a)
@@ -425,7 +425,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__22(int a)
@@ -450,7 +450,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__8(int i)
@@ -469,7 +469,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__10(BillItemsWithCount b)
@@ -495,7 +495,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__14(usp_ItemOptionsResult i)
@@ -520,7 +520,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__17(ListViewDataItem x)
@@ -541,7 +541,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_6()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__18(ListViewDataItem x)
@@ -558,7 +558,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_7()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__19(ListViewDataItem x)
@@ -575,7 +575,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_8()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__20(PossibleCombo x)
@@ -596,7 +596,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_9()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__21(Item x)
@@ -615,7 +615,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_10()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__26(ListViewDataItem x)
@@ -645,7 +645,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_11()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__27(ListViewDataItem x)
@@ -680,7 +680,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass154_12()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CcheckCombo_003Eb__31(Item x)
@@ -697,7 +697,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass155_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CremoveFromComboPotential_003Eb__0(PossibleCombo x)
@@ -714,7 +714,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass156_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -726,7 +726,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass156_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CaddPackageItems_003Eb__1(Item x)
@@ -743,7 +743,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass157_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddItemToListView_003Eb__2(ItemsInGroup a)
@@ -765,7 +765,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass157_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -777,7 +777,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass159_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnRemove_Click_003Eb__2(ListViewDataItem a)
@@ -802,7 +802,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass161_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCheckChangeGroupInItem_003Eb__0(Item a)
@@ -819,7 +819,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass163_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculateTaxAndSubtotal_003Eb__0(Item x)
@@ -836,7 +836,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass163_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculateTaxAndSubtotal_003Eb__2(Item x)
@@ -861,7 +861,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass175_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CShowChangePrice_003Eb__0(ListViewDataItem a)
@@ -895,7 +895,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass182_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -907,7 +907,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass183_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -919,7 +919,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass183_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CloadOrder_003Eb__5(Item x)
@@ -938,7 +938,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass186_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdateTableChange_003Eb__0(OrderResult a)
@@ -955,7 +955,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass188_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -971,7 +971,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass189_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPutOrderToVariables_003Eb__2(ItemsInGroup x)
@@ -998,7 +998,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass189_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CPutOrderToVariables_003Eb__5()
@@ -1024,7 +1024,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass189_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPutOrderToVariables_003Eb__7(Item i)
@@ -1043,7 +1043,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass189_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CPutOrderToVariables_003Eb__13()
@@ -1060,7 +1060,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass193_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnChangeTable_Click_003Eb__0(Item a)
@@ -1077,7 +1077,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass193_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1095,7 +1095,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass204_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CchangeItemQty_003Eb__0(Item a)
@@ -1122,7 +1122,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass204_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CchangeItemQty_003Eb__2(Item a)
@@ -1139,7 +1139,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass205_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1151,7 +1151,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass205_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1165,7 +1165,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass205_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1179,7 +1179,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass224_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnFire_Click_003Eb__0(Item a)
@@ -1198,7 +1198,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass224_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnFire_Click_003Eb__2(ListViewDataItem a)
@@ -1215,7 +1215,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass231_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1231,7 +1231,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass234_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnItemOptions_Click_003Eb__0(usp_ItemOptionsResult i)
@@ -1273,7 +1273,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass234_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnItemOptions_Click_003Eb__5(ListViewDataItem a)
@@ -1300,7 +1300,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass234_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnItemOptions_Click_003Eb__6(usp_ItemOptionsResult a)
@@ -1345,7 +1345,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass235_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnSearchItems_Click_1_003Eb__0(Item i)
@@ -1366,7 +1366,7 @@ public class frmOrderEntry : frmMasterForm
 		public _003C_003Ec__DisplayClass242_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CtxtBarcodeSearch_KeyDown_003Eb__1(Item b)
@@ -1824,7 +1824,7 @@ public class frmOrderEntry : frmMasterForm
 		listViewDataItemGroup_4 = new ListViewDataItemGroup("MAINS/ENTREES");
 		listViewDataItemGroup_5 = new ListViewDataItemGroup("SIDES");
 		listViewDataItemGroup_6 = new ListViewDataItemGroup("UNCATEGORIZED");
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		btnFire.Visible = true;
 		new FormHelper().ResizeButtonFonts(this);

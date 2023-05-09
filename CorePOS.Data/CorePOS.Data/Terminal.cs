@@ -711,7 +711,7 @@ public class Terminal : INotifyPropertyChanging, INotifyPropertyChanged
 	public Terminal()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Orders = new EntitySet<Order>(method_0, method_1);
 		_Orders1 = new EntitySet<Order>(method_2, method_3);
 	}

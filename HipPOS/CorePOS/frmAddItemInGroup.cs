@@ -24,7 +24,7 @@ public class frmAddItemInGroup : frmMasterForm
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -38,7 +38,7 @@ public class frmAddItemInGroup : frmMasterForm
 		public _003C_003Ec__DisplayClass6_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class frmAddItemInGroup : frmMasterForm
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -62,7 +62,7 @@ public class frmAddItemInGroup : frmMasterForm
 		public _003C_003Ec__DisplayClass14_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003ClistViewGroup_MouseClick_003Eb__1(ItemsInGroup x)
@@ -113,7 +113,7 @@ public class frmAddItemInGroup : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = ItemClassifications.Product;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		listViewItem.ShowGroups = false;

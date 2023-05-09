@@ -32,7 +32,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -44,7 +44,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass11_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -58,7 +58,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass11_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -70,7 +70,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -82,7 +82,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass12_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -94,7 +94,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass16_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSearchForOrder_003Eb__2(Item i)
@@ -111,7 +111,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass22_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -123,7 +123,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass22_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CMovePackage_003Eb__1(Item i)
@@ -140,7 +140,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass23_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -152,7 +152,7 @@ public class frmRefund : frmMasterForm
 		public _003C_003Ec__DisplayClass23_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -243,7 +243,7 @@ public class frmRefund : frmMasterForm
 		dataManager_0 = new DataManager();
 		string_0 = string.Empty;
 		string_1 = string.Empty;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isCurrentlyTrainingMode"]))

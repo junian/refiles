@@ -68,7 +68,7 @@ public class PATT_Posera
 			public POSRequest()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -131,7 +131,7 @@ public class PATT_Posera
 			public Ident()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -212,7 +212,7 @@ public class PATT_Posera
 			public POSDefaultInfo()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -384,14 +384,14 @@ public class PATT_Posera
 			public Payment()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
 		public Request()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -457,7 +457,7 @@ public class PATT_Posera
 			public POSResponse()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -503,7 +503,7 @@ public class PATT_Posera
 			public Ident()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -621,7 +621,7 @@ public class PATT_Posera
 			public POSDefaultInfo()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -739,7 +739,7 @@ public class PATT_Posera
 			public Check()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
@@ -767,20 +767,20 @@ public class PATT_Posera
 			public Checks()
 			{
 				Class2.oOsq41PzvTVMr();
-				base._002Ector();
+				// base._002Ector();
 			}
 		}
 
 		public Response()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
 	public PATT_Posera()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -156,7 +156,7 @@ public class ItemType : INotifyPropertyChanging, INotifyPropertyChanged
 	public ItemType()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Items = new EntitySet<Item>(method_0, method_1);
 	}
 

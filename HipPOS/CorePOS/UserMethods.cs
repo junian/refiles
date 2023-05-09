@@ -19,7 +19,7 @@ public class UserMethods
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetNumberOfUsers_003Eb__0(User u)
@@ -42,7 +42,7 @@ public class UserMethods
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetNumberOfUsers_003Eb__0(User u)
@@ -63,7 +63,7 @@ public class UserMethods
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetEmployeeByPIN_003Eb__0(User u)
@@ -84,7 +84,7 @@ public class UserMethods
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetEmployeeByID_003Eb__0(User u)
@@ -105,7 +105,7 @@ public class UserMethods
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetEmployeeRole_003Eb__0(User u)
@@ -191,6 +191,6 @@ public class UserMethods
 	public UserMethods()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

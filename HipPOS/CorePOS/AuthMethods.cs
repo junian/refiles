@@ -23,7 +23,7 @@ public static class AuthMethods
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CEmployeeAuthenticateControlDifferentForm_003Eb__0(SecurityObject a)
@@ -46,7 +46,7 @@ public static class AuthMethods
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CIsPinRequired_003Eb__0(SecurityObject a)
@@ -67,7 +67,7 @@ public static class AuthMethods
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CisFormAuthenticationRequired_003Eb__0(SecurityObject a)
@@ -86,7 +86,7 @@ public static class AuthMethods
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CControlsToLock_003Eb__0(SecurityObject a)
@@ -109,7 +109,7 @@ public static class AuthMethods
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CisUserAuthenticated_003Eb__0(SecurityObject a)
@@ -139,7 +139,7 @@ public static class AuthMethods
 		public _003C_003Ec__DisplayClass8_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CisUserAuthenticated_003Eb__1(SecurityObject x)

@@ -24,7 +24,7 @@ public static class UIPaymentHelper
 		public _003C_003Ec__DisplayClass1_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -36,7 +36,7 @@ public static class UIPaymentHelper
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -50,7 +50,7 @@ public static class UIPaymentHelper
 		public _003C_003Ec__DisplayClass2_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 

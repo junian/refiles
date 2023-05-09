@@ -103,7 +103,7 @@ public class frmDiscount : frmMasterForm
 	public frmDiscount(decimal amountTobeDiscount, string DiscountDescType)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		decimal_1 = amountTobeDiscount;
 		string_2 = DiscountDescType;

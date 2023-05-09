@@ -220,7 +220,7 @@ public class Option : INotifyPropertyChanging, INotifyPropertyChanged
 	public Option()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Item = default(EntityRef<Item>);
 	}
 

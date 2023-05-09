@@ -69,7 +69,7 @@ public class frmSettingsEmail : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
 		bool_0 = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

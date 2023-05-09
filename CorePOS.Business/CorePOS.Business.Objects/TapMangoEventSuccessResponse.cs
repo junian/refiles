@@ -24,6 +24,6 @@ public class TapMangoEventSuccessResponse
 	public TapMangoEventSuccessResponse()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

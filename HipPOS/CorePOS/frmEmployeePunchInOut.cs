@@ -33,7 +33,7 @@ public class frmEmployeePunchInOut : frmMasterForm
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -47,7 +47,7 @@ public class frmEmployeePunchInOut : frmMasterForm
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -65,7 +65,7 @@ public class frmEmployeePunchInOut : frmMasterForm
 		public _003C_003Ec__DisplayClass24_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnExport_Click_003Eb__0()
@@ -175,7 +175,7 @@ public class frmEmployeePunchInOut : frmMasterForm
 		int_2 = 1;
 		string_2 = "";
 		string_3 = "Exporting...";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		employee_0 = employee;
 		int_0 = employee.Users.First().RoleID;

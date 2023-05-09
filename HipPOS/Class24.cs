@@ -43,6 +43,6 @@ internal class Class24 : Label
 	public Class24()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

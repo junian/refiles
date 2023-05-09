@@ -23,7 +23,7 @@ public class frmSelectTimeSingle : frmMasterForm
 	public frmSelectTimeSingle(string t)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		timePicker.Value = Convert.ToDateTime(t);
 	}

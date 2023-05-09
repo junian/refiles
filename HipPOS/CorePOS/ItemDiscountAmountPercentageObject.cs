@@ -58,6 +58,6 @@ public class ItemDiscountAmountPercentageObject
 	public ItemDiscountAmountPercentageObject()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

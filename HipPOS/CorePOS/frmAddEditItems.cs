@@ -37,7 +37,7 @@ public class frmAddEditItems : frmMasterForm
 		public _003C_003Ec__DisplayClass28_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal Dictionary<string, string> _003CpopulateAllItems_003Eb__0()
@@ -54,7 +54,7 @@ public class frmAddEditItems : frmMasterForm
 		public _003C_003Ec__DisplayClass33_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -66,7 +66,7 @@ public class frmAddEditItems : frmMasterForm
 		public _003C_003Ec__DisplayClass36_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CrecalculateIngredientCost_003Eb__2(Item x)
@@ -83,7 +83,7 @@ public class frmAddEditItems : frmMasterForm
 		public _003C_003Ec__DisplayClass84_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -354,7 +354,7 @@ public class frmAddEditItems : frmMasterForm
 		string_2 = string.Empty;
 		context = new GClass6();
 		radTextBoxControl_0 = new RadTextBoxControl();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		int_0 = itemID;

@@ -10,7 +10,7 @@ public class ItemMethods
 	public ItemMethods(GClass6 dataContext = null)
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 		if (dataContext == null)
 		{
 			_dataContext = new GClass6();

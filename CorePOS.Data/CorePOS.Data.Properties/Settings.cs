@@ -255,7 +255,7 @@ public sealed class Settings : ApplicationSettingsBase
 	public Settings()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static Settings()

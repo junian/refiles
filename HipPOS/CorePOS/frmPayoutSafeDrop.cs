@@ -20,7 +20,7 @@ public class frmPayoutSafeDrop : frmMasterForm
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -41,7 +41,7 @@ public class frmPayoutSafeDrop : frmMasterForm
 	public frmPayoutSafeDrop(bool showPayout)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		if (!showPayout)
 		{

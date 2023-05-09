@@ -7,7 +7,7 @@ public class ExceptionTypes
 	public ExceptionTypes()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static ExceptionTypes()

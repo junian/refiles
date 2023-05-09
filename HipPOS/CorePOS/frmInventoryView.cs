@@ -26,7 +26,7 @@ public class frmInventoryView : frmMasterForm
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -40,7 +40,7 @@ public class frmInventoryView : frmMasterForm
 		public _003C_003Ec__DisplayClass10_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CsearchInventory_003Eb__3(Item i)
@@ -72,7 +72,7 @@ public class frmInventoryView : frmMasterForm
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadInventoryItems_003Eb__4(Item t)
@@ -102,7 +102,7 @@ public class frmInventoryView : frmMasterForm
 		public _003C_003Ec__DisplayClass20_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -116,7 +116,7 @@ public class frmInventoryView : frmMasterForm
 		public _003C_003Ec__DisplayClass20_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CoutOfStockCB_CheckedChanged_003Eb__3(Item i)
@@ -207,7 +207,7 @@ public class frmInventoryView : frmMasterForm
 		bool_0 = true;
 		list_2 = new List<InventoryItemControl>();
 		list_3 = new List<Control>();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		string_0 = _user;

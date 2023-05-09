@@ -25,6 +25,6 @@ public class RefundResponseModel : StatusCodeResponse
 	public RefundResponseModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

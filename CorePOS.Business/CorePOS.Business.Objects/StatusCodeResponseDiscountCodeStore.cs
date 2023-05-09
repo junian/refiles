@@ -25,6 +25,6 @@ public class StatusCodeResponseDiscountCodeStore : StatusCodeResponse
 	public StatusCodeResponseDiscountCodeStore()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -279,7 +279,7 @@ public class User : INotifyPropertyChanging, INotifyPropertyChanged
 	public User()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Role = default(EntityRef<Role>);
 		_Employee = default(EntityRef<Employee>);
 	}

@@ -27,7 +27,7 @@ public class frmDownloader : frmMasterForm
 	public frmDownloader(string url, string save_path, string file_info)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		method_3(url, save_path);
 		progressBar1.Text = Resources.Downloading + file_info + " ...";

@@ -31,7 +31,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass61_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDiscount_Click_003Eb__2(Promotion a)
@@ -54,7 +54,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass62_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CmanualPaymentTypeProcessing_003Eb__2(ProcessorPaymentTypeWithId x)
@@ -71,7 +71,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass72_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCompleteOrder_003Eb__8(PaymentType x)
@@ -92,7 +92,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass73_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSafeDropProcess_003Eb__1(KeyValuePair<string, string> a)
@@ -109,7 +109,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass75_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGiftCardProcess_003Eb__5(ProcessorPaymentTypeWithId x)
@@ -126,7 +126,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass77_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRedeemLoyaltyCardPoints_003Eb__5(ProcessorPaymentTypeWithId x)
@@ -143,7 +143,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass78_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecordLoyaltyPoints_003Eb__1(Item a)
@@ -160,7 +160,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass80_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPromptGiftCardAckroo_003Eb__3(GiftCardDetails o)
@@ -177,7 +177,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass89_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnRemove_Click_003Eb__0(ProcessorPaymentTypeWithId u)
@@ -194,7 +194,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass118_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -206,7 +206,7 @@ public class frmPay : frmMasterForm
 		public _003C_003Ec__DisplayClass118_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnTaxDiscount_Click_003Eb__8(Item a)
@@ -498,7 +498,7 @@ public class frmPay : frmMasterForm
 		gclass6_0 = new GClass6();
 		decimal_12 = -1m;
 		decimal_13 = -1m;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		int num = 0;

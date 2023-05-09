@@ -90,7 +90,7 @@ public class frmUpdater : Form
 		public CheckForUpdatesPostData()
 		{
 			Class13.FLcy5UmzUUEfT();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -133,7 +133,7 @@ public class frmUpdater : Form
 		public StatusCodeResponse()
 		{
 			Class13.FLcy5UmzUUEfT();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -183,7 +183,7 @@ public class frmUpdater : Form
 		string_2 = "";
 		string_3 = "";
 		string_4 = "https://www.hipposhq.com/downloads/restaurant/required/";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		progressBar1.Maximum = 100;
 		Common.appVersion = string_0;

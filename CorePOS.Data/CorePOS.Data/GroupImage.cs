@@ -260,7 +260,7 @@ public class GroupImage : INotifyPropertyChanging, INotifyPropertyChanged
 	public GroupImage()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Group = default(EntityRef<Group>);
 	}
 

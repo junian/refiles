@@ -56,7 +56,7 @@ public class frmDDLSelector : frmMasterForm
 	public frmDDLSelector(string title, Dictionary<string, string> select, string selectedKey = "")
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lblTitle.Text = title;
 		ddlSelect.DataSource = new BindingSource(select, null);

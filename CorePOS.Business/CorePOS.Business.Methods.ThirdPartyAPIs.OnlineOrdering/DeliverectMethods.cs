@@ -20,7 +20,7 @@ public class DeliverectMethods
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -34,7 +34,7 @@ public class DeliverectMethods
 		public _003C_003Ec__DisplayClass0_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -48,7 +48,7 @@ public class DeliverectMethods
 		public _003C_003Ec__DisplayClass0_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -60,7 +60,7 @@ public class DeliverectMethods
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CGetDeliverectSubTotal_003Eb__0(DeliverectOrderItem a)
@@ -77,7 +77,7 @@ public class DeliverectMethods
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddDeliverectOrderItem_003Eb__0(Item x)
@@ -94,7 +94,7 @@ public class DeliverectMethods
 		public _003C_003Ec__DisplayClass3_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddDeliverectOrderItem_003Eb__1(ItemsInGroup x)
@@ -111,7 +111,7 @@ public class DeliverectMethods
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CAddItems_003Eb__0(DeliverectOrderItem a)
@@ -580,6 +580,6 @@ public class DeliverectMethods
 	public DeliverectMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -25,7 +25,7 @@ public class PersistentNotification : Label
 		Class26.Ggkj0JxzN9YmC();
 		timer_0 = new Timer();
 		soundPlayer_0 = new SoundPlayer();
-		base._002Ector();
+		// base._002Ector();
 		base.Size = new Size(765, 61);
 		base.Visible = false;
 		base.Location = new Point(-100, -100);

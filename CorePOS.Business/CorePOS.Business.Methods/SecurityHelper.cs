@@ -16,7 +16,7 @@ public static class SecurityHelper
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -30,7 +30,7 @@ public static class SecurityHelper
 		public _003C_003Ec__DisplayClass2_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCheckAndCreateSecurityMatrix_003Eb__0(SecurityMatrix a)

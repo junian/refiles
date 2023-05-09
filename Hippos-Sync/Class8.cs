@@ -21,7 +21,7 @@ internal class Class8
 	public Class8()
 	{
 		Class9.HjKvJsazVZwlF();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static Class8()

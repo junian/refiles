@@ -69,7 +69,7 @@ public class frmAddInventoryBatches : frmMasterForm
 	public frmAddInventoryBatches(int ItemId, decimal InventoryChange)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		int_0 = ItemId;
 		decimal_0 = InventoryChange;

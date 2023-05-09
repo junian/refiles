@@ -28,7 +28,7 @@ public static class HelperMethods
 		public IgnoreContractResolver(string objectToIgnore)
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 			string_0 = objectToIgnore;
 		}
 

@@ -24,7 +24,7 @@ public class frmManageOrderTickets : frmMasterForm
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -36,7 +36,7 @@ public class frmManageOrderTickets : frmMasterForm
 		public _003C_003Ec__DisplayClass6_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -48,7 +48,7 @@ public class frmManageOrderTickets : frmMasterForm
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -90,7 +90,7 @@ public class frmManageOrderTickets : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		dictionary_0 = new Dictionary<string, string>();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

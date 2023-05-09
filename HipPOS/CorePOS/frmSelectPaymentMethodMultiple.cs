@@ -23,7 +23,7 @@ public class frmSelectPaymentMethodMultiple : frmMasterForm
 		public _003C_003Ec__DisplayClass27_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnRemove_Click_003Eb__0(ProcessorPaymentTypeWithId u)
@@ -142,7 +142,7 @@ public class frmSelectPaymentMethodMultiple : frmMasterForm
 	public frmSelectPaymentMethodMultiple(decimal amountDue)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		paymentMethod = new List<ProcessorPaymentTypeWithId>();
 		txtTotal.Text = (txtAmountDue.Text = amountDue.ToString("0.00"));

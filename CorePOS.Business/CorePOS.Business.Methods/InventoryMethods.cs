@@ -18,7 +18,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -30,7 +30,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass8_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -42,7 +42,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass8_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -56,7 +56,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass8_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -68,7 +68,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -80,7 +80,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -92,7 +92,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass10_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -106,7 +106,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass10_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -118,7 +118,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -130,7 +130,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CReconcileInventoryAuditLogs_003Eb__2(InventoryAudit x)
@@ -149,7 +149,7 @@ public class InventoryMethods
 		public _003C_003Ec__DisplayClass12_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -170,14 +170,14 @@ public class InventoryMethods
 	public InventoryMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 		gclass6_0 = new GClass6();
 	}
 
 	public InventoryMethods(GClass6 appDataContext)
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 		gclass6_0 = appDataContext;
 	}
 

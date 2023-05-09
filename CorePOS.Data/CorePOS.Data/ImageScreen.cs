@@ -260,7 +260,7 @@ public class ImageScreen : INotifyPropertyChanging, INotifyPropertyChanged
 	public ImageScreen()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	protected virtual void SendPropertyChanging()

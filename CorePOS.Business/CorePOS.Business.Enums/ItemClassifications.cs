@@ -11,7 +11,7 @@ public class ItemClassifications
 	public ItemClassifications()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static ItemClassifications()

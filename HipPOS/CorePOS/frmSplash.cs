@@ -41,7 +41,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass23_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRunSyncService_003Eb__1()
@@ -89,7 +89,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass29_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -111,7 +111,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass33_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDayClosing_Click_003Eb__5(Order x)
@@ -154,7 +154,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass33_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -166,7 +166,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass33_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnDayClosing_Click_003Eb__17(Order x)
@@ -183,7 +183,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass68_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -195,7 +195,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass68_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -207,7 +207,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass68_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessHipposOnlineOrderingOrders_003Eb__9(Order a)
@@ -238,7 +238,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass68_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessHipposOnlineOrderingOrders_003Eb__12(OnlineOrderSourceObject a)
@@ -255,7 +255,7 @@ public class frmSplash : Form
 		public _003C_003Ec__DisplayClass68_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessHipposOnlineOrderingOrders_003Eb__17(OrderPostDataModel a)
@@ -402,7 +402,7 @@ public class frmSplash : Form
 		dictionary_0 = new Dictionary<string, DateTime>();
 		bool_4 = true;
 		int_0 = -1;
-		base._002Ector();
+		// base._002Ector();
 		string settingValueByKey = SettingsHelper.GetSettingValueByKey("primary_language");
 		string settingValueByKey2 = SettingsHelper.GetSettingValueByKey("secondary_language");
 		CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;

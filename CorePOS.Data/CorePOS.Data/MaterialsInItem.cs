@@ -240,7 +240,7 @@ public class MaterialsInItem : INotifyPropertyChanging, INotifyPropertyChanged
 	public MaterialsInItem()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_UOM = default(EntityRef<UOM>);
 	}
 

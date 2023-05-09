@@ -23,7 +23,7 @@ public class frmVideoUploader : frmMasterForm
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -35,7 +35,7 @@ public class frmVideoUploader : frmMasterForm
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -47,7 +47,7 @@ public class frmVideoUploader : frmMasterForm
 		public _003C_003Ec__DisplayClass15_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSaveSortOrder_003Eb__1(ImageScreen a)
@@ -103,7 +103,7 @@ public class frmVideoUploader : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = AppDomain.CurrentDomain.BaseDirectory + "videos\\";
 		string_1 = new string[1] { "input-repeat=-1" };
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

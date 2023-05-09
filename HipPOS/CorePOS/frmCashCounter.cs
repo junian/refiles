@@ -46,7 +46,7 @@ public class frmCashCounter : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = new string[5] { "100", "50", "20", "10", "5" };
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		decimal_0 = totalAmountInTil;
 		dictionary_0 = billsAdded;

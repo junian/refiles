@@ -117,7 +117,7 @@ public class frmItemSelector : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		bool_3 = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		ImageList smallImageList = new ImageList
 		{

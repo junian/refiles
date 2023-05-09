@@ -20,7 +20,7 @@ public class frmManageTerminalSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -45,7 +45,7 @@ public class frmManageTerminalSettings : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		terminalSettingsHeaderControl_0 = new TerminalSettingsHeaderControl();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

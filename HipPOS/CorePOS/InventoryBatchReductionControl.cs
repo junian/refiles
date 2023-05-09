@@ -106,7 +106,7 @@ public class InventoryBatchReductionControl : UserControl
 	public InventoryBatchReductionControl(int batchID, string batchNo, DateTime ReceivedDate, DateTime ExpiryDate, decimal qtyRemaining, bool isUOMFractional = false)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		int_0 = batchID;
 		string_0 = batchNo;

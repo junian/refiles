@@ -20,7 +20,7 @@ public class frmManageOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -32,7 +32,7 @@ public class frmManageOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -44,7 +44,7 @@ public class frmManageOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -78,7 +78,7 @@ public class frmManageOptions : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		bool_0 = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		method_3();
 	}

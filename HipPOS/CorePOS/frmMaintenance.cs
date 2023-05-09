@@ -52,7 +52,7 @@ public class frmMaintenance : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		dataManager_0 = new DataManager();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

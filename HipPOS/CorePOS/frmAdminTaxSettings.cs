@@ -85,7 +85,7 @@ public class frmAdminTaxSettings : frmMasterForm
 	public frmAdminTaxSettings()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		TheaTkiFof();
 		new FormHelper().ResizeButtonFonts(this, 2f);
 	}

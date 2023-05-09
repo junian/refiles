@@ -76,7 +76,7 @@ public class frmOptions : frmMasterForm
 		public OptionItemObject()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -90,7 +90,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass59_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadForm_003Eb__1(usp_ItemOptionsResult i)
@@ -120,7 +120,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass59_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadForm_003Eb__8(usp_ItemOptionsResult x)
@@ -142,7 +142,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass62_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoad_Options_003Eb__6(Item a)
@@ -176,7 +176,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass64_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCreateTabs_003Eb__0(usp_ItemOptionsResult x)
@@ -221,7 +221,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass64_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -235,7 +235,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass64_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CCreateTabs_003Eb__6(object sender, EventArgs e)
@@ -271,7 +271,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass64_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -287,7 +287,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass65_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCreateGroups_003Eb__0(usp_ItemOptionsResult x)
@@ -350,7 +350,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass65_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCreateGroups_003Eb__10(CorePOS.Data.Group a)
@@ -369,7 +369,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass65_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -383,7 +383,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass65_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CCreateGroups_003Eb__13(object sender, EventArgs e)
@@ -406,7 +406,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass72_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -424,7 +424,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass78_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRemoveOptionToList_003Eb__0(usp_ItemOptionsResult x)
@@ -463,7 +463,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass79_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CgenerateSelectedOptionsText_003Eb__4(GroupAndMaxFreeOpt a)
@@ -484,7 +484,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass81_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003COptionSelect_003Eb__4(Button x)
@@ -515,7 +515,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass83_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGenerateDependentGroupsWithOptionsSelected_003Eb__5(Control control)
@@ -551,7 +551,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass83_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGenerateDependentGroupsWithOptionsSelected_003Eb__4(SelectedOptionObject b)
@@ -572,7 +572,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass83_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGenerateDependentGroupsWithOptionsSelected_003Eb__6(DependentGroupWithTag a)
@@ -589,7 +589,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass83_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGenerateDependentGroupsWithOptionsSelected_003Eb__7(Control control)
@@ -608,7 +608,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass83_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGenerateDependentGroupsWithOptionsSelected_003Eb__9(SelectedOptionObject x)
@@ -637,7 +637,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__1(usp_ItemOptionsResult a)
@@ -706,7 +706,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__13(Item a)
@@ -727,7 +727,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__15(usp_ItemOptionsResult a)
@@ -748,7 +748,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__16(usp_ItemOptionsResult a)
@@ -778,7 +778,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__18(Control control)
@@ -814,7 +814,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__23(SelectedOptionObject a)
@@ -837,7 +837,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_6()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__25(usp_ItemOptionsResult x)
@@ -920,7 +920,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_7()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__32(usp_ItemOptionsResult a)
@@ -945,7 +945,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_8()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__33(SelectedOptionObject a)
@@ -964,7 +964,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_9()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__43(GroupAndMaxFreeOpt a)
@@ -1012,7 +1012,7 @@ public class frmOptions : frmMasterForm
 		public _003C_003Ec__DisplayClass86_10()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CDone_003Eb__47(Reason a)
@@ -1206,7 +1206,7 @@ public class frmOptions : frmMasterForm
 		list_3 = new List<OptionsPanel>();
 		list_4 = new List<SelectedOptionObject>();
 		decimal_9 = 1m;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

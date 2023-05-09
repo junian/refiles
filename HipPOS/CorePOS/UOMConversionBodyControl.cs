@@ -25,7 +25,7 @@ public class UOMConversionBodyControl : UserControl
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -131,7 +131,7 @@ public class UOMConversionBodyControl : UserControl
 	{
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		int_0 = _conv.Id;
 		short_0 = _conv.ToUnitId;

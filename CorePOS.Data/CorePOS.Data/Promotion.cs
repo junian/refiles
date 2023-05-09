@@ -559,7 +559,7 @@ public class Promotion : INotifyPropertyChanging, INotifyPropertyChanged
 	public Promotion()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Employee = default(EntityRef<Employee>);
 		_Employee1 = default(EntityRef<Employee>);
 	}

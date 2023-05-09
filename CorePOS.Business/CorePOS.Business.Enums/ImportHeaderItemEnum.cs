@@ -67,6 +67,6 @@ public class ImportHeaderItemEnum
 	public ImportHeaderItemEnum()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

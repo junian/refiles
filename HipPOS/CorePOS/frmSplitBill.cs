@@ -27,7 +27,7 @@ public class frmSplitBill : frmMasterForm
 		public _003C_003Ec__DisplayClass48_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -39,7 +39,7 @@ public class frmSplitBill : frmMasterForm
 		public _003C_003Ec__DisplayClass63_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -53,7 +53,7 @@ public class frmSplitBill : frmMasterForm
 		public _003C_003Ec__DisplayClass72_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -219,7 +219,7 @@ public class frmSplitBill : frmMasterForm
 		list_2 = new List<ListView>();
 		list_3 = new List<string>();
 		list_5 = new List<Item>();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 		string_1 = cus;

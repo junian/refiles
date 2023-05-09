@@ -221,7 +221,7 @@ public class UOM : INotifyPropertyChanging, INotifyPropertyChanged
 	public UOM()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_UOMUnitsConversions = new EntitySet<GClass7>(method_0, method_1);
 		_UOMUnitsConversions1 = new EntitySet<GClass7>(method_2, rhajkLhHpk);
 		_MaterialsInItems = new EntitySet<MaterialsInItem>(method_3, method_4);

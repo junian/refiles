@@ -17,7 +17,7 @@ public class BufferedPanel : Panel
 	public BufferedPanel()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		DoubleBuffered = true;
 		SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, value: true);
 	}

@@ -35,7 +35,7 @@ public class NotificationLabel : UserControl
 		Class26.Ggkj0JxzN9YmC();
 		int_1 = 70;
 		int_2 = 1;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		if (parent != null)
 		{

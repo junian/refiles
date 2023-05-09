@@ -19,7 +19,7 @@ public class DeliveryFeeCalculationHeaderControl : UserControl
 	public DeliveryFeeCalculationHeaderControl()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 	}
 

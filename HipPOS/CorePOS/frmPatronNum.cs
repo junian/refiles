@@ -46,7 +46,7 @@ public class frmPatronNum : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		formHelper_0 = new FormHelper();
 		short_0 = 1;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		if (Thread.CurrentThread.CurrentCulture.Name.Equals("fr-CA"))
 		{

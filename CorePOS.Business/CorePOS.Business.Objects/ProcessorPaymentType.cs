@@ -41,6 +41,6 @@ public class ProcessorPaymentType
 	public ProcessorPaymentType()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -21,7 +21,7 @@ public class frmManagePaymentTypesSortOrder : frmMasterForm
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -59,7 +59,7 @@ public class frmManagePaymentTypesSortOrder : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		bool_0 = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

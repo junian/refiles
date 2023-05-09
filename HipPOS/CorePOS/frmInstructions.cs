@@ -23,7 +23,7 @@ public class frmInstructions : frmMasterForm
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSpecialInstructionChecks_003Eb__0(ListViewDataItem a)
@@ -42,7 +42,7 @@ public class frmInstructions : frmMasterForm
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnItemOnHold_Click_003Eb__0(ListViewDataItem a)
@@ -96,7 +96,7 @@ public class frmInstructions : frmMasterForm
 		instructionsMethods_0 = new InstructionsMethods();
 		string_0 = new string[51];
 		int_0 = 8;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

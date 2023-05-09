@@ -26,7 +26,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadFormProcedure_003Eb__12(ListViewDataItem a)
@@ -43,7 +43,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass14_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadFormProcedure_003Eb__11(Employee a)
@@ -62,7 +62,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass17_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CbtnAssignDriver_Click_003Eb__2(Order a)
@@ -79,7 +79,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass17_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -91,7 +91,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass17_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -103,7 +103,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -117,7 +117,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass29_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CPickupOrder_003Eb__1(Order a)
@@ -135,7 +135,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass29_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -147,7 +147,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass31_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRecordDelivery_003Eb__1(Order a)
@@ -164,7 +164,7 @@ public class frmDeliveryManagement : frmMasterForm
 		public _003C_003Ec__DisplayClass31_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -248,7 +248,7 @@ public class frmDeliveryManagement : frmMasterForm
 		dictionary_0 = new Dictionary<string, string>();
 		dateTime_0 = DateTime.Now;
 		list_4 = new List<ListViewDataItem>();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		customPager_0 = new CustomPager();
 		CustomPager customPager = customPager_0;

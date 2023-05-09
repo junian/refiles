@@ -41,7 +41,7 @@ public class frmSettings : Form
 	public frmSettings()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		new FormHelper().ResizeButtonFonts(this);
 		panel1.Height = pnlArrows.Height;

@@ -32,7 +32,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass17_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CMakeOrder_003Eb__2(Order o)
@@ -67,7 +67,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass17_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -79,7 +79,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass20_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnClearCancelled_Click_003Eb__0(Order x)
@@ -102,7 +102,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass25_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CupdateList_003Eb__0()
@@ -147,7 +147,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass26_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRunUpdateList_003Eb__12(Order x)
@@ -205,7 +205,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass26_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRunUpdateList_003Eb__21(OrderTableNameAndNumber a)
@@ -222,7 +222,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass26_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRunUpdateList_003Eb__11(Order x)
@@ -258,7 +258,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass26_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRunUpdateList_003Eb__22(OrderChit x)
@@ -287,7 +287,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass26_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRunUpdateList_003Eb__25()
@@ -306,7 +306,7 @@ public class frmStationTiles : frmMasterForm
 		public _003C_003Ec__DisplayClass33_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnChangeStation_Click_003Eb__0(Station a)
@@ -419,7 +419,7 @@ public class frmStationTiles : frmMasterForm
 		int_2 = 3;
 		list_2 = new List<OrderChit>();
 		string_1 = "ALL";
-		base._002Ector();
+		// base._002Ector();
 		GClass6 gClass = new GClass6();
 		if (SettingsHelper.CurrentTerminalMode == "KitchenDisplay")
 		{

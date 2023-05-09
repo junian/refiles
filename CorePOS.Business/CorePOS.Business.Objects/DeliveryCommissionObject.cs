@@ -75,6 +75,6 @@ public class DeliveryCommissionObject
 	public DeliveryCommissionObject()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

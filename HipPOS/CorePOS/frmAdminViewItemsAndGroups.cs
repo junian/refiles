@@ -23,7 +23,7 @@ public class frmAdminViewItemsAndGroups : frmMasterForm
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -35,7 +35,7 @@ public class frmAdminViewItemsAndGroups : frmMasterForm
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -47,7 +47,7 @@ public class frmAdminViewItemsAndGroups : frmMasterForm
 		public _003C_003Ec__DisplayClass11_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -61,7 +61,7 @@ public class frmAdminViewItemsAndGroups : frmMasterForm
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -77,7 +77,7 @@ public class frmAdminViewItemsAndGroups : frmMasterForm
 		public _003C_003Ec__DisplayClass12_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -91,7 +91,7 @@ public class frmAdminViewItemsAndGroups : frmMasterForm
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -103,7 +103,7 @@ public class frmAdminViewItemsAndGroups : frmMasterForm
 		public _003C_003Ec__DisplayClass14_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -117,7 +117,7 @@ public class frmAdminViewItemsAndGroups : frmMasterForm
 		public _003C_003Ec__DisplayClass14_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -152,7 +152,7 @@ public class frmAdminViewItemsAndGroups : frmMasterForm
 	public frmAdminViewItemsAndGroups()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		new FormHelper().ResizeButtonFonts(this);
 	}

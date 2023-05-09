@@ -32,7 +32,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass33_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CFilterControls_003Eb__0(Control c)
@@ -56,7 +56,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass36_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSetButtonLeftRight_003Eb__0(string a)
@@ -73,7 +73,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass41_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadAllTables_003Eb__1(OccupiedTable a)
@@ -90,7 +90,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass49_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CTimer1_Tick_003Eb__5(OccupiedTable t)
@@ -114,7 +114,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass49_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CTimer1_Tick_003Eb__7(Order o)
@@ -140,7 +140,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass49_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CTimer1_Tick_003Eb__11(TableModel l)
@@ -164,7 +164,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass50_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -176,7 +176,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass51_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CClearOccupiedTable_003Eb__0(TableModel l)
@@ -193,7 +193,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass52_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -205,7 +205,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass63_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -217,7 +217,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass63_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -229,7 +229,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass65_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CclearReservationOnTable_003Eb__0(TableModel l)
@@ -246,7 +246,7 @@ public class frmLayout : frmMasterForm
 		public _003C_003Ec__DisplayClass70_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CReCalControlLocation_003Eb__2(KeyValuePair<string, Point> x)
@@ -411,7 +411,7 @@ public class frmLayout : frmMasterForm
 		dictionary_0 = new Dictionary<string, Point>();
 		gclass6_0 = new GClass6();
 		frmMessageBox_0 = new frmMessageBox("");
-		base._002Ector();
+		// base._002Ector();
 		frmLoadingBar.ShowSplashScreen();
 		frmLoadingBar.SetPercentage(1);
 		InitializeComponent_1();

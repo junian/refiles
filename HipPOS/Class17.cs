@@ -31,7 +31,7 @@ internal class Class17 : CheckBox
 	public Class17(int int_3 = 30, int int_4 = 30, int int_5 = 30, string string_0 = "")
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		method_0();
 		Text = string_0;
 		TextAlign = ContentAlignment.MiddleRight;
@@ -43,7 +43,7 @@ internal class Class17 : CheckBox
 	public Class17()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		method_0();
 		Text = string.Empty;
 		TextAlign = ContentAlignment.MiddleRight;

@@ -9,7 +9,7 @@ public class GlobalConstants
 	public GlobalConstants()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static GlobalConstants()

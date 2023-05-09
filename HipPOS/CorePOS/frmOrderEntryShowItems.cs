@@ -146,7 +146,7 @@ public class frmOrderEntryShowItems : frmMasterForm
 		string_0 = AppDomain.CurrentDomain.BaseDirectory + "videos\\";
 		string_1 = new string[1] { "input-repeat=0" };
 		int_2 = 10;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		pnlDisplayChange.Location = new Point(base.Width / 2 + pnlDisplayChange.Width / 2, base.Height / 2 + pnlDisplayChange.Height / 2);
 		pnlVerifyNumber.Location = new Point(base.Width / 2 - pnlVerifyNumber.Width / 2, base.Height / 2 - pnlVerifyNumber.Height / 2);

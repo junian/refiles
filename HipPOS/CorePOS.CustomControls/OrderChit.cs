@@ -27,7 +27,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass106_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRefreshOrders_003Eb__5()
@@ -97,7 +97,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass106_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRefreshOrders_003Eb__15()
@@ -187,7 +187,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass106_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRefreshOrders_003Eb__21(Order a)
@@ -216,7 +216,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass106_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRefreshOrders_003Eb__20()
@@ -244,7 +244,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass106_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -260,7 +260,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass106_5()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRefreshOrders_003Eb__24()
@@ -293,7 +293,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass106_6()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRefreshOrders_003Eb__25()
@@ -327,7 +327,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass106_7()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CRefreshOrders_003Eb__29()
@@ -446,7 +446,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass109_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CAddBills_003Eb__6(Order x)
@@ -547,7 +547,7 @@ public class OrderChit : UserControl
 		public _003C_003Ec__DisplayClass109_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CAddBills_003Eb__8()
@@ -969,7 +969,7 @@ public class OrderChit : UserControl
 		bool_6 = true;
 		bool_7 = true;
 		string_8 = ScreenType.station;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		base.Width = 320;
 		base.Height = (int)((double)base.Width * 0.5);

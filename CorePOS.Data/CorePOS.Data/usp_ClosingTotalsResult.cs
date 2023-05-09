@@ -61,6 +61,6 @@ public class usp_ClosingTotalsResult
 	public usp_ClosingTotalsResult()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -22,7 +22,7 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass7_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -34,7 +34,7 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -105,7 +105,7 @@ public class frmDayEndClosingPrintSettings : frmMasterForm
 		dateTime_1 = DateTime.Now.Date.AddDays(1.0);
 		TurDzAjoFA = new GClass6();
 		bool_0 = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

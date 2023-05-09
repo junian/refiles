@@ -33,6 +33,6 @@ internal class Class21 : Label
 	{
 		Class26.Ggkj0JxzN9YmC();
 		textFormatFlags_0 = TextFormatFlags.Right;
-		base._002Ector();
+		// base._002Ector();
 	}
 }

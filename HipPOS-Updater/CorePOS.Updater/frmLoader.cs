@@ -21,7 +21,7 @@ public class frmLoader : Form
 	{
 		Class13.FLcy5UmzUUEfT();
 		string_0 = "https://www.hipposhq.com/downloads/restaurant/required/";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 	}
 

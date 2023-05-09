@@ -18,7 +18,7 @@ public class ServiceHipposSync : ServiceBase
 	{
 		Class9.HjKvJsazVZwlF();
 		timer_0 = new Timer();
-		base._002Ector();
+		// base._002Ector();
 		method_0();
 	}
 

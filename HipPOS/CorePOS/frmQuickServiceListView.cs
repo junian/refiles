@@ -25,7 +25,7 @@ public class frmQuickServiceListView : frmMasterForm
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CradListOrders_Click_003Eb__1(OrderResult a)
@@ -52,7 +52,7 @@ public class frmQuickServiceListView : frmMasterForm
 		public _003C_003Ec__DisplayClass53_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdateQuickServiceTileViewOrder_003Eb__0(OrderResult a)
@@ -179,7 +179,7 @@ public class frmQuickServiceListView : frmMasterForm
 		int_1 = 30;
 		bool_5 = SettingsHelper.GetSettingValueByKey("sms") == "Enabled";
 		string_0 = "ALL";
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		btnConfirmOnlineOrders.Tag = btnConfirmOnlineOrders.BackColor;
 		customPager_0 = new CustomPager();

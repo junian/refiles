@@ -240,7 +240,7 @@ public class EmployeeClockInOutQueue : INotifyPropertyChanging, INotifyPropertyC
 	public EmployeeClockInOutQueue()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Employee = default(EntityRef<Employee>);
 	}
 

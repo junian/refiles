@@ -28,7 +28,7 @@ public class frmItemAuditView : frmMasterForm
 	public frmItemAuditView(int _itemID)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		int_0 = _itemID;
 		new ScrollBarCustom(AuditGridView, 40, AuditGridView.Height);

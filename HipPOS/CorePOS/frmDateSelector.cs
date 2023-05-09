@@ -49,7 +49,7 @@ public class frmDateSelector : frmMasterForm
 	public frmDateSelector(DateTime? selectedDate = null, bool withTime = false)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		if (selectedDate.HasValue)
 		{

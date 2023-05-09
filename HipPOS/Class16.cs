@@ -17,7 +17,7 @@ internal class Class16 : Button
 	{
 		Class26.Ggkj0JxzN9YmC();
 		list_0 = new List<Button>();
-		base._002Ector();
+		// base._002Ector();
 		base.Click += Class16_Click;
 		base.LostFocus += Class16_LostFocus;
 	}

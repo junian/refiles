@@ -67,7 +67,7 @@ public class DeliveryFeeCalculationItemControl : UserControl
 	public DeliveryFeeCalculationItemControl(Form mainForm, string From, string To, string ChangePerKM)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		form_0 = mainForm;
 		txtFrom.Text = From;

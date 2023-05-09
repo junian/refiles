@@ -182,7 +182,7 @@ public class frmNumpad : frmMasterForm
 		char_1 = Convert.ToChar(PaymentHelper.HexStringToByteArray("0d")[0]);
 		string_6 = HWBrands.Scales.Generic;
 		string_7 = string.Empty;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

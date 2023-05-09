@@ -38,7 +38,7 @@ public class frmAdminViewInventoryBatches : frmMasterForm
 	public frmAdminViewInventoryBatches(int itemID)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		int_0 = itemID;
 	}

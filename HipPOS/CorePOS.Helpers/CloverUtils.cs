@@ -8,7 +8,7 @@ public class CloverUtils
 	private CloverUtils()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	public static string GetNextId()

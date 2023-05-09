@@ -21,7 +21,7 @@ public class frmStationServingScreen : frmMasterForm
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -61,7 +61,7 @@ public class frmStationServingScreen : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		int_0 = 2;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

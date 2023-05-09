@@ -19,6 +19,6 @@ public class GClass5
 	public GClass5()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

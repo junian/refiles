@@ -31,7 +31,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass51_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CpnlItemScroll_MouseUp_003Eb__0()
@@ -77,7 +77,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass51_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CpnlItemScroll_MouseUp_003Eb__1()
@@ -164,7 +164,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass51_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CpnlItemScroll_MouseUp_003Eb__5()
@@ -181,7 +181,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass54_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -193,7 +193,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass55_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -205,7 +205,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass57_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -217,7 +217,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass67_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPatronItemAddItem_Click_003Eb__4(usp_ItemOptionsResult i)
@@ -247,7 +247,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass67_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -259,7 +259,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass67_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -271,7 +271,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass67_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPatronItemAddItem_Click_003Eb__8(usp_ItemOptionsResult i)
@@ -292,7 +292,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass67_4()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -304,7 +304,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass69_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -316,7 +316,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass69_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -330,7 +330,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass71_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -342,7 +342,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass71_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRemoveItemInListView_003Eb__0(ListViewDataItem a)
@@ -369,7 +369,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass71_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -383,7 +383,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass71_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRemoveItemInListView_003Eb__1(usp_ItemOptionsResult x)
@@ -404,7 +404,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass74_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -420,7 +420,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass76_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnItemOptions_Click_003Eb__0(usp_ItemOptionsResult i)
@@ -456,7 +456,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass76_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnItemOptions_Click_003Eb__5(usp_ItemOptionsResult x)
@@ -477,7 +477,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass80_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -489,7 +489,7 @@ public class frmPatron : frmMasterForm
 		public _003C_003Ec__DisplayClass83_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadItemsTimer_Tick_003Eb__1(PatronItemControl a)
@@ -656,7 +656,7 @@ public class frmPatron : frmMasterForm
 		bool_6 = true;
 		string_7 = "none";
 		string_8 = "none";
-		base._002Ector();
+		// base._002Ector();
 		SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, value: true);
 		InitializeComponent_1();
 		dataManager_0 = new DataManager();

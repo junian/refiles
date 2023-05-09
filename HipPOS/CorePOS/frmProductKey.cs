@@ -23,7 +23,7 @@ public class frmProductKey : frmMasterForm
 	public frmProductKey()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

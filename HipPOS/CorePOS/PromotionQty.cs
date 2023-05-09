@@ -41,6 +41,6 @@ public class PromotionQty
 	public PromotionQty()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

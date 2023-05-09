@@ -41,6 +41,6 @@ public class ItemDisplay
 	public ItemDisplay()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

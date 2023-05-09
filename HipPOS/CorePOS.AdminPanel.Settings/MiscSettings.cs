@@ -26,7 +26,7 @@ public class MiscSettings : UserControl
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -38,7 +38,7 @@ public class MiscSettings : UserControl
 		public _003C_003Ec__DisplayClass5_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class MiscSettings : UserControl
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -171,7 +171,7 @@ public class MiscSettings : UserControl
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
 		bool_0 = true;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		new FormHelper().ResizeButtonFonts(this);
 		iqueryable_0 = gclass6_0.Settings;

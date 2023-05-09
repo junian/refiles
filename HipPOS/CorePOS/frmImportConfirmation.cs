@@ -24,7 +24,7 @@ public class frmImportConfirmation : frmMasterForm
 	public frmImportConfirmation(string message, bool allowUpdateAll = false)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lblMsg.Text = message;
 		btnUpdateAll.Visible = allowUpdateAll;

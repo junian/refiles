@@ -29,7 +29,7 @@ public class frmReport : frmMasterForm
 		public _003C_003Ec__DisplayClass12_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadReport_003Eb__3(Employee e)
@@ -51,7 +51,7 @@ public class frmReport : frmMasterForm
 		public _003C_003Ec__DisplayClass12_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadReport_003Eb__28(Order a)
@@ -68,7 +68,7 @@ public class frmReport : frmMasterForm
 		public _003C_003Ec__DisplayClass12_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal DeliveryCommissionObject _003CLoadReport_003Eb__30(IGrouping<string, Order> a)
@@ -113,7 +113,7 @@ public class frmReport : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
 		int_1 = -1;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		base.TopLevel = true;
 		base.TopMost = true;

@@ -22,7 +22,7 @@ public class frmPhotoSelector : frmMasterForm
 		public _003C_003Ec__DisplayClass6_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -49,7 +49,7 @@ public class frmPhotoSelector : frmMasterForm
 	public frmPhotoSelector(string _selectorType)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		string_0 = _selectorType;
 	}

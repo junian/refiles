@@ -25,6 +25,6 @@ public class SupplierResponseModel : StatusCodeResponse
 	public SupplierResponseModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

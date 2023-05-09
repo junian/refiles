@@ -51,7 +51,7 @@ public class frmCustomField : frmMasterForm
 	public frmCustomField(int _itemID = 0, List<CustomFieldValueDisplay> _itemCustomFieldValuesDisplay = null)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		int_0 = _itemID;
 		itemCustomFieldValuesDisplay = _itemCustomFieldValuesDisplay;

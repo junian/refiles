@@ -35,7 +35,7 @@ public class frmDataTranfer : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		string_0 = string.Empty;
 		string_1 = string.Empty;
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

@@ -24,7 +24,7 @@ public class frmMerge : frmMasterForm
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CLoadFormProcedure_003Eb__4(Order o)
@@ -84,7 +84,7 @@ public class frmMerge : frmMasterForm
 		formHelper_0 = new FormHelper();
 		PxCfQuDemM = new OrderMethods(new GClass6());
 		printHelper_0 = new PrintHelper();
-		base._002Ector();
+		// base._002Ector();
 		string_1 = ot;
 		string_2 = cus;
 		InitializeComponent_1();

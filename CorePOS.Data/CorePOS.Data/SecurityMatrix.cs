@@ -239,7 +239,7 @@ public class SecurityMatrix : INotifyPropertyChanging, INotifyPropertyChanged
 	public SecurityMatrix()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_ModulesAndFeature = default(EntityRef<ModulesAndFeature>);
 		_Role = default(EntityRef<Role>);
 	}

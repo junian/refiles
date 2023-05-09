@@ -25,7 +25,7 @@ public class Template : UserControl
 	{
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 	}
 

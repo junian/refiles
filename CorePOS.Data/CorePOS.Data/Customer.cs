@@ -475,7 +475,7 @@ public class Customer : INotifyPropertyChanging, INotifyPropertyChanged
 	public Customer()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Appointments = new EntitySet<Appointment>(method_0, method_1);
 		_Employee = default(EntityRef<Employee>);
 	}

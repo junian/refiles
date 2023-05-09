@@ -25,6 +25,6 @@ public class TaxRuleOperationResponseModel : StatusCodeResponse
 	public TaxRuleOperationResponseModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

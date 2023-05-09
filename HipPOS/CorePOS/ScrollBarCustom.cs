@@ -10,7 +10,7 @@ public class ScrollBarCustom : VScrollBar
 	public ScrollBarCustom(Control control, int width, int height)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		method_2();
 		base.Size = new Size(width, height);
 		control_0 = control;

@@ -24,6 +24,6 @@ public class DiscountCodePostResponseModel
 	public DiscountCodePostResponseModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

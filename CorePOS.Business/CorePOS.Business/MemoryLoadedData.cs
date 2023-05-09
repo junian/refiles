@@ -15,7 +15,7 @@ public static class MemoryLoadedData
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdateMemoryItemInventory_003Eb__0(ItemsInGroup a)

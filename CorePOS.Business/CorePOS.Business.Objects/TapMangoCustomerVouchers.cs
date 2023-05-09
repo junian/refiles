@@ -212,6 +212,6 @@ public class TapMangoCustomerVouchers
 	public TapMangoCustomerVouchers()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

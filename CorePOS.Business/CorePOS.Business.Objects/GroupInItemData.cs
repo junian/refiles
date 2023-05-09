@@ -75,6 +75,6 @@ public class GroupInItemData
 	public GroupInItemData()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

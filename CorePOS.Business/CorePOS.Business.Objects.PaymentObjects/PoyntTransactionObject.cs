@@ -112,7 +112,7 @@ public class PoyntTransactionObject
 		public Amounts()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -393,7 +393,7 @@ public class PoyntTransactionObject
 		public Context()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -861,7 +861,7 @@ public class PoyntTransactionObject
 		public Card()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -921,7 +921,7 @@ public class PoyntTransactionObject
 		public EntryDetails()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -981,7 +981,7 @@ public class PoyntTransactionObject
 		public FundingSource()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1041,7 +1041,7 @@ public class PoyntTransactionObject
 		public Reference()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1235,6 +1235,6 @@ public class PoyntTransactionObject
 	public PoyntTransactionObject()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

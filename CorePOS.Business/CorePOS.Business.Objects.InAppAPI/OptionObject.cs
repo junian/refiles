@@ -42,6 +42,6 @@ public class OptionObject : usp_ItemOptionsResult
 	public OptionObject()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

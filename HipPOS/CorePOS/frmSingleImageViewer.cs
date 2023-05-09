@@ -21,7 +21,7 @@ public class frmSingleImageViewer : frmMasterForm
 	public frmSingleImageViewer(byte[] base64BytesImage, Size? ContainerSize = null)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		byte_0 = base64BytesImage;
 		nullable_0 = ContainerSize;

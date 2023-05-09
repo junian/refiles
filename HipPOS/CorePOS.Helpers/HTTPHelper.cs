@@ -34,7 +34,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass4_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CTCPListener_003Eb__2()
@@ -62,7 +62,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass9_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetLayout_003Eb__2(OccupiedTable a)
@@ -79,7 +79,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass10_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetStaffTables_003Eb__2(OccupiedTable x)
@@ -96,7 +96,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass10_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetStaffTables_003Eb__4(OccupiedTable a)
@@ -120,7 +120,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass13_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetItems_003Eb__0(ItemsInGroup x)
@@ -141,7 +141,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass13_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetItems_003Eb__2(usp_ItemOptionsResult i)
@@ -172,7 +172,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass13_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetItems_003Eb__7(Item b)
@@ -195,7 +195,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass15_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetOptions_003Eb__0(usp_ItemOptionsResult i)
@@ -262,7 +262,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass15_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetOptions_003Eb__10(Reason b)
@@ -306,7 +306,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass17_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -318,7 +318,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass17_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSaveOrders_003Eb__5(Item x)
@@ -335,7 +335,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass17_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSaveOrders_003Eb__6(ItemsInGroup x)
@@ -352,7 +352,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass17_3()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSaveOrders_003Eb__7(Station a)
@@ -369,7 +369,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass18_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCalculateOrderTax_003Eb__1(Item x)
@@ -391,7 +391,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass18_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCalculateOrderTax_003Eb__4(Item x)
@@ -408,7 +408,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass18_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCalculateOrderTax_003Eb__5(ItemsInGroup x)
@@ -429,7 +429,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculateItemsAndTotals_003Eb__1(Item x)
@@ -451,7 +451,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass19_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculateItemsAndTotals_003Eb__5(Item x)
@@ -468,7 +468,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass19_2()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CRecalculateItemsAndTotals_003Eb__8(Item x)
@@ -485,7 +485,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass22_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -497,7 +497,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass23_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetOrders_003Eb__6(Order x)
@@ -514,7 +514,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass29_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CGetReasons_003Eb__0(Reason x)
@@ -531,7 +531,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass30_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CPrintReceipt_003Eb__0(Terminal x)
@@ -550,7 +550,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass31_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSendToPaymentTerminal_003Eb__0(Terminal x)
@@ -567,7 +567,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass34_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CProcessBillPayment_003Eb__0(Order x)
@@ -588,7 +588,7 @@ public class HTTPHelper
 		public _003C_003Ec__DisplayClass34_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -2293,6 +2293,6 @@ public class HTTPHelper
 	{
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

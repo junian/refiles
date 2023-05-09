@@ -92,6 +92,6 @@ public class DayClosingResult
 	public DayClosingResult()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

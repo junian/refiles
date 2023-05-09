@@ -24,7 +24,7 @@ public class frmEitherOrSelector : frmMasterForm
 	public frmEitherOrSelector(string Title, Dictionary<DialogResult, string> Choices, bool showOpenOrder = false)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 		lblTitle.Text = Title.ToUpper();
 		btnEither.DialogResult = Choices.ElementAt(0).Key;

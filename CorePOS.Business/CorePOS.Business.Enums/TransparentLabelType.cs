@@ -23,7 +23,7 @@ public class TransparentLabelType
 	public TransparentLabelType()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static TransparentLabelType()

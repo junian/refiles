@@ -32,7 +32,7 @@ public class frmReservations : frmMasterForm
 		public _003C_003Ec__DisplayClass14_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CbtnSave_Click_003Eb__0(BusinessHour s)
@@ -56,7 +56,7 @@ public class frmReservations : frmMasterForm
 		public _003C_003Ec__DisplayClass19_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -70,7 +70,7 @@ public class frmReservations : frmMasterForm
 		public _003C_003Ec__DisplayClass19_1()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CCreateCalendar_003Eb__1(Appointment a)
@@ -91,7 +91,7 @@ public class frmReservations : frmMasterForm
 		public _003C_003Ec__DisplayClass30_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -103,7 +103,7 @@ public class frmReservations : frmMasterForm
 		public _003C_003Ec__DisplayClass43_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -243,7 +243,7 @@ public class frmReservations : frmMasterForm
 		dataManager_0 = new DataManager();
 		formHelper_0 = new FormHelper();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		Yewzlloqkn();
 		new FormHelper().ResizeButtonFonts(this);
 		list_2 = gclass6_0.BusinessHours.ToList();

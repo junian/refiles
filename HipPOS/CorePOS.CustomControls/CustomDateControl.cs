@@ -9,7 +9,7 @@ public class CustomDateControl : DateTimePicker
 	public CustomDateControl()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		base.MouseDown += CustomDateControl_MouseDown;
 		base.Format = DateTimePickerFormat.Short;
 		Font = new Font("Microsoft Sans Serif", 18f, FontStyle.Regular);

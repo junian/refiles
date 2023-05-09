@@ -43,6 +43,6 @@ public class CompanyResponseModel : StatusCodeResponse
 	public CompanyResponseModel()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -58,6 +58,6 @@ public class ItemTaxDetails
 	public ItemTaxDetails()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

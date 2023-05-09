@@ -340,7 +340,7 @@ public class InventoryAudit : INotifyPropertyChanging, INotifyPropertyChanged
 	public InventoryAudit()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	protected virtual void SendPropertyChanging()

@@ -19,7 +19,7 @@ public static class LogHelper
 		public _003C_003Ec__DisplayClass0_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CWriteLog_003Eb__0()

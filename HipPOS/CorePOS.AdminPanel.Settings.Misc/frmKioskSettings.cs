@@ -34,7 +34,7 @@ public class frmKioskSettings : frmMasterForm
 		Class26.Ggkj0JxzN9YmC();
 		kioskSettingsHeaderControl_0 = new KioskSettingsHeaderControl();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

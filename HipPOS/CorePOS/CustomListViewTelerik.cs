@@ -10,7 +10,7 @@ public class CustomListViewTelerik : RadListView
 	public CustomListViewTelerik()
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		ViewType = ListViewType.DetailsView;
 		AllowArbitraryItemHeight = true;
 		ShowGridLines = true;

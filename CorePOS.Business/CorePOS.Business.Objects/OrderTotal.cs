@@ -382,6 +382,6 @@ public class OrderTotal
 	public OrderTotal()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

@@ -35,7 +35,7 @@ public class KioskSettingsItemControl : UserControl
 	public KioskSettingsItemControl(Form mainForm, Terminal terminal, GClass6 context)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		form_0 = mainForm;
 		terminal_0 = terminal;

@@ -634,7 +634,7 @@ public class Appointment : INotifyPropertyChanging, INotifyPropertyChanged
 	public Appointment()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Layouts = new EntitySet<Layout>(method_0, method_1);
 		_Customer = default(EntityRef<Customer>);
 		_Employee = default(EntityRef<Employee>);

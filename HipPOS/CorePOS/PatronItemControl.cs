@@ -59,7 +59,7 @@ public class PatronItemControl : UserControl
 	public PatronItemControl(Item item)
 	{
 		Class26.Ggkj0JxzN9YmC();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent();
 		item_1 = item;
 		int num = item.ItemName.Length / 30;

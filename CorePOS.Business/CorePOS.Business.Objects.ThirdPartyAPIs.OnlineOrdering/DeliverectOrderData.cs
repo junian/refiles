@@ -570,6 +570,6 @@ public class DeliverectOrderData
 	public DeliverectOrderData()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

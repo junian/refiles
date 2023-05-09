@@ -127,6 +127,6 @@ public class ProcessorPaymentTypeWithId
 	public ProcessorPaymentTypeWithId()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

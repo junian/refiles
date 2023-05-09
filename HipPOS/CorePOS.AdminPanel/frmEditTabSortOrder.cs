@@ -19,7 +19,7 @@ public class frmEditTabSortOrder : frmMasterForm
 		public _003C_003Ec__DisplayClass3_0()
 		{
 			Class26.Ggkj0JxzN9YmC();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -49,7 +49,7 @@ public class frmEditTabSortOrder : frmMasterForm
 	{
 		Class26.Ggkj0JxzN9YmC();
 		gclass6_0 = new GClass6();
-		base._002Ector();
+		// base._002Ector();
 		InitializeComponent_1();
 	}
 

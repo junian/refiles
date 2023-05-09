@@ -31,7 +31,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass61_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -43,7 +43,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass64_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -55,7 +55,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass67_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSyncOnlineOrders_003Eb__0(KeyValuePair<string, DateTime> x)
@@ -77,7 +77,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass68_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -89,7 +89,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass69_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -101,7 +101,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass69_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -113,7 +113,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass70_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -125,7 +125,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass71_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -139,7 +139,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass71_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -151,7 +151,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass72_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -163,7 +163,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass73_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -179,7 +179,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass73_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -191,7 +191,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass74_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -203,7 +203,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass74_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdateItemCustomField_003Eb__2(ItemCustomFieldValue a)
@@ -222,7 +222,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass75_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -234,7 +234,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass75_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdateMaterialsInItem_003Eb__4(Item a)
@@ -256,7 +256,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass75_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CUpdateMaterialsInItem_003Eb__5(MaterialsInItem a)
@@ -273,7 +273,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass76_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -285,7 +285,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass76_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -297,7 +297,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass76_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSyncItemFromCloudSync_003Eb__6(CheckInventoryCountItemModel a)
@@ -314,7 +314,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass76_3()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -326,7 +326,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass76_4()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -338,7 +338,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass77_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -350,7 +350,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass77_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -362,7 +362,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass77_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -374,7 +374,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass77_3()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -386,7 +386,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass77_4()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -398,7 +398,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass79_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSyncItems_003Eb__7(CheckInventoryCountItemModel a)
@@ -415,7 +415,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass80_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -429,7 +429,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass81_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CSyncInventoryAudits_003Eb__2()
@@ -459,7 +459,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass81_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSyncInventoryAudits_003Eb__11(InventoryAuditsPostDataModel x)
@@ -482,7 +482,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass81_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -494,7 +494,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass81_3()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSyncInventoryAudits_003Eb__12(Item i)
@@ -511,7 +511,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass81_4()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -523,7 +523,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass81_5()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -535,7 +535,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass81_6()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -547,7 +547,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass82_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -559,7 +559,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass82_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -571,7 +571,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass83_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -583,7 +583,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass83_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -595,7 +595,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass85_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -607,7 +607,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass85_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -619,7 +619,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass85_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -631,7 +631,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass85_3()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -643,7 +643,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass85_4()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -655,7 +655,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass85_5()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -667,7 +667,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass87_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -679,7 +679,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass90_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -691,7 +691,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass90_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -703,7 +703,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass92_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSyncOptionsFromCloudsync_003Eb__0(Option i)
@@ -725,7 +725,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass92_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -737,7 +737,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass94_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -751,7 +751,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass94_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -763,7 +763,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass94_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -775,7 +775,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass96_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -787,7 +787,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass96_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -799,7 +799,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass96_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -811,7 +811,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass97_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -823,7 +823,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass97_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -835,7 +835,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass98_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -847,7 +847,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass98_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -859,7 +859,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass100_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -871,7 +871,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass100_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSyncMembersFromCloudsync_003Eb__4(Employee a)
@@ -888,7 +888,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass104_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -900,7 +900,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass104_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -912,7 +912,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass106_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -924,7 +924,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass106_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -936,7 +936,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass110_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -948,7 +948,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass110_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -960,7 +960,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass118_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -972,7 +972,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass118_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal bool _003CSyncEmployeeClockInOutFromHipposTime_003Eb__4(EmployeeClockInOutQueue a)
@@ -994,7 +994,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass120_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1006,7 +1006,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass120_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1020,7 +1020,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass123_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -1034,7 +1034,7 @@ public class SyncMethods
 		public _003C_003Ec__DisplayClass127_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 
 		internal void _003CWriteToSyncLog_003Eb__0()
@@ -6297,7 +6297,7 @@ public class SyncMethods
 	public SyncMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 
 	static SyncMethods()

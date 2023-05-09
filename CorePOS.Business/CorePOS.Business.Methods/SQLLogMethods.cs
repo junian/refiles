@@ -21,7 +21,7 @@ public class SQLLogMethods
 		public _003C_003Ec__DisplayClass2_0()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -33,7 +33,7 @@ public class SQLLogMethods
 		public _003C_003Ec__DisplayClass2_1()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -45,7 +45,7 @@ public class SQLLogMethods
 		public _003C_003Ec__DisplayClass2_2()
 		{
 			Class2.oOsq41PzvTVMr();
-			base._002Ector();
+			// base._002Ector();
 		}
 	}
 
@@ -258,6 +258,6 @@ public class SQLLogMethods
 	public SQLLogMethods()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }

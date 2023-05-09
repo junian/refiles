@@ -359,7 +359,7 @@ public class Refund : INotifyPropertyChanging, INotifyPropertyChanged
 	public Refund()
 	{
 		Class5.qrSRKAOzgGGAb();
-		base._002Ector();
+		// base._002Ector();
 		_Employee = default(EntityRef<Employee>);
 		_Order = default(EntityRef<Order>);
 	}

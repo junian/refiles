@@ -42,6 +42,6 @@ public class HipposClockInOutListPostObject : ClocksInOutReponseObject
 	public HipposClockInOutListPostObject()
 	{
 		Class2.oOsq41PzvTVMr();
-		base._002Ector();
+		// base._002Ector();
 	}
 }
