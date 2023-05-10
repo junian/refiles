@@ -41,9 +41,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Hippos-bin\CorePOS.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Hippos-bin\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -71,9 +73,11 @@
     <Compile Include="Models\_003C_003Ec__DisplayClass39_3.cs" />
     <Compile Include="Models\_003C_003Ec__DisplayClass39_4.cs" />
     <Compile Include="Models\_003C_003Ec__DisplayClass39_5.cs" />
+    <Compile Include="Models\_003C_003Ec__DisplayClass49_0.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Constant.cs" />
+    <Compile Include="Services\ControlHelpers.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +90,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace ToolsForHipPOS
 {
     public partial class MainForm : Form
     {
+        private int int_0;
         private bool bool_0;
 
         private string string_0 = string.Empty;
@@ -33,15 +35,19 @@ namespace ToolsForHipPOS
 
         private GlobalOrderHistoryObjects.CustomerInfo customerInfo_0;
 
+        private GlobalOrderHistoryObjects.Response _apiResponse;
+
         private GClass6 gclass6_0;
 
         public MainForm()
         {
+            int_0 = 0;
             bool_0 = true;
             string_2 = string.Empty;
             list_2 = new List<GlobalOrderHistoryObjects.Order>();
             list_3 = new List<GlobalOrderHistoryObjects.CustomerInfo>();
             customerInfo_0 = new GlobalOrderHistoryObjects.CustomerInfo();
+            _apiResponse = new GlobalOrderHistoryObjects.Response();
             gclass6_0 = new GClass6();
 
             InitializeComponent();
@@ -61,16 +67,35 @@ namespace ToolsForHipPOS
             textBoxEncryptedString.Text = encryptedText;
         }
 
+        private string GenerateJSVar(string variableName, object value)
+        {
+            return $"var {variableName} = {Environment.NewLine}{JsonConvert.SerializeObject(value, Formatting.Indented)}{Environment.NewLine};";
+        }
+
         private void buttonCustomerCellphone_Click(object sender, EventArgs e)
         {
+            lstCustomers.Items.Clear();
+            lstOrderHistory.Items.Clear();
+            lstItems.Items.Clear();
+
             string_0 = textBoxCustomerCellphone.Text;
+
             method_5();
+            
+            var output = string.Join($"{Environment.NewLine}{Environment.NewLine}",
+                GenerateJSVar("orders", list_2),
+                GenerateJSVar("customers", list_3),
+                GenerateJSVar("apiResponse", _apiResponse));
+            
+            textBoxCustomerOrders.Text = output;
         }
 
         private void method_5()
         {
             list_2.Clear();
-            GClass6 gClass = new GClass6();
+            GClass6 gClass = new GClass6(StringCipher.Decrypt(
+                Helper.GetEncryptedConnectionString(), 
+                Constant.EncryptionKey));
             if (string.IsNullOrEmpty(string_0) || string_0.Length <= 3)
             {
                 return;
@@ -91,14 +116,14 @@ namespace ToolsForHipPOS
                           customer_name = x.CustomerName,
                           last_modified = (x.LastModified.HasValue ? x.LastModified.Value : x.DateCreated)
                       }).ToList();
-            if (SettingsHelper.hasGlobalOrderHistoryAddOn && string_0.Length >= 10)
+            if ((SettingsHelper.hasGlobalOrderHistoryAddOn || true) && string_0.Length >= 10)
             {
                 _003C_003Ec__DisplayClass39_0 CS_0024_003C_003E8__locals3 = new _003C_003Ec__DisplayClass39_0();
                 if (string.IsNullOrEmpty(string_2))
                 {
                     string_2 = gClass.Settings.Where((Setting s) => s.Key == "cloudsync_api_key").FirstOrDefault().Value;
                 }
-                CS_0024_003C_003E8__locals3.response = method_6(string_0);
+                CS_0024_003C_003E8__locals3.response = _apiResponse = method_6(string_0);
                 if (CS_0024_003C_003E8__locals3.response != null && CS_0024_003C_003E8__locals3.response.orders != null && CS_0024_003C_003E8__locals3.response.customer_info != null)
                 {
                     _003C_003Ec__DisplayClass39_1 CS_0024_003C_003E8__locals4 = new _003C_003Ec__DisplayClass39_1();
@@ -135,8 +160,8 @@ namespace ToolsForHipPOS
                             LastModified = DateTime.Now,
                             Synced = false
                         };
-                        gClass.Customers.InsertOnSubmit(CS_0024_003C_003E8__locals4.customer);
-                        gClass.SubmitChanges();
+                        //gClass.Customers.InsertOnSubmit(CS_0024_003C_003E8__locals4.customer);
+                        //gClass.SubmitChanges();
                         CS_0024_003C_003E8__locals3.response.customer_info.customer_id = CS_0024_003C_003E8__locals4.customer.CustomerID;
                         list_3.Add(CS_0024_003C_003E8__locals3.response.customer_info);
                     }
@@ -149,7 +174,7 @@ namespace ToolsForHipPOS
                         CS_0024_003C_003E8__locals4.customer.CustomerName = ((CS_0024_003C_003E8__locals3.response.customer_info.customer_name == null) ? string.Empty : CS_0024_003C_003E8__locals3.response.customer_info.customer_name);
                         CS_0024_003C_003E8__locals4.customer.LastModified = CS_0024_003C_003E8__locals3.response.customer_info.last_modified;
                         CS_0024_003C_003E8__locals4.customer.Synced = false;
-                        gClass.SubmitChanges();
+                        //gClass.SubmitChanges();
                         GlobalOrderHistoryObjects.CustomerInfo customerInfo = list_3.Where((GlobalOrderHistoryObjects.CustomerInfo a) => a.customer_id == CS_0024_003C_003E8__locals4.customer.CustomerID).FirstOrDefault();
                         if (customerInfo != null)
                         {
@@ -166,16 +191,16 @@ namespace ToolsForHipPOS
                         string text = string.Empty;
                         if (!string.IsNullOrEmpty(item2.customer_cell))
                         {
-                            text = "Cell" + item2.customer_cell + " / " + "Home" + item2.customer_home;
+                            text = "Cell " + item2.customer_cell + " / " + "Home " + item2.customer_home;
                         }
                         ListViewItem value = new ListViewItem(new string[4]
                         {
-                        item2.customer_name,
-                        text,
-                        item2.customer_address,
-                        item2.customer_id.ToString()
+                            item2.customer_name,
+                            text,
+                            item2.customer_address,
+                            item2.customer_id.ToString()
                         });
-                        //lstCustomers.Items.Add(value);
+                        lstCustomers.Items.Add(value);
                     }
                 }
                 if (list_2 == null)
@@ -235,17 +260,17 @@ namespace ToolsForHipPOS
                 {
                     string text2 = string.Empty;
                     if (!string.IsNullOrEmpty(item3.customer_cell))
-                    {
-                        text2 = "Cell" + item3.customer_cell + " / " + "Home" + item3.customer_home;
+                    { 
+                        text2 = "Cell " + item3.customer_cell + " / " + " Home" + item3.customer_home;
                     }
                     ListViewItem value2 = new ListViewItem(new string[4]
                     {
-                    item3.customer_name,
-                    text2,
-                    item3.customer_address,
-                    item3.customer_id.ToString()
+                        item3.customer_name,
+                        text2,
+                        item3.customer_address,
+                        item3.customer_id.ToString()
                     });
-                    //lstCustomers.Items.Add(value2);
+                    lstCustomers.Items.Add(value2);
                 }
                 CS_0024_003C_003E8__locals1.custIDs = list_3.Select((GlobalOrderHistoryObjects.CustomerInfo x) => x.customer_id).ToList();
                 List<Order> source3 = gClass.Orders.Where((Order x) => x.DatePaid > DateTime.Now.AddYears(-1) && x.Paid == true && x.Void == false && CS_0024_003C_003E8__locals1.custIDs.Contains(x.CustomerID.Value) && x.DatePaid.HasValue && !x.DateRefunded.HasValue && x.ItemID > 0 && !x.ShareItemID.HasValue).ToList();
@@ -285,18 +310,18 @@ namespace ToolsForHipPOS
             {
                 textBoxCustomerCellphone.Text = string_0;
             }
-            /*
+            
             if (lstCustomers.Items.Count == 1 && string_0.Length >= 10)
             {
                 lstCustomers.Items[0].Selected = true;
             }
-            */
+            
         }
 
         private GlobalOrderHistoryObjects.Response method_6(string string_7)
         {
             GlobalOrderHistoryObjects.Response result = new GlobalOrderHistoryObjects.Response();
-            if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isHipposServersOnline"]))
+            if (Convert.ToBoolean(CorePOS.Data.Properties.Settings.Default["isHipposServersOnline"]) || true)
             {
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(DebugSettings.readyOnlyAPIServer + "getorderhistory");
                 httpWebRequest.ContentType = "application/json";
@@ -321,7 +346,9 @@ namespace ToolsForHipPOS
                 {
                     using (StreamReader streamReader = new StreamReader(((HttpWebResponse)httpWebRequest.GetResponse()).GetResponseStream()))
                     {
-                        result = JsonConvert.DeserializeObject<GlobalOrderHistoryObjects.Response>(streamReader.ReadToEnd());
+                        var response = streamReader.ReadToEnd();
+                        Debug.WriteLine(response);
+                        result = JsonConvert.DeserializeObject<GlobalOrderHistoryObjects.Response>(response);
                     }
                     return result;
                 }
@@ -336,9 +363,122 @@ namespace ToolsForHipPOS
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            //method_10();
         }
 
-        
+        private void method_10()
+        {
+            lstCustomers.Columns[0].Width = ControlHelpers.ControlWidthFixer(lstCustomers, 2.0);
+            lstCustomers.Columns[1].Width = ControlHelpers.ControlWidthFixer(lstCustomers, 5.0);
+            lstCustomers.Columns[2].Width = ControlHelpers.ControlWidthFixer(lstCustomers, 5.0);
+        }
+
+        private void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstCustomers.SelectedIndices.Count <= 0)
+            {
+                return;
+            }
+            lstOrderHistory.Items.Clear();
+            lstItems.Items.Clear();
+            if (lstCustomers.SelectedItems[0].SubItems.Count <= 1)
+            {
+                return;
+            }
+            bool_0 = false;
+            if (lstCustomers.SelectedItems[0].SubItems[3].Text == string.Empty)
+            {
+                int_0 = 0;
+            }
+            else
+            {
+                int_0 = Convert.ToInt32(lstCustomers.SelectedItems[0].SubItems[3].Text);
+            }
+            if (int_0 > 0)
+            {
+                _003C_003Ec__DisplayClass49_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass49_0();
+                GClass6 gClass = new GClass6(StringCipher.Decrypt(
+                Helper.GetEncryptedConnectionString(),
+                Constant.EncryptionKey));
+                CS_0024_003C_003E8__locals0.cus = gClass.Customers.Where((Customer a) => a.CustomerID == int_0).FirstOrDefault();
+                if (CS_0024_003C_003E8__locals0.cus != null)
+                {
+                    //method_7(CS_0024_003C_003E8__locals0.cus);
+                    //btnCancel.Enabled = true;
+                    var enumerable = (from x in list_2
+                                      where x.customer_phone == CS_0024_003C_003E8__locals0.cus.CustomerHome || x.customer_phone == CS_0024_003C_003E8__locals0.cus.CustomerCell
+                                      group x by x.order_number into a
+                                      select new
+                                      {
+                                          OrderNumber = a.Key,
+                                          DateCreated = a.FirstOrDefault().date_paid
+                                      } into x
+                                      orderby x.DateCreated descending
+                                      select x).Take(10);
+                    if (enumerable.Count() > 0)
+                    {
+                        foreach (var item in enumerable)
+                        {
+                            ListViewItem value = new ListViewItem(new string[2]
+                            {
+                            item.DateCreated.ToShortDateString(),
+                            item.OrderNumber
+                            });
+                            lstOrderHistory.Items.Add(value);
+                        }
+                        lstOrderHistory.Items[0].Selected = true;
+                        //btnDuplicate.Enabled = true;
+                    }
+                    else
+                    {
+                        //btnDuplicate.Enabled = false;
+                    }
+                }
+                else
+                {
+                    //btnDuplicate.Enabled = false;
+                }
+            }
+            else
+            {
+                //method_8();
+                //btnDuplicate.Enabled = false;
+            }
+        }
+
+        private void lstOrderHistory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstOrderHistory.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+            lstItems.Items.Clear();
+            foreach (GlobalOrderHistoryObjects.Order item in (from order_0 in list_2
+                                                              where order_0.order_number == lstOrderHistory.SelectedItems[0].SubItems[1].Text
+                                                              select order_0 into x
+                                                              orderby x.date_paid, x.combo_id
+                                                              select x).ThenBy((GlobalOrderHistoryObjects.Order z) => z.item_identifier).ToList())
+            {
+                ListViewItem listViewItem = new ListViewItem(new string[3]
+                {
+                MathHelper.DecimalToFraction(item.item_qty),
+                item.item_name,
+                item.item_instruction,
+                });
+                if (item.item_identifier_string == "MainItem")
+                {
+                    listViewItem.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Bold);
+                }
+                else
+                {
+                    listViewItem.Font = new Font("Microsoft Sans Serif", 8.75f, FontStyle.Regular);
+                    if (item.item_identifier_string == "OptionItem")
+                    {
+                        listViewItem.ForeColor = Color.DarkRed;
+                    }
+                }
+                lstItems.Items.Add(listViewItem);
+            }
+        }
     }
 }
