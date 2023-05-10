@@ -41,8 +41,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Hippos-bin\CorePOS.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Hippos-bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +65,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\_003C_003Ec__DisplayClass39_0.cs" />
+    <Compile Include="Models\_003C_003Ec__DisplayClass39_1.cs" />
+    <Compile Include="Models\_003C_003Ec__DisplayClass39_2.cs" />
+    <Compile Include="Models\_003C_003Ec__DisplayClass39_3.cs" />
+    <Compile Include="Models\_003C_003Ec__DisplayClass39_4.cs" />
+    <Compile Include="Models\_003C_003Ec__DisplayClass39_5.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Constant.cs" />
@@ -87,6 +98,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConnectionString.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
