@@ -37,6 +37,9 @@ namespace ToolsForHipPOS
 
         private GlobalOrderHistoryObjects.Response _apiResponse;
 
+        private LocalSettingService _settings;
+        private string _connectionString;
+
         private GClass6 gclass6_0;
 
         public MainForm()
@@ -49,7 +52,7 @@ namespace ToolsForHipPOS
             customerInfo_0 = new GlobalOrderHistoryObjects.CustomerInfo();
             _apiResponse = new GlobalOrderHistoryObjects.Response();
             gclass6_0 = new GClass6();
-
+            _settings = new LocalSettingService();
             InitializeComponent();
         }
 
@@ -79,23 +82,22 @@ namespace ToolsForHipPOS
             lstItems.Items.Clear();
 
             string_0 = textBoxCustomerCellphone.Text;
+            _connectionString = textBoxConnectionString.Text;
 
             method_5();
-            
+
             var output = string.Join($"{Environment.NewLine}{Environment.NewLine}",
                 GenerateJSVar("orders", list_2),
                 GenerateJSVar("customers", list_3),
                 GenerateJSVar("apiResponse", _apiResponse));
-            
+
             textBoxCustomerOrders.Text = output;
         }
 
         private void method_5()
         {
             list_2.Clear();
-            GClass6 gClass = new GClass6(StringCipher.Decrypt(
-                Helper.GetEncryptedConnectionString(), 
-                Constant.EncryptionKey));
+            GClass6 gClass = new GClass6(_connectionString);
             if (string.IsNullOrEmpty(string_0) || string_0.Length <= 3)
             {
                 return;
@@ -260,7 +262,7 @@ namespace ToolsForHipPOS
                 {
                     string text2 = string.Empty;
                     if (!string.IsNullOrEmpty(item3.customer_cell))
-                    { 
+                    {
                         text2 = "Cell " + item3.customer_cell + " / " + " Home" + item3.customer_home;
                     }
                     ListViewItem value2 = new ListViewItem(new string[4]
@@ -310,12 +312,12 @@ namespace ToolsForHipPOS
             {
                 textBoxCustomerCellphone.Text = string_0;
             }
-            
+
             if (lstCustomers.Items.Count == 1 && string_0.Length >= 10)
             {
                 lstCustomers.Items[0].Selected = true;
             }
-            
+
         }
 
         private GlobalOrderHistoryObjects.Response method_6(string string_7)
@@ -364,6 +366,7 @@ namespace ToolsForHipPOS
         private void MainForm_Load(object sender, EventArgs e)
         {
             //method_10();
+            textBoxConnectionString.Text = _settings.ConnectionString;
         }
 
         private void method_10()
@@ -397,9 +400,7 @@ namespace ToolsForHipPOS
             if (int_0 > 0)
             {
                 _003C_003Ec__DisplayClass49_0 CS_0024_003C_003E8__locals0 = new _003C_003Ec__DisplayClass49_0();
-                GClass6 gClass = new GClass6(StringCipher.Decrypt(
-                Helper.GetEncryptedConnectionString(),
-                Constant.EncryptionKey));
+                GClass6 gClass = new GClass6(_connectionString);
                 CS_0024_003C_003E8__locals0.cus = gClass.Customers.Where((Customer a) => a.CustomerID == int_0).FirstOrDefault();
                 if (CS_0024_003C_003E8__locals0.cus != null)
                 {
@@ -479,6 +480,11 @@ namespace ToolsForHipPOS
                 }
                 lstItems.Items.Add(listViewItem);
             }
+        }
+
+        private void buttonSaveConnectionString_Click(object sender, EventArgs e)
+        {
+            _settings.ConnectionString = textBoxConnectionString.Text;
         }
     }
 }

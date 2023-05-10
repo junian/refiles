@@ -37,11 +37,11 @@
             this.textBoxEncryptedString = new System.Windows.Forms.TextBox();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageOrders = new System.Windows.Forms.TabPage();
-            this.tabPageTools = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstItems = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstOrderHistory = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,22 +52,28 @@
             this.textBoxCustomerOrders = new FastColoredTextBoxNS.FastColoredTextBox();
             this.buttonCustomerCellphone = new System.Windows.Forms.Button();
             this.textBoxCustomerCellphone = new System.Windows.Forms.TextBox();
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPageTools = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonSaveConnectionString = new System.Windows.Forms.Button();
+            this.textBoxConnectionString = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageOrders.SuspendLayout();
-            this.tabPageTools.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxCustomerOrders)).BeginInit();
+            this.tabPageTools.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.buttonEncrypt);
             this.groupBox1.Controls.Add(this.textBoxDecryptedString);
             this.groupBox1.Controls.Add(this.buttonDecryptString);
             this.groupBox1.Controls.Add(this.textBoxEncryptedString);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(6, 157);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(796, 145);
             this.groupBox1.TabIndex = 0;
@@ -135,17 +141,6 @@
             this.tabPageOrders.Text = "Orders";
             this.tabPageOrders.UseVisualStyleBackColor = true;
             // 
-            // tabPageTools
-            // 
-            this.tabPageTools.Controls.Add(this.groupBox1);
-            this.tabPageTools.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTools.Name = "tabPageTools";
-            this.tabPageTools.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTools.Size = new System.Drawing.Size(808, 576);
-            this.tabPageTools.TabIndex = 1;
-            this.tabPageTools.Text = "Tools";
-            this.tabPageTools.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -188,6 +183,10 @@
             // columnHeader7
             // 
             this.columnHeader7.Width = 260;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Width = 260;
             // 
             // lstOrderHistory
             // 
@@ -239,11 +238,12 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Phone";
-            this.columnHeader2.Width = 120;
+            this.columnHeader2.Width = 260;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Address";
+            this.columnHeader3.Width = 260;
             // 
             // textBoxCustomerOrders
             // 
@@ -270,6 +270,7 @@
             this.textBoxCustomerOrders.CharWidth = 8;
             this.textBoxCustomerOrders.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxCustomerOrders.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.textBoxCustomerOrders.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.textBoxCustomerOrders.IsReplaceMode = false;
             this.textBoxCustomerOrders.Language = FastColoredTextBoxNS.Language.JS;
             this.textBoxCustomerOrders.LeftBracket = '(';
@@ -303,9 +304,48 @@
             this.textBoxCustomerCellphone.TabIndex = 0;
             this.textBoxCustomerCellphone.Text = "4316684171";
             // 
-            // columnHeader8
+            // tabPageTools
             // 
-            this.columnHeader8.Width = 260;
+            this.tabPageTools.Controls.Add(this.groupBox3);
+            this.tabPageTools.Controls.Add(this.groupBox1);
+            this.tabPageTools.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTools.Name = "tabPageTools";
+            this.tabPageTools.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTools.Size = new System.Drawing.Size(808, 576);
+            this.tabPageTools.TabIndex = 1;
+            this.tabPageTools.Text = "Tools & Options";
+            this.tabPageTools.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.buttonSaveConnectionString);
+            this.groupBox3.Controls.Add(this.textBoxConnectionString);
+            this.groupBox3.Location = new System.Drawing.Point(6, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(796, 145);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "DB Connection String";
+            // 
+            // buttonSaveConnectionString
+            // 
+            this.buttonSaveConnectionString.Location = new System.Drawing.Point(364, 19);
+            this.buttonSaveConnectionString.Name = "buttonSaveConnectionString";
+            this.buttonSaveConnectionString.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveConnectionString.TabIndex = 1;
+            this.buttonSaveConnectionString.Text = "Save";
+            this.buttonSaveConnectionString.UseVisualStyleBackColor = true;
+            this.buttonSaveConnectionString.Click += new System.EventHandler(this.buttonSaveConnectionString_Click);
+            // 
+            // textBoxConnectionString
+            // 
+            this.textBoxConnectionString.Location = new System.Drawing.Point(6, 19);
+            this.textBoxConnectionString.Multiline = true;
+            this.textBoxConnectionString.Name = "textBoxConnectionString";
+            this.textBoxConnectionString.Size = new System.Drawing.Size(352, 116);
+            this.textBoxConnectionString.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -321,10 +361,12 @@
             this.groupBox1.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
             this.tabPageOrders.ResumeLayout(false);
-            this.tabPageTools.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxCustomerOrders)).EndInit();
+            this.tabPageTools.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,6 +396,9 @@
         private System.Windows.Forms.TextBox textBoxCustomerCellphone;
         private System.Windows.Forms.TabPage tabPageTools;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button buttonSaveConnectionString;
+        private System.Windows.Forms.TextBox textBoxConnectionString;
     }
 }
 
