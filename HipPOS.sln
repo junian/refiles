@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HipPOS-Updater", "HipPOS-Up
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippos-Sync", "Hippos-Sync\Hippos-Sync.csproj", "{30BA4BB8-19C5-42F2-918B-CB95D01E9664}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsForHipPOS", "ToolsForHipPOS\ToolsForHipPOS.csproj", "{0713BB30-E6C3-42CF-AEEF-9FBB460F8637}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{30BA4BB8-19C5-42F2-918B-CB95D01E9664}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30BA4BB8-19C5-42F2-918B-CB95D01E9664}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30BA4BB8-19C5-42F2-918B-CB95D01E9664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0713BB30-E6C3-42CF-AEEF-9FBB460F8637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0713BB30-E6C3-42CF-AEEF-9FBB460F8637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0713BB30-E6C3-42CF-AEEF-9FBB460F8637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0713BB30-E6C3-42CF-AEEF-9FBB460F8637}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
