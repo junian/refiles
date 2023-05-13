@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -102,7 +103,9 @@ namespace ToolsForHipPOS
             {
                 return;
             }
-            List<Customer> source = gClass.Customers.Where((Customer c) => (c.CustomerCell != null && c.CustomerCell.Contains(string_0)) || (c.CustomerHome != null && c.CustomerHome.Contains(string_0))).ToList();
+            var sourceQuery = gClass.Customers.Where((Customer c) => (c.CustomerCell != null && c.CustomerCell.Contains(string_0)) || (c.CustomerHome != null && c.CustomerHome.Contains(string_0)));
+            GetSQLText(gClass, sourceQuery);
+            List<Customer> source = sourceQuery.ToList();
             list_3 = (from x in (from x in source
                                  orderby (x.CustomerCell + x.CustomerHome).Length
                                  select x into a
@@ -123,7 +126,9 @@ namespace ToolsForHipPOS
                 _003C_003Ec__DisplayClass39_0 CS_0024_003C_003E8__locals3 = new _003C_003Ec__DisplayClass39_0();
                 if (string.IsNullOrEmpty(string_2))
                 {
-                    string_2 = gClass.Settings.Where((Setting s) => s.Key == "cloudsync_api_key").FirstOrDefault().Value;
+                    var cloudSyncQuery = gClass.Settings.Where((Setting s) => s.Key == "cloudsync_api_key");
+                    GetSQLText(gClass, cloudSyncQuery);
+                    string_2 = cloudSyncQuery.FirstOrDefault().Value;
                 }
                 CS_0024_003C_003E8__locals3.response = _apiResponse = method_6(string_0);
                 if (CS_0024_003C_003E8__locals3.response != null && CS_0024_003C_003E8__locals3.response.orders != null && CS_0024_003C_003E8__locals3.response.customer_info != null)
@@ -210,11 +215,18 @@ namespace ToolsForHipPOS
                     list_2 = new List<GlobalOrderHistoryObjects.Order>();
                 }
                 CS_0024_003C_003E8__locals3.custIDs = list_3.Select((GlobalOrderHistoryObjects.CustomerInfo x) => x.customer_id).ToList();
-                List<Order> list = gClass.Orders.Where((Order x) => x.DatePaid > DateTime.Now.AddYears(-1) && x.Paid == true && x.Void == false && x.CustomerID != null && CS_0024_003C_003E8__locals3.custIDs.Contains(x.CustomerID.Value) && x.DatePaid.HasValue && !x.DateRefunded.HasValue && x.ItemID > 0 && !x.ShareItemID.HasValue).ToList();
-                List<Order> source2 = gClass.Orders.Where((Order x) => x.DatePaid > DateTime.Now.AddYears(-1) && x.Paid == true && x.Void == false && x.CustomerID != null && CS_0024_003C_003E8__locals3.custIDs.Contains(x.CustomerID.Value) && x.DatePaid.HasValue && !x.DateRefunded.HasValue && x.ItemID > 0 && x.ShareItemID.HasValue).ToList();
+                
+                var listQuery =    gClass.Orders.Where((Order x) => x.DatePaid > DateTime.Now.AddYears(-1) && x.Paid == true && x.Void == false && x.CustomerID != null && CS_0024_003C_003E8__locals3.custIDs.Contains(x.CustomerID.Value) && x.DatePaid.HasValue && !x.DateRefunded.HasValue && x.ItemID > 0 && !x.ShareItemID.HasValue);
+                GetSQLText(gClass, listQuery);
+                List<Order> list = listQuery.ToList();
+
+                var source2Query = gClass.Orders.Where((Order x) => x.DatePaid > DateTime.Now.AddYears(-1) && x.Paid == true && x.Void == false && x.CustomerID != null && CS_0024_003C_003E8__locals3.custIDs.Contains(x.CustomerID.Value) && x.DatePaid.HasValue && !x.DateRefunded.HasValue && x.ItemID > 0 && x.ShareItemID.HasValue);
+                GetSQLText(gClass, source2Query);
+                List<Order> source2 = source2Query.ToList();
+
                 if (list.Count() > 0)
                 {
-                    list.Select((Order a) => a.OrderId).ToList();
+                    //list.Select((Order a) => a.OrderId).ToList();
                     List<Guid> list2 = source2.Select((Order a) => a.ShareItemID.Value).ToList();
                     List<GlobalOrderHistoryObjects.Order> list3 = new List<GlobalOrderHistoryObjects.Order>();
                     using (List<Order>.Enumerator enumerator2 = list.GetEnumerator())
@@ -275,8 +287,15 @@ namespace ToolsForHipPOS
                     lstCustomers.Items.Add(value2);
                 }
                 CS_0024_003C_003E8__locals1.custIDs = list_3.Select((GlobalOrderHistoryObjects.CustomerInfo x) => x.customer_id).ToList();
-                List<Order> source3 = gClass.Orders.Where((Order x) => x.DatePaid > DateTime.Now.AddYears(-1) && x.Paid == true && x.Void == false && CS_0024_003C_003E8__locals1.custIDs.Contains(x.CustomerID.Value) && x.DatePaid.HasValue && !x.DateRefunded.HasValue && x.ItemID > 0 && !x.ShareItemID.HasValue).ToList();
-                List<Order> source4 = gClass.Orders.Where((Order x) => x.DatePaid > DateTime.Now.AddYears(-1) && x.Paid == true && x.Void == false && CS_0024_003C_003E8__locals1.custIDs.Contains(x.CustomerID.Value) && x.DatePaid.HasValue && !x.DateRefunded.HasValue && x.ItemID > 0 && x.ShareItemID.HasValue).ToList();
+                
+                var source3Query = gClass.Orders.Where((Order x) => x.DatePaid > DateTime.Now.AddYears(-1) && x.Paid == true && x.Void == false && CS_0024_003C_003E8__locals1.custIDs.Contains(x.CustomerID.Value) && x.DatePaid.HasValue && !x.DateRefunded.HasValue && x.ItemID > 0 && !x.ShareItemID.HasValue);
+                GetSQLText(gClass, source3Query);
+                List<Order> source3 = source3Query.ToList();
+
+                var source4Query = gClass.Orders.Where((Order x) => x.DatePaid > DateTime.Now.AddYears(-1) && x.Paid == true && x.Void == false && CS_0024_003C_003E8__locals1.custIDs.Contains(x.CustomerID.Value) && x.DatePaid.HasValue && !x.DateRefunded.HasValue && x.ItemID > 0 && x.ShareItemID.HasValue);
+                GetSQLText(gClass, source4Query);
+                List<Order> source4 = source4Query.ToList();
+
                 if (source3.Count() > 0)
                 {
                     _003C_003Ec__DisplayClass39_4 CS_0024_003C_003E8__locals2 = new _003C_003Ec__DisplayClass39_4();
@@ -485,6 +504,12 @@ namespace ToolsForHipPOS
         private void buttonSaveConnectionString_Click(object sender, EventArgs e)
         {
             _settings.ConnectionString = textBoxConnectionString.Text;
+        }
+
+        private void GetSQLText<T>(GClass6 gClass, IQueryable<T> q)
+        {
+            var dc = gClass.GetCommand(q);
+            Debug.WriteLine(dc.CommandText);
         }
     }
 }
