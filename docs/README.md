@@ -55,3 +55,37 @@ Saving C:\HipPOS-clean\Hippos-Sync.exe
 Saving C:\HipPOS-clean\HipPOS-Updater.exe
 Saving C:\HipPOS-clean\HipPOS.exe
 ```
+
+## Step 2: Decompile the binaries and retrieve the C# source code
+
+In this step, we can get 
+
+Before we decompile the app, we need to copy all `dll` libraries from `C:\HipPOS\` to `C:\HipPOS-clean\`.
+Make sure NOT to replace the deobfuscated binaries with the original ones from Step 1.
+
+Open `ILSpy`, Click **File** - **Open**, and select following files:
+
+- CorePOS.Business.dll
+- CorePOS.Data.dll
+- Hippos-Sync.exe
+- HipPOS-Updater.exe
+- HipPOS.exe
+
+Under **Assemblies**, for each binary above, Righ click and select 
+
+## Step 3: Find Hidden REST API
+
+This part is pretty easy.
+
+I open the project files by using Visual Studio Code and search for `hipposhq.com` and found the Class and Function that utilize HttpWebRequest.
+
+## Step 4: Build a simple WinForms App to test HipPOS REST API
+
+In this step, we build a simple desktop app for Proof of concept wether we use the correct function or not.
+
+It's basically just a simple GUI with function copied from the decompiled code from Step 2) and 3).
+
+## Step 5: Write Python Script for Web app integration with HipPOS REST API
+
+Once the REST API is verified working correctly from Step 4, 
+
