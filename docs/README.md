@@ -1,5 +1,7 @@
 # Reverse Engineering Case Study: HipPOS Hidden API
 
+How to discover HipPOS app hidden API by peeking at the source code.
+
 ## Background
 
 My client needed to find the hidden API within the HipPOS desktop app to use for their own web app. Here's how I uncovered it.
