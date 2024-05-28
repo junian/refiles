@@ -2,7 +2,7 @@
 
 ## Background
 
-Client need to find hidden API from HipPOS .desktop app to be used for their own web app.
+Client need to find hidden API from HipPOS desktop app to be used for their own web app.
 
 ## Tools
 
@@ -85,7 +85,7 @@ Select the directory to save the code, in this case I choose `C:\HipPOS-src\`.
 
 This part is pretty easy.
 
-I open the project files by using Visual Studio Code and search for `hipposhq.com` and found the Class and Function that utilize HttpWebRequest.
+I open the project files by using Visual Studio Code and search for `hipposhq.com` and found the Classes and Functions that uses REST API call.
 
 ## Step 4: Build a simple WinForms App to test HipPOS REST API
 
@@ -95,5 +95,8 @@ It's basically just a simple GUI with function copied from the decompiled code f
 
 ## Step 5: Write Python Script for Web app integration with HipPOS REST API
 
-Once the REST API is verified working correctly from Step 4, 
+Once the REST API is verified working correctly from Step 4, I write a Python script to be integratid with client web app.
+
+The end result can be seen on [src/python-cli](https://github.com/junian/windows-pos-re/tree/master/src/python-cli).
+
 
