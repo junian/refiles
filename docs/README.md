@@ -2,25 +2,25 @@
 
 ## Background
 
-Client need to find hidden API from HipPOS desktop app to be used for their own web app.
+My client needed to find the hidden API within the HipPOS desktop app to use for their own web app. Here's how I uncovered it.
 
 ## Tools
 
-- [de4dot](https://github.com/de4dot/de4dot): .NET de-obfucastor and unpacker
+- [de4dot](https://github.com/de4dot/de4dot): .NET de-obfuscator and unpacker
 - [ILSpy](https://github.com/icsharpcode/ILSpy): .NET decompiler
 - [Visual Studio Code](https://code.visualstudio.com)
 - [Visual Studio](https://visualstudio.microsoft.com)
 
-## Step 1: Deobfuscate the binaries
+## Step 1: Deobfuscate the Binaries
 
-First thing to do is to detect if the binaries are protected by some kind of obfuscator.
+First, I detected if the binaries were protected by an obfuscator.
 
-![](img/step-01-de4dot-deobfuscate.gif)
+![Deobfuscate](img/step-01-de4dot-deobfuscate.gif)
 
-We use de4dot for that.
+Using de4dot, I identified that the binaries were protected by .NET Reactor.
 
 ```shell
-$  de4dot.exe -d -r .\HipPOS\
+$ de4dot.exe -d -r .\HipPOS\
 
 de4dot v3.1.41592.3405
 
@@ -31,9 +31,7 @@ Detected .NET Reactor (C:\HipPOS\HipPOS-Updater.exe)
 Detected .NET Reactor (C:\HipPOS\HipPOS.exe)
 ```
 
-As we can see, it's protected by .NET Reactor.
-
-Now let's clean it first.
+I then cleaned the binaries.
 
 ```shell
 $ de4dot.exe -r .\HipPOS\ -ru -ro .\HipPOS-clean\
@@ -58,14 +56,13 @@ Saving C:\HipPOS-clean\HipPOS-Updater.exe
 Saving C:\HipPOS-clean\HipPOS.exe
 ```
 
-## Step 2: Decompile the binaries and retrieve the C# source code
+## Step 2: Decompile the Binaries and Retrieve the C# Source Code
 
-Before we decompile the app, we need to copy all `dll` libraries from `C:\HipPOS\` to `C:\HipPOS-clean\`.
-Make sure NOT to replace the deobfuscated binaries with the original ones from Step 1.
+Next, I copied all `dll` libraries from `C:\HipPOS\` to `C:\HipPOS-clean\`, ensuring not to replace the deobfuscated binaries.
 
-![](img/step-02-1-copy-dependencies.gif)
+![Copy Dependencies](img/step-02-1-copy-dependencies.gif)
 
-Open `ILSpy`, Click **File** - **Open**, and select following files:
+I opened ILSpy, selected the necessary files, and saved the source code.
 
 - CorePOS.Business.dll
 - CorePOS.Data.dll
@@ -73,32 +70,28 @@ Open `ILSpy`, Click **File** - **Open**, and select following files:
 - HipPOS-Updater.exe
 - HipPOS.exe
 
-![](img/step-02-2-ilspy-select-files.gif)
+![ILSpy Select Files](img/step-02-2-ilspy-select-files.gif)
 
-Under **Assemblies**, for each binary above, Righ click and select **Save Code**.
+For each binary, I right-clicked and selected **Save Code**.
 
-![](img/step-02-3-ilspy-save-source-code.gif)
+![ILSpy Save Source Code](img/step-02-3-ilspy-save-source-code.gif)
 
-Select the directory to save the code, in this case I choose `C:\HipPOS-src\`.
+I saved the code to `C:\HipPOS-src\`.
 
 ## Step 3: Find Hidden REST API
 
-This part is pretty easy.
+Using Visual Studio Code, I searched for `hipposhq.com` within the project files and found the classes and functions that use REST API calls.
 
-I open the project files by using Visual Studio Code and search for `hipposhq.com` and found the Classes and Functions that uses REST API call.
+## Step 4: Build a Simple WinForms App to Test HipPOS REST API
 
-## Step 4: Build a simple WinForms App to test HipPOS REST API
+I built a simple desktop app to verify if I used the correct functions.
 
-In this step, we build a simple desktop app for Proof of concept wether we use the correct function or not.
+It was a basic GUI with functions copied from the decompiled code from Steps 2 and 3.
 
-It's basically just a simple GUI with function copied from the decompiled code from Step 2) and 3).
+~![Tools for HipPOS Screenshot](img/tools-for-hippos-screenshot.png)
 
-~[](img/tools-for-hippos-screenshot.png)
+## Step 5: Write Python Script for Web App Integration with HipPOS REST API
 
-## Step 5: Write Python Script for Web app integration with HipPOS REST API
+Once the REST API was verified, I wrote a Python script to integrate with the client's web app.
 
-Once the REST API is verified working correctly from Step 4, I write a Python script to be integratid with client web app.
-
-The end result can be seen on [src/python-cli](https://github.com/junian/windows-pos-re/tree/master/src/python-cli).
-
-
+The end result can be seen in [src/python-cli](https://github.com/junian/windows-pos-re/tree/master/src/python-cli).
