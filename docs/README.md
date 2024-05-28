@@ -15,6 +15,8 @@ Client need to find hidden API from HipPOS .desktop app to be used for their own
 
 First thing to do is to detect if the binaries are protected by some kind of obfuscator.
 
+![](img/step-01-de4dot-deobfuscate.gif)
+
 We use de4dot for that.
 
 ```shell
@@ -58,10 +60,10 @@ Saving C:\HipPOS-clean\HipPOS.exe
 
 ## Step 2: Decompile the binaries and retrieve the C# source code
 
-In this step, we can get 
-
 Before we decompile the app, we need to copy all `dll` libraries from `C:\HipPOS\` to `C:\HipPOS-clean\`.
 Make sure NOT to replace the deobfuscated binaries with the original ones from Step 1.
+
+![](img/step-02-1-copy-dependencies.gif)
 
 Open `ILSpy`, Click **File** - **Open**, and select following files:
 
@@ -71,7 +73,13 @@ Open `ILSpy`, Click **File** - **Open**, and select following files:
 - HipPOS-Updater.exe
 - HipPOS.exe
 
-Under **Assemblies**, for each binary above, Righ click and select 
+![](img/step-02-2-ilspy-select-files.gif)
+
+Under **Assemblies**, for each binary above, Righ click and select **Save Code**.
+
+![](img/step-02-3-ilspy-save-source-code.gif)
+
+Select the directory to save the code, in this case I choose `C:\HipPOS-src\`.
 
 ## Step 3: Find Hidden REST API
 
