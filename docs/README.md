@@ -1,6 +1,10 @@
-# Reverse Engineering Case Study: HipPOS Hidden API
+<p align="center"><img align="center" src="./img/hippos-mascot.png" /></p>
 
-How to discover HipPOS app hidden API by peeking at the source code.
+<h1 align="center">Reverse Engineering Case Study: HipPOS Hidden API</h1>
+
+<p align="center">How to discover HipPOS app hidden API by peeking at the source code.</p>
+
+<p align="center"><img alt="GitHub language count" src="https://img.shields.io/github/languages/count/junian/windows-pos-re" /></p>
 
 ## Background
 
@@ -97,3 +101,7 @@ It was a basic GUI with functions copied from the decompiled code from Steps 2 a
 Once the REST API was verified, I wrote a Python script to integrate with the client's web app.
 
 The end result can be seen in [src/python-cli](https://github.com/junian/windows-pos-re/tree/master/src/python-cli).
+
+---
+
+Made with ☕ by [Junian.dev](https://www.junian.dev).
