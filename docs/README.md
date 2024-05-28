@@ -93,6 +93,8 @@ In this step, we build a simple desktop app for Proof of concept wether we use t
 
 It's basically just a simple GUI with function copied from the decompiled code from Step 2) and 3).
 
+~[](img/tools-for-hippos-screenshot.png)
+
 ## Step 5: Write Python Script for Web app integration with HipPOS REST API
 
 Once the REST API is verified working correctly from Step 4, I write a Python script to be integratid with client web app.
