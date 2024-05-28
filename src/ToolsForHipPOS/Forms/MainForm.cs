@@ -20,7 +20,7 @@ using System.Windows.Forms;
 using ToolsForHipPOS.Models;
 using ToolsForHipPOS.Services;
 
-namespace ToolsForHipPOS
+namespace ToolsForHipPOS.Forms
 {
     public partial class MainForm : Form
     {

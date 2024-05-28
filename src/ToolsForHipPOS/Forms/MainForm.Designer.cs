@@ -1,4 +1,4 @@
-﻿namespace ToolsForHipPOS
+﻿namespace ToolsForHipPOS.Forms
 {
     partial class MainForm
     {
