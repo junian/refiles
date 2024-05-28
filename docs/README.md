@@ -23,21 +23,7 @@ First, I detected if the binaries were protected by an obfuscator.
 
 ![Deobfuscate](img/step-01-de4dot-deobfuscate.gif)
 
-Using de4dot, I identified that the binaries were protected by .NET Reactor.
-
-```shell
-$ de4dot.exe -d -r .\HipPOS\
-
-de4dot v3.1.41592.3405
-
-Detected .NET Reactor (C:\HipPOS\CorePOS.Business.dll)
-Detected .NET Reactor (C:\HipPOS\CorePOS.Data.dll)
-Detected .NET Reactor (C:\HipPOS\Hippos-Sync.exe)
-Detected .NET Reactor (C:\HipPOS\HipPOS-Updater.exe)
-Detected .NET Reactor (C:\HipPOS\HipPOS.exe)
-```
-
-I then cleaned the binaries.
+Using de4dot, I identified that the binaries were protected by .NET Reactor. I then cleaned the binaries.
 
 ```shell
 $ de4dot.exe -r .\HipPOS\ -ru -ro .\HipPOS-clean\
