@@ -6,4 +6,7 @@ I don't own the binary, only here for educational purpose.
 
 ## HipPOS
 
-See here: [./hippos/](./hippos/)
+My client needed to find the hidden API within the HipPOS desktop app to use for their own web app.
+
+[**READ MORE**](./hippos/)
+
