@@ -26,7 +26,7 @@ First, I detected if the binaries were protected by an obfuscator.
 Using de4dot, I identified that the binaries were protected by .NET Reactor. I then cleaned the binaries.
 
 ```shell
-$ de4dot.exe -r .\HipPOS\ -ru -ro .\HipPOS-clean\
+$ de4dot.exe  --one-file -r .\HipPOS\ -ru -ro .\HipPOS-clean\
 
 de4dot v3.1.41592.3405
 
