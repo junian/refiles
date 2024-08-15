@@ -70,9 +70,11 @@ For each binary, I right-clicked and selected **Save Code**.
 
 I saved the code to `C:\HipPOS-src\`.
 
-## Step 3: Find Hidden REST API
+## Step 3: Find Decryption Method and Hidden REST API
 
-Using Visual Studio Code, I searched for `hipposhq.com` within the project files and found the classes and functions that use REST API calls.
+I needed to identify how to decrypt a configuration file containing elements like an SQL Server connection string. To do this, I located the functions that interact with the .config file and examined the code to find the decryption method.
+
+For discovering hidden REST APIs, I used Visual Studio Code to search for hipposhq.com within the project files and identified the classes and functions that make REST API calls.
 
 ## Step 4: Build a Simple WinForms App to Test HipPOS REST API
 
